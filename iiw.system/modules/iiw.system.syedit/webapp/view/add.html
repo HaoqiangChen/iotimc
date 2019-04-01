@@ -1,0 +1,198 @@
+<div class="widget-header">
+    <span>添加</span>
+</div>
+<div class="widget-content">
+    <form method="post" class="form-horizontal" id="mappingform" name="mappingform" novalidate>
+        <fieldset>
+            <div class="control-group">
+                <div class="col-md-3">
+                    <label class="control-label">类型</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <!--                        <select ng-model="editItem.code" name="mapping_type" id="mapping_type" ng-options="type.name as type.name for type in types" style="width: 100%;"></select>-->
+                        <input type="text" ng-model="editItem.type" placeholder="如：sdf"
+                               class="form-control" id="mapping_type" name="mapping_type" required
+                               maxlength="15"/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="col-md-3">
+                    <label class="control-label">标题</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <input type="text" ng-model="editItem.name" placeholder="如：下级报警自动联动上级    "
+                               class="form-control" id="mapping_src" name="mapping_src" required
+                               maxlength="15"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="control-group">
+                <div class="col-md-3">
+                    <label class="control-label">地址/路径</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <input type="text" ng-model="editItem.url" placeholder="输入地址（如10.43.10.2）"
+                               class="form-control" required id="mapping_mapper"
+                               name="mapping_mapper" 
+                            />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <lable ng-show="mappingform.mapping_mapper.$invalid" style="color:red;">
+                        *请输入正确地址
+                    </lable>
+                </div>
+            </div>
+            <div class="control-group ">
+                <div class="col-md-3">
+                    <label class="control-label">附加参数</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group ">
+
+                        <input type="text"  placeholder="请输入附加信息"
+                               class="form-control" required id="mapping_params"
+                               name="mapping_mapper" ng-show="syedit.paramsC"
+                               ng-model="initParams" />
+
+                    </div>
+                    <!--  选择附加参数例子-->
+                    <div style="max-height: 130px;overflow-y: auto">
+                        <table class="table table-striped">
+                            <colgroup><col width="50px"><col><col width="50px">
+                            </colgroup><thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                            <tbody>
+                            <tr class="ng-scope" ng-repeat="list in oldItemList track by $index">
+                                <td class="ng-binding">{{$index + 1}}</td>
+                                <td class="ng-binding">{{list.realname || list.alias}} </td>
+                                <td><a class="btn btn-danger btn-xs" ng-click="paramAllList.removeParams(list,$index)">删除</a>
+                                    </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                        <a class="btn btn-default " ng-click="paramAllList.switchOver()">选   择</a>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="col-md-3">
+                    <label class="control-label">账号</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <input type="text" ng-model="editItem.username" placeholder="输入账号(可填可不填)"
+                               class="form-control" id="mapping_username" name="mapping_request"
+                               required maxlength="15"/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group" ng-show="editItem.username">
+                <div class="col-md-3">
+                    <label class="control-label">密码</label>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" ng-model="editItem.password" placeholder="输入密码"
+                                   class="form-control ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched"
+                                   id="syuser_password" ng-change="checkpwd()" required="" style="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <div>
+                <button class="btn btn-s-md btn-primary" type="button" ng-click="save()"
+                        ng-disabled="!editItem.type || !editItem.name || !editItem.url ">保 存
+                </button>
+                <button class="btn btn-s-md btn-default" type="button" ng-click="back()">返 回
+                </button>
+            </div>
+        </div>
+    </form>
+    <!--         选择附加参数模框     -->
+    <div class="layout-full stretch ui-layout-row" ui-layout="" options="{dividerSize:'0'}" style="background: black;z-index: 99; margin: auto;" ng-if="syedit.switchCode == '返回'">
+        <div  size="40px" class="ng-isolate-scope stretch ui-layout-container" style="height: 40px; top: 5px; background-color: rgba(255,255,255,0.2)">
+
+            <div class="layout-full stretch ui-layout-column" ui-layout="{flow:'column'}" options="{dividerSize:'0'}">
+                <div class="col-lg-3 pull-left" style="z-index: 100">
+                    <a class="btn btn-primary" ng-click="getUserList('getSyuserAll')" style="margin-left: -10px;">用户信息</a>
+                    <a class="btn btn-success" ng-click="getUserList('getSyouAll')">单位信息</a>
+                </div>
+
+                <!--过滤搜索-->
+                <div  size="250px" class="ng-isolate-scope stretch ui-layout-container" style="width: 250px; left: 300px;">
+                    <div class="input-group col-lg-12">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="paramAllList.searchText" ng-keyup="map.resources.pageDevice.getListByKeybroad($event)" placeholder="请输入过滤条件">
+                        <span class="input-group-btn">
+            <button class="btn btn-transparent" type="button" ng-click="searchList()">搜索</button></span>
+                    </div>
+                </div>
+
+                <div  class="ng-isolate-scope stretch ui-layout-container" >
+                    <div class="col-lg-3 pull-right">
+                        <a class="btn btn-success pull-right" ng-click="paramAllList.switchOver()">完成选择</a></div>
+                </div>
+            </div>
+        </div>
+        <div style="overflow-x: hidden; height: 603px; top: 50px;background-color: rgba(255,255,255,0.2)" class="ng-isolate-scope stretch ui-layout-container">
+            <div class="layout-full" style="overflow-y:auto;overflow-x:hidden;">
+                <table class="insidemapsetting-mapbox-table table table-hover iiw-system-table-container">
+                    <thead>
+                    <tr>
+                        <th class="iiw-system-table-header-container">
+                            <input type="checkbox" ng-model="syParams.selectAll"  ng-change="syParams.selAll()" hm-tap="map.resources.pageDevice.selAll()" class="ng-pristine ng-untouched ng-valid" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></th>
+                        <th>序号</th>
+                        <th>设备名称</th>
+                        <th>所属单位</th>
+                        <th>类 型</th>
+                        <th>附加参数</th>
+                        <th>端口</th></tr>
+                    </thead>
+                    <tbody class="ng-pristine ng-untouched ng-valid ng-isolate-scope" ng-repeat="item in paramAllList.itemList">
+                    <tr ng-class="{'select':item.checked}"   ng-click="syParams.select(item, $event)" class="ng-scope ui-sortable-handle" style="">
+                        <td class="iiw-system-table-header-container">
+                            <input type="checkbox" ng-model="item.checked" class="rowCheck ng-pristine ng-untouched ng-valid" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></td>
+                        <td class="ng-binding">{{$index + 1}}</td>
+                        <td class="ng-binding">{{item.realname || item.alias}}</td>
+                        <td class="ng-binding">{{item.rolename || item.name}}</td>
+                        <td class="ng-binding">{{item.syouname || item.type}}</td>
+                        <td class="ng-binding">{{item.syoufk || item.creuser}}</td>
+                        <td class="ng-binding">{{item.status}}</td>
+                    </tr>
+                   </tbody>
+
+                </table>
+                <div style="position: fixed;bottom: 0px;width: 80%;">
+                    <label class="col-lg-3" style="height:50px; line-height: 85px;">统计信息：每页{{paramAllList.pageSize}}行共{{paramAllList.totalSize||0}}行， 共{{paramAllList.totalPage||0}}页</label>
+                    <uib-pagination style="padding: 5px;" boundary-links="true"
+                                    first-text="&laquo;" last-text="&raquo;"
+                                    class="pagination pull-right"
+                                    total-items="paramAllList.totalSize"
+                                    ng-model="paramAllList.pageNo" ng-change="pageChanged()"
+                                    items-per-page="paramAllList.pageSize" previous-text="上一页"
+                                    next-text="下一页" max-size="5"></uib-pagination>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

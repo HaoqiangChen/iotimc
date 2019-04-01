@@ -1,58 +1,16 @@
-.system-useraudit-bar {
+.system-useraudit-bar{
     padding: 4px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0,0,0,0.3);
     overflow: hidden;
 }
-
-.system-useraudit-bar .select-group {
-    text-align: center;
+.system-useraudit-page-content{
+    background-color: rgba(0,0,0,0.3);
 }
-
-.system-useraudit-bar .select-group label {
-    margin-right: 10px;
-}
-
-.system-useraudit-bar .select-group select {
-    display: inline-block;
-    width: 50%;
-    /*background-color: rgba(0, 0, 0, .3);*/
-    /*color: #fff;*/
-    /*border: 1px solid #fff;*/
-}
-
-.system-useraudit-page-content {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.system-useraudit-search {
+.system-useraudit-search{
     width: 200px;
     height: 39px;
 }
 
-.system-useraudit-container {
+.system-useraudit-container{
     padding: 15px;
-}
-
-#ftappuserfrom fieldset {
-    padding: 0 5%;
-}
-
-#ftappuserfrom .control-label {
-    display: inline-block;
-    width: 100%;
-    vertical-align: middle;
-}
-
-#ftappuserfrom .error-text {
-    color: red;
-}
-#ftappuserfrom .form-group>select{height: 39px;}
-
-#ftappuserfrom .user-code{
-    width: 100%;
-    height: 39px;
-    background: rgba(255,255,255,.3);
-    line-height: 39px;
-    padding-left: 10px;
-    cursor: no-drop;
 }
