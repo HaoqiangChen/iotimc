@@ -22,7 +22,7 @@ define([
         $scope.canAudit = true;
         $scope.canDel = true;
         $scope.provinces = [
-            {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
+            {name: '司法部', code: '00'}, {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
                 name: '山西省',
                 code: 14
             }, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
@@ -79,7 +79,15 @@ define([
                             if (data.result && data.result.rows) {
                                 $scope.audit.userList = data.result.rows;
                                 $scope.audit.userList.map(_a => {
-                                    if (_a.province) _a.provincecode = _.filter($scope.provinces, _b => _b.name.substring(0, 2) === _a.province.substring(0, 2))[0].code.toString();
+                                    if (_a.code.length < 15) {
+                                        _a.province = _a.province ? _a.province : '';
+                                        _a.provincecode = _a.provincecode ? _a.provincecode : '';
+                                    } else {
+                                        _a.provincecode = _a.code.substr(2, 2);
+                                        _a.province = _a.province ? _a.province : $scope.provinces.map(function (_) {
+                                            if (_.code === parseInt(_a.provincecode)) return _.name
+                                        });
+                                    }
                                 });
                                 $scope.loading.isLoading = false;
                                 $scope.selectAll = false;
@@ -256,7 +264,7 @@ define([
     }])
         .controller('ftappUserInfoController', ['$rootScope', '$scope', '$state', '$location', 'iAjax', 'iMessage', 'iConfirm', '$filter', '$timeout', function ($rootScope, $scope, $state, $location, iAjax, iMessage, iConfirm, $filter, $timeout) {
             $scope.provinces = [
-                {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
+                {name: '司法部', code: '00'}, {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
                     name: '山西省',
                     code: 14
                 }, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
@@ -329,6 +337,9 @@ define([
                 url = 'http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=addSyuser';
 
                 $scope.userInfo.code = $scope.userInfo.role + $scope.userInfo.type + $scope.userInfo.provincecode + $scope.userInfo.phone;
+                $scope.userInfo.province = $scope.provinces.filter(function (_) {
+                    return _.code === parseInt($scope.userInfo.provincecode);
+                })[0].name;
                 data = $scope.userInfo;
 
                 getToken(function (token) {

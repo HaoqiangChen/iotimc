@@ -13,11 +13,12 @@
             <fieldset>
                 <div class="control-group col-md-6">
                     <div class="col-md-2">
-                        <label class="control-label">姓   名</label>
+                        <label class="control-label">姓 名</label>
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.name" placeholder="输入姓名" class="form-control input-transparent" required id="ftuser_name" name="ftuser_name" />
+                            <input type="text" ng-model="userInfo.name" placeholder="输入姓名"
+                                   class="form-control input-transparent" required id="ftuser_name" name="ftuser_name"/>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -31,11 +32,15 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.phone" name="phone" ng-maxlength="11" ng-pattern="/^[1]([3-9])[0-9]{9}$/" placeholder="输入手机号" class="form-control input-transparent" id="ftuser_phone" required/>
+                            <input type="text" ng-model="userInfo.phone" name="phone" ng-maxlength="11"
+                                   ng-pattern="/^[1]([3-9])[0-9]{9}$/" placeholder="输入手机号"
+                                   class="form-control input-transparent" id="ftuser_phone" required/>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="error-text" ng-show="ftappuserfrom.phone.$dirty && ftappuserfrom.phone.$invalid">请输入正确格式的手机号</div>
+                        <div class="error-text" ng-show="ftappuserfrom.phone.$dirty && ftappuserfrom.phone.$invalid">
+                            请输入正确格式的手机号
+                        </div>
                     </div>
                 </div>
 
@@ -45,12 +50,15 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <div class="user-code">{{userInfo.role + userInfo.type + userInfo.provincecode + userInfo.phone}}</div>
+                            <div class="user-code">{{userInfo.role + userInfo.type + userInfo.provincecode +
+                                userInfo.phone}}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="control-group col-md-12" ng-class="{'has-error' : (ftappuserfrom.userInfo.password.$invalid)}">
+                <div class="control-group col-md-12"
+                     ng-class="{'has-error' : (ftappuserfrom.userInfo.password.$invalid)}">
                     <div class="col-md-1">
                         <label for="password-field" class="control-label">密码</label>
                     </div>
@@ -58,16 +66,21 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" ng-model="userInfo.password" placeholder="输入密码" class="form-control" id="ftuser_password" ng-change="checkpwd()" required />
+                                <input type="password" ng-model="userInfo.password" placeholder="输入密码"
+                                       class="form-control" id="ftuser_password" ng-change="checkpwd()" ng-required="saveBtn === '注册'"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="error-text" ng-show="userInfo.password == null" style="color:red;">*请输入密码</div>
-                        <div class="error-text" ng-show="(!userInfo.password.length && userInfo.password.length < 3) || regPwd" style="color:red;">*请输入8-16位密码且不能包含特殊字符!</div>
+                        <div class="error-text"
+                             ng-show="(!userInfo.password.length && userInfo.password.length < 3) || regPwd"
+                             style="color:red;">*请输入8-16位密码且不能包含特殊字符!
+                        </div>
                     </div>
                 </div>
-                <div class="control-group col-md-12" ng-class="{'has-error' : (ftappuserfrom.userInfo.password2.$invalid || pwdcheckfalg == 1)}">
+                <div class="control-group col-md-12"
+                     ng-class="{'has-error' : (ftappuserfrom.userInfo.password2.$invalid || pwdcheckfalg == 1)}">
                     <div class="col-md-1">
                         <label for="password-field" class="control-label">确认密码</label>
                     </div>
@@ -75,14 +88,18 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password"  ng-model="userInfo.password2" placeholder="再次输入密码"  class="form-control" ng-change="checkpwd()" required/>
+                                <input type="password" ng-model="userInfo.password2" placeholder="再次输入密码"
+                                       class="form-control" ng-change="checkpwd()"  ng-required="saveBtn === '注册'"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="error-text" ng-show="userInfo.password2 == null" style="color:red;">*请输入确认密码</div>
                         <div class="error-text" ng-show="pwdcheckfalg == 1" style="color:red;">*两次密码不正确，请重输入！</div>
-                        <div class="error-text" ng-show="(userInfo.password2.length != null && userInfo.password2.length < 3) || regPwd" style="color:red;">*请输入8-16位密码且不能包含特殊字符!</div>
+                        <div class="error-text"
+                             ng-show="(userInfo.password2.length != null && userInfo.password2.length < 3) || regPwd"
+                             style="color:red;">*请输入8-16位密码且不能包含特殊字符!
+                        </div>
                     </div>
                 </div>
 
@@ -92,7 +109,8 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.origin" placeholder="输入籍贯" class="form-control input-transparent" id="ftuser_origin" required/>
+                            <input type="text" ng-model="userInfo.origin" placeholder="输入籍贯"
+                                   class="form-control input-transparent" id="ftuser_origin" required/>
                         </div>
                     </div>
                 </div>
@@ -103,12 +121,14 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-change="checkidcard()" placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard" required/>
+                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-change="checkidcard()"
+                                   placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard"
+                                   required/>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="error-text">{{userInfo.idcard.length || 0}}/18
-                        <span ng-show="(ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid) || !regIdcard">请输入18位正确身份证号</span>
+                            <span ng-show="(ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid) || !regIdcard">请输入18位正确身份证号</span>
                         </div>
                     </div>
                 </div>
@@ -119,11 +139,15 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.email" name="email" ng-pattern="/^\w+@[\w\.]+/" placeholder="输入邮箱地址" class="form-control input-transparent" id="ftuser_email" required/>
+                            <input type="text" ng-model="userInfo.email" name="email" ng-pattern="/^\w+@[\w\.]+/"
+                                   placeholder="输入邮箱地址" class="form-control input-transparent" id="ftuser_email"
+                                   required/>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="error-text" ng-show="ftappuserfrom.email.$dirty && ftappuserfrom.email.$invalid">请输入正确格式的邮箱地址</div>
+                        <div class="error-text" ng-show="ftappuserfrom.email.$dirty && ftappuserfrom.email.$invalid">
+                            请输入正确格式的邮箱地址
+                        </div>
                     </div>
                 </div>
 
@@ -135,7 +159,8 @@
                         <div class="form-group">
                             <select ng-model="userInfo.provincecode" name="provincecode" class="form-control" required>
                                 <option value="" disabled>请选择所在省份</option>
-                                <option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}</option>
+                                <option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -149,7 +174,9 @@
                         <div class="form-group">
                             <select ng-model="userInfo.role" class="form-control" required>
                                 <option value="" disabled>请选择用户角色</option>
-                                <option ng-repeat="(index, role) in userRole track by index" value="{{role.value}}">{{role.name}}</option>
+                                <option ng-repeat="(index, role) in userRole track by index" value="{{role.value}}">
+                                    {{role.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -205,7 +232,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="userInfo.syouname" placeholder="选择单位" id="ftuser_syoufk" ng-click="showOuTree()" required ng-disabled="!userInfo.provincecode"/>
+                            <input type="text" class="form-control" ng-model="userInfo.syouname" placeholder="选择单位"
+                                   id="ftuser_syoufk" ng-click="showOuTree()" required
+                                   ng-disabled="!userInfo.provincecode"/>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -219,15 +248,17 @@
     <div class="form-actions">
         <div>
             <button class="btn btn-s-md btn-primary" type="button" ng-click="save()"
-            ng-disabled="ftappuserfrom.$invalid || pwdcheckfalg === 1 || !regIdcard">{{saveBtn}}</button>
-            <button class="btn btn-s-md btn-default" type="button" ng-click="back()">返     回</button>
+                    ng-disabled="ftappuserfrom.$invalid || pwdcheckfalg === 1 || !regIdcard">{{saveBtn}}</button>
+            <button class="btn btn-s-md btn-default" type="button" ng-click="back()">返 回</button>
         </div>
     </div>
-    <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="syouTreeModel">
+    <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+         class="modal fade" id="syouTreeModel">
         <div class="modal-dialog">
             <div class="modal-content" style="height: 560px; ">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelOu('tree')"><i class="fa fa-remove"></i></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="cancelOu('tree')"><i class="fa fa-remove"></i></button>
                     <h4 class="modal-title">选择单位</h4>
                 </div>
                 <div class="modal-body" style="height: 510px;">

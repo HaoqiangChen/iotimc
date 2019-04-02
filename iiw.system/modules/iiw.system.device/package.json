@@ -6,5 +6,5 @@
   "date": "2016-02-22",
   "main": "deviceController",
   "host": "192.168.0.251",
-  "client": "192.168.0.27"
+  "client": "192.168.11.27"
 }

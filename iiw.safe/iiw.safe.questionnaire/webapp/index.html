@@ -10,7 +10,7 @@
                                     <div class="col-md-3 safe-questionnaire-search-filter-label">调查员</div>
                                     <div class="col-md-9 no-margin">
                                         <div class="form-group">
-                                            <input class="form-control" type="text" ng-model="searchFilter.searchText" ng-keypress="keypress($event)"/>
+                                            <input class="form-control" type="text" ng-model="searchFilter.interviewername" ng-keypress="keypress($event)"/>
                                         </div>
                                     </div>
                                 </div>
@@ -18,7 +18,7 @@
                                     <div class="col-md-3 safe-questionnaire-search-filter-label">访谈对象</div>
                                     <div class="col-md-9 no-margin">
                                         <div class="form-group">
-                                            <input class="form-control" type="text" ng-model="searchFilter.searchText" ng-keypress="keypress($event)"/>
+                                            <input class="form-control" type="text" ng-model="searchFilter.criminalname" ng-keypress="keypress($event)"/>
                                         </div>
                                     </div>
                                 </div>
@@ -31,11 +31,11 @@
 <!--                                    </div>-->
 <!--                                </div>-->
                                 <div class="col-lg-3 full-left no-margin">
-                                    <div class="col-md-3 safe-questionnaire-search-filter-label">访谈所属</div>
+                                    <div class="col-md-3 safe-questionnaire-search-filter-label">省份</div>
                                     <div class="col-md-9 no-margin">
                                         <div class="form-group">
-                                            <select class="safe-bigdata-time-select form-control pull-left" ng-model="searchFilter.content" ng-change="getRecordList()">
-                                                <option value="{{row.value}}" ng-repeat="row in classList">{{row.name}}</option>
+                                            <select class="safe-bigdata-time-select form-control pull-left" ng-model="searchFilter.province" ng-change="getRecordList()">
+                                                <option value="{{row.name}}" ng-repeat="row in provinces">{{row.name}}</option>
                                             </select>
                                         </div>
                                     </div>
