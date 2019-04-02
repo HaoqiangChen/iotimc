@@ -1,0 +1,174 @@
+<div class="safe-dataSynchronous-view">
+    <div class="layout-full" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div ui-layout-container size="450px">
+            <div class="safe-dataSynchronous-view-modules">
+                <div class="safe-dataSynchronous-modules-list">
+                    <div class="layout-full">
+<!--                        <div class="general">-->
+<!--                            <div class="item-name">同步机制</div>-->
+<!--                            <div class="row" style="margin-top: 15px">-->
+<!--                                <div class="form-group col-lg-12">-->
+<!--                                    <label class="general-label">数据同步机制：</label>-->
+<!--                                    <select class="form-control general-select" οncοpy="return true" type="text"-->
+<!--                                            ng-model="synchronous.type"-->
+<!--                                            ng-change="synchronous.changeType(synchronous.type)">-->
+<!--                                        <option class="general-option"-->
+<!--                                                ng-repeat="(key, type) in synchronousType track by key"-->
+<!--                                                value="{{type.type}}">{{type.name}}-->
+<!--                                        </option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-lg-12">-->
+<!--                                    <label class="general-label">步&nbsp;&nbsp;骤&nbsp;&nbsp;&nbsp;资&nbsp;&nbsp;&nbsp;源：</label>-->
+<!--                                    <select class="form-control general-select" οncοpy="return true" type="text">-->
+<!--                                        <option class="general-option">http接口方式访问数据中心</option>-->
+<!--                                        <option class="general-option">数据中心与社区矫正系统</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="general">
+                            <div class="item-name">同步机制</div>
+                            <div class="module-name">第三方数据中心业务</div>
+                            <button type="button" class="btn btn-danger back" ng-click="synchronous.back()" style="height: 40px;"><i class="fa fa-mail-reply-all" style="margin-right: 5px;"></i>返回</button>
+                        </div>
+                        <div class="ous">
+                            <div class="item-name">基本信息</div>
+                            <div class="item-detail">
+                                <div class="layout-full" i-scroll2 style="margin-top: 15px">
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">router：</label>
+                                        <input class="form-control information-input" οncοpy="return true" type="text"
+                                               ng-model="parameter.router">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">appkey：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.appkey">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">secret：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.secret">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">format：</label>
+                                        <select class="form-group col-lg-12 information-input"
+                                                ng-model="parameter.format">
+                                            <option ng-repeat="row in parameterType" style="background: cornflowerblue">
+                                                {{row}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">接口用户：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.username">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">接口密码：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.password">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">数据接口类型(默认为空)：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.dbtype">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">页码：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.page_no">
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">每页记录数：</label>
+                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid"
+                                               type="text" ng-model="parameter.page_size">
+                                    </div>
+
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">查询表名：</label>
+                                        <select class="form-group col-lg-12 information-input "
+                                                ng-model="parameter.tablename">
+                                            <option class="general-option" value="" disabled>请选择</option>
+                                            <option class="general-option"
+                                                    ng-repeat="(key, table) in tableNames track by key"
+                                                    value="{{table.tablecontent}}">{{table.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-12 information-box">
+                                        <label class="information-label">查询字段：</label>
+                                        <!--                                        <input class="form-control information-input ng-pristine ng-untouched ng-valid" type="text" ng-model="parameter.fields">-->
+                                        <select class="form-group col-lg-12 information-input "
+                                                ng-model="parameter.fields">
+                                            <option class="general-option" value="" disabled>请选择</option>
+                                            <option class="general-option"
+                                                    ng-repeat="(key, fields) in tableFields track by key"
+                                                    value="{{fields}}">{{fields}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-12"
+                                         style="margin-bottom: 0px;text-align: center;margin-top: 20px">
+                                        <button class="btn btn-success" style="padding: 6px 36px;"
+                                                ng-click="synchronous.login()">登陆
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-success" style="padding: 6px 36px;"
+                                                ng-click="synchronous.getData()">验证
+                                        </button>
+                                        <button class="btn btn-success" style="padding: 6px 36px;"
+                                                ng-click="synchronous.getLog()">日志
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ui-layout-container size="20px"></div>
+        <div ui-layout-container>
+            <div class="safe-dataSynchronous-view-content" style="height: 38%;">
+                <div class="layout-full">
+                    <div class="item-name">会话信息</div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">sessionid：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="session.sessionid"
+                                  disabled></textarea>
+                    </div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">signargsObj：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="session.signargsObj"
+                                  disabled></textarea>
+                    </div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">signstr：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="session.signstr" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="safe-dataSynchronous-view-content" style="height: 60%;margin-top: 5px;">
+                <div class="layout-full">
+                    <div class="item-name">请求与响应信息</div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">请求对象（JSON）：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="request.requestjsonObj"></textarea>
+                    </div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">请求对象（参数形式）：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="request.requestparaObj"></textarea>
+                    </div>
+                    <div class="dataSynchronous-table-panel">
+                        <div class="dataSynchronous-table-title">响求对象：</div>
+                        <textarea class="dataSynchronous-table-textarea" ng-model="request.responseObj"
+                                  style="min-height: 200px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="layout-full iiw-safe-dataSynchronous-reset" ng-hide="index" ui-view >
+    <div class="layout-full" i-scroll2 style="background-color:rgba(0,0,0,0.3);">
+        <div class="col-lg-12 public-marBot30">
+            <div class="col-lg-3 itemsWrap public-marTop30" ng-repeat="row in modulesRows">
+                <div class="items" ng-click="jumpToPageDetail(row.name)">
+                    <div class="modouleIcon">
+                        <i class="fa" ng-class="row.modouleIcon"></i>
+                    </div>
+                    <div class="modouleName">
+                        {{row.modouleName}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

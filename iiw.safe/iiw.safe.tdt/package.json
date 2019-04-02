@@ -1,0 +1,11 @@
+{
+  "name": "iiw.safe.tdt",
+  "version": "0.0.1",
+  "description": "天地图",
+  "author": "chq",
+  "date": "2019-10-10",
+  "main": "tdtController",
+  "host": "192.168.0.251",
+  "client": "192.168.11.27",
+  "release": "577"
+}

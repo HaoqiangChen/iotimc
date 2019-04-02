@@ -1,0 +1,129 @@
+<div class="safe-gis-layout-container">
+    <!--<div class="safe-gis-map-top-bar-container">
+        <div class="safe-gis-map-top-bar-panel"></div>
+    </div>-->
+    <!--<div class="safe-gis-map-place-search">
+        <div class="input-group btn-search-group pull-left">
+            <input type="text" class="form-control" ng-model="search.title" placeholder="输入查询条件" ng-keypress="keyPressEvent($event)">
+            <span class="input-group-addon" ng-click="searchPlace()"><i class="fa fa-search">搜索</i></span>
+        </div>
+    </div>-->
+    <div class="safe-gis-map-common-toolbar-container" ng-show="toggle.isToolbar">
+        <img class="safe-gis-map-toolbar-img" title="{{bar.title}}" ng-src="{{filePath + bar.icon}}" ng-click="barClick(bar)" ng-repeat="bar in toolList"/>
+    </div>
+    <div id="map" class="safe-gis-map-container map-container"></div>
+    <div class="safe-gis-map-menu-bar-container" ng-show="toggle.isMapMenu">
+        <div class="safe-gis-map-menu-bar-body" i-scroll>
+            <div>
+                <div class="safe-gis-map-tool-bar-container text-center" ng-click="menuClick(menu)" ng-repeat="menu in mapMenu">
+                    <!--<div class="safe-gis-map-bar-icon-container" ng-click="distanceMeasure()">
+                        <i class="fa fa-long-arrow-right" title="测距"></i>
+                    </div>-->
+                    <img ng-src="{{filePath + menu.icon}}">
+                    <p>{{menu.name}}</p>
+                    <!--<div class="safe-gis-map-bar-icon-container" ng-click="start()">
+                        <i class="fa fa-square-o" title="开始"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="areaMeasure()">
+                        <i class="fa fa-square-o" title="面积量算"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="drawPoint()">
+                        <i class="fa fa-circle-o" title="地图标注"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="drawTaskArea()">
+                        <i class="fa fa-object-group" title="任务范围"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="showLocation()">
+                        <i class="fa fa-street-view" title="定位跟踪"></i>
+                    </div>-->
+                    <!--<div class="safe-gis-map-bar-icon-container">
+                        <i class="fa fa-edit" title="要素编辑" ng-click="editFeatures()"></i>
+                    </div>-->
+                    <!--<div class="safe-gis-map-bar-icon-container" ng-click="drawRectangle()">
+                        <i class="fa fa-square" title="矩形框选"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="drawRadius()">
+                        <i class="fa fa-circle-o" title="圆形框选"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="showPlotInfo()">
+                        <i class="fa fa-flag-checkered" title="态势标绘"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="showSearchInfo()">
+                        <i class="fa fa-search-plus" title="地点查询"></i>
+                    </div>
+                    <div class="safe-gis-map-bar-icon-container" ng-click="clearMap()">
+                        <i class="fa fa-eraser" title="清除"></i>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe-gis-message-bar-contaier"><h3><i class="fa fa-arrow-circle-right"></i><span class="safe-gis-message-info-box"></span></h3></div>
+    <div ng-show="showPlotPanel" class="safe-gis-map-plot-container safe-gis-left-panel">
+        <div class="safe-gis-map-plot-panel-body">
+            <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}" class="ui-layout-row">
+                <div size="46px" ui-layout-container class="ui-layout-container safe-gis-map-plot-container-header">
+                    <i class="fa fa-flag-checkered pull-left"></i> 态势标绘 <i class="fa fa-arrow-circle-o-right pull-right" ng-click="hidePlotPanel()"></i>
+                </div>
+                <div size="300px" ui-layout-container class="ui-layout-container">
+                    <div class="safe-gis-map-plot-type-container" i-scroll>
+                        <div>
+                            <div class="row">
+                                <div class="cell col-md-4 safe-gis-map-plot-type-item-panel" ng-repeat="item in plotType">
+                                    <div class="layout-full safe-gis-sitution-plot-type-item" ng-class="{'safe-gis-sitution-plot-type-item-active':plotTypeItem.id == item.id}" ng-click="typeSwitch(item)">
+                                        <div class="safe-gis-sitution-plot-type-title">{{item.name}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ui-layout-container class="ui-layout-container">
+                    <div class="safe-gis-map-plot-icon-container" i-scroll>
+                        <div>
+                            <div class="row" style="margin: 0px; padding: 10px 0 0 10px;">
+                                <div class="cell col-md-4 safe-gis-map-plot-icon-item-panel" ng-repeat="item in iconList" ng-click="startPloting(item)">
+                                    <div class="layout-full safe-gis-sitution-plot-symbol-item" title="{{item.symbolName}}">
+                                        <div style="width:100%;height:40px;float:left;position: relative;"><img class="pull-left" ng-src="{{item.icon}}"/></div>
+                                        <h5 class="safe-gis-sitution-plot-symbol-title">{{item.symbolName}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="showSearchPanel" class="safe-gis-map-place-search-container safe-gis-right-panel" safe-gis-right-panel>
+        <div class="safe-gis-map-plot-panel-body">
+            <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}" class="ui-layout-row">
+                <div size="46px" ui-layout-container class="ui-layout-container safe-gis-map-plot-container-header">
+                    <i class="fa fa-search-plus pull-left"></i> 地图查询<i class="fa fa-arrow-circle-o-right pull-right" ng-click="hideSearchPanel()"></i>
+                </div>
+                <div size="49px" class="safe-gis-map-search-container-header" ui-layout-container class="ui-layout-container">
+                    <div class="input-group btn-search-group pull-left">
+                        <input type="text" class="form-control" ng-model="search.name" placeholder="请输入查询条件" ng-keypress="keyPressEvent($event)">
+                        <span class="input-group-addon alarm-search-panel" style="cursor:pointer;" ng-click="mapSearch()"><i class="fa fa-search">搜索</i></span>
+                    </div>
+                </div>
+                <div ui-layout-container class="ui-layout-container">
+                    <div class="safe-gis-map-map-search-result-container">
+                        <div class="layout-full" style="position: relative;">
+                            <div class="layout-full" i-scroll>
+                                <div>
+                                    <div class="row safe-gis-place-item-panel" hm-tap="moveToThisPlace(row)" ng-repeat="row in placeList">
+                                        <h5><img ng-src="{{filePath}}/image/marker/marker.png">{{row.index}}{{row.data.NAME}}</h5>
+                                        <h6><i class="fa fa-phone" ng-show="row.data.TELEPHONE"></i> {{row.data.TELEPHONE ? row.data.TELEPHONE : ''}}</span></h6>
+                                        <h6><i class="fa fa-thumb-tack" ng-show="row.data.NAME_1"></i> {{row.data.NAME_1}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

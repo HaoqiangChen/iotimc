@@ -1,0 +1,10 @@
+{
+  "name": "iiw.safe.dataSynchronous",
+  "version": "0.0.1",
+  "description": "数据同步管理",
+  "author": "chq",
+  "date": "2019-9-25",
+  "main": "dataSynchronousController",
+  "host": "192.168.0.251",
+  "client": "192.168.11.27"
+}

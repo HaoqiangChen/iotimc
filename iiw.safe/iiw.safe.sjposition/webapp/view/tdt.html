@@ -1,0 +1,133 @@
+<div class="tdt-container">
+    <!-- 搜素框 -->
+    <!--<div class="searchbox">
+        <div class="search-type clearfix">
+            <button class="btn input-button" title="名址" ng-class="{'active': tdt.search.type == 'point'}" ng-click="tdt.search.toggleType('point')"><i class="fa fa-map-marker"></i></button>
+            <button class="btn input-button" title="路线" ng-class="{'active': tdt.search.type == 'route'}" ng-click="tdt.search.toggleType('route')"><i class="fa fa-map-o"></i></button>
+        </div>
+        <div class="search-content">
+            <input type="text" class="form-control" ng-model="tdt.search.fileter.keyword" ng-show="tdt.search.type == 'point'" ng-keydown="tdt.search.query($event)" />
+            <div class="traffic" ng-show="tdt.search.type == 'route'">
+                <ul class="clearfix">
+                    <li ng-class="{'active': tdt.search.filter.traffic == 'car'}" ng-click="tdt.search.toggleTraffic('car')">
+                        <i class="fa fa-car"></i> 驾车
+                    </li>
+                    <li ng-class="{'active': tdt.search.filter.traffic == 'bus'}" ng-click="tdt.search.toggleTraffic('bus')">
+                        <i class="fa fa-bus"></i> 公交
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn clear-button" title="清空" ng-click="tdt.search.clear()"><i class="fa fa-close"></i></button>
+        <button class="btn search-button" title="搜索" ng-click="tdt.search.query()"><i class="fa fa-search"></i></button>
+    </div>-->
+    <!-- 路径框 -->
+    <!--<div class="routebox" ng-show="tdt.search.type == 'route'">
+        <div class="route-point startpoint">
+            <span><i class="fa fa-dot-circle-o"></i> 起点</span>
+            <input type="text" class="form-control" ng-model="tdt.search.fileter.startpoint" >
+        </div>
+        <div class="route-point endpoint">
+            <span><i class="fa fa-dot-circle-o"></i> 终点</span>
+            <input type="text" class="form-control" ng-model="tdt.search.fileter.startpoint" >
+        </div>
+    </div>-->
+    <!-- 地点框 -->
+    <!--<div class="place-panel">
+        <div class="infos">
+            <h4>名称</h4>
+            <p>地址：</p>
+        </div>
+        <div class="shortcuts">
+            <button class="btn"><i class="fa fa-level-down"></i> 到这去</button>
+            <button class="btn"><i class="fa fa-level-up"></i> 从这从发</button>
+        </div>
+    </div>-->
+    <!-- 工具栏 -->
+    <div class="toolbar">
+        <ul class="clearfix">
+            <!--<li class="tool-item">
+                <a>
+                    <i class="fa fa-map-marker"></i>
+                    <span>
+                        广西壮族自治区
+                        <span class="spliter">></span>
+                        南宁市
+                    </span>
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+            </li>-->
+            <li class="tool-item" ng-click="tdt.tools.measureLength()">
+                <a><i class="fa fa-minus"></i> 测距</a>
+            </li>
+            <li class="tool-item" ng-click="tdt.tools.measureArea()">
+                <a><i class="fa fa-object-ungroup"></i> 测面</a>
+            </li>
+            <!--<li class="tool-item"  ng-click="tdt.tools.drawPoint()">
+                <a><i class="fa fa-map-pin"></i> 标点</a>
+            </li>
+            <li class="tool-item"  ng-click="tdt.tools.drawLine()">
+                <a><i class="fa fa-pencil"></i> 标线</a>
+            </li>
+            <li class="tool-item" ng-click="tdt.tools.drawPolygon()">
+                <a><i class="fa fa-square-o"></i> 标面</a>
+            </li>-->
+            <li class="tool-item" ng-click="tdt.tools.clearAll()">
+                <a><i class="fa fa-close"></i> 清除</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 地图类型 -->
+    <div class="maptype">
+        <div class="maptype-card vector" ng-click="tdt.toggleMaptype('Vector')">
+            <div class="name">矢量</div>
+        </div>
+        <div class="maptype-card image" ng-click="tdt.toggleMaptype('Image')">
+            <div class="name">影像</div>
+        </div>
+    </div>
+    <!-- 罪犯列表 -->
+    <!--<div class="criminal-panel">
+        <div class="table-search">
+            <div class="search-type clearfix">
+                <button class="btn input-button" title="单位" ng-class="{'active': criminal.view == 'ous'}" ng-click="criminal.toggleView('ous')"><i class="fa fa-sitemap"></i></button>
+                <button class="btn input-button" title="人员" ng-class="{'active': criminal.view == 'criminals'}" ng-click="criminal.toggleView('criminals')"><i class="fa fa-users"></i></button>
+            </div>
+            <input type="text" class="form-control" ng-model="criminal.filter.text" placeholder="请输入关键字进行搜索!">
+            <button class="btn clear-button" title="清空" ng-click="criminal.clear()"><i class="fa fa-close"></i></button>
+            <button class="btn search-button" title="搜索" ng-click="criminal.search()"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="table-panel" ng-show="criminal.view == 'criminals'">
+            <div class="table-header">
+                <table>
+                    <col width="15%"/><col width="25%"/><col width="60%"/>
+                    <tr>
+                        <th class="text-center">序号</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">单位</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-content">
+                <div class="layout-full" i-scroll2>
+                    <table>
+                        <col width="15%"/><col width="25%"/><col width="60%"/>
+                        <tr ng-repeat="row in criminal.list track by $index">
+                            <td class="text-center">{{ $index + 1 }}</td>
+                            <td class="text-center">{{ row.xm }}</td>
+                            <td class="text-center">{{ row.syouname }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="table-footer">
+                <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" total-items="criminal.pages.totalSize" ng-model="criminal.pages.pageNo" ng-change="criminal.getData()" previous-text="上一页" next-text="下一页" max-size="5" items-per-page="criminal.pages.pageSize"></uib-pagination>
+            </div>
+        </div>
+        <div class="tree-panel">
+            <safe-position-tree tree-data=""></safe-position-tree>
+        </div>
+    </div>-->
+    <!-- 地图 -->
+    <div class="map-container"></div>
+</div>
