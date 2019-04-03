@@ -62,9 +62,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         被访谈人员类型：
-                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '0'}"></i>初犯</span>
-                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '1'}"></i>重犯</span>
-                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '2'}"></i>刑罚执行完毕后未重新犯罪者</span>
+                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': userDetails.usertype === '初犯'}"></i>初犯</span>
+                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': userDetails.usertype === '重犯'}"></i>重犯</span>
+                                        <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': userDetails.usertype === '刑罚执行完毕后未重新犯罪者'}"></i>刑罚执行完毕后未重新犯罪者</span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -78,17 +78,9 @@
                                 <p style="padding: 0 3%;">{{wjData.introduce}}</p>
                             </div>
                         </div>
-                        <div class="questionnaire-subtext" ng-if="answerList.length">访谈录音</div>
-                        <div class="questionnaire-audio">
-                            <a class="btn btn-primary" ng-click="questionnairecheck.togglePlaying()" style="padding: 8px 16px;" ng-disabled="!hasAudio">
-                                <i class="fa fa-plus fa-fw"></i>{{playText}}
-                            </a>
-                            <a class="btn btn-primary" ng-click="questionnairecheck.download()" style="padding: 8px 16px;" ng-disabled="!hasAudio">
-                                <i class="fa fa-plus fa-fw"></i>下载
-                            </a>
-                            <p>录音时长：{{userDetails.recordTime}}</p>
-                            <p>温馨提示：由于录音为微信amr文件格式，目前浏览器暂不支持暂停播放和播放进度控制功能，如有需要可下载录音文件下来到电脑音频播放器播放！！！</p>
-                            <audio id="portrait" src=""></audio>
+                        <div class="questionnaire-subtext" ng-if="hasAudio">访谈录音</div>
+                        <div class="questionnaire-audio" ng-if="hasAudio">
+                            <audio ng-src="{{userDetails.fileurl | trustUrl}}" controls="controls"></audio>
                         </div>
                         <div class="questionnaire-subtext" ng-if="answerList.length">作答明细</div>
                         <div class="questionnaire-answerlist">

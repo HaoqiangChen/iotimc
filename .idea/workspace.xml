@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.device/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.device/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.device/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.device/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +34,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/iiw.system/modules/iiw.system.device" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -65,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.tdt">
+  <component name="RunManager" selected="Node.js.test3">
     <configuration name="audit" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit">
       <method v="2" />
     </configuration>
@@ -90,6 +86,15 @@
     <configuration name="test" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.test">
       <method v="2" />
     </configuration>
+    <configuration name="test1" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.plugins.bid">
+      <method v="2" />
+    </configuration>
+    <configuration name="test2" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire">
+      <method v="2" />
+    </configuration>
+    <configuration name="test3" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck">
+      <method v="2" />
+    </configuration>
     <configuration name="third" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.dataSynchronous/modules/iiw.safe.dataSynchronous.third">
       <method v="2" />
     </configuration>
@@ -107,6 +112,9 @@
       <item itemvalue="Node.js.tdt" />
       <item itemvalue="Node.js.sjposition" />
       <item itemvalue="Node.js.audit" />
+      <item itemvalue="Node.js.test1" />
+      <item itemvalue="Node.js.test2" />
+      <item itemvalue="Node.js.test3" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -143,7 +151,8 @@
       <workItem from="1569222121543" duration="7180000" />
       <workItem from="1569289579669" duration="54839000" />
       <workItem from="1569722740792" duration="53542000" />
-      <workItem from="1570586280991" duration="58792000" />
+      <workItem from="1570586280991" duration="61342000" />
+      <workItem from="1570778737209" duration="4582000" />
     </task>
     <servers />
   </component>

@@ -4,20 +4,17 @@
  */
 define([
     'app',
-    'safe/questionnairecheck/lib/BenzAMRRecorder',
     'cssloader!safe/questionnairecheck/css/index',
     'cssloader!safe/questionnairecheck/css/loading',
     'cssloader!safe/questionnairecheck/css/userinfo',
     'cssloader!safe/questionnairecheck/css/answerlist',
-], function (app, BenzAMRRecorder) {
+], function (app) {
     app.controller('questionnairecheckController', ['$scope', '$state', '$element', '$stateParams', '$location', '$anchorScroll', 'iMessage', 'iConfirm', 'yjtService', 'iAjax', '$compile', '$filter', '$timeout', function ($scope, $state, $element, $stateParams, $location, $anchorScroll, iMessage, iConfirm, yjtService, iAjax, $compile, $filter, $timeout) {
         $scope.record = {};
         $scope.wjData = {};
         $scope.userDetails = {};
         $scope.answerList = [];
-        $scope.songReady = false;
         $scope.hasAudio = false;
-        $scope.playText = '播放';
 
         if ($stateParams.data) {
             $scope.record = $stateParams.data;
@@ -100,27 +97,6 @@ define([
 
             confirmCancel: function (id) {
                 iConfirm.close(id);
-            },
-
-            togglePlaying: function () {
-                let amr = new BenzAMRRecorder();
-                $scope.loading = {
-                    isLoading: true,
-                    content: 'amr录音文件加载转码中'
-                };
-                var fileUrl = `http://iotimc8888.goho.co:17783/security/deviceComm.do?action=getFileDetail&authorization=${token}&url=${$scope.userDetails.fileurl}`;
-                console.log(fileUrl);
-                amr.initWithUrl(fileUrl).then(function () {
-                    $scope.loading.isLoading = false;
-                    if (amr.isPlaying()) {
-                        amr.stop()
-                    } else {
-                        amr.play();
-                        $scope.playText = '停止';
-                    }
-                }).catch(function () {
-                    _remind(4, 'amr录音文件加载转码失败，请查看网络问题')
-                });
             },
 
             audit: function () {
@@ -289,4 +265,9 @@ define([
             iMessage.show(message, false);
         }
     }]);
+    app.filter('trustUrl',function($sce){
+        return function (input) {
+            return $sce.trustAsResourceUrl(input);
+        }
+    });
 });
