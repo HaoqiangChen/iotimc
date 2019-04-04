@@ -1,42 +1,13 @@
 /**
- * 广西天地图服务
- * Created by chq on 2019/10/10.
+ * 天地图服务
+ * Created by chq on 2019/10/11.
  */
 define([
     'app',
     'safe/tdt/lib/geoway/geoway.all'
 ], function (app) {
-    app.service('safeTdtMapService', ['$rootScope', '$compile', '$element', 'iAjax', function ($rootScope, $compile, $element, iAjax) {
+    app.service('safeTdtService', ['$rootScope', '$compile', '$element', 'iAjax', function ($rootScope, $compile, $element, iAjax) {
         var map;                    //地图对象
-        var serverUrl = {
-            proxyHost: '/ime-jn/js/geowaySDK/proxy.jsp?',
-            // 二维矢量地图
-            vecmap: {
-                baseLayer: 'http://www.mapgx.com/ime-server/rest/tdtgx_vec/wmts',
-                labelLayer: 'http://www.mapgx.com/ime-server/rest/tdtgx_vecanno/wmts'
-            },
-            // 二维影像地图
-            imgmap: {
-                baseLayer: 'http://www.mapgx.com/ime-server/rest/tdtgx_img/wmts',
-                labelLayer: 'http://www.mapgx.com/ime-server/rest/tdtgx_imganno/wmtss'
-            },
-            // 路径查询
-            route: 'http://www.mapgx.com/ime-cloud/rest/route/plan',
-            //
-            poi: {}
-        };
-
-        // 中心点
-        var center = [108.36, 22.82];
-
-        // 缩放级别
-        var zoom = 8;
-
-        var id = $element.attr('id');
-        if (!id) {
-            id = 'tdmap';
-            $element.find('.map-container').attr('id', id);
-        }
 
         function init() {
             var url = '/security/infomanager/information.do?action=getSysettingList';
@@ -72,13 +43,6 @@ define([
         return {
             // 地图初始化
             init: function () {
-                Geoway.ProxyHost = "/ime-gx/js/geowaySDK/proxy.jsp?";
-                map = new Geoway.GwMap("map");
-                //加入矢量底图
-                Geoway.WMTSUtil.addLayerToMap("baseLayer", "http://www.mapgx.com/ime-server/rest/tdtgx_vec/wmts", true, "tiles", "Vector", map);
-                //加入矢量注记
-                Geoway.WMTSUtil.addLayerToMap("labelLayer", "http://www.mapgx.com/ime-server/rest/tdtgx_vecanno/wmts", false, "tiles", "Vector", map);
-                map.setCenter(new Geoway.LonLat(108.36, 22.82), 10);
             },
 
             zoomIn: function () {
