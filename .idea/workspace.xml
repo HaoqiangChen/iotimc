@@ -3,97 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/directives/safeTdtMap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/services/safeTdtMap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/Lang/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/Lang/zh-CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap.Include.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap_Basic-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap_Cloud-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap_IServer-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap_OGC-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/8.1.0/SuperMap_Visualization-8.1.0-14126.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/fonts/supermap-icon.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/fonts/supermap-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/fonts/supermap-icon.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/fonts/supermap-icon.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/google.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/default/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/blank.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/close.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/close_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cloud-popup-relative.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cluster1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cluster2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cluster3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cluster4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/colorbtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/layer-switcher-maximize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/layer-switcher-minimize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/minimize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/overView.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/zoom-minus-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinBlue/zoom-plus-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinWhite/layer-switcher-maximize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinWhite/minimize.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinWhite/overView.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinWhite/zoom-minus-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/controlSkinWhite/zoom-plus-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cursors/Pan.cur" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/cursors/PanDown.cur" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/east-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/fillStyle/System 7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/hide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/hide_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/layer-switcher-off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/layer-switcher-off_b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/layer-switcher-on.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/layer-switcher-on_b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/marker-gold.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/marker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/north-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/overview_replacement.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/point.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/radial.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/region.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/shadow-popup-corner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/shadow-popup-subject.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/slider.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/sliderbackground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/sliderbtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/south-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tileservision-bcg-sliderbar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-inf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-inf_bottom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-inf_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-inf_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-reduce.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-slider1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/tilesversion-bcg-slider2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/west-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom-maxextent-mini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom-maxextent-mini_one.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom_city.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom_country.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom_province.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoom_street.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoombar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoombar_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/lib/supermap/theme/images/zoombar_glide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/view/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/view/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/directives/safeTdtDirective.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/js/directives/safeTdtDirective.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -242,6 +152,8 @@
       <workItem from="1569722740792" duration="53542000" />
       <workItem from="1570586280991" duration="61342000" />
       <workItem from="1570778737209" duration="14741000" />
+      <workItem from="1554380416928" duration="203000" />
+      <workItem from="1554467056849" duration="17000" />
     </task>
     <servers />
   </component>

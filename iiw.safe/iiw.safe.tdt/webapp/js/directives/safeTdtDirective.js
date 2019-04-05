@@ -5,7 +5,7 @@ define(['app',
         'safe/tdt/js/services/safeTdtService'
     ],
     function (app) {
-    app.directive('safeTdtMap', ['safeTdtService', function(safeTdtService) {
+    app.directive('safeTdtMap', ['iAjax', 'safeTdtService', function(iAjax, safeTdtService) {
         var packageName = 'iiw.safe.tdt';
 
         function getTemplate(url) {
@@ -34,7 +34,7 @@ define(['app',
                     post: function($scope, $element) {
                         $scope.filePath = $.soa.getWebPath(packageName) + '/';
 
-                        console.log(safeTdtService);
+                        // console.log(safeTdtService);
                         //加载地图类库
                         // initMap();
 
