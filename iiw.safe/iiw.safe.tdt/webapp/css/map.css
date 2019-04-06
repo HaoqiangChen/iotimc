@@ -1,0 +1,131 @@
+.safe-tdt-map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.safe-tdt-map-container .map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* maptype */
+.safe-tdt-map-container .maptype {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 116px;
+    height: 60px;
+    z-index: 1000;
+}
+
+.safe-tdt-map-container .maptype .maptype-card {
+    position: absolute;
+    width: 88px;
+    height: 60px;
+    border-radius: 2px;
+    border: 1px solid #494949;
+    background: url('../img/maptype.png') no-repeat;
+    cursor: pointer;
+}
+
+.safe-tdt-map-container .maptype .maptype-card .name {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.safe-tdt-map-container .maptype .maptype-card.vector {
+    background-position: 0 0px;
+}
+
+.safe-tdt-map-container .maptype .maptype-card.image {
+    background-position: 0 -120px;
+    right: 15px;
+}
+
+.safe-tdt-map-container .maptype:hover {
+    width: 180px;
+}
+
+.safe-tdt-map-container .maptype:hover .maptype-card {
+    position: relative;
+    float: left;
+    bottom: 0;
+}
+
+.safe-tdt-map-container .maptype:hover .maptype-card.image {
+    right: -5px;
+}
+
+/* mappopup */
+.safe-tdt-map-container .input-wrap {
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.safe-tdt-map-container .input-wrap .form-control {
+    border: 1px solid #eee;
+}
+
+.safe-tdt-map-container .name-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.safe-tdt-map-container .popup-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.safe-tdt-map-container .popup-box .box-header {
+    position: relative;
+    color: #444;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.safe-tdt-map-container .popup-box .box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+
+.safe-tdt-map-container .popup-box .box-header .box-tool {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+.safe-tdt-map-container .popup-box .box-header .box-tool a {
+    cursor: pointer;
+}
+
+.safe-tdt-map-container .popup-box .box-body .item {
+    padding: 7px 15px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.safe-tdt-map-container .popup-box .box-body .item span {
+    color: darkorange;
+}

@@ -1,12 +1,8 @@
-/**
- * Created by chq on 2019/10/11.
- */
 define(['app',
-        'safe/tdt/js/services/safeTdtService'
-    ],
-    function (app) {
-    app.directive('safeTdtMap', ['iAjax', 'safeTdtService', function(iAjax, safeTdtService) {
-        var packageName = 'iiw.safe.tdt';
+    'safe/test/js/services/safeTest'
+    ], function (app) {
+    app.directive('safeCeShi', ['iAjax', 'safeTestService', function(iAjax, safeTestService) {
+        var packageName = 'iiw.safe.test';
 
         function getTemplate(url) {
             var result = '';
@@ -25,29 +21,24 @@ define(['app',
             restrict: 'E',
             scope: {
                 toggle: '=toggle',
-                callbackMap: '=getMap'
+                callbackMap: '=getHtml'
             },
             replace: true,
-            template: getTemplate($.soa.getWebPath('iiw.safe.tdt') + '/view/map.html'),
+            template: getTemplate($.soa.getWebPath('iiw.safe.test') + '/view/ceshi.html'),
             compile: function() {
                 return {
                     post: function($scope, $element) {
                         $scope.filePath = $.soa.getWebPath(packageName) + '/';
 
-                        // console.log(safeTdtService);
-                        //加载地图类库
-                        // initMap();
+                        console.log(safeTestService);
 
-                        //初始化地图
-                        function initMap() {
+                        init();
+
+                        function init() {
                             window.setTimeout(function() {
-                                // safeTdtService.init();
+                                safeTestService.init();
                             }, 1000);
                         }
-
-                        $scope.$on('destoryMap', function() {
-                            // safeTdtService.removeMap();
-                        });
                     }
                 };
             }

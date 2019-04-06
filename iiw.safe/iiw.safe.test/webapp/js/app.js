@@ -1,6 +1,5 @@
 /**
  * 模块开发测试
- *
  * Created by chq on 2019/10/10.
  */
 define([
@@ -13,7 +12,8 @@ define([
         $scope.modules = [
             {status: true, name: '社矫人员定位', href: 'sjposition', icon: 'fa-map-marker'},
             {status: true, name: 'GIS地图', href: 'gis', icon: 'fa-compass'},
-            {status: true, name: '天地图', href: 'tdt', icon: 'fa-map'}
+            {status: true, name: '天地图', href: 'tdt', icon: 'fa-map'},
+            {status: true, name: '广西天地图', href: 'tdtgx', icon: 'fa-arrows'}
         ];
 
 

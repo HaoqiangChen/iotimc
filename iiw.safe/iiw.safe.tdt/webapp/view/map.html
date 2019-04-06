@@ -1,18 +1,16 @@
-<div class="safe-gis-layout-container">
-    <div class="safe-gis-map-common-toolbar-container" ng-show="toggle.isToolbar">
-        <img class="safe-gis-map-toolbar-img" title="{{bar.title}}" ng-src="{{filePath + bar.icon}}" ng-click="barClick(bar)" ng-repeat="bar in toolList"/>
-    </div>
-    <div id="map" class="safe-gis-map-container map-container"></div>
-    <div class="safe-gis-map-menu-bar-container" ng-show="toggle.isMapMenu">
-        <div class="safe-gis-map-menu-bar-body" i-scroll>
-            <div>
-                <div class="safe-gis-map-tool-bar-container text-center" ng-click="menuClick(menu)" ng-repeat="menu in mapMenu">
-                    <img ng-src="{{filePath + menu.icon}}">
-                    <p>{{menu.name}}</p>
-                </div>
+<div class="safe-tdt-layout-container">
+    <div class="safe-tdt-map-container">
+        <!-- 地图类型 -->
+        <!-- <div class="maptype">
+            <div class="maptype-card vector" ng-click="tdt.toggleMaptype('Vector')">
+                <div class="name">矢量</div>
             </div>
-        </div>
+            <div class="maptype-card image" ng-click="tdt.toggleMaptype('Image')">
+                <div class="name">影像</div>
+            </div>
+        </div> -->
+        <!-- 地图 -->
+        <div id="tdtmap" class="map-container"></div>
     </div>
-    <div class="safe-gis-message-bar-contaier"><h3><i class="fa fa-arrow-circle-right"></i><span class="safe-gis-message-info-box"></span></h3></div>
 </div>
 

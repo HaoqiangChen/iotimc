@@ -75,8 +75,8 @@ define([
                     markCtrls: null,
                     initialize : function() {
                         this.initMap();
-                        this.initFeatureManager();
-                        this.initMarkControl();
+                        // this.initFeatureManager();
+                        // this.initMarkControl();
                     },
                     initMap: function() {
                         if(this.map) {
@@ -755,7 +755,7 @@ define([
 
                 dynamicLoadJs(jspath, function () {
                     $scope.tdt.initialize();
-                    setBoundary();
+                    // setBoundary();
                 });
             }
         }
