@@ -43,17 +43,22 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.safe-tdt-map-container .maptype .maptype-card.vector {
+.safe-tdt-map-container .maptype .maptype-card.Vector {
     background-position: 0 0px;
 }
 
-.safe-tdt-map-container .maptype .maptype-card.image {
-    background-position: 0 -120px;
+.safe-tdt-map-container .maptype .maptype-card.Terrain {
+    background-position: 0 -60px;
     right: 15px;
 }
 
+.safe-tdt-map-container .maptype .maptype-card.Image {
+    background-position: 0 -120px;
+    right: 0;
+}
+
 .safe-tdt-map-container .maptype:hover {
-    width: 180px;
+    width: 270px;
 }
 
 .safe-tdt-map-container .maptype:hover .maptype-card {
@@ -62,8 +67,26 @@
     bottom: 0;
 }
 
-.safe-tdt-map-container .maptype:hover .maptype-card.image {
+.safe-tdt-map-container .maptype:hover .maptype-card.Terrain {
     right: -5px;
+}
+.safe-tdt-map-container .maptype:hover .maptype-card.Image {
+    right: -10px;
+}
+
+/* toolbar */
+.safe-tdt-map-container .toolbar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    z-index: 1000;
 }
 
 /* mappopup */

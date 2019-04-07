@@ -1,16 +1,19 @@
 <div class="safe-tdt-layout-container">
     <div class="safe-tdt-map-container">
-        <!-- 地图类型 -->
-        <!-- <div class="maptype">
-            <div class="maptype-card vector" ng-click="tdt.toggleMaptype('Vector')">
-                <div class="name">矢量</div>
-            </div>
-            <div class="maptype-card image" ng-click="tdt.toggleMaptype('Image')">
-                <div class="name">影像</div>
-            </div>
-        </div> -->
         <!-- 地图 -->
         <div id="tdtmap" class="map-container"></div>
+        <!-- 地图类型 -->
+        <div class="maptype">
+            <div ng-repeat="type in mapType" class="maptype-card" ng-class="type.type" ng-click="tdt.toggleMaptype(type.layer)">
+                <div class="name">{{type.name}}</div>
+            </div>
+        </div>
+        <!-- 右侧栏小工具 -->
+        <div class="toolbar">
+            <div>12</div>
+            <img class="safe-gis-map-toolbar-img ng-scope" title="放大" src="http://192.168.11.27:19297/iiw.safe.gis/webapp//image/toolbar/zoom_in.png">
+            <img class="safe-gis-map-toolbar-img ng-scope" title="缩小" src="http://192.168.11.27:19297/iiw.safe.gis/webapp//image/toolbar/zoom_out.png">
+        </div>
     </div>
 </div>
 
