@@ -1,0 +1,10 @@
+﻿{
+  "name": "iiw.system.ftappscale",
+  "version": "0.0.1",
+  "description": "访谈APP量表设计",
+  "author": "chq",
+  "date": "2019-10-16",
+  "main": "ftappScaleController",
+  "host": "192.168.0.251",
+  "client": "192.168.11.27"
+}

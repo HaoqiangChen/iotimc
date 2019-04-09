@@ -546,8 +546,7 @@ define([
                 }
             };
         }
-    ])
-    .controller('deviceItemController', ['$scope',
+    ]).controller('deviceItemController', ['$scope',
         '$rootScope',
         '$location',
         '$state',

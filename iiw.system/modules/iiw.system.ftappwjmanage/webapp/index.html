@@ -1,0 +1,121 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-wjmanage-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" size="47px" ui-layout-container>
+                            <div class="system-wjmanage-bar layout-full">
+                                <div class="col-md-2">
+                                    <a data-backdrop="false" data-target="#newwjModal" data-toggle="modal"  class="btn btn-primary" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>创建问卷</a>
+                                </div>
+                                <div class="input-group pull-right" style="width:247px;">
+                                    <input type="text" class="system-wjmanage-search" placeholder="{{keyword}}" ng-keypress="keypress($event)" ng-model="filter.searchText"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="getList()"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-wjmanage-container" style="position: relative; display:inline-block;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+                                        <div class="loading-toast">
+                                            <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                            <p class="loading-content">{{loading.content}}...</p>
+                                        </div>
+                                    </div>
+                                    <div class="wj-list">
+                                        <div class="wj-item" ng-repeat="row in wjList">
+                                            <div class="item-top clearfix">
+                                                <div class="pull-left">
+                                                    <div class="item-name">{{row.name}}</div>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <div class="pull-left item-id">ID:{{row.wjId}}</div>
+                                                    <div class="pull-left" ng-class="row.runStatus === 1 ? 'item-release': 'item-stop'">
+                                                        <i class="fa fa-circle" style="font-size: 10px;margin-right: 5px;"></i>{{row.runStatusName}}
+                                                    </div>
+                                                    <div class="pull-left item-sheet">答卷：<i ng-style="{color: row.answerNum > 0 ? '#0085ff' : '#262626'}">{{row.answerNum}}</i></div>
+                                                    <div class="pull-left item-date">{{row.createTime}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="item-bot clearfix">
+                                                <div class="process-box pull-left">
+                                                    <div class="pull-left process-item process-1">
+                                                        <i class="icon icon-design"></i>设计问卷
+                                                    </div>
+                                                    <div class="pull-left process-item process-2">
+                                                        <i class="icon icon-chart"></i>统计&分析
+                                                    </div>
+                                                </div>
+                                                <div class="operation-box pull-right">
+                                                    <div class="pull-left item-running">
+                                                        <i class="fa" ng-class="row.runStatus === 1 ? 'fa-pause': 'fa-play-circle'"></i>
+                                                        <span class="vam">{{row.runStatus === 1 ? '停止' : '发布'}}</span>
+                                                    </div>
+                                                    <span class="splitline"></span>
+                                                    <div class="pull-left item-control">
+                                                        <i class="fa fa-copy"></i>
+                                                        <span class="vam">复制</span>
+                                                    </div>
+                                                    <div class="pull-left item-control">
+                                                        <i class="fa fa-trash-o"></i>
+                                                        <span class="vam">删除</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination ui-layout-container pagination-layout-container" size="49px" ui-layout-container>
+                            <label class="col-lg-3 pull-right" style="height:50px; line-height: 50px;text-align: right;">统计信息：每页{{params.pageSize}}行， 共{{params.totalSize||0}}行， 共{{params.totalPage||0}}页</label>
+                            <uib-pagination style="padding: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-left" total-items="params.totalSize" ng-model="params.pageNo" ng-change="getList()" items-per-page="params.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="newwjModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"><i class="fa fa-remove"></i></button>
+                                <h4 class="modal-title">创建问卷</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="widget-content">
+                                    <div class="modal-wrapper" style="height: 500px;">
+                                        <div class="module-box">
+                                            <div class="figure" ng-repeat="row in wjTypes">
+                                                <div class="figure-top clearfix">
+                                                    <i class="fa pull-left" ng-class="row.icon"></i>
+                                                    <div class="details-wrapper">
+                                                        <div class="details-title">{{row.name}}</div>
+                                                        <div class="details-info">{{row.info1}}</div>
+                                                        <div class="details-info">{{row.info2}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="figure-bot">
+                                                    <div class="btn-new" ng-click="add(row.type)">创建</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="cancel()">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

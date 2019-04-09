@@ -1,0 +1,10 @@
+﻿{
+  "name": "iiw.system.ftappwjmanage",
+  "version": "0.0.1",
+  "description": "访谈APP问卷管理",
+  "author": "chq",
+  "date": "2019-10-15",
+  "main": "ftappWjmanageController",
+  "host": "192.168.0.251",
+  "client": "192.168.11.27"
+}
