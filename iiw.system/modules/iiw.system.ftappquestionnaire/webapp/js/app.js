@@ -4,7 +4,8 @@
  */
 define([
     'app',
-    'cssloader!system/ftappquestionnaire/css/index.css'
+    'cssloader!system/ftappquestionnaire/css/index.css',
+    'system/ftappquestionnaire/js/directives/kindEditor'
 ], function (app) {
     app.controller('ftappQuestionnaireController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
