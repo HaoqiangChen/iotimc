@@ -17,35 +17,28 @@ HTML
     <td ng-style="{background: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}">{{x.status | status }}</td>
 </tr>
 
+返回图标：fa-mail-reply-all
+
 JavaScript
-// 显示一个确认删除的弹出确认框。
-iConfirm.show({
-	scope: $scope,
-	title: '确认删除？',
-	content: '删除信息后将无法还原，是否确认删除？',
-	buttons: [{
-		text: '确认',
-		style: 'button-primary',
-		action: 'confirmSuccess'
-	}, {
-		text: '取消',
-		style: 'button-caution',
-		action: 'confirmCancel'
-	}],
-	close: 'confirmClose'
-});
 
-$scope.confirmSuccess = function(id) {
-	console.log('点击确认');
-	iConfirm.close(id);
-};
-
-$scope.confirmCancel = function(id) {
-	console.log('点击取消');
-	iConfirm.close(id);
-};
-
-$scope.confirmClose = function(id) {
-	console.log('弹出窗口将被关闭，如返回true，则关闭，如返回false，则无法关闭');
-	return true;
-};
+页面跳转
+方式一：$state.go('system.ftappquestionnaire')
+带参数例子：
+if (item) {
+	$state.params = {
+		data: item
+	};
+	switch (item.type) {
+		case 'wjlx_ftwj':
+			$state.go('system.ftappquestionnaire', $state.params);
+			break;
+		case 'wjlx_lb':
+			$state.go('system.ftappscale', $state.params);
+			break;
+	}
+} else {
+	$state.params = {
+		data: null
+	};
+	_remind(4, '错误操作!');
+}

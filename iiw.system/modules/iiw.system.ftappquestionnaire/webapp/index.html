@@ -1,23 +1,47 @@
 <div class="iiw-system-page-container">
     <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
         <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
-            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+            <div class="ui-layout-container iiw-system-module-title-container" size="50px" ui-layout-container>
                 <h2 class="page-title">{{title}}</h2>
             </div>
             <div class="ui-layout-container" ui-layout-container>
-                <div class="layout-full" ui-view style="overflow: auto;">
+                <div class="layout-full" ui-view style="overflow: hidden;">
                     <div class="ui-layout-row system-newwj-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
-                        <div class="ui-layout-container" ui-layout-container>
-                            <div class="layout-full system-newwj-container" style="position: relative; display:inline-block;">
-                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
-                                    <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
-                                        <div class="loading-toast">
-                                            <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-                                            <p class="loading-content">{{loading.content}}...</p>
-                                        </div>
-                                    </div>
-                                    <kind-editor></kind-editor>
+                        <div class="ui-layout-container" size="50px" ui-layout-container>
+                            <div class="system-newwj-bar layout-full">
+                                <div class="col-md-10">
+                                    <a class="btn btn-info" style="padding: 8px 16px;"><i class="fa fa-edit fa-fw"></i>问卷设置</a>
+                                    <a class="btn btn-primary" style="padding: 8px 16px;"><i class="fa fa-cog fa-fw"></i>目录设置</a>
                                 </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-success" style="padding: 8px 16px;"><i class="fa fa-check fa-fw"></i>完成编辑</a>
+                                    <a class="btn btn-danger" style="padding: 8px 16px;"><i class="fa fa-mail-reply-all fa-fw"></i>返回</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" ui-layout-container style="overflow:hidden;">
+                            <div class="layout-full system-newwj-container" style="position: relative; display:inline-block;">
+                                <div class="system-wjmenu-container">
+                                    <div class="wjmenu-header">
+                                        <em>#</em>目录
+                                    </div>
+                                    <div class="wjmenu-content" i-scroll2>
+                                        <ul class="contents-list">
+                                            <li class="contents-item" ng-repeat="(index, group) in contentsList track by index">
+                                                <div class="item-box">
+                                                    <em>{{group.type}}</em>
+                                                    <span class="name">{{group.name}}</span>
+                                                    <span class="label label-info ng-binding">{{group.secondary.length}}</span>
+                                                    <i class="arrow fa fa-angle-left"></i>
+                                                </div>
+                                                <ol class="contents-fold">
+                                                    <li class="title" ng-repeat="(index, item) in group.secondary track by index">{{item.title}}</li>
+                                                </ol>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="system-question-container"></div>
                             </div>
                         </div>
                     </div>

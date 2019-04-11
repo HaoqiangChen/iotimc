@@ -1,3 +1,5 @@
+ul,ol,li{margin: 0;padding: 0;list-style: none;}
+
 .system-newwj-bar {
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -6,4 +8,78 @@
 
 .system-newwj-page-content {
     background-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.system-wjmenu-container, .system-question-container {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 9px solid transparent;
+    border-image: url(../img/bg.png) 9 9 round;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.system-question-container {
+    right: 0;
+    width: 74.8%;
+}
+
+/*目录*/
+.system-wjmenu-container .wjmenu-header {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #38c2e8;
+    font-size: 20px;
+    font-weight: bold;
+}
+.system-wjmenu-container .wjmenu-header em{
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+}
+.system-wjmenu-container .wjmenu-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.system-wjmenu-container .wjmenu-content .contents-list{
+    padding-bottom: 100px;
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item{
+    position: relative;
+}
+
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    /*background-color: rgba(0, 0, 0, .3);*/
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box:hover{
+    background-color: rgba(0, 0, 0, .3);
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box em{
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .name {width: 75%}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .label {margin: 0 5px}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .arrow {margin: 0 15px 0 5px}
+
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold {
+    display: none;
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title {
+    padding: 8px 0 8px 15px;
+    background-color: rgba(0, 0, 0, .5);
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title:hover {
+    background-color: rgba(223, 105, 26,0.8);
 }

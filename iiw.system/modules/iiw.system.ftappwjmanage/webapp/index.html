@@ -10,7 +10,7 @@
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-wjmanage-bar layout-full">
                                 <div class="col-md-2">
-                                    <a data-backdrop="false" data-target="#newwjModal" data-toggle="modal"  class="btn btn-primary" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>创建问卷</a>
+                                    <a data-backdrop="false" data-target="#newwjModal" data-toggle="modal" class="btn btn-primary" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>创建问卷</a>
                                 </div>
                                 <div class="input-group pull-right" style="width:247px;">
                                     <input type="text" class="system-wjmanage-search" placeholder="{{keyword}}" ng-keypress="keypress($event)" ng-model="filter.searchText"/>
@@ -36,7 +36,8 @@
                                                     <div class="item-name">{{row.name}}</div>
                                                 </div>
                                                 <div class="pull-right">
-                                                    <div class="pull-left item-id">ID:{{row.wjId}}</div>
+                                                    <div class="pull-left item-id">ID：{{row.wjId}}</div>
+                                                    <div class="pull-left item-sheet">类型：<span style="color: red;">{{row.typeName}}</span></div>
                                                     <div class="pull-left" ng-class="row.runStatus === 1 ? 'item-release': 'item-stop'">
                                                         <i class="fa fa-circle" style="font-size: 10px;margin-right: 5px;"></i>{{row.runStatusName}}
                                                     </div>
@@ -46,11 +47,22 @@
                                             </div>
                                             <div class="item-bot clearfix">
                                                 <div class="process-box pull-left">
-                                                    <div class="pull-left process-item process-1">
-                                                        <i class="icon icon-design"></i>设计问卷
+                                                    <div class="pull-left process-item process-1" ng-mouseenter="hover1 = true" ng-mouseleave="hover1 = false">
+                                                        <i class="icon icon-design"></i>
+                                                        <span>设计问卷</span>
+                                                        <ul class="spinner-list" ng-class="{'on': hover1}">
+                                                            <li class="spinner-item" ng-click="question(row)">编辑问卷</li>
+                                                            <li class="spinner-item" ng-click="edit(row)">问卷设置</li>
+                                                            <li class="spinner-item" ng-if="row.type === 'wjlx_ftwj'" ng-click="directory(row)">目录设置</li>
+                                                        </ul>
                                                     </div>
-                                                    <div class="pull-left process-item process-2">
-                                                        <i class="icon icon-chart"></i>统计&分析
+                                                    <div class="pull-left process-item process-2" ng-mouseenter="hover2 = true" ng-mouseleave="hover2 = false">
+                                                        <i class="icon icon-chart"></i>
+                                                        <span>分析&下载</span>
+                                                        <ul class="spinner-list" ng-class="{'on': hover2}">
+                                                            <li class="spinner-item">统计&分析</li>
+                                                            <li class="spinner-item">下载</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="operation-box pull-right">

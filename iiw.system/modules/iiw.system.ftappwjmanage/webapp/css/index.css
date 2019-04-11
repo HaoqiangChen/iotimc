@@ -110,11 +110,13 @@
 }
 
 .wj-list .wj-item .item-bot .process-box .process-item {
+    position: relative;
     color: #7a7a7a;
-    margin-right: 20px;
+    padding-right: 20px;
+    cursor: pointer;
 }
 
-.wj-list .wj-item .item-bot .process-box .process-item:hover {
+.wj-list .wj-item .item-bot .process-box .process-item:hover span {
     color: #0085ff;
 }
 
@@ -134,7 +136,33 @@
 .icon-chart {
     background-image: url("../img/chart.png")
 }
+.wj-list .wj-item .item-bot .process-box .process-item .spinner-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 3;
+    list-style: none;
+    width: 100%;
+    padding: 6px 0;
+    background-color: #FFF;
+    border-radius: 3px;
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.wj-list .wj-item .item-bot .process-box .process-item .spinner-list.on {
+    display: block;
+}
+.wj-list .wj-item .item-bot .process-box .process-item .spinner-list .spinner-item {
+    padding: 5px 0;
+}
 
+.wj-list .wj-item .item-bot .process-box .process-item .spinner-list .spinner-item:hover {
+    background-color: #eee;
+}
 .wj-list .wj-item .item-bot .operation-box {
     margin-top: 5px;
 }

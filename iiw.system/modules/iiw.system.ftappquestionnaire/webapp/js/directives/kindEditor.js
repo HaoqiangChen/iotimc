@@ -1,3 +1,9 @@
+/**
+ * kindEditor 编辑器
+ * 官网：http://kindeditor.net/demo.php
+ * API：http://kindeditor.net/doc.php
+ * Created by chq on 2019-10-16.
+ */
 define(['app',
     'cssloader!system/ftappquestionnaire/lib/kindeditor/themes/default/default',
     'cssloader!system/ftappquestionnaire/lib/kindeditor/plugins/code/prettify',
@@ -11,9 +17,8 @@ define(['app',
                 restrict: 'E',
                 scope: {
                     content: '=ngModel'
-
                 },
-                template: "<textarea name='content' style='width:100%;height:418px;visibility:hidden;' required></textarea>",
+                template: "<textarea name='content' style='width:100%;height:300px;visibility:hidden;' required></textarea>",
                 replace: true,
                 compile: function () {
                     return {
@@ -21,6 +26,7 @@ define(['app',
 
                             scope.flag = false;
 
+                            // 添加自定义插件
                             KindEditor.lang({
                                 source: 'HTML代码',
                                 preview: '预览',
@@ -234,11 +240,11 @@ define(['app',
                                     'Verdana': 'Verdana'
                                 },
                                 'lineheight.lineHeight': [
-                                    { '1': '单倍行距' },
-                                    { '1.5': '1.5倍行距' },
-                                    { '2': '2倍行距' },
-                                    { '2.5': '2.5倍行距' },
-                                    { '3': '3倍行距' }
+                                    {'1': '单倍行距'},
+                                    {'1.5': '1.5倍行距'},
+                                    {'2': '2倍行距'},
+                                    {'2.5': '2.5倍行距'},
+                                    {'3': '3倍行距'}
                                 ],
                                 'template.selectTemplate': '可选模板',
                                 'template.replaceContent': '替换当前内容',
@@ -251,7 +257,8 @@ define(['app',
 
                             KindEditor.options.langType = 'zh-CN';
 
-                            var editor = KindEditor.create('textarea[name="content"]', {
+                            // 编辑器初始化参数
+                            var options = {
                                 resizeType: 1,
                                 pasteType: 1,
                                 //themeType : 'default',
@@ -270,7 +277,7 @@ define(['app',
                                     scope.flag = true;
                                 },
                                 afterChange: function () {
-                                    if(scope.flag) {
+                                    if (scope.flag) {
                                         this.sync();
                                         html = $("textarea[name='content']").val();
                                         scope.content = html;
@@ -279,12 +286,16 @@ define(['app',
                                 uploadJson: 'familymeeting/judicial.do?action=uploadFile&filetype=picture&ptype=io',
                                 allowFileManager: true,
                                 items: [
-                                    'source','|','formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                                    'source', '|', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
                                     'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', 'table', '|', 'justifyleft', 'justifycenter', 'justifyright',
                                     'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', '|', 'image', '|', 'fullscreen'
                                 ]
 
-                            });
+                            };
+
+                            // 初始化KindEditor编辑器
+                            var editor = KindEditor.create('textarea[name="content"]', options);
+                            // 设置HTML内容
                             editor.html(scope.content);
                         }
                     }

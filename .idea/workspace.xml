@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,24 +19,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+            <state relative-caret-position="452">
+              <caret line="67" column="16" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
+            <state relative-caret-position="592">
+              <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
               <folding>
-                <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-                <element signature="e#929#13797#0" />
-                <element signature="e#13969#16024#0" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,11 +49,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="55" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="55" />
+            <state relative-caret-position="628">
+              <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
               <folding>
-                <element signature="e#660#1054#0" />
-                <element signature="e#1104#1339#0" />
+                <element signature="e#1572#1944#0" />
+                <element signature="e#1994#2229#0" />
               </folding>
             </state>
           </provider>
@@ -63,6 +73,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>getRegionDataByCode</find>
+      <find>editor.sync</find>
+      <find>back</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,13 +90,20 @@
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/css/index.css" />
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/css/map.css" />
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/view/map.html" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/package.json" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/js/app.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/index.html" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -116,6 +135,78 @@
               <item name="iotimc" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.devicecode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.devicecode" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.devicecode" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappdirectory" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappdirectory" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappdirectory" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappinterviewrecord" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappinterviewrecord" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappinterviewrecord" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
@@ -169,6 +260,63 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -182,7 +330,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -209,7 +357,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.sys3">
+  <component name="RunManager" selected="Node.js.sys4">
     <configuration name="audit" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit">
       <method v="2" />
     </configuration>
@@ -249,6 +397,12 @@
     <configuration name="sys3" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale">
       <method v="2" />
     </configuration>
+    <configuration name="sys4" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory">
+      <method v="2" />
+    </configuration>
+    <configuration name="sys5" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit">
+      <method v="2" />
+    </configuration>
     <configuration name="tdt" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt">
       <method v="2" />
     </configuration>
@@ -279,6 +433,8 @@
       <item itemvalue="Node.js.sys1" />
       <item itemvalue="Node.js.sys2" />
       <item itemvalue="Node.js.sys3" />
+      <item itemvalue="Node.js.sys4" />
+      <item itemvalue="Node.js.sys5" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -324,12 +480,12 @@
       <workItem from="1571035911480" duration="19000" />
       <workItem from="1571039551388" duration="4496000" />
       <workItem from="1571045832486" duration="22751000" />
-      <workItem from="1554797329185" duration="6926000" />
+      <workItem from="1554797329185" duration="39928000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34173000" />
+    <option name="totallyTimeSpent" value="67175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -502,37 +658,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="10" column="208" selection-start-line="10" selection-start-column="208" selection-end-line="10" selection-end-column="208" />
-          <folding>
-            <element signature="e#488#8785#0" />
-            <element signature="e#1260#2466#0" />
-            <element signature="e#2504#3042#0" />
-            <element signature="e#3074#3843#0" />
-            <element signature="e#3889#4415#0" />
-            <element signature="e#4457#4508#0" />
-            <element signature="e#4543#4743#0" />
-            <element signature="e#4781#4895#0" />
-            <element signature="e#4930#6435#0" />
-            <element signature="e#6484#7145#0" />
-            <element signature="e#7224#7666#0" />
-            <element signature="e#7772#7826#0" />
-            <element signature="e#7866#8260#0" />
-            <element signature="e#8298#8494#0" />
-            <element signature="e#8544#8779#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/package.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48" />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.sjposition/webapp/view/tdt.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -614,40 +741,147 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
+            <element signature="e#929#13797#0" />
+            <element signature="e#13917#15972#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="80" column="51" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.devicecode/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.devicecode/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" selection-start-line="4" selection-end-line="205" selection-end-column="3" />
+          <folding>
+            <element signature="e#58#172#0" />
+            <element signature="e#345#6714#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="172" column="46" selection-start-line="172" selection-start-column="46" selection-end-line="172" selection-end-column="46" />
+          <folding>
+            <element signature="e#1978#2745#0" />
+            <element signature="e#2930#3460#0" />
+            <element signature="e#3629#4416#0" />
+            <element signature="e#4586#5423#0" />
+            <element signature="e#5592#6494#0" />
+            <element signature="e#6666#6997#0" />
+            <element signature="e#7034#7187#0" />
+            <element signature="e#7226#7797#0" />
+            <element signature="e#7835#7968#0" />
+            <element signature="e#8006#8054#0" />
+            <element signature="e#8152#8546#0" />
+            <element signature="e#8596#8831#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="156" column="19" selection-start-line="156" selection-start-column="19" selection-end-line="156" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="100" selection-end-column="18" />
+          <folding>
+            <element signature="e#2793#4356#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="41" column="12" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="58" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="122" selection-start-line="23" selection-start-column="122" selection-end-line="23" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-188" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
+          <folding>
+            <element signature="e#1572#1944#0" />
+            <element signature="e#1994#2229#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="55" />
+        <state relative-caret-position="592">
+          <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
           <folding>
-            <element signature="e#660#1054#0" />
-            <element signature="e#1104#1339#0" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js">
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-            <element signature="e#929#13797#0" />
-            <element signature="e#13969#16024#0" />
-          </folding>
+        <state relative-caret-position="452">
+          <caret line="67" column="16" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
         </state>
       </provider>
     </entry>
