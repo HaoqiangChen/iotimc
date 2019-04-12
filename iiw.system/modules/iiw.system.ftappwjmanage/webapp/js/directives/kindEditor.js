@@ -1,14 +1,8 @@
-/**
- * kindEditor 编辑器
- * 官网：http://kindeditor.net/demo.php
- * API：http://kindeditor.net/doc.php
- * Created by chq on 2019-10-16.
- */
 define(['app',
-    'cssloader!system/ftappquestionnaire/lib/kindeditor/themes/default/default',
-    'cssloader!system/ftappquestionnaire/lib/kindeditor/plugins/code/prettify',
-    'system/ftappquestionnaire/lib/kindeditor/kindeditor-all',
-    'system/ftappquestionnaire/lib/kindeditor/plugins/code/prettify',
+    'cssloader!system/ftappwjmanage/lib/kindeditor/themes/default/default',
+    'cssloader!system/ftappwjmanage/lib/kindeditor/plugins/code/prettify',
+    'system/ftappwjmanage/lib/kindeditor/kindeditor-all-min',
+    'system/ftappwjmanage/lib/kindeditor/plugins/code/prettify',
 
 ], function (app) {
     app.directive('kindEditor', ['iAjax', 'iToken',
@@ -18,8 +12,8 @@ define(['app',
                 scope: {
                     content: '=ngModel'
                 },
-                template: "<textarea name='content' style='width:100%;height:300px;visibility:hidden;' required></textarea>",
-                replace: true,
+                template: "<textarea style='width:100%;height:100px;visibility:hidden;' required></textarea>",
+                // replace: true,
                 compile: function () {
                     return {
                         post: function (scope, ele) {
@@ -279,7 +273,7 @@ define(['app',
                                 afterChange: function () {
                                     if (scope.flag) {
                                         this.sync();
-                                        html = $("textarea[name='content']").val();
+                                        html = ele.children('textarea').val();
                                         scope.content = html;
                                     }
                                 },
@@ -294,7 +288,7 @@ define(['app',
                             };
 
                             // 初始化KindEditor编辑器
-                            var editor = KindEditor.create('textarea[name="content"]', options);
+                            var editor = KindEditor.create(ele.children('textarea'), options);
                             // 设置HTML内容
                             editor.html(scope.content);
                         }

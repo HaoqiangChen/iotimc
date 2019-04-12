@@ -28,16 +28,22 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
 
 /*目录*/
 .system-wjmenu-container .wjmenu-header {
+    position: relative;
     height: 50px;
     line-height: 50px;
     border-bottom: 1px solid #38c2e8;
     font-size: 20px;
     font-weight: bold;
 }
-.system-wjmenu-container .wjmenu-header em{
+.system-wjmenu-container .wjmenu-header em {
     display: inline-block;
     width: 40px;
     text-align: center;
+}
+.system-wjmenu-container .wjmenu-header a.wjmenu-cog {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
 }
 .system-wjmenu-container .wjmenu-content {
     position: relative;
@@ -83,3 +89,8 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
 .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title:hover {
     background-color: rgba(223, 105, 26,0.8);
 }
+
+/*题目*/
+.system-question-container {
+}
+.system-question-container {}

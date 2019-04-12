@@ -4,23 +4,28 @@
  */
 define([
     'app',
-    'cssloader!system/ftappquestionnaire/css/index.css',
-    'system/ftappquestionnaire/js/directives/kindEditor'
+    'cssloader!system/ftappquestionnaire/css/index.css'
 ], function (app) {
     app.controller('ftappQuestionnaireController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '刑罚执行完毕后未重新犯罪者';
         var domain = 'http://iotimc8888.goho.co:17783';
         var wjId;
-        // if ($stateParams.data) {
-        //     console.log($stateParams.data);
-        //     wjId = $stateParams.data.wjId;
-        // }
+        if ($stateParams.data) {
+            console.log($stateParams.data);
+            wjId = $stateParams.data.id;
+        } else {
+            wjId = 'B701AB0474BE475B8CF22E6152B9FC01'
+        }
 
         $scope.contentsList = [
             {name: "基本情况", qtypefk: "735F01B8E2A638499D853E022ABF7737", secondary: [
-                {idx: "1 ", title: "年龄（A1 - A1）", typedtlid: "94159C5FA686307E88FEAAA3D7F4F431"},
-                {idx: "2 ", title: "性别（A2 - A2）", typedtlid: "CE8707B808DE37958AFF42DCC65F6F04"},
+                {idx: "1 ", title: "年龄（A1 - A1）", typedtlid: "94159C5FA686307E88FEAAA3D7F4F431", questionlist: [
+                    {classify: "基本情况", code: "A1", fatherclassifyid: "735F01B8E2A638499D853E022ABF7737", idx: 1, name: "首先，请告诉我你具体是哪一天出生的？",qclassify: "年龄",qtip: "（提示：记下具体日期）",type: "3",questionfk: "A03F3647708F422E96DD311F750FD558",option:[
+                        {child: false, format: "3", isdesc: 0, label: "请告诉我你具体是哪一天出生的", optionfk: "0B086F34566B4A3AB9EC53B22F5A047B",questionfk: "261904B9D7AD48758A223439D6B6E0C5",type: "6",value: ""}
+                    ]}
+                ]},
+                {idx: "2 ", title: "性别（A2 - A2）", typedtlid: "CE8707B808DE37958AFF42DCC65F6F04",questionlist:[]},
                 {idx: "3 ", title: "民族（A3 - A3）", typedtlid: "E600905CF2823395B59C4CC7036D601A"},
                 {idx: "4 ", title: "宗教（A4 - A4.3）", typedtlid: "14ED0878A37B34FB9B98E218598CC51C"},
                 {idx: "8 ", title: "文化程度（A5 - A5.1）", typedtlid: "F6ECB776E79A31ACB32716E45D6AC16A"},
@@ -86,7 +91,7 @@ define([
             url = domain + '/terminal/interview/system.do?action=getQuestions';
             data = {
                 filter: {
-                    id: 'B701AB0474BE475B8CF22E6152B9FC01'
+                    id: wjId
                 }
             };
 
@@ -101,6 +106,41 @@ define([
                         }
                     })
             })
+        };
+
+        $scope.directory = function () {
+            iConfirm.show({
+                scope: $scope,
+                title: '确认离开此页面？',
+                content: '系统可能不会保存您所做的更改？',
+                buttons: [{
+                    text: '确认',
+                    style: 'button-primary',
+                    action: 'confirmSuccess'
+                }, {
+                    text: '取消',
+                    style: 'button-caution',
+                    action: 'confirmCancel'
+                }]
+            });
+        };
+        $scope.confirmSuccess = function(id) {
+            iConfirm.close(id);
+            $state.go('system.ftappdirectory')
+        };
+
+        $scope.confirmCancel = function(id) {
+            iConfirm.close(id);
+        };
+
+        $scope.menuClick = function ($event) {
+            $($event.currentTarget).find('ol.contents-fold').slideToggle();
+        };
+        $scope.secondaryClick = function ($event) {
+            $event.stopPropagation();
+        };
+        $scope.back = function () {
+            window.history.back()
         };
 
         // 模块加载完成后初始化事件

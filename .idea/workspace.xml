@@ -1,13 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js" line="18" />
+    <bookmark url="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js" line="250" />
+    <bookmark url="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js" line="276" />
+    <bookmark url="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js" line="279" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/kindeditor-all-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/kindeditor-all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/lang/zh-CN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/anchor/anchor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/autoheight/autoheight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/baidumap/baidumap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/baidumap/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/baidumap/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/clearhtml/clearhtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/code/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/code/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/code/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/emoticons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/100.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/101.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/102.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/103.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/104.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/105.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/106.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/107.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/108.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/109.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/110.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/111.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/112.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/113.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/114.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/115.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/116.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/117.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/118.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/119.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/120.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/121.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/122.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/123.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/124.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/125.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/126.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/127.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/128.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/129.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/130.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/131.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/132.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/133.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/134.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/72.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/73.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/74.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/75.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/76.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/77.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/78.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/79.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/80.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/81.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/82.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/83.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/84.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/85.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/86.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/87.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/88.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/89.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/90.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/91.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/92.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/93.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/94.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/95.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/96.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/97.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/98.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/99.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/emoticons/images/static.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/filemanager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/images/file-16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/images/file-64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/images/folder-16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/images/folder-64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/filemanager/images/go-up.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/fixtoolbar/fixtoolbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/flash/flash.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/image/image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/image/images/align_left.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/image/images/align_right.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/image/images/align_top.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/image/images/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/insertfile/insertfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/lineheight/lineheight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/link/link.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/map/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/map/map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/media/media.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/multiimage/images/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/multiimage/images/select-files-en.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/multiimage/images/select-files-zh-CN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/multiimage/images/swfupload.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/multiimage/multiimage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/pagebreak/pagebreak.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/plainpaste/plainpaste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/preview/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/quickformat/quickformat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/table/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/template/html/1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/template/html/2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/template/html/3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/template/template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/plugins/wordpaste/wordpaste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/anchor.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/flash.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/media.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/common/rm.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/default/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/default/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/default/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/qq/editor.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/qq/qq.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/lib/kindeditor/themes/simple/simple.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" afterDir="false" />
     </list>
@@ -20,10 +220,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="67" column="16" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+            <state relative-caret-position="480">
+              <caret line="90" column="79" lean-forward="true" selection-start-line="90" selection-start-column="79" selection-end-line="90" selection-end-column="79" />
+              <folding>
+                <element signature="e#776#6984#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,30 +234,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
+            <state relative-caret-position="400">
+              <caret line="25" column="72" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="72" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="628">
-              <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
-              <folding>
-                <element signature="e#1572#1944#0" />
-                <element signature="e#1994#2229#0" />
-              </folding>
+            <state relative-caret-position="164">
+              <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -75,6 +269,7 @@
       <find>getRegionDataByCode</find>
       <find>editor.sync</find>
       <find>back</find>
+      <find>kind-editor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,16 +285,17 @@
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/css/index.css" />
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/css/map.css" />
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/view/map.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/css/index.css" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/js/app.js" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/index.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" />
       </list>
     </option>
   </component>
@@ -118,6 +314,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,6 +338,21 @@
               <item name="iotimc" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.device" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.device" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system.devicecode" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -198,6 +410,15 @@
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system.ftappinterviewrecord" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappinterviewrecord" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
@@ -246,82 +467,63 @@
               <item name="iotimc" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappquestionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="directives" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappquestionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system.ftappwjmanage" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -480,18 +682,19 @@
       <workItem from="1571035911480" duration="19000" />
       <workItem from="1571039551388" duration="4496000" />
       <workItem from="1571045832486" duration="22751000" />
-      <workItem from="1554797329185" duration="39928000" />
+      <workItem from="1554797329185" duration="40527000" />
+      <workItem from="1571362761638" duration="27354000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67175000" />
+    <option name="totallyTimeSpent" value="95128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14910433" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15542677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -741,25 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-            <element signature="e#929#13797#0" />
-            <element signature="e#13917#15972#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="80" column="51" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -819,26 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="41" column="12" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="58" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -851,37 +1015,105 @@
         <state relative-caret-position="-188" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
+    <entry file="file://$PROJECT_DIR$/iiw.system/webapp/js/directives/systemLeftMenuClickDirective.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
-          <caret line="108" column="11" lean-forward="true" selection-start-line="108" selection-start-column="11" selection-end-line="108" selection-end-column="11" />
+        <state relative-caret-position="379">
+          <caret line="32" column="13" selection-start-line="29" selection-start-column="20" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="22" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.device/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="316" column="32" selection-start-line="316" selection-start-column="32" selection-end-line="316" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/directives/kindEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
-            <element signature="e#1572#1944#0" />
-            <element signature="e#1994#2229#0" />
+            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding>
+            <element signature="e#342#16363#0" />
+            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
+            <element signature="e#945#13803#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="69" column="163" selection-start-line="69" selection-start-column="163" selection-end-line="69" selection-end-column="163" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="123" column="44" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="37" column="68" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="68" />
+        <state relative-caret-position="400">
+          <caret line="25" column="72" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="72" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="67" column="16" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+        <state relative-caret-position="164">
+          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="90" column="79" lean-forward="true" selection-start-line="90" selection-start-column="79" selection-end-line="90" selection-end-column="79" />
+          <folding>
+            <element signature="e#776#6984#0" />
+          </folding>
         </state>
       </provider>
     </entry>

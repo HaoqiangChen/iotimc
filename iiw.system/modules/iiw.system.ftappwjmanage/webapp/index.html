@@ -9,11 +9,27 @@
                     <div class="ui-layout-row system-wjmanage-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-wjmanage-bar layout-full">
-                                <div class="col-md-2">
+                                <div class="col-md-6">
                                     <a data-backdrop="false" data-target="#newwjModal" data-toggle="modal" class="btn btn-primary" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>创建问卷</a>
                                 </div>
+                                <div class="col-md-2 select-group">
+                                    <label>问卷类型: </label>
+                                    <select class="form-control" ng-change="getList()" ng-model="filter.content">
+                                        <option value="">全部</option>
+                                        <option value="wjlx_ftwj">问卷</option>
+                                        <option value="wjlx_lb">量表</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 select-group">
+                                    <label>发布状态: </label>
+                                    <select class="form-control" ng-change="getList()" ng-model="filter.content">
+                                        <option value="">全部</option>
+                                        <option value="0">已发布</option>
+                                        <option value="1">未发布</option>
+                                    </select>
+                                </div>
                                 <div class="input-group pull-right" style="width:247px;">
-                                    <input type="text" class="system-wjmanage-search" placeholder="{{keyword}}" ng-keypress="keypress($event)" ng-model="filter.searchText"/>
+                                    <input type="text" class="system-wjmanage-search" placeholder="{{keyword}}" ng-keypress="getList()" ng-model="filter.name"/>
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" ng-click="getList()"><i class="fa fa-search"></i></button>
                                     </span>
@@ -36,13 +52,13 @@
                                                     <div class="item-name">{{row.name}}</div>
                                                 </div>
                                                 <div class="pull-right">
-                                                    <div class="pull-left item-id">ID：{{row.wjId}}</div>
-                                                    <div class="pull-left item-sheet">类型：<span style="color: red;">{{row.typeName}}</span></div>
+                                                    <div class="pull-left item-id">ID：{{row.id}}</div>
+                                                    <div class="pull-left item-sheet">类型：<span style="color: red;">{{row.typename}}</span></div>
                                                     <div class="pull-left" ng-class="row.runStatus === 1 ? 'item-release': 'item-stop'">
                                                         <i class="fa fa-circle" style="font-size: 10px;margin-right: 5px;"></i>{{row.runStatusName}}
                                                     </div>
-                                                    <div class="pull-left item-sheet">答卷：<i ng-style="{color: row.answerNum > 0 ? '#0085ff' : '#262626'}">{{row.answerNum}}</i></div>
-                                                    <div class="pull-left item-date">{{row.createTime}}</div>
+                                                    <!-- <div class="pull-left item-sheet">答卷：<i ng-style="{color: row.answerNum > 0 ? '#0085ff' : '#262626'}">{{row.answerNum}}</i></div> -->
+                                                    <div class="pull-left item-date">{{row.cretime | date: 'yyyy-MM-dd hh:mm'}}</div>
                                                 </div>
                                             </div>
                                             <div class="item-bot clearfix">
@@ -51,9 +67,9 @@
                                                         <i class="icon icon-design"></i>
                                                         <span>设计问卷</span>
                                                         <ul class="spinner-list" ng-class="{'on': hover1}">
+                                                            <li class="spinner-item" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('mod', row)">问卷设置</li>
                                                             <li class="spinner-item" ng-click="question(row)">编辑问卷</li>
-                                                            <li class="spinner-item" ng-click="edit(row)">问卷设置</li>
-                                                            <li class="spinner-item" ng-if="row.type === 'wjlx_ftwj'" ng-click="directory(row)">目录设置</li>
+                                                            <li class="spinner-item" ng-if="row.content === 'wjlx_ftwj'" ng-click="directory(row)">目录设置</li>
                                                         </ul>
                                                     </div>
                                                     <div class="pull-left process-item process-2" ng-mouseenter="hover2 = true" ng-mouseleave="hover2 = false">
@@ -71,7 +87,7 @@
                                                         <span class="vam">{{row.runStatus === 1 ? '停止' : '发布'}}</span>
                                                     </div>
                                                     <span class="splitline"></span>
-                                                    <div class="pull-left item-control">
+                                                    <div class="pull-left item-control" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('copy', row)">
                                                         <i class="fa fa-copy"></i>
                                                         <span class="vam">复制</span>
                                                     </div>
@@ -92,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="newwjModal">
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="newwjModal">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -113,7 +129,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="figure-bot">
-                                                    <div class="btn-new" ng-click="add(row.type)">创建</div>
+                                                    <div class="btn-new" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('add', row.type)">创建</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +139,52 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="cancel()">取消</button>
+                        </div>
+                    </div>
+                </div>
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="wjconfigModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"><i class="fa fa-remove"></i></button>
+                                <h4 class="modal-title">问卷设置</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="widget-content">
+                                    <div class="modal-wrapper" ng-if="hasEdit" style="height: 500px;">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="wjTitle" class="col-md-2 control-label">问卷标题</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" id="wjTitle" ng-model="wjDetails.name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="wjSubtitle" class="col-md-2 control-label">问卷副标题</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" id="wjSubtitle" ng-model="wjDetails.describes">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">问卷说明</label>
+                                                <div class="col-md-10">
+                                                    <kind-editor ng-model="wjDetails.answersituation"></kind-editor>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">指导语</label>
+                                                <div class="col-md-10">
+                                                    <kind-editor ng-model="wjDetails.introduce"></kind-editor>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="cancelEdit()">取消</button>
+                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveWj()">保存</button>
                         </div>
                     </div>
                 </div>
