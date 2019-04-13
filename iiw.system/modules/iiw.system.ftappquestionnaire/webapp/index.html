@@ -7,18 +7,6 @@
             <div class="ui-layout-container" ui-layout-container>
                 <div class="layout-full" ui-view style="overflow: hidden;">
                     <div class="ui-layout-row system-newwj-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
-                        <!-- <div class="ui-layout-container" size="50px" ui-layout-container>
-                            <div class="system-newwj-bar layout-full">
-                                <div class="col-md-10">
-                                    <a class="btn btn-info" style="padding: 8px 16px;"><i class="fa fa-edit fa-fw"></i>问卷设置</a>
-                                    <a class="btn btn-primary" ng-click="directory()" style="padding: 8px 16px;"><i class="fa fa-cog fa-fw"></i>目录设置</a>
-                                </div>
-                                <div class="col-md-2">
-                                    <a class="btn btn-success" style="padding: 8px 16px;"><i class="fa fa-check fa-fw"></i>完成编辑</a>
-                                    <a class="btn btn-danger" style="padding: 8px 16px;"><i class="fa fa-mail-reply-all fa-fw"></i>返回</a>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="ui-layout-container" ui-layout-container style="overflow:hidden;">
                             <div class="layout-full system-newwj-container" style="position: relative; display:inline-block;">
                                 <div class="system-wjmenu-container">
@@ -41,7 +29,11 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="system-question-container"></div>
+                                <div class="system-question-container">
+                                    <a class="btn btn-success save" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</a>
+                                    <a class="btn btn-danger back" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</a>
+                                    <div class="question-wrapper"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

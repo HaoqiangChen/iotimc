@@ -1,19 +1,62 @@
 <div class="iiw-system-page-container">
     <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
         <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
-            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+            <div class="ui-layout-container iiw-system-module-title-container" size="50px" ui-layout-container>
                 <h2 class="page-title">{{title}}</h2>
             </div>
             <div class="ui-layout-container" ui-layout-container>
                 <div class="layout-full" ui-view style="overflow: auto;">
-                    <div class="ui-layout-row system-newwj-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                    <div class="ui-layout-row system-scale-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" ui-layout-container>
-                            <div class="layout-full system-newwj-container" style="position: relative; display:inline-block;">
-                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                            <div class="layout-full system-scale-container" style="position: relative; display:inline-block;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2);">
                                     <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                                         <div class="loading-toast">
                                             <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
                                             <p class="loading-content">{{loading.content}}...</p>
+                                        </div>
+                                    </div>
+                                    <div class="system-question-container">
+                                        <div class="scale-header">
+                                            <div class="title">{{scaleData.name}}</div>
+                                            <div class="subtitle">{{scaleData.subtitle}}</div>
+                                            <div class="describes">{{scaleData.describes}}</div>
+                                        </div>
+                                        <div class="scale-question">
+                                            <fieldset class='fieldset' ng-repeat="(qnumber, question) in scaleData.question track by qnumber">
+                                                <div class='field' topic='question.idx' type='question.type'>
+                                                    <div ng-if="question.qclassify" class='field-classify'>【{{question.qclassify}}】</div>
+                                                    <div ng-if="question.qpremise" class='field-premise'>{{question.qpremise}}</div>
+
+                                                    <div class='field-label' ng-if="question.type === '1'"> (单选) {{question.name}}</div>
+                                                    <div class='field-label' ng-if="question.type !== '1'">{{question.name}}</div>
+
+                                                    <div ng-if="question.qtip" class='field-tip'>{{question.qtip}}</div>
+
+                                                    <div class="field-controlgroup" ng-if="question.type === '1'">
+                                                        <div class="field-radio" ng-repeat="(idx, radio) in question.option track by idx">
+                                                            <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
+                                                            <label>{{radio.label}}</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div ng-if="question.type !== '1'" class="field-input">
+                                                    <span ng-repeat="(idx, input) in question.option track by idx">
+                                                        {{input.prefix}}<b class="input-text">{{input.value}}</b>{{input.suffix}}
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="scale-add">
+                                            <div class="collapse" id="collapseAdd">
+                                                <div class="add-option">
+                                                    <button class="btn btn-lg btn-primary">单选</button>
+                                                    <button class="btn btn-lg btn-primary">多选</button>
+                                                    <button class="btn btn-lg btn-primary">文本框</button>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-primary btn-add" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"></i>添加问题</button>
                                         </div>
                                     </div>
                                 </div>
@@ -21,6 +64,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+                <button class="btn btn-success col-md-4" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
+                <button class="btn btn-danger col-md-4" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</button>
             </div>
         </div>
     </div>

@@ -1,9 +1,59 @@
-.system-newwj-bar {
+.system-scale-bar {
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
-.system-newwj-page-content {
+.system-scale-page-content {
     background-color: rgba(0, 0, 0, 0.3);
 }
+.system-question-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0px 40px 30px;
+}
+.system-question-container .scale-header {
+    padding: 10px 0;
+    border-bottom: 2px solid #eee;
+}
+.system-question-container .scale-header .title{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.system-question-container .scale-header .subtitle{
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.system-question-container .scale-header .describes{
+    text-indent: 2em;
+}
+
+.iiw-system-form-button-layout-container{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.scale-add{
+    width: 100%;
+    padding: 30px;
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+}
+.scale-add .btn-add {
+    width: 100%;
+    height: 60px;
+}
+.scale-add #collapseAdd{
+    border: 2px solid #df691a;
+    border-bottom: none;
+}
+.scale-add #collapseAdd .add-option{
+    padding: 20px;
+    text-align: center;
+}
+.scale-add #collapseAdd .add-option button{margin-right: 50px;}

@@ -140,7 +140,24 @@ define([
             $event.stopPropagation();
         };
         $scope.back = function () {
-            window.history.back()
+          iConfirm.show({
+            scope: $scope,
+            title: '确认离开此页面？',
+            content: '系统可能不会保存您所做的更改？',
+            buttons: [{
+              text: '确认',
+              style: 'button-primary',
+              action: 'confirmBack'
+            }, {
+              text: '取消',
+              style: 'button-caution',
+              action: 'confirmCancel'
+            }]
+          });
+        };
+        $scope.confirmBack = function(id) {
+          iConfirm.close(id);
+          window.history.back()
         };
 
         // 模块加载完成后初始化事件
