@@ -9,7 +9,7 @@
                     <div class="ui-layout-row system-scale-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" ui-layout-container>
                             <div class="layout-full system-scale-container" style="position: relative; display:inline-block;">
-                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2);">
+                                <div class="layout-full">
                                     <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                                         <div class="loading-toast">
                                             <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
@@ -25,15 +25,14 @@
                                         <div class="scale-question">
                                             <fieldset class='fieldset' ng-repeat="(qnumber, question) in scaleData.question track by qnumber">
                                                 <div class='field' topic='question.idx' type='question.type'>
-                                                    <div ng-if="question.qclassify" class='field-classify'>【{{question.qclassify}}】</div>
+                                                    <!-- <div ng-if="question.qclassify" class='field-classify'>【{{question.qclassify}}】</div> -->
                                                     <div ng-if="question.qpremise" class='field-premise'>{{question.qpremise}}</div>
 
-                                                    <div class='field-label' ng-if="question.type === '1'"> (单选) {{question.name}}</div>
-                                                    <div class='field-label' ng-if="question.type !== '1'">{{question.name}}</div>
+                                                    <div class='field-label'>{{$index+1}}. {{question.name}}</div>
 
                                                     <div ng-if="question.qtip" class='field-tip'>{{question.qtip}}</div>
 
-                                                    <div class="field-controlgroup" ng-if="question.type === '1'">
+                                                    <div class="field-controlgroup" ng-class="question.option.length > 10 ? 'field-toomuch' : ''" ng-if="question.type === '1'">
                                                         <div class="field-radio" ng-repeat="(idx, radio) in question.option track by idx">
                                                             <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
                                                             <label>{{radio.label}}</label>
@@ -46,14 +45,37 @@
                                                     </span>
                                                     </div>
                                                 </div>
+                                                <div class="set clearfix">
+                                                    <div class="col-md-4">
+                                                        <div class="setLeft">
+                                                            <a ng-click="">在此题后插入新题</a>
+                                                            <div class="scale-insertQ">
+                                                                <em></em>
+                                                                <span></span>
+                                                                <div class="insertQ-type">
+                                                                    <button class="btn btn-sm btn-primary">量表题</button>
+                                                                    <button class="btn btn-sm btn-primary">填空题</button>
+                                                                </div>
+                                                                <!-- <div class="tip"><b>提示：</b>如需添加其他题型，请联系开发人员进行开发。</div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <a class="btn btn-success" ng-click="edit($index)"><i class="fa fa-edit fa-fw"></i>编辑</a>
+                                                        <a class="btn btn-primary" ng-click="copy($index)"><i class="fa fa-copy fa-fw"></i>复制</a>
+                                                        <a class="btn btn-danger" ng-click="del($index)"><i class="fa fa-trash-o fa-fw"></i>删除</a>
+                                                        <a class="btn btn-info" ng-click="moveUp($index)"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
+                                                        <a class="btn btn-info" ng-click="moveDown($index)"><i class="fa fa-arrow-down fa-fw"></i>下移</a>
+                                                    </div>
+                                                </div>
                                             </fieldset>
                                         </div>
+                                        <button class="btn btn-lg btn-primary" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal">量表题</button>
                                         <div class="scale-add">
                                             <div class="collapse" id="collapseAdd">
                                                 <div class="add-option">
-                                                    <button class="btn btn-lg btn-primary">单选</button>
-                                                    <button class="btn btn-lg btn-primary">多选</button>
-                                                    <button class="btn btn-lg btn-primary">文本框</button>
+                                                    <button class="btn btn-lg btn-primary" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal">量表题</button>
+                                                    <button class="btn btn-lg btn-primary">填空题</button>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary btn-add" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"></i>添加问题</button>
@@ -64,12 +86,70 @@
                         </div>
                     </div>
                 </div>
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="wjconfigModal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"><i class="fa fa-remove"></i></button>
+                                <h4 class="modal-title">量表题设置</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="widget-content">
+                                    <div class="modal-wrapper" style="height: 500px;">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">标题</label>
+                                                <div class="col-md-10">
+                                                    <kind-editor ng-model="question.name"></kind-editor>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive question-table">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>选项文字</th>
+                                                            <th>分数</th>
+                                                            <th>上移下移</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="row in question.option">
+                                                            <td class="label-box">
+                                                                <input type="text" class="choicetxt" ng-model="row.label">
+                                                                <i class="fa fa-plus-circle fa-fw" title="在此选项下面插入一个新的选项"></i>
+                                                                <i class="fa fa-minus-circle fa-fw" title="删除当前选项（最少保留2个选项）"></i>
+                                                            </td>
+                                                            <td class="score-box">
+                                                                <input type="text" class="choicetxt" ng-model="row.score">
+                                                            </td>
+                                                            <td>
+                                                                <i class="fa fa-arrow-circle-up fa-fw" title="将当前选项上移一个位置"></i>
+                                                                <i class="fa fa-arrow-circle-down fa-fw" title="将当前选项下移一个位置"></i>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="question-logic">
+                                                <span>逻辑设置：</span>
+                                                <a ng-click="">跳题逻辑</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="cancelEdit()">取消</button>
+                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveWj()">保存</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container style="background-color: rgba(0, 0, 0, .6);">
                 <button class="btn btn-success col-md-4" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
                 <button class="btn btn-danger col-md-4" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</button>
             </div>
         </div>
     </div>
-
 </div>

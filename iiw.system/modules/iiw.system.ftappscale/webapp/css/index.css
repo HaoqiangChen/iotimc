@@ -1,3 +1,4 @@
+ul,ol,li{margin:0;padding:0;list-style: none;}
 .system-scale-bar {
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -57,3 +58,113 @@
     text-align: center;
 }
 .scale-add #collapseAdd .add-option button{margin-right: 50px;}
+
+.scale-question {
+}
+.fieldset {
+    padding: 10px 30px;
+    border-bottom: 1px solid #eee;
+}
+.fieldset:hover {
+    background-color: rgba(0, 0, 0,0.6);
+}
+
+.fieldset .field-controlgroup {
+    padding: 0 3%;
+}
+.fieldset .field-toomuch{
+    display: flex;
+    flex-wrap: wrap;
+}
+.fieldset .field-toomuch .field-radio{
+    margin-right: 30px;
+}
+
+.fieldset .field-input {
+    padding: 0 3%;
+}
+
+.fieldset .field-input .input-text {
+    padding: 0 15px;
+    margin: 0 5px;
+    border-bottom: 1px solid #000;
+}
+.fieldset .set {
+    display: none;
+}
+.fieldset:hover .set{
+    display: block;
+}
+.fieldset .set .setLeft{
+    position: relative;
+    width: 60%;
+    padding: 8px 0 8px 30px;
+    cursor: pointer;
+}
+.scale-insertQ {
+    display: none;
+    position: absolute;
+    background: #f3f4f5;
+    padding: 10px 20px;
+    border: 1px solid #D2D2D2;
+    border-radius: 2px;
+    color: #0a0a0a;
+    z-index: 2;
+}
+.scale-insertQ em {
+    display: block;
+    border-width: 10px;
+    position: absolute;
+    top: -20px;
+    left: 45px;
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent #D2D2D2 transparent;
+    font-size: 0;
+    line-height: 0;
+}
+.scale-insertQ span {
+    display: block;
+    border-width: 10px;
+    position: absolute;
+    top: -18px;
+    left: 45px;
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent #f3f4f5 transparent;
+    font-size: 0;
+    line-height: 0;
+}
+.fieldset .set .setLeft:hover .scale-insertQ{
+    display: block;
+}
+.scale-insertQ .tip {margin-top: 10px;}
+
+.modal-wrapper .form-group .col-md-1 {
+    width: 10%;
+    padding-right: 0;
+    word-wrap:break-word;
+}
+.question-table {
+    max-height: 300px;
+    border: 1px solid #F0F0EE;
+}
+.question-table thead {
+    background-color: #F0F0EE;
+}
+.question-table thead th {color: #0a0a0a}
+.question-table .label-box input {width: 60%;}
+.question-table i.fa{
+    font-size: 20px;
+    cursor: pointer;
+}
+.question-table i.fa:hover{color: #00A8FF}
+.question-logic{
+    margin: 15px 0;
+    padding: 0 10px;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F0F0EE;
+    border: 1px dashed #DBDBDB;
+    color: #0a0a0a;
+}
+.question-logic a{text-decoration: underline;cursor: pointer}
