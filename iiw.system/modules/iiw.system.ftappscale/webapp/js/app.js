@@ -8,6 +8,7 @@ define([
     'cssloader!system/ftappwjmanage/css/loading.css',
     'system/ftappwjmanage/js/directives/kindEditor'
 ], function (app) {
+    var packageName = 'iiw.system.ftappscale';
     app.controller('ftappScaleController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '量表设计';
@@ -19,6 +20,10 @@ define([
         } else {
             wjId = '0CFF778DCDD94C85BC67141E388E403E'
         }
+        var indexQ = 0;
+
+        $scope.batchOptions = '';
+        $scope.questionlist = [];
 
         $scope.question = {
             "code": "002001",
@@ -28,12 +33,6 @@ define([
             "ismustname": "必答",
             "name": "1.我时常做白日梦，幻想可能会发生在我身上的事情。",
             "option": [{"label": "完全不符合", "value": "AA7537B2399A4EA68F63B434EC28B8B6"}, {
-                "label": "有点不符合",
-                "value": "AA7537B2301A4EA68F63B434EC28B8B6"
-            }, {"label": "不确定", "value": "AA7537B2302A4EA68F63B434EC28B8B6"}, {
-                "label": "基本符合",
-                "value": "AA7537B2303A4EA68F63B434EC28B8B6"
-            }, {"label": "完全符合", "value": "AA7537B2304A4EA68F63B434EC28B8B6"},{"label": "完全不符合", "value": "AA7537B2399A4EA68F63B434EC28B8B6"}, {
                 "label": "有点不符合",
                 "value": "AA7537B2301A4EA68F63B434EC28B8B6"
             }, {"label": "不确定", "value": "AA7537B2302A4EA68F63B434EC28B8B6"}, {
@@ -65,21 +64,60 @@ define([
                 "type": "1",
                 "typename": "单选"
             }, {
-                "code": "002002",
-                "id": "D23E7B09719740B1B3231DDC8784578F",
-                "idx": 2,
-                "ismust": "1",
-                "ismustname": "必答",
-                "name": "2.对于那些没有我幸运的人，我经常会怀有体贴、关切之情。",
-                "option": [{"label": "完全不符合", "value": "5966227000FC4222912FE8FDF6262A00"}, {
-                    "label": "有点不符合",
-                    "value": "A670E435B84F44969E724DF293FAABA2"
-                }, {"label": "不确定", "value": "5056450A45DD4F6498FF6B926FAF78F2"}, {
-                    "label": "基本符合",
-                    "value": "6C12A42B40B54C469815BB19B22FE093"
-                }, {"label": "完全符合", "value": "812BDAAD98E740DD9289B850D4938374"}],
-                "type": "1",
-                "typename": "单选"
+                "classify": "早期成长经历",
+                "code": "B1.1",
+                "fatherclassifyid": "1CA7D5765C6140A497CF33469AEF1B54",
+                "formula": "1",
+                "idx": 31,
+                "name": "若回答否，",
+                "option": [
+                    {
+                        "child": false,
+                        "isdesc": 0,
+                        "label": "那么家里共有",
+                        "optionfk": "3E9C8129410E49389DB41743A911C889",
+                        "prefix": "那么家里共有",
+                        "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+                        "suffix": "个兄弟姐妹",
+                        "type": "2",
+                        "value": ""
+                    },
+                    {
+                        "child": false,
+                        "isdesc": 0,
+                        "label": "其中男孩",
+                        "optionfk": "A8C4378B40374E7990B96277A2225576",
+                        "prefix": "其中男孩",
+                        "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+                        "suffix": "个",
+                        "type": "2",
+                        "value": ""
+                    },
+                    {
+                        "child": false,
+                        "isdesc": 0,
+                        "label": "女孩",
+                        "optionfk": "866AC8E78E2B4F6D9D045EA0B065CFA2",
+                        "prefix": "女孩",
+                        "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+                        "suffix": "个",
+                        "type": "2",
+                        "value": ""
+                    },
+                    {
+                        "child": false,
+                        "isdesc": 0,
+                        "label": "你排行第",
+                        "optionfk": "2B3EBE3D29AC484BA597909F0676E2FA",
+                        "prefix": "你排行第",
+                        "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+                        "type": "2",
+                        "value": ""
+                    }
+                ],
+                "qclassify": "独生子女",
+                "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+                "type": "3"
             }, {
                 "code": "002003",
                 "id": "D23E7B09719740B1B3231DDC8784678F",
@@ -370,7 +408,7 @@ define([
                 "typename": "单选"
             }]
         };
-        $scope.scaleData.question.splice(1, 19);
+        $scope.scaleData.question.splice(2, 15);
         console.log($scope.scaleData.question);
         $scope.getScale = function () {
             $scope.loading = {
@@ -399,25 +437,56 @@ define([
                     })
             })
         };
-        $scope.moveUp = function ($index) {
-            if ($index === 0) {
-                _remind(3, '第一题不能再上移');
-                return;
-            }
-            _swapItems($scope.scaleData.question, $index, $index - 1);
+        $scope.editQ = function (questionlist, $index) {
+            questionlist.map(_ => _.editing = false);
+            questionlist[$index].editing = true;
         };
-        $scope.moveDown = function ($index) {
-            if ($index === $scope.scaleData.question.length - 1) {
-                _remind(3, '最后一题不能再下移');
+        $scope.moveUp = function (arr, $index, type) {
+            if ($index === 0) {
+                if (type === 'question') _remind(3, '第一题不能再上移');
+                else _remind(3, '第一个不能再上移');
                 return;
             }
-            _swapItems($scope.scaleData.question, $index, $index + 1);
+            _swapItems(arr, $index, $index - 1);
+        };
+        $scope.moveDown = function (arr, $index, type) {
+            if ($index === arr.length - 1) {
+                if (type === 'question') _remind(3, '最后一题不能再上移');
+                else _remind(3, '最后一个不能再上移');
+                return;
+            }
+            _swapItems(arr, $index, $index + 1);
         };
         $scope.copy = function ($index) {
             $scope.scaleData.question.splice($index, 0, $scope.scaleData.question[$index]);
         };
-        $scope.del = function ($index) {
-            $scope.scaleData.question.splice($index, 1);
+        $scope.del = function (arr, $index, type) {
+            if (type === 'option' && arr.length <= 2) {
+                _remind(3, '最少保留2个选项');
+                return;
+            }
+            arr.splice($index, 1);
+        };
+        $scope.addOption = function (arr, $index) {
+            let newLabel = {label: '选项' + ($index + 2)};
+            arr.splice($index + 1, 0, newLabel);
+        };
+        $scope.setQ = function ($index) {
+            indexQ = $index;
+        };
+        $scope.saveOption = function () {
+            let newLabels = [],
+                newOptions = [];
+            if ($scope.batchOptions) newLabels = $scope.batchOptions.split(',');
+
+            if (newLabels.length) {
+                newOptions = [];
+                newLabels.map(_ => {
+                    newOptions.push({label: _});
+                });
+                $scope.scaleData.question[indexQ].option = $scope.scaleData.question[indexQ].option.concat(newOptions);
+                $('#optionModal').modal('hide')
+            } else $('#optionModal').modal('hide')
         };
 
         $scope.back = function () {

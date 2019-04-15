@@ -138,6 +138,24 @@ ul,ol,li{margin:0;padding:0;list-style: none;}
 }
 .scale-insertQ .tip {margin-top: 10px;}
 
+.question-set {
+    position: relative;
+    padding: 15px 0;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, .6);
+    border-top: 1px solid #eee;
+}
+.question-triangle{
+    display: block;
+    border-width: 15px;
+    position: absolute;
+    top: -30px;
+    left: 10%;
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent #eee transparent;
+    font-size: 0;
+    line-height: 0;
+}
 .modal-wrapper .form-group .col-md-1 {
     width: 10%;
     padding-right: 0;
@@ -145,6 +163,7 @@ ul,ol,li{margin:0;padding:0;list-style: none;}
 }
 .question-table {
     max-height: 300px;
+    margin-top: 15px;
     border: 1px solid #F0F0EE;
 }
 .question-table thead {
@@ -157,8 +176,14 @@ ul,ol,li{margin:0;padding:0;list-style: none;}
     cursor: pointer;
 }
 .question-table i.fa:hover{color: #00A8FF}
+.question-option {margin-top: 15px;}
+.question-option a {
+    margin-right: 15px;
+    color: #00A8FF;
+    cursor: pointer;
+}
 .question-logic{
-    margin: 15px 0;
+    margin-top: 15px;
     padding: 0 10px;
     text-align: left;
     height: 40px;
@@ -167,4 +192,15 @@ ul,ol,li{margin:0;padding:0;list-style: none;}
     border: 1px dashed #DBDBDB;
     color: #0a0a0a;
 }
-.question-logic a{text-decoration: underline;cursor: pointer}
+.question-logic a{text-decoration: underline;cursor: pointer;color: #00A8FF}
+.question-btn{
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+    cursor: pointer;
+    background-color: #00A8FF;
+    border-radius: 4px;
+}

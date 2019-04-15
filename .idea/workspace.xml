@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js" afterDir="false" />
@@ -23,44 +24,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+            <state relative-caret-position="467">
+              <caret line="442" column="10" lean-forward="true" selection-start-line="442" selection-start-column="10" selection-end-line="442" selection-end-column="10" />
               <folding>
-                <element signature="e#745#10339#0" />
-                <element signature="e#10419#11048#0" />
-                <element signature="e#17619#17639#0" />
-                <element signature="e#17661#17672#0" />
-                <element signature="e#18129#18149#0" />
-                <element signature="e#18310#18451#0" />
-                <element signature="e#11080#11429#0" />
-                <element signature="e#11470#11531#0" />
-                <element signature="e#18945#19022#0" />
-                <element signature="e#11574#11607#0" />
-                <element signature="e#19443#20026#0" />
-                <element signature="e#12153#12334#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="132" column="70" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#932#1648#0" />
+                <element signature="e#1677#17524#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="142" column="66" selection-start-line="142" selection-start-column="66" selection-end-line="142" selection-end-column="66" />
+              <folding>
+                <element signature="n#div#1;n#fieldset#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#2;n#fieldset#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="122" column="19" lean-forward="true" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
+            <state relative-caret-position="3104">
+              <caret line="194" column="75" selection-start-line="194" selection-start-column="75" selection-end-line="194" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -82,6 +79,7 @@
       <find>editor.sync</find>
       <find>back</find>
       <find>kind-editor</find>
+      <find>editing</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,17 +103,18 @@
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.safe/iiw.safe.eventRegister/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/css/index.css" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/index.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappdirectory/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/package.json" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/view/scale.html" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css" />
       </list>
     </option>
   </component>
@@ -134,7 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,6 +143,46 @@
             <path>
               <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
               <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.command" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe.sjposition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe.sjposition" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe.sjposition" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.safe.sjposition" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="directives" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -242,6 +280,15 @@
               <item name="iiw.system.ftappscale" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappscale" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
@@ -296,6 +343,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -458,12 +506,16 @@
       <workItem from="1571362761638" duration="27354000" />
       <workItem from="1571460161346" duration="43511000" />
       <workItem from="1571617938867" duration="261000" />
-      <workItem from="1571622722287" duration="27653000" />
+      <workItem from="1571622722287" duration="43767000" />
+      <workItem from="1571732121033" duration="667000" />
+      <workItem from="1571732807646" duration="407000" />
+      <workItem from="1571735516727" duration="40000" />
+      <workItem from="1571735573935" duration="9737000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166553000" />
+    <option name="totallyTimeSpent" value="193518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -526,9 +578,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.tdt/webapp/css/tdt.css" />
     <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.tdtgx/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -651,34 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="131" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.sjposition/webapp/js/directives/safeGxTdt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1760">
-          <caret line="221" column="95" selection-start-line="221" selection-start-column="85" selection-end-line="221" selection-end-column="95" />
-          <folding>
-            <element signature="e#702#1457#0" />
-            <element signature="e#1491#2267#0" />
-            <element signature="e#5505#7376#0" />
-            <element signature="e#7426#9166#0" />
-            <element signature="e#10068#11994#0" />
-            <element signature="e#12090#13313#0" />
-            <element signature="e#13412#16620#0" />
-            <element signature="e#16700#17356#0" />
-            <element signature="e#17839#18244#0" />
-            <element signature="e#18331#20272#0" />
-            <element signature="e#20355#21244#0" />
-            <element signature="e#21323#22111#0" />
-            <element signature="e#22193#22420#0" />
-            <element signature="e#22860#25355#0" />
-            <element signature="e#25411#27058#0" />
-            <element signature="e#27261#27702#0" />
-            <element signature="e#27789#28152#0" />
-            <element signature="e#28216#28923#0" />
-            <element signature="e#29182#35102#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -833,18 +854,6 @@
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/modules/iiw.system.scalecheck/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6" column="50" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="50" />
-          <folding>
-            <element signature="e#776#7066#0" />
-            <element signature="e#7927#8403#0" />
-            <element signature="e#8902#9311#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.daily/webapp/view/add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
@@ -935,43 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="31" column="97" selection-start-line="31" selection-start-column="86" selection-end-line="31" selection-end-column="97" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
-          <folding>
-            <element signature="e#745#10339#0" />
-            <element signature="e#10419#11048#0" />
-            <element signature="e#17619#17639#0" />
-            <element signature="e#17661#17672#0" />
-            <element signature="e#18129#18149#0" />
-            <element signature="e#18310#18451#0" />
-            <element signature="e#11080#11429#0" />
-            <element signature="e#11470#11531#0" />
-            <element signature="e#18945#19022#0" />
-            <element signature="e#11574#11607#0" />
-            <element signature="e#19443#20026#0" />
-            <element signature="e#12153#12334#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/js/directives/kindEditor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -979,21 +951,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html">
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappwjmanage/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="132" column="70" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="70" />
+        <state relative-caret-position="804">
+          <caret line="183" column="22" selection-start-line="144" selection-start-column="15" selection-end-line="183" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.safe/iiw.safe.sjposition/webapp/js/directives/safeGxTdt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1760">
+          <caret line="221" column="95" selection-start-line="221" selection-start-column="85" selection-end-line="221" selection-end-column="95" />
+          <folding>
+            <element signature="e#702#1457#0" />
+            <element signature="e#1491#2267#0" />
+            <element signature="e#5505#7376#0" />
+            <element signature="e#7426#9166#0" />
+            <element signature="e#10068#11994#0" />
+            <element signature="e#12090#13313#0" />
+            <element signature="e#13412#16620#0" />
+            <element signature="e#16700#17356#0" />
+            <element signature="e#17839#18244#0" />
+            <element signature="e#18331#20272#0" />
+            <element signature="e#20355#21244#0" />
+            <element signature="e#21323#22111#0" />
+            <element signature="e#22193#22420#0" />
+            <element signature="e#22860#25355#0" />
+            <element signature="e#25411#27058#0" />
+            <element signature="e#27261#27702#0" />
+            <element signature="e#27789#28152#0" />
+            <element signature="e#28216#28923#0" />
+            <element signature="e#29182#35102#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/view/scale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="83" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="122" column="19" lean-forward="true" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
+        <state relative-caret-position="3104">
+          <caret line="194" column="75" selection-start-line="194" selection-start-column="75" selection-end-line="194" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappquestionnaire/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="164" column="32" lean-forward="true" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
+          <folding>
+            <element signature="e#776#7066#0" />
+            <element signature="e#7927#8403#0" />
+            <element signature="e#8902#9311#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="442" column="10" lean-forward="true" selection-start-line="442" selection-start-column="10" selection-end-line="442" selection-end-column="10" />
+          <folding>
+            <element signature="e#932#1648#0" />
+            <element signature="e#1677#17524#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappscale/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="142" column="66" selection-start-line="142" selection-start-column="66" selection-end-line="142" selection-end-column="66" />
+          <folding>
+            <element signature="n#div#1;n#fieldset#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#2;n#fieldset#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
