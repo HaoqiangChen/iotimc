@@ -27,14 +27,14 @@ define([
         };
         $scope.params = {
             pageNo: 0,
-            pageSize: 5
+            pageSize: 10
         };
 
         $scope.wjList = [
-            {name: '初犯', id: 'D64B236EA44046528699011C0258E9DE', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', createTime: 1566459855000},
-            {name: '刑罚执行完毕后未重新犯罪者', id: '354DD9C8DD08460A83BDA9A06D874B86', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', createTime: 1566459855000},
-            {name: '重犯', id: 'B701AB0474BE475B8CF22E6152B9FC01', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', createTime: 1566459855000},
-            {name: '共情量表测试', id: '0CFF778DCDD94C85BC67141E388E403E', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', createTime: 1566459855000}
+            {name: '初犯', id: 'D64B236EA44046528699011C0258E9DE', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
+            {name: '刑罚执行完毕后未重新犯罪者', id: '354DD9C8DD08460A83BDA9A06D874B86', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
+            {name: '重犯', id: 'B701AB0474BE475B8CF22E6152B9FC01', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
+            {name: '共情量表测试', id: '0CFF778DCDD94C85BC67141E388E403E', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000}
         ];
         $scope.getList = function () {
 
@@ -67,6 +67,9 @@ define([
                         if (data.result.params) {
                             $scope.params = data.result.params;
                         }
+                    },function (err) {
+                        _remind(4, err.message, '请求失败，请查看网络状态!');
+                        $scope.loading.content = '请求失败，请查看网络状态';
                     })
             })
         };
@@ -84,17 +87,32 @@ define([
 
         $scope.edit = function (action, data) {
             $scope.hasEdit = true;
-            $scope.wjDetails = {};
+            $scope.wjDetails = {
+                code: '',
+                name: '',
+                subtitle: '',
+                describes: '',
+                typefk: '',
+                status: 'N',
+                answersituation: '',
+                iscommon: '0',
+                question: '',
+                ismust: '1',
+                istotal: 'N',
+            };
+            $scope.wjDetails.action = action;
             switch (action) {
                 case 'add':
                     $('#newwjModal').modal('hide');
+                    if (data === 'wjlx_ftwj') $scope.wjDetails.typefk = '430DE5F396E94FA8B3CF56B5437D0DD9';
+                    else $scope.wjDetails.typefk = '1F0EE9C8AB7145C184B23283C5BE5B17';
                     $scope.wjDetails.content = data;
                 break;
                 case 'mod':
                     $scope.wjDetails = data;
                 break;
                 case 'copy':
-                    delete data.id;
+                    // delete data.id;
                     $scope.wjDetails = data;
                     break;
             }
@@ -128,10 +146,33 @@ define([
 
         };
         $scope.saveWj = function () {
-            console.log($scope.wjDetails);
+            $('#wjconfigModal').modal('hide');
+            $scope.loading = {
+                isLoading: true,
+                content: '提交中'
+            };
+
+            var url = domain + '/terminal/interview/system.do?action=saveAndUpdateNaire';
+
+            getToken(function (token) {
+                iAjax
+                    .post(`${url}&authorization=${token}`, $scope.wjDetails)
+                    // .post(url, data)
+                    .then(function (data) {
+                        console.log(data);
+                        if (data.status === 1) {
+                            _remind(1, data.message, '新增问卷成功!');
+                            $scope.getList();
+                            $scope.loading.isLoading = false;
+                        }
+                    }, function (err) {
+                        if (!$scope.wjDetails.id) _remind(3, err.message, '新增调查问卷失败!');
+                        else _remind(3, err.message, '修改调查问卷失败!');
+                        $scope.loading.isLoading = false;
+                    })
+            })
         };
 
-        // 模块加载完成后初始化事件
         $scope.$on('ftappWjmanageControllerOnEvent', function () {
             // $scope.getList();
         });
@@ -140,7 +181,7 @@ define([
             iAjax.post(domain + '/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                 callback(data.token);
             }, function (err) {
-                _remind(4, '请求失败，请查看网络状态!');
+                _remind(4, err.message, '请求失败，请查看网络状态!');
                 $scope.loading.content = '请求失败，请查看网络状态';
             });
         }

@@ -108,10 +108,6 @@
                                                                 </div>
                                                                 <div class="col-md-6"></div>
                                                             </div>
-                                                            <div class="question-logic">
-                                                                <span>逻辑设置：</span>
-                                                                <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
-                                                            </div>
                                                         </div>
                                                         <div ng-if="question.type !== '1'">
                                                             <div class="table-responsive question-table">
@@ -121,17 +117,72 @@
                                                                         <th>填空</th>
                                                                         <th>填空类型</th>
                                                                         <th>填空属性</th>
+                                                                        <th>选项提示</th>
                                                                         <th>操作</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr ng-repeat="row in question.option">
-                                                                        <td class="label-box">填空{{$index + 1}}</td>
-                                                                        <td class="label-box">填空{{$index + 1}}</td>
-                                                                        <td class="score-box">
+                                                                        <td>填空{{$index + 1}}</td>
+                                                                        <td>
+                                                                            <select ng-model="row.type" class="form-control">
+                                                                                <option ng-repeat="(key, type) in inputTypes track by key" value="{{type.type}}">{{type.typename}}</option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="input-attr">
+                                                                            <form class="form-inline">
+                                                                                <div class="form-group">
+                                                                                    <label for="prefix">前缀:</label>
+                                                                                    <input type="text" ng-model="row.prefix" class="form-control" id="prefix">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="suffix">后缀:</label>
+                                                                                    <input type="text" ng-model="row.suffix" class="form-control" id="suffix">
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.type === '0' || row.type === '1'">
+                                                                                    <label for="minwords">最小字符:</label>
+                                                                                    <input type="number" ng-model="row.minwords" class="form-control" id="minwords">
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.type === '0' || row.type === '1'">
+                                                                                    <label for="maxwords">最大字符:</label>
+                                                                                    <input type="number" ng-model="row.maxwords" class="form-control" id="maxwords">
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.type === '2' || row.type === '3'">
+                                                                                    <label for="maxnumber">最小范围:</label>
+                                                                                    <input type="number" ng-model="row.maxnumber" class="form-control" id="maxnumber">
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.type === '2' || row.type === '3'">
+                                                                                    <label for="minnumber">最大范围:</label>
+                                                                                    <input type="number" ng-model="row.minnumber" class="form-control" id="minnumber">
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.type === '6'">
+                                                                                    <label>时间格式:</label>
+                                                                                    <select ng-model="row.format" class="form-control">
+                                                                                        <option value="1">年</option>
+                                                                                        <option value="2">年月</option>
+                                                                                        <option value="3">年月日</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </form>
                                                                         </td>
                                                                         <td>
-                                                                            <i class="fa fa-plus-circle fa-fw" ng-click="addOption(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
+                                                                            <form class="form-inline">
+                                                                                <div class="form-group">
+                                                                                    <label>是否提示:</label>
+                                                                                    <select ng-model="row.isdesc" class="form-control">
+                                                                                        <option value="0">不加提示</option>
+                                                                                        <option value="1">普通提示</option>
+                                                                                        <option value="2">弹窗提示</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="form-group" ng-if="row.isdesc !== 0">
+                                                                                    <label for="descr">提示内容:</label>
+                                                                                    <input type="text" ng-model="row.descr" class="form-control" id="descr">
+                                                                                </div>
+                                                                            </form>
+                                                                        </td>
+                                                                        <td>
+                                                                            <i class="fa fa-plus-circle fa-fw" ng-click="addInput(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
                                                                             <i class="fa fa-minus-circle fa-fw" ng-click="del(question.option, $index, 'option')" title="删除当前选项（最少保留2个选项）"></i>
 
                                                                             <i class="fa fa-arrow-circle-up fa-fw" ng-click="moveUp(question.option, $index, 'option')" title="将当前选项上移一个位置"></i>
@@ -141,10 +192,10 @@
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                            <div class="question-logic">
-                                                                <span>逻辑设置：</span>
-                                                                <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
-                                                            </div>
+                                                        </div>
+                                                        <div class="question-logic">
+                                                            <span>逻辑设置：</span>
+                                                            <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
                                                         </div>
                                                         <div class="question-btn" ng-click="question.editing = false">完成编辑</div>
                                                     </div>
@@ -158,7 +209,7 @@
                                                     <button class="btn btn-lg btn-primary">填空题</button>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary btn-add" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"></i>添加问题</button>
+                                            <button class="btn btn-primary btn-add" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd"><i class="fa fa-plus"></i>添加问题</button>
                                         </div>
                                     </div>
                                 </div>
@@ -263,18 +314,34 @@
                             </div>
                             <div class="modal-body">
                                 <div class="widget-content">
-                                    <div class="modal-wrapper" style="height: 500px;">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                                <b>按选项跳题</b>
-                                            </label>
+                                    <div class="jump-wrapper" style="height: 500px;">
+                                        <div ng-if="question.type === '1'">
+                                            <div class="radio" ng-click="jump1 = !jump1">
+                                                <label>
+                                                    <i class="fa" ng-class="{'fa-square-o': question.jumpway === '1', 'fa-check-square-o': jump1}"></i>
+                                                    <b>按选项跳题</b>
+                                                </label>
+                                            </div>
+                                            <div class="opjump" ng-if="jump1 == true">按选项跳题</div>
                                         </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                                <b>无条件跳题</b>
-                                            </label>
+                                        <div>
+                                            <div class="radio" ng-click="jump2 = !jump2">
+                                                <label>
+                                                    <i class="fa" ng-class="{'fa-square-o': !question.anyjump, 'fa-check-square-o': question.anyjump}"></i>
+                                                    <b>无条件跳题</b>
+                                                </label>
+                                            </div>
+                                            <div class="anyjump" ng-if="question.anyjump">
+                                                <div class="form-group clearfix">
+                                                    <div class="col-md-3">填写此题后跳转到:</div>
+                                                    <div class="col-md-9">
+                                                        <select ng-model="question.anyjump" class="form-control">
+                                                            <option value="">请选择要跳转到的题目</option>
+                                                            <option ng-repeat="(idx, question) in scaleData.question track by idx" value="{{question.idx}}">{{question.idx}}.{{question.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

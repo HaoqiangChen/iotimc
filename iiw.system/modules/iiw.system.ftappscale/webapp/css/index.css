@@ -169,8 +169,11 @@ ul,ol,li{margin:0;padding:0;list-style: none;}
 .question-table thead {
     background-color: #F0F0EE;
 }
-.question-table thead th {color: #0a0a0a}
+.question-table thead th {color: #0a0a0a;text-align: center;}
+.question-table tbody tr td {text-align: center}
 .question-table .label-box input {width: 60%;}
+.question-table .input-attr input[type=number] {width: 50px;}
+.question-table .form-group select {border: 1px solid rgba(255, 255, 255, 0.25);}
 .question-table i.fa{
     font-size: 20px;
     cursor: pointer;

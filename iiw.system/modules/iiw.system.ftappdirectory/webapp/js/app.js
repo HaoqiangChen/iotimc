@@ -7,33 +7,67 @@ define([
     'cssloader!system/ftappdirectory/css/index.css',
     'system/js/directives/systemTreeViewDirective'
 ], function(app) {
-    app.controller('ftappDirectoryController', ['$scope', '$state', 'iAjax', 'mainService', 'iMessage', function($scope, $state, iAjax, mainService, iMessage) {
+    app.controller('ftappDirectoryController', ['$scope', '$state', '$stateParams', 'iAjax', 'mainService', 'iMessage', function($scope, $state, $stateParams, iAjax, mainService, iMessage) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '问卷目录设置';
         var currentNode;
         $scope.m_sCode = null;
         $scope.m_sMode = 'view';
+        var domain = 'http://iotimc8888.goho.co:17783';
+        var wjId;
+        if ($stateParams.data) {
+            console.log($stateParams.data);
+            wjId = $stateParams.data.id;
+        } else {
+            wjId = 'B701AB0474BE475B8CF22E6152B9FC01'
+        }
 
         function init() {
             $scope.reset();
-            iAjax.post('security/deviceCode.do?action=getDeviceCode').then(function(data) {
-                if (data.result.rows && data.result.rows.length > 0) {
-                    $scope.treeNodes = {
-                        zNodes: data.result.rows
-                    };
-                } else {
-                    $scope.treeNodes = {
-                        zNodes: []
-                    };
-                }
-                $scope.$broadcast('initTree', $scope.treeNodes);
-            }, function() {
-                var message = {};
-                message.level = 4;
-                message.title = '消息提醒';
-                message.content = '网络连接失败!';
-                iMessage.show(message, false);
-            });
+            var url, data;
+            url = domain + '/terminal/interview/system.do?action=getQuestiontypeList';
+            data = {
+                naireid: wjId
+            };
+            getToken(function (token) {
+                iAjax
+                    .post(`${url}&authorization=${token}`, data)
+                    // .post(url, data)
+                    .then(function (data) {
+                        console.log(data);
+                        if (data.result.rows && data.result.rows.length > 0) {
+                            $scope.treeNodes = {
+                                zNodes: data.result.rows
+                            };
+                        } else {
+                            $scope.treeNodes = {
+                                zNodes: []
+                            };
+                        }
+                        $scope.$broadcast('initTree', $scope.treeNodes);
+                    },function (err) {
+                        _remind(4, err.message, '请求失败，请查看网络状态!');
+                        $scope.loading.content = '请求失败，请查看网络状态';
+                    })
+            })
+            // iAjax.post('security/deviceCode.do?action=getDeviceCode').then(function(data) {
+            //     if (data.result.rows && data.result.rows.length > 0) {
+            //         $scope.treeNodes = {
+            //             zNodes: data.result.rows
+            //         };
+            //     } else {
+            //         $scope.treeNodes = {
+            //             zNodes: []
+            //         };
+            //     }
+            //     $scope.$broadcast('initTree', $scope.treeNodes);
+            // }, function() {
+            //     var message = {};
+            //     message.level = 4;
+            //     message.title = '消息提醒';
+            //     message.content = '网络连接失败!';
+            //     iMessage.show(message, false);
+            // });
         }
 
         // 树节点点击事件

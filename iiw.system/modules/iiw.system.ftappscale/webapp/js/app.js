@@ -9,6 +9,11 @@ define([
     'system/ftappwjmanage/js/directives/kindEditor'
 ], function (app) {
     var packageName = 'iiw.system.ftappscale';
+    app.filter('toString',function(){
+        return function (number) {
+            return number.toString();
+        }
+    });
     app.controller('ftappScaleController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '量表设计';
@@ -24,6 +29,15 @@ define([
 
         $scope.batchOptions = '';
         $scope.questionlist = [];
+        $scope.inputTypes = [
+            {type: 0, typename: '多行文本框'},
+            {type: 1, typename: '无属性'},
+            {type: 2, typename: '整数'},
+            {type: 3, typename: '百分数'},
+            {type: 4, typename: '手机号'},
+            {type: 5, typename: '邮箱'},
+            {type: 6, typename: '时间选择控件'}
+        ];
 
         $scope.question = {
             "code": "002001",
@@ -53,6 +67,7 @@ define([
                 "idx": 1,
                 "ismust": "1",
                 "ismustname": "必答",
+                "jumpway": '1',
                 "name": "1.我时常做白日梦，幻想可能会发生在我身上的事情。",
                 "option": [{"label": "完全不符合", "value": "AA7537B2399A4EA68F63B434EC28B8B6"}, {
                     "label": "有点不符合",
@@ -79,7 +94,7 @@ define([
                         "prefix": "那么家里共有",
                         "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
                         "suffix": "个兄弟姐妹",
-                        "type": "2",
+                        "type": "",
                         "value": ""
                     },
                     {
@@ -471,8 +486,13 @@ define([
             let newLabel = {label: '选项' + ($index + 2)};
             arr.splice($index + 1, 0, newLabel);
         };
+        $scope.addInput = function (arr, $index) {
+            let newLabel = {type: '1'};
+            arr.splice($index + 1, 0, newLabel);
+        };
         $scope.setQ = function ($index) {
             indexQ = $index;
+            $scope.question = $scope.scaleData.question[$index];
         };
         $scope.saveOption = function () {
             let newLabels = [],

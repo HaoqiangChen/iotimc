@@ -263,3 +263,9 @@
     border: 1px solid #1ea0fa;
     background-color: #1ea0fa;
 }
+/*问卷设置*/
+.config-box .form-group .col-md-1 {
+    width: 11%;
+    padding-right: 0;
+    word-wrap:break-word;
+}

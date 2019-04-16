@@ -24,8 +24,8 @@
                                     <label>发布状态: </label>
                                     <select class="form-control" ng-change="getList()" ng-model="filter.content">
                                         <option value="">全部</option>
-                                        <option value="0">已发布</option>
-                                        <option value="1">未发布</option>
+                                        <option value="P">已发布</option>
+                                        <option value="N">未发布</option>
                                     </select>
                                 </div>
                                 <div class="input-group pull-right" style="width:247px;">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="ui-layout-container" ui-layout-container>
                             <div class="layout-full system-wjmanage-container" style="position: relative; display:inline-block;">
-                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2);">
                                     <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                                         <div class="loading-toast">
                                             <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
@@ -54,8 +54,8 @@
                                                 <div class="pull-right">
                                                     <div class="pull-left item-id">ID：{{row.id}}</div>
                                                     <div class="pull-left item-sheet">类型：<span style="color: red;">{{row.typename}}</span></div>
-                                                    <div class="pull-left" ng-class="row.runStatus === 1 ? 'item-release': 'item-stop'">
-                                                        <i class="fa fa-circle" style="font-size: 10px;margin-right: 5px;"></i>{{row.runStatusName}}
+                                                    <div class="pull-left" ng-class="row.status === 'P' ? 'item-release': 'item-stop'">
+                                                        <i class="fa fa-circle" style="font-size: 10px;margin-right: 5px;"></i>{{row.status === 'P' ? '已发布' : '未发布'}}
                                                     </div>
                                                     <!-- <div class="pull-left item-sheet">答卷：<i ng-style="{color: row.answerNum > 0 ? '#0085ff' : '#262626'}">{{row.answerNum}}</i></div> -->
                                                     <div class="pull-left item-date">{{row.cretime | date: 'yyyy-MM-dd hh:mm'}}</div>
@@ -83,8 +83,8 @@
                                                 </div>
                                                 <div class="operation-box pull-right">
                                                     <div class="pull-left item-running">
-                                                        <i class="fa" ng-class="row.runStatus === 1 ? 'fa-pause': 'fa-play-circle'"></i>
-                                                        <span class="vam">{{row.runStatus === 1 ? '停止' : '发布'}}</span>
+                                                        <i class="fa" ng-class="row.status === 'P' ? 'fa-pause': 'fa-play-circle'"></i>
+                                                        <span class="vam">{{row.status === 'P' ? '停止' : '发布'}}</span>
                                                     </div>
                                                     <span class="splitline"></span>
                                                     <div class="pull-left item-control" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('copy', row)">
@@ -151,27 +151,74 @@
                             </div>
                             <div class="modal-body">
                                 <div class="widget-content">
-                                    <div class="modal-wrapper" ng-if="hasEdit" style="height: 500px;">
-                                        <form class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="wjTitle" class="col-md-2 control-label">问卷标题</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" id="wjTitle" ng-model="wjDetails.name">
+                                    <div class="modal-wrapper">
+                                        <div class="config-box" ng-if="hasEdit">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">问卷标题</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" ng-model="wjDetails.name">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="wjSubtitle" class="col-md-2 control-label">问卷副标题</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" id="wjSubtitle" ng-model="wjDetails.describes">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">问卷副标题</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" ng-model="wjDetails.subtitle">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">问卷说明</label>
-                                                <div class="col-md-10">
-                                                    <kind-editor ng-model="wjDetails.answersituation"></kind-editor>
+                                                <div class="form-group" ng-if="wjDetails.content === 'wjlx_lb'">
+                                                    <label class="col-md-1 control-label">问卷编号</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" ng-model="wjDetails.code">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                                <!-- <div class="form-group">
+                                                    <label class="col-md-1 control-label">是否发布</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control" ng-model="wjDetails.status">
+                                                            <option value="P">是</option>
+                                                            <option value="N">否</option>
+                                                        </select>
+                                                    </div>
+                                                </div> -->
+                                                <div class="form-group" ng-if="wjDetails.content === 'wjlx_lb'">
+                                                    <label class="col-md-1 control-label">附加题选择</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" ng-model="wjDetails.question">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" ng-if="wjDetails.content === 'wjlx_lb'">
+                                                    <label class="col-md-1 control-label">是否公用</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control" ng-model="wjDetails.iscommon">
+                                                            <option value="0">是</option>
+                                                            <option value="1">否</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" ng-if="wjDetails.content === 'wjlx_lb'">
+                                                    <label class="col-md-1 control-label">是否统计分数</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control" ng-model="wjDetails.istotal">
+                                                            <option value="Y">是</option>
+                                                            <option value="N">否</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-1 control-label">问卷说明</label>
+                                                    <div class="col-md-10">
+                                                        <kind-editor ng-model="wjDetails.describes"></kind-editor>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="form-group">
+                                                    <label class="col-md-1 control-label">访谈员自我介绍</label>
+                                                    <div class="col-md-10">
+                                                        <kind-editor ng-model="wjDetails.answersituation"></kind-editor>
+                                                    </div>
+                                                </div> -->
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
