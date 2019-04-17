@@ -67,8 +67,8 @@
                                                         <i class="icon icon-design"></i>
                                                         <span>设计问卷</span>
                                                         <ul class="spinner-list" ng-class="{'on': hover1}">
-                                                            <li class="spinner-item" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('mod', row)">问卷设置</li>
-                                                            <li class="spinner-item" ng-click="question(row)">编辑问卷</li>
+                                                            <li class="spinner-item" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="editWj('mod', row)">问卷设置</li>
+                                                            <li class="spinner-item" ng-click="goWj(row)">编辑问卷</li>
                                                             <li class="spinner-item" ng-if="row.content === 'wjlx_ftwj'" ng-click="directory(row)">目录设置</li>
                                                         </ul>
                                                     </div>
@@ -82,16 +82,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="operation-box pull-right">
-                                                    <div class="pull-left item-running">
+                                                    <div class="pull-left item-running" ng-click="release(row)">
                                                         <i class="fa" ng-class="row.status === 'P' ? 'fa-pause': 'fa-play-circle'"></i>
                                                         <span class="vam">{{row.status === 'P' ? '停止' : '发布'}}</span>
                                                     </div>
                                                     <span class="splitline"></span>
-                                                    <div class="pull-left item-control" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('copy', row)">
+                                                    <!-- <div class="pull-left item-control" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="editWj('copy', row)"> -->
+                                                    <div class="pull-left item-control" ng-click="editWj('copy', row)">
                                                         <i class="fa fa-copy"></i>
                                                         <span class="vam">复制</span>
                                                     </div>
-                                                    <div class="pull-left item-control">
+                                                    <div class="pull-left item-control" ng-click="delWj(row)">
                                                         <i class="fa fa-trash-o"></i>
                                                         <span class="vam">删除</span>
                                                     </div>
@@ -129,7 +130,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="figure-bot">
-                                                    <div class="btn-new" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="edit('add', row.type)">创建</div>
+                                                    <div class="btn-new" data-backdrop="false" data-target="#wjconfigModal" data-toggle="modal" ng-click="editWj('add', row.type)">创建</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +225,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="cancelEdit()">取消</button>
+                            <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="hasEdit = false">取消</button>
                             <button class="btn btn-primary btn-lg btn-larger" ng-click="saveWj()">保存</button>
                         </div>
                     </div>

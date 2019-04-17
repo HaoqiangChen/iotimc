@@ -15,12 +15,12 @@
                                     </div>
                                     <div class="wjmenu-content" i-scroll2>
                                         <ul class="contents-list">
-                                            <li class="contents-item" ng-repeat="(index, group) in contentsList track by index" ng-click="menuClick($event)">
+                                            <li class="contents-item" ng-repeat="(index, group) in contentsList track by index" ng-click="menuClick($event, group)">
                                                 <div class="item-box">
                                                     <em>{{group.type}}</em>
                                                     <span class="name">{{group.name}}</span>
                                                     <span class="label label-info ng-binding">{{group.secondary.length}}</span>
-                                                    <i class="arrow fa" ng-class="group.hasChild ? 'fa-angle-down' : 'fa-angle-left'"></i>
+                                                    <i class="arrow fa" ng-class="group.hasFold ? 'fa-angle-down' : 'fa-angle-left'"></i>
                                                 </div>
                                                 <ol class="contents-fold">
                                                     <li class="title" ng-repeat="(index, item) in group.secondary track by index" ng-click="secondaryClick($event)">{{item.title}}</li>
@@ -30,9 +30,12 @@
                                     </div>
                                 </div>
                                 <div class="system-question-container">
-                                    <a class="btn btn-success save" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</a>
-                                    <a class="btn btn-danger back" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</a>
-                                    <div class="question-wrapper"></div>
+                                    <div class="question-wrapper">
+                                        <div class="iiw-system-question-footer clearfix" size="60px">
+                                            <button class="btn btn-success col-md-4" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
+                                            <button class="btn btn-danger col-md-4" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
