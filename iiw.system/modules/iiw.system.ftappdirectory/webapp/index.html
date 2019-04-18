@@ -11,6 +11,7 @@
                             <div>
                                 <ul system-tree-view ng-model="selectNode" id="sycodeTreeview" class="ztree"></ul>
                             </div>
+                            <div ng-if="!treeNodes.zNodes.length" style="text-align: center;">暂无目录，请添加</div>
                         </div>
                     </div>
                     <div class="col-lg-9 iiw-system-form-container">
@@ -18,7 +19,7 @@
                             <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                                 <div class="ui-layout-container" size="60px" ui-layout-container>
                                     <div class="iiw-system-form-button-layout-container">
-                                        <button class="btn btn-s-md btn-primary" ng-click="add()" ><i class="fa fa-plus"></i>添加</button>
+                                        <button class="btn btn-s-md btn-primary" ng-disabled = "entityItem.parentTId" ng-click="add()" ><i class="fa fa-plus"></i>添加</button>
                                         <button class="btn btn-s-md btn-success" ng-disabled = "entityItem.id == null && entityItem.parentid == null" ng-click="mod()" ><i class="fa fa-edit"></i>修改</button>
                                         <button class="btn btn-s-md btn-danger" ng-disabled = "entityItem.id == null && entityItem.parentid == null" ng-click="delete()"><i class="fa fa-minus"></i>删除</button>
                                         <button class="btn btn-s-md btn-danger pull-right" ng-click="back()"><i class="fa fa-mail-reply-all"></i>返回</button>
@@ -68,53 +69,53 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input type="text" ng-model="entityItem.coding" placeholder="请输入编号" class="form-control" system-input-verify required/>
+                                                        <input type="text" ng-model="entityItem.code" placeholder="请输入编号,一级目录为大写字母排序,二级目录为数字排序" class="form-control" system-input-verify required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <lable ng-show="entityItem.coding == null && m_sCode != null" style="color:red;">*编号不能为空</lable>
+                                                    <lable ng-show="entityItem.code == null && m_sCode != null" style="color:red;">*编号不能为空</lable>
                                                 </div>
                                             </div>
                                             <div class="control-group" ng-class="{'has-error' : (entityItemForm.entityItem.name.$invalid)}">
                                                 <div class="col-md-3">
-                                                    <label class="control-label">编码名称</label>
+                                                    <label class="control-label">目录名称</label>
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input type="text" ng-model="entityItem.name" placeholder="请输入编码名称" class="form-control" system-input-verify required/>
+                                                        <input type="text" ng-model="entityItem.name" placeholder="请输入目录名称" class="form-control" system-input-verify required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <lable ng-show="entityItem.name == null && m_sCode != null" style="color:red;">*编码名称不能为空</lable>
+                                                    <lable ng-show="entityItem.name == null && m_sCode != null" style="color:red;">*目录名称不能为空</lable>
                                                 </div>
                                             </div>
-                                            <div class="control-group" ng-class="{'has-error' : (entityItemForm.entityItem.type.$invalid)}">
+                                            <!-- <div class="control-group" ng-class="{'has-error' : (entityItemForm.entityItem.type.$invalid)}">
                                                 <div class="col-md-3">
-                                                    <label class="control-label">编码类型</label>
+                                                    <label class="control-label">目录类型</label>
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input type="text" ng-model="entityItem.type" placeholder="输入编码类型" class="form-control" system-input-verify required/>
+                                                        <input type="text" ng-model="entityItem.type" placeholder="输入目录类型" class="form-control" system-input-verify required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <lable ng-show="entityItem.type == null && m_sCode != null" style="color:red;">*编码类型不能为空</lable>
+                                                    <lable ng-show="entityItem.type == null && m_sCode != null" style="color:red;">*目录类型不能为空</lable>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="control-group">
                                                 <div class="col-md-3">
-                                                    <label class="control-label">编码内容</label>
+                                                    <label class="control-label">目录标题内容</label>
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <input type="text" ng-model="entityItem.content" placeholder="输入编码内容" class="form-control" system-input-verify required/>
+                                                        <input type="text" ng-model="entityItem.subtitle" placeholder="目录标题内容" class="form-control" system-input-verify required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <lable ng-show="!entityItem.content && m_sCode != null" style="color:red;">*编码类型不能为空</lable>
+                                                    <lable ng-show="!entityItem.subtitle && m_sCode != null" style="color:red;">*目录类型不能为空</lable>
                                                 </div>
                                             </div>
-                                            <div class="control-group" ng-class="{'has-error' : (entityItemForm.devicecode.status.$invalid)}">
+                                            <!-- <div class="control-group" ng-class="{'has-error' : (entityItemForm.devicecode.status.$invalid)}">
                                                 <div class="col-md-3">
                                                     <label class="control-label">状   态</label>
                                                 </div>
@@ -126,7 +127,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </fieldset>
                                         <div class="form-actions">
                                             <div>

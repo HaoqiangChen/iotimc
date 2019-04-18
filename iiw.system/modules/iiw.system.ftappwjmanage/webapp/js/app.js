@@ -40,8 +40,10 @@ define([
 
     $scope.wjList = [
         {name: '初犯', id: 'D64B236EA44046528699011C0258E9DE', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
-        {name: '刑罚执行完毕后未重新犯罪者', id: '354DD9C8DD08460A83BDA9A06D874B86', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
-        {name: '重犯', id: 'B701AB0474BE475B8CF22E6152B9FC01', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
+      {name: '测试问卷', id: '0FB464990CFB480FA534AA3966FA791E', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000},
+      {name: '测试量表', id: '574DBD507DB04A7C84AE46E142A22FB2', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000},
+      {name: '刑罚执行完毕后未重新犯罪者', id: '354DD9C8DD08460A83BDA9A06D874B86', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
+      {name: '重犯', id: 'B701AB0474BE475B8CF22E6152B9FC01', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
         {name: '共情量表测试', id: '0CFF778DCDD94C85BC67141E388E403E', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000}
     ];
     $scope.getList = function () {
@@ -136,10 +138,19 @@ define([
         };
         _remind(4, '错误操作!');
       }
-
     };
-    $scope.directory = function (data) {
-      $state.go('system.ftappdirectory');
+    $scope.directory = function (item) {
+      if (item) {
+        $state.params = {
+          data: item
+        };
+        $state.go('system.ftappdirectory', $state.params);
+      } else {
+        $state.params = {
+          data: null
+        };
+        _remind(4, '错误操作!');
+      }
     };
     $scope.saveWj = function () {
       $('#wjconfigModal').modal('hide');
@@ -204,7 +215,7 @@ define([
           .post(`${url}&authorization= ${token}`, wjData)
           // .post(url, data)
           .then(function (data) {
-            console.log(data);
+            // console.log(data);
             if (data.status === 1) {
               _remind(1, data.message, statusName + '问卷成功!');
               $scope.getList();
@@ -253,7 +264,7 @@ define([
           .post(`${url}&authorization= ${token}`, data)
           // .post(url, data)
           .then(function (data) {
-            console.log(data);
+            // console.log(data);
             if (data.status === 1) {
               _remind(1, data.message, '删除问卷成功!');
               $scope.getList();

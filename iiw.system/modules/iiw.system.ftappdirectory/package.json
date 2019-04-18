@@ -5,6 +5,6 @@
   "author": "chq",
   "date": "2019-10-17",
   "main": "ftappDirectoryController",
-  "host": "127.0.0.1:8070",
-  "client": "127.0.0.1"
+  "host":"192.168.0.251",
+  "client":"192.168.11.27"
 }

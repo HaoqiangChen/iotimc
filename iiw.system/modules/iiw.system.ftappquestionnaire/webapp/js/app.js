@@ -4,21 +4,39 @@
  */
 define([
   'app',
-  'cssloader!system/ftappquestionnaire/css/index.css'
+  'cssloader!system/ftappquestionnaire/css/index.css',
+  'cssloader!system/ftappwjmanage/css/loading.css',
+  'system/ftappwjmanage/js/directives/kindEditor'
 ], function (app) {
   app.controller('ftappQuestionnaireController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
     mainService.moduleName = '访谈APP管理';
-    $scope.title = '刑罚执行完毕后未重新犯罪者';
-    var domain = 'http://iotimc8888.goho.co:17783';
-    var wjId;
-    if ($stateParams.data) {
-      console.log($stateParams.data);
-      wjId = $stateParams.data.id;
-    } else {
-      wjId = 'B701AB0474BE475B8CF22E6152B9FC01'
-    }
 
-    $scope.contentsList = [
+    var domain = 'http://iotimc8888.goho.co:17783';
+    var wjId, wjName;
+    if ($stateParams.data) {
+      wjId = $stateParams.data.id;
+      wjName = $stateParams.data.name;
+    } else {
+      wjId = 'B701AB0474BE475B8CF22E6152B9FC01';
+      wjName = '问卷'
+    }
+    $scope.title = wjName;
+    var indexQ = 0;
+    $scope.inputTypes = [
+      {type: 0, typename: '多行文本框'},
+      {type: 1, typename: '无属性'},
+      {type: 2, typename: '整数'},
+      {type: 3, typename: '百分数'},
+      {type: 4, typename: '手机号'},
+      {type: 5, typename: '邮箱'},
+      {type: 6, typename: '时间选择控件'}
+    ];
+
+    $scope.data = {
+      batchOptions: ''
+    };
+
+    $scope.contentsLis = [
       {
         name: "基本情况", qtypefk: "735F01B8E2A638499D853E022ABF7737", secondary: [
           {
@@ -545,7 +563,10 @@ define([
             ]
           },
           {
-            idx: "4 ", title: "宗教（A4 - A4.3）", typedtlid: "14ED0878A37B34FB9B98E218598CC51C", questionlist: [
+            idx: "4 ",
+            title: "宗教（A4 - A4.3）",
+            typedtlid: "14ED0878A37B34FB9B98E218598CC51C",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A4",
@@ -757,7 +778,10 @@ define([
             ]
           },
           {
-            idx: "8 ", title: "文化程度（A5 - A5.1）", typedtlid: "F6ECB776E79A31ACB32716E45D6AC16A", questionlist: [
+            idx: "8 ",
+            title: "文化程度（A5 - A5.1）",
+            typedtlid: "F6ECB776E79A31ACB32716E45D6AC16A",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A5",
@@ -948,7 +972,10 @@ define([
             ]
           },
           {
-            idx: "10 ", title: "婚姻状况（A6 - A6.5）", typedtlid: "99EEC5D5B6A9304FA8ABD727D4CDB60C", questionlist: [
+            idx: "10 ",
+            title: "婚姻状况（A6 - A6.5）",
+            typedtlid: "99EEC5D5B6A9304FA8ABD727D4CDB60C",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A6",
@@ -1295,7 +1322,10 @@ define([
             ]
           },
           {
-            idx: "18 ", title: "身体状况（A7.1 - A7.4.1）", typedtlid: "1E7CE8B6C5533381BF5C79EA0E35DE63", questionlist: [
+            idx: "18 ",
+            title: "身体状况（A7.1 - A7.4.1）",
+            typedtlid: "1E7CE8B6C5533381BF5C79EA0E35DE63",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A7.4",
@@ -1399,7 +1429,10 @@ define([
             ]
           },
           {
-            idx: "25 ", title: "生活自理情况（A7.5 - A7.5）", typedtlid: "64B549CBA2A73DD09499AA57CD9ED848", questionlist: [
+            idx: "25 ",
+            title: "生活自理情况（A7.5 - A7.5）",
+            typedtlid: "64B549CBA2A73DD09499AA57CD9ED848",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A7.5",
@@ -1467,7 +1500,10 @@ define([
             ]
           },
           {
-            idx: "26 ", title: "纹身情况（A7.6 - A7.6.3）", typedtlid: "CD9D8753F77F3D248E13BC8A21FE3A9C", questionlist: [
+            idx: "26 ",
+            title: "纹身情况（A7.6 - A7.6.3）",
+            typedtlid: "CD9D8753F77F3D248E13BC8A21FE3A9C",
+            questionlist: [
               {
                 "classify": "基本情况",
                 "code": "A7.6",
@@ -1731,7 +1767,10 @@ define([
       {
         name: "早期成长经历", qtypefk: "AD632D1027E533D1ADDB46F4FCA8055C", secondary: [
           {
-            idx: "30 ", title: "独生子女（B1 - B1.1）", typedtlid: "74DED318E5FF362FB50D5EF9A5328487", questionlist: [
+            idx: "30 ",
+            title: "独生子女（B1 - B1.1）",
+            typedtlid: "74DED318E5FF362FB50D5EF9A5328487",
+            questionlist: [
               {
                 "classify": "早期成长经历",
                 "code": "B1",
@@ -1854,7 +1893,11 @@ define([
           {idx: "121 ", title: "第一次犯罪前职业情况（C12 - C12.5）", typedtlid: "7671EF134B1135CB822C492C48072362"},
           {idx: "127 ", title: "第一次犯罪前收入支出情况（C13 - C13.3）", typedtlid: "E7DA2DA0480E35AC82133C8E5DB9F76B"},
           {idx: "131 ", title: "第一次犯罪前社会地位情况（C14.1 - C14.2）", typedtlid: "A510772C00A83406942171858760CB59"},
-          {idx: "133 ", title: "第一次犯罪前不良行为习惯（C15.1 - C15.3.1）", typedtlid: "321BD2C2B8EF3E86B2743A6B9AA7C14D"},
+          {
+            idx: "133 ",
+            title: "第一次犯罪前不良行为习惯（C15.1 - C15.3.1）",
+            typedtlid: "321BD2C2B8EF3E86B2743A6B9AA7C14D"
+          },
           {idx: "158 ", title: "第一次犯罪前在校情况（C16 - C16.5）", typedtlid: "7C6CBF8EE93931098009BBC6C71D5D3A"},
           {idx: "164 ", title: "第一次犯罪前父母监护情况（C17 - C17.3）", typedtlid: "BEC33DE525D932E28A46FA6CD01F9838"},
           {idx: "168 ", title: "第一次犯罪前社会不公或挫折感（C18 - C18.1）", typedtlid: "3D845B541AB039839D4721F30C0A9D52"},
@@ -1869,20 +1912,837 @@ define([
       {name: "吸毒有关情况", qtypefk: "83EAD6CEB2E33E87B092CD9D2C8DC73F", secondary: Array(6), type: "I"},
       {name: "一些看法和观点", qtypefk: "DD5C3BD11225300FB6D6B35740C62387", secondary: Array(1), type: "J"}
     ];
-    console.log($scope.contentsList);
+    $scope.questionLis = [
+      {
+        "classify": "基本情况",
+        "code": "A1",
+        "fatherclassifyid": "00C54491D55E492E998FAB23D46DF457",
+        "idx": 1,
+        "name": "首先，请告诉我你具体是哪一天出生的？",
+        "option": [
+          {
+            "child": false,
+            "format": "3",
+            "isdesc": 0,
+            "label": "请告诉我你具体是哪一天出生的",
+            "optionfk": "CD36758F517F4270B5B63BE8C28D051F",
+            "questionfk": "261904B9D7AD48758A223439D6B6E0C5",
+            "type": "6",
+            "value": ""
+          }
+        ],
+        "qclassify": "年龄",
+        "qtip": "（提示：记下具体日期）",
+        "questionfk": "261904B9D7AD48758A223439D6B6E0C5",
+        "type": "3"
+      },
+      {
+        "classify": "基本情况",
+        "code": "A2",
+        "fatherclassifyid": "00C54491D55E492E998FAB23D46DF457",
+        "idx": 2,
+        "name": "你的性别？",
+        "option": [
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "男",
+            "optionfk": "5E76E8618F154ABAA53E03365734764D",
+            "questionfk": "2ED000880A3D48D0ACB56D5571FE77A3",
+            "value": "1"
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "女",
+            "optionfk": "F9D92D61EBFB41F69FA7E84F92253F17",
+            "questionfk": "2ED000880A3D48D0ACB56D5571FE77A3",
+            "value": "2"
+          }
+        ],
+        "qclassify": "性别",
+        "questionfk": "2ED000880A3D48D0ACB56D5571FE77A3",
+        "type": "1"
+      },
+      {
+        "classify": "基本情况",
+        "code": "A7.2",
+        "fatherclassifyid": "00C54491D55E492E998FAB23D46DF457",
+        "idx": 19,
+        "name": "如果你有残疾，是哪种残疾？什么时候开始的？",
+        "option": [
+          {
+            "child": false,
+            "isdesc": 0,
+            "isreject": "1",
+            "label": "均无",
+            "optionfk": "FD6F0D75CE0B4ED281F54A1C0F52A57B",
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "1"
+          },
+          {
+            "child": true,
+            "isdesc": 0,
+            "label": "视力残疾（盲人）",
+            "optionfk": "BC141D4156924A50B6634CD3264742C7",
+            "parentid": "8FF7305F9B194AD2B155FDABBDC048C9",
+            "qchild": [
+              {
+                "code": "A7.2",
+                "idx": 19,
+                "option": [
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "视力残疾（盲人）",
+                    "optionfk": "5E26B487089A49B9BC42C1E193380909",
+                    "prefix": "时间",
+                    "questionfk": "8FF7305F9B194AD2B155FDABBDC048C9",
+                    "type": "6",
+                    "value": ""
+                  }
+                ],
+                "questionfk": "8FF7305F9B194AD2B155FDABBDC048C9",
+                "type": "3"
+              }
+            ],
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "2"
+          },
+          {
+            "child": true,
+            "isdesc": 0,
+            "label": "听力和言语残疾（聋哑人）",
+            "optionfk": "DA0F3A0846F64FDD8F0DAE5A808F0987",
+            "parentid": "A356E33E5A1942AD813DF19AB2D4EAE6",
+            "qchild": [
+              {
+                "code": "A7.2",
+                "idx": 19,
+                "option": [
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "听力和言语残疾（聋哑人）",
+                    "optionfk": "E953E1B718624FCC903896D3D16900CB",
+                    "prefix": "时间",
+                    "questionfk": "A356E33E5A1942AD813DF19AB2D4EAE6",
+                    "type": "6",
+                    "value": ""
+                  }
+                ],
+                "questionfk": "A356E33E5A1942AD813DF19AB2D4EAE6",
+                "type": "3"
+              }
+            ],
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "3"
+          },
+          {
+            "child": true,
+            "isdesc": 0,
+            "label": "智力残疾",
+            "optionfk": "5A33D93C908E49C1806ED35E94098062",
+            "parentid": "0A8D51DD8F07400CAAB692F39C4F3252",
+            "qchild": [
+              {
+                "code": "A7.2",
+                "idx": 19,
+                "option": [
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "智力残疾",
+                    "optionfk": "C9AD8FC6FA3D420A90CBC558337C39BB",
+                    "prefix": "时间",
+                    "questionfk": "0A8D51DD8F07400CAAB692F39C4F3252",
+                    "type": "6",
+                    "value": ""
+                  }
+                ],
+                "questionfk": "0A8D51DD8F07400CAAB692F39C4F3252",
+                "type": "3"
+              }
+            ],
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "4"
+          },
+          {
+            "child": true,
+            "isdesc": 0,
+            "label": "肢体残疾",
+            "optionfk": "A151BB97DD0B432FB58BE47694DEF588",
+            "parentid": "083C5BEEB0D14DBD8FF49B875A265B44",
+            "qchild": [
+              {
+                "code": "A7.2",
+                "idx": 19,
+                "option": [
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "肢体残疾",
+                    "optionfk": "6141F854ACC149389B1F231BF8328C11",
+                    "prefix": "时间",
+                    "questionfk": "083C5BEEB0D14DBD8FF49B875A265B44",
+                    "type": "6",
+                    "value": ""
+                  }
+                ],
+                "questionfk": "083C5BEEB0D14DBD8FF49B875A265B44",
+                "type": "3"
+              }
+            ],
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "5"
+          },
+          {
+            "child": true,
+            "descr": "（注明）",
+            "isdesc": 1,
+            "label": "其他",
+            "optionfk": "07C5509F58714076986DB5189384070E",
+            "parentid": "EF1F92A64A52451BB9ED1E81CC5CBDBF",
+            "qchild": [
+              {
+                "code": "A7.2",
+                "idx": 19,
+                "option": [
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "其他",
+                    "optionfk": "46B37CDB94BB458ABE1E32266410A2F0",
+                    "questionfk": "EF1F92A64A52451BB9ED1E81CC5CBDBF",
+                    "type": "1",
+                    "value": ""
+                  },
+                  {
+                    "format": "1",
+                    "isdesc": 0,
+                    "label": "其他",
+                    "optionfk": "B74621AD0F0E4CB2B8D0816C2CD77916",
+                    "prefix": "时间",
+                    "questionfk": "EF1F92A64A52451BB9ED1E81CC5CBDBF",
+                    "type": "6",
+                    "value": ""
+                  }
+                ],
+                "questionfk": "EF1F92A64A52451BB9ED1E81CC5CBDBF",
+                "type": "3"
+              }
+            ],
+            "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+            "value": "6"
+          }
+        ],
+        "qclassify": "身体状况",
+        "qtip": "（有几项记几项，记下时间）",
+        "questionfk": "A1EF8E4D0ADA4873B16C904C2CA5B128",
+        "type": "2"
+      },
 
-    $scope.getMenu = function () {
+      {
+        "classify": "基本情况",
+        "code": "A3",
+        "fatherclassifyid": "00C54491D55E492E998FAB23D46DF457",
+        "idx": 3,
+        "name": "你属于哪一个民族？",
+        "option": [
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "汉族",
+            "optionfk": "4A89C81027754A259373C90C59A4855F",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 0
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "壮族",
+            "optionfk": "6C348167FFB84345A96172FDD4DF41F7",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 1
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "回族",
+            "optionfk": "5CEA2248D4504D4DAE663FF69970031A",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 2
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "满族",
+            "optionfk": "56D7D47BE9DA4925A3D25D3241762DE3",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 3
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "维吾尔族",
+            "optionfk": "013306A9C50F4B3C8268A99C72771D83",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 4
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "苗族",
+            "optionfk": "7587BC514DA64C9B8175AA5A1F39D5BC",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 5
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "彝族",
+            "optionfk": "2EA502D151F64A9789CB6893802B7DC4",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 6
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "土家族",
+            "optionfk": "56CBA6D3D1924C82B223E32DF156EA43",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 7
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "藏族",
+            "optionfk": "F6B8E6388CA64B68A3C414490368403B",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 8
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "蒙古族",
+            "optionfk": "8E20E443358F41BEB6E24D083685244E",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 9
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "侗族",
+            "optionfk": "B50080AC931C4D5EAFBD4D0806214DB4",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 10
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "布依族",
+            "optionfk": "AD26747603AB40399FDF187598C4191F",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 11
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "瑶族",
+            "optionfk": "4E196357CA194D7CB0D33CBD9E552A58",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 12
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "白族",
+            "optionfk": "EA1BDD0888544390B85689BA2AFFB1C4",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 13
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "朝鲜族",
+            "optionfk": "092F181CE7F944C59CD62BBB9C05F308",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 14
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "哈尼族",
+            "optionfk": "C514B41F16964B949F8CD27E99ACC6FD",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 15
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "黎族",
+            "optionfk": "7F587EE27DE14EE1845A8E91E92E6A05",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 16
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "哈萨克族",
+            "optionfk": "4B3E3DE65F5C4D2EB41B4C429D0C015F",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 17
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "傣族",
+            "optionfk": "FF6C60C76EE341C2BA30CF8F6241F13E",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 18
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "畲族",
+            "optionfk": "6D8383D0B6D84339A0A29186FF10D02C",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 19
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "傈僳族",
+            "optionfk": "647A4562F7F64F12B4673F2BBE122E9A",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 20
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "东乡族",
+            "optionfk": "48004348CBDF408EABAA4827C992FC56",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 21
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "仡佬族",
+            "optionfk": "D254437F8A9E4FD58D4AAD9C74909769",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 22
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "拉祜族",
+            "optionfk": "574D9836DF6F455F90D06E58F1F5C34A",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 23
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "佤族",
+            "optionfk": "2C3B05E8D31F484DA6CD436EEFAC929D",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 24
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "水族",
+            "optionfk": "71D858DB052D421EA56304ED46F30A3A",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 25
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "纳西族",
+            "optionfk": "E24C85333AE046A3AC439EC55BC93371",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 26
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "羌族",
+            "optionfk": "D14BFEF9FA0A47E7B911D52FF7278F3F",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 27
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "土族",
+            "optionfk": "D18A3471DBF740B692FA0C7F1FE7C9A6",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 28
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "仫佬族",
+            "optionfk": "BA2EE80A54D142A29440DA30CECC36C4",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 29
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "锡伯族",
+            "optionfk": "FC792646CB5F4227BC4C2C80BC57A269",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 30
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "柯尔克孜族",
+            "optionfk": "CF44978CB3AD4C848BC2C8008318A761",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 31
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "景颇族",
+            "optionfk": "6711AE8679C148038E7520B46734A17C",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 32
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "达斡尔族",
+            "optionfk": "F6910EE11C7C4426A872FB9A4CEFC8E5",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 33
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "撒拉族",
+            "optionfk": "2A90AB4EA7694B6894884E0C7885191D",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 34
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "布朗族",
+            "optionfk": "19071A44E8524F1EA4EEC818F528739E",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 35
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "毛南族",
+            "optionfk": "B111C61D249941D98012FC43C5525853",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 36
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "塔吉克族",
+            "optionfk": "B8A62BBE893241919525BCE2C4E514D7",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 37
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "普米族",
+            "optionfk": "7329FDE7440D4336A927FF4969BA31D8",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 38
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "阿昌族",
+            "optionfk": "AB9F93102D3E4A27852BE2FA26CFD981",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 39
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "怒族",
+            "optionfk": "241DF294831040E7936B8CED7DA5F70E",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 40
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "鄂温克族",
+            "optionfk": "9B0C9C11A7B441738A6025941FA3330D",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 41
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "京族",
+            "optionfk": "30B3DF44734E48AC90A197657CCF8DD6",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 42
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "基诺族",
+            "optionfk": "ECEB285511F241869ED452B0291DCFCB",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 43
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "德昂族",
+            "optionfk": "C22A304A0EB94CE98DE6B384DC3C973D",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 44
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "保安族",
+            "optionfk": "58C7EF6026764556BE97674D0951A210",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 45
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "俄罗斯族",
+            "optionfk": "CCC3A9F7037F458CBF76326107D9F0A2",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 46
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "裕固族",
+            "optionfk": "63E37D7AA2284345908D2A28CDFFDC48",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 47
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "乌孜别克族",
+            "optionfk": "9DB706692FF743FEB0F0F2DEAA2F3EBD",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 48
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "门巴族",
+            "optionfk": "28A11C299ECB4815A122369145B68162",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 49
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "鄂伦春族",
+            "optionfk": "E0842584E9C34F32BE2C2BCEC1F261D3",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 50
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "独龙族",
+            "optionfk": "C12A4B67C69F4A5BBC0864466DE726E9",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 51
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "赫哲族",
+            "optionfk": "931436F7A55D49BC9E1C3033E4A3B3A3",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 52
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "高山族",
+            "optionfk": "FD1106F2A30347FEA93FB757938F512A",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 53
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "珞巴族",
+            "optionfk": "641CF32AFC8349599A2C61E8B3A56EFA",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 54
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "塔塔尔族",
+            "optionfk": "621A904B068249468F6A4BA026D97028",
+            "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+            "value": 55
+          }
+        ],
+        "qclassify": "民族",
+        "questionfk": "5D1DE8AFA28A42D4A02EAE1B39E8DE88",
+        "type": "4"
+      },
+
+      {
+        "classify": "早期成长经历",
+        "code": "B1.1",
+        "fatherclassifyid": "1CA7D5765C6140A497CF33469AEF1B54",
+        "formula": "1",
+        "idx": 31,
+        "name": "若回答否，",
+        "option": [
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "那么家里共有",
+            "optionfk": "3E9C8129410E49389DB41743A911C889",
+            "prefix": "那么家里共有",
+            "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+            "suffix": "个兄弟姐妹",
+            "type": "2",
+            "value": ""
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "其中男孩",
+            "optionfk": "A8C4378B40374E7990B96277A2225576",
+            "prefix": "其中男孩",
+            "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+            "suffix": "个",
+            "type": "2",
+            "value": ""
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "女孩",
+            "optionfk": "866AC8E78E2B4F6D9D045EA0B065CFA2",
+            "prefix": "女孩",
+            "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+            "suffix": "个",
+            "type": "2",
+            "value": ""
+          },
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "你排行第",
+            "optionfk": "2B3EBE3D29AC484BA597909F0676E2FA",
+            "prefix": "你排行第",
+            "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+            "type": "2",
+            "value": ""
+          }
+        ],
+        "qclassify": "独生子女",
+        "questionfk": "10BD7B2983C04030B8A9377BC67395F4",
+        "type": "3"
+      },
+      {
+        "classify": "早期成长经历",
+        "code": "B2.1",
+        "fatherclassifyid": "1CA7D5765C6140A497CF33469AEF1B54",
+        "idx": 32,
+        "name": "你是否为留守儿童？",
+        "option": [
+          {
+            "child": false,
+            "isdesc": 0,
+            "label": "否",
+            "optionfk": "10E7B677C50541BCBCBB51B0926924F8",
+            "questionfk": "83B8679D369846F7BF5B165D43B33937",
+            "value": "1"
+          },
+          {
+            "child": true,
+            "isdesc": 0,
+            "label": "是",
+            "optionfk": "7F3CFDF7E1D3425884FDC023B2ADB054",
+            "parentid": "D3BBF1ED06C54E57A7B93B455B8B8389",
+            "qchild": [
+              {
+                "code": "B2.1",
+                "idx": 32,
+                "option": [
+                  {
+                    "format": "2",
+                    "isdesc": 0,
+                    "label": "起始时间",
+                    "optionfk": "8ECAF2DC881740B2A19E40C064F026E9",
+                    "prefix": "起始时间：",
+                    "questionfk": "D3BBF1ED06C54E57A7B93B455B8B8389",
+                    "type": "6",
+                    "value": ""
+                  },
+                  {
+                    "isdesc": 0,
+                    "label": "累计时间",
+                    "maxnumber": "100",
+                    "optionfk": "5E09F4A9E05F4ED79890E0A158A611F5",
+                    "prefix": "累计时间：",
+                    "questionfk": "D3BBF1ED06C54E57A7B93B455B8B8389",
+                    "suffix": "年",
+                    "type": "2",
+                    "value": ""
+                  },
+                  {
+                    "isdesc": 0,
+                    "label": "累计时间",
+                    "maxnumber": "11",
+                    "optionfk": "35974EB471BB4E788EA6CD387BB79B1E",
+                    "questionfk": "D3BBF1ED06C54E57A7B93B455B8B8389",
+                    "suffix": "月",
+                    "type": "2",
+                    "value": ""
+                  }
+                ],
+                "qpremise": "你14岁以前有过以下情况吗？",
+                "questionfk": "D3BBF1ED06C54E57A7B93B455B8B8389",
+                "type": "3"
+              }
+            ],
+            "questionfk": "83B8679D369846F7BF5B165D43B33937",
+            "value": "2"
+          }
+        ],
+        "qclassify": "留守流浪经历",
+        "qpremise": "你14岁以前有过以下情况吗？",
+        "questionfk": "83B8679D369846F7BF5B165D43B33937",
+        "type": "1"
+      },
+    ];
+
+    $scope.getNaire = function () {
       $scope.loading = {
         isLoading: true,
         content: '问卷数据加载中'
       };
 
       var url, data;
-      url = domain + '/terminal/interview/system.do?action=getQuestions';
+      url = domain + '/terminal/interview/system.do?action=getQuestionListByTypeId';
       data = {
-        filter: {
-          id: wjId
-        }
+        id: wjId
       };
 
       getToken(function (token) {
@@ -1891,8 +2751,11 @@ define([
           .then(function (data) {
             console.log(data);
             if (data.result && data.result.rows) {
+              $scope.contentsList = data.result.rows;
+              console.log($scope.contentsList);
               $scope.loading.isLoading = false;
             } else {
+              $scope.contentsList = [];
             }
           })
       })
@@ -1901,7 +2764,7 @@ define([
     $scope.directory = function () {
       iConfirm.show({
         scope: $scope,
-        title: '确认离开此页面？',
+        title: '确认离开前往目录设置？',
         content: '系统可能不会保存您所做的更改？',
         buttons: [{
           text: '确认',
@@ -1916,20 +2779,126 @@ define([
     };
     $scope.confirmSuccess = function (id) {
       iConfirm.close(id);
-      $state.go('system.ftappdirectory')
-    };
-
-    $scope.confirmCancel = function (id) {
-      iConfirm.close(id);
+      $state.params = {
+        data: {id: wjId, name: wjName}
+      };
+      $state.go('system.ftappdirectory', $state.params)
     };
 
     $scope.menuClick = function ($event, data) {
       $($event.currentTarget).find('ol.contents-fold').slideToggle();
       data.hasFold = !data.hasFold;
     };
-    $scope.secondaryClick = function ($event) {
+    $scope.catalogClick = function ($event, data) {
       $event.stopPropagation();
+      console.log(data);
+      $scope.questionList = data.questionlist;
     };
+
+    $scope.editQ = function (questionlist, $index) {
+      questionlist.map(_ => _.editing = false);
+      questionlist[$index].editing = true;
+    };
+    $scope.moveUp = function (arr, $index, type) {
+      if ($index === 0) {
+        if (type === 'question') _remind(3, '第一题不能再上移');
+        else _remind(3, '第一个不能再上移');
+        return;
+      }
+      _swapItems(arr, $index, $index - 1);
+    };
+    $scope.moveDown = function (arr, $index, type) {
+      if ($index === arr.length - 1) {
+        if (type === 'question') _remind(3, '最后一题不能再上移');
+        else _remind(3, '最后一个不能再上移');
+        return;
+      }
+      _swapItems(arr, $index, $index + 1);
+    };
+    $scope.copy = function ($index) {
+      $scope.questionList.splice($index, 0, $scope.questionList[$index]);
+    };
+    $scope.del = function (arr, $index, type) {
+      if (type === 'option' && arr.length <= 2) {
+        _remind(3, '最少保留2个选项');
+        return;
+      } else if (type === 'input' && arr.length <= 1) {
+        _remind(3, '最少保留1个选项');
+        return;
+      }
+      arr.splice($index, 1);
+    };
+    $scope.addOption = function (arr, $index) {
+      let newLabel = {label: '选项' + ($index + 2)};
+      arr.splice($index + 1, 0, newLabel);
+    };
+    $scope.addInput = function (arr, $index) {
+      let newLabel = {type: '1'};
+      arr.splice($index + 1, 0, newLabel);
+    };
+    $scope.setQ = function ($index) {
+      indexQ = $index;
+      $scope.question = $scope.questionList[$index];
+    };
+    $scope.saveOption = function () {
+      let newLabels = [],
+        newOptions = [];
+      if ($scope.data.batchOptions) newLabels = $scope.data.batchOptions.split(',');
+
+      if (newLabels.length) {
+        newOptions = [];
+        newLabels.map(_ => {
+          newOptions.push({label: _});
+        });
+        $scope.questionList[indexQ].option = $scope.questionList[indexQ].option.concat(newOptions);
+        $('#optionModal').modal('hide')
+      } else $('#optionModal').modal('hide')
+    };
+    $scope.setJump = function (question, type) {
+      $scope.jumpQlist = $scope.scaleData.question.splice(question.idx, $scope.scaleData.question.length - 1);
+      switch (type) {
+        case 1:
+          question.jumpway === '1' ? question.jumpway = '' : question.jumpway = '1';
+          delete question.anyjump;
+          break;
+        case 2:
+          question.jumpway === '2' ? question.jumpway = '' : question.jumpway = '2';
+          break;
+      }
+      if (!question.jumpway) {
+        question.option.map(_ => {
+          delete _.jumpto;
+        })
+      }
+    };
+
+    $scope.addQ = function ($index, type) {
+      var newQ = {};
+      switch (type) {
+        case 1:
+          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '单选题目', type: '1', typename: '单选', editing: true,
+            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+          };
+          break;
+        case 2:
+          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '多选题目', type: '2', typename: '多选', editing: true,
+            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+          };
+          break;
+        case 3:
+          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '填空题目', type: '3', typename: '填空', editing: true,
+            option: [{label: '选项一', value: '1', content: ''}]
+          };
+          break;
+        case 4:
+          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '下拉选择题目', type: '4', typename: '下拉选择', editing: true,
+            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+          };
+          break;
+      }
+      $scope.questionList.splice($index + 1, 0, newQ);
+    };
+
     $scope.back = function () {
       iConfirm.show({
         scope: $scope,
@@ -1950,11 +2919,37 @@ define([
       iConfirm.close(id);
       window.history.back()
     };
+    $scope.confirmRefresh = function (id) {
+      iConfirm.close(id);
+      location.reload();
+    };
+    $scope.confirmCancel = function (id) {
+      iConfirm.close(id);
+    };
 
-    // 模块加载完成后初始化事件
     $scope.$on('ftappQuestionnaireControllerOnEvent', function () {
-      // $scope.getMenu();
+      $scope.getNaire();
     });
+
+    function _swapItems(arr, index1, index2) {
+      arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+      return arr;
+    }
+
+    function _refreshPage() {
+      document.onkeydown = function (e) { // 键盘按键控制
+        e = e || window.event;
+        if ((e.ctrlKey && e.keyCode == 82) || // ctrl+R
+          e.keyCode == 116) { // F5刷新，禁止
+          if (confirm('重新加载此网站？\n系统可能不会保存您所做的更改。')) {
+            location.reload();
+          } else {
+            console.log('取消重新刷新页面');
+            return false;
+          }
+        }
+      }
+    }
 
     function getToken(callback) {
       iAjax.post(domain + '/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {

@@ -42,3 +42,5 @@ if (item) {
 	};
 	_remind(4, '错误操作!');
 }
+
+监听$watch
