@@ -304,10 +304,10 @@
                                                                 <em></em>
                                                                 <span></span>
                                                                 <div class="insertQ-type">
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 1)">单选题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 2)">多选题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 3)">填空题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 4)">下拉选择题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 1)">单选题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 2)">多选题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 3)">填空题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 4)">下拉选择题</button>
                                                                 </div>
                                                                 <!-- <div class="tip"><b>提示：</b>如需添加其他题型，请联系开发人员进行开发。</div> -->
                                                             </div>
@@ -317,13 +317,14 @@
                                                         <a class="btn btn-success" ng-click="editQ(questionList, $index)"><i class="fa fa-edit fa-fw"></i>编辑</a>
                                                         <a class="btn btn-primary" ng-click="copy($index)"><i class="fa fa-copy fa-fw"></i>复制</a>
                                                         <a class="btn btn-danger" ng-click="del(questionList, $index, 'question')"><i class="fa fa-trash-o fa-fw"></i>删除</a>
-                                                        <a class="btn btn-info" ng-click="moveUp(questionList, $index, 'question')"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
-                                                        <a class="btn btn-info" ng-click="moveDown(questionList, $index, 'question')"><i class="fa fa-arrow-down fa-fw"></i>下移</a>
+                                                        <!-- <a class="btn btn-info" ng-click="moveUp(questionList, $index, 'question')"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
+                                                        <a class="btn btn-info" ng-click="moveDown(questionList, $index, 'question')"><i class="fa fa-arrow-down fa-fw"></i>下移</a> -->
                                                     </div>
                                                 </div>
                                                 <div ng-if="question.editing">
                                                     <div class="question-set">
                                                         <div class="question-triangle"></div>
+                                                        <input type="text" class="form-control" ng-model="question.code" placeholder="题目编号" style="margin: 10px 0;border: 1px solid #eee;">
                                                         <kind-editor ng-model="question.name"></kind-editor>
                                                         <input type="text" class="form-control" ng-model="question.qtip" placeholder="题目提示说明" style="margin: 10px 0;border: 1px solid #eee;">
                                                         <div ng-if="question.type === '1'">
@@ -535,10 +536,10 @@
                                                         </div>
                                                         <div class="question-logic">
                                                             <span>逻辑设置：</span>
-                                                            <a ng-click="setQ($index)" ng-if="$index > 0" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="当前面题目选中某些选项时才出现此题 ">题目关联</a>
+                                                            <!-- <a ng-click="setQ($index)" ng-if="$index > 0" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="当前面题目选中某些选项时才出现此题 ">题目关联</a> -->
                                                             <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
                                                         </div>
-                                                        <div class="question-btn" ng-click="question.editing = false">完成编辑</div>
+                                                        <div class="question-btn" ng-click="saveQ(question)">完成编辑</div>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -546,19 +547,19 @@
                                         <div class="question-add">
                                             <div class="collapse" id="collapseAdd">
                                                 <div class="add-option">
-                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length-1, 1)">单选题</button>
-                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length-1, 2)">多选题</button>
-                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length-1, 3)">填空题</button>
-                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length-1, 4)">下拉选择题</button>
+                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length, 1)">单选题</button>
+                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length, 2)">多选题</button>
+                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length, 3)">填空题</button>
+                                                    <button class="btn btn-lg btn-primary" ng-click="addQ(questionList.length, 4)">下拉选择题</button>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary btn-add" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd"><i class="fa fa-plus"></i>添加问题</button>
                                         </div>
                                     </div>
                                     <div class="question-footer clearfix" size="60px">
-                                        <button class="btn btn-success col-md-4" ng-click="save()"><i
+                                        <!-- <button class="btn btn-success col-md-4" ng-click="save()"><i
                                                 class="fa fa-check fa-fw"></i>完成编辑
-                                        </button>
+                                        </button> -->
                                         <button class="btn btn-danger col-md-4" ng-click="back()"><i
                                                 class="fa fa-mail-reply-all fa-fw"></i>返回
                                         </button>

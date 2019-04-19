@@ -17,11 +17,12 @@ define([
       wjId = $stateParams.data.id;
       wjName = $stateParams.data.name;
     } else {
-      wjId = 'B701AB0474BE475B8CF22E6152B9FC01';
+      wjId = '0FB464990CFB480FA534AA3966FA791E';
       wjName = '问卷'
     }
     $scope.title = wjName;
     var indexQ = 0;
+    var muluId = '';
     $scope.inputTypes = [
       {type: 0, typename: '多行文本框'},
       {type: 1, typename: '无属性'},
@@ -33,10 +34,11 @@ define([
     ];
 
     $scope.data = {
-      batchOptions: ''
+      batchOptions: '',
+      catalogIdx: 0
     };
 
-    $scope.contentsLis = [
+    $scope.contentsList = [
       {
         name: "基本情况", qtypefk: "735F01B8E2A638499D853E022ABF7737", secondary: [
           {
@@ -2732,6 +2734,14 @@ define([
         "type": "1"
       },
     ];
+    $scope.allQ = [];
+    $scope.contentsList.map(_a => {
+      if (!_a.secondary.questionlist) _a.secondary.questionlist = [];
+      _a.secondary.map(_b => {
+        $scope.allQ = $scope.allQ.concat(_b.questionlist);
+      });
+    });
+    console.log($scope.allQ)
 
     $scope.getNaire = function () {
       $scope.loading = {
@@ -2793,6 +2803,8 @@ define([
       $event.stopPropagation();
       console.log(data);
       $scope.questionList = data.questionlist;
+      muluId = data.typedtlid;
+      $scope.data.catalogIdx = data.idx;
     };
 
     $scope.editQ = function (questionlist, $index) {
@@ -2855,7 +2867,7 @@ define([
       } else $('#optionModal').modal('hide')
     };
     $scope.setJump = function (question, type) {
-      $scope.jumpQlist = $scope.scaleData.question.splice(question.idx, $scope.scaleData.question.length - 1);
+      $scope.jumpQlist = $scope.allQ.splice(question.idx, $scope.allQ.length - 1);
       switch (type) {
         case 1:
           question.jumpway === '1' ? question.jumpway = '' : question.jumpway = '1';
@@ -2873,30 +2885,87 @@ define([
     };
 
     $scope.addQ = function ($index, type) {
+      if (!muluId) _remind(3, '请先选择在那个目录下添加问题！', '请选择目录');
       var newQ = {};
       switch (type) {
         case 1:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '单选题目', type: '1', typename: '单选', editing: true,
+          newQ = {
+            code: '',
+            idx: parseInt($scope.data.catalogIdx) + $index,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '单选题目',
+            type: '1',
+            typename: '单选',
+            editing: true,
             option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
           };
           break;
         case 2:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '多选题目', type: '2', typename: '多选', editing: true,
+          newQ = {
+            code: '',
+            idx: parseInt($scope.data.catalogIdx) + $index,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '多选题目',
+            type: '2',
+            typename: '多选',
+            editing: true,
             option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
           };
           break;
         case 3:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '填空题目', type: '3', typename: '填空', editing: true,
+          newQ = {
+            code: '',
+            idx: parseInt($scope.data.catalogIdx) + $index,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '填空题目',
+            type: '3',
+            typename: '填空',
+            editing: true,
             option: [{label: '选项一', value: '1', content: ''}]
           };
           break;
         case 4:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '下拉选择题目', type: '4', typename: '下拉选择', editing: true,
+          newQ = {
+            code: '',
+            idx: parseInt($scope.data.catalogIdx) + $index,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '下拉选择题目',
+            type: '4',
+            typename: '下拉选择',
+            editing: true,
             option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
           };
           break;
       }
       $scope.questionList.splice($index + 1, 0, newQ);
+    };
+    $scope.saveQ = function (question) {
+      if (!question.code || !question.name) {
+        _remind(3, '请将题目编辑完善后提交', '请完善题目');
+        return false;
+      }
+      var url, data;
+      url = domain + '/terminal/interview/system.do?action=saveQuestion';
+      data = Object.assign({nairefk: wjId, typedtlid: muluId}, question);
+
+      getToken(function (token) {
+        iAjax
+          .post(`${url}&authorization=${token}`, data)
+          .then(function (data) {
+            _remind(1, data.message, '消息提醒');
+            question.editing = false;
+          }, function (err) {
+            _remind(4, err.message, '消息提醒');
+          })
+      })
     };
 
     $scope.back = function () {
@@ -2928,7 +2997,7 @@ define([
     };
 
     $scope.$on('ftappQuestionnaireControllerOnEvent', function () {
-      $scope.getNaire();
+      // $scope.getNaire();
     });
 
     function _swapItems(arr, index1, index2) {
