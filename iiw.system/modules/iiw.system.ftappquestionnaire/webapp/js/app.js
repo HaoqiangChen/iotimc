@@ -8,6 +8,13 @@ define([
   'cssloader!system/ftappwjmanage/css/loading.css',
   'system/ftappwjmanage/js/directives/kindEditor'
 ], function (app) {
+  app.filter(
+    'ngHtml', ['$sce', function ($sce) {
+      return function (text) {
+        return $sce.trustAsHtml(text);
+      }
+    }]
+  );
   app.controller('ftappQuestionnaireController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
     mainService.moduleName = '访谈APP管理';
 
@@ -23,6 +30,7 @@ define([
     $scope.title = wjName;
     var indexQ = 0;
     var muluId = '';
+    var muluLen = 0;
     $scope.inputTypes = [
       {type: 0, typename: '多行文本框'},
       {type: 1, typename: '无属性'},
@@ -1905,14 +1913,7 @@ define([
           {idx: "168 ", title: "第一次犯罪前社会不公或挫折感（C18 - C18.1）", typedtlid: "3D845B541AB039839D4721F30C0A9D52"},
           {idx: "170 ", title: "第一次犯罪前遭受犯罪侵害（C19 - C19.3）", typedtlid: "93EFF0B3E2E036318526B3C098865598"}
         ], type: "C"
-      },
-      {name: "第一次犯罪有关情况", qtypefk: "16BA80324A313BCAA08FB0E50714F622", secondary: Array(13), type: "D"},
-      {name: "第一次服刑情况", qtypefk: "2E22C64B3D5936658FBA229A32229FA5", secondary: Array(8), type: "E"},
-      {name: "第二次犯罪前情况", qtypefk: "260CED4C8299343F8E67F2C5150290A0", secondary: Array(11), type: "F"},
-      {name: "第二次犯罪有关情况", qtypefk: "05E44FFEA01D3C21BCD0088EBA111AD5", secondary: Array(14), type: "G"},
-      {name: "本次服刑情况", qtypefk: "33EA5A5323CD3F35AF69E1C9E4559247", secondary: Array(2), type: "H"},
-      {name: "吸毒有关情况", qtypefk: "83EAD6CEB2E33E87B092CD9D2C8DC73F", secondary: Array(6), type: "I"},
-      {name: "一些看法和观点", qtypefk: "DD5C3BD11225300FB6D6B35740C62387", secondary: Array(1), type: "J"}
+      }
     ];
     $scope.questionLis = [
       {
@@ -2734,14 +2735,23 @@ define([
         "type": "1"
       },
     ];
+    $scope.allM = [];
     $scope.allQ = [];
-    $scope.contentsList.map(_a => {
-      if (!_a.secondary.questionlist) _a.secondary.questionlist = [];
-      _a.secondary.map(_b => {
+    $scope.contentsList.map((_a, _ai) => {
+      $scope.allM = $scope.allM.concat(_a.secondary);
+      _a.secondary.map((_b, _bi) => {
+        if (!_b.questionlist) _b.questionlist = [];
+        _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
+        if (_ai === 0 && _bi === 0) _b.idx = 0;
         $scope.allQ = $scope.allQ.concat(_b.questionlist);
       });
     });
-    console.log($scope.allQ)
+    $scope.allM.map((_m, _mi) => {
+      if (_mi) {
+        muluLen = muluLen + parseInt(_m.lenQ);
+        _m.idx = muluLen;
+      }
+    });
 
     $scope.getNaire = function () {
       $scope.loading = {
@@ -2761,11 +2771,28 @@ define([
           .then(function (data) {
             console.log(data);
             if (data.result && data.result.rows) {
-              $scope.contentsList = data.result.rows;
+              $scope.contentsList.map((_a, _ai) => {
+                $scope.allM = $scope.allM.concat(_a.secondary);
+                _a.secondary.map((_b, _bi) => {
+                  if (!_b.questionlist) _b.questionlist = [];
+                  _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
+                  if (_ai === 0 && _bi === 0) _b.idx = 0;
+                  $scope.allQ = $scope.allQ.concat(_b.questionlist);
+                });
+              });
+              $scope.allM.map((_m, _mi) => {
+                if (_mi) {
+                  muluLen = muluLen + parseInt(_m.lenQ);
+                  _m.idx = muluLen;
+                }
+              });
               console.log($scope.contentsList);
+              console.log($scope.allM);
               $scope.loading.isLoading = false;
             } else {
               $scope.contentsList = [];
+              _remind(4, '该问卷暂无目录，请前往目录设置');
+              $scope.loading.isLoading = false;
             }
           })
       })
@@ -2801,15 +2828,18 @@ define([
     };
     $scope.catalogClick = function ($event, data) {
       $event.stopPropagation();
-      console.log(data);
       $scope.questionList = data.questionlist;
       muluId = data.typedtlid;
       $scope.data.catalogIdx = data.idx;
     };
 
     $scope.editQ = function (questionlist, $index) {
-      questionlist.map(_ => _.editing = false);
-      questionlist[$index].editing = true;
+      let editingQ = _.where(questionlist, {editing: true});
+      if (!editingQ.length) {
+        questionlist[$index].editing = true;
+      } else {
+        _remind(3, '还有正在编辑的问题，请编辑完成后点击保存后再编辑其他问题！', '请保存正在编辑的问题')
+      }
     };
     $scope.moveUp = function (arr, $index, type) {
       if ($index === 0) {
@@ -2821,14 +2851,16 @@ define([
     };
     $scope.moveDown = function (arr, $index, type) {
       if ($index === arr.length - 1) {
-        if (type === 'question') _remind(3, '最后一题不能再上移');
-        else _remind(3, '最后一个不能再上移');
+        if (type === 'question') _remind(3, '最后一题不能再下移');
+        else _remind(3, '最后一个不能再下移');
         return;
       }
       _swapItems(arr, $index, $index + 1);
     };
     $scope.copy = function ($index) {
-      $scope.questionList.splice($index, 0, $scope.questionList[$index]);
+      let copyQ = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      copyQ.idx = copyQ.idx + 1;
+      $scope.questionList.splice($index, 0, copyQ);
     };
     $scope.del = function (arr, $index, type) {
       if (type === 'option' && arr.length <= 2) {
@@ -2841,7 +2873,7 @@ define([
       arr.splice($index, 1);
     };
     $scope.addOption = function (arr, $index) {
-      let newLabel = {label: '选项' + ($index + 2)};
+      let newLabel = {label: ''};
       arr.splice($index + 1, 0, newLabel);
     };
     $scope.addInput = function (arr, $index) {
@@ -2851,22 +2883,28 @@ define([
     $scope.setQ = function ($index) {
       indexQ = $index;
       $scope.question = $scope.questionList[$index];
+      $scope.data.batchOptions = $scope.question.option.filter(_ => _.label).map(_ => _.label).join(',');
     };
     $scope.saveOption = function () {
       let newLabels = [],
         newOptions = [];
-      if ($scope.data.batchOptions) newLabels = $scope.data.batchOptions.split(',');
+      if ($scope.data.batchOptions) newLabels = $scope.data.batchOptions.split(',').filter(_ => _ && _.trim());
 
       if (newLabels.length) {
         newOptions = [];
         newLabels.map(_ => {
           newOptions.push({label: _});
         });
-        $scope.questionList[indexQ].option = $scope.questionList[indexQ].option.concat(newOptions);
+        $scope.questionList[indexQ].option = newOptions;
         $('#optionModal').modal('hide')
       } else $('#optionModal').modal('hide')
     };
+    $scope.setJumpQ = function ($index) {
+      indexQ = $index;
+      $scope.question = JSON.parse(JSON.stringify($scope.questionList[$index]));
+    };
     $scope.setJump = function (question, type) {
+      console.log($scope.allQ);
       $scope.jumpQlist = $scope.allQ.splice(question.idx, $scope.allQ.length - 1);
       switch (type) {
         case 1:
@@ -2883,75 +2921,110 @@ define([
         })
       }
     };
+    $scope.saveJumpQ = function () {
+      // console.log($scope.question);
+      $scope.questionList[indexQ] = $scope.question;
+      $('#jumpModal').modal('hide')
+    };
 
-    $scope.addQ = function ($index, type) {
-      if (!muluId) _remind(3, '请先选择在那个目录下添加问题！', '请选择目录');
+    $scope.addQ = function ($index, type, question) {
+      if (!muluId) {
+        _remind(3, '请先选择在哪个二级目录下添加问题,如果没有请前往目录设置配置目录！', '请选择对应二级目录');
+        return false;
+      }
       var newQ = {};
       switch (type) {
         case 1:
           newQ = {
             code: '',
             idx: parseInt($scope.data.catalogIdx) + $index,
-            ismust: '1',
-            ismustname: '必答',
             jumpway: '',
             name: '单选题目',
             type: '1',
             typename: '单选',
             editing: true,
-            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
           };
           break;
         case 2:
           newQ = {
             code: '',
             idx: parseInt($scope.data.catalogIdx) + $index,
-            ismust: '1',
-            ismustname: '必答',
             jumpway: '',
             name: '多选题目',
             type: '2',
             typename: '多选',
             editing: true,
-            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
           };
           break;
         case 3:
           newQ = {
             code: '',
             idx: parseInt($scope.data.catalogIdx) + $index,
-            ismust: '1',
-            ismustname: '必答',
             jumpway: '',
             name: '填空题目',
             type: '3',
             typename: '填空',
             editing: true,
-            option: [{label: '选项一', value: '1', content: ''}]
+            option: [{label: '', value: '', content: '', type: '1'}]
           };
           break;
         case 4:
           newQ = {
             code: '',
             idx: parseInt($scope.data.catalogIdx) + $index,
-            ismust: '1',
-            ismustname: '必答',
             jumpway: '',
             name: '下拉选择题目',
             type: '4',
             typename: '下拉选择',
             editing: true,
-            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
           };
           break;
       }
-      $scope.questionList.splice($index + 1, 0, newQ);
+      if (question) {
+        newQ.idx = parseInt(question.idx) + 1;
+        $scope.questionList.splice($index + 1, 0, newQ);
+      } else {
+        newQ.idx = $scope.data.catalogIdx + 1;
+        $scope.questionList.splice($index, 0, newQ);
+      }
+
     };
     $scope.saveQ = function (question) {
-      if (!question.code || !question.name) {
+      console.log(question);
+      if ((question.type !== '3' && question.option.some(_ => !_.label)) || (question.type === '3' && question.option.some(_ => !_.type))) {
         _remind(3, '请将题目编辑完善后提交', '请完善题目');
         return false;
       }
+      if (question.option.length) {
+        question.option.map((_, i) => _.idx = i + 1);
+      }
+      $scope.allM = [];
+      $scope.allQ = [];
+      $scope.contentsList.map((_a, _ai) => {
+        $scope.allM = $scope.allM.concat(_a.secondary);
+        _a.secondary.map((_b, _bi) => {
+          if (!_b.questionlist) _b.questionlist = [];
+          _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
+          if (_ai === 0 && _bi === 0) _b.idx = 0;
+          $scope.allQ = $scope.allQ.concat(_b.questionlist);
+        });
+      });
+      $scope.allM.map((_m, _mi) => {
+        if (_mi) {
+          muluLen = muluLen + parseInt(_m.lenQ);
+          _m.idx = muluLen;
+        }
+      });
+      question.editing = false;
+      return false;
+      $scope.loading = {
+        isLoading: true,
+        content: '题目提交中'
+      };
+      var data = Object.assign({nairefk: wjId, typedtlid: muluId}, question);
       var url, data;
       url = domain + '/terminal/interview/system.do?action=saveQuestion';
       data = Object.assign({nairefk: wjId, typedtlid: muluId}, question);
@@ -2961,7 +3034,34 @@ define([
           .post(`${url}&authorization=${token}`, data)
           .then(function (data) {
             _remind(1, data.message, '消息提醒');
+            $scope.loading.isLoading = false;
             question.editing = false;
+          }, function (err) {
+            _remind(4, err.message, '消息提醒');
+          })
+      })
+    };
+    $scope.delQ = function (question, $index) {
+      $scope.loading = {
+        isLoading: true,
+        content: '删除题目提交中'
+      };
+
+      var url, data;
+      url = domain + '/terminal/interview/system.do?action=deleteQuestionOrOption';
+      data = {
+        nairefk: wjId,
+        idx: question.idx,
+        ids: [question.questionfk]
+      };
+
+      getToken(function (token) {
+        iAjax
+          .post(`${url}&authorization=${token}`, data)
+          .then(function (data) {
+            _remind(1, data.message, '消息提醒');
+            $scope.questionList.splice($index, 1);
+            $scope.loading.isLoading = false;
           }, function (err) {
             _remind(4, err.message, '消息提醒');
           })

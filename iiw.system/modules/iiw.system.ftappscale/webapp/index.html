@@ -20,14 +20,14 @@
                                         <div class="scale-header">
                                             <div class="title">{{scaleData.name}}</div>
                                             <div class="subtitle">{{scaleData.subtitle}}</div>
-                                            <div class="describes">{{scaleData.describes}}</div>
+                                            <div class="describes" ng-bind-html="scaleData.describes | ngHtml"></div>
                                         </div>
                                         <div class="scale-question">
                                             <fieldset class='fieldset' ng-repeat="(qnumber, question) in questionList track by qnumber">
                                                 <div class='field' topic='question.idx' type='question.type' ng-click="editQ(questionList, $index)">
                                                     <div ng-if="question.qpremise" class='field-premise'>{{question.qpremise}}</div>
 
-                                                    <div class='field-label'>{{$index+1}}. {{question.name}}</div>
+                                                    <div class='field-label' ng-bind-html="$index+1 + '、' + question.name | ngHtml"></div>
 
                                                     <div ng-if="question.qtip" class='field-tip'>{{question.qtip}}</div>
 
@@ -40,7 +40,7 @@
 
                                                     <div ng-if="question.type !== '1'" class="field-input">
                                                     <span ng-repeat="(idx, input) in question.option track by idx">
-                                                        {{input.prefix}}<b class="input-text">{{input.content}}</b>{{input.suffix}}
+                                                        {{input.prefix}}<b class="input-text">{{input.content}}</b><sub ng-if="input.descr">({{input.descr}})</sub>{{input.suffix}}
                                                     </span>
                                                     </div>
                                                 </div>
@@ -84,12 +84,12 @@
                                                                     <tbody>
                                                                     <tr ng-repeat="row in question.option">
                                                                         <td class="label-box">
-                                                                            <input type="text" class="choicetxt" ng-model="row.label">
+                                                                            <input type="text" class="choicetxt" ng-model="row.label" placeholder="选项{{$index+1}}, 该空必填">
                                                                             <i class="fa fa-plus-circle fa-fw" ng-click="addOption(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
                                                                             <i class="fa fa-minus-circle fa-fw" ng-click="del(question.option, $index, 'option')" title="删除当前选项（最少保留2个选项）"></i>
                                                                         </td>
                                                                         <td class="score-box">
-                                                                            <input type="text" class="choicetxt" ng-model="row.score">
+                                                                            <input type="number" class="choicetxt" ng-model="row.score">
                                                                         </td>
                                                                         <td>
                                                                             <i class="fa fa-arrow-circle-up fa-fw" ng-click="moveUp(question.option, $index, 'option')" title="将当前选项上移一个位置"></i>
@@ -167,18 +167,12 @@
                                                                         </td>
                                                                         <td>
                                                                             <form class="form-inline">
-                                                                                <div class="form-group">
-                                                                                    <label>是否提示:</label>
-                                                                                    <select ng-model="row.isdesc" class="form-control">
-                                                                                        <option value="0">不加提示</option>
-                                                                                        <option value="1">普通提示</option>
-                                                                                        <option value="2">弹窗提示</option>
-                                                                                    </select>
+                                                                                <div class="form-group" ng-click="row.isdesc ? row.isdesc = 0 : row.isdesc = 1">
+                                                                                    <i class="fa"
+                                                                                       ng-class="{'fa-square-o': !row.isdesc, 'fa-check-square-o': row.isdesc}"></i>
+                                                                                    <label style="margin-right: 10px">提示</label>
                                                                                 </div>
-                                                                                <div class="form-group" ng-if="row.isdesc !== 0">
-                                                                                    <label for="descr">提示内容:</label>
-                                                                                    <input type="text" ng-model="row.descr" class="form-control" id="descr">
-                                                                                </div>
+                                                                                <input ng-if="row.isdesc" class="form-group" type="text" ng-model="row.descr" class="form-control">
                                                                             </form>
                                                                         </td>
                                                                         <td>
@@ -193,11 +187,11 @@
                                                                 </table>
                                                             </div>
                                                         </div>
-                                                        <div class="question-logic">
+                                                        <div class="question-logic" ng-if="!$last">
                                                             <span>逻辑设置：</span>
-                                                            <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
+                                                            <a ng-click="setJumpQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
                                                         </div>
-                                                        <div class="question-btn" ng-click="question.editing = false">完成编辑</div>
+                                                        <button class="question-btn" ng-disabled="!question.name" ng-click="saveQ(question)">完成编辑</button>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -269,11 +263,12 @@
                                                         <tbody>
                                                         <tr ng-repeat="row in question.option">
                                                             <td>选择</td>
-                                                            <td>选项{{$index}}</td>
+<!--                                                            <td>选项{{$index + 1}}</td>-->
+                                                            <td>{{row.label}}</td>
                                                             <td>
                                                                 <select ng-model="row.jumpto" class="form-control" style="display: inline-block;width: 85%;">
                                                                     <option value="">不跳转，按顺序填写下一题</option>
-                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}.{{question.name}}</option>
+                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}" ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -294,7 +289,7 @@
                                                     <label>填写此题后跳转到: </label>
                                                     <select ng-model="question.anyjump" class="form-control" style="display: inline-block;width: 85%;">
                                                         <option value="">请选择要跳转到的题目</option>
-                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}.{{question.name}}</option>
+                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}" ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -305,12 +300,12 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="cancel()">取消</button>
-                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveOption()">保存</button>
+                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveJumpQ()">保存</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container style="background-color: rgba(0, 0, 0, .6);">
+            <div class="ui-layout-container iiw-system-ftappscale-footer" size="60px" ui-layout-container style="background-color: rgba(0, 0, 0, .6);">
                 <button class="btn btn-success col-md-4" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
                 <button class="btn btn-danger col-md-4" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</button>
             </div>

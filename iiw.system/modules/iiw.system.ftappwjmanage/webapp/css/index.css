@@ -269,3 +269,9 @@
     padding-right: 0;
     word-wrap:break-word;
 }
+.label-required {
+    padding-left: 5px;
+    font-size: 20px;
+    vertical-align: middle;
+    color: red;
+}

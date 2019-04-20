@@ -1,17 +1,17 @@
 ul,ol,li{margin: 0;padding: 0;list-style: none;}
 
-.system-newwj-bar {
+.system-naire-container .system-newwj-bar {
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
-.system-newwj-page-content {
+.system-naire-container .system-newwj-page-content {
     background-color: rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
-.system-wjmenu-container, .iiw-system-question-container {
+.system-naire-container .system-wjmenu-container, .system-naire-container .iiw-system-question-container {
     position: absolute;
     width: 25%;
     height: 100%;
@@ -21,13 +21,13 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
-.iiw-system-question-container {
+.system-naire-container .iiw-system-question-container {
     right: 0;
     width: 74.8%;
 }
 
 /*目录*/
-.system-wjmenu-container .wjmenu-header {
+.system-naire-container .system-wjmenu-container .wjmenu-header {
     position: relative;
     height: 50px;
     line-height: 50px;
@@ -35,34 +35,34 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     font-size: 20px;
     font-weight: bold;
 }
-.system-wjmenu-container .wjmenu-header em {
+.system-naire-container .system-wjmenu-container .wjmenu-header em {
     display: inline-block;
     width: 40px;
     text-align: center;
 }
-.system-wjmenu-container .wjmenu-header a.wjmenu-cog {
+.system-naire-container .system-wjmenu-container .wjmenu-header a.wjmenu-cog {
     position: absolute;
     right: 15px;
     cursor: pointer;
 }
-.system-wjmenu-container .wjmenu-content {
+.system-naire-container .system-wjmenu-container .wjmenu-content {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-.system-wjmenu-container .wjmenu-content .ng-isolate-scope.i-resize-1 {width: 100%}
-.system-wjmenu-container .wjmenu-content .contents-list{
+.system-naire-container .system-wjmenu-container .wjmenu-content .ng-isolate-scope {width: 100%}
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list{
     width: 100%;
     height: 100%;
     padding-bottom: 100px;
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item{
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item{
     position: relative;
     width: 100%;
 }
 
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box {
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box {
     position: relative;
     display: flex;
     align-items: center;
@@ -70,48 +70,48 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     /*background-color: rgba(0, 0, 0, .3);*/
     border-bottom: 1px solid rgba(255,255,255, 0.1);
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box:hover{
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box:hover{
     background-color: rgba(0, 0, 0, .3);
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box em{
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box em{
     display: inline-block;
     width: 40px;
     text-align: center;
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .name {width: 75%}
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .label {
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .name {width: 75%}
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .label {
     display: inline-block;
     margin: 0 5px;
     min-width: 27px;
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .arrow {margin: 0 15px 0 5px}
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .item-box .arrow {margin: 0 15px 0 5px}
 
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold {
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold {
     display: none;
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title {
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title {
     padding: 8px 0 8px 15px;
     background-color: rgba(0, 0, 0, .5);
     border-bottom: 1px solid rgba(255,255,255, 0.1);
 }
-.system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title:hover {
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title:hover {
     background-color: rgba(223, 105, 26,0.8);
 }
 
 /*题目*/
-.iiw-system-question-container {}
-.question-wrapper {
+.system-naire-container .iiw-system-question-container {}
+.system-naire-container .question-wrapper {
     position: relative;
     width: 100%;
     height: 94%;
     overflow: auto;
 }
-.iiw-system-question-container .save, .iiw-system-question-container .back {
+.system-naire-container .iiw-system-question-container .save, .iiw-system-question-container .back {
     position: absolute;
     right: 1%;
 }
-.iiw-system-question-container .save{right: 8%;}
-.question-footer{
+.system-naire-container .iiw-system-question-container .save{right: 8%;}
+.system-naire-container .question-footer{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -122,118 +122,118 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
 }
 
 /*题目*/
-.question-list {
+.system-naire-container .question-list {
     position: relative;
     width: 100%;
     margin-bottom: 80px;
 }
 
-.question-list .title {
+.system-naire-container .question-list .title {
     font-size: 18px;
     font-weight: bold;
 }
 
-.question-list fieldset {
+.system-naire-container .question-list fieldset {
     display: block;
     padding: 10px 20px 0;
 }
 
-.question-list fieldset .field > b {
+.system-naire-container .question-list fieldset .field > b {
     font-weight: bold !important;
 }
 
-.question-list fieldset .field .field-classify,
-.question-list fieldset .field .field-premise {
+.system-naire-container .question-list fieldset .field .field-classify,
+.system-naire-container .question-list fieldset .field .field-premise {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.question-list fieldset .field .field-classify,
-.question-list fieldset .field .field-premise,
-.question-list fieldset .field .field-label {
+.system-naire-container .question-list fieldset .field .field-classify,
+.system-naire-container .question-list fieldset .field .field-premise,
+.system-naire-container .question-list fieldset .field .field-label {
     position: relative;
     word-break: break-word;
     padding-bottom: 5px;
 }
 
-.question-list fieldset .field .field-tip {
+.system-naire-container .question-list fieldset .field .field-tip {
     color: gray;
     font-size: 12px;
     padding-bottom: 10px;
 }
 
-.question-list fieldset .field .field-controlgroup {
+.system-naire-container .question-list fieldset .field .field-controlgroup {
 }
 
-.question-list fieldset .field .field-input input[disabled]{}
-.question-list fieldset .field .field-input .input-text{padding: 5px 15px 3px;margin: 0 5px;border-bottom: 1px solid rgba(255,255,255,.6);}
+.system-naire-container .question-list fieldset .field .field-input input[disabled]{}
+.system-naire-container .question-list fieldset .field .field-input .input-text{padding: 5px 15px 3px;margin: 0 5px;border-bottom: 1px solid rgba(255,255,255,.6);}
 
-.question-list fieldset .field .field-input .special {
+.system-naire-container .question-list fieldset .field .field-input .special {
     position: relative;
 }
 
-.question-list fieldset .field .field-input .special i.fa {
+.system-naire-container .question-list fieldset .field .field-input .special i.fa {
     position: absolute;
     top: 7px;
     left: 5px;
 }
 
-.question-list fieldset .field .field-input .special input {
+.system-naire-container .question-list fieldset .field .field-input .special input {
     padding-left: 25px;
 }
 
-.question-list fieldset .field .field-select .text {
+.system-naire-container .question-list fieldset .field .field-select .text {
     margin-left: 30px;
     padding: 0 15px;
     border-bottom: 1px solid rgba(255,255,255,.3);
 }
 
-.question-list fieldset .field .field-child {
+.system-naire-container .question-list fieldset .field .field-child {
     padding-left: 20px;
     padding-bottom: 10px;
 }
 
-.question-list fieldset {
+.system-naire-container .question-list fieldset {
     padding: 10px 30px;
     border-bottom: 1px solid #eee;
 }
-.question-list fieldset:hover {
+.system-naire-container .question-list fieldset:hover {
     background-color: rgba(0, 0, 0,0.6);
 }
 
-.question-list fieldset .field-controlgroup {
+.system-naire-container .question-list fieldset .field-controlgroup {
     padding: 0 3%;
 }
-.question-list fieldset .field-toomuch{
+.system-naire-container .question-list fieldset .field-toomuch{
     display: flex;
     flex-wrap: wrap;
 }
-.question-list fieldset .field-toomuch .field-radio{
+.system-naire-container .question-list fieldset .field-toomuch .field-radio{
     margin-right: 30px;
 }
 
-.question-list fieldset .field-input {
+.system-naire-container .question-list fieldset .field-input {
     padding: 0 3%;
 }
 
-.question-list fieldset .field-input .input-text {
+.system-naire-container .question-list fieldset .field-input .input-text {
     padding: 0 15px;
     margin: 0 5px;
     border-bottom: 1px solid #000;
 }
-.question-list fieldset .set {
+.system-naire-container .question-list fieldset .set {
     display: none;
 }
-.question-list fieldset:hover .set{
+.system-naire-container .question-list fieldset:hover .set{
     display: block;
 }
-.question-list fieldset .set .setLeft{
+.system-naire-container .question-list fieldset .set .setLeft{
     position: relative;
     width: 60%;
     padding: 8px 0 8px 30px;
     cursor: pointer;
 }
-.question-insertQ {
+.system-naire-container .question-insertQ {
     display: none;
     position: absolute;
     width: 160%;
@@ -244,7 +244,7 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     color: #0a0a0a;
     z-index: 2;
 }
-.question-insertQ em {
+.system-naire-container .question-insertQ em {
     display: block;
     border-width: 10px;
     position: absolute;
@@ -255,7 +255,7 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     font-size: 0;
     line-height: 0;
 }
-.question-insertQ span {
+.system-naire-container .question-insertQ span {
     display: block;
     border-width: 10px;
     position: absolute;
@@ -266,19 +266,19 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     font-size: 0;
     line-height: 0;
 }
-.question-list fieldset .set .setLeft:hover .question-insertQ{
+.system-naire-container .question-list fieldset .set .setLeft:hover .question-insertQ{
     display: block;
 }
-.question-insertQ .tip {margin-top: 10px;}
+.system-naire-container .question-insertQ .tip {margin-top: 10px;}
 
-.question-set {
+.system-naire-container .question-set {
     position: relative;
     padding: 15px 0;
     margin-top: 20px;
     background-color: rgba(0, 0, 0, .6);
     border-top: 1px solid #00A8FF;
 }
-.question-triangle{
+.system-naire-container .question-triangle{
     display: block;
     border-width: 15px;
     position: absolute;
@@ -289,31 +289,31 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     font-size: 0;
     line-height: 0;
 }
-.question-table {
+.system-naire-container .question-table {
     max-height: 300px;
     margin-top: 15px;
     border: 1px solid #F0F0EE;
 }
-.question-table thead {
+.system-naire-container .question-table thead {
     background-color: #F0F0EE;
 }
-.question-table thead th {color: #0a0a0a;text-align: center;}
-.question-table tbody tr td {text-align: center}
-.question-table .label-box input {width: 60%;}
-.question-table .input-attr input[type=number] {width: 50px;}
-.question-table .form-group select {border: 1px solid rgba(255, 255, 255, 0.25);}
-.question-table i.fa{
+.system-naire-container .question-table thead th {color: #0a0a0a;text-align: center;}
+.system-naire-container .question-table tbody tr td {text-align: center}
+.system-naire-container .question-table .label-box input {width: 60%;border: 1px solid #f00;}
+.system-naire-container .question-table .input-attr input[type=number] {width: 50px;}
+.system-naire-container .question-table .form-group select {border: 1px solid rgba(255, 255, 255, 0.25);}
+.system-naire-container .question-table i.fa{
     font-size: 20px;
     cursor: pointer;
 }
-.question-table i.fa:hover{color: #00A8FF}
-.question-option {margin-top: 15px;}
-.question-option a {
+.system-naire-container .question-table i.fa:hover{color: #00A8FF}
+.system-naire-container .question-option {margin-top: 15px;}
+.system-naire-container .question-option a {
     margin-right: 15px;
     color: #00A8FF;
     cursor: pointer;
 }
-.question-logic{
+.system-naire-container .question-logic{
     margin-top: 15px;
     padding: 0 10px;
     text-align: left;
@@ -323,8 +323,8 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     border: 1px dashed #DBDBDB;
     color: #0a0a0a;
 }
-.question-logic a{text-decoration: underline;cursor: pointer;color: #00A8FF;padding: 0 5px;}
-.question-btn{
+.system-naire-container .question-logic a{text-decoration: underline;cursor: pointer;color: #00A8FF;padding: 0 5px;}
+.system-naire-container .question-btn{
     width: 100%;
     margin: 15px 0;
     text-align: center;
@@ -337,22 +337,22 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
 }
 
 
-.question-add{
+.system-naire-container .question-add{
     width: 100%;
     padding: 30px;
     border-top: 2px solid #eee;
     border-bottom: 2px solid #eee;
 }
-.question-add .btn-add {
+.system-naire-container .question-add .btn-add {
     width: 100%;
     height: 60px;
 }
-.question-add #collapseAdd{
+.system-naire-container .question-add #collapseAdd{
     border: 2px solid #df691a;
     border-bottom: none;
 }
-.question-add #collapseAdd .add-option{
+.system-naire-container .question-add #collapseAdd .add-option{
     padding: 20px;
     text-align: center;
 }
-.question-add #collapseAdd .add-option button{margin-right: 50px;}
+.system-naire-container .question-add #collapseAdd .add-option button{margin-right: 50px;}

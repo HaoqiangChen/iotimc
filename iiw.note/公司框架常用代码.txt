@@ -44,3 +44,9 @@ if (item) {
 }
 
 监听$watch
+
+上下级组件模块通信
+websocket：
+发送消息：$scope.sendMessage
+广播：$rootScope.$broadcast('ws.' + data.event, data.data);
+接收消息：$scope.$on('', function(){})

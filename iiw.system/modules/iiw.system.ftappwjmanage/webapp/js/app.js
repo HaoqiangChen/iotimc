@@ -29,6 +29,7 @@ define([
 
     $scope.filter = {
       content: '',
+      status: '',
       name: '',
       starttime: '',
       endtime: ''
@@ -40,25 +41,26 @@ define([
 
     $scope.wjList = [
         {name: '初犯', id: 'D64B236EA44046528699011C0258E9DE', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
-      {name: '测试问卷', id: '0FB464990CFB480FA534AA3966FA791E', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000},
+      {name: '测试问卷', id: '0FB464990CFB480FA534AA3966FA791E', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000, existed: '0'},
       {name: '测试量表', id: '574DBD507DB04A7C84AE46E142A22FB2', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000},
       {name: '刑罚执行完毕后未重新犯罪者', id: '354DD9C8DD08460A83BDA9A06D874B86', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
       {name: '重犯', id: 'B701AB0474BE475B8CF22E6152B9FC01', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
         {name: '共情量表测试', id: '0CFF778DCDD94C85BC67141E388E403E', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000}
     ];
     $scope.getList = function () {
-
-      for (let v in $scope.filter) {
-        if ($scope.filter[v] === '') delete $scope.filter[v]
-      }
       $scope.loading = {
         isLoading: true,
         content: '问卷列表加载中'
       };
-      var url, data;
+
+      var url, filter, data;
       url = domain + '/terminal/interview/system.do?action=getNaireList';
+      filter = JSON.parse(JSON.stringify($scope.filter));
+      for (let v in filter) {
+        if (filter[v] === '') delete filter[v]
+      }
       data = {
-        filter: $scope.filter,
+        filter: filter,
         params: $scope.params
       };
 
@@ -120,6 +122,24 @@ define([
       }
     };
     $scope.goWj = function (item) {
+      wjData = JSON.parse(JSON.stringify(item));
+      if (item.existed === '0') {
+        iConfirm.show({
+          scope: $scope,
+          title: '请先配置问卷目录',
+          content: '该问卷尚未配置目录，是否前往问卷目录配置页面进行配置？',
+          buttons: [{
+            text: '确认',
+            style: 'button-primary',
+            action: 'directorySuccess'
+          }, {
+            text: '取消',
+            style: 'button-caution',
+            action: 'confirmCancel'
+          }]
+        });
+        return false;
+      }
       if (item) {
         $state.params = {
           data: item
@@ -143,6 +163,20 @@ define([
       if (item) {
         $state.params = {
           data: item
+        };
+        $state.go('system.ftappdirectory', $state.params);
+      } else {
+        $state.params = {
+          data: null
+        };
+        _remind(4, '错误操作!');
+      }
+    };
+    $scope.directorySuccess = function (id) {
+      iConfirm.close(id);
+      if (wjData) {
+        $state.params = {
+          data: wjData
         };
         $state.go('system.ftappdirectory', $state.params);
       } else {

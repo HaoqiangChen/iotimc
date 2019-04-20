@@ -9,6 +9,13 @@ define([
   'system/ftappwjmanage/js/directives/kindEditor'
 ], function (app) {
   var packageName = 'iiw.system.ftappscale';
+  app.filter(
+    'ngHtml', ['$sce', function ($sce) {
+      return function (text) {
+        return $sce.trustAsHtml(text);
+      }
+    }]
+  );
   app.controller('ftappScaleController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
     mainService.moduleName = '访谈APP管理';
     $scope.title = '量表设计';
@@ -33,7 +40,7 @@ define([
     ];
 
     $scope.question = {};
-    $scope.scaleDat = {
+    $scope.scaleData = {
       id: "0CFF778DCDD94C85BC67141E388E403E",
       name: "IRI （问卷二）",
       subtitle: '阿萨德噶华科大工行卡看开大会',
@@ -45,7 +52,7 @@ define([
         "ismust": "1",
         "ismustname": "必答",
         "jumpway": '',
-        "name": "1.我时常做白日梦，幻想可能会发生在我身上的事情。",
+        "name": "我<strong>时常做白日梦</strong>，幻想可能会发生在我身上的事情。",
         "option": [{"label": "完全不符合", "value": "AA7537B2399A4EA68F63B434EC28B8B6"}, {
           "label": "有点不符合",
           "value": "AA7537B2301A4EA68F63B434EC28B8B6"
@@ -116,7 +123,7 @@ define([
         "idx": 3,
         "ismust": "1",
         "ismustname": "必答",
-        "name": "3.有时候我觉得很难从他人的角度看问题。",
+        "name": "有时候我觉得很难从他人的角度看问题。",
         "option": [{"label": "完全不符合", "value": "3505E227AE8040B9A99C0D7D7063E055"}, {
           "label": "有点不符合",
           "value": "1C741B31D2DB45AB871FBA3B19C5D81B"
@@ -400,7 +407,7 @@ define([
         "typename": "单选"
       }]
     };
-    $scope.questionLis = $scope.scaleDat.question.splice(0, 3);
+    $scope.questionList = $scope.scaleData.question.splice(0, 3);
     $scope.getScale = function () {
       $scope.loading = {
         isLoading: true,
@@ -427,11 +434,13 @@ define([
             } else {
               $scope.scaleData = {};
               $scope.questionList = [];
+              $scope.loading.isLoading = false;
             }
           })
       })
     };
     $scope.editQ = function (questionlist, $index) {
+      _reSort();
       questionlist.map(_ => _.editing = false);
       questionlist[$index].editing = true;
     };
@@ -445,17 +454,16 @@ define([
     };
     $scope.moveDown = function (arr, $index, type) {
       if ($index === arr.length - 1) {
-        if (type === 'question') _remind(3, '最后一题不能再上移');
-        else _remind(3, '最后一个不能再上移');
+        if (type === 'question') _remind(3, '最后一题不能再下移');
+        else _remind(3, '最后一个不能再下移');
         return;
       }
       _swapItems(arr, $index, $index + 1);
     };
     $scope.copy = function ($index) {
-      $scope.questionList.splice($index, 0, $scope.questionList[$index]);
-      $scope.questionList.map((_, index) => {
-        _.idx = index + 1;
-      })
+      let copyQ = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      copyQ.idx = copyQ.idx + 1;
+      $scope.questionList.splice($index, 0, copyQ);
     };
     $scope.del = function (arr, $index, type) {
       if (type === 'option' && arr.length <= 2) {
@@ -465,7 +473,7 @@ define([
       arr.splice($index, 1);
     };
     $scope.addOption = function (arr, $index) {
-      let newLabel = {label: '选项' + ($index + 2)};
+      let newLabel = {label: ''};
       arr.splice($index + 1, 0, newLabel);
     };
     $scope.addInput = function (arr, $index) {
@@ -475,20 +483,25 @@ define([
     $scope.setQ = function ($index) {
       indexQ = $index;
       $scope.question = $scope.questionList[$index];
+      $scope.batchOptions = $scope.question.option.filter(_ => _.label).map(_ => _.label).join(',');
     };
     $scope.saveOption = function () {
       let newLabels = [],
         newOptions = [];
-      if ($scope.batchOptions) newLabels = $scope.batchOptions.split(',');
+      if ($scope.batchOptions) newLabels = $scope.batchOptions.split(',').filter(_ => _ && _.trim());
 
       if (newLabels.length) {
         newOptions = [];
         newLabels.map(_ => {
           newOptions.push({label: _});
         });
-        $scope.questionList[indexQ].option = $scope.questionList[indexQ].option.concat(newOptions);
+        $scope.questionList[indexQ].option = newOptions;
         $('#optionModal').modal('hide')
       } else $('#optionModal').modal('hide')
+    };
+    $scope.setJumpQ = function ($index) {
+      indexQ = $index;
+      $scope.question = JSON.parse(JSON.stringify($scope.questionList[$index]));
     };
 
     $scope.setJump = function (question, type) {
@@ -509,26 +522,53 @@ define([
       }
     };
 
+    $scope.saveJumpQ = function () {
+      // console.log($scope.question);
+      $scope.questionList[indexQ] = $scope.question;
+      $('#jumpModal').modal('hide')
+    };
+
     $scope.addQ = function ($index, type) {
       var newQ = {};
       switch (type) {
         case 1:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '量表题目', type: '1', typename: '单选', editing: true,
-            option: [{label: '选项一', value: '1'}, {label: '选项二', value: '2'}]
+          newQ = {
+            code: '',
+            idx: $index + 1,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '量表题目',
+            type: '1',
+            typename: '单选',
+            editing: true,
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
           };
           break;
         case 2:
-          newQ = {code: '', idx: $index + 1, ismust: '1', ismustname: '必答', jumpway: '', name: '填空题目', type: '2', typename: '填空', editing: true,
-            option: [{label: '选项一', value: '', content: ''}]
+          newQ = {
+            code: '',
+            idx: $index + 1,
+            ismust: '1',
+            ismustname: '必答',
+            jumpway: '',
+            name: '填空题目',
+            type: '2',
+            typename: '填空',
+            editing: true,
+            option: [{label: '', value: '', content: '', type: '1'}]
           };
           break;
       }
-      // if (!$scope.questionList.length) $scope.questionList.push(newQ);
-      // else $scope.questionList.splice($index + 1, 0, newQ);
       $scope.questionList.splice($index + 1, 0, newQ);
-      $scope.questionList.map((_, index) => {
-        _.idx = index + 1;
-      })
+      _reSort();
+    };
+    $scope.saveQ = function (question) {
+      if ((question.type === '1' && question.option.some(_ => !_.label)) || (question.type === '2' && question.option.some(_ => !_.type))) {
+        _remind(3, '请将题目编辑完善后提交', '请完善题目');
+        return false;
+      }
+      question.editing = false;
     };
 
     $scope.save = function () {
@@ -550,7 +590,8 @@ define([
           .then(function (data) {
             $scope.loading.isLoading = false;
             _remind(1, '提交成功!', '消息提醒');
-            $scope.getScale();
+            // $scope.getScale();
+            window.history.back();
           }, function (err) {
             _remind(4, '提交失败!', '消息提醒');
           })
@@ -586,9 +627,15 @@ define([
     };
 
     $scope.$on('ftappScaleControllerOnEvent', function () {
-      $scope.getScale();
+      // $scope.getScale();
       // _refreshPage();
     });
+
+    function _reSort() {
+      $scope.questionList.map((_, index) => {
+        _.idx = index + 1;
+      })
+    }
 
     function _swapItems(arr, index1, index2) {
       arr[index1] = arr.splice(index2, 1, arr[index1])[0];

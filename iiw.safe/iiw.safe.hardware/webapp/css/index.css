@@ -1,0 +1,48 @@
+.safe-hardware {
+    padding: 0px 5px 5px 5px;
+}
+
+.safe-hardware-list {
+    display: none;
+}
+
+.safe-hardware-list .safe-hardware-listbox {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.safe-hardware-listbox-content-arrow {
+    padding-left: 5px;
+}
+
+.safe-hardware-listbox-content-icon {
+    font-size: 45% !important;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.safe-hardware-listbox-content-title {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.safe-hardware-listbox-content {
+    position: relative;
+    letter-spacing: 2px;
+    padding: 20px;
+}
+
+.safe-hardware-listbox-content:focus,
+.safe-hardware-listbox-content:hover {
+    text-shadow: 0 0 50px #fff;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.safe-hardware-listbox-content-text {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 20px;
+}

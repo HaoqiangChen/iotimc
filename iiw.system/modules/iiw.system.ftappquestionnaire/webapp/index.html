@@ -6,10 +6,10 @@
             </div>
             <div class="ui-layout-container" ui-layout-container>
                 <div class="layout-full" ui-view style="overflow: hidden;">
-                    <div class="ui-layout-row system-newwj-page-content" ui-layout="{ flow: 'row'}"
+                    <div class="ui-layout-row system-naire-page-content" ui-layout="{ flow: 'row'}"
                          options="{dividerSize:'0'}">
                         <div class="ui-layout-container" ui-layout-container style="overflow:hidden;">
-                            <div class="layout-full system-newwj-container"
+                            <div class="layout-full system-naire-container"
                                  style="position: relative; display:inline-block;">
                                 <div class="system-wjmenu-container">
                                     <div class="wjmenu-header">
@@ -40,6 +40,9 @@
                                 </div>
                                 <div class="iiw-system-question-container">
                                     <div class="question-wrapper">
+                                        <h3 class="question-none" ng-if="!questionList.length" style="text-align: center">
+                                            请点击左边目录，在对应目录下添加问题！
+                                        </h3>
                                         <div class="question-list">
                                             <fieldset class='fieldset'
                                                       ng-repeat="(qnumber, question) in questionList track by qnumber">
@@ -48,18 +51,10 @@
                                                         {{question.qpremise}}
                                                     </div>
 
-                                                    <div class='field-label' ng-if="question.type === '1'">
-                                                        (单选题) {{question.code}}、 {{question.name}}
-                                                    </div>
-                                                    <div class='field-label' ng-if="question.type === '2'">
-                                                        (多选题) {{question.code}}、 {{question.name}}
-                                                    </div>
-                                                    <div class='field-label' ng-if="question.type === '3'">
-                                                        {{question.code}}、{{question.name}}
-                                                    </div>
-                                                    <div class='field-label' ng-if="question.type === '4'">
-                                                        (下拉选择题) {{question.code}}、 {{question.name}}
-                                                    </div>
+                                                    <div class='field-label' ng-bind-html="'(单选题) ' + question.idx + '、' + question.name | ngHtml" ng-if="question.type === '1'"></div>
+                                                    <div class='field-label' ng-bind-html="'(多选题) ' + question.idx + '、' + question.name | ngHtml" ng-if="question.type === '2'"></div>
+                                                    <div class='field-label' ng-bind-html="question.idx + '、' + question.name | ngHtml" ng-if="question.type === '3'"></div>
+                                                    <div class='field-label' ng-bind-html="'(下拉选择题) ' + question.idx + '、' + question.name | ngHtml" ng-if="question.type === '4'"></div>
 
                                                     <div ng-if="question.qtip" class='field-tip'>{{question.qtip}}</div>
 
@@ -70,8 +65,8 @@
                                                             <div class="radio-container">
                                                                 <i class="fa"
                                                                    ng-class="{'fa-circle-o': !radio.isChecked, 'fa-check-circle-o': radio.isChecked}"></i>
-                                                                <label>{{radio.label}}<span class="label-desc"
-                                                                                            ng-if="radio.isdesc === 1">{{radio.descr}}</span></label>
+                                                                <label>{{radio.label}}<sub class="label-desc"
+                                                                                            ng-if="radio.isdesc === 1">({{radio.descr}})</sub></label>
                                                             </div>
                                                             <div class="field-child"
                                                                  ng-if="radio.child">
@@ -144,8 +139,8 @@
                                                             <div class="checkbox-container">
                                                                 <i class="fa"
                                                                    ng-class="{'fa-square-o': !checkbox.isChecked, 'fa-check-square-o': checkbox.isChecked}"></i>
-                                                                <label>{{checkbox.label}}<span class="label-desc"
-                                                                                               ng-if="checkbox.isdesc === 1">{{checkbox.descr}}</span></label>
+                                                                <label>{{checkbox.label}}<sub class="label-desc"
+                                                                                               ng-if="checkbox.isdesc === 1">({{checkbox.descr}})</sub></label>
                                                             </div>
                                                             <div class="field-child"
                                                                  ng-if="checkbox.isChecked && checkbox.child">
@@ -228,6 +223,7 @@
                                                                 <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
                                                                 <span ng-if="input.type !== '0' && input.type !== '6'"
                                                                       class="input-text">{{input.value}}</span>
+                                                                <sub ng-if="input.descr">({{input.descr}})</sub>
                                                                 {{input.suffix}}
                                                                 <div class="field-child" ng-if="input.child">
                                                                     <div class="achild-list"
@@ -304,10 +300,10 @@
                                                                 <em></em>
                                                                 <span></span>
                                                                 <div class="insertQ-type">
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 1)">单选题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 2)">多选题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 3)">填空题</button>
-                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ(question.idx, 4)">下拉选择题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 1, question)">单选题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 2, question)">多选题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 3, question)">填空题</button>
+                                                                    <button class="btn btn-sm btn-primary" ng-click="addQ($index, 4, question)">下拉选择题</button>
                                                                 </div>
                                                                 <!-- <div class="tip"><b>提示：</b>如需添加其他题型，请联系开发人员进行开发。</div> -->
                                                             </div>
@@ -316,7 +312,7 @@
                                                     <div class="col-md-8">
                                                         <a class="btn btn-success" ng-click="editQ(questionList, $index)"><i class="fa fa-edit fa-fw"></i>编辑</a>
                                                         <a class="btn btn-primary" ng-click="copy($index)"><i class="fa fa-copy fa-fw"></i>复制</a>
-                                                        <a class="btn btn-danger" ng-click="del(questionList, $index, 'question')"><i class="fa fa-trash-o fa-fw"></i>删除</a>
+                                                        <a class="btn btn-danger" ng-click="delQ(question, $index)"><i class="fa fa-trash-o fa-fw"></i>删除</a>
                                                         <!-- <a class="btn btn-info" ng-click="moveUp(questionList, $index, 'question')"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
                                                         <a class="btn btn-info" ng-click="moveDown(questionList, $index, 'question')"><i class="fa fa-arrow-down fa-fw"></i>下移</a> -->
                                                     </div>
@@ -324,7 +320,7 @@
                                                 <div ng-if="question.editing">
                                                     <div class="question-set">
                                                         <div class="question-triangle"></div>
-                                                        <input type="text" class="form-control" ng-model="question.code" placeholder="题目编号" style="margin: 10px 0;border: 1px solid #eee;">
+                                                        <input type="text" class="form-control" ng-model="question.code" placeholder="题目编号，该空必填" style="margin: 10px 0;border: 1px solid #f00;">
                                                         <kind-editor ng-model="question.name"></kind-editor>
                                                         <input type="text" class="form-control" ng-model="question.qtip" placeholder="题目提示说明" style="margin: 10px 0;border: 1px solid #eee;">
                                                         <div ng-if="question.type === '1'">
@@ -334,14 +330,14 @@
                                                                     <tr>
                                                                         <th>选项文字</th>
                                                                         <th>选项提示</th>
-                                                                        <!-- <th>选项问题</th> -->
+<!--                                                                         <th>选项问题</th>-->
                                                                         <th>上移下移</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr ng-repeat="row in question.option">
                                                                         <td class="label-box">
-                                                                            <input type="text" class="choicetxt" ng-model="row.label">
+                                                                            <input type="text" class="choicetxt" ng-model="row.label" placeholder="选项{{$index+1}}, 该空必填">
                                                                             <i class="fa fa-plus-circle fa-fw" ng-click="addOption(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
                                                                             <i class="fa fa-minus-circle fa-fw" ng-click="del(question.option, $index, 'option')" title="删除当前选项（最少保留2个选项）"></i>
                                                                         </td>
@@ -355,10 +351,11 @@
                                                                                 <input ng-if="row.isdesc" class="form-group" type="text" ng-model="row.descr" class="form-control">
                                                                             </form>
                                                                         </td>
-                                                                        <!-- <td>
-                                                                            <i class="fa fa-fw" ng-click="row.child = !row.child"
-                                                                               ng-class="{'fa-square-o': !row.child, 'fa-check-square-o': row.child}"></i>
-                                                                        </td> -->
+<!--                                                                        <td>-->
+<!--                                                                            <i class="fa fa-fw" ng-click="row.child = !row.child"-->
+<!--                                                                               ng-class="{'fa-square-o': !row.child, 'fa-check-square-o': row.child}"></i>-->
+<!--                                                                               <button ng-if="row.child" class="btn btn-info" data-backdrop="false" data-target="#questionModal" data-toggle="modal">子问题</button>-->
+<!--                                                                        </td>-->
                                                                         <td>
                                                                             <i class="fa fa-arrow-circle-up fa-fw" ng-click="moveUp(question.option, $index, 'option')" title="将当前选项上移一个位置"></i>
                                                                             <i class="fa fa-arrow-circle-down fa-fw" ng-click="moveDown(question.option, $index, 'option')" title="将当前选项下移一个位置"></i>
@@ -390,7 +387,7 @@
                                                                     <tbody>
                                                                     <tr ng-repeat="row in question.option">
                                                                         <td class="label-box">
-                                                                            <input type="text" class="choicetxt" ng-model="row.label">
+                                                                            <input type="text" class="choicetxt" ng-model="row.label" placeholder="选项{{$index+1}}, 该空必填">
                                                                             <i class="fa fa-plus-circle fa-fw" ng-click="addOption(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
                                                                             <i class="fa fa-minus-circle fa-fw" ng-click="del(question.option, $index, 'option')" title="删除当前选项（最少保留2个选项）"></i>
                                                                         </td>
@@ -512,7 +509,7 @@
                                                                     <tbody>
                                                                     <tr ng-repeat="row in question.option">
                                                                         <td class="label-box">
-                                                                            <input type="text" class="choicetxt" ng-model="row.label">
+                                                                            <input type="text" class="choicetxt" ng-model="row.label" placeholder="选项{{$index+1}}, 该空必填" required>
                                                                             <i class="fa fa-plus-circle fa-fw" ng-click="addOption(question.option, $index)" title="在此选项下面插入一个新的选项"></i>
                                                                             <i class="fa fa-minus-circle fa-fw" ng-click="del(question.option, $index, 'option')" title="删除当前选项（最少保留2个选项）"></i>
                                                                         </td>
@@ -537,13 +534,14 @@
                                                         <div class="question-logic">
                                                             <span>逻辑设置：</span>
                                                             <!-- <a ng-click="setQ($index)" ng-if="$index > 0" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="当前面题目选中某些选项时才出现此题 ">题目关联</a> -->
-                                                            <a ng-click="setQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
+                                                            <a ng-click="setJumpQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
                                                         </div>
-                                                        <div class="question-btn" ng-click="saveQ(question)">完成编辑</div>
+                                                        <button class="question-btn" ng-disabled="!question.name || !question.code" ng-click="saveQ(question)">完成编辑</button>
                                                     </div>
                                                 </div>
                                             </fieldset>
                                         </div>
+
                                         <div class="question-add">
                                             <div class="collapse" id="collapseAdd">
                                                 <div class="add-option">
@@ -564,13 +562,19 @@
                                                 class="fa fa-mail-reply-all fa-fw"></i>返回
                                         </button>
                                     </div>
+                                    <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+                                        <div class="loading-toast">
+                                            <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                            <p class="loading-content">{{loading.content}}...</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="questionModal">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"><i class="fa fa-remove"></i></button>
-                                                <h4 class="modal-title">量表题设置</h4>
+                                                <h4 class="modal-title">选项子问题配置</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="widget-content">
@@ -608,17 +612,6 @@
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
-                                                            </div>
-                                                            <div class="question-option clearfix">
-                                                                <div class="col-md-6">
-                                                                    <a ng-click="addOption(question.option.length - 1)"><i class="fa fa-plus-square-o"></i>添加选项</a>
-                                                                    <a data-backdrop="false" data-target="#optionModal" data-toggle="modal"><i class="fa fa-object-ungroup"></i>批量增加</a>
-                                                                </div>
-                                                                <div class="col-md-6"></div>
-                                                            </div>
-                                                            <div class="question-logic">
-                                                                <span>逻辑设置：</span>
-                                                                <a ng-click="">跳题逻辑</a>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -663,7 +656,7 @@
                                             <div class="modal-body">
                                                 <div class="widget-content">
                                                     <div class="jump-wrapper" style="height: 500px;">
-                                                        <div ng-if="question.type === '1'">
+                                                        <div ng-if="question.type === '1' || question.type === '2'">
                                                             <div class="radio" ng-click="setJump(question, 1)">
                                                                 <label>
                                                                     <i class="fa" ng-class="{'fa-square-o': question.jumpway !== '1', 'fa-check-square-o': question.jumpway === '1'}"></i>
@@ -683,11 +676,11 @@
                                                                         <tbody>
                                                                         <tr ng-repeat="row in question.option">
                                                                             <td>选择</td>
-                                                                            <td>选项{{$index}}</td>
+                                                                            <td>{{row.label}}</td>
                                                                             <td>
                                                                                 <select ng-model="row.jumpto" class="form-control" style="display: inline-block;width: 85%;">
                                                                                     <option value="">不跳转，按顺序填写下一题</option>
-                                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}.{{question.name}}</option>
+                                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}" ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -708,7 +701,7 @@
                                                                     <label>填写此题后跳转到: </label>
                                                                     <select ng-model="question.anyjump" class="form-control" style="display: inline-block;width: 85%;">
                                                                         <option value="">请选择要跳转到的题目</option>
-                                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}.{{question.name}}</option>
+                                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}"  ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -719,7 +712,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-danger btn-lg btn-larger" data-dismiss="modal" ng-click="cancel()">取消</button>
-                                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveOption()">保存</button>
+                                            <button class="btn btn-primary btn-lg btn-larger" ng-click="saveJumpQ()">保存</button>
                                         </div>
                                     </div>
                                 </div>
