@@ -15,6 +15,17 @@ define([
       }
     }]
   );
+  app.filter(
+    'ngFormat', [function () {
+      return function (text) {
+        let formatHtml = text.replace(/<[^>]+>/g, '').replace(/&nbsp;/ig, '');
+        if (formatHtml.length > 43) {
+          formatHtml = formatHtml.substring(0, 43) + '...';
+        }
+        return formatHtml;
+      }
+    }]
+  );
   app.controller('ftappQuestionnaireController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
     mainService.moduleName = '访谈APP管理';
 
@@ -24,11 +35,13 @@ define([
       wjId = $stateParams.data.id;
       wjName = $stateParams.data.name;
     } else {
-      wjId = '0FB464990CFB480FA534AA3966FA791E';
-      wjName = '问卷'
+      wjId = '';
+      wjName = '问卷';
+      // $state.go('system.ftappwjmanage');
     }
     $scope.title = wjName;
     var indexQ = 0;
+    var indexOp = 0;
     var muluId = '';
     var muluLen = 0;
     $scope.inputTypes = [
@@ -2735,23 +2748,10 @@ define([
         "type": "1"
       },
     ];
-    $scope.allM = [];
-    $scope.allQ = [];
-    $scope.contentsList.map((_a, _ai) => {
-      $scope.allM = $scope.allM.concat(_a.secondary);
-      _a.secondary.map((_b, _bi) => {
-        if (!_b.questionlist) _b.questionlist = [];
-        _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
-        if (_ai === 0 && _bi === 0) _b.idx = 0;
-        $scope.allQ = $scope.allQ.concat(_b.questionlist);
-      });
-    });
-    $scope.allM.map((_m, _mi) => {
-      if (_mi) {
-        muluLen = muluLen + parseInt(_m.lenQ);
-        _m.idx = muluLen;
-      }
-    });
+    $scope.option = {};
+    _reSort();
+    console.log($scope.contentsList);
+    console.log($scope.allM);
 
     $scope.getNaire = function () {
       $scope.loading = {
@@ -2782,7 +2782,7 @@ define([
               });
               $scope.allM.map((_m, _mi) => {
                 if (_mi) {
-                  muluLen = muluLen + parseInt(_m.lenQ);
+                  muluLen = muluLen + parseInt($scope.allM[_mi - 1].lenQ);
                   _m.idx = muluLen;
                 }
               });
@@ -2791,7 +2791,7 @@ define([
               $scope.loading.isLoading = false;
             } else {
               $scope.contentsList = [];
-              _remind(4, '该问卷暂无目录，请前往目录设置');
+              // _remind(4, '该问卷暂无目录，请前往目录设置');
               $scope.loading.isLoading = false;
             }
           })
@@ -2831,6 +2831,8 @@ define([
       $scope.questionList = data.questionlist;
       muluId = data.typedtlid;
       $scope.data.catalogIdx = data.idx;
+      $scope.allM.map(_ => _.active = false);
+      data.active = true;
     };
 
     $scope.editQ = function (questionlist, $index) {
@@ -2858,9 +2860,12 @@ define([
       _swapItems(arr, $index, $index + 1);
     };
     $scope.copy = function ($index) {
-      let copyQ = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      $scope.questionList.splice($index, 0, JSON.parse(JSON.stringify($scope.questionList[$index])));
+      let copyQ = $scope.questionList[$index + 1];
       copyQ.idx = copyQ.idx + 1;
-      $scope.questionList.splice($index, 0, copyQ);
+      delete copyQ.questionfk;
+      copyQ.editing = true;
+      _reSort();
     };
     $scope.del = function (arr, $index, type) {
       if (type === 'option' && arr.length <= 2) {
@@ -2902,10 +2907,12 @@ define([
     $scope.setJumpQ = function ($index) {
       indexQ = $index;
       $scope.question = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      let allQ = JSON.parse(JSON.stringify($scope.allQ));
+      $scope.jumpQlist = allQ.splice($scope.question.idx, allQ.length - 1);
     };
     $scope.setJump = function (question, type) {
-      console.log($scope.allQ);
-      $scope.jumpQlist = $scope.allQ.splice(question.idx, $scope.allQ.length - 1);
+      // console.log($scope.allQ);
+      // $scope.jumpQlist = $scope.allQ.splice(question.idx, $scope.allQ.length - 1);
       switch (type) {
         case 1:
           question.jumpway === '1' ? question.jumpway = '' : question.jumpway = '1';
@@ -2915,16 +2922,52 @@ define([
           question.jumpway === '2' ? question.jumpway = '' : question.jumpway = '2';
           break;
       }
-      if (!question.jumpway) {
+      if (!question.jumpway || question.jumpway === '2') {
         question.option.map(_ => {
           delete _.jumpto;
         })
       }
     };
     $scope.saveJumpQ = function () {
-      // console.log($scope.question);
-      $scope.questionList[indexQ] = $scope.question;
-      $('#jumpModal').modal('hide')
+      // let oldQ = $scope.questionList[indexQ];
+      // let newQ = $scope.question;
+      //
+      // if (oldQ.jumpway === '1') {
+      //   oldQ.option.map((_o, i) => {
+      //     if (_o.jumpto) {
+      //       let jumpStr = $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(_o.jumpto))[0].jumprelation;
+      //       $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(_o.jumpto))[0].jumprelation = jumpStr.replace('ㄓ' + oldQ.idx + ',' + (i + 1), '');
+      //     }
+      //   })
+      // } else if (oldQ.jumpway === '2') {
+      //   let jumpStr = $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(oldQ.anyjump))[0].jumprelation;
+      //   $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(oldQ.jumpto))[0].jumprelation = jumpStr.replace('ㄓ' + oldQ.idx, '');
+      // }
+      //
+      // if (newQ.jumpway === '1') {
+      //   newQ.option.map((_n, i) => {
+      //     if (_n.jumpto) {
+      //       let jumpQ = $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(_n.jumpto))[0];
+      //       jumpQ.jumprelation = jumpQ.jumprelation ? jumpQ.jumprelation : '';
+      //       jumpQ.jumprelation = jumpQ.jumprelation + 'ㄓ' + newQ.idx + ',' + (i + 1);
+      //     }
+      //   })
+      // } else if (newQ.jumpway === '2') {
+      //   let jumpQ = $scope.allQ.filter(_a => parseInt(_a.idx) === parseInt(newQ.anyjump))[0];
+      //   jumpQ.jumprelation = jumpQ.jumprelation ? jumpQ.jumprelation : '';
+      //   jumpQ.jumprelation = jumpQ.jumprelation + 'ㄓ' + newQ.idx;
+      // }
+
+      $scope.loading = {
+        isLoading: true,
+        content: '保存中'
+      };
+
+      setTimeout(() => {
+        $scope.questionList[indexQ] = $scope.question;
+        $('#jumpModal').modal('hide');
+        $scope.loading.isLoading = false;
+      }, 1500);
     };
 
     $scope.addQ = function ($index, type, question) {
@@ -2937,7 +2980,7 @@ define([
         case 1:
           newQ = {
             code: '',
-            idx: parseInt($scope.data.catalogIdx) + $index,
+            idx: '',
             jumpway: '',
             name: '单选题目',
             type: '1',
@@ -2949,7 +2992,7 @@ define([
         case 2:
           newQ = {
             code: '',
-            idx: parseInt($scope.data.catalogIdx) + $index,
+            idx: '',
             jumpway: '',
             name: '多选题目',
             type: '2',
@@ -2961,7 +3004,7 @@ define([
         case 3:
           newQ = {
             code: '',
-            idx: parseInt($scope.data.catalogIdx) + $index,
+            idx: '',
             jumpway: '',
             name: '填空题目',
             type: '3',
@@ -2973,7 +3016,7 @@ define([
         case 4:
           newQ = {
             code: '',
-            idx: parseInt($scope.data.catalogIdx) + $index,
+            idx: '',
             jumpway: '',
             name: '下拉选择题目',
             type: '4',
@@ -2987,9 +3030,10 @@ define([
         newQ.idx = parseInt(question.idx) + 1;
         $scope.questionList.splice($index + 1, 0, newQ);
       } else {
-        newQ.idx = $scope.data.catalogIdx + 1;
+        newQ.idx = parseInt($scope.data.catalogIdx) + $index + 1;
         $scope.questionList.splice($index, 0, newQ);
       }
+      _reSort();
 
     };
     $scope.saveQ = function (question) {
@@ -3001,23 +3045,11 @@ define([
       if (question.option.length) {
         question.option.map((_, i) => _.idx = i + 1);
       }
-      $scope.allM = [];
-      $scope.allQ = [];
-      $scope.contentsList.map((_a, _ai) => {
-        $scope.allM = $scope.allM.concat(_a.secondary);
-        _a.secondary.map((_b, _bi) => {
-          if (!_b.questionlist) _b.questionlist = [];
-          _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
-          if (_ai === 0 && _bi === 0) _b.idx = 0;
-          $scope.allQ = $scope.allQ.concat(_b.questionlist);
-        });
-      });
-      $scope.allM.map((_m, _mi) => {
-        if (_mi) {
-          muluLen = muluLen + parseInt(_m.lenQ);
-          _m.idx = muluLen;
-        }
-      });
+      _reSort();
+      if (muluId) {
+
+      }
+
       question.editing = false;
       return false;
       $scope.loading = {
@@ -3038,10 +3070,25 @@ define([
             question.editing = false;
           }, function (err) {
             _remind(4, err.message, '消息提醒');
+            $scope.loading.isLoading = false;
           })
       })
     };
     $scope.delQ = function (question, $index) {
+      if (question.jumprelation) {
+        let jumpArr = question.jumprelation.split('ㄓ');
+        let qidx, qoption, qtip;
+        qidx = jumpArr[jumpArr.length - 1].split(',')[0];
+        qoption = jumpArr[jumpArr.length - 1].split(',')[1];
+        if (!qoption) {
+          qtip = '第' + qidx + '题设置了跳转到此题，不能删除此题！';
+        } else {
+          qtip = '第' + qidx + '题第' + qoption + '个选项设置了跳转到此题，不能删除此题！';
+        }
+        _remind(3, qtip);
+        return false;
+      }
+
       $scope.loading = {
         isLoading: true,
         content: '删除题目提交中'
@@ -3061,11 +3108,67 @@ define([
           .then(function (data) {
             _remind(1, data.message, '消息提醒');
             $scope.questionList.splice($index, 1);
+            _reSort();
             $scope.loading.isLoading = false;
           }, function (err) {
             _remind(4, err.message, '消息提醒');
+            $scope.loading.isLoading = false;
           })
       })
+    };
+
+    $scope.setChild = function (question, $index) {
+      $scope.question = question;
+      indexOp = $index;
+      $scope.option = JSON.parse(JSON.stringify(question.option[$index]));
+    };
+    $scope.addChild = function ($index, type) {
+      var newChild = {};
+      switch (type) {
+        case 1:
+          newChild = {
+            name: '',
+            qtip: '',
+            type: '1',
+            typename: '单选',
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
+          };
+          break;
+        case 2:
+          newChild = {
+            name: '',
+            qtip: '',
+            type: '2',
+            typename: '多选',
+            option: [{label: '', value: '1'}, {label: '', value: '2'}]
+          };
+          break;
+        case 3:
+          newChild = {
+            name: '',
+            qtip: '',
+            type: '3',
+            typename: '填空',
+            option: [{label: '', value: '', content: '', type: '1'}]
+          };
+          break;
+      }
+      $scope.option.qchild = $scope.option.qchild ? $scope.option.qchild : [];
+      $scope.option.qchild.splice($index, 0, newChild);
+    };
+    $scope.saveChild = function () {
+      let opSome = true;
+      _.map($scope.option.qchild, function (_q) {
+        if (_q.type !== '3' && _q.option.some(_qo => !_qo.label)) {
+          opSome = false
+        }
+      });
+      if (!opSome) {
+        _remind(3, '请将选择题选项完整填写完善后提交', '选项必填');
+        return false;
+      }
+      $scope.question.option[indexOp] = $scope.option;
+      $('#questionModal').modal('hide');
     };
 
     $scope.back = function () {
@@ -3100,23 +3203,45 @@ define([
       // $scope.getNaire();
     });
 
+    function _reSort() {
+      $scope.allM = [];
+      $scope.allQ = [];
+      $scope.contentsList.map((_a, _ai) => {
+        $scope.allM = $scope.allM.concat(_a.secondary);
+        _a.secondary.map((_b, _bi) => {
+          if (!_b.questionlist) _b.questionlist = [];
+          _b.lenQ = _b.questionlist.length ? _b.questionlist.length : 0;
+          if (_ai === 0 && _bi === 0) _b.idx = 0;
+          $scope.allQ = $scope.allQ.concat(_b.questionlist);
+        });
+      });
+      // $scope.allQ.map((_q, _qi) => {
+      //   _q.idx = _qi + 1;
+      // });
+      $scope.allM.map((_m, _mi) => {
+        if (_mi) {
+          muluLen = muluLen + parseInt($scope.allM[_mi - 1].lenQ);
+          _m.idx = muluLen;
+        }
+        if (muluId && _m.typedtlid === muluId) {
+          _m.active = true;
+          $scope.data.catalogIdx = _m.idx;
+          $scope.questionList = _m.questionlist;
+        }
+      });
+    }
+
     function _swapItems(arr, index1, index2) {
       arr[index1] = arr.splice(index2, 1, arr[index1])[0];
       return arr;
     }
 
     function _refreshPage() {
-      document.onkeydown = function (e) { // 键盘按键控制
-        e = e || window.event;
-        if ((e.ctrlKey && e.keyCode == 82) || // ctrl+R
-          e.keyCode == 116) { // F5刷新，禁止
-          if (confirm('重新加载此网站？\n系统可能不会保存您所做的更改。')) {
-            location.reload();
-          } else {
-            console.log('取消重新刷新页面');
-            return false;
-          }
-        }
+      var a = "注意！！\n您即将离开页面！离开后可能会导致数据丢失\n\n您确定要离开吗？";
+      window.onbeforeunload = function (b) {
+        b = b || window.event;
+        b.returnValue = a;
+        return a
       }
     }
 

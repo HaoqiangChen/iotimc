@@ -1,0 +1,40 @@
+<div class="layout-full safe-insidemap-search-panel">
+    <div class="safe-insidemap-search-close" ng-click="close()"><i class="fa fa-close"></i></div>
+    <div class="safe-insidemap-search-result" ng-click="hide()" ng-if="isOpen">点击收起</div>
+    <div class="safe-insidemap-search-result" ng-click="show()" ng-if="!isOpen">点击展开（共<b>{{list.length}}</b>条记录）</div>
+    <div class="safe-insidemap-search-list">
+        <div class="layout-full" i-scroll  data-load-event="loadMore()">
+            <div style="position:absolute;">
+                <table>
+                    <col width="20px"><col width="80px"><col width="150px"><col width="50px">
+                    <tr class="safe-insidemap-search-list-tr" ng-repeat="item in list | limitTo:limitNum " ng-class="{'safe-insidemap-search-list-police':item.type=='police','safe-insidemap-search-list-criminal':item.type=='criminal','safe-insidemap-search-list-device':item.type=='device'}">
+                        <td>
+                            <label ng-if="item.type == 'police'"><i-lang>PTN_P</i-lang></label>
+                            <label ng-if="item.type == 'criminal'"><i-lang>PTN_C</i-lang></label>
+                            <label ng-if="item.type == 'device'">设备</label>
+                        </td>
+                        <td ng-if="item.type != 'device'" ng-style="{{item.style}}" class="safe-insidemap-search-list-photo" ng-click="showYJT(item)"></td>
+                        <td ng-if="item.type == 'police'" class="safe-insidemap-search-list-info">
+                            <label>{{item.coding}}</label>
+                            <label>{{item.name}}</label>
+                            <label>{{item.mapname}}  {{item.mapdtlname}}</label>
+                            <label></label>
+                        </td>
+                        <td ng-if="item.type == 'criminal'" class="safe-insidemap-search-list-info">
+                            <label>{{item.coding}}</label>
+                            <label>{{item.name}}</label>
+                            <label>{{item.mapname}}  {{item.mapdtlname}}</label>
+                        </td>
+                        <td ng-if="item.type == 'device'" colspan="2" class="safe-insidemap-search-list-info">
+                            <label>类型：{{item.typename}}</label>
+                            <label>{{item.name}}</label>
+                            <label>{{item.mapname}}  {{item.mapdtlname}}</label>
+                        </td>
+                        <td class="safe-insidemap-search-list-button" ng-click="locate(item)">定位</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="safe-insidemap-search-bottom">搜索记录：共<b>{{list.length}}</b>条</div>
+</div>

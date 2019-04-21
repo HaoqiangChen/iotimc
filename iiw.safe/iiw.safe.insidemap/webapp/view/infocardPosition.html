@@ -1,0 +1,14 @@
+<div class="layout-full overflow-h safe-infocard-panel">
+    <div class="info-title" ng-click="back()"><h3><i class="fa fa-users"></i><b title="{{$parent.area.ouname}}{{typeName}}{{$parent.dialect['PTN_C']}}信息">{{$parent.area.ouname}}{{typeName}}<i-lang>PTN_C</i-lang>信息</b></h3></div>
+    <div class="info-content" i-scroll>
+        <div class="info-table container-fluid">
+            <div class="row">
+                <div class="info-row">
+                    <div class="info-right">
+                        <button class="info-items" ng-repeat="item in criminalList" ng-click="showCriminal(item)">{{item.xm}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

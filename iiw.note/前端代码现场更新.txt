@@ -1,0 +1,3 @@
+
+前端包更新，旧包直接覆盖，新包的还需要在iiw里面的iiw.json加多配置
+,"iiw.safe.noticePush":{"author":"chq","client":"192.168.0.29","date":"2019-11-13","host":"192.168.0.251","main":"noticePushController","name":"iiw.safe.noticePush","version":"0.0.1"}

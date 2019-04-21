@@ -11,7 +11,7 @@ ng-class="变量1 变量2 变量3"
 （3）对象，属性名为类名，属性值为布尔值，也可以用表达式的结果true或false
 {'red': x>3, 'fa-circle': x<=3}
 （4）数组，数组的每个成员表示一个类
-ng-class="{true:'green',false:'red'}[num]"
+ng-class="{true:'green',false:'red'}[item.active]"
 ng-style 动态为元素添加样式
 对象：{color: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}
 变量：变量就是一个对象，就是把上面第一种方式拿到js中

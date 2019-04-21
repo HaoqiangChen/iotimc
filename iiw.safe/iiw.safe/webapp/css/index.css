@@ -800,8 +800,16 @@ body {
 }
 
 .safe-notice-panel .safe-notice-panel-body {
-    text-indent: 20px;
+    padding: 20px 50px;
+    /*text-indent: 20px;*/
     word-wrap: break-word;
+}
+.safe-notice-panel .safe-notice-panel-body .notice-content {
+    margin: 20px auto;
+}
+.safe-notice-panel .safe-notice-panel-body .btn-reply {
+    width: 50%;
+    margin-left: 25%;
 }
 
 .safe-notice-panel .safe-notice-panel-foot {

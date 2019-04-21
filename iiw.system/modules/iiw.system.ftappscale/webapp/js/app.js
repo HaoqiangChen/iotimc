@@ -16,6 +16,17 @@ define([
       }
     }]
   );
+  app.filter(
+    'ngFormat', [function () {
+      return function (text) {
+        let formatHtml = text.replace(/<[^>]+>/g, '').replace(/&nbsp;/ig, '');
+        if (formatHtml.length > 43) {
+          formatHtml = formatHtml.substring(0, 43) + '...'
+        }
+        return formatHtml;
+      }
+    }]
+  );
   app.controller('ftappScaleController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter) {
     mainService.moduleName = '访谈APP管理';
     $scope.title = '量表设计';
@@ -24,7 +35,8 @@ define([
     if ($stateParams.data) {
       wjId = $stateParams.data.id;
     } else {
-      wjId = '574DBD507DB04A7C84AE46E142A22FB2'
+      wjId = '';
+      // $state.go('system.ftappwjmanage');
     }
     var indexQ = 0;
 
@@ -68,7 +80,7 @@ define([
         "fatherclassifyid": "1CA7D5765C6140A497CF33469AEF1B54",
         "formula": "1",
         "idx": 31,
-        "name": "若回答否，",
+        "name": "8、一提到书法中的草书，人们便会想到“颠张醉素”，请问下列属于颠张的作品的是（ B &nbsp;）请问下列属于颠张的作品的是请问下列属于颠张的作品的是",
         "option": [
           {
             "child": false,
@@ -123,7 +135,7 @@ define([
         "idx": 3,
         "ismust": "1",
         "ismustname": "必答",
-        "name": "有时候我觉得很难从他人的角度看问题。",
+        "name": "有时候<b>我觉得</b>很难从他人<span style=\"color:#E53333;\">的角度</span>看问。打发点 &nbsp;阿道夫。大沙发的沙发第三方阿道夫。",
         "option": [{"label": "完全不符合", "value": "3505E227AE8040B9A99C0D7D7063E055"}, {
           "label": "有点不符合",
           "value": "1C741B31D2DB45AB871FBA3B19C5D81B"
@@ -428,9 +440,9 @@ define([
           .then(function (data) {
             console.log(data);
             if (data.result && data.result.rows) {
-              $scope.loading.isLoading = false;
               $scope.scaleData = data.result.rows[0];
               $scope.questionList = $scope.scaleData.question;
+              $scope.loading.isLoading = false;
             } else {
               $scope.scaleData = {};
               $scope.questionList = [];
@@ -451,6 +463,7 @@ define([
         return;
       }
       _swapItems(arr, $index, $index - 1);
+      _reSort();
     };
     $scope.moveDown = function (arr, $index, type) {
       if ($index === arr.length - 1) {
@@ -459,18 +472,37 @@ define([
         return;
       }
       _swapItems(arr, $index, $index + 1);
+      _reSort();
     };
     $scope.copy = function ($index) {
-      let copyQ = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      $scope.questionList.splice($index, 0, JSON.parse(JSON.stringify($scope.questionList[$index])));
+      let copyQ = $scope.questionList[$index + 1];
       copyQ.idx = copyQ.idx + 1;
-      $scope.questionList.splice($index, 0, copyQ);
+      delete copyQ.questionfk;
+      copyQ.editing = true;
+      _reSort();
     };
     $scope.del = function (arr, $index, type) {
       if (type === 'option' && arr.length <= 2) {
         _remind(3, '最少保留2个选项');
         return;
+      } else if (type === 'question') {
+        if (arr[$index].jumprelation) {
+          let jumpArr = arr[$index].jumprelation.split('ㄓ');
+          let qidx, qoption, qtip;
+          qidx = jumpArr[jumpArr.length - 1].split(',')[0];
+          qoption = jumpArr[jumpArr.length - 1].split(',')[1];
+          if (!qoption) {
+            qtip = '第' + qidx + '题设置了跳转到此题，不能删除此题！';
+          } else {
+            qtip = '第' + qidx + '题第' + qoption + '个选项设置了跳转到此题，不能删除此题！';
+          }
+          _remind(3, qtip);
+          return false;
+        }
       }
       arr.splice($index, 1);
+      if (type !== 'option') _reSort();
     };
     $scope.addOption = function (arr, $index) {
       let newLabel = {label: ''};
@@ -502,10 +534,11 @@ define([
     $scope.setJumpQ = function ($index) {
       indexQ = $index;
       $scope.question = JSON.parse(JSON.stringify($scope.questionList[$index]));
+      $scope.jumpQlist = JSON.parse(JSON.stringify($scope.questionList)).splice($scope.question.idx, $scope.questionList.length - 1);
     };
 
     $scope.setJump = function (question, type) {
-      $scope.jumpQlist = JSON.parse(JSON.stringify($scope.questionList)).splice(question.idx, $scope.questionList.length - 1);
+      // $scope.jumpQlist = JSON.parse(JSON.stringify($scope.questionList)).splice(question.idx, $scope.questionList.length - 1);
       switch (type) {
         case 1:
           question.jumpway === '1' ? question.jumpway = '' : question.jumpway = '1';
@@ -515,7 +548,7 @@ define([
           question.jumpway === '2' ? question.jumpway = '' : question.jumpway = '2';
           break;
       }
-      if (!question.jumpway) {
+      if (!question.jumpway || question.jumpway === '2') {
         question.option.map(_ => {
           delete _.jumpto;
         })
@@ -523,9 +556,47 @@ define([
     };
 
     $scope.saveJumpQ = function () {
-      // console.log($scope.question);
-      $scope.questionList[indexQ] = $scope.question;
-      $('#jumpModal').modal('hide')
+      // let oldQ = $scope.questionList[indexQ];
+      // let newQ = $scope.question;
+      //
+      // if (oldQ.jumpway === '1') {
+      //   oldQ.option.map((_o, i) => {
+      //     if (_o.jumpto) {
+      //       let jumpStr = $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(_o.jumpto))[0].jumprelation;
+      //       $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(_o.jumpto))[0].jumprelation = jumpStr.replace('ㄓ' + oldQ.idx + ',' + (i + 1), '');
+      //     }
+      //   })
+      // } else if (oldQ.jumpway === '2') {
+      //   let jumpStr = $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(oldQ.anyjump))[0].jumprelation;
+      //   $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(oldQ.anyjump))[0].jumprelation = jumpStr.replace('ㄓ' + oldQ.idx, '');
+      // }
+      //
+      // if (newQ.jumpway === '1') {
+      //   newQ.option.map((_n, i) => {
+      //     if (_n.jumpto) {
+      //       let jumpQ = $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(_n.jumpto))[0];
+      //       jumpQ.jumprelation = jumpQ.jumprelation ? jumpQ.jumprelation : '';
+      //       jumpQ.jumprelation = jumpQ.jumprelation + 'ㄓ' + newQ.idx + ',' + (i + 1);
+      //     }
+      //   })
+      // } else if (newQ.jumpway === '2') {
+      //   let jumpQ = $scope.questionList.filter(_a => parseInt(_a.idx) === parseInt(newQ.anyjump))[0];
+      //   jumpQ.jumprelation = jumpQ.jumprelation ? jumpQ.jumprelation : '';
+      //   jumpQ.jumprelation = jumpQ.jumprelation + 'ㄓ' + newQ.idx;
+      // }
+
+      $scope.loading = {
+        isLoading: true,
+        content: '保存中'
+      };
+
+      setTimeout(() => {
+        $scope.questionList[indexQ] = $scope.question;
+        $('#jumpModal').modal('hide');
+        $scope.loading.isLoading = false;
+        console.log($scope.questionList);
+      }, 500);
+
     };
 
     $scope.addQ = function ($index, type) {
@@ -564,11 +635,12 @@ define([
       _reSort();
     };
     $scope.saveQ = function (question) {
-      if ((question.type === '1' && question.option.some(_ => !_.label)) || (question.type === '2' && question.option.some(_ => !_.type))) {
+      if ((question.type === '1' && question.option.some(_ => !_.label))) {
         _remind(3, '请将题目编辑完善后提交', '请完善题目');
         return false;
       }
       question.editing = false;
+      _reSort();
     };
 
     $scope.save = function () {
@@ -594,6 +666,7 @@ define([
             window.history.back();
           }, function (err) {
             _remind(4, '提交失败!', '消息提醒');
+            $scope.loading.isLoading = false;
           })
       })
     };
@@ -643,17 +716,11 @@ define([
     }
 
     function _refreshPage() {
-      document.onkeydown = function (e) { // 键盘按键控制
-        e = e || window.event;
-        if ((e.ctrlKey && e.keyCode == 82) || // ctrl+R
-          e.keyCode == 116) { // F5刷新，禁止
-          if (confirm('重新加载此网站？\n系统可能不会保存您所做的更改。')) {
-            location.reload();
-          } else {
-            console.log('取消重新刷新页面');
-            return false;
-          }
-        }
+      var a = "注意！！\n您即将离开页面！离开后可能会导致数据丢失\n\n您确定要离开吗？";
+      window.onbeforeunload = function (b) {
+        b = b || window.event;
+        b.returnValue = a;
+        return a
       }
     }
 

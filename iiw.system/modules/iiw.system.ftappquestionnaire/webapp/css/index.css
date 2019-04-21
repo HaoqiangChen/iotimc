@@ -97,6 +97,9 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
 .system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title:hover {
     background-color: rgba(223, 105, 26,0.8);
 }
+.system-naire-container .system-wjmenu-container .wjmenu-content .contents-list .contents-item .contents-fold li.title.active {
+    background-color: rgba(223, 105, 26,0.8);
+}
 
 /*题目*/
 .system-naire-container .iiw-system-question-container {}
@@ -209,6 +212,25 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     flex-wrap: wrap;
 }
 .system-naire-container .question-list fieldset .field-toomuch .field-radio{
+    margin-right: 30px;
+}
+.system-naire-container .question-list fieldset .field-controlgroup sub.option-jump{
+    padding: 0 20px;
+    color: #efa030;
+}
+.system-naire-container .question-list fieldset .field-controlgroup .label-desc{
+    font-size: 12px;
+    color: #aaa;
+}
+
+.system-naire-container .question-list .field-child .field-qchild .field-controlgroup {
+    padding: 0 3%;
+}
+.system-naire-container .question-list .field-child .field-qchild .field-controlgroup{
+    display: flex;
+    flex-wrap: wrap;
+}
+.system-naire-container .question-list .field-child .field-qchild .field-controlgroup .field-radio{
     margin-right: 30px;
 }
 
@@ -356,3 +378,31 @@ ul,ol,li{margin: 0;padding: 0;list-style: none;}
     text-align: center;
 }
 .system-naire-container .question-add #collapseAdd .add-option button{margin-right: 50px;}
+#jumpModal select.anyjump-select {
+    display: inline-block;
+    width: 80%;
+}
+
+#questionModal .form-group .col-md-1 {
+    width: 11%;
+    padding-right: 0;
+    word-wrap: break-word;
+    text-align: right;
+}
+#questionModal .child-add {
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: 30px;
+}
+#questionModal .child-add #collapseChildQ .add-child {
+    padding: 10px;
+    text-align: center;
+}
+#questionModal .child-add #collapseChildQ {
+    border: 1px solid #df691a;
+    border-bottom: none;
+}
+#questionModal .child-add #collapseChildQ .add-child button {margin-right: 50px;}
+#questionModal .child-list fieldset {margin-top: 20px;}

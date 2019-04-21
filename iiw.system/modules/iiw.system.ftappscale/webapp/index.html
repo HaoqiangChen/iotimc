@@ -35,6 +35,7 @@
                                                         <div class="field-radio" ng-repeat="(idx, radio) in question.option track by idx">
                                                             <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
                                                             <label>{{radio.label}}</label>
+                                                            <sub class="option-jump" ng-if="radio.jumpto">(跳转到第{{radio.jumpto}}题)</sub>
                                                         </div>
                                                     </div>
 
@@ -42,6 +43,10 @@
                                                     <span ng-repeat="(idx, input) in question.option track by idx">
                                                         {{input.prefix}}<b class="input-text">{{input.content}}</b><sub ng-if="input.descr">({{input.descr}})</sub>{{input.suffix}}
                                                     </span>
+                                                    </div>
+
+                                                    <div class="field-jump" ng-if="question.jumpway">*此题设置了跳题逻辑
+                                                        <span ng-if="question.anyjump" style="color: #f60;">(跳转到第{{question.anyjump}}题)</span>
                                                     </div>
                                                 </div>
                                                 <div class="set clearfix" ng-show="!question.editing">
@@ -63,8 +68,8 @@
                                                         <a class="btn btn-success" ng-click="editQ(questionList, $index)"><i class="fa fa-edit fa-fw"></i>编辑</a>
                                                         <a class="btn btn-primary" ng-click="copy($index)"><i class="fa fa-copy fa-fw"></i>复制</a>
                                                         <a class="btn btn-danger" ng-click="del(questionList, $index, 'question')"><i class="fa fa-trash-o fa-fw"></i>删除</a>
-                                                        <a class="btn btn-info" ng-click="moveUp(questionList, $index, 'question')"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
-                                                        <a class="btn btn-info" ng-click="moveDown(questionList, $index, 'question')"><i class="fa fa-arrow-down fa-fw"></i>下移</a>
+                                                        <!-- <a class="btn btn-info" ng-click="moveUp(questionList, $index, 'question')"><i class="fa fa-arrow-up fa-fw"></i>上移</a>
+                                                         <a class="btn btn-info" ng-click="moveDown(questionList, $index, 'question')"><i class="fa fa-arrow-down fa-fw"></i>下移</a>-->
                                                     </div>
                                                 </div>
                                                 <div ng-if="question.editing">
@@ -109,7 +114,7 @@
                                                                 <div class="col-md-6"></div>
                                                             </div>
                                                         </div>
-                                                        <div ng-if="question.type !== '1'">
+                                                        <div ng-if="question.type === '4'">
                                                             <div class="table-responsive question-table">
                                                                 <table class="table table-responsive">
                                                                     <thead>
@@ -187,7 +192,7 @@
                                                                 </table>
                                                             </div>
                                                         </div>
-                                                        <div class="question-logic" ng-if="!$last">
+                                                        <div class="question-logic" ng-if="!$last && question.type === '1'">
                                                             <span>逻辑设置：</span>
                                                             <a ng-click="setJumpQ($index)" data-backdrop="false" data-target="#jumpModal" data-toggle="modal" title="通过配合设置其他题目的“按选项跳题”实现更复杂的跳题逻辑">跳题逻辑</a>
                                                         </div>
@@ -266,9 +271,9 @@
 <!--                                                            <td>选项{{$index + 1}}</td>-->
                                                             <td>{{row.label}}</td>
                                                             <td>
-                                                                <select ng-model="row.jumpto" class="form-control" style="display: inline-block;width: 85%;">
+                                                                <select ng-model="row.jumpto" class="form-control">
                                                                     <option value="">不跳转，按顺序填写下一题</option>
-                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}" ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
+                                                                    <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}、{{question.name | ngFormat}}</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -286,10 +291,10 @@
                                             </div>
                                             <div class="anyjump" ng-if="question.jumpway === '2'">
                                                 <div class="form-group clearfix">
-                                                    <label>填写此题后跳转到: </label>
-                                                    <select ng-model="question.anyjump" class="form-control" style="display: inline-block;width: 85%;">
+                                                    <label style="padding: 0 20px;">填写此题后跳转到: </label>
+                                                    <select ng-model="question.anyjump" class="form-control anyjump-select">
                                                         <option value="">请选择要跳转到的题目</option>
-                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}" ng-bind-html="question.idx + '、' + question.name | ngHtml"></option>
+                                                        <option ng-repeat="(idx, question) in jumpQlist track by idx" value="{{question.idx}}">{{question.idx}}、{{question.name | ngFormat}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -306,7 +311,7 @@
                 </div>
             </div>
             <div class="ui-layout-container iiw-system-ftappscale-footer" size="60px" ui-layout-container style="background-color: rgba(0, 0, 0, .6);">
-                <button class="btn btn-success col-md-4" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
+                <button class="btn btn-success col-md-4" ng-disabled="loading.isLoading" ng-click="save()"><i class="fa fa-check fa-fw"></i>完成编辑</button>
                 <button class="btn btn-danger col-md-4" ng-click="back()"><i class="fa fa-mail-reply-all fa-fw"></i>返回</button>
             </div>
         </div>

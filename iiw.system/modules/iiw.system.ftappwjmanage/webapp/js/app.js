@@ -39,7 +39,7 @@ define([
       pageSize: 10
     };
 
-    $scope.wjList = [
+    $scope.wjLists = [
         {name: '初犯', id: 'D64B236EA44046528699011C0258E9DE', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '已发布', answersituation: '测试', cretime: 1566459855000},
       {name: '测试问卷', id: '0FB464990CFB480FA534AA3966FA791E', content: 'wjlx_ftwj', typename: '访谈问卷', runStatus: 1, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000, existed: '0'},
       {name: '测试量表', id: '574DBD507DB04A7C84AE46E142A22FB2', content: 'wjlx_lb', typename: '量表测试', runStatus: 0, runStatusName: '未发布', answersituation: '测试', cretime: 1566459855000},
@@ -312,11 +312,11 @@ define([
     };
 
     $scope.$on('ftappWjmanageControllerOnEvent', function () {
-      // $scope.getList();
+      $scope.getList();
     });
 
     function getToken(callback) {
-      iAjax.post(domain + '/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+      iAjax.post(domain + '/terminal/interview/system.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
         callback(data.token);
       }, function (err) {
         _remind(4, err.message, '请求失败，请查看网络状态!');

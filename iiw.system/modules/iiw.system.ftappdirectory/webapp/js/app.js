@@ -17,7 +17,8 @@ define([
     } else {
       wjId = '';
       wjName = '问卷';
-      $scope.loading.content = '操作有误，至少有个前提问卷id才能设置对应目录';
+      // $state.go('system.ftappwjmanage');
+      // $scope.loading.content = '操作有误，至少有个前提问卷id才能设置对应目录';
     }
     $scope.title = wjName + '目录设置';
     var currentNode;
@@ -202,7 +203,17 @@ define([
 
     $scope.$on('ftappDirectoryControllerOnEvent', function () {
       init();
+      // _refreshPage();
     });
+
+    function _refreshPage() {
+      var a = "注意！！\n您即将离开页面！离开后可能会导致数据丢失\n\n您确定要离开吗？";
+      window.onbeforeunload = function (b) {
+        b = b || window.event;
+        b.returnValue = a;
+        return a
+      }
+    }
 
     function getToken(callback) {
       iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {

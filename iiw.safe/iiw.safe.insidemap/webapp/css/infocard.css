@@ -1,0 +1,225 @@
+.safe-infocard-panel {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+}
+
+.safe-infocard-panel .info-title {
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    margin-bottom: 10px;
+}
+
+.safe-infocard-panel .info-title i {
+    width: 15%;
+    margin: 0;
+    float: left;
+    text-align: center;
+}
+
+.safe-infocard-panel .info-title b {
+    width: 85%;
+    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.safe-infocard-panel .info-content {
+    flex: 1;
+    position: relative;
+    font-size: 20px;
+    line-height: 60px;
+    color: white;
+}
+
+.safe-infocard-panel .info-content .info-row {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 0px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    /* height: 50px; */
+    line-height: 37px;
+    padding: 5px 0;
+}
+
+.safe-infocard-panel .info-content .info-left {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
+.safe-infocard-panel .info-content .info-left i {
+    margin-right: 5px;
+}
+
+.safe-infocard-panel .info-content .info-right {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items {
+    text-align: center;
+    /*text-indent: 5px;*/
+    width: auto;
+    height: 37px;
+    line-height: 37px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    border: 0px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .25);
+    margin: 5px;
+    outline: none;
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 15px;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items:hover {
+    text-shadow: 0 0 15px #fff;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items:active {
+    background: #fff;
+    color: #000;
+    border-radius: 0px;
+    text-shadow: 0 0 15px #000;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items:hover::after {
+    opacity: 1;
+}
+
+.safe-infocard-panel .info-content .info-right .info-items.value-completion {
+    letter-spacing: 1em;
+    padding: 0;
+    text-indent: 15px;
+}
+
+.safe-infocard-panel .info-content .info-label {
+    padding: 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+}
+
+.safe-infocard-panel .info-content .info-label:nth-child(2n) {
+    width: 20%;
+    height: 61px;
+}
+.safe-infocard-panel .info-content .info-label:nth-child(2n+1) {
+    width: 30%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.safe-infocard-panel .info-content .info-label i {
+    margin-right: 5px;
+}
+
+.safe-infocard-panel .info-content .info-value {
+    text-align: right;
+    padding-right: 25px;
+}
+
+/*.safe-infocard-panel .info-row.ng-enter,*/
+/*.safe-infocard-panel .row data.ng-enter {*/
+    /*animation: fadeIn 1s;*/
+    /*-webkit-animation: fadeIn 1s;*/
+/*}*/
+
+/*.safe-infocard-panel .info-row.ng-leave,*/
+/*.safe-infocard-panel .row data.ng-leave {*/
+    /*animation: fadeOut 1s;*/
+    /*-webkit-animation: fadeOut 1s;*/
+/*}*/
+
+.safe-infocard-panel-info-value {
+	cursor:pointer;
+}
+
+.safe-infocard-panel .info-details {
+    flex: 1;
+    position: relative;
+    font-size: 20px;
+    line-height: 60px;
+}
+
+
+
+.safe-infocard-line-title {
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.safe-infocard-line-title > label {
+    text-shadow: 0 0 10px;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.safe-infocard-table > table {
+    width: 100%;
+}
+
+.safe-infocard-table > table tr:nth-child(2n+1) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.safe-infocard-table > table tr:nth-child(1) {
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.safe-infocard-table > table td {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.safe-infocard-content > div > div {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.safe-infocard-panel .datasource {
+    box-shadow: 0 0 5px red inset;
+    position: relative;
+}
+
+.safe-infocard-panel .datasource:hover {
+    cursor: default;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.safe-infocard-panel .datasource.select {
+    background-color: rgba(0,0,0,0.3);
+    -webkit-animation: safe-infocard-datasource-select alternate infinite ease-in 1.5s;
+}
+
+@-webkit-keyframes safe-infocard-datasource-select {
+    from {
+        box-shadow: 0 0 10px orange inset;
+    }
+    to {
+        box-shadow: 0 0 25px orange inset;
+    }
+}

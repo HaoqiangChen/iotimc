@@ -1,0 +1,10 @@
+﻿{
+  "name": "iiw.system.test",
+  "version": "0.0.1",
+  "description": "测试",
+  "author": "chq",
+  "date": "2019-10-16",
+  "main": "testController",
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
+}

@@ -42,6 +42,7 @@ if (item) {
 	};
 	_remind(4, '错误操作!');
 }
+跳转页面需注入$stateParams获取参数值$stateParams.data
 
 监听$watch
 
@@ -50,3 +51,33 @@ websocket：
 发送消息：$scope.sendMessage
 广播：$rootScope.$broadcast('ws.' + data.event, data.data);
 接收消息：$scope.$on('', function(){})
+
+举例：接收到后端websocket之后自动弹出对应页面
+$scope.$on('ws.bringoutHandle', function(e, data) {
+	showMessage(data.rows[0]);
+});
+
+function showMessage(data) {
+	var content = '【' + data.policename + '】申请带出' + data.js + '【' + data.criminalname + '】进行【' + data.reason + '】<br>点击查看明细';
+	safeSound.playMessage(data.policename + '申请带出' + data.js + data.criminalname + '进行' + data.reason);
+	iMessage.show({
+		id: data.id,
+		level: 1,
+		title: '罪犯带出提醒',
+		timeout: '0',
+		data: data,
+		content: content,
+		fn: 'handleRequest'
+	}, false, $scope);
+}
+
+$scope.handleRequest = function($message, obj) {
+	if ($state.current.url == '/bringout') {
+		$state.params = {data: {type: 'reload'}};
+		$state.go('safe.bringout', $state.params, {location: true, reload: true});
+	} else {
+		$state.params = {data: {type: 'reload'}};
+		$state.go('safe.bringout', $state.params);
+	}
+	iMessage.remove(obj.data.id);
+};

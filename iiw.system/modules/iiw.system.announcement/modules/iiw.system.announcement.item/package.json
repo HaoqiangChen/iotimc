@@ -5,6 +5,6 @@
   "author": "llx",
   "date": "2016-08-3",
   "main": "announcementItemController",
-  "host": "192.168.0.251",
-  "client": "192.168.0.36"
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
 }

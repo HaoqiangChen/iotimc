@@ -7,7 +7,7 @@ define([
     'cssloader!safe/hardware/css/index'
 ], function(app) {
 
-    app.controller('hardwareController', ['$scope', '$state', 'safeMainTitle', 'iAjax', function($scope, $state, safeMainTitle, iAjax) {
+    app.controller('hardwareController', ['$scope', '$state', '$stateParams', 'safeMainTitle', 'iAjax', function($scope, $state, $stateParams, safeMainTitle, iAjax) {
         safeMainTitle.title = '设备控制中心';
 
         $scope.hardwareList = [];
@@ -91,9 +91,15 @@ define([
             $state.go(module.url, data);
         };
 
-        $scope.getDeviceTypeList(function() {
+        if ($stateParams.data) {
+          console.log($stateParams.data);
+          $scope.active = $stateParams.data;
+          $state.go('safe.hardware.list');
+        } else {
+          $scope.getDeviceTypeList(function() {
             $scope.getStat();
-        });
+          });
+        }
 
         $scope.$on('hardwareControllerOnEvent', function() {
             getDeviceStatus();

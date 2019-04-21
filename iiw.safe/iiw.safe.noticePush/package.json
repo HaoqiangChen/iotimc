@@ -1,0 +1,10 @@
+{
+  "name": "iiw.safe.noticePush",
+  "version": "0.0.1",
+  "description": "通知推送",
+  "author": "chq",
+  "date": "2019-11-13",
+  "main": "noticePushController",
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
+}
