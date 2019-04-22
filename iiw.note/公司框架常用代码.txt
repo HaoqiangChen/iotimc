@@ -81,3 +81,9 @@ $scope.handleRequest = function($message, obj) {
 	}
 	iMessage.remove(obj.data.id);
 };
+
+
+常用选择单位代码
+
+
+

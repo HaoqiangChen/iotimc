@@ -21,41 +21,43 @@ define([
                 replace: true,
                 template: [
                     '<div class="layout-full safe-video-max-panel">' +
-                        '<div class="safe-video-max-tools">' +
-                            '<ul>' +
-                                '<li>' +
-                                    '<div class="tool-name">云台</div>' +
-                                    '<div class="tool-buttons">' +
-                                         '<div class="tool-btn" ng-repeat="row in ptz.list track by $index" ng-mousedown="ptz.start(row.cmd)" ng-mouseup="ptz.stop()">{{ row.name }}</div>'+
-                                    '</div>' +
-                                '</li>' +
-                                '<li ng-if="hardware.list.length > 0">' +
-                                    '<div class="tool-name">关联设备</div>' +
-                                    '<div class="tool-buttons" ng-if="hardware.mode == 1">' +
-                                        '<div class="tool-btn" ng-repeat="row in hardware.list track by $index" title="{{ row.name }}" ng-click="hardware.showAction(row, $event)">{{ row.typename }}</div>' +
-                                    '</div>' +
-                                    '<div class="tool-buttons" ng-if="hardware.mode == 2">' +
-                                        '<div class="tool-btn" ng-click="hardware.back()">返回</div>' +
-                                        '<div class="tool-btn" ng-repeat="row in hardware.detail.list track by $index" title="{{ row.name }}" ng-click="hardware.doAction(row)">{{ row.name }}</div>' +
-                                    '</div>' +
-                                '</li>' +
-                                '<li>' +
-                                    '<div class="tool-name">功能</div>' +
-                                    '<div class="tool-buttons">' +
-                                        '<div class="tool-btn" ng-click="snapshot()">本地截图</div>' +
-                                        // '<div class="tool-btn">上墙</div>' +
-                                        // '<div class="tool-btn">回放</div>' +
-                                        // '<div class="tool-btn">录像</div>' +
-                                        '<div class="tool-btn">' +
-                                            '<div ng-if="volume.state == \'close\'" ng-click="volume.open()">音量开</div>' +
-                                            '<div ng-if="volume.state == \'open\'" ng-click="volume.close()">音量关</div>' +
-                                        '</div>' +
-                                        '<div class="tool-btn" ng-click="close()">关闭</div>' +
-                                    '</div>' +
-                                '</li>' +
-                            '</ul>' +
-                        '</div>' +
-                        '<div class="layout-full safe-video-max-box"></div>' +
+                    '<div class="safe-video-max-tools" style="overflow-x: scroll;">' +
+                    '<div class="safe-video-max-tools-content" ng-style="{\'width\': (735 + 350 + 80 + 12 * 70) + \'px\'}">'+
+                    '<ul>' +
+                    '<li>' +
+                    '<div class="tool-name">云台</div>' +
+                    '<div class="tool-buttons">' +
+                    '<div class="tool-btn" ng-repeat="row in ptz.list track by $index" ng-mousedown="ptz.start(row.cmd)" ng-mouseup="ptz.stop()">{{ row.name }}</div>'+
+                    '</div>' +
+                    '</li>' +
+                    '<li>' +
+                    '<div class="tool-name">功能</div>' +
+                    '<div class="tool-buttons">' +
+                    '<div class="tool-btn" ng-click="snapshot()">本地截图</div>' +
+                        // '<div class="tool-btn">上墙</div>' +
+                        // '<div class="tool-btn">回放</div>' +
+                        // '<div class="tool-btn">录像</div>' +
+                    '<div class="tool-btn">' +
+                    '<div ng-if="volume.state == \'close\'" ng-click="volume.open()">音量开</div>' +
+                    '<div ng-if="volume.state == \'open\'" ng-click="volume.close()">音量关</div>' +
+                    '</div>' +
+                    '<div class="tool-btn" ng-click="close()">关闭</div>' +
+                    '</div>' +
+                    '</li>' +
+                    '<li ng-if="hardware.list.length > 0">' +
+                    '<div class="tool-name">关联设备</div>' +
+                    '<div class="tool-buttons" ng-if="hardware.mode == 1">' +
+                    '<div class="tool-btn" ng-repeat="row in hardware.list track by $index" title="{{ row.name }}" ng-click="hardware.showAction(row, $event)">{{ row.typename }}</div>' +
+                    '</div>' +
+                    '<div class="tool-buttons" ng-if="hardware.mode == 2">' +
+                    '<div class="tool-btn" ng-click="hardware.back()">返回</div>' +
+                    '<div class="tool-btn" ng-repeat="row in hardware.detail.list track by $index" title="{{ row.name }}" ng-click="hardware.doAction(row)">{{ row.name }}</div>' +
+                    '</div>' +
+                    '</li>' +
+                    '</ul>' +
+                    '</div>' +
+                    '</div>'+
+                    '<div class="layout-full safe-video-max-box"></div>' +
                     '</div>'
                 ].join(''),
                 link: function ($scope, $element) {

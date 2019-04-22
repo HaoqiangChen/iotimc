@@ -1,0 +1,10 @@
+{
+  "name": "iiw.report.scheduling",
+  "version": "0.0.1",
+  "description": "视频调度登记表",
+  "author": "chq",
+  "date": "2019-12-03",
+  "main": "reportSchedulingController",
+  "host": "10.10.2.55:8080",
+  "client": "10.10.2.44"
+}

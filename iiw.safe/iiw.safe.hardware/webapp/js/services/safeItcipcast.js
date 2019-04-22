@@ -150,9 +150,8 @@ define([
         }
 
         function callEvent(json){
-            var o = _list;
-            if (o) {
-
+            var object = _list;
+            if (object) {
                 iMessage.remove(_type);
                 iMessage.show({
                     id: _type,
@@ -161,21 +160,6 @@ define([
                     timeout: '0',
                     content: '开始语音广播成功！'
                 });
-
-                /*
-                _scope.$broadcast('ws.executeHandle', {
-                    id: o.id,
-                    message: o.name + '开启语音广播！',
-                    type: o.type,
-                    actions: [{
-                        action: stopBvoice(),
-                        deviceid: o.id,
-                        devicename: o.name,
-                        name: '广播中',
-                        type: o.type
-                    }]
-                });
-                 */
             }
         }
 

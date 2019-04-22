@@ -498,8 +498,18 @@ define(['app'], function(app) {
                                 _ipDispatcher = requireNW('./lib/ipdispatcher/ipdispatcher');
                                 _ipDispatcher.InitNodeJsSdk(process.execPath + '\\..\\sdk\\ipdispatcher\\');
                                 that.setCallBackFun();
-                            } else if(dispatcherDevice.content == 'chuyu') {
-                                init = true;
+                            }else if(dispatcherDevice.content == 'chuyu'){
+                                alert('调度机加载到这里');
+
+                                _ipDispatcher = requireNW('./lib/imcs/imcs1');
+                                showMessage(3, '调度机加载成功!');
+
+                                var res = _ipDispatcher.InitSdk({
+                                    'dll': process.execPath + '\\..\\sdk\\chuyuSoftPhoneCApi\\ImcCommonLibrary.dll',
+                                    'isInitImcs': true,
+                                    'loglevel':5
+                                });
+                                showMessage(3, '调度机初始化成功!' + res);
                             }
                             mode = 'nw';
                         } else if (window.ActiveXObject || 'ActiveXObject' in window) {
@@ -510,6 +520,16 @@ define(['app'], function(app) {
                             mode = 'activeXObject';
                             that.setCallBackFunByIE();
                         } else if(dispatcherDevice.content == 'chuyu') {
+                            _ipDispatcher = requireNW('./lib/imcs/imcs1');
+                            showMessage(3, '调度机加载成功!');
+
+                            var res = _ipDispatcher.InitSdk({
+                                'dll': process.execPath + '\\..\\sdk\\chuyuSoftPhoneCApi\\ImcCommonLibrary.dll',
+                                'isInitImcs': true,
+                                'loglevel':5
+                            });
+                            showMessage(3, '调度机初始化成功!' + res);
+
                             init = true;
                         }
 
@@ -737,10 +757,8 @@ define(['app'], function(app) {
                             callback();
                         }
                     } else if(dispatcherDevice.content == 'chuyu') {
-                        for(var i = 0; i< phoneNumbers.length; i++) {
-                            if(phoneNumbers[i].length > 6) {
-                                phoneNumbers[i] = dispatcherDevice.outlineNo?dispatcherDevice.outlineNo + phoneNumbers[i]:phoneNumbers[i];
-                            }
+                        if(phoneNumbers[0].length > 6) {
+                            phoneNumbers[0] = dispatcherDevice.outlineNo?dispatcherDevice.outlineNo + phoneNumbers[0]:phoneNumbers[0];
                         }
                         iAjax.post('/sys/provider.do?action=sendMsg', {
                             content: '收到命令',
@@ -792,14 +810,9 @@ define(['app'], function(app) {
                             callback();
                         }
                     } else if (dispatcherDevice.content == 'chuyu') {
-                        for(var i = 0; i< phoneNumber.length; i++) {
-                            if(phoneNumber[i].length > 6) {
-                                phoneNumber[i] = dispatcherDevice.outlineNo?dispatcherDevice.outlineNo + phoneNumber[i]:phoneNumber[i];
-                            }
+                        if(phoneNumber.length > 6) {
+                            phoneNumber = dispatcherDevice.outlineNo + phoneNumber;
                         }
-                        /*if(phoneNumber.length > 6) {
-                            phoneNumber = dispatcherDevice.outlineNo ? dispatcherDevice.outlineNo + phoneNumber : phoneNumber;
-                        }*/
                         var params = [];
                         params.push(phoneNumber)
                         iAjax.post('/sys/provider.do?action=sendMsg', {
@@ -847,10 +860,8 @@ define(['app'], function(app) {
                         var sendData = '{"callid": "' + phoneNumber + '"}';
                         _ipDispatcher.Exec('OnhookSpecific', sendData);
                     } else if (dispatcherDevice.content == 'chuyu') {
-                        for(var i = 0; i< phoneNumber.length; i++) {
-                            if(phoneNumber[i].length > 6) {
-                                phoneNumber[i] = dispatcherDevice.outlineNo?dispatcherDevice.outlineNo + phoneNumber[i]:phoneNumber[i];
-                            }
+                        if(phoneNumber.length > 6) {
+                            phoneNumber = dispatcherDevice.outlineNo + phoneNumber;
                         }
                         var params = [];
                         params.push(phoneNumber)

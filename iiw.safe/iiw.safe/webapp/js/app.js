@@ -5,6 +5,7 @@ define([
     'app',
     'moment',
     'safe/lib/zrender/2.1.0/zrender',
+    'safe/lib/MD5/md5',
     'safe/lib/echarts/2.2.7/echarts-all',
     'safe/lib/datetimepicker/jquery.datetimepicker.full',
     'safe/lib/jquery-ripple/1.7.1/jquery.ripple',
@@ -37,7 +38,7 @@ define([
     'safe/js/services/safePlugins',
     'safe/js/services/safeConfigService',
     'safe/js/services/safeDesService',
-	'safe/js/services/safeImcsPlayer',
+    'safe/js/services/safeImcsPlayer',
     //'safe/js/services/safeDatacenterData',
     'safe/js/filters/safeMainSafeFormat',
     'safe/js/filters/safeTimeSecondFormat',
@@ -51,21 +52,21 @@ define([
     'cssloader!safe/css/index',
     'cssloader!safe/css/camera',
     'cssloader!safe/css/mapselect'
-], function(app) {
-    app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
+], function (app) {
+    app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function ($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
         $.datetimepicker.setLocale('zh');
         //document.title = '物联网安全管控指挥平台';
 
-        iAjax.post('sys/web/config.do?action=getConfig', {}).then(function(data) {
-            if(data && data.result && data.result.rows) {
-                var titleObject = _.findWhere(data.result.rows, { 'key': 'title' });
-                var subTitleObject = _.findWhere(data.result.rows, { 'key': 'subtitle' });
+        iAjax.post('sys/web/config.do?action=getConfig', {}).then(function (data) {
+            if (data && data.result && data.result.rows) {
+                var titleObject = _.findWhere(data.result.rows, {'key': 'title'});
+                var subTitleObject = _.findWhere(data.result.rows, {'key': 'subtitle'});
                 var title = '';
-                if(titleObject && titleObject.content) {
+                if (titleObject && titleObject.content) {
                     title = titleObject.content;
                 }
 
-                if(subTitleObject && subTitleObject.content) {
+                if (subTitleObject && subTitleObject.content) {
                     title += subTitleObject.content;
                 }
 
@@ -89,35 +90,33 @@ define([
 
         $scope.safe = {
             child: [],
-            getData: function(id) {
+            getData: function (id) {
                 this.score = 0;
                 this.childid = id;
                 var that = this;
                 iAjax.post('sys/common/starget.do?action=statistics', {
                     id: id
-                }).then(function(data) {
-                    if(data.result && data.result.rows) {
+                }).then(function (data) {
+                    if (data.result && data.result.rows) {
                         that.ouname = data.result.ouname;
                         that.child = data.result.rows;
-
                         that.score = $filter('safeMainSafeFormat')(that, 'value');
                         that.type = $filter('safeMainSafeFormat')(that, 'type');
-
                         $scope.$broadcast('safeMainUpdateReportEvent');
                     }
                 });
             },
-            goMainReport: function(e) {
+            goMainReport: function (e) {
                 $scope.safe.getData();
                 e.cancelBubble = true;
                 e.stopPropagation();
             },
-            animationScore: function() {
+            animationScore: function () {
                 var mchar = $('.safe-main-check-report-mark').data('char'),
                     lchar = $('.safe-main-check-report-line').data('char');
 
-                if(mchar && lchar && this.child.length) {
-                    if(this.target) $timeout.cancel(this.target);
+                if (mchar && lchar && this.child.length) {
+                    if (this.target) $timeout.cancel(this.target);
 
                     var child = this.child,
                         moption = mchar._option,
@@ -126,7 +125,7 @@ define([
                         min = 100,
                         max = 0;
 
-                    $.each(this.child, function() {
+                    $.each(this.child, function () {
                         scores.push(0);
                     });
                     loption.yAxis[0].max = 100;
@@ -145,12 +144,13 @@ define([
                         that = this;
 
                     this.target = $timeout(animationRun, 500);
+
                     function animationRun() {
                         try {
-                            if(index < child.length) {
+                            if (index < child.length) {
                                 var item = child[index];
                                 step = 1000 * 100 / 100 / item.score;
-                                if(item.score && value <= item.score) {
+                                if (item.score && value <= item.score) {
                                     $scope.safe.checking = '正在检查：' + item.name + '情况' + getPoint();
                                     $scope.safe.checktype = 'C';
 
@@ -160,9 +160,9 @@ define([
                                     loption.series[0].data = scores;
                                     lchar.setOption(loption, true);
 
-                                    moption.series[0].data[0].value = parseInt(_.reduce(scores, function(a, b) {
-                                            return a + b;
-                                        }, 0) / scores.length);
+                                    moption.series[0].data[0].value = parseInt(_.reduce(scores, function (a, b) {
+                                        return a + b;
+                                    }, 0) / scores.length);
                                     moption.animationDurationUpdate = step;
                                     mchar.setOption(moption, true);
 
@@ -176,9 +176,9 @@ define([
                             } else {
                                 max = _.max(scores);
                                 min = _.min(scores);
-                                if(min > 60) {
+                                if (min > 60) {
                                     min = 60;
-                                } else if(min > 1) {
+                                } else if (min > 1) {
                                     min--;
                                 }
                                 loption.yAxis[0].max = max;
@@ -189,7 +189,7 @@ define([
                                 $scope.safe.checking = '安全指标检查完成！';
                                 $scope.safe.checktype = '';
                             }
-                        } catch(e) {
+                        } catch (e) {
                             $scope.safe.checking = '';
                         }
                     }
@@ -199,11 +199,11 @@ define([
 
                     function getPoint() {
                         var result = '';
-                        if(--pointstep == 0) {
-                            if(++pointindex > 15) pointindex = 1;
+                        if (--pointstep == 0) {
+                            if (++pointindex > 15) pointindex = 1;
                             pointstep = 4;
                         }
-                        for(var i = 0; i < pointindex; i++) {
+                        for (var i = 0; i < pointindex; i++) {
                             result += '.';
                         }
                         return result;
@@ -216,17 +216,17 @@ define([
         $scope.tips = {
             alarm: 0,
             message: 0,
-            getData: function() {
+            getData: function () {
                 this.getAlarm();
                 this.getMessage();
             },
-            getAlarm: function() {
-                iAjax.post('sys/common/alert.do?action=getAlertCount', {}).then(function(data) {
+            getAlarm: function () {
+                iAjax.post('sys/common/alert.do?action=getAlertCount', {}).then(function (data) {
                     $scope.tips.alarm = data.result.count;
                 });
             },
-            getMessage: function() {
-                iAjax.post('sys/common/todo.do?action=getTodoCount', {}).then(function(data) {
+            getMessage: function () {
+                iAjax.post('sys/common/todo.do?action=getTodoCount', {}).then(function (data) {
                     $scope.tips.message = data.result.count;
                 });
             }
@@ -236,19 +236,19 @@ define([
         $scope.daywork = {
             now: {},
             list: [],
-            getData: function() {
+            getData: function () {
                 var that = this;
-                iAjax.post('sys/common/timeline.do?action=getDateTimeLine', {}).then(function(data) {
-                    if(data.result && data.result.rows) {
+                iAjax.post('sys/common/timeline.do?action=getDateTimeLine', {}).then(function (data) {
+                    if (data.result && data.result.rows) {
                         that.list = data.result.rows;
                         that.now = _.findWhere(that.list, {exemode: '1'});
-                        if(that.now) {
+                        if (that.now) {
                             $scope.news = '日常事务执行：' + that.now.content;
                         }
                     }
                 });
             },
-            doWork: function(item) {
+            doWork: function (item) {
                 // if(item.status == 'D') {
                 //     iAjax.post('sys/common/timeline.do?action=executeTimeLine', {
                 //         id: item.id
@@ -256,9 +256,18 @@ define([
                 // }
 
                 // yjj 2016-07-21 修改为无论什么状态下都可以重复执行。
+                /*
                 iAjax.post('sys/common/timeline.do?action=executeTimeLine', {
                     id: item.id
                 });
+                */
+                iAjax.post('sys/common/timeline.do?action=executeTimeLine', {
+                    id: item.id
+                }).then(function () {
+
+                });
+                safeSound.playMessage(item.content);
+
             }
         };
         $scope.daywork.getData();
@@ -268,18 +277,20 @@ define([
 
         $scope.menulist = [];
         $scope.menuWidth = {};
-        iAjax.post('sys/web/symenu.do?action=getUserMenu', {type: 'fun'}).then(function(data) {
+        iAjax.post('sys/web/symenu.do?action=getUserMenu', {type: 'fun'}).then(function (data) {
             $scope.menulist = data.result.rows;
             $scope.menuWidth = {
                 width: $scope.menulist.length * 200 + 'px'
             };
         });
 
-        $scope.goModule = function(menu) {
-            if(menu && menu.active) {
-                if(menu.url) {
+        $scope.goModule = function (menu) {
+            if (menu && menu.active) {
+                if (menu.url) {
                     try {
                         $.soa.getPath('iiw.' + menu.url);
+
+                        $scope.maintitle.title = menu.name;
 
                         var params = {data: null};
                         $state.params = params;
@@ -287,12 +298,12 @@ define([
 
                         $('.safe-main-menubar').animate({
                             top: -$('.safe-main-menubar').height()
-                        }, 300, function() {
+                        }, 300, function () {
                             $scope.$broadcast('safeMainMenuHideEvent');
                         });
                         $('.safe-main-mask').css('opacity', 1).fadeOut(300);
-                    } catch(e) {
-                        if(menu.url.indexOf('security=1') == -1) {
+                    } catch (e) {
+                        if (menu.url.indexOf('security=1') == -1) {
                             $('.safe-main-exterior-window').find('iframe').attr('src', menu.url);
                         } else {
                             $('.safe-main-exterior-window').find('iframe').attr('src', iAjax.formatFrameURL(menu.url));
@@ -300,13 +311,13 @@ define([
 
                         $('.safe-main-exterior-window').show('fade');
                     }
-                } else if(menu.action) {
+                } else if (menu.action) {
                     $scope.$eval(menu.action);
                 }
             }
         };
 
-        $scope.goAlarm = function(data) {
+        $scope.goAlarm = function (data) {
             var params = {data: data || null};
             $state.params = params;
 
@@ -316,18 +327,18 @@ define([
             // }else{
             //     $state.go('safe.alarm', params);
             // }
-            iAjax.post('sys/web/sycode.do?action=getSycode', {filter: {filter:'TODONUM'}}).then(function(data) {
-                if(data && data.result.rows) {
-                    if(data.result.rows.length == 0 || (data.result.rows.length > 0 && data.result.rows[0].content == '0')){
+            iAjax.post('sys/web/sycode.do?action=getSycode', {filter: {filter: 'TODONUM'}}).then(function (data) {
+                if (data && data.result.rows) {
+                    if (data.result.rows.length == 0 || (data.result.rows.length > 0 && data.result.rows[0].content == '0')) {
                         $state.go('safe.alarm', params);
-                    }else{
+                    } else {
                         $state.go('safe.backlog', params);
                     }
                 }
             });
         };
 
-        $scope.getAffairsTipsType = function(){
+        $scope.getAffairsTipsType = function () {
             var defer = $.Deferred();
             var postData = {
                 filter: {
@@ -342,11 +353,11 @@ define([
             return defer;
         };
 
-        $scope.goDeviceStat = function() {
-            if($state.current.url == '/report') {
+        $scope.goDeviceStat = function () {
+            if ($state.current.url == '/report') {
                 $state.params = {data: {type: 'operation'}};
                 $state.go("safe.report.operation", $state.params);
-            } else if($state.current.url == '/operation') {
+            } else if ($state.current.url == '/operation') {
                 $state.params = {data: {type: 'operation'}};
                 $state.go("safe.report", $state.params, {location: true, reload: true});
             } else {
@@ -355,48 +366,49 @@ define([
             }
         };
 
-        $scope.goDoorApply = function(data) {
+        $scope.goDoorApply = function (data) {
             var params = {data: data || null};
             $state.params = params;
             $state.go('safe.door', params);
         };
 
-        $scope.hideExteriorWindow = function() {
+        $scope.hideExteriorWindow = function () {
 
             $('.safe-main-exterior-window').hide('fade');
             $scope.$broadcast('closeFrameWindow');
-            if($scope.hideExteriorWindow && $scope.hideExteriorWindow.menu && $scope.hideExteriorWindow.menu == 'menu') {
+            if ($scope.hideExteriorWindow && $scope.hideExteriorWindow.menu && $scope.hideExteriorWindow.menu == 'menu') {
                 $scope.hideExteriorWindow.menu = null;
                 $('.safe-datacenter-index-content .b-main-menu').click();
             }
         };
 
-        $scope.$on('safe.datacenter.plugins.b.goZGFW', function(e, data) {
+        $scope.$on('safe.datacenter.plugins.b.goZGFW', function (e, data) {
             $scope.hideExteriorWindow.menu = data;
         });
 
-        $scope.refresh = function() {
+        $scope.refresh = function () {
             location.reload(true);
         };
 
-        $scope.home = function() {
-            if($scope.homePath) {
+        $scope.home = function () {
+            if ($scope.homePath) {
                 checkCurrentUrl();
             } else {
-                iAjax.post('sys/web/syrole.do?action=getHomePage', {}).then(function(data) {
-                    if(data.result && data.result.url) {
-                        $scope.homePath = data.result.url;
-                        checkCurrentUrl();
-                    }
-                })
+                iAjax.post('sys/web/syrole.do?action=getHomePage', {})
+                    .then(function (data) {
+                        if (data.result && data.result.url) {
+                            $scope.homePath = data.result.url;
+                            checkCurrentUrl();
+                        }
+                    })
             }
 
             // 检查当前路径
             function checkCurrentUrl() {
-                if($state.current.name === 'safe.insidemap'){
+                if ($state.current.name === 'safe.insidemap') {
                     location.reload(true);
-                }else {
-                    $state.go($scope.homePath,{data: null});
+                } else {
+                    $state.go($scope.homePath, {data: null});
                 }
             }
         };
@@ -407,22 +419,22 @@ define([
         // yjj于2016-08-10屏蔽，由zcl迁移到safe.door的init中。
         // $scope.$on('ws.openDoorApp', function(e, data) { });
 
-        $scope.$on('ws.updateToDo', function() {
+        $scope.$on('ws.updateToDo', function () {
             $scope.tips.getMessage();
         });
 
-        $scope.$on('ws.exeTimelineBefore', function(e, data) {
+        $scope.$on('ws.exeTimelineBefore', function (e, data) {
             $scope.news = data.content;
 
             safeSound.playMessage(data.content);
         });
 
-        $scope.$on('ws.exeTimeline', function(e, data) {
+        $scope.$on('ws.exeTimeline', function (e, data) {
             var defer = $.Deferred();
             $scope.news = data.content;
             $scope.getAffairsTipsType()
                 .then(function (AffairsData) {
-                    if(AffairsData.result.rows[0].content == '1'){
+                    if (AffairsData.result.rows[0].content == '1') {
                         safeSound.playMessage(data.content);
                     }
                 })
@@ -431,38 +443,27 @@ define([
             return defer;
         });
 
-        $scope.$on('ws.exeDeviceTrigger', function(e, data) {
+        $scope.$on('ws.exeDeviceTrigger', function (e, data) {
             safeSound.playMessage(data.content);
         });
 
-        $scope.$on('ws.stargetUpdate', function() {
+        $scope.$on('ws.stargetUpdate', function () {
             $scope.safe.getData();
             $scope.tips.getData();
         });
 
-        $scope.$on('ws.inandout', function (e, data) {
-            console.log('进出监websocket监听');
-            console.log(data);
-            safeSound.playMessage(data.content);
-            iMessage.show({
-                level: 2,
-                title: '进出监登记',
-                content: data.content
-            });
-        });
-
-        $scope.$on('safeMainMenuShowEvent', function() {
+        $scope.$on('safeMainMenuShowEvent', function () {
             var $e = $('.safe-main-workline-panel'),
                 o = $e.data('i-scroll');
 
-            if(o && $e.find('.type-r').size()) {
+            if (o && $e.find('.type-r').size()) {
                 o.scrollTo(0, -$e.find('.type-r').position().top, 1000);
             }
         });
 
         // 监听退出按钮事件，需在exit.js上广播事件，窗口显示(show = ture)，窗口隐藏(show = false)
-        $scope.$on('exitEvent', function(e, data) {
-            if(data,hasOwnProperty('show')) {
+        $scope.$on('exitEvent', function (e, data) {
+            if (data, hasOwnProperty('show')) {
                 if (data.show) {
                     $scope.$broadcast('safeMainMenuShowEvent');
                 } else {
@@ -471,40 +472,61 @@ define([
             }
         });
 
-        //iAjax.post('sys/web/syrole.do?action=getHomePage', {}).then(function(data) {
-        //    if(data.result) {
-        //        console.log('defURL' , data.result.url);
-        //        if(data.result.url && data.result.url.indexOf('http://') == -1) {
-        //            $state.go(data.result.url);
-        //        } else {
-        //            location = data.result.url;
-        //        }
-        //    }
-        //});
+        $scope.$on('ws.executeHandle', function (e, data) {
+            if (data.type == 'crossPlatform') {
+                var msg = {
+                    level: 1,
+                    id: data.type
+                }
+                msg = _.extend(msg, data);
 
-        $scope.test = function() {
-            // safeSound.playAlarm('2 0 1监舍紧急按钮报警！');
-            // safeSound.playAlarm2($.soa.getWebPath('iiw.safe') + '/music/alarm_2.mp3', 750, '2 0 1监舍紧急按钮报警！');
-            // safeSound.playAlarm2($.soa.getWebPath('iiw.safe') + '/music/alarm_3.mp3', 500, '2 0 1监舍紧急按钮报警！');
-        };
+                if (data.url) {
+                    msg.fn = 'openUrl'
+                }
+
+                iMessage.show(msg, false, $scope);
+            }
+        });
+
+
+        //获取接班民警信息
+        $scope.$on('ws.sendJJBMsgCall', function (e, data) {
+            // iMessage.show(msg, false, $scope);
+        })
+
+
+
+        $scope.$on('ws.correctPeople', function() {
+            safeSound.playText('社矫人员宣教时间');
+            iMessage.show({
+                title: '报到登记',
+                content: '社矫人员宣教'
+            });
+        });
+
+        $scope.openUrl = function(element, data) {
+
+            window.open(data.url, '_blank');
+            iMessage.remove(data.id);
+        }
 
         $scope.getAffairsTipsType();
-        $('body').keydown(function(e) {
+        $('body').keydown(function (e) {
             //shift + t
-            if(e.shiftKey && e.keyCode == '84') {
-                iAjax.post('sys/common/timeline.do?action=createTimeLine').then(function() {
+            if (e.shiftKey && e.keyCode == '84') {
+                iAjax.post('sys/common/timeline.do?action=createTimeLine').then(function () {
                     safeSound.playText('事务时间轴已刷新');
                     $scope.daywork.getData();
                 });
             }
 
-            if(e.keyCode == '32') {
+            if (e.keyCode == '32') {
                 $scope.$broadcast('safeMainKeydownSpaceEvent');
             }
         });
 
-        $('body').keyup(function(e) {
-            if(e.keyCode == '32') {
+        $('body').keyup(function (e) {
+            if (e.keyCode == '32') {
                 $scope.$broadcast('safeMainKeyupSpaceEvent');
             }
         });

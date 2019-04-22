@@ -1,0 +1,10 @@
+{
+  "name": "iiw.safe.affairs.manage",
+  "version": "0.0.1",
+  "description": "日常事务管理",
+  "author": "ybw",
+  "date": "2017-03-30",
+  "main": "affairsManageController",
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
+}

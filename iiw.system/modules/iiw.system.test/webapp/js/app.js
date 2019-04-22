@@ -11,7 +11,7 @@ define([
     $scope.title = '开发测试';
 
     $scope.modules = [
-      {status: true, name: '问卷管理', href: 'tdtgx', icon: 'fa-newspaper-o'}
+      {status: true, name: '测试开发', href: 'ftappuseraudit', icon: 'fa-newspaper-o'}
     ];
 
     $scope.filter = {
@@ -62,36 +62,7 @@ define([
     $scope.$on('testControllerOnEvent', function () {
       // $state.go('safe.sjposition');
       // $scope.getList();
-      getDeviceDetails('8162', function (device) {
-        console.log(device)
-      })
     });
-
-    function getDeviceDetails (id, callback) {
-      var url, data;
-      url = 'security/check/check.do?action=getSpecialrole';
-      data = {
-        filter: {
-          url: ['messageSend']
-          // keyvalue: id,
-          // type: 'talk',
-          // content: 'huixun'
-        }
-      };
-
-      iAjax
-        .post(url, data)
-        .then(function (data) {
-          if (data.result && data.result.rows.length) {
-            callback(data.result.rows[0]);
-          } else {
-            console.log('查询不到相关数据');
-            callback('')
-          }
-        }, function (err) {
-          _remind( '', 4,'获取对讲信息失败，请重新登录获取查看对讲设备配置是否正确!', err.message);
-        })
-    }
 
     // 全局的消息提醒服务
     function _remind(id, level, title, content, timeout, fn, scope) {

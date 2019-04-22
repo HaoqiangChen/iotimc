@@ -1,6 +1,5 @@
 /**
- * Created by yjj on 2016-03-22.
- * Updata by chq on 2019-10-31
+ * Created by yjj on 2016-03-22
  */
 define([
   'app',
@@ -51,6 +50,7 @@ define([
       $scope.isrun = false;
       $scope.cascade = true;
       $scope.loadState = 'O';
+      var volume = 60; // 音量设置
 
       $scope.listStyle = [
         'primary',
@@ -188,9 +188,9 @@ define([
             if ($scope.page.pageNo > 1) {
               $scope.list = _.union($scope.list, data.result.rows);
               $scope.group = _groupArr($scope.list, 'mapname');
-              console.log($scope.group);
+              // console.log($scope.group);
 
-              if (data.result.rows.length && data.result.rows.length >= $scope.page.pageSize) {
+              if ($scope.page.pageNo < data.result.params.totalPage) {
                 $scope.page.pageNo = $scope.page.pageNo + 1;
                 $scope.getList()
               }
@@ -199,7 +199,7 @@ define([
               $scope.list = data.result.rows;
               $scope.group = _groupArr($scope.list, 'mapname');
 
-              if ($scope.list.length && data.result.rows.length >= $scope.page.pageSize) {
+              if ($scope.page.pageNo < data.result.params.totalPage) {
                 $scope.page.pageNo = $scope.page.pageNo + 1;
                 $scope.getList()
               }
@@ -294,25 +294,25 @@ define([
 
           safeHardware.execute(control.deviceid, control.type, control.action, (control.value == 0 ? 0 : (control.value || ''))).then(function (data) {
             if (data.result && data.result.rows) {
-              if (data.result.rows.sendResult == 'FAIL') {
+              if (data.result.rows.sendResult === 'FAIL') {
                 row.result = '执行失败！';
                 row.title = data.message;
                 row.state = 'E';
                 row.isrun = false;
-                _remind(4, '执行失败！');
+                if ($scope.hardwareType === 'door') _remind(4, '执行失败！');
               } else {
                 row.result = '执行成功！';
                 row.title = '';
                 row.state = 'S';
                 row.isrun = false;
-                _remind(1, '执行成功！');
+                if ($scope.hardwareType === 'door') _remind(1, '执行成功！');
               }
             } else {
               row.result = '发送成功！';
               row.title = '';
               row.state = 'S';
               row.isrun = false;
-              _remind(1, '发送成功！');
+              if ($scope.hardwareType === 'door') _remind(1, '发送成功！');
             }
 
             if (callback) callback();
@@ -321,7 +321,7 @@ define([
             row.title = data.message;
             row.state = 'E';
             row.isrun = false;
-            _remind(4, '发送失败！');
+            if ($scope.hardwareType === 'door') _remind(4, '发送失败！');
 
             if (callback) callback();
           });
@@ -416,6 +416,8 @@ define([
       $scope.doActions = function (event, control) {
         //event.stopPropagation();
 
+        control.value = volume;
+
         if (!control.actions) {
           if (!$scope.isbatch) {
             $scope.control(control, $scope.actionsRow);
@@ -500,7 +502,7 @@ define([
         confirm: function (id) {
           iConfirm.close(id);
 
-          this.action.value = $('#volume')[0].value;
+          this.action.value = volume = $('#volume')[0].value;
 
           if (this.model == 'single') {
             $scope.control(this.action, this.row);
@@ -649,47 +651,52 @@ define([
           level: level,
           title: (title || '消息提醒'),
           content: content,
-          timeout: 300
+          timeout: 0
         };
 
         iMessage.show(message, false);
       }
 
-      function _groupArr(arr) {
-        var map = {},
-          dest = [];
-        for(var i = 0; i < arr.length; i++){
-          var ai = arr[i];
-          ai.alias = ai.alias.replace('门禁', '');
-          if(!map[ai.mapname]){
-            dest.push({
-              mapname: ai.mapname,
-              syouname: ai.syouname,
-              type: ai.type,
-              data: [ai]
-            });
-            map[ai.mapname] = ai;
-          }else{
-            for(var j = 0; j < dest.length; j++){
-              var dj = dest[j];
-              if(dj.mapname == ai.mapname){
-                dj.data.push(ai);
-                break;
-              }
+      function _groupArr(arr, field) {
+        var map = {
+          '其他': []
+        }, list = [];
+        arr.forEach(item => {
+          var group = item[field];
+          if (group) {
+            if (!map[group]) {
+              map[group] = []
             }
+            map[group].push(item)
+          } else {
+            map['其他'].push(item)
+          }
+        });
+        _.each(map, function (val, key) {
+          list.push({
+            mapname: key,
+            data: val.sort(_objSort('alias'))
+          })
+        });
+        return list.sort(_objSort(field));
+      }
+
+      function _objSort(prop) {
+        return function (obj1, obj2) {
+          var val1 = obj1[prop];
+          var val2 = obj2[prop];
+          if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+            val1 = Number(val1);
+            val2 = Number(val2);
+          }
+          if (val1 < val2) {
+            return -1;
+          } else if (val1 > val2) {
+            return 1;
+          } else {
+            return 0;
           }
         }
-        for (var i = 0; i < dest.length; i++) {
-          var di = dest[i];
-          if (!di.mapname) {
-            di.mapname = '其他';
-            dest.push(di);
-            dest.shift();
-            break;
-          }
-        }
-        dest.sort();
-        return dest;
       }
     }]);
 });

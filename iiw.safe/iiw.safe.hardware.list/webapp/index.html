@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div ui-layout-container size="40px" ng-if="hardwareType !== 'door' && hardwareType !== 'talk'">
+            <div ui-layout-container size="40px" ng-if="hardwareType !== 'door'">
                 <table class="layout-full bcb-opacity4 safe-hardware-control-box-table-title" cellpadding="0" cellspacing="0">
                     <col width="51px"/><col width="50px"/><col width="12%"/><col width="12%"/><col width="12%"/><col width="10%"/><col width="200px" ng-if="ycSpecial"/><col/><col width="10%"/>
                     <thead>
@@ -117,7 +117,7 @@
                 <div class="layout-full">
                     <div class="layout-full" i-scroll data-load-event="nextPage()">
                         <div style="position: absolute; width: 100%;">
-                            <table style="width: 100%;" cellpadding="0" cellspacing="0" ng-if="hardwareType !== 'door' && hardwareType !== 'talk'">
+                            <table style="width: 100%;" cellpadding="0" cellspacing="0" ng-if="hardwareType !== 'door'">
                                 <col width="51px"/><col width="50px"/><col width="12%"/><col width="12%"/><col width="12%"/><col width="10%"/><col width="200px" ng-if="ycSpecial"/><col/><col width="10%"/>
                                 <tbody>
                                     <tr class="safe-hardware-control-box-table-row {{row.check ? 'select' : ''}}" ng-repeat="row in list | filter: globalSearchFilter | orderBy : listOrderValue : listOrderReverse" hm-tap="clickRow($event, row)">
@@ -173,7 +173,7 @@
                             <div class="iiw-safe-hardware-NoLoad-icon" ng-if="page.last &&  list.length > 15 && hardwareType !== 'door' && hardwareType !== 'talk'">
                                 加载完成.....
                             </div>-->
-                            <div class="iiw-safe-door-wrapper" ng-if="hardwareType === 'door' || hardwareType === 'talk'">
+                            <div class="iiw-safe-door-wrapper" ng-if="hardwareType === 'door'">
                                 <div class="door-floor" ng-repeat="group in group | filter: globalSearchFilter | orderBy : listOrderValue : listOrderReverse">
                                     <div class="floor-name" ng-click="group.active ? group.active = false : group.active = true">
                                         {{group.mapname}}
@@ -182,8 +182,8 @@
                                     <ul class="door-list" ng-show="!group.active">
                                         <li class="door-item {{item.check ? 'select' : ''}}" ng-repeat="item in group.data | filter: globalSearchFilter | orderBy : listOrderValue : listOrderReverse" hm-tap="clickRow($event, item)">
                                         <div class="door">
-<!--                                            <div class="box" ng-style="{backgroundColor: item.status === '关门' ? '#390' : 'red'}">-->
-                                            <div class="box">
+                                            <div class="box" ng-style="{backgroundColor: item.status === '关门' ? '#390' : '#8a3b3e'}">
+                                            <!--<div class="box">-->
                                                 <div class="room">
                                                     <div class="num">{{item.alias}}</div>
                                                 </div>

@@ -1,0 +1,300 @@
+.safe-scheduling {
+    width: 100%;
+    height: 100%;
+    background: #c1bdba;
+    overflow: auto;
+}
+
+.safe-scheduling ul li{display: inline-block;}
+
+.safe-scheduling html {
+    overflow-y: scroll;
+}
+.safe-scheduling table,.safe-scheduling th,.safe-scheduling tr,.safe-scheduling td{
+    border:1px solid #000000;
+    height:30px;
+    text-align:center;
+    vertical-align:middle;
+}
+.safe-scheduling .td2 {
+    text-align:left;
+    width :20%;
+}
+.safe-scheduling #table2{
+    border:0px solid #ffffff;
+    height:30px;
+    width:80px;
+    align:center;
+}
+
+.safe-scheduling table {
+    border-collapse:collapse;
+}
+.safe-scheduling body {
+    margin: 0;
+    padding: 0;
+    background: #c1bdba;
+    font-size:12px;
+    font-family: 'Titillium Web',微软雅黑,sans-serif;
+}
+
+.safe-scheduling a {
+    text-decoration: none;
+    color: #1ab188;
+    transition: .5s ease;
+}
+.safe-scheduling a:hover {
+    color: #179b77;
+}
+
+.safe-scheduling .formdj {
+    background:#ffffff;
+    padding: 5px;
+    max-width: 842px;
+    margin: 40px auto;
+}
+
+.safe-scheduling .tab-group {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}
+.safe-scheduling .concenter{
+    margin:0 auto;
+}
+.safe-scheduling .tab-group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.safe-scheduling .tab-group li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}
+.safe-scheduling .tab-group li a:hover {
+    background: #179b77;
+    color: #ffffff;
+}
+.safe-scheduling .tab-group .active a {
+    background: #1ab188;
+    color: #ffffff;
+}
+
+.safe-scheduling h1 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0 0 20px;
+    font-size:40px;
+}
+
+.safe-scheduling input::-webkit-input-placeholder{
+    color:RGB(176,176,176);
+}
+.safe-scheduling input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:RGB(176,176,176);
+}
+.safe-scheduling input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:RGB(176,176,176);
+}
+.safe-scheduling input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:RGB(176,176,176);
+}
+.safe-scheduling label {
+    left: 13px;
+    display:inline-block;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.25s ease;
+    pointer-events: none;
+    font-size: 12px;
+}
+.safe-scheduling .fontlabel{
+    left: 13px;
+    display:inline-block;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.25s ease;
+    pointer-events: none;
+    font-size: 12px;
+}
+.safe-scheduling .req {
+    font-size: 12px;
+    margin: 0 auto;
+    color: #1ab188;
+}
+
+.safe-scheduling .top{
+    font-size:14px;
+    background-color:rgba(19, 35, 47, 0.9);
+    color:rgba(255, 255, 255, 0.5);
+    width:100%;
+    height:24px;
+}
+
+.safe-scheduling input, textarea {
+    font-size: 12px;
+    padding: 5px 5px;
+    width: 200px;
+    background: none;
+    background-image: none;
+    border: 1px solid #a0b3b0;
+    color: #ffffff;
+    border-radius: 0;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+.safe-scheduling input:focus, textarea:focus {
+    border-color: #1ab188;
+}
+
+.safe-scheduling .tabletit {
+    color:#000000;
+    font-size:12px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+.safe-scheduling .tabletitl {
+    color:#000000;
+    font-size:16px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+.safe-scheduling .tabletitle {
+    color:#000000;
+    font-size:18px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+.safe-scheduling .tabletitle3 {
+    color:#000000;
+    font-size:14px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+.safe-scheduling .tabletitle1 {
+    color:#000000;
+    font-size:22px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+.safe-scheduling .tabletitle2 {
+    color:#000000;
+    font-size:24px;
+    font-weight:bold;
+    font-family:"仿宋";
+}
+
+
+.safe-scheduling .tablename {
+    color:#000000;
+    font-size:18px;
+    font-family:"楷体";
+}
+.safe-scheduling textarea {
+    border: 2px solid #a0b3b0;
+    resize: vertical;
+}
+
+.safe-scheduling .field-wrap {
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.safe-scheduling .wrap-right {
+    position: relative;
+    margin-bottom: 2px;
+    text-align:right;
+}
+
+.safe-scheduling .wrap-left {
+    position: relative;
+    margin-bottom: 2px;
+    text-align:left;
+}
+
+.safe-scheduling .field-wrap2 {
+    width:300px;
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.safe-scheduling .top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.safe-scheduling .top-row > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+}
+.safe-scheduling .top-row > div:last-child {
+    margin: 0;
+}
+
+.safe-scheduling .button {
+    border: 0;
+    outline: none;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 5px 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #1ab188;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+}
+.safe-scheduling .button {
+    border: 0;
+    outline: none;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 5px 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #1ab188;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+}
+
+.safe-scheduling .button:hover, .safe-scheduling .button:focus {
+    background: #179b77;
+}
+
+.safe-scheduling .button-block {
+    display: block;
+    width: 200px;
+}
+.safe-scheduling #button2{
+    width:300px
+}
+.safe-scheduling .forgot {
+    margin-top: -20px;
+    text-align: right;
+}

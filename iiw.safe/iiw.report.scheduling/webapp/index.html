@@ -1,0 +1,38 @@
+<div class="layout-full debugger">
+    <div class="safe-scheduling">
+        <div class="formdj" title="双击打印" ng-dblclick="print()">
+            <div class="tab-content">
+                <!-- 每日情况汇总 -->
+
+                <div class="field-wrap">
+                    <center><font style="font-size:32px;color:#000000;font-weight:bold;font-family:方正小标宋简体">{{formTitle}}</font></center><br>
+                    <div class="wrap-right">
+                        <font style="font-size:20px;color:#000000;font-family:仿宋">日 期：{{formTime | date: 'yyyy年MM月dd日'}}</font>    
+                    </div>
+                    <table width="90%" align="center">
+                        <tbody><tr height="40px">
+                            <td style="width:24%;"><font class="tabletitle">单 位</font></td>
+                            <td style="width:14%;"><font class="tabletitle">带班领导</font></td>
+                            <td style="width:14%;"><font class="tabletitle">领导职务</font></td>
+                            <td style="width:24%;"><font class="tabletitle">单 位</font></td>
+                            <td style="width:12%;"><font class="tabletitle">带班领导</font></td>
+                            <td style="width:16%;"><font class="tabletitle">领导职务</font></td>
+                        </tr>
+                        <tr height="40px" ng-repeat="row in list">
+                            <td class="td2"><font class="tabletitle">{{row.syouname}}</font></td>
+                            <td><font class="tablename">{{row.name}}</font></td>
+                            <td><font class="tablename">{{row.pbbc}}</font></td>
+                            <td class="td2"><font class="tabletitle">{{row.syouname1}}</font></td>
+                            <td><font class="tablename">{{row.name1}}</font></td>
+                            <td><font class="tablename">{{row.pbbc1}}</font></td>
+                        </tr>
+                        <tr><td colspan="6" style="text-align:left">
+                            <font class="tablename">  </font><font class="tablename">今日基本情况，在岗领导：</font><font class="tablename">{{leaderCount}}人；</font>
+                            <font class="tablename">在岗民警：</font><font class="tablename">{{policeCount}}人。</font><br>
+                            <font class="tablename">调度内容简要记录：</font><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></td></tr>				</tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

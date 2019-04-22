@@ -1,0 +1,168 @@
+<div class="iiw-safe-affairs" ui-view>
+
+    <div class="ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-safe-affairs-header" size="55px" ui-layout-container>
+                <div class="iiw-safe-affairs-header-menu">
+                    <div class="col-lg-1">{{affairs.filter == affairs.currentDate ? '今' : '当'}}天事务：{{affairs.list.length}}</div>
+                    <div class="col-lg-4 iiw-safe-affairs-header-menu-fa">
+                        <div class="col-lg-4"><i class="fa fa-check"></i>已执行：{{affairs.complete}}</div>
+                        <div class="col-lg-4"><i class="fa fa-minus"></i>未执行：{{affairs.wait}}</div>
+                        <div class="col-lg-4"><i class="fa fa-close"></i>异常：{{affairs.error}}</div>
+                    </div>
+                    <div class="col-lg-2">日常提醒状态：{{AffairsTipsType == '1' ? '开启' : '关闭'}}</div>
+
+                    <button class="btn btn-success pull-right " ng-click="affairs.summarize()">事务执行反馈统计</button>
+                    <button class="btn btn-success pull-right " ng-click="affairs.manage()">事务管理</button>
+                    <button class="btn btn-warning pull-right" ng-click="affairs.closeAllTips(0)">一键关闭提醒</button>
+                    <button class="btn btn-primary pull-right" ng-click="affairs.openAllTips(1)">一键开启提醒</button>
+                </div>
+
+                <!--<div class="iiw-safe-affairs-header-going">-->
+                    <!--<div class="iiw-safe-affairs-header-going-title">正在进行....</div>-->
+                    <!--<div class="iiw-safe-affairs-header-going-content">-->
+                        <!--<div class="col-lg-6">-->
+                            <!--{{affairs.execute.content ? affairs.execute.content : '未执行任何事务'}}-->
+                        <!--</div>-->
+                        <!--<div class="col-lg-6" ng-style="{'height': '100%', 'padding': '0'}">-->
+                            <!--{{affairs.execute.starttime ? affairs.execute.starttime : '00:00'}}-->
+                            <!--&nbsp;~&nbsp;-->
+                            <!--{{affairs.execute.endtime ? affairs.execute.endtime : '00:00'}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+
+            <div class="ui-layout-container iiw-safe-affairs-body" ui-layout-container>
+                <div class="iiw-safe-affairs-body-shadow"></div>
+                <div class="iiw-safe-affairs-body-left">
+
+                    <div class="iiw-safe-affairs-body-left-filter">
+
+
+                        <!--<div class="col-lg-2" ng-style="{'padding': '0 0 0 10px', 'line-height': '40px'}">{{affairs.filter == affairs.currentDate ? '今' : '当'}}天事务：{{affairs.list.length}}</div>-->
+                        <!--<div class="col-lg-6 iiw-safe-affairs-header-menu-fa">-->
+                            <!--<div class="col-lg-4"><i class="fa fa-check"></i>已执行：{{affairs.complete}}</div>-->
+                            <!--<div class="col-lg-4"><i class="fa fa-minus"></i>未执行：{{affairs.wait}}</div>-->
+                            <!--<div class="col-lg-4"><i class="fa fa-close"></i>异常：{{affairs.error}}</div>-->
+                        <!--</div>-->
+                        <!--<button class="btn btn-success pull-right" ng-click="affairs.manage()">事务管理</button>-->
+
+                        <div class="iiw-safe-affairs-body-left-filter-container">
+                            <div class="time">
+                                <input type="text" class="form-control"
+                                       ng-model="affairs.filter"
+                                       safe-picker=""
+                                       p!format="Y-m-d"
+                                       p!timepicker="false"
+                                       ng-change="affairs.getList()"
+                                       ng-style="{'border-right': 'none'}" />
+                            </div>
+                            <div class="button" ng-click="affairs.getList()">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="iiw-safe-affairs-body-left-list" i-scroll>
+                        <div class="iiw-safe-affairs-body-left-list-scroll">
+
+                            <div ng-if="!affairs.list.length" class="iiw-safe-affairs-body-left-list-notAffairs">今天没有事务执行.....</div>
+                            <div class="col-lg-12" ng-repeat="rows in affairs.list">
+                                <div class="iiw-safe-affairs-body-left-dateTime">
+                                    <div class="col-lg-5">
+                                        <div class="iiw-safe-affairs-body-left-dateTime-time text-right">{{rows.starttime}}</div>
+                                    </div>
+                                    <div class="col-lg-2">~</div>
+                                    <div class="col-lg-5">
+                                        <div class="iiw-safe-affairs-body-left-dateTime-time">{{rows.endtime}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="iiw-safe-affairs-body-left-axis">
+                                    <div class="iiw-safe-affairs-body-left-axis-wire" ng-if="$index != (affairs.list.length - 1)"></div>
+                                    <div class="iiw-safe-affairs-body-left-axis-dot"
+                                         ng-style="{'background-color': (rows.exemode == '1' && '#49d') || (rows.status == 'E' && '#22ba25') || (rows.status == 'C' && '#ce3030') || (rows.status == 'D' && '#888')}">
+                                        <i ng-if="rows.exemode != '1'" class="fa {{(rows.status == 'E' && 'fa-check') || (rows.status == 'C' && 'fa-close') || (rows.status == 'D' && 'fa-minus')}}"></i>
+                                        <i ng-if="rows.exemode == '1'" class="fa fa-refresh fa-spin"></i>
+                                    </div>
+                                </div>
+
+                                <div class="iiw-safe-affairs-body-left-message">
+                                    <div class="iiw-safe-affairs-body-left-message-frame">
+                                        <div class="corner"></div>
+                                        <div class="iiw-safe-affairs-body-left-message-title">
+                                            {{rows.content}}
+                                            <div class="iiw-safe-affairs-body-left-message-title-way" ng-click="affairs.changeWay(rows)" ng-if="rows.type != undefined && rows.status == 'D'">
+                                                <div ng-style="{'background-color': rows.type ? '#5cb85c' : '#5bc0de', 'left': (rows.type ? '-' : '') + '30%'}">
+                                                    {{rows.type ? '自动' : '手动'}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="iiw-safe-affairs-body-left-message-content">
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;执行方式：{{rows.type ? '自动' : '手动'}}；</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;事务情况：{{rows.notes ? rows.notes : '未描述'}}；</p>
+                                        </div>
+
+                                        <div class="iiw-safe-affairs-body-left-message-frame-button text-center" ng-style="{'width' : (rows.status == 'E' ? 170 : 140) + 'px'}">
+                                            <button class="btn btn-warning pull-left" ng-click="affairs.executeTimeLine(rows.id, rows.content)">{{(rows.status == 'E' ? '重复' : '')}}执行</button>
+                                            <!--<button class="btn btn-danger">延时</button>-->
+                                            <button class="btn btn-info pull-right" ng-click="affairs.getDevice(rows.id, rows.content)">详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iiw-safe-affairs-body-right">
+
+                    <div class="iiw-safe-affairs-body-right-title">
+                        {{(affairs.device.name ? affairs.device.name : '未选择事务')}}
+                        <!--<button ng-style="{'margin-top': '5px'}" class="btn btn-success pull-right" ng-click="affairs.manage()">事务管理</button>-->
+                    </div>
+
+                    <div class="iiw-safe-affairs-body-right-class" i-scroll2>
+                        <table>
+                            <colgroup><col width="14%"><col width="28%"><col width="28%"><col width="30%"></colgroup>
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>设备名称</th>
+                                <th>设备动作</th>
+                                <th>其它操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="rows in affairs.device.list">
+                                <td>{{$index + 1}}</td>
+                                <td>{{rows.name}}</td>
+                                <td>{{rows.action}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-{{buttonStyle[$index]}}" ng-repeat="action in rows.actions" style="margin-right: 8px;" ng-click="affairs.doAction(action)">{{action.name}}</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="iiw-safe-affairs-body-right-result">
+                        <div class="content">
+                            <div class="col-lg-9">
+                                <textarea rows="4"  placeholder="请输入事务情况" ng-model="affairs.device.notes"></textarea>
+                            </div>
+                            <div class="col-lg-3">
+                                <button ng-disabled="affairs.device.name == ''" class="btn btn-success" ng-click="affairs.executeStatus('E')">正常</button>
+                                <button ng-disabled="affairs.device.name == ''" class="btn btn-danger" ng-click="affairs.executeStatus('C')">异常</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "name": "iiw.report",
+  "version": "0.0.1",
+  "description": "",
+  "author": "chq",
+  "date": "2019-12-02",
+  "main": "reportController",
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
+}

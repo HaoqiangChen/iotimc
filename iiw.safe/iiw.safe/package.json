@@ -1,11 +1,10 @@
 {
   "name": "iiw.safe",
   "version": "0.0.1",
-  "description": "",
+  "description": "物联网安全管控指挥平台",
   "author": "yjj",
   "date": "2015-10-21",
   "main": "safeMainController",
-  "host": "127.0.0.1:8070",
-  "client": "127.0.0.1",
-  "release": "6029"
+  "host": "10.2.82.28:8080",
+  "client": "10.10.2.44"
 }

@@ -11,7 +11,8 @@
     <div title="静音" class="toolbutton right video" ng-if="isCs" ng-show="isSound" ng-click="toolbar.closeSound($event)">
         <i class="fa fa-volume-up"></i></div>
 
-    <div title="{{dialect.OUN_MC || '记录异常'}}" class="toolbutton right record" safe-video-record-unusual get-snap-data="toolbar.videoRecord.getSnapData"
+    <div title="{{dialect.OUN_MC || '记录异常'}}" class="toolbutton right record" safe-video-record-unusual
+         get-snap-data="toolbar.videoRecord.getSnapData"
          get-cameraid="toolbar.videoRecord.getCameraId"><i class="fa fa-edit"></i></div>
 
     <div title="连拍" class="toolbutton right" ng-click="toolbar.continuationPhotograph($event)"><i

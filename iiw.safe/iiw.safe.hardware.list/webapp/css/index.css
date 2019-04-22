@@ -306,19 +306,20 @@
     padding: 8px 8px 0 8px;
     background-color: #390;
 }
-.iiw-safe-door-wrapper .door-floor .door-list .door-item.select .door .box {
-    background-color: #1cc09f;
-}
 .iiw-safe-door-wrapper .door-floor .door-list .door-item .door .box .room {
     width: 100%;
     height: 100%;
     border: 1px solid #fff;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iiw-safe-door-wrapper .door-floor .door-list .door-item.select .door .box .room {
+    background-color: #1cc09f;
 }
 .iiw-safe-door-wrapper .door-floor .door-list .door-item .door .box .room .num {
-    margin-top: 30px;
     font-size: 20px;
     font-weight: bold;
 }

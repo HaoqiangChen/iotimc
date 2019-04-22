@@ -238,8 +238,8 @@ define([
 
         // 模块加载完成后初始化事件
         $scope.$on('ftappUserAuditControllerOnEvent', function () {
-            $scope.getUserAuthority();
-            $scope.audit.getUserList();
+            // $scope.getUserAuthority();
+            // $scope.audit.getUserList();
         });
 
         function getToken(callback) {
@@ -293,7 +293,8 @@ define([
             $scope.typeList = [
                 {type: 1, typename: '监狱'},
                 {type: 2, typename: '社矫'},
-                {type: 3, typename: '看守所'}
+                {type: 3, typename: '看守所'},
+                {type: 4, typename: '安置帮教'}
             ];
             $scope.checkidcard = function () {
                 var reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;

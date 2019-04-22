@@ -28,10 +28,21 @@
     display: none;
 }
 
+.safe-video-max-panel .safe-video-max-tools::-webkit-scrollbar {
+	height: 8px;
+}
+
+
+.safe-video-max-panel .safe-video-max-tools .safe-video-max-tools-content{
+    height: 100%;
+    float: left;
+}
+
 .safe-video-max-panel .safe-video-max-tools ul {
     list-style: none;
     margin: 0;
-    padding: 0 250px 0 0;
+    /*padding: 0 250px 0 0;*/
+    padding: 0;
 }
 
 .safe-video-max-panel .safe-video-max-tools ul li {
@@ -313,6 +324,8 @@ safe-video .video-loading-child {
 
 safe-video .video-tips {
     position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;

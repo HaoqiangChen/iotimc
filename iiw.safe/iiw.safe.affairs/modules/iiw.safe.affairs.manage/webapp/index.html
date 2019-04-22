@@ -1,0 +1,230 @@
+<div class="iiw-safe-affairs-manage">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="iiw-safe-affairs-manage-header" style="overflow:hidden;" size="52px" ui-layout-container>
+            <div class="input-group pull-left" style="width:250px;">
+                <input type="text" class="form-control" safe-picker p!format="Y-m-d" p!timepicker="false" ng-model="manage.filterTime" ng-change="getList()" placeholder="请选择过滤的时间!">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="manage.getList()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <div class="pull-left" style="margin-left: 15px;margin-right:8px;line-height: 42px;">类型:</div>
+            <select class="form-control pull-left" ng-model="manage.filterAll" ng-change="manage.getList(manage.filterAll)" style="width: 100px">
+                <option value="yes">全部</option>
+                <option value="1">节假日</option>
+                <option value="2">周</option>
+                <option value="0">日常</option>
+            </select>
+            <button class="btn btn-info pull-right" ng-click="manage.goBack()">返回</button>
+            <button class="btn btn-success pull-right" ng-click="manage.clear('add')">添加事务</button>
+        </div>
+
+        <div class="ui-layout-container iiw-safe-affairs-manage-body" ui-layout-container ng-form="list">
+
+            <div class="ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}"></div>
+            <div class="iiw-safe-affairs-manage-body-left" i-scroll2>
+
+                <div style="padding: 0 30px">
+                    <div class="iiw-safe-affairs-manage-body-left-list" ng-repeat="rows in manage.list">
+                        <div class="iiw-safe-affairs-manage-body-left-list-time text-center" ng-click="manage.chooseAffairs(rows)">{{rows.starttime}}</div>
+                        <div class="iiw-safe-affairs-manage-body-left-list-name" ng-click="manage.chooseAffairs(rows)">{{rows.name}}</div>
+                        <div class="del" ng-click="manage.del(rows.dispatchfk)"><i class="fa fa-close"></i></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="iiw-safe-affairs-manage-body-right">
+                <div class="iiw-safe-affairs-manage-body-right-back" ng-if="manage.toggleBack"></div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">事务名称</div>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" ng-model="manage.save.name" placeholder="请输入事务名称" required/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">事务类型</div>
+                    <div class="col-lg-6">
+                        <select class="form-control" ng-model="manage.save.type" required>
+                            <option value="POLICE">警察事务</option>
+                            <option value="CRIMINAL">{{dialect.PTN_C}}事务</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">事务规则</div>
+                    <div class="col-lg-6">
+                        <select class="form-control" ng-model="manage.save.drule" required>
+                            <option value="E">日常</option>
+                            <option value="D">节假日</option>
+                            <option value="W">周</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" ng-if="manage.save.drule == 'D'">
+                    <div class="col-lg-2 text-left">请选择执行日期!</div>
+
+                    <div class="col-lg-6">
+                        <button class="btn btn-info" ng-click="manage.showDate()">选择</button>
+                        <input type="text" id="safeAffairsDateInput" style="height: 0;width: 0;padding: 0;" class="form-control" safe-picker p!format="Y-m-d" ng-model="manage.selectTime" ng-change="manage.changeTime(manage.selectTime)"/>
+                    </div>
+                </div>
+                <div class="col-lg-12" ng-if="manage.save.drule == 'D'">
+                    <div class="chooseTimeContainer">
+                        <div class="col-lg-2" style="padding: 3px;" ng-repeat="item in manage.selectList track by $index">
+                            <div class="chooseTimeContainer-box text-center">
+                                <div class="chooseTimeContainer-box-header"><i class="fa fa-times" ng-click="manage.closeTime($index)"></i></div>
+                                {{item}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" ng-if="manage.save.drule == 'W'">
+                    <div class="chooseWeekContainer">
+                        <div class="form-group pull-left" style="margin: 10px;" ng-repeat="week in manage.weekList" ng-click="manage.chooseWeek(week)">
+                            <label style="vertical-align: middle;">{{week.name}}</label>
+                            <input type="checkbox" ng-model="week.checked" ng-click="manage.chooseWeek(week)" style="width:20px;height: 20px;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">开始时间</div>
+                    <div class="col-lg-6">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="请输入开始时间"
+                               safe-picker
+                               p!format="H:i:s"
+                               p!datepicker="false"
+                               ng-model="manage.save.starttime"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">结束时间</div>
+                    <div class="col-lg-6">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="请输入结束时间"
+                               safe-picker
+                               p!format="H:i:s"
+                               p!datepicker="false"
+                               ng-model="manage.save.endtime"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-2 text-left">执行方式</div>
+                    <div class="col-lg-6">
+                        <select class="form-control" ng-model="manage.save.way">
+                            <option value="Y">自动</option>
+                            <option value="N">手动</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="col-lg-11">
+                        <div class="iiw-safe-affairs-manage-body-right-device" i-scroll2>
+                            <div class="container" ng-repeat="rows in manage.save.devices">
+                                <div class="device">
+
+                                    <div class="col-lg-12">设备</div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            名称：
+                                        </div>
+                                        <div class="col-lg-9">
+                                            {{rows.devicename}}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            动作：
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <select class="form-control" ng-model="rows.action" ng-change="manage.chooseParams(rows, $index)" ng-options="col.actionstr as col.name for col in manage.deviceAction[rows.devicetype]" required></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            参数：
+                                        </div>
+
+                                        <div class="col-lg-9" ng-if="rows.action != 'polling' && rows.action != 'setLayOut'">
+
+                                            <!--<input type="text"-->
+                                                   <!--class="form-control iiw-safe-affairs-signInput{{rows.deviceid}}"-->
+                                                   <!--ng-focus="manage.showSign($index, 'focus')"-->
+                                                   <!--ng-blur="manage.showSign($index, 'blur')"-->
+                                                   <!--ng-model="rows.args"/>-->
+                                            <div ng-if="rows.toggleSize" class="sign" ng-style="{'width': rows.signWidth + 'px'}">
+                                                <div ng-repeat="cols in manage.signSize[$index]" ng-click="manage.chooseSign(rows.deviceid, cols)">{{cols}}</div>
+                                            </div>
+                                            <select class="form-control" ng-model="rows.args" ng-options="cols.value as cols.name for cols in manage.signList[$index]"></select>
+                                        </div>
+
+                                        <div class="col-lg-9" ng-if="rows.action == 'polling'">
+                                            <select class="form-control" ng-model="rows.args" ng-options="cols.id as cols.name for cols in manage.polling[rows.deviceid]"></select>
+                                        </div>
+
+                                        <div class="col-lg-9" ng-if="rows.action == 'setLayOut'">
+                                            <select class="form-control" ng-model="rows.args" ng-options="cols.id as cols.name for cols in manage.themes[rows.deviceid]"></select>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="close" ng-click="manage.delDevice($index)"><i class="fa fa-close"></i></div>
+                            </div>
+                            <div class="container" ng-repeat="rows in manage.save.polling">
+                                <div class="polling">
+                                    <div class="col-lg-12">本地轮巡组</div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            名称：
+                                        </div>
+                                        <div class="col-lg-9">
+                                            {{rows.name}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">
+                                            类型：
+                                        </div>
+                                        <div class="col-lg-9">
+                                            {{rows.typename}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="close" ng-click="manage.delPolling($index)">
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1">
+                        <button class="btn btn-warning" ng-click="manage.addDevices()">添加设备</button>
+                        <button class="btn btn-info" ng-click="manage.addLocalpolling()">添加本地轮巡组</button>
+                        <button class="btn btn-danger" ng-click="manage.clearDevice()">清空</button>
+                    </div>
+                </div>
+
+                <div class="iiw-safe-affairs-manage-body-right-button">
+                    <button class="btn btn-success" ng-click="manage.submit()" ng-disabled="list.$invalid">提交</button>
+                    <button class="btn btn-danger" ng-click="manage.clear()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

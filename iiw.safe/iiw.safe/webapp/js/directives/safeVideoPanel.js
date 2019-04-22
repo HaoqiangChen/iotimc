@@ -40,6 +40,7 @@ define([
                         $scope.bFull = false;
                         $scope.maxArray = new Array($scope.setting.maxsize - 9);
                         $scope.showContinuationPhotograph = false;
+						$scope.playType = {};
 
                         $element.find('.video-panel-toolbox').click(function() {
                             if(!$scope.ismax && !$scope.ismove) {
@@ -428,6 +429,7 @@ define([
 
                                 video.attr('src', '');
                                 video.attr('muted', true);
+                                video.attr('code', '');
                                 videoBox.stop(true).hide('fade', function() {
                                     if(!$scope.setting.keeplast) {
                                         canvas.hide();
@@ -439,7 +441,6 @@ define([
                                     } else {
                                         $scope.hideSelect();
                                     }
-                                    video.attr('code', '');
                                     if(!isCloseAll) $scope.$emit('safeVideoCloseEvent', videoBox);
                                 });
                             }
@@ -477,6 +478,7 @@ define([
 
                                 video.attr('src', '');
                                 video.attr('muted', true);
+                                video.attr('code', '');
                                 videoBox.stop(true).hide('fade', function() {
                                     canvas.hide();
 
@@ -487,7 +489,6 @@ define([
                                     } else {
                                         $scope.hideSelect();
                                     }
-                                    video.attr('code', '');
 
                                     $scope.$emit('safeRecordCloseEvent', index);
                                     if(!isCloseAll) $scope.$emit('safeVideoCloseEvent', videoBox);
@@ -561,7 +562,7 @@ define([
                                         $scope.toolbar.menu(data, $scope.ismove, $scope.isVideoreplyed);
                                     });
 
-                                    dom.find('.toolbar').show();
+                                    //dom.find('.toolbar').show();
                                 } else {
                                     if($scope.isVideoreplyed) {
                                         dom.find('.control-panel').hide();
@@ -596,7 +597,7 @@ define([
                             if(!$scope.ismax) {
                                 index = index || $scope.select;
                                 var videoBox = $element.find('safe-video:eq(' + (index - 1) + ')');
-								
+
 								if(safeImcsPlayer.isconnect()) {
                                     $scope.imcsPlayer.max(index);
                                 }
@@ -638,6 +639,11 @@ define([
 
                         $scope.min = function() {
                             if($scope.ismax) {
+								
+								if(safeImcsPlayer.isconnect()) {
+                                    safeImcsPlayer.showAll();
+                                }
+								
                                 $scope.ismax = false;
                                 //移除canvas对象
                                 $('#maxVideoCanvas').remove();
@@ -912,9 +918,10 @@ define([
                             snapIndex = index;
                             $scope.snapImageShow = true;
                             $scope.snapImage = $scope.getSnapData(index);
-							$timeout(function() {
-								$scope.$broadcast('safe.scrawl.open.img', $scope.snapImage);
-							}, 0);
+                            console.log($scope.snapImage);
+                              $timeout(function() {
+                                $scope.$broadcast('safe.scrawl.open.img', $scope.snapImage);
+                              }, 0);
                         };
 
                         // $scope.$on('videoKeyDownEscEvent', function() {
@@ -922,7 +929,7 @@ define([
                         // });
 
                         $scope.getSnapData = function(index) {
-                            if(safeImcsPlayer.isconnect()) {
+                            if(safeImcsPlayer.isconnect() && $scope.isImcs($scope.getObject(index).getCode())) {
                                 var scope = $element.scope();
                                 if(scope.imcsPlayer) {
                                     return new Promise(function (resolve, reject) {

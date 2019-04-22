@@ -1,0 +1,11 @@
+{
+  "name": "iiw.safe.affairs",
+  "version": "0.0.1",
+  "description": "事务时间轴",
+  "author": "ybw",
+  "date": "2017-03-30",
+  "main": "affairsController",
+  "init": true,
+  "host": "127.0.0.1:8080",
+  "client": "127.0.0.1"
+}

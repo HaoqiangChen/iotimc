@@ -8,7 +8,7 @@
  */
 define([
     'app',
-    'safe/hardware/group/js/directives/safeZTree',
+    'safe/js/directives/safeZTree',
     'cssloader!safe/css/safevideorecordunusual'
 ], function(app) {
 
@@ -256,7 +256,7 @@ define([
                             if(_.isString(img)) {
                                 $scope.record.imageUrl = img;
                             } else {
-                                $scope.getSnapData().then(function(data) {
+                                img.then(function(data) {
                                     $scope.record.imageUrl = data;
                                 }, function() {
                                     $scope.record.imageUrl = '';
@@ -287,6 +287,13 @@ define([
 							safeImcsPlayer.showAll();
                             $('.safe-main-video-record-unusual').hide('fade');
                         }
+
+                        $scope.$on('videoKeyDownEscEvent', function(e, data) {
+                            //弹窗弹出时按esq建关闭弹窗
+                            if ($('.safe-main-video-record-unusual').size() && $('.safe-main-video-record-unusual').css('display') == 'block') {
+                                hide();
+                            }
+                        });
 
                         function b64toBlob(b64Data, contentType, sliceSize) {
                             contentType = contentType || '';

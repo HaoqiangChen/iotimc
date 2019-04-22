@@ -1,10 +1,9 @@
 define([
     'app'
 ], function (app) {
-    app.factory('safeImcsPlayer', ['$rootScope', '$timeout', '$interval', '$filter', 'iAjax', function ($rootScope, $timeout, $interval, $filter, iAjax) {
+    app.factory('safeImcsPlayer', ['$rootScope', '$timeout', '$interval', '$filter', 'iAjax', 'iTimeNow', 'iMessage', 'iToken', function ($rootScope, $timeout, $interval, $filter, iAjax, iTimeNow, iMessage, iToken) {
         // var player = {};    // 播放器列表
         // var tag = 'scope';  // player播放器的标记开头
-
         var socket = {
             obj: null,
             url: 'ws://127.0.0.1:9004/PageApi?utf8=1',
@@ -38,6 +37,7 @@ define([
                     socket.isconnect = false;
                     socket.clean();
                     socket.reconnect();
+                    iMessage.show({id: '', level: 4, title: '未打开IMCS插件', content: '请打开imcsCsPlayer视频插件和守护进程<br>如果没有该插件，可以点击该提示框进行下载', fn: 'goDownloadImcs'}, false, socket);
                 };
 
                 socket.obj.onmessage = function (e) {
@@ -93,10 +93,11 @@ define([
                 if(!fn) {
                     fns && (fns.length = 0);
                 } else {
-                    for(var i = 0, len = fns.length; i < len; i++) {
-                        if(fns[i] === fn) {
-                            fns.splice(i, 1);
-                        }
+                    var idx = _.findIndex(fns, function(row) {
+                        return row === fn;
+                    });
+                    if(idx > -1) {
+                        fns.splice(idx, 1);
                     }
                 }
             },
@@ -137,6 +138,9 @@ define([
                         socket.heartbeat.timer = null;
                     }
                 }
+            },
+            goDownloadImcs: function () {
+                window.open(iAjax.formatURL('/security/common/monitor.do?action=getFileDetail') + '&url=' + 'plugs/imcsCsPlayer.rar')
             }
         }
 
@@ -229,20 +233,6 @@ define([
             return osize;
         }
 
-        // 获取设备参数
-        function getDevParam(id, callback) {
-            iAjax.post('security/device/device.do?action=getMonitorLiveUrl', {
-                // remoteip: '192.168.11.39',
-                filter: {id: id, protocol: 'httpwebm'}
-            }).then(function (data) {
-                if (data.result.detail) {
-                    callback(data.result.detail);
-                } else {
-                    console.error('getMonitorLiveUrl接口查询设备信息错误');
-                }
-            });
-        }
-
         // 设置窗口
         function setWindow(info) {
             var command = {
@@ -309,7 +299,7 @@ define([
                 "window_id": winID,
                 "window_isshow": 1,
                 "userparam": code
-            }
+            };
             socket.send(command);
         }
 
@@ -387,16 +377,15 @@ define([
          */
         function init() {
             // 判断是否具有 imcs 模式播放监控的权限。若想让用户具有权限，需在数据库表 SECTY_SCMP_MONITORTHEME 中配置数据。
-            iAjax.post('security/device/device.do?action=getMonitorLiveTheme', {
-                // remoteip: '192.168.11.39'
-            }).then(function (data) {
+            iAjax.post('security/device/device.do?action=getMonitorLiveTheme').then(function (data) {
                 if (data.result && data.result.rows == '1') {
                     socket.init();
 
                     socket.listen('NotifyConnSuccess', function (data) {
                         socket.pageid = data.pageid;
                         console.log('websocket 连接 ImcsCsPlayerControler 成功');
-						$rootScope.$broadcast('imcsplayerLoadEvent', {imcsFlag: 1});
+						            $rootScope.$broadcast('imcsplayerLoadEvent', {imcsFlag: 1});
+                        overrideMessageShow();
                     });
 
                     $rootScope.$broadcast('camera.init.imcsplayer');
@@ -404,6 +393,8 @@ define([
 					$rootScope.$broadcast('imcsplayerLoadEvent', {imcsFlag: 2});
                     console.error('当前 ip 的用户不具有 imcs 方式播放监控的权限;')
                 }
+            }, function () {
+                console.error('imcs 监控权限接口异常!');
             });
         }
 
@@ -428,6 +419,7 @@ define([
                 ismax: false,          // 记录最大化时的监控
                 ispause: false,        // 是否暂停
                 isfull: false,          // 是否全屏
+                log: true,
                 streamtype: 0,          // 全局码流控制：0->自动， 1->全主码流, 2->全副码流；
                 errorlog: {},         // 记录错误日志
                 cache: {
@@ -489,8 +481,8 @@ define([
                             showWindow(video.window.window_id, video.code);
                         } else {
                             video.timer = $timeout(function() {
-                                showTips(video, '视频播放失败，请检查网络设置！', 'error');
-                            }, 3000);
+                                showTips(video, '视频播放失败，请检查设备是否在线！', 'error');
+                            }, 13000);
                         }
                     }
                 });
@@ -543,7 +535,7 @@ define([
                                 showTips(video, false);
                             }
                         } else {
-                            showTips(video, '录像创建失败，请检查网络设置', 'error');
+                            showTips(video, '录像创建失败，请检查设备是否在线', 'error');
                             removeVideo(key);
                             closeWindow(data.window_id);
                             console.error('[ ' + video.id + ' ] 创建窗口失败, [result : ' + data.result + ']');
@@ -684,7 +676,10 @@ define([
                                     startFile(video);
                                 });
                             } else {
-                                _stopRecord(video);
+                                _stopRecord(video, function() {
+                                    closeWindow(video.window.window_id);
+                                    removeVideo(video.code);
+                                });
                             }
                         }
 
@@ -729,6 +724,7 @@ define([
                         }
                     }
                 });
+
             }
 
             // 设置播放失败的提示信息
@@ -737,7 +733,7 @@ define([
                 var element = setting.el.find('safe-video[code=' + key + ']');
                 if(element) {
                     element.find('.video-tips').remove();
-                    if(text) {
+                    if(text && element.find('video').attr('code') == video.id) {
                         var name = element.find('video').attr('name');
 
                         var tips = '<div class="layout-full video-tips ' + state + '">';
@@ -757,7 +753,7 @@ define([
 
             // 记录错误日志
             function logError(type, data) {
-                if(setting.errorlog[type]) {
+                if(!setting.errorlog[type]) {
                     setting.errorlog[type] = [];
                 }
 
@@ -766,7 +762,7 @@ define([
                     if(idx > -1) {
                         // 错误数累计
                         setting.errorlog[type][idx].count++;
-                        if(setting.errorlog[type][idx].count >= 5) {
+                        if(setting.errorlog[type][idx].count >= 2) {
                             closeWindow(data.window.window_id);
                             console.error(data);
                         } else {
@@ -784,6 +780,30 @@ define([
                 }
             }
 
+            // 在控制台输出日志
+            function logCmd(cmd, msg, color, istrace) {
+                if(setting.log) {
+                    var styles = {
+                        gray: 'color: #fff; background: #606060;; padding: 2px;',
+                        green: 'color: #fff; background: #3CB371; padding: 2px;',
+                        red: 'color: #fff; background: #f40; padding: 2px;'
+                    }
+                    console.log('%c%s%c%s%c [ %s ] ',
+                        styles.gray,
+                        $filter('date')(new Date().getTime(), 'yyyy-MM-dd HH:mm:ss'),
+                        styles[color || 'green'],
+                        cmd,
+                        'color: #333;',
+                        msg,
+                        setting.el
+                    );
+
+                    if(istrace) {
+                        // console.trace('logCmd');
+                    }
+                }
+            }
+
             // 添加监控记录
             function addVideo(code, key, value) {
                 var video = setting.videos[code];
@@ -793,7 +813,6 @@ define([
                         code: code
                     }
                 }
-
                 setting.videos[code][key] = value;
             }
 
@@ -872,8 +891,9 @@ define([
                         "ws_request_index": requestIndex,
                         "userparam": code
                     }, setting.videos[code]['devinfo'], setting.videos[code]['window']);
-
                     socket.send(command);
+
+                    logCmd('PlayLiveStream', 'CODE : '  + code, 'green', true);
 
                     element.find('.video-loading').hide();
                     element.attr('code', code);
@@ -896,8 +916,10 @@ define([
                     setAllWindow(this);
 
                     if(!info) {
-                        getDevParam(id, function(detail) {
-                            sendPlayCmd(element, id, detail);
+                        setting.scope.getDevParam(id, function(data) {
+							if(data && data.detail) {
+								sendPlayCmd(element, id, data.detail);
+							}
                         });
                     } else {
                         sendPlayCmd(element, id, info);
@@ -925,6 +947,8 @@ define([
                     }
 
                     socket.send(command);
+
+                    logCmd('StopLiveStream', 'CODE : '  + code, 'red');
                 }
             }
 
@@ -957,6 +981,10 @@ define([
             function _max(index) {
                 var video = index ? setting.videos[getCode(index)] : getSelect();
 
+                if(!video) {
+                    hideAllWindow();
+                }
+
                 if(video && !setting.ismax && video.type != 'record') {
                     setting.ismax = true;
                     // 记录当前操作的监控信息，以便恢复
@@ -984,7 +1012,10 @@ define([
                     angular.element('.safe-video-max-tools').show('fade');
 
                     // 新开一个播放窗口
-                    hideWindow(video.window.window_id, video.code);
+                    //hideWindow(video.window.window_id, video.code);
+					$.each(setting.videos, function(n, v) {
+						hideWindow(v.window.window_id, v.code);
+					});
                     sendPlayCmd(angular.element('.safe-video-max-panel .safe-video-max-box'), video.id, {
                         "type": video['devinfo']['dev_type'],
                         "ip": video['devinfo']['dev_ip'],
@@ -1023,8 +1054,13 @@ define([
                     var code = angular.element('.safe-video-max-panel .safe-video-max-box').attr('code');
                     if(code) {
                         _close(code);
-                        showWindow(setting.cache.b4max.window_id, setting.cache.b4max.userparam);
+                        showAllWindow();
+                        //showWindow(setting.cache.b4max.window_id, setting.cache.b4max.userparam);
                     }
+
+					$.each(setting.videos, function(n, v) {
+						showWindow(v.window.window_id, v.code);
+					});
 
                     // setWindow(setting.cache.b4max);
 
@@ -1183,11 +1219,12 @@ define([
 
                         if(setting.scope.$id == keys[0]) {
                             if (data.result == 'ok' && data.imgdata) {
-                                socket.remove('Snapshop', snap);
                                 callback.call(null, data.imgdata, keys[1], data.req_window_id);
                             } else {
+                                console.error('截图失败', data.result);
                                 callback();
                             }
+                            socket.remove('Snapshop');
                         }
                     }
 
@@ -1235,19 +1272,34 @@ define([
              * 步骤二：录像查询
              * 步骤三：开始播放
              */
-            function _playRecord(id, index, start, end, now, callback) {
+            function _playRecord(id, index, start, end, now, callback, detail) {
                 var element = setting.el.find('safe-video:eq(' + (index - 1) + ')');
 
                 if(element.attr('code')) {
                     // 关闭当前位置上已有录像
-                    _stopRecord(setting.videos[element.attr('code')]);
+                    var _record = setting.videos[element.attr('code')];
+                    _stopRecord(_record, function() {
+                        closeWindow(_record.window.window_id);
+                        removeVideo(_record.code);
+                    });
                 }
 
                 var requestIndex = _.uniqueId();
                 var code = setting.scope.$id + '-' + id + '-' + requestIndex;
 
-                getDevParam(id, function(detail) {
-                    addVideo(code, 'type', 'record');
+				if(detail) {
+					playSend(detail);
+				}
+				else {
+					setting.scope.getDevParam(id, function(data) {
+						if(data && data.detail) {
+							playSend(data.detail);
+						}
+					});
+				}
+
+				function playSend(detail) {
+					addVideo(code, 'type', 'record');
                     addVideo(code, 'devinfo', {
                         "id": id,
                         "dev_type": detail.type ,
@@ -1280,7 +1332,7 @@ define([
                     setCode(index, code);
                     crateRecordWindow(setting.videos[code]);
                     element.find('.video-loading').hide();
-                });
+				}
             }
 
             // 创建录像窗口
@@ -1346,6 +1398,9 @@ define([
                     var index = _.findIndex(video.query.rec, function (row) {
                         return row.tbegin <= time && time <= row.tend;
                     });
+                    if(index < 0) {
+                        index = 0;
+                    }
                     video.query.idx = index;
                     file = video.query.rec[index];
                 }
@@ -1396,8 +1451,10 @@ define([
                 if(_.size(setting.videos) > 0) {
                     var videos = _.filter(setting.videos, {type: 'record'});
                     _.each(videos, function(video) {
-                        _stopRecord(video);
-                        // closeWindow(video.window.window_id);
+                        _stopRecord(video, function() {
+                            closeWindow(video.window.window_id);
+                            removeVideo(video.code);
+                        });
                     });
                 }
             }
@@ -1457,20 +1514,9 @@ define([
                 }
 
                 if(video) {
-                    video.query.pos = time;
-
-                    if(video.query.rec) {
-                        // 由于往前跳转不会返回录像播放完成的状态，所以手动根据时间进行判断，选择合适的录像文件
-                        if(time < video.query.rec[video.query.idx]['tbegin']) {
-                            setFitFile(video, time);
-                            _stopRecord(video, function() {
-                                startFile(video);
-                            });
-                            return;
-                        }
-                    }
-
                     // console.log('[ ' + video.id + ' ] ' + ' setpos to ' + $filter('date')(time, 'yyyy-MM-dd HH:mm:ss'));
+
+                    video.query.pos = time;
 
                     var commnad = {
                         "cmd": "PlaybackCtrl",
@@ -1479,7 +1525,19 @@ define([
                         "pos": time,
                         "userparam": video.code
                     }
-                    socket.send(commnad);
+
+                    if(video.devinfo.pb_support == 1 && video.query.rec) {
+                        if(time < video.query.rec[video.query.idx]['tbegin'] || time > video.query.rec[video.query.idx]['tend']) {
+                            setFitFile(video, time);
+                            _stopRecord(video, function() {
+                                startFile(video);
+                            });
+                        } else {
+                            socket.send(commnad);
+                        }
+                    } else {
+                        socket.send(commnad);
+                    }
                 }
             }
 
@@ -1559,7 +1617,8 @@ define([
                         video.query.dlpath = path;
                     }
 
-                    var filename = video.devinfo.pb_support == 1 ? video.query.rec[video.query.idx]['file'] : $filter('date')(video.query.tbegin, 'yyyyMMddHHmmss') + '-' + $filter('date')(video.query.tend, 'yyyyMMddHHmmss');
+                    //var filename = video.devinfo.pb_support == 1 ? video.query.rec[video.query.idx]['file'] : $filter('date')(video.query.tbegin, 'yyyyMMddHHmmss') + '-' + $filter('date')(video.query.tend, 'yyyyMMddHHmmss');
+                    var filename = $filter('date')(video.query.tbegin, 'yyyyMMddHHmmss') + '-' + $filter('date')(video.query.tend, 'yyyyMMddHHmmss') + '-' + video.query.idx;
                     var downloadPath = video.query.dlpath + filename + '.mp4';
 
                     var commnad = {
@@ -1618,6 +1677,8 @@ define([
             addListener();
 
             return {
+				setAllWindow: setAllWindow,
+
                 el: setting.el,
                 videos: setting.videos,
                 play: _play,
@@ -1646,8 +1707,203 @@ define([
                 stopRecordDownload: _stopDownload,
                 recordCallback: _setRecordCallback,
 
-                destroy: _destroy,
+                destroy: _destroy
             }
+        }
+
+        /**
+         * 消息提示框
+         * @author : zhs
+         * @version : 1.0
+         * @date : 2019-09-02
+        */
+        function message() {
+            // 消息框属性
+            var winParam = {
+                "window_playtype": 1,
+                "window_isshow": 1,
+                "window_opaque": "255",
+                "window_ismousetrans": 0,
+                "window_x": getSizeByRatio($('body').width()) - 600,
+                "window_y": getSizeByRatio(0, 'top') + 90,
+                "window_w": 600,
+                "window_h": 180
+            }
+
+            // 字体图标
+            var levelIcon = {
+                '1': '√',
+                '2': '？',
+                '3': '！',
+                '4': '×'
+            }
+
+            // 颜色
+            var levelColor = {
+                '1': [0,191,0],
+                '2': [0,0,191],
+                '3': [191,191,0],
+                '4': [191,0,0]
+            }
+
+            var msg = null;
+
+            function addListener() {
+                // 监听消息框创建
+                socket.listen('CreateMsgWindow', function (data) {
+                    if(data.result == 'ok') {
+                        msg = _.extend(msg, data);
+                        if(msg.timeout > 0) {
+                            $timeout(function () {
+                                _hide(msg.window_id);
+                            }, msg.timeout);
+                        }
+                    } else {
+                        iMessage.oshow(msg);
+                    }
+                });
+
+                // 监听点击事件
+                socket.listen('NotifyMsgboxClick', function (data) {
+                    // TODO 处理事件
+                });
+            }
+
+            /**
+             * 生成消息框内容
+             * @param msg 消息对象
+             * @return widget
+             */
+            function getWidget(msg) {
+                var widget = [{
+                    "font": 160,
+                    "type": "txt",
+                    "val": "○",
+                    "pos": [10,10,160,160],
+                    "border": 0
+                }, {
+                    "font": 100,
+                    "type": "txt",
+                    "val": levelIcon[msg.level],
+                    "pos": (msg.level == '1' || msg.level == '4') ? [40,40,100,100] : [60,40,100,100],
+                    "border": 0,
+                    "bg": -2
+                }, {
+                    "font": 36,
+                    "type": "txt",
+                    "val": msg.title,
+                    "pos": [180,10,600,50],
+                    "border": 0
+                }, {
+                    "font": 17,
+                    "type": "txt",
+                    "val": msg.time,
+                    "pos": [180,70,600,25],
+                    "border": 0
+                }];
+
+                var content = [{
+                    "font": 17,
+                    "type": "txt",
+                    "val": msg.content,
+                    "pos": [180,105,600,75],
+                    "border": 0
+                }];
+
+                var buttons = [{
+                    "id": 'btnhandle',
+                    "font": 15,
+                    "type": "btn",
+                    "val": msg.content,
+                    "pos": [180,105,100,50],
+                    "border": 0,
+                    "bg": [254,174,27]
+                }];
+
+                if(msg.type && msg.type == 'btn') {
+                    widget = widget.concat(buttons);
+                } else {
+                    widget = widget.concat(content);
+                }
+
+                // console.log(widget);
+
+                return widget;
+            }
+
+            /**
+             * 显示消息框
+             * @param info 消息对象
+             */
+            function _show(info) {
+                if(msg) {
+                    _hide(msg.window_id);
+                }
+
+                msg = {
+                    level: info.level || '2',
+                    time: info.time || $filter('date')(iTimeNow.getTime(), 'yyyy-MM-dd HH:mm:ss'),
+                    title: info.title || '消息提醒',
+                    type: info.type || 'txt',
+                    content: info.content || '',
+                    timeout: 5000,
+                    callback: info.scope ? function () {
+                        var fn = info.scope[info.fn];
+                        if(fn) {
+                            fn();
+                        }
+                    } : null
+                }
+
+                var command = _.extend({
+                    "cmd": "CreateMsgWindow",
+                    "msgbox": {
+                        "box": {
+                            "bg": levelColor[msg.level],
+                            "color": [255,255,255],
+                            "border": 0
+                        },
+                        "widget": getWidget(msg)
+                    }
+                }, winParam);
+                socket.send(command);
+            }
+
+            /**
+             * 隐藏消息框
+             * @param winID 窗口ID
+             */
+            function _hide(winID) {
+                closeWindow(winID);
+                msg = null;
+            }
+
+            addListener();
+
+            return {
+                show: _show,
+                hide: _hide
+            }
+        }
+
+        var imcsMessage = message();
+
+        /**
+         * 重写iMessage.show方法
+         * @author : zhs
+         * @version : 1.0
+         * @date : 2019-09-27
+        */
+        function overrideMessageShow() {
+            var originShow = iMessage.show;
+            iMessage.show = function(json, checkSame, callScope, scope) {
+                if(!json.fn) {
+                    imcsMessage.show(json);
+                } else {
+                    originShow(json, checkSame, callScope, scope);
+                }
+            }
+            iMessage.oshow = originShow;
         }
 
         /**
@@ -1722,7 +1978,7 @@ define([
         // 切换标签时
         onWindowFocusChange(function(visible) {
             if(visible) {
-                showAllWindow();
+				showAllWindow();
             } else {
                 hideAllWindow();
             }
@@ -1735,6 +1991,9 @@ define([
             showAll: showAllWindow,
             hideAll: hideAllWindow,
             close: closeWindow,
+            message: imcsMessage,
+			      sendCmd: socket.send,
+			      listenCmd: socket.listen,
             exit: exit
         }
     }]);

@@ -4,31 +4,39 @@
 #function：
 init: function (cb) {
 	iAjax.post('/security/common/monitor.do?action=getSyouDetail', {}).then(function (data) {
-		if (data && data.result.rows) {
+		if (data.result && data.result.rows) {
 			$scope.syoufk = data.result.rows[0].id;
 			$scope.syouname = data.result.rows[0].syouname;
-
-			if (cb && typeof cb === 'function') {
-				cb();
-			}
 		}
 	});
 },
 ```
 
-### 2、查看当前用户单位接口
-**接口：/security/common/monitor.do?action=getSyouDetail
+### 2、系统字典查询
+**接口：/iotiead/common.do?action=getSycodeList
 ```
-#function：
+#请求参数：
 {
 	"data": {
 	    "filter": {
-	        ids: []
+	        type: 'monitorNum'
 	    }
 	}
 }
-#响应格式：
+```
+### 3、获取当前单位及以下单位数据
+**接口：/security/information/information.do?action=getSyouDis
+```
+#请求参数：
 {
-	"status": 1
+	"data": {}
+}
+```
+### 4、获取当前所有单位
+**接口：/sys/web/syou.do?action=getSyouAll
+```
+#请求参数：
+{
+	"data": {filter: {cascade: 'Y'}}
 }
 ```
