@@ -1,8 +1,4 @@
-
-
-
-
-
+安防平台测试服务器部署开发
 
 切换现场版本：
 首先将现场主服务 vigor 拷贝出来放到笔记本，然后打开vigor/configuration/iotimc-config.xml，将代码修改为以下
