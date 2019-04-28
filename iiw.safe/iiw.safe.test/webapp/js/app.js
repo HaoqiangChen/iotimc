@@ -4,9 +4,10 @@
  */
 define([
     'app',
-    'cssloader!safe/test/css/index'
+    'cssloader!safe/test/css/index',
+    'safe/js/services/safeImcsPlayer',
 ], function (app) {
-    app.controller('testController', ['$scope', '$state', '$uibModal', 'safeMainTitle', 'iAjax', 'safeDispatcher', '$rootScope', 'iTimeNow', 'iMessage', '$timeout', function ($scope, $state, $uibModal, safeMainTitle, iAjax, safeDispatcher, $rootScope, iTimeNow, iMessage, $timeout) {
+    app.controller('testController', ['$scope', '$state', '$uibModal', 'safeMainTitle', 'iAjax', 'safeDispatcher', '$rootScope', 'iTimeNow', 'iConfirm', 'iMessage', '$timeout', 'safeImcsPlayer', function ($scope, $state, $uibModal, safeMainTitle, iAjax, safeDispatcher, $rootScope, iTimeNow, iConfirm, iMessage, $timeout, safeImcsPlayer) {
         safeMainTitle.title = '模块开发测试';
 
         $scope.modules = [
@@ -15,15 +16,57 @@ define([
             {status: true, name: '天地图', href: 'tdt', icon: 'fa-map'},
             {status: true, name: '广西天地图', href: 'tdtgx', icon: 'fa-arrows'}
         ];
-
+        $scope.windowZoom = 100;
 
         // 模块跳转
         $scope.jumpModule = function (router) {
             window.location = '#/safe/' + router;
         };
 
+        //获取当前页面的缩放值
+        $scope.detectZoom = function () {
+            var ratio = 0,
+                screen = window.screen,
+                ua = navigator.userAgent.toLowerCase();
+
+            if (window.devicePixelRatio !== undefined) {
+                ratio = window.devicePixelRatio;
+            } else if (~ua.indexOf('msie')) {
+                if (screen.deviceXDPI && screen.logicalXDPI) {
+                    ratio = screen.deviceXDPI / screen.logicalXDPI;
+                }
+            } else if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+                ratio = window.outerWidth / window.innerWidth;
+            }
+
+            if (ratio) {
+                ratio = Math.round(ratio * 100);
+            }
+            console.log(ratio)
+            if (ratio != 100) {
+                // _remind(3, '你当前页面缩放比例不正确，请手动调整', '缩放比例不正确')
+                iMessage.show({
+                    level: 3,
+                    title: '缩放比例不正确',
+                    content: '你当前页面缩放比例不正确，请手动调整',
+                    timeout: '0'
+                })
+            }
+        };
+
+        $scope.open1 = function () {
+            var command = _.extend({
+                "cmd": "OpenFileSelectDialog",
+                "type": 0,
+                "path": "D:\\"
+            }, {});
+            console.log(command);
+            safeImcsPlayer.sendCmd(command);
+        };
+
         $scope.$on('testControllerOnEvent', function () {
-            // $state.go('safe.sjposition');
+            // $state.go('safe.sjposition');  
+            $scope.detectZoom()
         });
 
 

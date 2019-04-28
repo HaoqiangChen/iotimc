@@ -1,0 +1,195 @@
+<div class="safe-monitorcenter-view" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+    <div ui-layout-container size="350px">
+        <ng-include src="(leftTreeType=='N')?'safe-record-left-new.html':'safe-record-left-old.html'"></ng-include>
+    </div>
+    <div ui-layout-container>
+        <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div ui-layout-container size="165px">
+                <div class="overflow-h" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                    <div ui-layout-container>
+                        <div class="overflow-h" ui-layout="{ flow: 'row' }" options="{dividerSize:'0'}">
+                                <div ui-layout-container>
+                                    <div class="layout-full" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                                        <div ui-layout-container class="overflow-hide" ng-repeat="row in query.list" ng-click="query.setpos($event, $index)" ng-mousemove="query.mousemove($event)" ng-mouseover="query.mouseover($event, $index)" ng-mouseout="query.mouseout($event, $index)">
+                                            <div class="safe-record-time-pointer" ng-class="{'multi-pointer': camera.screen > 1}">
+                                                <div></div>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </div>
+                                            <div class="safe-record-time-mouseline" ng-class="{'multi-tip': camera.screen > 1}">
+                                                <b></b>
+                                            </div>
+                                            <div class="layout-full safe-record-timeline-panel" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                                                <div class="layout-full safe-record-table" ui-layout-container size="100px">
+                                                    <div class="layout-full safe-record-table-cell">{{row.title}}</div>
+                                                </div>
+                                                <div ui-layout-container>
+                                                    <div class="layout-full" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                                                        <div class="timeline-control" ui-layout-container ng-repeat="row in query.timelist"></div>
+                                                    </div>
+                                                    <div class="safe-record-time layout-full">
+                                                        <div class="safe-record-time-file" ng-repeat="file in row.files" safe-record-time-file></div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-control" ui-layout-container size="70px">
+                                                    <div class="layout-full safe-record-table">
+                                                        <div class="safe-record-table-cell safe-record-download-btn text-center" ng-class="{'text-info': row.isSound}" ng-if="row.files.length && isImcs" ng-click="query.toggleSound($index, $event)">
+                                                            <i class="fa fa-volume-up"></i>
+                                                        </div>
+                                                        <div class="safe-record-table-cell safe-record-download-btn text-center" ng-if="row.files.length && (camera.csMode || isImcs)" ng-click="query.download(row, $event)">
+                                                            <i class="fa fa-download"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ui-layout-container size="35px">
+                                    <div class="layout-full safe-record-timeline-panel" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                                        <div class="timeline-span first" ui-layout-container size="100px">
+                                            <!--<div class="fz-5 text-success" ng-show="query.now != query.starttime">-->
+                                                <!--{{query.now | date: 'HH:mm:ss'}}-->
+                                            <!--</div>-->
+                                        </div>
+                                        <div class="layout-full" ui-layout-container>
+                                            <div class="layout-full" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                                                <div class="timeline-span" ui-layout-container ng-repeat="row in query.timelist">
+                                                    <div class="overflow-h" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                                                        <div ui-layout-container></div>
+                                                        <div class="timeline-scale" ui-layout-container></div>
+                                                        <div class="timeline-scale" ui-layout-container></div>
+                                                        <div class="timeline-scale" ui-layout-container></div>
+                                                        <div class="timeline-scale" ui-layout-container></div>
+                                                    </div>
+                                                    <div class="timeline-span-text">
+                                                        {{row | date: 'HH:mm:ss'}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-span" ui-layout-container size="70px">
+                                            <div class="timeline-span-text">
+                                                {{query.endtime | date: 'HH:mm:ss'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="10px"></div>
+                    <div class="overflow-h" ui-layout-container size="345px">
+                        <div class="safe-record-search-times">
+                            <span class="input input--isao">
+                                <input class="input__field input__field--isao" type="text" ng-model="query.start" ng-focus="camera.hideAll()" ng-blur="camera.showAll()" safe-picker p!format="Y-m-d H:i" />
+                                <label class="input__label input__label--isao" data-content="开始时间">
+                                    <span class="input__label-content input__label-content--isao">开始时间</span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="safe-record-search-btnpanel">
+                            <button class="layout-full btn btn-info" ng-click="query.getData()"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="safe-record-search-times">
+                            <span class="input input--isao">
+                                <input class="input__field input__field--isao" type="text" ng-model="query.end" ng-focus="camera.hideAll()" ng-blur="camera.showAll()" safe-picker p!format="Y-m-d H:i" />
+                                <label class="input__label input__label--isao" data-content="结束时间">
+                                    <span class="input__label-content input__label-content--isao">结束时间</span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="120px" style="padding: 10px;overflow:hidden;" ng-if="backStatus">
+                        <i class="fa fa-arrow-circle-right safe-record-backHardWareBtn pull-right" ng-click="backHardware()"></i>
+                    </div>
+                </div>
+            </div>
+            <div ui-layout-container size="60px">
+                <div class="overflow-h" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                    <div ui-layout-container size="100px">
+                        <button class="button button-small button-plain button-border button-box" ng-click="switchLeftTreeType()" title="{{leftTreeTypeText}}" style="margin-top:25px;">
+                            <i class="fa" ng-class="{ 'fa-th': leftTreeType=='N', 'fa-list-ul': leftTreeType=='O' }"></i>
+                        </button>
+                    </div>
+                    <div ui-layout-container>
+                        <div style="text-align:center;">
+                            <button class="button button-small button-plain button-border button-circle" ng-click="reply.show()" ng-if="!isImcs" title="本地回放" style="margin-right:10px;"><i class="safe-icon safe-icon-film"></i></button>
+                            <button class="button button-small button-plain button-border button-circle" ng-click="query.stop()" title="停止" style="margin-right:10px;"><i class="fa fa-stop"></i></button>
+                            <button class="button button-small button-plain button-border button-box" ng-click="camera.setSpeedByMode('divide')" title="慢一倍" style="margin-right:10px;"><i class="fa fa-backward"></i></button>
+                            <button class="button button-large button-plain button-border button-circle" ng-disabled="query.state == 3" ng-click="query.clickFn()" title="{{((query.state == 1)?'暂停':'播放')}}" style="margin-right:10px;"><i class="fa {{((query.state == 1)?'fa-pause':'fa-play')}}"></i></button>
+                            <button class="button button-small button-plain button-border button-box" ng-click="camera.setSpeedByMode('multiply')" title="快一倍" style="margin-right:10px;"><i class="fa fa-forward"></i></button>
+                            <button class="button button-small button-plain button-border button-box" ng-click="camera.playoneframe()" title="单帧播放" style="margin-right:10px;"><i class="fa fa-step-forward"></i></button>
+                            <button class="button button-small button-plain button-border button-circle" ng-click="camera.snapshot()" title="截图" style="margin-right:10px;"><i class="fa fa-image"></i></button>
+                            <div style="display:inline-block;font-size:12px;padding:4px;border:1px solid rgba(255,255,255,0.2);border-radius:5px;">播放速度：{{camera.curSpeed}}</div>
+                        </div>
+                        <input type="file" id="safeRecordReplyFile" onchange="angular.element(this).scope().reply.change(this)" style="display:none;">
+                    </div>
+                    <div ui-layout-container size="345px">
+                        <!--<div class="fz-5 text-success" ng-show="query.now != query.starttime" style="font-family:digital7mono;float:left;font-size: 42px;font-weight:lighter;">
+                            {{query.now | date: 'HH:mm:ss'}}
+                        </div>-->
+                        <div class="safe-record-search-tools">
+                            <input type="checkbox" safe-switch checked ng-model="camera.onescreen" ng-change="camera.setLayout()" data-on-text="单画面" data-off-text="四画面" data-on="info" data-off-color="success" data-label-text="回放路数" data-handle-width="64"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ui-layout-container class="safe-monitorcenter-center">
+                <div class="safe-record-controls" ng-show="camera.screen > 1">
+                    <div class="right-button" ng-click="query.stopAll();"><i class="fa fa-times-circle"></i><p>关闭所有</p></div>
+                </div>
+                <div class="layout-full safe-record-camera"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="safe-monitorcenter-map-panel"></div>
+<div class="safe-monitorcenter-map-mask layout-full" safe-monitorcenter-map-touch data-hide="true" data-touch="right"></div>
+
+<script type="text/ng-template" id="safe-record-left-new.html">
+    <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="safe-monitorcenter-imgpanel cursor-p" ui-layout-container size="225px" safe-monitorcenter-map-touch data-show="true" data-touch="left">
+            <div ng-style="map.select" ng-show="map.select.type == 'map'"></div>
+            <i class="fa fa-windows fa-flip-horizontal" ng-show="map.select.type != 'map'"></i>
+            <p class="fz-6">{{map.select.name}}</p>
+        </div>
+        <div class="bcb-opacity4 overflow-h" ui-layout-container size="60px">
+            <div class="input-group safe-monitorcenter-searchpanel">
+                <input type="text" class="form-control" ng-model="cameraListSearch.value" placeholder="请输入过滤条件"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="bcb-opacity4 safe-monitorcenter-listpanel" ui-layout-container i-scroll data-load-event="camera.reloadSize()">
+            <div style="position: absolute;">
+                <div class="list-item" ng-style="row.css" safe-monitorcenter-cameralist data-ripple ng-repeat="row in camera.list | filter: camera.search | limitTo: camera.size || 20">
+                    <div class="layout-full onselect"><div class="layout-full"><i class="fa fa-check"></i></div></div>
+                    <div class="layout-full list-item-mask">
+                        <div class="mask"></div>
+                        <top>{{row.name}}</top>
+                        <bottom ng-show="row.checknums"><i class="fa fa-eye"></i>{{row.checknums}}</bottom>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="safe-record-left-old.html">
+    <div class="layout-full" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="bcb-opacity4 overflow-h" ui-layout-container size="60px" style="border-top-right-radius: 10px;">
+            <div class="input-group safe-monitorcenter-searchpanel">
+                <input type="text" class="form-control" ng-model="cameraListSearch.value" ng-keydown="tree.keydown($event)" placeholder="请输入过滤条件"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="tree.search()"><i class="fa fa-search"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="bcb-opacity4" ui-layout-container style="overflow:hidden; padding: 0 5px;">
+            <div class="layout-full" style="overflow:hidden;">
+                <safe-tree tv-data="tree.data" tv-click="tree.clickNode" tv-load="tree.load" tv-pan-start="tree.panStart" tv-pan-move="tree.panMove" tv-pan-end="tree.panEnd" ng-if="tree.sign == '0'"></safe-tree>
+                <safe-monitorcenter-tree tv-data="tree.data" tv-click="tree.clickNode" tv-load="tree.load" tv-pan-start="tree.panStart" tv-pan-move="tree.panMove" tv-pan-end="tree.panEnd" ng-if="tree.sign != '0'"></safe-monitorcenter-tree>
+            </div>
+        </div>
+    </div>
+</script>

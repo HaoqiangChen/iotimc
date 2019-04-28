@@ -1,1 +1,11 @@
-{"name":"iiw.safe.hardware","version":"0.0.1","description":"","author":"yjj","date":"2016-03-21","main":"hardwareController","init":true,"host":"10.8.52.30:8080","client":"10.10.2.44","release":"6029"}
+{
+  "name": "iiw.safe.hardware",
+  "version": "0.0.1",
+  "description": "设备控制中心",
+  "author": "yjj",
+  "date": "2016-03-21",
+  "main": "hardwareController",
+  "init": true,
+  "host": "192.168.11.35:8075",
+  "client": "192.168.11.27"
+}

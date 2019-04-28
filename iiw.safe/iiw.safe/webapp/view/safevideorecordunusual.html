@@ -1,31 +1,78 @@
 <div class="safe-main-video-record-unusual layout-full">
     <div class="layout-full">
-        <div class="layout-full safe-video-record-unusual" ng-style="{'height': (600 + (record.typelist.length ? 50 : 0) + (record.level.length ? 50 : 0) + (ous.list.length ? 50 : 0)) + 'px'}">
+        <div class="layout-full safe-video-record-unusual"
+             ng-style="{'height': (700 + (record.typelist.length ? 50 : 0) + (record.level.length ? 50 : 0) + (ous.list.length ? 50 : 0)) + 'px'}">
             <div class="layout-full">
                 <div class="safe-video-record-unusual-title">
                     <h2>{{dialect.OUN_MC || '监控异常登记'}}</h2>
                     <h4 Style="padding-left:40px;">——{{record.cameraname}}</h4>
+                    <div class="btn btn-primary btn-submit edit-img-btn" ng-if="!record.snapEditing"
+                         ng-click="record.snapEdit()">
+                        截图编辑
+                    </div>
+                    <div class="btn btn-info btn-submit edit-img-btn" ng-if="record.snapEditing"
+                         ng-click="record.snapComplete()">
+                        完成截图
+                    </div>
                 </div>
-                <div class="safe-video-record-unusual-image">
-                    <img ng-src="{{record.imageUrl}}" />
+                <div class="safe-video-record-unusual-image" ng-show="!record.snapEditing">
+                    <img id="record-unusual-image" ng-src="{{record.imageUrl}}"/>
+                </div>
+                <div class="safe-video-record-unusual-image-edit" ng-show="record.snapEditing">
+                    <canvas class="canvas" id="canvas"></canvas>
+                    <canvas class="canvas2" id="canvas2"></canvas>
+                    <span class="btn-act pencil" ng-click="change_attr(0,-1,-1)">铅笔</span>
+                    <span class="btn-act straight" ng-click="change_attr(1,-1,-1)">直线</span>
+                    <span class="btn-act circle" ng-click="change_attr(3,-1,-1)">圆形</span>
+                    <span class="btn-act rect" ng-click="change_attr(4,-1,-1)">矩形</span>
+                    <!--<span class="btn-act blur" ng-click="gaussian()">模糊化</span>-->
+<!--                    <span class="btn-act eraser" ng-click="change_attr(0,-1,-1,1)">橡皮擦</span>-->
+                    <span class="btn-act clear" ng-click="restore_canvas()">还原</span>
+                    <span class="size_span" id="size_span" title="线条粗细">1</span>
+                    <div class="size_bar" id="size_bar" title="点击选择线条粗细">
+                        <span class="btn-act size_thumb" id="size_thumb"></span>
+                    </div>
+                    <span class="color_span" id="color_span"></span>
+                    <canvas class="canvas_color" id="canvas_color" width="198" height="15" title="点击选择颜色"></canvas>
+
+                    <div class="channel_wrapper hide">
+                        <span class="r_channel_span" id="r_channel_span">r</span>
+                        <div class="r_channel_bar" id="r_channel_bar">
+                            <span class="btn-act r_channel_thumb" id="r_channel_thumb"></span>
+                        </div>
+                        <div class="clear-both"></div>
+                        <span class="g_channel_span" id="g_channel_span">g</span>
+                        <div class="g_channel_bar" id="g_channel_bar">
+                            <span class="btn-act g_channel_thumb" id="g_channel_thumb"></span>
+                        </div>
+                        <div class="clear-both"></div>
+                        <span class="b_channel_span" id="b_channel_span">b</span>
+                        <div class="b_channel_bar" id="b_channel_bar">
+                            <span class="btn-act b_channel_thumb" id="b_channel_thumb"></span>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="safe-video-record-unusual-text form-horizontal">
                     <div class="form-group" ng-if="record.typelist.length > 0">
                         <label class="col-sm-2 control-label">异常类型</label>
                         <div class="col-sm-10">
-                            <select class="form-control" ng-model="record.type" ng-options="t.id as t.name for t in record.typelist"></select>
+                            <select class="form-control" ng-model="record.type"
+                                    ng-options="t.id as t.name for t in record.typelist"></select>
                         </div>
                     </div>
                     <div class="form-group" ng-if="record.level.length > 0">
                         <label class="col-sm-2 control-label">严重等级</label>
                         <div class="col-sm-10">
-                            <select class="form-control" ng-model="record.type2" ng-options="t.id as t.name for t in record.level"></select>
+                            <select class="form-control" ng-model="record.type2"
+                                    ng-options="t.id as t.name for t in record.level"></select>
                         </div>
                     </div>
                     <div class="form-group" style="position: relative;" ng-if="ous.list.length > 0">
                         <label class="col-sm-2 control-label">事件下发</label>
                         <div class="col-sm-10 ouname">
-                            <input class="form-control" type="text" ng-model="ous.current.name" ng-click="ous.show()" readonly="true">
+                            <input class="form-control" type="text" ng-model="ous.current.name" ng-click="ous.show()"
+                                   readonly="true">
                             <i class="fa fa-caret-down"></i>
                         </div>
                         <div class="col-sm-offset-2 col-sm-10 tree-panel" i-scroll2>
@@ -35,14 +82,18 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">登记信息</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" ng-model="record.content" ng-keydown="record.del($event)" placeholder="输入监控异常信息" rows="5"></textarea>
+                            <textarea class="form-control" ng-model="record.content" ng-keydown="record.del($event)"
+                                      placeholder="输入监控异常信息" rows="5"></textarea>
                         </div>
                     </div>
                     <!--<textarea class="form-control" ng-model="record.content" ng-keydown="record.del($event)" placeholder="输入监控异常信息"></textarea>-->
                 </div>
                 <div class="safe-video-record-unusual-foot">
-                    <button class="button button-glow button-rounded button-highlight" ng-click="record.saveVideoUnusual()">确认登记</button>
-                    <button class="button button-glow button-rounded button-caution" ng-click="record.hideView()">取　消</button>
+                    <button class="button button-glow button-rounded button-highlight" ng-disabled="record.snapEditing"
+                            title="请先确认截图之后再确认登记" ng-click="record.saveVideoUnusual()">确认登记
+                    </button>
+                    <button class="button button-glow button-rounded button-caution" ng-click="record.hideView()">取　消
+                    </button>
                 </div>
             </div>
         </div>

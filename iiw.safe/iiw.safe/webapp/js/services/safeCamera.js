@@ -1228,8 +1228,10 @@ define([
 
       function _snapshot(index) {
 
-        if ($scope.select != index) {
+        if ($scope.select != index && index) {
           _setSelectIndex(index);
+        } else {
+          index = $scope.select;
         }
 
         $scope.selectByIndex($scope.select);

@@ -1,0 +1,239 @@
+.safe-hardware-group {
+    padding: 5px 10px 12px 10px;
+}
+
+.safe-hardware-group > .layout-full {
+    position: relative;
+}
+
+.safe-hardware-group .safe-hardware-group-toolbar > .layout-full {
+    padding: 7px 0px;
+}
+
+.safe-hardware-group .safe-hardware-group-container {
+    position: relative;
+    padding: 10px 3%;
+}
+
+.safe-hardware-group .safe-hardware-group-container > .layout-full {
+    position: relative;
+}
+
+.safe-hardware-group .safe-hardware-group-container > .layout-full > div {
+    width: 100%;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item {
+    float: left;
+    position: relative;
+    width: 31%;
+    height: 345px;
+    margin-right: 3.4%;
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item:nth-child(3n + 0) {
+    margin-right: 0;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item:nth-child(n + 3) {
+    margin-bottom: 0;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item .item-header {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    background-color: #485563;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item .item-content {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 100px);
+    overflow: hidden;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item .item-content .device-list-item {
+    margin-left: 25px;
+}
+
+.safe-hardware-group .safe-hardware-group-container .group-list-item .item-footer {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    border-top: 1px solid rgba(0,0,0,.3);
+    background-color: #485563;
+}
+
+.safe-hardware-group .safe-hardware-group-footer {
+    line-height: 50px;
+}
+
+/* 分组设置 */
+#groupModal .form-group label {
+    font-size: 15px;
+}
+
+#groupModal .form-group input[type='text'] {
+    background: rgb(55, 65, 76);
+    color: #fff;
+}
+
+#groupModal .device-filter {
+    width: 70%;
+    text-align: right;
+}
+
+#groupModal .device-filter label {
+    font-size: 12px;
+}
+
+#groupModal .device-filter select,
+#groupModal .device-filter input[type='text'] {
+    height: 21px;
+    font-size: 12px;
+    padding: 0;
+    background: #fff;
+    color: #000;
+}
+
+#groupModal .device-filter .ouname {
+    display: inline;
+}
+
+#groupModal .device-filter .ouname input[type='text'] {
+    width: 200px;
+    padding-right: 20px;
+    padding-left: 5px;
+    outline: none;
+    cursor: default;
+}
+
+#groupModal .device-filter .ouname i {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    color: #000;
+}
+
+#groupModal .device-filter .tree-panel {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    right: 0;
+    background: #fff;
+    z-index: 5;
+    overflow: hidden;
+    display: none;
+}
+
+#groupModal .device-filter .tree-panel .ztree li a {
+    color: #000;
+}
+
+#groupModal .device-filter .tree-panel > div {
+    width: 100%;
+}
+
+#groupModal .device-filter .form-group:not(:last-child) {
+    margin-right: 10px;
+}
+
+#groupModal .device-list {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background-color: #37414c;
+    padding-bottom: 15px;
+}
+
+#groupModal .device-list > .layout-full {
+    position: relative;
+}
+
+#groupModal .device-list > .layout-full > div {
+    width: 100%;
+}
+
+#groupModal .device-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 35px;
+    text-align: center;
+    line-height: 360px;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+/* 设备列表 */
+.safe-hardware-group .device-list-item {
+    position: relative !important;
+    margin: 15px 0 0 18px;
+    width: 150px;
+    height: 100px;
+    color: #ddd;
+    background-color: #485563;
+    border-radius: 5px;
+    float: left;
+    text-align: center
+}
+
+.safe-hardware-group .device-list-item .item-name {
+    width: 100%;
+    height: 60px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 14px;
+}
+
+.safe-hardware-group .device-list-item .item-name h5 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.safe-hardware-group .device-list-item .item-ou {
+    width: 100%;
+    height: 29px;
+    border-top: 1px dotted rgba(255, 255, 255, 0.3);
+    display: table;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 16px;
+    color: deepskyblue;
+}
+
+.safe-hardware-group .device-list-item .item-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 255, 0, 0.7);
+    z-index: 2;
+}
+
+.safe-hardware-group .device-list-item .item-mask i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}

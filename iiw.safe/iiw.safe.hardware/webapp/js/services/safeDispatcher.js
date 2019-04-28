@@ -1,8 +1,27 @@
 /**
  * Created by zcl on 2016/4/19.
  */
-define(['app'], function(app) {
-    app.service('safeDispatcher', ['iMessage', 'iAjax', '$timeout', 'safeSound', '$interval', '$filter', 'iTimeNow', 'safeHardware', function(iMessage, iAjax, $timeout, safeSound, $interval, $filter, iTimeNow, safeHardware) {
+define([
+    'app',
+    'safe/hardware/js/services/safeShowMessage',
+    'safe/hardware/js/services/communications/safeCommunicationChuyunew',
+    'safe/hardware/js/services/communications/safeCommunicationChuyu',
+    'safe/hardware/js/services/communications/safeCommunicationGenew'
+], function(app) {
+    app.service('safeDispatcher', [
+        'iMessage', 'iAjax', '$timeout', 'safeSound', '$interval', '$filter', 'iTimeNow', 'safeHardware', '$http', 'safeImcsPlayer',
+        'safeCommunicationChuyunew',
+        'safeCommunicationChuyu',
+        'safeCommunicationGenew',
+        'showMessage',
+
+        function(
+            iMessage, iAjax, $timeout, safeSound, $interval, $filter, iTimeNow, safeHardware, $http, safeImcsPlayer,
+            safeCommunicationChuyunew,
+            safeCommunicationChuyu,
+            safeCommunicationGenew,
+            showMessage
+        ) {
         var dispatcherDevice = null,
             _ipDispatcher = null,
             mode = null,
@@ -17,7 +36,8 @@ define(['app'], function(app) {
             callID = null,             // 缓存呼入调度台时的CALLID，用于转接放行时判断主被叫是否为“呼入号码”和“转接号码”
             callInTalkID = null,       // 缓存呼入调度台时的TALKID，用于自动转接时，模拟调度台摘机使用
             oTime = null,              // 定时器对象句柄
-            bTimeStart = false;        // 转接请求标识，防止多次转接
+            bTimeStart = false,        // 转接请求标识，防止多次转接
+            service = null;            // 调度机服务
 
         //媒体类型
         var MEDIA_TYPE = {
@@ -37,6 +57,7 @@ define(['app'], function(app) {
             LISTENING: 2,
             HANDSUP: 3
         };
+
 
         var sFunc = {
             'onPhoneStateEvent': function() {
@@ -364,15 +385,15 @@ define(['app'], function(app) {
             }
         };
 
-        function showMessage(level, content) {
-            if (dispatcherDevice) {
-                var message = {};
-                message.level = level;
-                message.title = '消息提醒';
-                message.content = content;
-                iMessage.show(message, false);
-            }
-        }
+        //function showMessage(level, content) {
+        //    if (dispatcherDevice) {
+        //        var message = {};
+        //        message.level = level;
+        //        message.title = '消息提醒';
+        //        message.content = content;
+        //        iMessage.show(message, false);
+        //    }
+        //}
 
         /**
          * 检测呼入号码是否已加入黑名单
@@ -471,6 +492,8 @@ define(['app'], function(app) {
             });
         }
 
+
+
         return {
             /**
              * 调度机初始化
@@ -479,7 +502,7 @@ define(['app'], function(app) {
              * @version : 1.0
              * @Date : 2016-04-19
              */
-            init: function() {
+            init: function(callback) {
                 var that = this;
                 //系统有调度机设备才加载控件
                 this.getDeviceConfig(function() {
@@ -493,45 +516,43 @@ define(['app'], function(app) {
                                     'cbfn': decCallEventListener
                                 });
                                 getInterphone();
-                            } else if (dispatcherDevice.content == 'iotimcdec') {
+                            }
+                            else if (dispatcherDevice.content == 'iotimcdec') {
                                 //DECLink
                                 _ipDispatcher = requireNW('./lib/ipdispatcher/ipdispatcher');
                                 _ipDispatcher.InitNodeJsSdk(process.execPath + '\\..\\sdk\\ipdispatcher\\');
                                 that.setCallBackFun();
-                            }else if(dispatcherDevice.content == 'chuyu'){
-                                alert('调度机加载到这里');
-
-                                _ipDispatcher = requireNW('./lib/imcs/imcs1');
-                                showMessage(3, '调度机加载成功!');
-
-                                var res = _ipDispatcher.InitSdk({
-                                    'dll': process.execPath + '\\..\\sdk\\chuyuSoftPhoneCApi\\ImcCommonLibrary.dll',
-                                    'isInitImcs': true,
-                                    'loglevel':5
-                                });
-                                showMessage(3, '调度机初始化成功!' + res);
+                            }
+                            else if(dispatcherDevice.content == 'chuyu') {
+                                init = true;
+                                service = safeCommunicationChuyu;
                             }
                             mode = 'nw';
-                        } else if (window.ActiveXObject || 'ActiveXObject' in window) {
+                        }
+                        else if (window.ActiveXObject || 'ActiveXObject' in window) {
                             var html = [];
                             html.push('<object id="IPDispatcherCtrl" CLASSID="CLSID:A1347CC2-E5A5-4717-A8DA-CD0AA97A68D9" type="application/x-itst-activex" width="1" height="1" ></object>');
                             $('body').append(html.join(''));
                             _ipDispatcher = $('#IPDispatcherCtrl');
                             mode = 'activeXObject';
                             that.setCallBackFunByIE();
-                        } else if(dispatcherDevice.content == 'chuyu') {
-                            _ipDispatcher = requireNW('./lib/imcs/imcs1');
-                            showMessage(3, '调度机加载成功!');
-
-                            var res = _ipDispatcher.InitSdk({
-                                'dll': process.execPath + '\\..\\sdk\\chuyuSoftPhoneCApi\\ImcCommonLibrary.dll',
-                                'isInitImcs': true,
-                                'loglevel':5
-                            });
-                            showMessage(3, '调度机初始化成功!' + res);
+                        }
+                        else if(dispatcherDevice.content == 'chuyu') {
+                            init = true;
+                            service = safeCommunicationChuyu;
+                        }
+                        else if(dispatcherDevice.content == 'genew') {
 
                             init = true;
+                            service = safeCommunicationGenew;
+
                         }
+                        else if(dispatcherDevice.content == 'chuyunew') {
+                            init = true;
+                            service = safeCommunicationChuyunew;
+                        }
+
+                        service && service.init && service.init(callback);
 
                         safeHardware.register('dispatcher', _hardware);
                     }
@@ -570,6 +591,13 @@ define(['app'], function(app) {
                     if (data.result.rows && data.result.rows.length > 0) {
                         if (data.result.rows[0].sign == '1') {
                             dispatcherDevice = data.result.rows[0];
+
+                            if(dispatcherDevice) {
+                                showMessage(null, null, {
+                                    setDispatcher: dispatcherDevice
+                                });
+                            }
+
                             if (callback) {
                                 callback();
                             }
@@ -661,7 +689,6 @@ define(['app'], function(app) {
 
             /**
              * 电话呼叫
-             * @param phoneNumber
              */
             makeCall: function(phoneNumber, callback) {
                 if (init) {
@@ -679,7 +706,6 @@ define(['app'], function(app) {
 
             /**
              * 发起高级会议
-             * @param phoneNumbers Array
              */
             startAdvConf: function(phoneNumbers, callback) {
                 if (init) {
@@ -724,7 +750,8 @@ define(['app'], function(app) {
                                 }, 2500, count);
                             }
                         }
-                    } else if (dispatcherDevice.content == 'neolink') {
+                    }
+                    else if (dispatcherDevice.content == 'neolink') {
                         //decLink
                         var sendData = '{"confmode": "1"}';
                         var retData = _ipDispatcher.Exec('SetConferenceMode', sendData);
@@ -756,25 +783,9 @@ define(['app'], function(app) {
                         if (callback) {
                             callback();
                         }
-                    } else if(dispatcherDevice.content == 'chuyu') {
-                        if(phoneNumbers[0].length > 6) {
-                            phoneNumbers[0] = dispatcherDevice.outlineNo?dispatcherDevice.outlineNo + phoneNumbers[0]:phoneNumbers[0];
-                        }
-                        iAjax.post('/sys/provider.do?action=sendMsg', {
-                            content: '收到命令',
-                            numbers: phoneNumbers.join(','),
-                            calltype: '1',
-                            model: '1'
-                        }).then(function() {
-                            iMessage.show({
-                                level: 1,
-                                title: '消息提醒！',
-                                content: '发起语音通话'
-                            }, false);
-                        });
-                        if (callback) {
-                            callback();
-                        }
+                    }
+                    else {
+                        service && service.startAdvConf && service.startAdvConf(phoneNumbers, callback);
                     }
                 } else {
                     showMessage(4, '开启会议失败，调度机未初始化!');
@@ -783,7 +794,6 @@ define(['app'], function(app) {
 
             /**
              * 会议成员邀请
-             * @param phoneNumber
              */
             advConfInvite: function(phoneNumber, callback) {
                 if (init) {
@@ -800,7 +810,8 @@ define(['app'], function(app) {
                                 callback();
                             }
                         }, 800);
-                    } else if (dispatcherDevice.content == 'neolink') {
+                    }
+                    else if (dispatcherDevice.content == 'neolink') {
                         if (phoneNumber.length > 4) {
                             phoneNumber = (dispatcherDevice.zonenum != null) ? dispatcherDevice.zonenum + phoneNumber : phoneNumber;
                         }
@@ -809,27 +820,9 @@ define(['app'], function(app) {
                         if (callback) {
                             callback();
                         }
-                    } else if (dispatcherDevice.content == 'chuyu') {
-                        if(phoneNumber.length > 6) {
-                            phoneNumber = dispatcherDevice.outlineNo + phoneNumber;
-                        }
-                        var params = [];
-                        params.push(phoneNumber)
-                        iAjax.post('/sys/provider.do?action=sendMsg', {
-                            content: '收到命令',
-                            numbers: params.join(','),
-                            calltype: '1',
-                            model: '1'
-                        }).then(function() {
-                            iMessage.show({
-                                level: 1,
-                                title: '消息提醒！',
-                                content: '发起语音通话'
-                            }, false);
-                        });
-                        if (callback) {
-                            callback();
-                        }
+                    }
+                    else {
+                        service && service.advConfInvite && service.advConfInvite(phoneNumber, callback);
                     }
                 } else {
                     showMessage(4, '会议成员邀请失败，调度机未初始化!');
@@ -838,7 +831,6 @@ define(['app'], function(app) {
 
             /**
              * 会议成员踢出
-             * @param phoneNumber
              */
             advConfKick: function(phoneNumber, callback) {
                 if (init) {
@@ -855,31 +847,15 @@ define(['app'], function(app) {
                                 }
                             }
                         }, 800);
-                    } else if (dispatcherDevice.content == 'neolink') {
+                    }
+                    else if (dispatcherDevice.content == 'neolink') {
                         phoneNumber = (phoneNumber.length > 4) ? (dispatcherDevice.zonenum != null ? dispatcherDevice.zonenum + phoneNumber + ',,' : phoneNumber + ',,') : phoneNumber + ',,';
                         var sendData = '{"callid": "' + phoneNumber + '"}';
                         _ipDispatcher.Exec('OnhookSpecific', sendData);
-                    } else if (dispatcherDevice.content == 'chuyu') {
-                        if(phoneNumber.length > 6) {
-                            phoneNumber = dispatcherDevice.outlineNo + phoneNumber;
-                        }
-                        var params = [];
-                        params.push(phoneNumber)
-                        iAjax.post('/sys/provider.do?action=sendMsg', {
-                            content: '收到命令',
-                            numbers: params.join(','),
-                            calltype: '3',
-                            model: '2'
-                        }).then(function() {
-                            iMessage.show({
-                                level: 1,
-                                title: '消息提醒！',
-                                content: '会议成员踢出成功!'
-                            }, false);
-                        });
-                        if (callback) {
-                            callback();
-                        }
+                    }
+                    else {
+                        service && service.advConfKick && service.advConfKick(phoneNumber, callback);
+
                     }
                 } else {
                     showMessage(4, '会议成员踢出失败，调度机未初始化!');
@@ -909,7 +885,8 @@ define(['app'], function(app) {
                         }
 
                         showMessage(1, '挂断成功!');
-                    } else if (dispatcherDevice.content == 'neolink') {
+                    }
+                    else if (dispatcherDevice.content == 'neolink') {
                         var sendData = '{"exec_sync":"1"}';
                         var retData = JSON.parse(_ipDispatcher.Exec('Onhook', sendData));
                         stopTime();
@@ -918,19 +895,9 @@ define(['app'], function(app) {
                         } else {
                             showMessage(4, '挂断失败!');
                         }
-                    } else if (dispatcherDevice.content == 'chuyu') {
-                        iAjax.post('/sys/provider.do?action=sendMsg', {
-                            content: '收到命令',
-                            numbers: '',
-                            calltype: '1',
-                            model: '2'
-                        }).then(function() {
-                            iMessage.show({
-                                level: 1,
-                                title: '消息提醒！',
-                                content: '结束电话会议成功!'
-                            }, false);
-                        });
+                    }
+                    else {
+                        service && service.hangUp && service.hangUp(callback);
                     }
                 } else {
                     showMessage(4, '挂断失败，调度机未初始化!');
@@ -1044,6 +1011,64 @@ define(['app'], function(app) {
                         }
                     }
                 });
+            },
+
+            /**
+             * 开启视频会议
+             * @phoneNumbers 号码
+             * @element 显示会议element
+             * @callback 回调函数
+             * @isAutoUpdateLayout 是否开启自动调整布局位置
+             */
+            videoMeeting: function() {
+                if(init) {
+                    return service && service.videoMeeting && service.videoMeeting.apply(this, arguments);
+                }
+            },
+
+            /**
+             * 邀请视频会议
+             * @phoneNumber 号码
+             * @id 会议对象id
+             * @callback 回调函数
+             */
+            videoJoin: function() {
+                if(init) {
+                    return service && service.videoJoin && service.videoJoin.apply(this, arguments);
+                }
+            },
+
+            /**
+             * 结束视频会议
+             * @id 会议对象id
+             * @callback 回调函数
+             */
+            videoMeetingEnd: function() {
+                if(init) {
+                    return service && service.videoMeetingEnd && service.videoMeetingEnd.apply(this, arguments);
+                }
+            },
+
+            /**
+             * 结束视频会议
+             * @id 会议对象id
+             * @callback 回调函数
+             */
+            videoCall: function() {
+                if(init) {
+                    return service && service.videoCall && service.videoCall.apply(this, arguments);
+                }
+            },
+
+            /**
+             * 结束视频会议
+             * @id 会议对象id
+             * @callback 回调函数
+             */
+            videoCallEnd: function() {
+                if(init) {
+                    return service && service.videoCallEnd && service.videoCallEnd.apply(this, arguments);
+                }
             }
         };
     }]);

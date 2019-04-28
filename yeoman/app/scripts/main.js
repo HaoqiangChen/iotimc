@@ -22,3 +22,4 @@ require.config({
   deps: ['bootstrap'],
   urlArgs: "bust=" + (new Date()).getTime()  //防止读取缓存，调试用
 });
+

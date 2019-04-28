@@ -2065,3 +2065,29 @@
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
+
+.messagepanel>.message {
+	width: 450px;
+	height: 160px;
+}
+
+.messagepanel>.message .ico {
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	margin: 20px 10px;
+	border-radius: 50%;
+}
+
+.messagepanel>.message .text {
+	width: 300px;
+	height: 150px;
+}
+
+.messagepanel>.message .text .fz-2 {
+	font-size: 30px;
+}
+
+.messagepanel>.message .text .content {
+	width: 100%;
+}

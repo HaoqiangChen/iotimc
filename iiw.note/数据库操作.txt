@@ -14,3 +14,7 @@ select 'drop table ' || table_name || ';' from all_tables where owner = 'IOTICOR
 
 四、导入数据库
 imp ioticore/imcsoft.12345 file=E:/iotimc/backup/xj201910301530.dmp full=y ignore=Y
+
+常用数据库字段或表查询记录
+
+模糊查询 type like '%field%'

@@ -7,88 +7,70 @@
  *
  */
 define([
-  'app',
-  'safe/hardware/js/services/safeHardwareTalkListener',
-  'safe/hardware/js/services/safeDispatcher',
-  'safe/hardware/js/services/safeVoip',
-  'safe/hardware/js/services/safeIpnbsvtd',
-  'safe/hardware/js/services/safeAVN2000Talk',
-  'safe/hardware/js/services/safeItcipcast',
-  'safe/hardware/js/services/safeLbipintercom',
-  'safe/hardware/js/services/safeLbipintercom2012',
-  'safe/hardware/js/services/safeHkDeviceBroad',
-  'safe/hardware/js/services/safePrisonTalkOcx',
-  'safe/hardware/js/services/safeHxccuapi',
-  'safe/hardware/js/services/safeMeiyiMcTalk'
-], function (app) {
-  app.controller('safeHardwarePluginsController', ['$scope', 'safeHardwareTalkListener', 'safeDispatcher', 'safeVoip', 'safeIpnbsvtd', 'safeAVN2000Talk', 'safeItcipcast', 'safeLbipintercom', 'safeLbipintercom2012', 'safeHkDeviceBroad', 'safePrisonTalkOcx', 'safeHxccuapi', 'safeMeiyiMcTalk',
-    function ($scope, safeHardwareTalkListener, safeDispatcher, safeVoip, safeIpnbsvtd, safeAVN2000Talk, safeItcipcast, safeLbipintercom, safeLbipintercom2012, safeHkDeviceBroad, safePrisonTalkOcx, safeHxccuapi, safeMeiyiMcTalk) {
+    'app',
+    'safe/hardware/js/services/safeHardwareTalkListener',
+    'safe/hardware/js/services/safeDispatcher',
+    'safe/hardware/js/services/safeVoip',
+    'safe/hardware/js/services/safeIpnbsvtd',
+    'safe/hardware/js/services/safeAVN2000Talk',
+    'safe/hardware/js/services/safeItcipcast',
+    'safe/hardware/js/services/safeLbipintercom',
+    'safe/hardware/js/services/safeLbipintercom2012',
+    'safe/hardware/js/services/safeHkDeviceBroad',
+    'safe/hardware/lib/md5/md5',
+    'safe/hardware/js/services/safePrisonTalkOcx'
+], function(app) {
+    app.controller('safeHardwarePluginsController', ['$scope', 'safeHardwareTalkListener', 'safeDispatcher', 'safeVoip', 'safeIpnbsvtd', 'safeAVN2000Talk', 'safeItcipcast', 'safeLbipintercom', 'safeLbipintercom2012','safeHkDeviceBroad', 'safePrisonTalkOcx', 'safeImcsPlayer', '$compile', 'iToken', function($scope, safeHardwareTalkListener, safeDispatcher, safeVoip, safeIpnbsvtd, safeAVN2000Talk, safeItcipcast, safeLbipintercom, safeLbipintercom2012, safeHkDeviceBroad, safePrisonTalkOcx, safeImcsPlayer, $compile, iToken) {
 
-      // 1、对讲监听设备事件监听服务；
-      //safeHardwareTalkListener.init($scope);
+        // 1、对讲监听设备事件监听服务；
+        safeHardwareTalkListener.init($scope);
 
-      // 2、初始化VOIP（LinPhone）；
-      // safeVoip.init($scope);
+        // 2、初始化VOIP（LinPhone）；
+        safeVoip.init($scope);
 
-      // 3、初始化世邦虚拟终端；
-      // safeIpnbsvtd.init($scope);
+        // 3、初始化世邦虚拟终端；
+        safeIpnbsvtd.init($scope);
 
-      // 4、初始化调度机客户端控件；
-      // safeDispatcher.init();
-
-      // 5、艾威对讲客户端控件
-      // safeAVN2000Talk.init($scope);
-
-      // 6、ITC虚拟终端
-      // safeItcipcast.init($scope);
-
-      // 7、来邦虚拟终端（省局扩展版，暂不使用）
-      //safeLbipintercom.init($scope);
-
-      // 8、来邦虚拟终端（2012版）
-      // safeLbipintercom2012.init($scope);
-
-      //9、海康设备广播
-      //safeHkDeviceBroad.init($scope);
-
-      //10、奥智利对讲
-      //safePrisonTalkOcx.init($scope);
-
-      //11、惠讯多媒体对讲
-      //safeHxccuapi.init($scope);
-
-      //12、美一对讲
-      //safeMeiyiMcTalk.init($scope);
+        // 4、初始化调度机客户端控件；
+        safeDispatcher.init();
 
 
-      //IMCS插件初始化完成后，再INIT
-      $scope.$on('imcsplayerLoadEvent', function (e, data) {
-        if (data.imcsFlag === 1) {
+        // 5、艾威对讲客户端控件
+        safeAVN2000Talk.init($scope);
 
-          //11、惠讯多媒体对讲
-          safeHxccuapi.init($scope);
-        }
-      });
+        // 6、ITC虚拟终端
+        safeItcipcast.init($scope);
 
+        // 7、来邦虚拟终端（省局扩展版，暂不使用）
+        //safeLbipintercom.init($scope);
 
-      $scope.$on('safeMainKeydownSpaceEvent', function () {
-        safeLbipintercom2012.starttalking();
-      });
+        // 8、来邦虚拟终端（2012版）
+        safeLbipintercom2012.init($scope);
 
-      $scope.$on('safeMainKeyupSpaceEvent', function () {
-        safeLbipintercom2012.stoptalked();
-      });
+        //9、海康设备广播
+        safeHkDeviceBroad.init($scope);
 
-      window.addEventListener('beforeunload', function () {
-        safeVoip.unload();
-        safeIpnbsvtd.unload();
-        safeDispatcher.logout();
-        safeAVN2000Talk.unload();
-        safeItcipcast.unload();
-        safeLbipintercom.unload();
-        safeHkDeviceBroad.unload();
-      });
+        //10、奥智利对讲
+        safePrisonTalkOcx.init($scope);
+
+        $scope.$on('safeMainKeydownSpaceEvent', function(){
+            safeLbipintercom2012.starttalking();
+        });
+
+        $scope.$on('safeMainKeyupSpaceEvent', function(){
+            safeLbipintercom2012.stoptalked();
+        });
+
+        window.addEventListener('beforeunload', function() {
+            safeVoip.unload();
+            safeIpnbsvtd.unload();
+            safeDispatcher.logout();
+            safeAVN2000Talk.unload();
+            safeItcipcast.unload();
+            safeLbipintercom.unload();
+            safeHkDeviceBroad.unload();
+        });
     }]);
 
-  return 'safeHardwarePluginsController';
+    return 'safeHardwarePluginsController';
 });

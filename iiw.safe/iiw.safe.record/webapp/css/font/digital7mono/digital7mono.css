@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'digital7mono';
+    src: url('digital7mono.eot');
+    src: url('digital7mono.eot?#iefix') format('embedded-opentype'),
+    url('digital7mono.woff') format('woff'),
+    url('digital7mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

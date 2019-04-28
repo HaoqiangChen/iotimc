@@ -38,7 +38,7 @@ define([
                 }));
 
                 _list['id_' + target.devid] = target;
-			}
+			}			
         }
 
         function listen(source, target) {

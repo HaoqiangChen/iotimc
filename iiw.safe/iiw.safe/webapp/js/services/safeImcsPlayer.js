@@ -23,6 +23,7 @@ define([
                 socket.obj.onopen = function () {
                     socket.isconnect = true;
                     socket.clean();
+                    showAllWindow();
                     socket.heartbeat.start();
                 };
 
@@ -34,6 +35,7 @@ define([
                 };
 
                 socket.obj.onerror = function (e) {
+                    console.error('Websocket 连接异常 : ' + e);
                     socket.isconnect = false;
                     socket.clean();
                     socket.reconnect();
@@ -140,7 +142,7 @@ define([
                 }
             },
             goDownloadImcs: function () {
-                window.open(iAjax.formatURL('/security/common/monitor.do?action=getFileDetail') + '&url=' + 'plugs/imcsCsPlayer.rar')
+                window.open(iAjax.formatURL('/security/common/monitor.do?action=getFileDetail') + '&url=' + 'plugs/imcsCsPlayer(DSS).rar')
             }
         }
 
@@ -235,21 +237,23 @@ define([
 
         // 设置窗口
         function setWindow(info) {
-            var command = {
-                "cmd": "SetWindow",
-                "window_id": info.window_id,
-                "window_x": info.left,
-                "window_y": info.top,
-                "window_w": info.width,
-                "window_h": info.height,
-                "window_isshow": info.show,
-                "window_playtype": 1,
-                "live_issub": getStreamType(info.streamtype, info.width),
-                "userparam": info.userparam,
-                "window_ismousetrans": info.mousetrans
+            if(info.window_id) {
+                var command = {
+                    "cmd": "SetWindow",
+                    "window_id": info.window_id,
+                    "window_x": info.left,
+                    "window_y": info.top,
+                    "window_w": info.width,
+                    "window_h": info.height,
+                    "window_isshow": info.show,
+                    "window_playtype": 1,
+                    "live_issub": getStreamType(info.streamtype, info.width),
+                    "userparam": info.userparam,
+                    "window_ismousetrans": info.mousetrans
+                }
+                // console.log(JSON.stringify(command));
+                socket.send(command);
             }
-            // console.log(JSON.stringify(command));
-            socket.send(command);
         }
 
         // 获取码流
@@ -294,24 +298,28 @@ define([
 
         // 显示窗口
         function showWindow(winID, code) {
-            var command = {
-                "cmd": "SetWindow",
-                "window_id": winID,
-                "window_isshow": 1,
-                "userparam": code
-            };
-            socket.send(command);
+            if(winID) {
+                var command = {
+                    "cmd": "SetWindow",
+                    "window_id": winID,
+                    "window_isshow": 1,
+                    "userparam": code
+                };
+                socket.send(command);
+            }
         }
 
         // 隐藏窗口
         function hideWindow(winID, code) {
-            var command = {
-                "cmd": "SetWindow",
-                "window_id": winID,
-                "window_isshow": 0,
-                "userparam": code
+            if(winID) {
+                var command = {
+                    "cmd": "SetWindow",
+                    "window_id": winID,
+                    "window_isshow": 0,
+                    "userparam": code
+                }
+                socket.send(command);
             }
-            socket.send(command);
         }
 
         // 显示所有监控窗口
@@ -377,7 +385,9 @@ define([
          */
         function init() {
             // 判断是否具有 imcs 模式播放监控的权限。若想让用户具有权限，需在数据库表 SECTY_SCMP_MONITORTHEME 中配置数据。
-            iAjax.post('security/device/device.do?action=getMonitorLiveTheme').then(function (data) {
+            iAjax.post('security/device/device.do?action=getMonitorLiveTheme', {
+                remoteip: '192.168.11.39'
+            }).then(function (data) {
                 if (data.result && data.result.rows == '1') {
                     socket.init();
 
@@ -419,7 +429,7 @@ define([
                 ismax: false,          // 记录最大化时的监控
                 ispause: false,        // 是否暂停
                 isfull: false,          // 是否全屏
-                log: true,
+                log: false,
                 streamtype: 0,          // 全局码流控制：0->自动， 1->全主码流, 2->全副码流；
                 errorlog: {},         // 记录错误日志
                 cache: {
@@ -462,7 +472,8 @@ define([
                             showTips(data, '正在打开监控');
                         } else {
                             //console.error(data);
-                            removeVideo(key);
+                            // removeVideo(key);
+                            _close(key);
                             //setting.el.find('safe-video[code=' + key + ']').attr('code', '');
                         }
                     }
@@ -472,13 +483,19 @@ define([
                     var video = _.find(setting.videos, function(row) {
                         return row.type == 'monitor' && row.window.window_id == data.window_id;
                     });
+
                     if(video) {
                         if(data.window_playstat == 1) {
                             if(video.timer) {
                                 $timeout.cancel(video.timer);
                             }
                             showTips(video, false);
-                            showWindow(video.window.window_id, video.code);
+                            // showWindow(video.window.window_id, video.code);
+                            if (video.element.is(':visible') && !video.autoClose) {
+                                showWindow(video.window.window_id, video.code);
+                            } else {
+                                _close(video.code);
+                            }
                         } else {
                             video.timer = $timeout(function() {
                                 showTips(video, '视频播放失败，请检查设备是否在线！', 'error');
@@ -492,7 +509,7 @@ define([
                     var scopeid = key.split('-')[0];
 
                     if(setting.scope.$id == scopeid) {
-                        if (setting.videos[key]) {
+                        if (setting.videos[key] && data.result == 'ok') {
                             // 隐藏消息提示
                             showTips(setting.videos[key], false);
                             // 移除监控信息
@@ -502,6 +519,9 @@ define([
                             //if(!setting.ispause) {
                                 //setting.el.find('safe-video[code=' + key + ']').attr('code', '');
                             //}
+                        } else {
+                            closeWindow(data.window_id || data.req_window_id || data.window.window_id);
+                            removeVideo(key);
                         }
                     }
 
@@ -568,10 +588,12 @@ define([
                                 }
                             } else {
                                 showTips(video, '没有录像', 'error');
-                                closeWindow(video.window.window_id);
+                                // closeWindow(video.window.window_id);
                             }
                         } else {
                             console.error('[ ' + key.split('-')[1] + ' ] 录像查询失败, [result : ' + data.result + '] , [err : ' + data.query_err + ']');
+                            iMessage.show({id: key.split('-')[1], level: 3, title: '录像查询失败', content: data.result, timeout: 0}, false)
+                            closeWindow(setting.videos[key].window.window_id);
                         }
                     }
                 });
@@ -639,7 +661,7 @@ define([
                             if(data.req_ctrl == 'stop') {
                                 removeVideo(key);
                             }
-                            console.error('操作失败，' + data.result);
+                            console.error(data.req_ctrl + ' 操作失败，' + data.result);
                         }
                     }
                 });
@@ -705,6 +727,10 @@ define([
 
                         // 录像播放进度
                         if (data.pbstat && data.pbstat.finish != 1 && setting.recordCb) {
+                            if (video.query.speed != data.pbstat.speed2) {
+                                video.query.speed = data.pbstat.speed2
+                            }
+
                             // 状态 - 速度 - 总时长 - 当前时刻 - 进度
                             var str = video.state + ',' + data.pbstat.speed2 + ',' + (data.pbstat.tend - data.pbstat.tbegin) + ',' + (data.pbstat.tbegin + data.pbstat.pos) + ',' + (data.pbstat.finish * 100);
                             setting.recordCb({
@@ -724,7 +750,6 @@ define([
                         }
                     }
                 });
-
             }
 
             // 设置播放失败的提示信息
@@ -886,6 +911,8 @@ define([
                         "window_h": detail.height || getSizeByRatio(element.height(), 'height')
                     });
 
+                    addVideo(code, 'element', element);
+
                     var command = _.extend({
                         "cmd": "PlayLiveStream",
                         "ws_request_index": requestIndex,
@@ -939,7 +966,7 @@ define([
                     video = setting.videos[code]
                 }
 
-                if (video) {
+                if (video && video.window && video.window.window_id) {
                     var command = {
                         "cmd": "StopLiveStream",
                         "window_id": video.window.window_id,
@@ -949,6 +976,8 @@ define([
                     socket.send(command);
 
                     logCmd('StopLiveStream', 'CODE : '  + code, 'red');
+                } else {
+                    addVideo(code, 'autoClose', true);
                 }
             }
 
@@ -981,11 +1010,11 @@ define([
             function _max(index) {
                 var video = index ? setting.videos[getCode(index)] : getSelect();
 
-                if(!video) {
-                    hideAllWindow();
-                }
+                // if(!video) {
+                //     hideAllWindow();
+                // }
 
-                if(video && !setting.ismax && video.type != 'record') {
+                if(video && !setting.ismax && video.type != 'record' && !setting.isfull) {
                     setting.ismax = true;
                     // 记录当前操作的监控信息，以便恢复
                     setting.cache.b4max = {
@@ -1039,6 +1068,8 @@ define([
                         camera: this,
                         video: info
                     });
+                } else {
+                    console.error('当前条件不能进行窗口放大！');
                 }
             }
 
@@ -1054,7 +1085,7 @@ define([
                     var code = angular.element('.safe-video-max-panel .safe-video-max-box').attr('code');
                     if(code) {
                         _close(code);
-                        showAllWindow();
+                        // showAllWindow();
                         //showWindow(setting.cache.b4max.window_id, setting.cache.b4max.userparam);
                     }
 
@@ -1576,7 +1607,7 @@ define([
                     } else if(newVal < oldVal) {
                         slow(video);
                     }
-                    video.query.speed = speed;
+                    // video.query.speed = speed;
                 }
             }
 
@@ -1724,10 +1755,10 @@ define([
                 "window_isshow": 1,
                 "window_opaque": "255",
                 "window_ismousetrans": 0,
-                "window_x": getSizeByRatio($('body').width()) - 600,
+                "window_x": getSizeByRatio($('body').width()) - 450,
                 "window_y": getSizeByRatio(0, 'top') + 90,
-                "window_w": 600,
-                "window_h": 180
+                "window_w": 450,
+                "window_h": 160
             }
 
             // 字体图标
@@ -1992,8 +2023,8 @@ define([
             hideAll: hideAllWindow,
             close: closeWindow,
             message: imcsMessage,
-			      sendCmd: socket.send,
-			      listenCmd: socket.listen,
+            sendCmd: socket.send,
+            listenCmd: socket.listen,
             exit: exit
         }
     }]);

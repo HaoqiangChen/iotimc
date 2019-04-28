@@ -1,0 +1,155 @@
+<div class="layout-full safe-hardware-group overflow-h">
+    <div class="layout-full bcb-opacity3">
+        <div ui-layout="{ flow:'row' }" options="{ dividerSize:'0' }">
+            <div ui-layout-container size="55px" class="safe-hardware-group-toolbar bcb-opacity3">
+                <div class="layout-full form-inline">
+                    <div class="form-group col-lg-2">
+                        <label>设备类型：</label>
+                        <select class="form-control" ng-model="groups.devicetype" ng-options="rows.type as rows.name for rows in devices.types" ng-change="groups.selectDeviceType()">
+                        </select>
+                    </div>
+                    <!--<div class="form-group col-lg-2">-->
+                        <!--<label>模糊过滤：</label>-->
+                        <!--<input type="text" class="form-control" ng-model="groups.filter.text" ng-keypress="groupos.search($event)"/>-->
+                    <!--</div>-->
+                    <div class="col-md-2 col-md-offset-8 text-right">
+                        <button class="btn btn-success" ng-click="groups.control.add()">
+                            <i class="fa fa-plus"></i>
+                            新增分组
+                        </button>
+                        <button class="btn btn-primary" ng-click="goback()">
+                            <i class="fa fa-reply"></i>
+                            返回上级
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div ui-layout-container class="safe-hardware-group-container bcb-opacity1">
+                <div class="layout-full" i-scroll2>
+                    <div class="group-list-item" ng-repeat="group in groups.list.data track by $index">
+                        <div class="item-header">
+                            {{group.name}}
+                        </div>
+                        <div class="item-content">
+                            <div class="layout-full" i-scroll2>
+                                <div class="device-list-item" ng-repeat="device in group.devices track by $index">
+                                    <div class="item-name">
+                                        <h5>{{device.name || device.devicename}}</h5>
+                                        <p>{{device.syouname}}</p>
+                                    </div>
+                                    <div class="item-ou">
+                                        <b ng-class="{'text-primary': item.status == '离线'}">{{device.status}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-footer">
+                            <div class="pull-left">
+                                <button class="btn btn-{{buttonStyle[$index]}}" ng-repeat="action in groups.list.actions track by $index" ng-click="groups.control.excute(group.id, action.actionstr)">{{action.name}}</button>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-info" ng-click="groups.control.edit(group)">修改</button>
+                                <button class="btn btn-danger" ng-click="groups.control.del.tips(group)">删除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ui-layout-container size="60px">
+                <div class="layout-full bcb-opacity2 safe-hardware-group-footer">
+                    <label class="col-lg-3">统计信息： 每页{{groups.pages.pageSize}}行， 共{{groups.pages.totalSize||0}}行， 共{{groups.pages.totalPage||0}}页</label>
+                    <uib-pagination style="margin: 10px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;"
+                                    class="pagination pull-right"
+                                    total-items="groups.pages.totalSize"
+                                    ng-model="groups.pages.pageNo"
+                                    items-per-page="devices.pages.pageSize"
+                                    ng-change="groups.getDatas()"
+                                    previous-text="上一页"
+                                    next-text="下一页"
+                                    max-size="5">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增分组 -->
+    <div class="modal fade" id="groupModal" tabindex="-1" role="dialog" aria-labelledby="groupModalLabel">
+        <div class="modal-dialog modal-lg" role="document" style="top: 55px;">
+            <div class="modal-content" ng-form="groupForm">
+                <div class="modal-header form-inline">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="header-title">
+                        <i class="fa fa-object-ungroup"></i>  设备分组
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>名称：</label>
+                        <input name="name" type="text" class="form-control" ng-model="groups.control.obj.name" required/>
+                        <div ng-messages="groupForm.name.$error">
+                            <label ng-message="required" class="control-label animated tada text-danger">名称不能为空</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>设备：</label>
+                        <div class="pull-right device-filter">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label>设备厂商：</label>
+                                    <select class="form-control" ng-model="devices.company.id" ng-options="rows.id as rows.name for rows in devices.company.list" ng-change="devices.search()">
+                                        <option value="">全部厂商</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <label>所属单位：</label>
+                                    <div class="ouname">
+                                        <input type="text" ng-model="ous.current.name" ng-click="ous.show()" readonly="true">
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                    <div class="tree-panel" i-scroll2>
+                                        <div id="outree" safe-z-tree zt-data="ous.list" zt-click="ous.select"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-list">
+                            <div class="layout-full" i-scroll2 data-load-event="devices.loadMore()">
+                                <div class="device-list-item" ng-repeat="item in devices.list track by $index" hm-tap="devices.select(item)">
+                                    <div class="item-name">
+                                        <h5>{{item.name || item.devicename}}</h5>
+                                        <p>{{item.syouname}}</p>
+                                    </div>
+                                    <div class="item-ou">
+                                        <b ng-class="{'text-primary': item.status == '离线'}">{{item.status}}</b>
+                                    </div>
+                                    <div class="item-mask" ng-if="item.selected">
+                                        <div class="layout-full"><i class="fa fa-check"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="device-loading"  ng-show="devices.loading">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                        <div class="device-total">
+                            设备数：{{devices.pages.totalSize || 0}}，已选：{{devices.selectList.length || 0}}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="pull-left">
+                        <button class="btn btn-primary" ng-click="groups.modal.close()">
+                            <i class="fa fa-close"></i> 取   消
+                        </button>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-success" ng-disabled="groupForm.$invalid" ng-click="groups.save()">
+                            <i class="fa fa-check"></i> 保   存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

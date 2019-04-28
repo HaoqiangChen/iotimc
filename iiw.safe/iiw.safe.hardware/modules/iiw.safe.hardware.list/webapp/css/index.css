@@ -1,0 +1,274 @@
+.safe-hardware-control {
+    padding: 5px 10px 12px 10px;
+}
+
+.safe-hardware-control-box {
+    position: relative;
+}
+
+.safe-hardware-control-box .safe-monitorcenter-imgpanel {
+    padding-left: 5px;
+}
+
+.safe-hardware-control-box-title.sep {
+    overflow: hidden;
+}
+
+.safe-hardware-control-box-title.sep::before {
+    content: '';
+    position: absolute;
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
+    height: 150px;
+    top: 20px;
+}
+
+.safe-hardware-control-box-title h3 {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+.safe-hardware-control-box-title p {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+
+.safe-hardware-control-box-title .safe-hardware-control-box-title-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 10px;
+}
+
+.safe-hardware-control-box-table-title {
+    border-bottom: 2px solid #fff;
+    font-size: 15px;
+}
+
+.safe-hardware-control-box-table-title tr {
+    height: 38px;
+}
+
+.safe-hardware-control-box-table-title-span {
+    height: 37px;
+    line-height: 37px;
+    overflow: hidden;
+}
+
+.safe-hardware-control-box-table-title .ui-splitbar {
+    overflow: hidden;
+}
+
+.safe-hardware-control-box-table-row .ui-splitbar {
+    overflow: hidden;
+}
+
+.safe-hardware-control-box-table-row {
+    height: 50px;
+    /*line-height: 50px;*/
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.safe-hardware-control-box-table-row.select {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.safe-hardware-control-box-table-row.disabled {
+    color: #888;
+}
+
+.safe-hardware-control-box-table-row td {
+    position: relative;
+}
+
+.safe-hardware-control-box-table-row .safe-hardware-control-box-table-title-span {
+    height: 50px;
+    line-height: 50px;
+}
+
+.safe-hardware-control-box-table-control {
+    width: 100px;
+    height: 35px;
+    float: left;
+    margin-right: 5px;
+    /*margin: 0 10px 10px 0;*/
+}
+
+.safe-hardware-control-box-table-control .btn {
+    padding: 0px;
+}
+
+.safe-hardware-control-box-table-control .btn-group {
+    border-radius: 4px;
+    background: #337ab7;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.safe-hardware-control-box-table-control.margin-top {
+    margin-top: 31px;
+}
+
+.safe-hardware-control-box-table-checkmask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+}
+
+.safe-hardware-control-box-title-buttons {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+
+.safe-hardware-control-box-title-exit {
+    height: 190px;
+    line-height: 190px;
+    font-size: 120px;
+    text-align: center;
+}
+
+.safe-hardware-control-box-title-exit i {
+    cursor: pointer;
+}
+
+.safe-hardware-control-box-title-exit i:focus,
+.safe-hardware-control-box-title-exit i:hover {
+    text-shadow: 0 0 25px #fff;
+}
+
+.safe-hardware-control-box-title-exit i:active {
+    color: #000;
+}
+
+.safe-hardware-control-box-table-load {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+    opacity: 0.75;
+    display: table;
+}
+
+.safe-hardware-control-box-table-load i {
+    margin-right: 10px;
+}
+
+.safe-hardware-control-box-table-load div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.safe-hardware-control-actions {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.safe-hardware-control-actions .mytable {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.safe-hardware-control-actions .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.safe-hardware-control-actions .table-span {
+    margin: 0 auto;
+}
+
+.safe-hardware-control-actions .table-box {
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 10px;
+
+}
+
+.safe-hardware-control-actions .table-box .mybutton {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    display: table;
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 25px #000;
+    cursor: pointer;
+    padding: 5px;
+    border: 0px;
+}
+
+.safe-hardware-control-actions .table-box .mybutton:hover {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 0 50px #000;
+    border: 0px;
+}
+
+.safe-hardware-control-actions .table-box .mybutton:focus,
+.safe-hardware-control-actions .table-box .mybutton:active {
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: bolder;
+    color: #000;
+    box-shadow: 0 0 50px #fff;
+    border: 0px;
+    outline: none;
+}
+
+.iiw-safe-hardware-filter-container{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 42px;
+    line-height: 40px;
+}
+
+.iiw-safe-hardware-filter-container select,
+.iiw-safe-hardware-filter-container input{
+    background-color: rgba(0,0,0,.3);
+    color: #eee;
+}
+
+.iiw-safe-hardware-filter-container select option{
+    background-color: rgba(0,0,0,.3);
+    color: #eee;
+}
+
+.iiw-safe-hardware-NoLoad-icon,
+.iiw-safe-hardware-load-icon{
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.iiw-safe-hardware-NoLoad-icon{
+    color: #aaa;
+}
+
+.iiw-safe-hardware-load-icon i{
+    margin: 0 10px;
+}
+
+.safe-hardware-list-body-params {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.safe-hardware-list-body-params .pagination {margin: auto}

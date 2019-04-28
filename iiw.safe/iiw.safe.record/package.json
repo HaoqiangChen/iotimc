@@ -1,0 +1,11 @@
+{
+  "name": "iiw.safe.record",
+  "version": "0.0.1",
+  "description": "录像中心",
+  "author": "yjj",
+  "date": "2015-12-10",
+  "main": "safeRecordController",
+  "init": true,
+  "host": "192.168.11.27:8080",
+  "client": "192.168.11.27"
+}
