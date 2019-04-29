@@ -42,6 +42,8 @@ define([
     //'safe/js/services/safeDatacenterData',
     'safe/js/filters/safeMainSafeFormat',
     'safe/js/filters/safeTimeSecondFormat',
+    'safe/lib/table/layui/layui',
+    'cssloader!safe/lib/table/table2/css/table2',
     'cssloader!safe/lib/datetimepicker/jquery.datetimepicker',
     'cssloader!safe/css/bootstrap.superhero.min',
     'cssloader!safe/lib/font-awesome-animation/0.0.7/font-awesome-animation.min',
@@ -56,6 +58,11 @@ define([
     app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function ($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
         $.datetimepicker.setLocale('zh');
         //document.title = '物联网安全管控指挥平台';
+        require([
+            'safe/lib/table/table2/table2'
+        ], function() {
+            window.table = layui.table2;
+        });
 
         iAjax.post('sys/web/config.do?action=getConfig', {}).then(function (data) {
             if (data && data.result && data.result.rows) {
@@ -488,13 +495,10 @@ define([
             }
         });
 
-
         //获取接班民警信息
         $scope.$on('ws.sendJJBMsgCall', function (e, data) {
             // iMessage.show(msg, false, $scope);
         })
-
-
 
         $scope.$on('ws.correctPeople', function() {
             safeSound.playText('社矫人员宣教时间');
@@ -505,7 +509,6 @@ define([
         });
 
         $scope.openUrl = function(element, data) {
-
             window.open(data.url, '_blank');
             iMessage.remove(data.id);
         }
@@ -530,6 +533,15 @@ define([
                 $scope.$broadcast('safeMainKeyupSpaceEvent');
             }
         });
+
+        $scope.godzdaSys = function () {
+            iAjax.post('sys/web/syuser.do?action=getLoginSyuser')
+                .then(function(data){
+                    var key = Math.floor(Date.now() / 1000 / 60) + data.result.rows.code +"pams";
+                    console.log("getLoginSyuser:",key)
+                    console.log($.md5(key))
+                })
+        };
 
         //获取当前页面的缩放值
         function detectZoom() {

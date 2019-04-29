@@ -1,0 +1,30 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-useraudit-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-useraudit-container" style="position: relative; display:inline-block;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <div class="system-test">
+                                        <div class="modules">
+                                            <div class="item" ng-repeat="item in modules" ng-click="jumpModule(item.href)">
+                                                <i class="fa" ng-class="item.icon"></i>
+                                                <div class="name">{{item.name}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
