@@ -1,0 +1,1 @@
+define(["angular","services/server/ajax"],function(n){n.factory("iGetLang",["iAjax",function(n){function e(){n.getSync("/sys/web/dialect.do?action=getDialect").then(function(n){t=n.result})}var t={};return e(),{get:function(n){return t[n]||""}}}])});

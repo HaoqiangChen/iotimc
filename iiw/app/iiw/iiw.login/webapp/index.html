@@ -1,0 +1,47 @@
+<div class="layout-full">
+    <div class="safe-login-bg-panel" safe-login-background></div>
+    <div class="login-bg" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div ui-layout-container></div>
+        <div ui-layout-container size="350px">
+            <div ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                <div ui-layout-container class="login-center">
+                    <div class="login-title">
+                        <i-logo></i-logo>
+                    </div>
+                </div>
+                <div ui-layout-container size="450px" class="login-panel">
+                    <form ng-submit="login()">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input type="text" id="username" name="username" ng-model="form.username" ng-change="reset()" class="form-control" placeholder="请输入登录的用户名" login-focus i-dom-select />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                <input type="password" id="password" name="password" ng-model="form.password" ng-change="reset()" class="form-control" placeholder="请输入登录的密码" i-dom-select />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg login-button" ng-disabled="form.login"><i class="fa fa-spinner" ng-show="form.login"></i>登录</button>
+                        </div>
+                        <div class="form-group login-error">
+                            <ng-messages for="submitError">
+                                <ng-message when="username" class="login-message">* 用户名不存在</ng-message>
+                                <ng-message when="password" class="login-message">* 密码错误</ng-message>
+                                <ng-message when="plan" class="login-message">* 非值班时间段</ng-message>
+                            </ng-messages>
+                        </div>
+                    </form>
+                </div>
+                <div ui-layout-container size="200px" class="login-center"></div>
+            </div>
+        </div>
+        <div ui-layout-container></div>
+    </div>
+</div>
+<div class="login-bottom" login-copyright>
+    <div class="content"></div>
+    <div class="version" i-copy-text data-clipboard-text="{{version}}">{{version}}</div>
+</div>

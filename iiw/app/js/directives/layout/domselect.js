@@ -1,0 +1,1 @@
+define(["angular"],function(n){n.directive("iDomSelect",[function(){return{restrict:"A",compile:function(n){n.on("focus",function(){document.onselectstart=function(){return!0}}),n.on("blur",function(){document.onselectstart=function(){return!1}})}}}])});

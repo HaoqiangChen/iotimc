@@ -1,0 +1,21 @@
+<div class="reg-panel layout-full">
+    <div class="container-fluid reg-form layout-full">
+        <div class="reg-row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="jumbotron reg-cell">
+                    <h1><b>{{regtext}}</b></h1>
+                    <p><b>注册码：<span>{{key}}</span><a class="reg-copy-btn btn btn-primary" style="margin: -8px 0 0 15px;" data-trigger="click" i-copy-text data-clipboard-text="{{key}}" ng-click="copy()">点击复制</a></b></p>
+                    <p><b>请把注册码发送给软件提供商进行注册，软件提供商根据注册码生成注册文件，上传注册文件即可完成注册！</b></p>
+                    <p>
+                        <a class="btn btn-primary" ng-click="clickUpload()">上传注册文件</a>
+                        <a class="btn btn-danger pull-right" i-exit>关　　闭</a>
+                    </p>
+                    <div class="reg-upform" style="display: none;"></div>
+                    <iframe id="regTargetFrame" name="regTargetFrame" style="display: none;" onload="if(angular.element(this).scope().reload)angular.element(this).scope().reload()"></iframe>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

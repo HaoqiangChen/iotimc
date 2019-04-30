@@ -1,0 +1,1 @@
+define(["angular"],function(n){n.directive("iMessageContent",["$compile",function(n){return{restrict:"A",link:function(t,e){var o=null;if(t.row){var r=t.row.json,i=t.row.scope;r.content&&(e.html(r.content),i&&(o=i.$new(),n(e.contents())(o))),t.$on("$destroy",function(){o&&(o.$destroy(),o=null)})}}}}])});

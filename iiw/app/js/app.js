@@ -1,0 +1,1 @@
+define(["angularAMD","angular"],function(n,a){return n.bootstrap(a)});

@@ -1,0 +1,200 @@
+<div class="safe-main-box layout-full">
+    <div class="layout-full" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="safe-main-top" safe-main-menu-touch data-touch="down" ui-layout-container size="80px">
+            <div ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                <div class="overflow-h" ui-layout-container size="400px">
+                    <div class="layout-full safe-main-logo" ng-click="test()">
+                        <i-logo></i-logo>
+                    </div>
+                </div>
+                <div class="safe-main-tips" ui-layout-container size="105px">
+                    <div class="safe-main-tips-panel" ng-click="goAlarm()">
+                        <i class="fa fa-bell-o"></i>
+                        <div class="safe-main-tip-box alarm" safe-main-tips watch="tips.alarm">{{tips.alarm}}</div>
+                    </div>
+                    <div class="safe-main-tips-panel" ng-click="godzdaSys()">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <!--<div class="safe-main-tips-panel">-->
+                    <!--<i class="fa fa-comment"></i>-->
+                    <!--<div class="safe-main-tip-box message" safe-main-tips watch="tips.message">{{tips.message}}</div>-->
+                    <!--</div>-->
+                </div>
+                <div ui-layout-container>
+                    <div class="safe-main-timebar safe-main-panelbg">
+                        <ul>
+                            <li><i class="fa fa-desktop"></i></li>
+                            <li><b>当前模块：{{maintitle.title}}</b></li>
+                            <li class="safe-main-timebar-step"></li>
+                            <li><i class="fa fa-calendar"></i></li>
+                            <li>{{time.now | date: 'EEEE，yyyy-MM-dd'}}</li>
+                            <li class="safe-main-timebar-step"></li>
+                            <li><i class="fa fa-clock-o"></i></li>
+                            <li>{{time.now | date: 'HH:mm:ss'}}</li>
+                            <li class="safe-main-timebar-step"></li>
+                            <li>
+                                <i class="fa fa-volume-up"></i>
+                                <safe-main-news></safe-main-news>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="safe-main-toolbar" ui-layout-container size="400px">
+                    <div class="fastBtns safe-main-panelbg" safe-main-menu-toggle data-type="show">
+                        <p class="safe-main-panelbg-logo">
+                            <i class="fa fa-th"></i>
+                        </p>
+                        <p>菜单</p>
+                    </div>
+
+
+                    <div class="fastBtns safe-main-panelbg" hidden ng-click="refresh()">
+                        <p class="safe-main-panelbg-logo">
+                            <i class="fa fa-refresh"></i>
+                        </p>
+                        <p>刷新</p>
+                    </div>
+                    <div class="fastBtns safe-main-panelbg" hidden ng-click="home()">
+                        <p class="safe-main-panelbg-logo">
+                            <i class="fa fa-home"></i>
+                        </p>
+                        <p>主页</p>
+                    </div>
+
+
+                    <div safe-main-search="true" class="fastBtns safe-main-panelbg">
+                        <div class="safe-main-search-input">
+                            <input type="text" class="form-control" placeholder="请输入搜索内容" ng-model="globalSearch.value" i-dom-select uib-typeahead="state for state in globalSearchHistoryList | filter:$viewValue | limitTo:5" typeahead-show-hint="true" typeahead-min-length="0" typeahead-append-to-body="true" typeahead-template-url="globalSearchTypeahead.html"/>
+                        </div>
+                        <div class="safe-main-search-ico">
+                            <p class="safe-main-panelbg-logo"><i class="fa fa-search"></i></p>
+                            <p>搜索</p>
+                        </div>
+                    </div>
+                </div>
+                <div ui-layout-container size="200px">
+                    <div class="safe-main-score" safe-main-menu-toggle data-type="show">
+                        <div class="scoretext">安全指标：<b>{{safe.score || 0}}</b></div>
+                        <uib-progressbar class="progress-striped safe-main-panelbg active" value="safe.score" type="{{safe.type}}"></uib-progressbar>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ui-layout-container class="overflow-h">
+            <div class="layout-full">
+                <div ui-view class="layout-full main-view safe-view"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="safe-main-menubar">
+    <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div ui-layout-container>
+            <div class="layout-full" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                <div ui-layout-container>
+                    <div class="safe-main-check-report-back" ng-show="safe.childid" ng-click="safe.goMainReport($event)"><i class="fa fa-arrow-circle-left"></i></div>
+                    <div class="layout-full safe-main-check-report-mark" safe-main-check-report data-report="mark" ng-click="safe.animationScore()"></div>
+                </div>
+                <div ui-layout-container size="50%">
+                    <div class="layout-full safe-main-check-report-line" safe-main-check-report data-report="line"></div>
+                </div>
+                <div ui-layout-container class="safe-main-menu-tip">
+                    <div class="layout-full" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div ui-layout-container size="115px">
+                            <p class="title">事务提醒</p>
+                            <p class="subtitle">数据来自日常事务、报警处警、待办事宜</p>
+                            <h5><b>　当前事务：{{daywork.now.starttime}} - {{daywork.now.endtime}}</b></h5>
+                            <h5><b>　工作内容：{{daywork.now.content}}</b></h5>
+                        </div>
+                        <div class="safe-main-workline-panel" ui-layout-container i-scroll>
+                            <div style="position: absolute;">
+                                <p ng-repeat="item in daywork.list" ng-class="{'type-r': item.status=='E' && item.exemode=='1','type-e': item.status=='E' && item.exemode=='0', 'type-d': item.status=='D', 'type-c': item.status=='C'}"><i hm-tap="daywork.doWork(item)" class="fa" ng-class="{'fa-clock-o': item.status=='E' && item.exemode=='1','fa-check': item.status=='E' && item.exemode=='0', 'fa-play-circle': item.status=='D', 'fa-times': item.status=='C'}"></i>{{item.starttime}} - {{item.endtime}} {{item.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="safe-main-modluepanel" ui-layout-container size="200px">
+            <div class="layout-full" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                <div ui-layout-container class="overflow-h">
+                    <div class="safe-main-menu-scroll-right" title="右侧还有更多功能菜单！">
+                        <i class="fa fa-chevron-right"></i>
+                        <i class="fa fa-chevron-right"></i>
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                    <div class="safe-main-menu-scroll-left" title="左侧还有更多功能菜单！">
+                        <i class="fa fa-chevron-left"></i>
+                        <i class="fa fa-chevron-left"></i>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <div class="layout-full" i-scroll safe-main-menu-scroll data-config="{&quot;scrollX&quot;: true, &quot;mouseWheel&quot;: true, &quot;scrollbars&quot;: true, &quot;fadeScrollbars&quot;: true}">
+                        <div style="position: absolute; height: 100%;" ng-style="menuWidth">
+                            <div ng-repeat="menu in menulist">
+
+                                <button ng-if="menu.url != 'safe.doorcontrol' && menu.url != 'safe.recordIE' && menu.url != 'safe.ucs'  && menu.url != 'safe.opentalk'" class="safe-main-modlue" ng-class="{active: menu.active == 'true' || (menu.url && menu.url.indexOf('http://') != -1)}" ng-click="goModule(menu)">
+                                    <i class="fa {{menu.icon}}"></i>
+                                    <p>{{menu.name}}</p>
+                                </button>
+
+                                <!-- 用IE打开的菜单 -->
+                                <button ng-if="menu.url == 'safe.recordIE' || menu.url == 'safe.ucs'" class="safe-main-modlue active overflow-h" datas="menu" safe-open-ie></button>
+
+                                <button ng-if="menu.url == 'safe.doorcontrol'" class="safe-main-modlue active overflow-h" safe-door-control safe-main-menu-toggle data-type="hide"></button>
+                                <!-- 平台打开第三方exe文件 -->
+                                <button ng-if="menu.url == 'safe.opentalk'"  class="safe-main-modlue active overflow-h safe-openstyle">
+                                    <a href="myprotocol://"><i class="fa {{menu.icon}}"></i> </a>
+                                    <a href="myprotocol://" style="margin-left:55px;">{{menu.name}}</a>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-h" ui-layout-container size="20px">
+                    <div class="safe-main-modlue fit first overflow-h"></div>
+                </div>
+				<div class="overflow-h" ui-layout-container size="150px">
+                    <div class="safe-main-modlue fit active overflow-h" safe-door-control safe-main-menu-toggle data-type="hide"></div>
+                </div>
+                <div class="overflow-h" ui-layout-container size="150px">
+                    <div class="safe-main-modlue fit active overflow-h" safe-user-password>
+                        <i class="fa fa-lock"></i>
+                        <p>修改用户密码</p>
+                    </div>
+                </div>
+                <div class="overflow-h" ui-layout-container size="160px">
+                    <div class="safe-main-modlue fit active overflow-h" i-exit>
+                        <i class="fa fa-sign-out"></i>
+                        <p>退出系统</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="safe-main-menubar-bottom" ui-layout-container size="30px" safe-main-menu-toggle data-type="hide">
+            <i class="fa fa-chevron-up"></i>
+        </div>
+    </div>
+    <div class="safe-main-menubar-safe-message" ng-show="safe.checktype"><b>{{safe.checking}}</b></div>
+</div>
+<div class="safe-main-plugins"></div>
+<div class="safe-main-mask layout-full" safe-main-menu-touch data-touch="up" safe-main-menu-toggle data-type="hide"></div>
+
+<div class="safe-main-exterior-window">
+    <div class="safe-main-exterior-window-exit" ng-click="hideExteriorWindow()">
+        <i class="fa fa-times"></i>
+    </div>
+    <div class="safe-main-exterior-frame">
+        <iframe class="layout-full" frameborder="0"></iframe>
+    </div>
+</div>
+
+<div class="safe-main-video-window">
+    <video width="100%" height="100%" preload="preload" controls="controls"></video>
+</div>
+
+<safe-notice-panel></safe-notice-panel>
+
+<script type="text/ng-template" id="globalSearchTypeahead.html">
+    <a style="width: 248px; height: 40px; line-height: 40px; font-size: 15px; font-weight: normal;" ng-bind-html="match.label | uibTypeaheadHighlight:query" ng-attr-title="{{match.label}}"></a>
+</script>

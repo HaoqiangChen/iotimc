@@ -1,0 +1,1 @@
+define(["angular"],function(o){o.factory("iToken",[function(){var o;return{set:function(n){o=n,window.localStorage&&window.localStorage.setItem("IIW_TOKEN",o)},get:function(){return!o&&window.localStorage&&(o=window.localStorage.getItem("IIW_TOKEN")),o}}}])});

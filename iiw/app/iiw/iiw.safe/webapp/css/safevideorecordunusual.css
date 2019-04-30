@@ -1,0 +1,161 @@
+
+.safe-main-video-record-unusual {
+    position: absolute;
+    z-index: 52;
+    left: 0;
+    top: 0;
+    background: rgba(255,255,255,0.5);
+}
+
+.safe-main-video-record-unusual > div {
+    position: relative;
+}
+
+.safe-video-record-unusual {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 680px;
+    height: 600px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    background-color: #000;
+    margin: auto;
+    box-shadow: 0 0 20px black;
+    overflow: hidden;
+}
+.input-alarm-type {
+    position: relative;
+    width: 100%;
+}
+.input-alarm-type .float-icon {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    cursor: pointer;
+    width: 15px;
+    text-align: center;
+}
+
+.diy-icon {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+
+.safe-video-record-unusual-diy-button{
+    width: 100%;
+    height: 39px;
+    border: none;
+    color: black;
+    background-color: white;
+}
+
+.safe-video-record-unusual-mask {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.safe-video-record-unusual-title {
+    height: 80px;
+    padding-left: 20px;
+}
+
+.safe-video-record-unusual-title > h2 {
+    margin: 10px 0 0 0;
+}
+
+.safe-video-record-unusual-image {
+    height: 278px;
+    padding: 0;
+}
+
+.safe-video-record-unusual-image > img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.safe-video-record-unusual-text {
+    margin-top: 10px;
+    /*height: 80px;*/
+    padding: 0 10px;
+}
+
+.safe-video-record-unusual-text textarea {
+    height: 100%;
+    width: 100%;
+    resize: none;
+}
+
+.safe-video-record-unusual-foot {
+    height: 70px;
+    /*padding-top: 10px;*/
+    text-align: center;
+}
+
+.safe-video-record-unusual-foot > button {
+    margin-right: 15px;
+    height: 50px;
+    font-family: '微软雅黑';
+    font-weight: bold;
+}
+
+
+.safe-video-record-unusual-text .ouname {
+    display: inline;
+}
+
+.safe-video-record-unusual-text .ouname input[type='text'] {
+    outline: none;
+    cursor: default;
+}
+
+.safe-video-record-unusual-text .ouname i {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    color: #000;
+}
+
+.safe-video-record-unusual-text .tree-panel {
+    position: absolute;
+    width: 543px;
+    height: 175px;
+    right: 15px;
+    background: #fff;
+    z-index: 5;
+    overflow: hidden;
+    display: none;
+}
+
+.safe-video-record-unusual-text .tree-panel > div {
+    width: 100%;
+}
+
+.safe-video-record-unusual-text .tree-panel .ztree * {
+    font-size: 15px !important;
+}
+
+.safe-video-record-unusual-text .tree-panel .ztree li {
+    line-height: 25px !important;
+}
+
+.safe-video-record-unusual-text .tree-panel .ztree li a {
+    color: #000;
+    height: 20px;
+    padding-top: 5px;
+}
+
+.safe-video-record-unusual-text .tree-panel .ztree li span.button {
+    margin-top: 5px !important;
+}
+
+.safe-video-record-unusual-text .tree-panel .ztree li a.curSelectedNode {
+    height: 35px;
+}

@@ -1,0 +1,1 @@
+define(["angular"],function(e){e.factory("iTimeNow",["$timeout",function(e){var n=0,t={};return function i(){t.now=(new Date).getTime()+n,e(i,1e3)}(),t.setSvrTime=function(e){e&&(n=e-(new Date).getTime())},t.getTime=function(){return(new Date).getTime()+n},t}])});

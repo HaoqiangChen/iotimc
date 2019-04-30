@@ -1,0 +1,110 @@
+.login-bg {
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 90;
+}
+
+.login-center {
+    margin: 75px 0;
+    background-color: rgba(255, 255, 255, .15);
+    border-top: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    z-index: 91;
+    overflow: hidden;
+}
+
+.login-panel {
+    margin: 10px 0;
+    padding: 50px;
+    padding-top: 100px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px black;
+    background-color: rgba(255, 255, 255, .3);
+    z-index: 92;
+    overflow: hidden;
+}
+
+.login-panel .form-group {
+    padding: 0 30px;
+}
+
+.login-panel .input-group {
+    width: 100%;
+}
+
+.login-panel .input-group-addon {
+    width: 50px;
+}
+
+.login-panel .input-group-addon i {
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.login-panel button {
+    width: 100%;
+}
+
+.login-title {
+    width: 100%;
+    height: 198px;
+    padding-left: 50px;
+}
+
+.login-title .titles {
+    text-align: left;
+}
+
+.login-title h1 {
+    padding-left: 50px;
+}
+
+.login-title h2 {
+    padding-left: 350px;
+}
+
+.login-error {
+    text-align: right;
+    font-weight: bolder;
+    color: red;
+}
+
+.login-message.ng-leave {
+    -webkit-animation: bounceOut 0.3s linear 0s;
+    animation: bounceOut 0.3s linear 0s;
+}
+
+.login-message.ng-enter {
+    -webkit-animation: bounceIn 0.3s linear 0s;
+    animation: bounceIn 0.3s linear 0s;
+}
+
+.login-bottom {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.login-bottom .content {
+    position: relative;
+    z-index: 1;
+    font-size: 9px;
+    opacity: 0.5;
+    color: #aaa;
+}
+
+.login-bottom .version {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 9px;
+    opacity: 0.5;
+    color: #aaa;
+    z-index: 2;
+}

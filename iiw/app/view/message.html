@@ -1,0 +1,14 @@
+<div class="messagepanel color-w">
+    <div class="message" ng-repeat="row in list" hm-tap="tap()" i-message-box i-drag drag-not="!row.json.drag" drag-is="row.isDrag" ng-if="!row.istimeout" ng-style="row.style">
+        <div class="layout-full messageBg" ng-class="row.cs.bgc" ng-style="row.bgStyle"></div>
+        <div class="layout-full messagebox">
+            <div class="ico valign-center" ng-class="row.cs.icon"></div>
+            <div class="text">
+                <p class="fz-2" title="{{row.json.title}}">{{row.json.title}}</p>
+                <p class="content fz-6">{{row.json.time}}</p>
+                <p class="content fz-6" i-message-content></p>
+            </div>
+        </div>
+        <iframe FRAMEBORDER="no"></iframe>
+    </div>
+</div>

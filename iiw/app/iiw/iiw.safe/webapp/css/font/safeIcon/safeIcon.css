@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'safeIcon';
+    src:
+            url('safeIcon.ttf?qw72cl') format('truetype'),
+            url('safeIcon.woff?qw72cl') format('woff'),
+            url('safeIcon.svg?qw72cl#safeIcon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.safe-icon {
+    font: normal normal normal 14px/1 safeIcon;
+    display: inline-block;
+    text-rendering: auto;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.safe-icon-criminal:before {
+    content: "\e900";
+}
+
+.safe-icon-criminal2:before {
+    content: "\e901";
+}
+
+.safe-icon-peoples:before {
+    content: "\e902";
+}
+
+.safe-icon-couple:before {
+    content: "\e903";
+}
+
+.safe-icon-police:before {
+    content: "\e904";
+}
+
+.safe-icon-police2:before {
+    content: "\e905";
+}
+
+.safe-icon-webcam4:before {
+    content: "\e906";
+}
+
+.safe-icon-video54:before {
+    content: "\e907";
+}
+
+.safe-icon-thermometer:before {
+    content: "\e908";
+}
+
+.safe-icon-film:before {
+    content: "\e909";
+}
+
+.safe-icon-video-camera:before {
+    content: "\e90a";
+}

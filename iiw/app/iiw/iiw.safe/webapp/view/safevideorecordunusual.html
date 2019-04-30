@@ -1,0 +1,80 @@
+<div class="safe-main-video-record-unusual layout-full">
+    <div class="layout-full">
+        <div class="layout-full safe-video-record-unusual"
+            ng-style="{'height': (600 + (record.typelist.length ? 50 : 0) + (record.level.length ? 50 : 0) + (ous.list.length ? 50 : 0)) + 'px'}">
+            <div class="layout-full">
+                <div class="safe-video-record-unusual-title">
+                    <h2>{{dialect.OUN_MC || '监控异常登记'}}</h2>
+                    <h4 Style="padding-left:40px;">——{{record.cameraname}}</h4>
+                </div>
+                <div class="safe-video-record-unusual-image">
+                    <img ng-src="{{record.imageUrl}}" />
+                </div>
+                <div class="safe-video-record-unusual-text form-horizontal">
+                    <div class="form-group" ng-if="record.typelist.length > 0">
+                        <label class="col-sm-2 control-label">异常类型</label>
+                        <div ng-class="record.alarm?'col-sm-9':'col-sm-6'">
+                            <select class="form-control" ng-disabled="record.diy != ''" ng-model="record.type"
+                                ng-options="t.id as t.name for t in record.typelist"></select>
+                        </div>
+                        <div ng-class="record.alarm ? 'col-sm-1':'col-sm-4'">
+                            <div ng-if="!record.alarm" class="input-alarm-type">
+                                <div class="diy-icon float-icon" ng-click="record.inputFly()">
+                                    <i class="fa fa-caret-right " style="font-size: 30px;color:black"></i>
+                                </div>
+                                <input type="text" class="form-control" ng-model="record.diy" placeholder="自定义类型" />
+                            </div>
+                            <div class="diy-icon" ng-click="record.inputFly()"  ng-if="record.alarm">
+                                <i class="fa fa-caret-left" style="font-size: 30px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="record.level.length > 0">
+                        <label class="col-sm-2 control-label">严重等级</label>
+                        <div ng-class="record.grade ? 'col-sm-9':'col-sm-6'">
+                            <select class="form-control" ng-disabled="record.diytype != ''" ng-model="record.type2"
+                                ng-options="t.id as t.name for t in record.level"></select>
+                        </div>
+                        <div ng-class="record.grade ? 'col-sm-1':'col-sm-4'">
+                            <div ng-if="!record.grade" class="input-alarm-type">
+                                <div class="diy-icon float-icon" ng-click="record.levelFly()">
+                                    <i class="fa fa-caret-right " style="font-size: 30px;color:black"></i>
+                                </div>
+                                <input type="text" class="form-control" ng-model="record.diytype" placeholder="自定义等级" />
+                            </div>
+                            <div class="diy-icon" ng-click="record.levelFly()"  ng-if="record.grade">
+                                <i class="fa fa-caret-left" style="font-size: 30px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="position: relative;" ng-if="ous.list.length > 0">
+                        <label class="col-sm-2 control-label">事件下发</label>
+                        <div class="col-sm-10 ouname">
+                            <input class="form-control" type="text" ng-model="ous.current.name" ng-click="ous.show()"
+                                readonly="true">
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10 tree-panel" i-scroll2>
+                            <div id="outree" safe-z-tree zt-data="ous.list" zt-click="ous.select"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">登记信息</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" ng-model="record.content" ng-keydown="record.del($event)"
+                                placeholder="输入监控异常信息" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <!--<textarea class="form-control" ng-model="record.content" ng-keydown="record.del($event)" placeholder="输入监控异常信息"></textarea>-->
+                </div>
+                <div class="safe-video-record-unusual-foot">
+                    <button class="button button-glow button-rounded button-highlight"
+                        ng-click="record.saveVideoUnusual()">确认登记</button>
+                    <button class="button button-glow button-rounded button-caution"
+                        ng-click="record.hideView()">取　消</button>
+                </div>
+            </div>
+        </div>
+        <div class="layout-full safe-video-record-unusual-mask"></div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+define(["ui-router","ui-layout","ui-event","ui-sortable","ui-bootstrap","infinite-scroll"],function(){return angular.module("iiw",["ui.router","ui.layout","ui.event","ui.sortable","ui.bootstrap","ngAnimate","ngMessages","hmTouchEvents","infinite-scroll"])});

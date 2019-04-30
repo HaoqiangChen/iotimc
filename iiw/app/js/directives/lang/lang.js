@@ -1,0 +1,1 @@
+define(["angular","services/util/getlang"],function(t){t.directive("iLang",["iGetLang",function(t){return{restrict:"E",compile:function(e){var i=e.text();e.text(t.get(i))}}}])});

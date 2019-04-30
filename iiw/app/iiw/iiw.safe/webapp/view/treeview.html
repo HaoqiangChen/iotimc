@@ -1,0 +1,21 @@
+<div id="treeview_{{node.id}}" class="safe-tree-view">
+    <div class="safe-tree-node" ng-class="{ 'hasCheck' : hasCheck }">
+        <div class="icon tree-arrow"  hm-tap="clickNode(this, node, $event , false)" hm-panstart="panStart($event, node)" hm-panmove="panMove($event, node)" hm-panend="panEnd($event, node)" title="{{name}}">
+            <i class="fa" ng-class="{ 'fa-caret-right': !node.__isopen, 'fa-caret-down': node.__isopen }" ng-show="!node.__islast"></i>
+        </div>
+        <div ng-if="hasCheck" class="icon tree-checkbox" ng-class="{ 'hasCheck' : hasCheck }">
+            <input type="checkbox" ng-model="node.check" hm-tap="clickNode(this, node, $event, true)">
+        </div>
+        <div data-ripple  hm-tap="clickNode(this, node, $event, true)" hm-panstart="panStart($event, node)" hm-panmove="panMove($event, node)" hm-panend="panEnd($event, node)" title="{{name}}">
+            <div class="icon tree-logo" ng-class="{ 'hasCheck' : hasCheck }" ng-if="!node.icon">
+                <i ng-if="node.oline" class="fa text-warning" ng-class="{ 'fa-folder': !node.__isopen, 'fa-folder-open': node.__isopen }"></i>
+                <i ng-if="!node.oline" class="fa floder-no-camera" ng-class="{ 'fa-folder': !node.__isopen, 'fa-folder-open': node.__isopen }"></i>
+            </div>
+            <div class="icon tree-logo" ng-class="{ 'hasCheck' : hasCheck }" ng-if="node.icon">
+                <i class="fa {{node.icon}}"></i>
+            </div>
+            {{node.name}}
+        </div>
+    </div>
+    <div class="safe-tree-child" ng-show="node.__isopen"></div>
+</div>

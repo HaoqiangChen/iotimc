@@ -1,0 +1,1 @@
+define(["angular"],function(n){n.directive("iLogout",["$state",function(n){return{restrict:"A",compile:function(i){i.on("click",function(){n.go("^.login")})}}}])});
