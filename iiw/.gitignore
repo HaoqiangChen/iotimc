@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Created by .ignore support plugin (chenhaoqiang)
 ### GitBook template
 # Node rules:
 ## Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
@@ -11,7 +11,6 @@ node_modules
 
 # Book build output
 _book
-package.json
 package-lock.json
 
 # eBook build output
@@ -124,6 +123,12 @@ typings/
 *.iml
 out
 gen
+
+# Dependency directories
+node_modules/
+jspm_packages/
+package-lock.json
+.svn/
 
 # Production
 /build
