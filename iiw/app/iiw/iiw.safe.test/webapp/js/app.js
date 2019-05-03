@@ -1,13 +1,9 @@
-/**
- * 模块开发测试
- * Created by chq on 2019/10/10.
- */
 define([
     'app',
     'cssloader!safe/test/css/index',
-    'safe/js/services/safeImcsPlayer',
+    // 'safe/js/services/safeImcsPlayer',
 ], function (app) {
-    app.controller('testController', ['$scope', '$state', '$uibModal', 'safeMainTitle', 'iAjax', 'safeDispatcher', '$rootScope', 'iTimeNow', 'iConfirm', 'iMessage', '$timeout', 'safeImcsPlayer', function ($scope, $state, $uibModal, safeMainTitle, iAjax, safeDispatcher, $rootScope, iTimeNow, iConfirm, iMessage, $timeout, safeImcsPlayer) {
+    app.controller('testController', ['$scope', function ($scope) {
         safeMainTitle.title = '模块开发测试';
 
         $scope.modules = [
@@ -54,18 +50,7 @@ define([
             }
         };
 
-        $scope.open1 = function () {
-            var command = _.extend({
-                "cmd": "OpenFileSelectDialog",
-                "type": 0,
-                "path": "D:\\"
-            }, {});
-            console.log(command);
-            safeImcsPlayer.sendCmd(command);
-        };
-
         $scope.$on('testControllerOnEvent', function () {
-            // $state.go('safe.sjposition');  
             $scope.detectZoom()
         });
 

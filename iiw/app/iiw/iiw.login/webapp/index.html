@@ -1,5 +1,7 @@
 <div class="layout-full">
-    <div class="safe-login-bg-panel" safe-login-background></div>
+    <div class="safe-login-bg-panel" safe-login-background>
+        <img ng-repeat="img in list" ng-src="{{img}}"/>
+    </div>
     <div class="login-bg" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
         <div ui-layout-container></div>
         <div ui-layout-container size="350px">
@@ -30,7 +32,6 @@
                             <ng-messages for="submitError">
                                 <ng-message when="username" class="login-message">* 用户名不存在</ng-message>
                                 <ng-message when="password" class="login-message">* 密码错误</ng-message>
-                                <ng-message when="plan" class="login-message">* 非值班时间段</ng-message>
                             </ng-messages>
                         </div>
                     </form>

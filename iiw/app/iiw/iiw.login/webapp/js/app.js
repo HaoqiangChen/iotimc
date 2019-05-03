@@ -1,5 +1,5 @@
 /**
- * Created by yjj on 2017-06-21.
+ * Created by yjj on 2015-10-27.
  */
 define([
     'app',
@@ -68,11 +68,6 @@ define([
         };
 
         function loginSubmit(username, password, key) {
-            if(username == 'zbry') {
-                $scope.submitError['plan'] = true;
-                return;
-            }
-
             $scope.form.login = true;
             $('.login-button i').addClass('fa-pulse');
 
@@ -130,5 +125,11 @@ define([
                 'password': false
             };
         };
+
+        $scope.list = [
+            $.soa.getWebPath('iiw.login') + '/img/safe/1.jpg',
+            $.soa.getWebPath('iiw.login') + '/img/safe/2.jpg',
+            $.soa.getWebPath('iiw.login') + '/img/safe/2.png'
+        ];
     }]);
 });

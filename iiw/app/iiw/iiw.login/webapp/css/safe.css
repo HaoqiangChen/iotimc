@@ -5,8 +5,73 @@
     height: 100%;
 }
 
-.safe-login-bg-panel video {
+.safe-login-bg-panel img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+}
+
+.safe-login-1 {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/1.png');
+}
+
+.safe-login-1:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/1.png');
+    -webkit-filter: blur(5px);
+}
+
+.safe-login-2 {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/2.png');
+}
+
+.safe-login-2:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/2.png');
+    -webkit-filter: blur(5px);
+}
+
+.safe-login-3 {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/3.png');
+}
+
+.safe-login-3:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/safe/3.png');
+    -webkit-filter: blur(5px);
 }

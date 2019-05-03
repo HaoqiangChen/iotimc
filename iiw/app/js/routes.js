@@ -32,7 +32,7 @@ define(["angularAMD", "angular"], function (e, t) {
       controllerUrl: "controllers/reg",
       controller: "regController"
     })), $.each($.soa.getInfo() || [], function (n, r) {
-      console.log(n, r)
+      // console.log(n, r)
       t.state(r.route.statename, e.route(o(n, r)))
     }), r.otherwise($.soa.regkey ? "/reg" : n())
   }])

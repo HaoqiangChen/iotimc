@@ -133,6 +133,9 @@ function startAppServer() {
   });
 
   watch([
+    'app/iiw/*',
+    'app/iiw/**/*',
+    'app/iiw/**/**/*',
     'app/*.html',
     'app/images/**/*',
     '.tmp/fonts/**/*'
