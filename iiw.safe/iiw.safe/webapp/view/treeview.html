@@ -4,7 +4,7 @@
             <i class="fa" ng-class="{ 'fa-caret-right': !node.__isopen, 'fa-caret-down': node.__isopen }" ng-show="!node.__islast"></i>
         </div>
         <div ng-if="hasCheck" class="icon tree-checkbox" ng-class="{ 'hasCheck' : hasCheck }">
-            <input type="checkbox" ng-model="node.check">
+            <input type="checkbox" ng-model="node.check" hm-tap="clickNode(this, node, $event, true)">
         </div>
         <div data-ripple  hm-tap="clickNode(this, node, $event, true)" hm-panstart="panStart($event, node)" hm-panmove="panMove($event, node)" hm-panend="panEnd($event, node)" title="{{name}}">
             <div class="icon tree-logo" ng-class="{ 'hasCheck' : hasCheck }" ng-if="!node.icon">

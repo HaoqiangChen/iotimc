@@ -1,9 +1,9 @@
 define([
     'app',
     'cssloader!safe/test/css/index',
-    // 'safe/js/services/safeImcsPlayer',
+    'safe/js/services/safeImcsPlayer',
 ], function (app) {
-    app.controller('testController', ['$scope', function ($scope) {
+    app.controller('testController', ['$scope', '$state', '$uibModal', 'safeMainTitle', 'iAjax', 'safeDispatcher', '$rootScope', 'iTimeNow', 'iConfirm', 'iMessage', '$timeout', 'safeImcsPlayer', function ($scope, $state, $uibModal, safeMainTitle, iAjax, safeDispatcher, $rootScope, iTimeNow, iConfirm, iMessage, $timeout, safeImcsPlayer) {
         safeMainTitle.title = '模块开发测试';
 
         $scope.modules = [
@@ -38,7 +38,6 @@ define([
             if (ratio) {
                 ratio = Math.round(ratio * 100);
             }
-            console.log(ratio)
             if (ratio != 100) {
                 // _remind(3, '你当前页面缩放比例不正确，请手动调整', '缩放比例不正确')
                 iMessage.show({

@@ -57,7 +57,6 @@ define([
 
                         $scope.$on('safe.scrawl.open.img', function(event, data) {
                             //$timeout(function() {
-                            console.log(event, data);
                                 init(event, data);
                             //},3000);
 

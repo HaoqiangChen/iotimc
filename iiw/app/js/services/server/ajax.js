@@ -84,10 +84,8 @@ define(["angular", "services/util/token", "services/util/timenow"], function (t)
         if (0 == t.indexOf("/") && (t = t.substr(1, t.length)), _) {
           var n = t.indexOf("?") > -1 ? "&" : "?";
           return $.soa.root + t + n + "authorization=" + _
-          // return $.soa.api + t + n + "authorization=" + _
         }
         return $.soa.root + t
-        // return $.soa.api + t
       }
       return t
     }

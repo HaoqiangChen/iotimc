@@ -57,29 +57,29 @@ define([
 ], function (app) {
     app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function ($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
         $.datetimepicker.setLocale('zh');
-        //document.title = '物联网安全管控指挥平台';
+        document.title = '物联网安全管控指挥平台';
         require([
             'safe/lib/table/table2/table2'
         ], function() {
             window.table = layui.table2;
         });
 
-        iAjax.post('sys/web/config.do?action=getConfig', {}).then(function (data) {
-            if (data && data.result && data.result.rows) {
-                var titleObject = _.findWhere(data.result.rows, {'key': 'title'});
-                var subTitleObject = _.findWhere(data.result.rows, {'key': 'subtitle'});
-                var title = '';
-                if (titleObject && titleObject.content) {
-                    title = titleObject.content;
-                }
-
-                if (subTitleObject && subTitleObject.content) {
-                    title += subTitleObject.content;
-                }
-
-                document.title = title;
-            }
-        });
+        // iAjax.post('sys/web/config.do?action=getConfig', {}).then(function (data) {
+        //     if (data && data.result && data.result.rows) {
+        //         var titleObject = _.findWhere(data.result.rows, {'key': 'title'});
+        //         var subTitleObject = _.findWhere(data.result.rows, {'key': 'subtitle'});
+        //         var title = '';
+        //         if (titleObject && titleObject.content) {
+        //             title = titleObject.content;
+        //         }
+        //
+        //         if (subTitleObject && subTitleObject.content) {
+        //             title += subTitleObject.content;
+        //         }
+        //
+        //         document.title = title;
+        //     }
+        // });
 
         safeSocket.init();
         safePlugins.init($scope);

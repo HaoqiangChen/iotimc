@@ -7,10 +7,13 @@
                         <i-logo></i-logo>
                     </div>
                 </div>
-                <div class="safe-main-tips" ui-layout-container size="85px">
+                <div class="safe-main-tips" ui-layout-container size="105px">
                     <div class="safe-main-tips-panel" ng-click="goAlarm()">
-                        <i class="fa fa-bell"></i>
+                        <i class="fa fa-bell-o"></i>
                         <div class="safe-main-tip-box alarm" safe-main-tips watch="tips.alarm">{{tips.alarm}}</div>
+                    </div>
+                    <div class="safe-main-tips-panel" ng-click="godzdaSys()">
+                        <i class="fa fa-file-text"></i>
                     </div>
                     <!--<div class="safe-main-tips-panel">-->
                     <!--<i class="fa fa-comment"></i>-->
@@ -43,18 +46,22 @@
                         </p>
                         <p>菜单</p>
                     </div>
-                    <div class="fastBtns safe-main-panelbg" ng-click="refresh()">
+
+
+                    <div class="fastBtns safe-main-panelbg" hidden ng-click="refresh()">
                         <p class="safe-main-panelbg-logo">
                             <i class="fa fa-refresh"></i>
                         </p>
                         <p>刷新</p>
                     </div>
-                    <div class="fastBtns safe-main-panelbg" ng-click="home()">
+                    <div class="fastBtns safe-main-panelbg" hidden ng-click="home()">
                         <p class="safe-main-panelbg-logo">
                             <i class="fa fa-home"></i>
                         </p>
                         <p>主页</p>
                     </div>
+
+
                     <div safe-main-search="true" class="fastBtns safe-main-panelbg">
                         <div class="safe-main-search-input">
                             <input type="text" class="form-control" placeholder="请输入搜索内容" ng-model="globalSearch.value" i-dom-select uib-typeahead="state for state in globalSearchHistoryList | filter:$viewValue | limitTo:5" typeahead-show-hint="true" typeahead-min-length="0" typeahead-append-to-body="true" typeahead-template-url="globalSearchTypeahead.html"/>

@@ -14,8 +14,10 @@ define([
         'iMessage',
         'iAjax',
         'safeHardware',
+        'iConfirm',
+        'safeImcsPlayer',
 
-        function($rootScope, $timeout, $http, iTimeNow, iMessage, iAjax, safeHardware) {
+        function($rootScope, $timeout, $http, iTimeNow, iMessage, iAjax, safeHardware, iConfirm, safeImcsPlayer) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -61,7 +63,8 @@ define([
                     '</div>'
                 ].join(''),
                 link: function ($scope, $element) {
-                    var camera;
+                    var camera,
+                        containerInterval;
 
                     $scope.$on('imcs.maxEvent', function(e, data) {
                         if(data.camera) {
@@ -70,6 +73,20 @@ define([
                             $scope.hardware.getData(data.video);
                         }
                     });
+
+                    containerInterval = setInterval(controlUpdateWidth, 1000);
+
+                    function controlUpdateWidth() {
+
+                        var width = 0;
+                        $element.find('.safe-video-max-tools-content ul li').each(function(i, o) {
+                            width += $(o).width() + 15;
+                        });
+                        if(width) {
+                            $element.find('.safe-video-max-tools-content').width(width + 300);
+
+                        }
+                    }
 
                     /**
                      * 云台控制
@@ -264,8 +281,34 @@ define([
                             if (row.actions && row.actions.length) {
                                 this.detail.childlist.push(this.detail.list);
                                 this.showDetail(row.actions);
-                            } else if (row.action) {
-                                safeHardware.execute(row.deviceid, row.type, row.action, row.value);
+                            }
+                            else if(row.type == 'broadcast' && row.actionstr == 'setDeviceVolume') {
+                                $scope.setVolume.show(row);
+                            }
+                            else if (row.action) {
+                                var result = safeHardware.execute(row.deviceid, row.type, row.action, row.value);
+                                var content = '';
+                                if(row.typename) {
+                                    content = '【'+ row.typename +'】'+ row.name;
+                                }
+                                else {
+                                    content = '设备操作';
+                                }
+
+                                result.then(function() {
+                                    iMessage.show({
+                                        level: '1',
+                                        title: '消息提醒',
+                                        content: content + '成功！'
+                                    });
+                                }, function() {
+                                    iMessage.show({
+                                        level: '4',
+                                        title: '消息提醒',
+                                        content: content + '失败！'
+                                    });
+                                });
+
                             }
                         },
                         back: function() {
@@ -280,6 +323,75 @@ define([
                     $scope.hardware.getDeviceTypes();
 
                     /**
+                     *	设置音量控制
+                     */
+                    $scope.setVolume = {
+                        action: null,
+                        show: function(action) {
+                            this.action = action;
+                            safeImcsPlayer.hideAll();
+
+                            var elId = iConfirm.show({
+                                scope: $scope,
+                                title: '音量控制',
+                                templateUrl:  $.soa.getWebPath('iiw.safe') + '/view/volume.html',
+                                buttons: [{
+                                    text: '确认',
+                                    style: 'button-primary',
+                                    action: 'setVolume.confirm'
+                                }, {
+                                    text: '取消',
+                                    style: 'button-caution',
+                                    action: 'setVolume.close'
+                                }]
+                            });
+                            $('#monitorDeviceVolume').focus();
+
+                            iConfirm.getEl(elId).data('newScope').$on('$destroy', function() {
+                                safeImcsPlayer.showAll();
+                            });
+                        },
+                        confirm: function(id) {
+                            safeImcsPlayer.showAll();
+                            iConfirm.close(id);
+
+                            this.action.value = $('#monitorDeviceVolume')[0].value;
+                            this.control(this.action);
+                        },
+                        close: function(id) {
+                            safeImcsPlayer.showAll();
+                            iConfirm.close(id);
+                            return true;
+                        },
+                        control: function(control) {
+
+                            var resultText = '';
+                            if(control.typename) {
+                                resultText = '【'+ control.typename +'】'+ control.name;
+                            }
+                            else {
+                                resultText = '设备操作';
+                            }
+
+                            safeHardware.execute(control.deviceid, control.type, control.action, (control.value == 0 ? 0 : (control.value || ''))).then(function(data) {
+
+                                iMessage.show({
+                                    level: '1',
+                                    title: '消息提醒',
+                                    content: resultText +'成功！'
+                                });
+
+                            }, function(data) {
+                                iMessage.show({
+                                    level: '4',
+                                    title: '消息提醒',
+                                    content: resultText +'失败！'
+                                });
+                            });
+                        }
+                    };
+
+                    /**
                      * 关闭
                      */
                     $scope.close = function() {
@@ -287,7 +399,7 @@ define([
                         camera = null;
                         $scope.volume.close();
                         $scope.hardware.list = [];
-                    }
+                    };
 
                     /**
                      * 双击关闭
@@ -331,6 +443,11 @@ define([
                         var blob = new Blob(byteArrays, {type: contentType});
                         return blob;
                     }
+
+                    $scope.$on('$destroy', function() {
+                        clearInterval(containerInterval);
+                        containerInterval = null;
+                    });
                 }
             }
         }

@@ -6,6 +6,11 @@
     <div title="恢复" class="toolbutton right max" ng-show="ismax" ng-click="toolbar.min($event)"><i
             class="fa fa-clone"></i></div>
 
+
+    <!--<div title="督查" class="toolbutton right record ng-isolate-scope" safe-video-record-unusual-->
+         <!--get-snap-data="toolbar.videoRecord.getSnapData" get-cameraid="toolbar.videoRecord.getCameraId"><i-->
+            <!--class="fa fa-edit"></i></div>-->
+
     <div title="取消静音" class="toolbutton right video" ng-if="isCs" ng-show="!isSound"
          ng-click="toolbar.openSound($event)"><i class="fa fa-volume-off"></i></div>
     <div title="静音" class="toolbutton right video" ng-if="isCs" ng-show="isSound" ng-click="toolbar.closeSound($event)">

@@ -12,6 +12,8 @@
 .safe-video-max-panel .safe-video-max-box {
     box-shadow: 0 0 50px 15px #000;
     position: relative;
+    height: calc(100% - 52px);
+    margin-top: 52px;
 }
 
 .safe-video-max-panel .safe-video-max-tools {

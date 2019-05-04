@@ -40,7 +40,6 @@ define([
                         $scope.bFull = false;
                         $scope.maxArray = new Array($scope.setting.maxsize - 9);
                         $scope.showContinuationPhotograph = false;
-						$scope.playType = {};
 
                         $element.find('.video-panel-toolbox').click(function() {
                             if(!$scope.ismax && !$scope.ismove) {
@@ -308,7 +307,18 @@ define([
                             object.show();
                         };
 
+						// 获取设备参数
+						$scope.getDevParam = function(id, callback) {
+							iAjax.post('security/device/device.do?action=getMonitorLiveUrl', {
+								//remoteip: '192.168.11.39',
+								filter: {id: id, protocol: 'httpwebm'}
+							}).then(function (data) {
+								if (data.result) {
+									if(callback) callback(data.result);
 
+								}
+							});
+						}
                         /**
                          * 创建返回的监控对象；
                          *
@@ -598,11 +608,12 @@ define([
                                 index = index || $scope.select;
                                 var videoBox = $element.find('safe-video:eq(' + (index - 1) + ')');
 
-								if(safeImcsPlayer.isconnect()) {
+                                if(safeImcsPlayer.isconnect() && $scope.isImcs($scope.getObject(index).getCode())) {
                                     $scope.imcsPlayer.max(index);
                                 }
 
                                 if(videoBox.data('data-play')) {
+                                    safeImcsPlayer.hideAll();
                                     $scope.ismax = true;
                                     var content = $(videoBox.find('video').get(0) || videoBox.find('canvas').get(0));
                                     var videotape = $(videoBox.find('.video-object-videotape').get(0));
@@ -918,10 +929,9 @@ define([
                             snapIndex = index;
                             $scope.snapImageShow = true;
                             $scope.snapImage = $scope.getSnapData(index);
-                            console.log($scope.snapImage);
-                              $timeout(function() {
-                                $scope.$broadcast('safe.scrawl.open.img', $scope.snapImage);
-                              }, 0);
+							$timeout(function() {
+								$scope.$broadcast('safe.scrawl.open.img', $scope.snapImage);
+							}, 0);
                         };
 
                         // $scope.$on('videoKeyDownEscEvent', function() {
