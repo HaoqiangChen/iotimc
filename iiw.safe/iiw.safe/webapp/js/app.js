@@ -563,13 +563,29 @@ define([
                 ratio = Math.round(ratio * 100);
             }
             if (ratio != 100) {
-                iMessage.show({
-                    level: 3,
-                    title: '缩放比例不正确',
-                    content: '你当前页面缩放比例不正确，请手动调整'
-                })
+                iConfirm.show({
+                    scope: $scope,
+                    title: '缩放比例不正确!',
+                    content: '你当前页面缩放比例不正确，请手动调整!!! <br/> 可按 “Ctrl + 鼠标滚轮” 进行缩放，重新调整为正确比例 100% <br/> 重新调整后可点击 确认按钮 进行确认是否 100%',
+                    buttons: [{
+                        text: '确认',
+                        style: 'button-primary',
+                        action: 'detectZoomSuccess'
+                    }, {
+                        text: '取消',
+                        style: 'button-caution',
+                        action: 'detectZoomCancel'
+                    }]
+                });
             }
         }
+        $scope.detectZoomSuccess = function(id) {
+            iConfirm.close(id);
+            window.location.reload()
+        };
+        $scope.detectZoomCancel = function(id) {
+            iConfirm.close(id);
+        };
         detectZoom()
     }]);
 });
