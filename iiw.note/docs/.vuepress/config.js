@@ -21,7 +21,6 @@ module.exports = {
         resolve: {
             alias: {
                 '@': '../.vuepress',
-                '@assets': './public/assets',
                 '@public': './public',
             }
         }
@@ -96,7 +95,9 @@ function getNoteSidebar (noteA, noteB, noteC) {
             collapsable: false,
             children: [
                 '/note/angularjs/',
-                '/note/angularjs/angularjs'
+                '/note/angularjs/filter',
+                '/note/angularjs/directives',
+                '/note/angularjs/services'
             ]
         }
     ]
@@ -125,7 +126,9 @@ function getApiSidebar (apiA, apiB, apiC) {
             collapsable: false,
             children: [
                 '/api/angularjs/',
-                '/api/angularjs/angularjs'
+                '/api/angularjs/filter',
+                '/api/angularjs/directives',
+                '/api/angularjs/services'
             ]
         }
     ]
