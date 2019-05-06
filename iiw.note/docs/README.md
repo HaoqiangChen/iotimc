@@ -2,7 +2,7 @@
 home: true
 heroImage: /favicon.ico
 actionText: 快速上手 →
-actionLink: /notes/
+actionLink: /note/iiw-code/
 features:
 - title: AngularJS 1.4.6
   details: 主框架以AngularJS 1.4.6（框架）作为支撑

@@ -5,7 +5,7 @@
 # 内置指令
 ## ng-show和ng-hide用来显隐元素的
 ## ng-class 动态为元素绑定类，以下 4 种绑定方式
-```angular2html
+```html
 （1）变量，变量可以插入多个类，通过空格隔开
 ng-class="变量1 变量2 变量3"
 （2）用{{}} 包住的变量表达式
@@ -20,7 +20,7 @@ ng-class="{true:'green',false:'red'}[item.active]"
 ## ng-if 条件模板指令，跟vue不同，没有ng-else
 ## ng-switch 多分支条件模板判断指令，指令根据表达式显示或隐藏对应的部分
 对应的子元素使用 ng-switch-when 指令，如果匹配选中选择显示，其他为匹配的则移除。ng-switch-default 指令设置默认选项，如果都没有匹配的情况，默认选项会显示。
-```angular2html
+```html
 <element ng-switch="expression">
 <element ng-switch-when="value"></element>
 <element ng-switch-when="value"></element>
@@ -107,12 +107,12 @@ scope:false（默认），此时数据双向绑定，会互相影响
 scope:{} ，为模板作用域，此时自定义指令会创建一个独立的作用域，并且根据是否有模板template属性而决定作用域效果，有template时效果为scope:true，没有template时效果为scope:false
 ## 作用域修饰符，跟vue中props属性很像，在angularjs中，想使用父作用域中的数据，可以通过属性的传递方式来实现
 ### @修饰符：实现父作用域向子作用域传递数据并覆盖的一种方式（单向的）
-```angular2html
+```html
 <my-directive msg-data="{{msg}}"></my-directive> // 注意需用{{}}插值符号
 scope:{msg: '@msgData'}
 ```
 ### =修饰符：实现父作用域与子作用域数据的一个双向绑定，这里子作用域数据会覆盖父作用域数据，以子作用域数据为准
-```angular2html
+```html
 <my-directive msg-data="msg"></my-directive> // 注意不需用{{}}插值符
 scope:{msg: '=msgData'}
 ```

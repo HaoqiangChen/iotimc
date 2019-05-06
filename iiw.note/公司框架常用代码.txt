@@ -87,3 +87,27 @@ $scope.handleRequest = function($message, obj) {
 
 
 
+// 监听报警事件并且显示报警联动界面
+$scope.$on('ws.alarmHandle', function (e, data) {
+    // console.log('ws.alarmHandle', data)
+    if (!$scope.run) {
+        showAlarmHandle(data)
+    } else {
+        iMessage.show({
+            id: data.id,
+            level: 2,
+            title: data.devicename + '发生报警',
+            content: '【'+data.lvlname+'】 '+data.content,
+            timeout: '0',
+            drag: true,
+            data: data,
+            fn: 'showAlarmHandle'
+        }, false, $scope)
+    }
+    // showAlarmHandle(data)
+});
+
+$scope.showAlarmHandle = function (message, data) {
+    iMessage.remove(data.data.id);
+    showAlarmHandle(data.data)
+}

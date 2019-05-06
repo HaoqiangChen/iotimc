@@ -1993,7 +1993,7 @@ define([
                     widget = widget.concat(content);
                 }
 
-                console.log(widget);
+                // console.log(widget);
 
                 return widget;
             }

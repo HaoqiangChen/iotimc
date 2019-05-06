@@ -879,3 +879,25 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.messagepanel>.message {
+    width: 450px !important;
+    height: 150px !important;
+}
+.messagepanel>.message .ico {
+    margin: 25px 5px;
+    width: 100px;
+    height: 100px;
+    line-height: 1;
+}
+.messagepanel>.message .text {
+    width: 340px;
+    height: 100%;
+}
+.messagepanel>.message .text .fz-2 {
+    width: 100%;
+    font-size: 28px;
+}
+.messagepanel>.message .text .content {
+    width: 100%;
+}
