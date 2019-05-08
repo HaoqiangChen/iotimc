@@ -1,2 +1,0 @@
-更新后台包后清缓存重启服务器
-清缓存文件夹分别为项目virgo文件夹内的 iotimclog、serviceability、work、wrapper\logs

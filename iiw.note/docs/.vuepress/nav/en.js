@@ -12,7 +12,7 @@ module.exports = [
     link: '/chart/'
   },
   {
-    text: 'Oracle',
+    text: 'Database',
     link: '/oracle/'
   }
 ]

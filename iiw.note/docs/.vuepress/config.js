@@ -44,9 +44,10 @@ module.exports = {
                 lastUpdated: '上次更新',
                 nav: require('./nav/zh'),
                 sidebar: {
-                    '/api/': getApiSidebar('常用接口', 'iiw API', 'angularjs'),
                     '/note/': getNoteSidebar('常用代码', '业务配置', 'angularjs'),
-                    '/theme/': getThemeSidebar('主题', '介绍')
+                    '/api/': getApiSidebar('常用接口', 'iiw API'),
+                    '/chart/': getChartSidebar('图表', '大数据平台'),
+                    '/oracle/': getSqlSidebar('数据库')
                 }
             },
             '/en/': {
@@ -87,7 +88,8 @@ function getNoteSidebar (noteA, noteB, noteC) {
             title: noteB,
             collapsable: false,
             children: [
-                '/note/iiw-config/'
+                '/note/iiw-config/frontend',
+                '/note/iiw-config/backend'
             ]
         },
         {
@@ -103,7 +105,7 @@ function getNoteSidebar (noteA, noteB, noteC) {
     ]
 }
 
-function getApiSidebar (apiA, apiB, apiC) {
+function getApiSidebar (apiA, apiB) {
     return [
         {
             title: apiA,
@@ -118,36 +120,36 @@ function getApiSidebar (apiA, apiB, apiC) {
             title: apiB,
             collapsable: false,
             children: [
-                '/api/iiwapi/'
-            ]
-        },
-        {
-            title: apiC,
-            collapsable: false,
-            children: [
-                '/api/angularjs/',
-                '/api/angularjs/filter',
-                '/api/angularjs/directives',
-                '/api/angularjs/services'
+                ['/api/iiwapi/', 'iiw.api']
             ]
         }
     ]
 }
 
-function getThemeSidebar (groupA, introductionA) {
+function getChartSidebar (groupA, introductionA) {
     return [
         {
             title: groupA,
             collapsable: false,
             sidebarDepth: 2,
             children: [
-                ['', introductionA],
-                'using-a-theme',
-                'writing-a-theme',
-                'option-api',
-                'default-theme-config',
-                'blog-theme',
-                'inheritance'
+                ['/chart/', introductionA],
+                '/chart/theme',
+                '/chart/echarts',
+            ]
+        }
+    ]
+}
+
+function getSqlSidebar (sqlA) {
+    return [
+        {
+            title: sqlA,
+            collapsable: false,
+            sidebarDepth: 2,
+            children: [
+                '/oracle/',
+                '/oracle/sql'
             ]
         }
     ]
