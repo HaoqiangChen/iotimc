@@ -30,60 +30,150 @@
 </tr>
 ```
 
-## iMessage.show 点击事件
+## 选择单位代码
+
+- 方法一：这个是双击选择，并且样式有点low
+```html
+<div class="safe-workLog-add-form-group row">
+	<div class="col-lg-4 safe-workLog-add-form-name">事件单位</div>
+	<div class="col-lg-8">
+		<input type="text" class="form-control" placeholder="选择汇报事件单位" ng-model="logItem.syouname" ng-click="worklogAdd.showSyouList()" onfocus="this.blur()" required/>
+		<div class="safe-workLog-add-form-span" ng-if="!logItem.syouname">*</div>
+	</div>
+</div>
+<script type="text/ng-template" id="ouTreeDialog.html">
+    <div class="modal-header">
+        <p class="modal-title">请选择单位：</p>
+    </div>
+    <div class="modal-body" style="height: 600px;overflow: hidden;">
+        <safe-tree tv-data="ouTree" tv-click="clickNode" tv-load="load" ng-dblclick="select()"></safe-tree>
+    </div>
+</script>
+```
+```js
+showSyouList: function() {
+	getSyouTree(function(list) {
+		var modalInstance = $uibModal.open({
+			templateUrl: 'ouTreeDialog.html',
+			controller: 'workLogOuTreeController',
+			resolve: {
+				data: function() {
+					return list
+				}
+			}
+		})
+		modalInstance.result.then(function(list) {
+			$scope.logItem.syouname = list.alias;
+			$scope.logItem.syoufk = list.alias;
+		})
+	})
+},
+function getSyouTree(cb) {
+	iAjax.post('/sys/web/syou.do?action=getSyouAll', { filter: { cascade: 'Y' } }).then(function(data) {
+		if (data.result && data.result.rows) {
+			var list = [];
+			if ($scope.worklogAdd.ouList.length > 0) {
+				$.each(data.result.rows, function(i, o) {
+					o.parentid = o.pId;
+					o.type = 'ou';
+					$.each($scope.worklogAdd.ouList, function(y, item) {
+						if (o.id == item.id) {
+							o.check = true;
+						}
+						list.push(o);
+					})
+				})
+			} else {
+				$.each(data.result.rows, function(i, o) {
+					o.parentid = o.pId;
+					o.type = 'ou';
+				});
+				list = data.result.rows;
+			}
+			cb(list);
+		}
+	})
+}
+app.controller('workLogOuTreeController', ['$scope', 'data', '$uibModalInstance', function($scope, data, $uibModalInstance) {
+	var _data = '';
+	$scope.ouTree = data;
+	$scope.select = function() { $uibModalInstance.close(_data); };
+	$scope.clickNode = function(node) { _data = node; }
+}])
+```
+
+- 方法二：这个是可先选择再确定，也可直接选择
+
+```html
+<input type="text" class="form-control" placeholder="选择汇报事件单位" ng-model="logItem.syouname" ng-click="syouTree.showOuTree()" required/>
+
+<div style="display: none;" class="modal fade" id="syouTreeModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="syouTreeModal">
+    <div class="modal-dialog" style="z-index: 99;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="syouTree.cancelOu()" style="color: #000;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-bank"></i>选择单位</h4>
+            </div>
+            <div class="modal-body" style="height: 560px;overflow: auto;">
+                <ul syou-tree-view ng-model="selectNode" id="sycodeTreeview" class="ztree"></ul>
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="syouTree.cancelOu()">取消</button>
+                <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="syouTree.selectOu()">确定</button>
+            </div> -->
+        </div>
+    </div>
+    <div class="modal-mask" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,.5);" ng-click="syouTree.cancelOu()"></div>
+</div>
+```
+```js
+// 'safe/workLog/add/js/directives/syouTreeView' 引入模板
+
+$scope.syouTree = {
+	showOuTree: function() {
+		$('#syouTreeModal').show();
+		$('#syouTreeModal').addClass('in');
+	},
+	selectOu: function () {
+		if (syoufk === '') {
+			_remind(3, '请选择至少一个单位信息！', '请选择单位');
+		} else {
+			$scope.logItem.syouname = syouname;
+			$scope.logItem.syoufk = syoufk;
+			$('#syouTreeModal').removeClass('in');
+			$('#syouTreeModal').hide();
+		}
+	},
+	cancelOu: function () {
+		$('#syouTreeModal').removeClass('in');
+		$('#syouTreeModal').hide();
+	},
+
+}
+$scope.selectEvent = function (treeNode) {
+	// syouname = treeNode.name;
+	// syoufk = treeNode.id;
+	$scope.logItem.syouname = treeNode.name;
+	$scope.logItem.syoufk = treeNode.id;
+	$('#syouTreeModal').removeClass('in');
+	$('#syouTreeModal').hide();
+}
+```
+
+## 异步函数
 
 ```js
-// 举例：接收到后端websocket之后自动弹出对应页面
-$scope.$on('ws.bringoutHandle', function(e, data) {
-	showMessage(data.rows[0]);
-});
-
-function showMessage(data) {
-	var content = '【' + data.policename + '】申请带出' + data.js + '【' + data.criminalname + '】进行【' + data.reason + '】<br>点击查看明细';
-	safeSound.playMessage(data.policename + '申请带出' + data.js + data.criminalname + '进行' + data.reason);
-	iMessage.show({
-		id: data.id,
-		level: 1,
-		title: '罪犯带出提醒',
-		timeout: '0',
-		data: data,
-		content: content,
-		fn: 'handleRequest'
-	}, false, $scope);
+function _getRole () {
+	var defer = $.Deferred();
+	iAjax.post('/security/check/check.do?action=getSpecialrole', {filter: {url: ['isBCU']}}).then(function (data) {
+		if (data.result.rows[0].isBCU) {
+			defer.resolve(data.result.rows[0].isBCU);
+		} else {
+			defer.resolve('0');
+		}
+		return defer;
+	})
 }
-
-$scope.handleRequest = function($message, obj) {
-	if ($state.current.url == '/bringout') {
-		$state.params = {data: {type: 'reload'}};
-		$state.go('safe.bringout', $state.params, {location: true, reload: true});
-	} else {
-		$state.params = {data: {type: 'reload'}};
-		$state.go('safe.bringout', $state.params);
-	}
-	iMessage.remove(obj.data.id);
-};
-// 举例：监听报警事件并且显示报警联动界面
-$scope.$on('ws.alarmHandle', function (e, data) {
-    // console.log('ws.alarmHandle', data)
-    if (!$scope.run) {
-        showAlarmHandle(data)
-    } else {
-        iMessage.show({
-            id: data.id,
-            level: 2,
-            title: data.devicename + '发生报警',
-            content: '【'+data.lvlname+'】 '+data.content,
-            timeout: '0',
-            drag: true,
-            data: data,
-            fn: 'showAlarmHandle'
-        }, false, $scope)
-    }
-    // showAlarmHandle(data)
-});
-
-$scope.showAlarmHandle = function (message, data) {
-    iMessage.remove(data.data.id);
-    showAlarmHandle(data.data)
-}
+// 调用
+_getRole.then(function(data){})
 ```

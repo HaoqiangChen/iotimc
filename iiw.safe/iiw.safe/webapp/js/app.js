@@ -55,7 +55,7 @@ define([
     'cssloader!safe/css/camera',
     'cssloader!safe/css/mapselect'
 ], function (app) {
-    app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function ($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
+    app.controller('safeMainController', ['$compile', '$controller', '$scope', '$rootScope', '$state', '$filter', '$timeout', 'iTimeNow', 'iGetLang', 'iAjax', 'iConfirm', 'iMessage', 'safeMainTitle', 'safeSocket', 'safeSound', 'safeAlarmmask', 'safeGlobalSearch', 'safePlugins', function ($compile, $controller, $scope, $rootScope, $state, $filter, $timeout, iTimeNow, iGetLang, iAjax, iConfirm, iMessage, safeMainTitle, safeSocket, safeSound, safeAlarmmask, safeGlobalSearch, safePlugins) {
         $.datetimepicker.setLocale('zh');
         //document.title = '物联网安全管控指挥平台';
         require([

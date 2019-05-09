@@ -2,6 +2,7 @@ module.exports = {
     title: '安防平台开发笔记',
     description: '安防平台iiw前端框架开发指南',
     base: '/',
+    port: '6683',
     locales: {
         '/': {
             lang: 'zh-CN',
@@ -17,14 +18,14 @@ module.exports = {
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }],
     ],
-    configureWebpack: {
-        resolve: {
-            alias: {
-                '@': '../.vuepress',
-                '@public': './public',
-            }
-        }
-    },
+    // configureWebpack: {
+    //     resolve: {
+    //         alias: {
+    //             '@': '../.vuepress',
+    //             '@public': './public',
+    //         }
+    //     }
+    // },
     themeConfig: {
         logo: '/logo.png',
         navbar: true,
