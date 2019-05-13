@@ -16,7 +16,7 @@ package-lock.json
 # eBook build output
 *.epub
 *.mobi
-*.pdf
+# *.pdf（I wanted to ignore the gitbook packaged PDF, but I found that it ignored all the PDF, so I just let it go)
 
 ### Node template
 # Logs
@@ -132,3 +132,4 @@ package-lock.json
 # Production
 /build
 /dist
+iiw.note/docs/.vuepress/dist
