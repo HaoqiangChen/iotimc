@@ -1,0 +1,196 @@
+<div class="safe-workLog-add">
+
+    <div class="safe-workLog-add-index" ng-style="{'background-image': 'url('+ worklogAdd.path +'/img/listImg_02.png)'}">
+
+        <div class="safe-workLog-add-header">
+            <div class="title text-center">每日指挥中心工作日志<i class="fa fa-book" title="日志填写说明" data-toggle="modal" data-target=".instruction-modal-lg">日志说明</i></div>
+        </div>
+
+        <div class="safe-workLog-add-form" ng-form="list">
+            <div class="safe-workLog-add-form-group row">
+                <div class="col-lg-4 safe-workLog-add-form-name">事件类型</div>
+                <div class="col-lg-8">
+                    <select class="form-control" ng-model="logItem.type" ng-options="rows.content as rows.name for rows in workTypes" required></select>
+                    <div class="safe-workLog-add-form-span" ng-if="!log.type">*</div>
+                </div>
+            </div>
+
+            <div class="safe-workLog-add-form-group row" ng-if="userRole">
+                <div class="col-lg-4 safe-workLog-add-form-name">事件单位</div>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" placeholder="汇报事件单位（例如：一监区）" ng-model="logItem.syouname" ng-disabled="userRole" required/>
+                    <div class="safe-workLog-add-form-span" ng-if="!logItem.syouname">*</div>
+                </div>
+            </div>
+            <div class="safe-workLog-add-form-group row" ng-if="!userRole">
+                <div class="col-lg-4 safe-workLog-add-form-name">事件单位</div>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" placeholder="选择汇报事件单位" ng-model="logItem.syouname" ng-click="syouTree.showOuTree()" required/>
+                    <div class="safe-workLog-add-form-span" ng-if="!logItem.syouname">*</div>
+                </div>
+            </div>
+
+            <div class="safe-workLog-add-form-group row">
+                <div class="col-lg-4 safe-workLog-add-form-name">事件姓名</div>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" placeholder="汇报事件姓名（例如：一监区张三，只填写张三）" ng-model="logItem.reporter" required/>
+                    <div class="safe-workLog-add-form-span" ng-if="!logItem.reporter">*</div>
+                </div>
+            </div>
+
+            <div class="safe-workLog-add-form-group row">
+                <div class="col-lg-4 safe-workLog-add-form-name">事件具体内容</div>
+                <div class="col-lg-8">
+                    <textarea cols="30" rows="3" class="form-control" ng-model="logItem.content" placeholder="事件具体内容（罪犯死亡、外出就医、住院等重、特大事件请详细填写并电话上报师局）" required></textarea>
+                    <div class="safe-workLog-add-form-span" ng-if="!logItem.content">*</div>
+                </div>
+            </div>
+
+            <div class="safe-workLog-add-form-tip row">
+                <i class="fa fa-bookmark" style="color: red;"></i> 下面内容为选填，有就填写，没有就不填写-------------------------------------------------也可以填写为：---0---0---无---无---无-----------------------------
+            </div>
+
+            <div class="row">
+                <div class="form-group input-field col-md-3">
+                    <label class="inline-label"><i class="fa fa-male"></i> 罪犯参与数量：</label>
+                    <input type="number" class="form-control" ng-model="logItem.criminalnum">
+                </div>
+                <div class="form-group input-field col-md-3">
+                    <label class="inline-label"><i class="fa fa-group"></i> 干警配备数量：</label>
+                    <input type="number" class="form-control" ng-model="logItem.policenum">
+                </div>
+                <div class="form-group input-field col-md-3">
+                    <label class="inline-label"><i class="fa fa-clock-o"></i> 持续时间：</label>
+                    <input type="text" class="form-control" ng-model="logItem.durationtime">
+                </div>
+                <div class="form-group input-field col-md-3">
+                    <label class="inline-label"><i class="fa fa-bullseye"></i> 活动区域：</label>
+                    <input type="text" class="form-control" ng-model="logItem.movementarea">
+                </div>
+            </div>
+
+            <div class="safe-workLog-add-form-inline row">
+                <div class="form-group input-field">
+                    <label class="inline-label"><i class="fa fa-exchange"></i> 责任人（例如：一监区监区长 李四，只填写姓名）：</label>
+                    <input type="text" class="form-control" ng-model="logItem.responsible">
+                </div>
+            </div>
+            <div class="safe-workLog-add-form-inline row">
+                <div class="form-group input-field">
+                    <label class="inline-label"><i class="fa fa-phone"></i> 登记人姓名（指挥中心填写日志人员姓名，例如：王五）</label>
+                    <input type="text" class="form-control" ng-model="logItem.registrar">
+                </div>
+            </div>
+
+
+            <div class="safe-workLog-add-submits row">
+                <div class="safe-workLog-add-submits-submit">
+                    <button class="btn btn-success" ng-click="worklogAdd.submit()" ng-disabled="list.$invalid">提交</button>
+                </div>
+                <div class="safe-workLog-add-submits-submit">
+                    <button class="btn btn-danger" ng-click="worklogAdd.cancel('safe.workLog')">取消</button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="modal fade instruction-modal-lg" tabindex="-1" role="dialog" aria-labelledby="instructionModal">
+        <div class="modal-dialog modal-lg" role="instruction" style="width: 60%;height: 88%;">
+            <div class="modal-content" style="height: 100%;background-color: #fff;overflow: hidden;">
+
+                <div class="modal-header" style="background-color: #fff;border-bottom: 1px solid #e5e5e5;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #000;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="instructionModal">日志填写说明</h4>
+                </div>
+                <div class="modal-body" style="height: 90%;overflow: auto;">
+                    <p class="warm">* 请认真填写本表，[<span style="color: #008000;">罪犯参与数量</span>]和[<span style="color: #008000;">干警配备数量</span>]只能填写数字，其他任意，遇到问题请及时联系本单位技术人员！</p>
+                    <p class="warm">* 再次提醒请认真填写本表，如果填写错误可以直接<span style="color: #008000;">修改</span> 或者<span style="color: #008000;">删除后重新填写</span>。</p>
+                    <p class="warm">* 第三次提醒请认真填写本表，本表有具体的填写说明，请认真阅读。</p>
+                    <h3>本表记录说明</h3>
+                    <div class="title1">一、事件类型：</div>
+                    <p><span class="red-font">1.值班员交接班</span>：信息指挥中心、AB门、分控值班室及其他值班室交接班事件填报，例如：<br/>
+                        <span class="gray-font">张三和李四交接班，一切正常（有具体事情请具体说明）</span></p>
+                    <p><span class="red-font">2.罪犯普通事件</span>：罪犯出工、活动等罪犯的日常事件记录，例如：<br/>
+                        <span class="gray-font">罪犯xx人出工</span></p>
+                    <p><span class="red-font">3.罪犯死亡事件</span>：仅填写罪犯姓名、年龄、民族、类型（“危”或者“普”）、转监事件、原因，例如：<br/>
+                        <span class="gray-font">xxx，年龄xx岁，民族：x，危，xxxx年xx月xx日入（转）监，xxxx年xx月xx日因xx病送xx医院抢救无效病亡</span></p>
+                    <p><span class="red-font">4.民警事件</span>：记录民警事件，格式：<br/>
+                        <span class="gray-font">xx开始巡监临时离开，预计xx时回xx岗位。</span></p>
+                    <p><span class="red-font">5.外协工事件</span>：外协工进监后事件记录，例如：<br/>
+                        <span class="gray-font">外协工xx名在xx区域施工（劳作）</span></p>
+                    <p><span class="red-font">6.AB门事件</span>:AB门进出事件，例如：<br/>
+                        <span class="gray-font">因xx原因A门需要开启，预计需要xx分钟完成</span></p>
+                    <p><span class="red-font">7.监区其他事件</span>：记录监区其他事件，例如：<br/>
+                        <span class="gray-font">xx点准备进行预案演练</span></p>
+                    <p><span class="red-font">8.罪犯大点名</span>:半点或整点大点名（包含巡监），例如：<br/>
+                        <span class="gray-font">xx点大点名（巡监）一切正常</span></p>
+                    <p><span class="red-font">9.指挥中心事件</span>：指挥中心事件记录，例如：<br/>
+                        <span class="gray-font">①值班员xx因xx事情，需要离开xx时间，已向今日监狱值班领导说明情况。</span> <br />
+                        <span class="gray-font">②xx区域准备进行xxxx演练，预计需要xx时间，xxx（领导姓名）负责统一指挥调度工作</span>
+                    </p>
+                    <p><span class="red-font">10.其他事件</span>:无法归类的事件，自行定夺。<br/></p>
+                    <p><span class="red-font">11.罪犯释放事件</span>:仅填写罪犯姓名、年龄、民族、类型（“危”或者“普”）、转监事件、原因，例如：<br/>
+                        <span class="gray-font">xxx，年龄xx岁，民族：x，危，xxxx年xx月xx日入（转）监，xxxx年xx月xx日刑满释放</span></p>
+                    <p><span class="red-font">12.监狱机关事件</span>：记录机关上报事件，例如：<br/>
+                        <span class="gray-font">xx科组织xx事件，预计需要xx时间</span></p>
+                    <p><span class="red-font">13.带班领导事件</span>:当日值班领导交接班、临时离开以及换班等情况,例如：<br/>
+                        <span class="gray-font">今日值班领导xx因xx原因需要离开指挥中心xx时间，值班领导已于xx时xx分向兵局值班领导请假。</span></p>
+                    <p><span class="red-font">14.罪犯离监事件</span>:仅填写罪犯姓名、年龄、民族、类型（“危”或者“普”）、转监事件、原因，例如：<br/>
+                        <span class="gray-font">xxx，年龄xx岁，民族：x，危，xxxx年xx月xx日入（转）监，xxxx年xx月xx日 xx:xx 因xx原因需要到xx地方。</span></p>
+                    <p><span class="red-font">15.夜间进监领导</span>:事件具体内容处，仅填写领导姓名！！</p>
+
+                    <div class="title1">二、汇报事件单位：</div>
+                    <p>仅填写本单位事件发生单位的具体名称，例如：<span class="gray-font">一监区罪犯出工，</span>这里仅填写<span class="red-font">一监区</span>，无需再写监狱名称！！</p>
+
+                    <div class="title1">三、汇报事件姓名：</div>
+                    <p>仅填写具体上报人一个人的具体姓名，例如：<span class="gray-font">一监区张三（干部）上报xx名罪犯出工</span>，这里仅填写<span class="red-font">张三</span></p>
+
+                    <div class="title1">四、事件内容：</div>
+                    <p>具体参照第一条【事件类型】的具体说明，此处无需再次填写【汇报事件单位】和【汇报事件姓名】，要求语句通畅，无错别字，例如：<span class="gray-font">xx名罪犯出工</span></p>
+
+                    <div class="title1">五、罪犯参与数量：</div>
+                    <p>仅限罪犯参与的相关事件填写，例如：<span class="gray-font">一监区张三（干部）上报5名罪犯出工</span>，这里仅填写<span class="red-font">5</span>，填写其他无关内容都会报错！！！</p>
+
+                    <div class="title1">六、干警配备数量：</div>
+                    <p>仅限罪犯参与的相关事件填写，例如：<span class="gray-font">一监区张三（干部）上报5名罪犯出工</span>，带队民警3人。，这里仅填写<span class="red-font">3</span>，填写其他无关内容都会报错！！！</p>
+
+                    <div class="title1">七、持续时间：</div>
+                    <p>仅限罪犯参与的相关事件填写，例如： 30分钟或者xx时xx分结束</p>
+
+                    <div class="title1">八、责任人：</div>
+                    <p>仅限罪犯参与的相关事件填写，例如：<span class="gray-font">一监区张三（干部）上报5名罪犯出工，带队民警3人</span>，这里填写
+                        <span class="red-font">张三</span>对应的监区长、教导员、分监区长或者是带队的队长<span class="red-font">一个人的姓名</span></p>
+
+                    <div class="title1">九、活动区域：</div>
+                    <p>仅限罪犯参与的相关事件填写，例如： 劳作区</p>
+
+                    <div class="title1">十、登记人姓名：</div>
+                    <p>指挥中心具体记录事件一名值班员的姓名，例如： 李四（一！个！人！的名字）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;" class="modal fade" id="syouTreeModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="syouTreeModal">
+    <div class="modal-dialog" style="z-index: 99;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="syouTree.cancelOu()" style="color: #000;"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-bank"></i>选择单位</h4>
+            </div>
+            <div class="modal-body" style="height: 560px;overflow: auto;">
+                <ul syou-tree-view ng-model="selectNode" id="sycodeTreeview" class="ztree"></ul>
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="syouTree.cancelOu()">取消</button>
+                <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="syouTree.selectOu()">确定</button>
+            </div> -->
+        </div>
+    </div>
+    <div class="modal-mask" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,.5);" ng-click="syouTree.cancelOu()"></div>
+</div>

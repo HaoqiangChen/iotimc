@@ -18,6 +18,14 @@
 
 `$scope` 定义angularjs中的作用域，它本质上是一种内置的服务(预使用先注入)
 
+## angularjs表达式
+
+AngularJS 表达式写在双大括号内：{{ expression }}。  
+AngularJS 表达式可以把数据绑定到 HTML，也可以写到属性上。
+```html
+<div title="{{ item.status == 'P' ? '打开':'关闭' }}">{{ expression }}</div>
+```
+
 ## ng-show和ng-hide用来显隐元素的
 
 ## ng-class 动态为元素绑定类

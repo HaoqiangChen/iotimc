@@ -46,7 +46,7 @@ module.exports = {
                 nav: require('./nav/zh'),
                 sidebar: {
                     '/note/': getNoteSidebar('常用代码', '业务配置', 'angularjs'),
-                    '/api/': getApiSidebar('常用接口', 'iiw API'),
+                    '/api/': getApiSidebar('iAjax', 'iiw API'),
                     '/chart/': getChartSidebar('图表', '大数据平台'),
                     '/oracle/': getSqlSidebar('数据库')
                 }
@@ -113,8 +113,8 @@ function getApiSidebar (apiA, apiB) {
             collapsable: false,
             children: [
                 '/api/iiwpost/',
-                '/api/iiwpost/safe',
-                '/api/iiwpost/system',
+                '/api/iiwpost/port',
+                '/api/iiwpost/other',
             ]
         },
         {
