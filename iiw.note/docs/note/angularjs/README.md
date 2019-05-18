@@ -83,8 +83,14 @@ AngularJS 表达式可以把数据绑定到 HTML，也可以写到属性上。
 在dom中定义该事件,再到js里调用该回调函数，想传递事件对象用`$event`
 
 ## ng-href 动态为a标签创建href属性
+```html
+<a ng-href="{{myVar}}">{{myVar}}</a>
+```
 
 ## ng-src 动态为img标签创建src属性
+```html
+<img ng-src="{{myVar}}">
+```
 
 ## 脏值检测（表单验证）
 
