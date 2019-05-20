@@ -21,17 +21,18 @@
 ## 目录说明
 
 .
-├── iiw _(**仿公司安防平台自己搭建的一个简陋脚手架**)_
-│   └── app
-├── iiw.api _(**安防平台API文档本地版**)_
-├── iiw.note _(**个人工作开发笔记，文档是用`vuepress`极简静态网站生成器**)_
-│   └── docs _(**vuePress docs**)_
-├── iiw.command _(**command模块**)_
-│   └── iiw.command.xxx _(**command子模块**)_
-├── iiw.safe _(**安防平台前台页面模块**)_
-│   └── iiw.safe.xxx _(**safe子模块**)_
-├── iiw.system _(**安防后台前台页面模块**)_
-│   └── iiw.system.xxx _(**system子模块**)_
-├── iiwlib _(**项目本地开发端口指定node.js**)_
-│ 
-└── package.json
+├── docs _(**iiw.note编写打包生成dist之后转移到这里，用于发布到GitHub pages**)_  
+├── iiw _(**仿公司安防平台自己搭建的一个简陋脚手架**)_  
+│   └── app  
+├── iiw.api _(**安防平台API文档本地版**)_  
+├── iiw.note _(**个人工作开发笔记，文档是用`vuepress`极简静态网站生成器**)_  
+│   └── docs _(**vuePress docs**)_  
+├── iiw.command _(**command模块**)_  
+│   └── iiw.command.xxx _(**command子模块**)_  
+├── iiw.safe _(**安防平台前台页面模块**)_  
+│   └── iiw.safe.xxx _(**safe子模块**)_  
+├── iiw.system _(**安防后台前台页面模块**)_  
+│   └── iiw.system.xxx _(**system子模块**)_  
+├── iiwlib _(**项目本地开发端口指定node.js**)_  
+│   
+└── package.json  

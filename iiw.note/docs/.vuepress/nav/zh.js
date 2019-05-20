@@ -14,5 +14,9 @@ module.exports = [
   {
     text: '数据库',
     link: '/oracle/'
+  },
+  {
+    text: '项目',
+    link: '/project/'
   }
 ]

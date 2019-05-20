@@ -9,7 +9,8 @@
     "build": "vuepress build docs",
     "docs:build": "vuepress build docs",
     "delay": "bash delay.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "vuepress build docs && move docs\\.vuepress\\dist .. && cd.. && rimraf docs && rename dist docs && xcopy /S/E/I iiw.api docs\\docs"
   },
   "keywords": [],
   "author": "chenhaoqiang",

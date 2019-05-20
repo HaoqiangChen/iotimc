@@ -1,0 +1,4921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 192.168.0.251:7001/classes/safeCamera.create.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>safeCamera.create - iiw.api</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="../index.html">
+             
+            <img alt="iiw.api" src="../assets/css/logo.png" title="iiw.api">
+            
+                iiw.api
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="http://192.168.0.251/">Home</a>
+                    </li>
+                    
+                    <li><a href="../index.html">API</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.c.directives.html">iiw.c.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="cPicker.html">cPicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.directives.html">iiw.core.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="iCopyText.html">iCopyText</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iExit.html">iExit</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLogout.html">iLogout</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLang.html">iLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iDomSelect.html">iDomSelect</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iDrag.html">iDrag</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLogo.html">iLogo</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iResize.html">iResize</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iScroll.html">iScroll</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iScroll2.html">iScroll2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.services.html">iiw.core.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="iAjax.html">iAjax</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iSocket.html">iSocket</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iConfig.html">iConfig</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iConfirm.html">iConfirm</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iGetLang.html">iGetLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iMessage.html">iMessage</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iTimeNow.html">iTimeNow</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iToken.html">iToken</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.directives.html">iiw.safe.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="safePicker.html">safePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="safeTree.html">safeTree</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.services.html">iiw.safe.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="safeCamera.create.html">safeCamera.create</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>safeCamera.create <small>Class</small></h1>
+</div>
+ <div class="well well-small sign-left3">
+      <div class="stdoc-code"><h3 id="safecamera">safeCamera</h3>
+<p>监控接口服务类，提供监控播放界面、监控实况、录像回放及相关联设备控制等方法。</p>
+<ol>
+<li>安防平台框架已载入，无法重复加载。</li>
+<li>其它框架框架需加载，请加载&#39;safe/js/services/safeCamera&#39;。</li>
+<li>此类为服务，需要依赖注入才能使用。</li>
+</ol>
+<hr>
+<pre class="code prettyprint"><code> JS:
+ app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     // TODO
+ }]);</code></pre>
+<hr>
+<h3 id="safecamera-create">safeCamera.create</h3>
+<p>监控控件构造器。</p>
+<ol>
+<li>通过safeCamera.create方法创建一个构造实体，实况监控等接口通过返回的实体调用。</li>
+<li>构造器必须传递el参数，el为监控界面依赖的element，如一个div。</li>
+<li>建议传递模块scope，否则将采用$rootScope，并且无法销毁部分资源。</li>
+</ol>
+</div>
+ </div>
+
+<div class="well well-small sign-left2 container-fluid" id="classesItems">
+    <div class="row">
+    
+        <div class="index-section methods col-sm-4">
+            <h3>Methods</h3>
+            
+            <ul class="index-list methods">
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_addView" data-tablink="addView">addView</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_autoPicture" data-tablink="autoPicture">autoPicture</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_autoShow" data-tablink="autoShow">autoShow</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_close" data-tablink="close">close</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_closeAll" data-tablink="closeAll">closeAll</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_closeAll" data-tablink="closeAll">closeAll</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_closeSound" data-tablink="closeSound">closeSound</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_destroy" data-tablink="destroy">destroy</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_full" data-tablink="full">full</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getKeeplast" data-tablink="getKeeplast">getKeeplast</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getname" data-tablink="getname">getname</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getplays" data-tablink="getplays">getplays</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getRecordDownloadStatus" data-tablink="getRecordDownloadStatus">getRecordDownloadStatus</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getSelect" data-tablink="getSelect">getSelect</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_getSelectIndex" data-tablink="getSelectIndex">getSelectIndex</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_hideSelect" data-tablink="hideSelect">hideSelect</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_layout" data-tablink="layout">layout</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_max" data-tablink="max">max</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_max" data-tablink="max">max</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_openSound" data-tablink="openSound">openSound</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_picture" data-tablink="picture">picture</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_playoneFrame" data-tablink="playoneFrame">playoneFrame</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_record" data-tablink="record">record</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordCallbackFN" data-tablink="recordCallbackFN">recordCallbackFN</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordGetDownloadUrl" data-tablink="recordGetDownloadUrl">recordGetDownloadUrl</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordPause" data-tablink="recordPause">recordPause</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordPlay" data-tablink="recordPlay">recordPlay</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordSetPos" data-tablink="recordSetPos">recordSetPos</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordSetSpeed" data-tablink="recordSetSpeed">recordSetSpeed</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordStop" data-tablink="recordStop">recordStop</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_recordStopAll" data-tablink="recordStopAll">recordStopAll</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_screen" data-tablink="screen">screen</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_selectByIndex" data-tablink="selectByIndex">selectByIndex</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_setKeeplast" data-tablink="setKeeplast">setKeeplast</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_setSelectIndex" data-tablink="setSelectIndex">setSelectIndex</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_show" data-tablink="show">show</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_shows" data-tablink="shows">shows</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_stopRecordDownload" data-tablink="stopRecordDownload">stopRecordDownload</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+            
+        </div>
+    
+        <div class="index-section properties col-sm-4">
+            <h3>Properties</h3>
+            
+        </div>
+    
+        <div class="index-section events col-sm-4">
+            <h3>Events</h3>
+            
+            <ul class="index-list events">
+                
+                    <li class="index-item event">
+                        <a href="#" data-tabid="#event" data-anchor="#event_on" data-tablink="on">on</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+             
+        </div>
+    </div>
+</div>
+
+<div>
+    <ul id="itemTab" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+        
+            <li><a data-toggle="tab" href="#method">Methods</a></li>
+        
+        
+        
+            <li><a data-toggle="tab" href="#event">Events</a></li>
+        
+    </ul>
+
+    <div class="tab-content">
+        <div id="class" class="tab-pane active">
+            <div class="well well-small classDetail sign-left1">
+            
+
+            
+
+            
+                <div class="foundat">
+                    Defined in: <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l9"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:9</code></a>
+                </div>
+            
+
+            
+                
+                    Module: <a href="../modules/iiw.safe.services.html">iiw.safe.services</a>
+                
+            
+
+            
+        </div>
+
+        
+            
+                <div class="constructor">
+                    <h2>Constructor</h2>
+                    <div id="method_safeCamera.create" class="method item">
+    <h3 class="name">safeCamera.create</h3>
+    <code>
+    safeCamera.create
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        config
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">Camera</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l9"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:9</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">config</code>
+                       <td> <span class="type">JSON Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <pre><code> el          null        监控控件inner到el下。如&lt;div&gt;&lt;/div&gt;，初始化后将会变为&lt;div&gt;&lt;camera&gt;&lt;/camera&gt;&lt;/div&gt;
+ scope       null        控件依赖的作用域，建议传递本模块作用域，不传递则使用全局的作用域
+ type        0           自动布局，0-&gt;auto；1-&gt;固定，自动布局指自动从单画面变为四画面再变为九画面一直到maxsize
+ maxsize     9           默认最大支持9画面
+ keeplast    false       是否保留最后一帧，避免轮巡切换时出现黑屏情况
+ viewmode    0           显示模式，0-&gt;受暂停控制；1-&gt;不受暂停控制，默认为0；暂停时，播放内容的视频停止播放，并且切换也不会播放，但恢复时再重新连接（主要作用于报警联动时，避免资源的过多消耗且无法打开更多的视频等问题）
+ toolbar     0           状态栏模式：
+                             0-&gt;自动；
+                             1-&gt;不显示控制栏；
+                             2-&gt;什么都不显示；
+                             3-&gt;只显示放大、上墙和云台控制；
+                             4-&gt;只显示放大；
+                             5-&gt;普通状态下，只显示放大、上墙和云台控制，最大化后显示所有
+                             6-&gt;只隐藏关闭按钮
+                             7-&gt;只显示本机截图、上墙、最大化、声音控制
+                             8-&gt;普通状态下，只显示放大，最大化以后显示所有</code></pre>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">Camera</span>]
+                    
+                    <p>监控实体对象</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> HTML:
+ &lt;div id="safe_camera_panel"&gt;&lt;/div&gt;
+
+ JS:
+ app.controller(&#39;***Controller&#39;, [&#39;$scope&#39;, &#39;safeCamera&#39;, function($scope, safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#safe_camera_panel&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     // TODO camera method
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div id="method" class="tab-pane">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_addView" class="method item">
+    <h3 class="name">addView</h3>
+    <code>
+    addView
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1459"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1459</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>记录手动查看监控记录。</p>
+<ul>
+<li>当用户手动点击监控时，调用该方法，查看记录+1</li>
+<li>用于数据分析统计使用</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控通道id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_autoPicture" class="method item">
+    <h3 class="name">autoPicture</h3>
+    <code>
+    autoPicture
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        nocheck
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1132"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1132</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>自动查找窗格并显示监控快照。</p>
+<ul>
+<li>调用该方法会停止正在播放的轮巡组（包括临时组和轮巡组）</li>
+<li>自动查找具有一下几种情况：</li>
+<li>情景一：自动布局模式，用户未选中窗格，调用该方法后，变为单画面并在此窗格上显示，再次调用该方法，变为四画面，在2号窗格上显示。</li>
+<li>情景二：自动布局模式，用户选中了3号窗格，调用该方法后，在3号窗格上显示，再次调用，还是在3号窗格。</li>
+<li>情景三：非自动布局模式，四画面，调用该方法五次，依次在1、2、3、4、1号窗格上显示。</li>
+<li>情景四：调用该方法是参数necheck为true，只在当前选中或setSelectIndex窗格上显示。</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">nocheck</code>
+                       <td> <span class="type">Boolean</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>是否不自动查找，默认否</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.autoPicture(&#39;CAMERAID&#39;);
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_autoShow" class="method item">
+    <h3 class="name">autoShow</h3>
+    <code>
+    autoShow
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        nocheck
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1185"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1185</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>自动查找窗格并显示监控实况。</p>
+<ul>
+<li>调用该方法会停止正在播放的轮巡组（包括临时组和轮巡组）</li>
+<li>自动查找具有一下几种情况：</li>
+<li>情景一：自动布局模式，用户未选中窗格，调用该方法后，变为单画面并在此窗格上显示，再次调用该方法，变为四画面，在2号窗格上显示。</li>
+<li>情景二：自动布局模式，用户选中了3号窗格，调用该方法后，在3号窗格上显示，再次调用，还是在3号窗格。</li>
+<li>情景三：非自动布局模式，四画面，调用该方法五次，依次在1、2、3、4、1号窗格上显示。</li>
+<li>情景四：调用该方法是参数necheck为true，只在当前选中或setSelectIndex窗格上显示。</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">nocheck</code>
+                       <td> <span class="type">Boolean</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>是否不自动查找，默认否</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.autoShow(&#39;CAMERAID&#39;);
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_close" class="method item">
+    <h3 class="name">close</h3>
+    <code>
+    close
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1375"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1375</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>关闭指定窗格的实况。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_closeAll" class="method item">
+    <h3 class="name">closeAll</h3>
+    <code>
+    closeAll
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1384"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1384</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>关闭所有窗格的实况，包括临时轮巡组和轮巡组。</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_closeAll" class="method item">
+    <h3 class="name">closeAll</h3>
+    <code>
+    closeAll
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1391"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1391</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>停止轮巡组（包括临时）。</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_closeSound" class="method item">
+    <h3 class="name">closeSound</h3>
+    <code>
+    closeSound
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1614"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1614</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>关闭声音。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                         
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_destroy" class="method item">
+    <h3 class="name">destroy</h3>
+    <code>
+    destroy
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        eventName
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        data
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1535"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1535</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p><strong>* 销毁对象，在退出模块前必须调用该方法，否则会导致播放中的视频一直占用内存和cpu。</strong>。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">eventName</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>发送的消息名称</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">data</code>
+                       <td> <span class="type">JSON Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>发送的数据内容，具体看模块数据接口文档。</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     // 监听模块控制器退出事件，退出模块时，销毁创建的camera对象，释放占用资源
+     $scope.$on(&#39;***ControllerExitEvent&#39;, function() {
+         if(camera) {
+             camera.destroy();
+         }
+     });
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_full" class="method item">
+    <h3 class="name">full</h3>
+    <code>
+    full
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        isFull
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1450"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1450</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置监控控件是否全屏。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">isFull</code>
+                       <td> <span class="type">Boolean</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>是否全屏，true为设置全屏，false为退出全屏</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getKeeplast" class="method item">
+    <h3 class="name">getKeeplast</h3>
+    <code>
+    getKeeplast
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1570"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1570</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取是否保留最后一帧的属性配置；</p>
+</div>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">Boolean</span>]
+                    
+                    <p>value  是否保留最后一帧</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getname" class="method item">
+    <h3 class="name">getname</h3>
+    <code>
+    getname
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1489"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1489</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>根据通道ID，获取通道名称。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>通道的唯一id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">String</span>]
+                    
+                    <p>通道名称</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     console.log(camera.getname(&#39;ID&#39;)); // 西北围墙监控-1
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getplays" class="method item">
+    <h3 class="name">getplays</h3>
+    <code>
+    getplays
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1470"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1470</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取所有正在播放的通道id，以数组形式返回。</p>
+</div>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">Array</span>]
+                    
+                    <p>正在播放的通道数组</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     console.log(camera.getplays()); // [&#39;ID1&#39;, &#39;&#39;, &#39;ID2&#39;, &#39;&#39;] 以上案例为四画面，画面一和三分别在播放ID1和ID2的监控，画面二和四空闲
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_getRecordDownloadStatus" class="method item">
+    <h3 class="name">getRecordDownloadStatus</h3>
+    <code>
+    getRecordDownloadStatus
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        dlid
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1343"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1343</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>录像下载状态回调，具体回调参数详见流媒体开发手册。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">dlid</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>录像下载ID</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_getSelect" class="method item">
+    <h3 class="name">getSelect</h3>
+    <code>
+    getSelect
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1408"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1408</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取选中的窗格序号，返回1代表1号窗格。</p>
+<ul>
+<li>选中窗格指由用户点击或selectByIndex方法触发选中，在指定的窗格上显示选中边框。</li>
+</ul>
+</div>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">Int</span>]
+                    
+                    <p>窗格序号，下标为1</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getSelectIndex" class="method item">
+    <h3 class="name">getSelectIndex</h3>
+    <code>
+    getSelectIndex
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1438"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1438</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取当前聚焦的窗格序号，返回1代表1号窗格。</p>
+<ul>
+<li>选中的情况下返回选中的窗格。</li>
+<li>未选中的情况下，返回setSelectIndex方法配置的序号。</li>
+<li>该方法建议与setSelectIndex配套使用。</li>
+</ul>
+</div>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        [<span class="type">Int</span>]
+                    
+                    <p>窗格序号，下标为1</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_hideSelect" class="method item">
+    <h3 class="name">hideSelect</h3>
+    <code>
+    hideSelect
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1418"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1418</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>清除选中。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_layout" class="method item">
+    <h3 class="name">layout</h3>
+    <code>
+    layout
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        layout
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1352"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1352</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置当前布局，支持简单的数值布局及复杂的二维数组布局。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">layout</code>
+                       <td> <span class="type">Int | Array</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>布局参数，详细见demo</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.layout(1); // 单画面
+     camera.layout(4); // 四画面
+     camera.layout(9); // 九画面
+
+     camera.layout([1,1,2], [1,1,3]); // 三画面
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_max" class="method item">
+    <h3 class="name">max</h3>
+    <code>
+    max
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1634"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1634</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>视频窗口最小化。</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_max" class="method item">
+    <h3 class="name">max</h3>
+    <code>
+    max
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1625"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1625</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>视频窗口最大化。</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_openSound" class="method item">
+    <h3 class="name">openSound</h3>
+    <code>
+    openSound
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1603"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1603</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>开启声音。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                         
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_picture" class="method item">
+    <h3 class="name">picture</h3>
+    <code>
+    picture
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1108"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1108</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>在指定的窗格上打开监控的快照。</p>
+<ul>
+<li>调用该方法会停止正在播放的轮巡组（包括临时组和轮巡组）</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.picture(&#39;CAMERAID&#39;, &#39;1&#39;); // 在1号窗格上显示CAMERAID对应的监控快照
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_playoneFrame" class="method item">
+    <h3 class="name">playoneFrame</h3>
+    <code>
+    playoneFrame
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1304"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1304</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>单帧回放。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_record" class="method item">
+    <h3 class="name">record</h3>
+    <code>
+    record
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        start
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        end
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        pos
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1237"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1237</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>查找录像，并在指定的窗格上自动开始回放。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">start</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>查询录像的开始时间，getTime</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">end</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>查询录像的结束时间，getTime</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">pos</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>开始回放定位的时间点，getTime，如查询一天的录像，但需要从2点开始，就需要配置该参数，否则就从开始时间播放</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordCallbackFN" class="method item">
+    <h3 class="name">recordCallbackFN</h3>
+    <code>
+    recordCallbackFN
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        fn
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1334"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1334</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>回放状态回调，具体回调参数详见流媒体开发手册。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">fn</code>
+                       <td> <span class="type">Function</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>回调函数</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordGetDownloadUrl" class="method item">
+    <h3 class="name">recordGetDownloadUrl</h3>
+    <code>
+    recordGetDownloadUrl
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        start
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        end
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        callback
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1313"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1313</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取录像下载地址。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">start</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>查询录像的开始时间</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">end</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>查询录像的结束时间</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">callback</code>
+                       <td> <span class="type">Function</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                         
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordPause" class="method item">
+    <h3 class="name">recordPause</h3>
+    <code>
+    recordPause
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1275"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1275</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>暂停指定窗格的回放。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordPlay" class="method item">
+    <h3 class="name">recordPlay</h3>
+    <code>
+    recordPlay
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1250"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1250</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>开始（恢复）指定窗格的回放，主要用于暂停后恢复播放使用。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordSetPos" class="method item">
+    <h3 class="name">recordSetPos</h3>
+    <code>
+    recordSetPos
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        time
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1284"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1284</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>定位指定窗格回放中的进度。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">time</code>
+                       <td> <span class="type">Long</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>需要定位到的时间点，getTime</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordSetSpeed" class="method item">
+    <h3 class="name">recordSetSpeed</h3>
+    <code>
+    recordSetSpeed
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        speed
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1294"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1294</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置指定窗格回放中的播放速度。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">speed</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>速度值，如 "1/16x","1/8x","1/4x","1/2x","1x","2x","4x","8x","16x"</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordStop" class="method item">
+    <h3 class="name">recordStop</h3>
+    <code>
+    recordStop
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1259"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1259</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>停止指定窗格的回放。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_recordStopAll" class="method item">
+    <h3 class="name">recordStopAll</h3>
+    <code>
+    recordStopAll
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1268"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1268</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>停止所有的回放。</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_screen" class="method item">
+    <h3 class="name">screen</h3>
+    <code>
+    screen
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        layout
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1581"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1581</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置一机多屏数量。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">layout</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>分屏参数，详细见demo</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.screen(1); // 一机单屏
+     camera.screen(2); // 一机双屏
+     camera.screen(3); // 一机三屏
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_selectByIndex" class="method item">
+    <h3 class="name">selectByIndex</h3>
+    <code>
+    selectByIndex
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1398"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1398</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置选中窗格，1代表1号窗格。</p>
+<ul>
+<li>选中窗格指由用户点击或本方法触发选中，在指定的窗格上显示选中边框。</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setKeeplast" class="method item">
+    <h3 class="name">setKeeplast</h3>
+    <code>
+    setKeeplast
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        value
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1560"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1560</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置播放界面是否在停止后保留最后一帧，用于轮巡组等场景，避免出现画面切换时黑屏的现象出现；</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">value</code>
+                       <td> <span class="type">Boolean</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>是否保留最后一帧</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setSelectIndex" class="method item">
+    <h3 class="name">setSelectIndex</h3>
+    <code>
+    setSelectIndex
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1427"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1427</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置聚焦窗格，1代表1号窗格。</p>
+<ul>
+<li>注意是聚焦窗格，不是选中窗格，选中窗格是可以看到有选中边框的，而聚焦窗格把焦点隐藏的移动到对应的窗格，但播放视频时，可以自动的在该窗格上播放。</li>
+<li>调用该方法后，将会取消自动布局模式，既播放的视频只能在制定的窗格上播放。</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_show" class="method item">
+    <h3 class="name">show</h3>
+    <code>
+    show
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        id
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        index
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1161"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1161</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>在指定的窗格上打开监控的实况。</p>
+<ul>
+<li>调用该方法会停止正在播放的轮巡组（包括临时组和轮巡组）</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">id</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控id</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">index</code>
+                       <td> <span class="type">Int</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>窗格序号，下标为1，1对应1号窗格</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.show(&#39;CAMERAID&#39;, &#39;1&#39;); // 在1号窗格上显示CAMERAID对应的监控实况
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_shows" class="method item">
+    <h3 class="name">shows</h3>
+    <code>
+    shows
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        ids
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        userLayout
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        timeout
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1214"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1214</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>打开多个监控，当监控数大于maxsize或者大于layout设置值时，启动临时轮巡组。</p>
+<ul>
+<li>调用该方法会停止正在播放的轮巡组（包括临时组和轮巡组）</li>
+</ul>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">ids</code>
+                       <td> <span class="type">Array</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>监控[id]数组</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">userLayout</code>
+                       <td> <span class="type">Integer | ArrayArray</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>画面数值或二维数组，具体参数看layout方法</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">timeout</code>
+                       <td> <span class="type">Integer</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>轮巡间隔</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     // 设置三画面显示，且在1号画面上每个15秒切换播放camera_1和camera_4
+     camera.autoShow([&#39;camera_1&#39;, &#39;camera_2&#39;, &#39;camera_3&#39;, &#39;camera_4&#39;], [[1,1,2], [1,1,3]]);
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_stopRecordDownload" class="method item">
+    <h3 class="name">stopRecordDownload</h3>
+    <code>
+    stopRecordDownload
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        dlid
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1325"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1325</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>停止录像下载，具体回调参数详见流媒体开发手册。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">dlid</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>录像下载ID</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+            <div id="event" class="tab-pane">
+                <h2 class="off-left">Events</h2>
+
+                
+                    <div id="event_on" class="events item">
+    <h3 class="name"><code>on</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.safe_webapp_js_services_safeCamera.js.html#l1510"><code>temp\iiw.safe\webapp\js\services\safeCamera.js:1510</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+     <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>监听控件相关回调事件；</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">event</code>
+                       <td> <span class="type">String</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <pre><code> allclose            所有的监控都被关闭后触发
+ layout              布局变化触发</code></pre>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">fn</code>
+                       <td> <span class="type">Function</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>回调方法</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> app.controller(&#39;***Controller&#39;, [&#39;safeCamera&#39;, function(safeCamera) {
+     var camera = safeCamera.create({
+         &#39;el&#39;: $(&#39;#ID&#39;),
+         &#39;scope&#39;: $scope
+     });
+
+     camera.on(&#39;layout&#39;, function(size) {
+         // 对应的布局，int | Array。
+         console.log(size);
+     });
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+
+<!-- Mirrored from 192.168.0.251:7001/classes/safeCamera.create.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:07 GMT -->
+</html>

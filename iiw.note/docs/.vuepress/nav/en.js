@@ -14,5 +14,9 @@ module.exports = [
   {
     text: 'Database',
     link: '/oracle/'
+  },
+  {
+    text: 'Project',
+    link: '/project/'
   }
 ]
