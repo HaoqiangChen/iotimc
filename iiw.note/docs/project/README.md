@@ -12,3 +12,30 @@
 
 
 > 用vscode开发
+
+欲了解更多信息，请访问: <https://go.microsoft.com/fwlink/?linkid=830387>
+
+```json5
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "hardware",
+            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware",
+            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "hardware.list",
+            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware\\modules\\iiw.safe.hardware.list",
+            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
+        }
+    ]
+}
+```

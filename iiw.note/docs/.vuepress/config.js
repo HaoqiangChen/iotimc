@@ -1,7 +1,7 @@
 module.exports = {
   title: '安防平台开发笔记',
   description: '安防平台iiw前端框架开发指南',
-  base: '/',
+  base: '/iotimc/',
   port: '6683',
   locales: {
     '/': {
