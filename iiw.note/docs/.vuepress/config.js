@@ -165,7 +165,8 @@ function getProjectSidebar(ItemA) {
       children: [
         '/project/',
         '/project/applet',
-        '/project/app'
+        '/project/app',
+        '/project/terminal'
       ]
     }
   ]

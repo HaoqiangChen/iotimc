@@ -45,6 +45,13 @@ if (item) {
 广播：$rootScope.$broadcast('自命名一个通信字段', '参数');  
 接收消息：$scope.$on('刚命名的通信字段', function(){})
 
+
+## iMessage.show （类似 toast 提示）
+
+```js
+
+```
+
 ## iMessage.show 点击事件
 
 ```js
@@ -101,4 +108,42 @@ $scope.showAlarmHandle = function (message, data) {
     iMessage.remove(data.data.id);
     showAlarmHandle(data.data)
 }
+```
+
+## 全局的确认弹出框服务 iConfirm
+
+```js
+// 需先注入iConfirm服务。
+// 显示一个确认删除的弹出确认框。
+iConfirm.show({
+	scope: $scope,
+	title: '确认删除？',
+	content: '删除信息后将无法还原，是否确认删除？',
+	buttons: [{
+		text: '确认',
+		style: 'button-primary',
+		action: 'confirmSuccess'
+	},
+	{
+		text: '取消',
+		style: 'button-caution',
+		action: 'confirmCancel'
+	}],
+	close: 'confirmClose'
+});
+
+$scope.confirmSuccess = function(id) {
+	console.log('点击确认');
+	iConfirm.close(id);
+};
+
+$scope.confirmCancel = function(id) {
+	console.log('点击取消');
+	iConfirm.close(id);
+};
+
+$scope.confirmClose = function(id) {
+	console.log('弹出窗口将被关闭，如返回true，则关闭，如返回false，则无法关闭');
+	return true;
+};
 ```

@@ -8,6 +8,62 @@
 - 内网API文档：<http://192.168.0.251:7001/>
 - 本地API文档：<a href="file://C:/Users/iotimc/Desktop/iotimc/iiw.api/192.168.0.251_7001/index.html" target="_blank">双击打开本项目`iiw.api`下`index.html`</a>
 
+## iAjax
+
+> post(url, data)
+
+```js
+iAjax.post('sys/test.do?action=login', {
+	'username': 'admin',
+	'password': '123'
+}).then(function(data) {
+	// TODO SUCCESS
+}, function(data) {
+	// TODO ERROR
+});
+```
+
+> get(url, data)
+
+```js
+iAjax.get('sys/test.do?action=userlist', {
+	'username': 'admin'
+}).then(function(data) {
+	// TODO SUCCESS
+}, function(data) {
+	// TODO ERROR
+});
+```
+
+> getTemplate
+
+获取对应模块路径下的资源文件内容。
+```js
+var template = iAjax.getTemplate('iiw.safe', '/view/test.html');
+console.log(template);
+```
+
+> formatFrameURL
+
+格式化frame的src url，根据b/s或c/s访问，返回对应可访问的资源地址。
+```js
+var url = 'http://192.168.0.251:80/#/autologin?username=1001&password=123';
+var furl = iAjax.formatFrameURL(url);
+
+console.log(furl);
+// BS: http://192.168.0.251:80/#/autologin?username=1001&password=123
+// CS: main.html?isclient=1&host=192.168.0.251&port=80&path=autologin?username=1001&password=123
+```
+
+> formatURL
+
+格式化远程访问的url，在url中加入框架域名及token
+```js
+var url = 'sys/test.do?action=userlist';
+var furl = iAjax.formatURL(url);
+console.log(furl);  // /sys/test.do?action=userlist&token=token
+```
+
 ## 单位
 
 > 获取当前所有单位
