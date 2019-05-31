@@ -1,5 +1,34 @@
 # 其他接口
 
+## 获取登陆账号信息
+
+* **接口：**  
+sys/web/syuser.do?action=getLoginSyuser
+* **响应：**  
+```json5
+{
+	"message": "获取当前登录用户信息",
+	"result": {
+        "rows": {
+            "birthday": 1483598661000,
+            "code": "zhzx",
+            "id": "B2B52AFE7F084B3A8E8CBAA61BE56F07",
+            "isaddress": "N",
+            "islock": "N",
+            "issys": "N",
+            "name": "指挥中心",
+            "realname": "指挥中心",
+            "status": "P",
+            "syoufk": "00000000000000000000000000000000",
+            "syouname": "赣州监狱"
+        }
+	},
+	"status": 1,
+	"time": 1586937786313,
+	"token": ""
+}
+```
+
 ## 方言
 
 * **接口：**  
@@ -25,7 +54,19 @@
 }
 ```
 
-> 获取设备厂家
-  ```js
-  iAjax.post('/sys/web/syou.do?action=getSyouAll', {"data": {filter: {cascade: 'Y'}}}).then(function (data) {})
-  ```
+## 查询终端V2.0配置信息
+
+```js
+// 查询终端V2.0配置信息
+function getSysSetting(callback) {
+	safeConfigService.getTerminalConfig(function(data) {
+		terminalServerURL = data;
+		if (subStringOne(terminalServerURL, '//', ':')) {
+			m_sSvr = subStringOne(terminalServerURL, '//', ':') + ':7781'
+		} else {
+			m_sSvr = document.domain + ':7781'
+		}
+		if (callback) callback();
+	});
+}
+```
