@@ -6,4 +6,4 @@
 - `echarts 官方实例` <https://www.echartsjs.com/examples/zh/index.html>
 - `less 中文文档` <https://less.bootcss.com/tools/>
 
-![大数据平台](/chart.png)
+![大数据平台](/iotimc/chart.png)

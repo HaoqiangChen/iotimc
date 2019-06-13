@@ -4,6 +4,43 @@
 
 ## 安防平台
 
+### 平时开发测试
+
+> 用webstorm开发
+
+![webstorm nodejs调试](/iotimc/debug-webstorm.png)
+
+欲了解更多信息，请百度
+
+> 用vscode开发
+
+欲了解更多信息，请访问: <https://go.microsoft.com/fwlink/?linkid=830387>
+
+```json5
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "hardware",
+            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware",
+            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "hardware.list",
+            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware\\modules\\iiw.safe.hardware.list",
+            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
+        }
+    ]
+}
+```
+
 ### 在本机部署一套安防平台测试服务
 
 ### 首先安装 oracle 数据库
@@ -18,7 +55,7 @@
 
 2. 解压缩文件，将两个压缩包解压到同一个文件夹中
 
-![oracle11g安装包解压到同一目录](/oracle11g.png)
+![oracle11g安装包解压到同一目录](/iotimc/oracle11g.png)
 
 3. 将其解压到同一个路径后，找到`database\stage\cvu\cvu_prereq.xml`用文本打开编辑添加win10适配；
 
@@ -32,31 +69,31 @@
     </ENV_VAR_LIST>
 </OPERATING_SYSTEM>
 ```
-![添加win10适配](/oracle-setup1.png)
+![添加win10适配](/iotimc/oracle-setup1.png)
 
 之后在解压文件夹中找到可执行文件【setup.exe】双击安装，配置安全更新操作，出现如下界面，点击下一步即可
 
-![setup.exe](/oracle-setup2.png)
+![setup.exe](/iotimc/oracle-setup2.png)
 
 4. 选择安装方式，选择仅安装数据库软件，如下图所示
 
-![选择仅安装数据库软件](/oracle-step4.png)
+![选择仅安装数据库软件](/iotimc/oracle-step4.png)
 
 5. 网络安装选项、产品语言、数据库版本中三个步骤都默认选择即可，点击下一步
 
 6. 安装位置中的软件位置必须安装在D盘，在软件位置中输入安装路径（默认目录：D:\oracle\product\11.2.0\dbhome_1）
 
-![安装位置中的软件位置必须安装在D盘](/oracle-step6.png)
+![安装位置中的软件位置必须安装在D盘](/iotimc/oracle-step6.png)
 
 7. 先决条件检查，等待检查完成查看安装环境是否允许安装，允许安装即会自动跳转至概要选项中
 
 8. 概要选项中，点击完成按钮开始安装，如下图所示
 
-![概要选项中，点击完成按钮开始安装](/oracle-step8.png)
+![概要选项中，点击完成按钮开始安装](/iotimc/oracle-step8.png)
 
 9. 开始安装oracle程序，如下图所示
 
-![开始安装oracle程序](/oracle-step9.png)
+![开始安装oracle程序](/iotimc/oracle-step9.png)
 
 10. 安装完成oracle程序，点击关闭即可。
 
@@ -64,19 +101,19 @@
 
 1. 以系统管理员身份运行DOS命令行，如下图所示
 
-![以系统管理员身份运行DOS命令行](/services-step1.png)
+![以系统管理员身份运行DOS命令行](/iotimc/services-step1.png)
 
 2. 在命令行输入命令`lsnrctl start`中创建监听服务，如下图所示
 
-![在命令行输入命令（lsnrctl start）中创建监听服务](/services-step2.png)
+![在命令行输入命令（lsnrctl start）中创建监听服务](/iotimc/services-step2.png)
 
 3. 创建成功后，打开系统服务（可运行`services.msc`打开服务），查看是否有`OracleOraDb11g_home1TNSListener`服务，成功的状态是已启动，如下图所示
 
-![查看是否有`OracleOraDb11g_home1TNSListener`服务](/services-step3.png)
+![查看是否有`OracleOraDb11g_home1TNSListener`服务](/iotimc/services-step3.png)
 
 4. 把`OracleOraDb11g_home1TNSListener`服务的启动类型改成自动，如下图所示
 
-![服务的启动类型改成自动](/services-step4.png)
+![服务的启动类型改成自动](/iotimc/services-step4.png)
 
 ### 创建oracle数据库
 
@@ -84,42 +121,42 @@
 
 2. 开始创建数据库，如下图所示
 
-![开始创建数据库](/oracle-create1.png)
-![开始创建数据库](/oracle-create2.png)
+![开始创建数据库](/iotimc/oracle-create1.png)
+![开始创建数据库](/iotimc/oracle-create2.png)
 
 3. 在数据库标识步骤中的全局数据库名必须为（IOTIMC），且必须大写
 
 4. 在数据库身份证明中选择所有账户使用统一管理口令，即密码（密码统一：imcsoft.12345）
 
-![在数据库身份证明中选择所有账户使用统一管理口令](/oracle-create4.png)
+![在数据库身份证明中选择所有账户使用统一管理口令](/iotimc/oracle-create4.png)
 
 5. 步骤6、7、8直接下一步
 
 6. 在初始化参数的内存项中选择默认典型类型即可，如下图所示
 
-![在初始化参数的内存项中选择默认典型类型即可](/oracle-create9.png)
+![在初始化参数的内存项中选择默认典型类型即可](/iotimc/oracle-create9.png)
 
 7. 在初始化参数的字符集项中必须选择使用Unicode(AL32UTF8)模式，注：此项必须选择正确，如下图所示
 
-![在初始化参数的字符集项中必须选择使用Unicode](/oracle-create10.png)
-![数据库存储](/oracle-create11.png)
+![在初始化参数的字符集项中必须选择使用Unicode](/iotimc/oracle-create10.png)
+![数据库存储](/iotimc/oracle-create11.png)
 
 8. 在创建选项中点击完成即开始创建，如下图所示
 
-![在创建选项中点击完成即开始创建](/oracle-create12.png)
-![确认开始创建数据库](/oracle-create13.png)
+![在创建选项中点击完成即开始创建](/iotimc/oracle-create12.png)
+![确认开始创建数据库](/iotimc/oracle-create13.png)
 
 9. 开始安装，等待安装完成，如下图所示
 
-![等待安装完成](/oracle-create14.png)
+![等待安装完成](/iotimc/oracle-create14.png)
 
 10. 在安装过程中会有个提示，点击【忽略】即可，如下图所示
 
-![点击【忽略】即可](/oracle-create15.png)
+![点击【忽略】即可](/iotimc/oracle-create15.png)
 
 11. 在下一个步骤中也点击忽略即可，如下图所示
 
-![点击【忽略】即可](/oracle-create16.png)
+![点击【忽略】即可](/iotimc/oracle-create16.png)
 
 12. 安装完成，点击退出按钮即可
 
@@ -143,7 +180,7 @@ sqlplus "/ as sysdba"
 select name from v$database;
 ```
 
-![SQLPlus验证](/SQLPlus.png)
+![SQLPlus验证](/iotimc/SQLPlus.png)
 如上图所示，没有错误信息，表示验证成功！
 
 > SQLDeveloper工具验证
@@ -152,7 +189,7 @@ select name from v$database;
 
 2. 在连接框中输入连接信息，如下图所示
 
-![SQLDeveloper工具验证](/SQLDeveloper1.png)
+![SQLDeveloper工具验证](/iotimc/SQLDeveloper1.png)
 
 3. 输入信息完成后，点击test按钮，查看以上Status:状态如何，如果是Success状态则说明连接成功
 
@@ -275,41 +312,4 @@ imp ioticore/imcsoft.12345 file=E:/iotimc/backup/xj201910301530.dmp full=y ignor
 拿到公司发给的key文件之后重命名为`reg.key`，之后覆盖掉`D:\IOTIMCSoft\virgo\configuration`目录下的`reg.key`文件即可更新key。
 
 至此，系统部署配置文件已完成，更新注册key；重启服务；即可运行系统。
-
-### 平时开发测试
-
-> 用webstorm开发
-
-欲了解更多信息，请百度
-
-![webstorm nodejs调试](/debug-webstorm.png)
-
-> 用vscode开发
-
-欲了解更多信息，请访问: <https://go.microsoft.com/fwlink/?linkid=830387>
-
-```json5
-{
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "hardware",
-            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware",
-            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "hardware.list",
-            "cwd": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiw.safe\\iiw.safe.hardware\\modules\\iiw.safe.hardware.list",
-            "program": "C:\\Users\\iotimc\\Desktop\\iotimc\\iiwlib\\server.js"
-        }
-    ]
-}
-```
 

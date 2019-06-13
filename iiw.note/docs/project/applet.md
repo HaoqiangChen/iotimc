@@ -26,13 +26,13 @@ __yidao__
 
 源码放于 微信开发者平台·代码管理<https://git.weixin.qq.com/>，让管理员将你拉入小程序开发者，登陆即可看到。
 
-![驿道小程序](/wx-yidao.png)
+![驿道小程序](/iotimc/wx-yidao.png)
 
 ## 健康码微信小程序
 
 源码放于 微信开发者平台·代码管理<https://git.weixin.qq.com/>，让管理员将你拉入小程序开发者，登陆即可看到。
 
-![健康码微信小程序](/wx-health_code.png)
+![健康码微信小程序](/iotimc/wx-health_code.png)
 
 ## 健康码支付宝小程序
 
