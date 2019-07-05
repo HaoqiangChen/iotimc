@@ -2,27 +2,38 @@
 
 登录`tb`账号 管理安防大数据
 
-## 修改数据主题
-
-### 打开数据库
-- `SECTY_SCMP_DATATHEME`这张表配置主题
-- `SECTY_SCMP_DATAGRAPH`这张表配置数据主题下的图表
-- `SECTY_SCMP_DATATHEMEBIND`这张表配置用户有哪些主题
-
-### 步骤
-1、首先打开数据表 syuser，过滤code = 'zhzx'，复制查到的数据id  
-2、数据表datathemebind => value = '180288CBE46244B2965E0514765F5245' => 复制datathemefk  
-3、数据表datatheme => id = '14637B8A9B724739ADD910131B5E357D' => 复制id  
-4、数据表datathemepath => datathemefk = '14637B8A9B724739ADD910131B5E357D' => 就OK了，复制修改你所想修改的
-
-你要看可视化首页加载的时候，调的接口是getBindDataTheme还是getDataxTheme，如果是getBindDataTheme，那就只能在数据库配了
-
 ## 图表常用代码
 
-```html
-plugins/igreport/downfile.do?code=tjga.judged.repeatedly.pie&action=main.js
-<safe-datacenter-chart.tjga.judged.repeatedly.pie></safe-datacenter-chart.tjga.judged.repeatedly.pie>
+### 图表显示和隐藏
+```js
+$scope.$on('safe.jxjyj.prison.tags.select', function(e, data) {
+	if(data.type == 'general') {
+		show();
+	} else {
+		hide();
+	}
+});
 
+function show() {
+	if($element.parents('.datax-chart').length > 0) {
+		$element.parents('.datax-chart').show();
+	} else {
+		$element.parent().show();
+	}
+}
+
+function hide() {
+	if($element.parents('.datax-chart').length > 0) {
+		$element.parents('.datax-chart').hide();
+	} else {
+		$element.parent().hide();
+	}
+}
+```
+
+### 图表间交互
+图表之间交互效果，一般都是使用angularjs广播即可。如
+```js
 $scope.sendMessage('safe.xxyp.nav', code);
 
 $scope.$on('safe.xxyp.nav', function(e, code) {
@@ -30,7 +41,13 @@ $scope.$on('safe.xxyp.nav', function(e, code) {
 });
 ```
 
-### 图表点击事件
-```js
-myChart.on('click', function (params) {})
+### 图表做成一个公共小模块用于内嵌
+
+首先按照平时开发那样，弄多个图表用来做公共小模块，例如`jxjyj.prison.list`
+
+然后再随便另一个图表处引用内嵌，就只需要先在最上面`引入`这个填空里写上`plugins/igreport/downfile.do?code=jxjyj.prison.list&action=main.js`
+
+最后在`html`里内嵌指令即可
+```html
+<safe-datacenter-chart.jxjyj.prison.list></safe-datacenter-chart.jxjyj.prison.list>
 ```

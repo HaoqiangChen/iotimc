@@ -391,7 +391,7 @@ imp imcwlmq/imcsoft.12345 file=E:/iotimc/backup/imcwlmq.dmp full=y ignore=Y
 
 3. 按照上面教程修改安防系统配置文件
 
-改ip，改端口9111要改，9100可以不用改，改数据库用户名，改tomcat-server端口
+改ip，改端口9111要改，9100可以不用改，改数据库用户名`imcwlmq`，改tomcat-server端口
 ```xml
 <remote state="1" type="server">
     <delegate port="9100"/>
@@ -434,4 +434,23 @@ wrapper.description=IOTIMC Service Application Description
 ::: tip reg.key
 同一台服务器多个安防平台测试环境均可用同个`reg.key`
 :::
+
+### 安防平台更新说明
+
+> 后端包更新
+
+1. 一般后端包名为`com.iotimc.security.device-1.0.0.jar`，一般存放在`virgo\release\security`，更新包时先将`原源码包`备份，然后再用`新更新包`替换。
+
+2. 接下来有两种方式，一种是直接重启服务进行更新，还有一种比较方便的刷包方式，就是直接打开`平台地址加 /admin`进入java包操作界面，账号一般为`admin`，密码为`springsource`
+
+3. 点击第二个选项`Artifacts`找到你要更新的更新包，然后先stop等待几秒，之后start几秒后refresh，然后就可以看接口效果，但是刷包并不是都能成功的，有时候会失败，那就只能选择重启服务吧。
+
+
+
+
+
+
+
+
+
 

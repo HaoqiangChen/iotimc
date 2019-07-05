@@ -230,3 +230,28 @@ $scope.confirmClose = function(id) {
 	return true;
 };
 ```
+
+## 触摸滚动条 iScroll2
+
+1. 主框架已加载，无需再次引入。
+2. 此类为指令，直接在html中使用，restrict: 'A'。
+3. iScroll2使用5.2.0版本，解决iScroll内存泄露的问题。
+4. 不能与其它独立指令使用，如ui-layout-container，如遇到此情况请增加一级元素单独使用。
+
+::: danger 注意
+1. 必须指定高度，或上级指定高度; 必须设置position: relative;  
+2. 必须设置多一个子元素div，编译会自动加上position: static;  
+3. css上必须加上`i-scroll2`上的class后第一个子元素div的宽高百分百  
+   .scroll2>div{width:100%;height:100%;}
+:::
+
+```html
+<!-- 必须指定高度，或上级指定高度; 必须设置position: relative; -->
+<div class="scroll2" i-scroll2 style="position: relative;height: 300px">
+    <!-- 此为内容，高度超出i-scroll指令元素的高度，即可触摸和鼠标滚轮进行滚动 -->
+    <!-- 必须设置多一个子元素div，编译会自动加上position: static; -->
+    <div class="list">
+        <div class="item"></div>
+    </div> 
+</div>
+```

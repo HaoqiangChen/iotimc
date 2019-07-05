@@ -1,0 +1,44 @@
+.layout-full() {
+  width: 100%;
+  height: 100%;
+}
+
+.position(@index: 1, @left: 0px, @top: 0px) {
+  position: absolute;
+  z-index: @index;
+  left: @left;
+  top: @top;
+}
+
+.tb-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  color: #ebebeb;
+  background-image: url(../images/default-bg.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+}
+
+.chart-body {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 85px);
+}
+
+.datax-chart{
+  position: absolute;
+  .chart-bg {
+    width: 100%;
+    height: 100%;
+  }
+}

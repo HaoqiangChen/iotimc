@@ -22,7 +22,7 @@
 
 以上三个项目`值班管理APP` `信息速报APP` `要情上报APP` 用Hbuildx编辑器开发，使用uniapp框架搭建。
 
-* [uniapp](https://uniapp.dcloud.io/README)
+* [uniapp](https://uniapp.dcloud.io/README)ABP-434
 * [git仓库](https://code.aliyun.com/iotimc-terminal/H5-APP.git)
 
 ### 运行调试和打包
