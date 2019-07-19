@@ -106,6 +106,39 @@ function getIsNewAlarm() {
 getIsNewAlarm().then(function(res) {})
 ```
 
+> 查看后台配置的某个系统字典详细信息
+```js
+iAjax.post('security/common/monitor.do?action=getSycodeList', {filter: {type: 'isLaunch'}}).then(function (data) {})
+```
+
+> 修改后台配置的某个系统字典详细信息
+```js
+iAjax.post('sys/web/sycode.do?action=upSycode', {filter: {row: {id: id, content: $scope.content}}}).then(function (data) {
+	if(data.status === 1) {
+		iMessage.show({level: 1, title: '保存成功', content: '路径设置保存成功'});
+	}
+})
+```
+
+## 权限
+
+> 获取是否具有某个权限
+之后请求接口：security/check/check.do?action=getSpecialrole
+传递的参数filter: {url: ['权限标识']}
+```js
+function getRoleSetting(type, callback) {
+    iAjax.post('security/check/check.do?action=getSpecialrole', {filter: {url: [type]}}).then(function(data) {
+        if(data.result && data.result.rows) {
+            callback(data.result.rows);
+        }
+    })
+}
+getRoleSetting('type', function(role) {
+    if(role['type'] != '1') {}
+})
+```
+
+
 ## 监控
 
 &authorization='+ iToken.get()

@@ -6,6 +6,8 @@
 - 内网项目地址：<http://192.168.0.251/>
 - 内网API文档：<http://192.168.0.251:7001/>
 - 本地API文档：<a href="file://C:/Users/iotimc/Desktop/iotimc/iiw.api/192.168.0.251_7001/index.html" target="_blank">双击打开本项目`iiw.api`下`index.html`</a>
+- Underscore：<https://www.html.cn/doc/underscore1.8.3/#each>
+- moment：<http://momentjs.cn/docs/>
 
 ## Underscore.js
 
