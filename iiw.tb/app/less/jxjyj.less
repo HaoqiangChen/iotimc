@@ -1,0 +1,402 @@
+//cssloader!safe/plugins/jxjyj/css/chart
+.theme-color{
+  color: #83F4F6;
+}
+
+.danger-color{
+  color: #D45D5D;
+}
+
+.tb-body {
+  color: #ebebeb;
+  background-image: url(../images/bg.png);
+}
+
+header {
+  width: 100%;
+  height: 85px;
+  background-color: rgba(0, 0, 0, .5);
+}
+//chart.less
+.safe-charts-jxjyj-prison-total {
+  .above {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 35px;
+      height: 35px;
+      margin-right: 15px;
+    }
+
+    .content {
+      .title {
+        font-size: 21px;
+      }
+
+      .time {
+        font-size: 13px;
+      }
+    }
+
+    .extra {
+      font-size: 30px;
+      margin-left: 40px;
+    }
+  }
+
+  .below {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    .data {
+      .rhomboid {
+        position: relative;
+        width: 123px;
+        height: 100%;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-size: 123px 23px;
+        background-position-y: bottom;
+
+        .num {
+          font-size: 28px;
+          font-weight: bold;
+        }
+      }
+
+      .name {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.safe-charts-jxjyj-prison-map {
+  background: url("../images/map.png") no-repeat center/contain;
+}
+
+.safe-charts-jxjyj-prison-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  .tag {
+    padding: 5px 10px;
+    font-size: 18px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+  }
+}
+
+.safe-charts-jxjyj-prison-drawer {
+  //display: none;
+  .slot {
+    margin-bottom: 5px;
+    padding-right: 25px;
+
+    .title {
+      font-size: 20px;
+      padding: 5px 0 5px 15px;
+      border-left: 3px solid #83F4F6;
+    }
+
+    .content {
+      padding: 5px;
+    }
+  }
+  .overview{
+    width: 100%;
+    height: 135px;
+    overflow: hidden;
+    .cell{
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      padding: 5px;
+      border-bottom: 1px solid #40454B;
+      .name{
+        width: 27%;
+        padding-left: 10px;
+      }
+      .num{
+        width: 30%;
+        text-align: center;
+      }
+      .trend{
+        width: 43%;
+        font-size: 16px;
+        padding-left: 10%;
+        i.fa{
+          margin-right: 10px;
+        }
+      }
+      &:first-child{
+        font-size: 17px;
+        .name{
+          padding-left: 3px;
+        }
+      }
+      &:nth-child(2n):hover{
+        background-color: #292D37;
+      }
+    }
+  }
+}
+
+.table-container{
+  .table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+#mobstersData {
+  width: 100%;
+  height: 150px;
+}
+
+.out-people-car-pie{
+  width: 100%;
+  display: flex;
+  #out-people-pie,
+  #out-car-pie{
+    width: 50%;
+    height: 100%;
+  }
+  .pie{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .circle {
+      -webkit-mask: radial-gradient(transparent 28px, #171A20 30px);
+      width: 70px;
+      height: 70px;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+      .circle-top {
+        width: 100%;
+        height: 50%;
+        background: #5E6266;
+        transform-origin: 50% 100%;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        //transition: transform 0.4s linear 1s;
+        //transform: rotate(72deg);
+      }
+
+      .circle-bottom {
+        width: 100%;
+        height: 50%;
+        background: #5E6266;
+        transition: transform 1s linear;
+        transform-origin: 50% 0%;
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        //transform: rotate(180deg);
+        //transition: opacity 0s step-end 1s, transform 1s linear 0s;
+        //opacity: 0;
+      }
+
+      .circle-inner-top {
+        width: 100%;
+        height: 50%;
+        background: #83F4F6;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+
+      .circle-inner-bottom {
+        width: 100%;
+        height: 50%;
+        background: #83F4F6;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+      }
+    }
+    .num {
+      position: absolute;
+      font-size: 20px;
+    }
+  }
+  .name{
+    text-align: center;
+    margin-top: 5px;
+  }
+}
+
+.safe-charts-jxjyj-prison-search{
+  display: none;
+  padding-right: 25px;
+  .title {
+    font-size: 20px;
+    padding: 5px 0 5px 15px;
+    border-left: 3px solid #83F4F6;
+  }
+  .search-box{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0 15px;
+    background-color: RGBA(131, 244, 246, .2);
+
+    i{
+      font-size: 18px;
+      color: #fff;
+      padding: 0 10px;
+    }
+
+    input{
+      flex: 1;
+      border: none;
+      color: #fff;
+      outline: none;
+      background-color: transparent;
+      &::-webkit-input-placeholder{
+        color: #ccc;
+      }
+    }
+  }
+  .content {
+    position: relative;
+    width: 100%;
+    height: calc(~"100% - 110px");
+
+    .layout-full {
+      position: relative;
+
+      & > div {
+        width: 100%;
+      }
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        .avatar{
+          position: relative;
+          width: 140px;
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .info{
+          p{
+            margin-bottom: 5px;
+            &:last-child{
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+
+    .pagination {
+      margin: 0;
+
+      /*bootstrap-pagination分页按钮样式更改为透明状*/
+      /*分页包含的按钮*/
+      li > a {
+        background-image: none;
+        text-shadow: none;
+      }
+
+      li > a,
+      li > span {
+        position: relative;
+        float: left;
+        padding: 8px 8px;
+        border: 0;
+        text-decoration: none;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.25);
+        margin: 0;
+      }
+
+      /*选中效果*/
+      li > a:hover,
+      li > span:hover,
+      li > a:focus,
+      li > span:focus {
+        color: #fff;
+        background-color: rgba(120, 200, 250, 0.8);
+      }
+
+      /*禁止点击的按钮*/
+      li.disabled > a,
+      li.disabled > a:hover {
+        background: rgba(0, 0, 0, 0.2) none;
+      }
+
+      .disabled > span,
+      .disabled > span:hover,
+      .disabled > span:focus,
+      .disabled > a,
+      .disabled > a:hover,
+      .disabled > a:focus {
+        color: gray;
+        border: 0;
+        cursor: not-allowed;
+        background: rgba(0, 0, 0, 0.2) none;
+      }
+
+      /*选中的按钮*/
+      .active > a,
+      .active > span,
+      .active > a:hover,
+      .active > span:hover,
+      .active > a:focus,
+      .active > span:focus {
+        z-index: 2;
+        color: #fff;
+        background-color: rgba(120, 200, 250, 0.8);
+        border: 0;
+        cursor: default;
+      }
+
+      li.active > a {
+        background-image: none;
+        filter: none;
+      }
+    }
+  }
+}

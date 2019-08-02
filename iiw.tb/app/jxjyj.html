@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>安防平台大数据中心 tb 图表</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="/lib/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/tb-base.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="tb-body" ng-app="myApp" ng-controller="myCtrl">
+  <header></header>
+  <div class="chart-body">
+    <div class="datax-chart" style="top: 25px; left: 25px; z-index: 2;">
+      <div class="ig-charts" style="width: 280px; height: 135px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-total">
+          <div class="above">
+            <div class="logo" style="background-image: url(http://moringsoft.imwork.net:8283/iiw/iiw.safe.plugins.gxdsj/webapp/img/criminal/statistics_logo.png);"></div>
+            <div class="content">
+              <div class="title">全省单位总数</div>
+              <div class="time">截止日期：2020-04-17</div>
+            </div>
+            <div class="extra">13</div>
+          </div>
+          <div class="below">
+            <div class="data">
+              <div class="rhomboid" style="background-image: url(./images/rhomboid.png);">
+                <div class="num">3102</div>
+              </div>
+              <div class="name" style="color: #D45D5D">在押数</div>
+            </div>
+            <div class="data">
+              <div class="rhomboid" style="background-image: url(./images/rhomboid.png);">
+                <div class="num">26424</div>
+              </div>
+              <div class="name" style="color: #83F4F6;">在册数</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="datax-chart" style="top: 110px; left: 200px; z-index: 1;">
+      <div class="ig-charts" style="width: 1170px; height: 700px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-map"></div>
+      </div>
+    </div>
+    <div class="datax-chart" style="top: 590px; left: 1020px; z-index: 1;">
+      <div class="ig-charts" style="width: 110px; height: 110px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-tags">
+          <div class="tag" style="background-image: url(./images/tag-on.png);">全局概况</div>
+          <div class="tag" style="background-image: url(./images/tag.png);">信息查询</div>
+        </div>
+      </div>
+    </div>
+    <div class="datax-chart" style="top: 150px; left: 200px; z-index: 1;">
+      <div class="ig-charts" style="width: 500px; height: 500px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-list">
+        </div>
+      </div>
+    </div>
+    <div class="datax-chart" style="top: 0px; left: 1500px; z-index: 1;">
+      <div class="ig-charts" style="width: 420px; height: 850px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-drawer">
+          <div class="slot">
+            <div class="title">监狱情况概览</div>
+            <div class="content">
+              <div class="overview">
+                <div class="cell">
+                  <div class="name">在押情况</div>
+                  <div class="num">人数</div>
+                  <div class="trend">趋势 <span style="font-size: 12px">(较去年比较)</span></div>
+                </div>
+                <div class="cell">
+                  <div class="name">在押人数</div>
+                  <div class="num">3102</div>
+                  <div class="trend"><i class="fa fa-long-arrow-up theme-color"></i>2.3%</div>
+                </div>
+                <div class="cell">
+                  <div class="name">在押男犯</div>
+                  <div class="num">2102</div>
+                  <div class="trend"><i class="fa fa-long-arrow-down danger-color"></i>-1.5%</div>
+                </div>
+                <div class="cell">
+                  <div class="name">在押女犯</div>
+                  <div class="num">121</div>
+                  <div class="trend"><i class="fa fa-long-arrow-up theme-color"></i>8.6%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="title">押犯数据</div>
+            <div class="content">
+              <div id="mobstersData"></div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="title">外来人员车辆统计</div>
+            <div class="content">
+              <div class="out-people-car-pie">
+                <div id="out-people-pie">
+                  <div class="pie"
+                        ng-style="{'background-image': outpeopleNum ? 'url(' + filePath + '/pie-bg.png)' : 'url(' + filePath + '/pie-bg1.png)'}">
+                    <div class="circle" ng-show="outpeopleNum">
+                      <div class="circle-top"></div>
+                      <div class="circle-bottom"></div>
+                      <div class="circle-inner-top"></div>
+                      <div class="circle-inner-bottom"></div>
+                    </div>
+                    <div class="num">{{outpeopleNum}}</div>
+                  </div>
+                  <div class="name">外来人员</div>
+                </div>
+                <div id="out-car-pie">
+                  <div class="pie"
+                       ng-style="{'background-image': outcarNum ? 'url(' + filePath + '/pie-bg.png)' : 'url(' + filePath + '/pie-bg1.png)'}">
+                    <div class="circle" ng-show="outcarNum">
+                      <div class="circle-top"></div>
+                      <div class="circle-bottom"></div>
+                      <div class="circle-inner-top"></div>
+                      <div class="circle-inner-bottom"></div>
+                    </div>
+                    <div class="num">{{outcarNum}}</div>
+                  </div>
+                  <div class="name">外来车辆</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="title">全省监狱统计</div>
+            <div class="content">
+              <div class="table-container">
+                <div class="table-header">
+                  <div>#</div>
+                  <div style="width: 45%;text-align: center">单位名称</div>
+                  <div style="width: 25%;text-align: center">干警人数</div>
+                  <div style="width: 25%;text-align: right">罪犯人数</div>
+                </div>
+                <div class="table-list">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="datax-chart" style="top: 0px; left: 1500px; z-index: 1;">
+      <div class="ig-charts" style="width: 420px; height: 850px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-search">
+          <div class="title">信息查询</div>
+          <div class="search-box">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="请输入查询条件" ng-model="criminals.filterText" ng-keydown="criminals.search($event)"/>
+            <i class="fa fa-level-down fa-rotate-90"></i>
+          </div>
+          <div class="content">
+            <div class="layout-full" i-scroll2>
+              <ul>
+                <li ng-repeat="row in criminals.list track by $index" ng-click="criminals.showYjt(row)"
+                    style="background-image: url('/images/li.png')">
+                  <div ng-if="criminals.isShowAvatar" class="avatar">
+                    <img ng-src="{{imageUrl + ((row.photo && row.photo != '') ? row.photo : '/img/nopicture.jpg')}}" />
+                    <div class="safe-tjga-people-box-important"></div>
+                  </div>
+                  <div class="info">
+                    <p>姓 名 : <span>{{row.xm}}</span></p>
+                    <p>单 位 : <span>{{row.syouname}}<span></p>
+                    <p>性 别 : <span>{{row.xb}}<span></p>
+                    <p>罪 名 : <span>{{row.zm}}<span></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer text-center">
+            <div class="pagination">
+              <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="alarm-no-margin" total-items="criminals.pages.totalSize" ng-model="criminals.pages.pageNo" ng-change="criminals.getDatas()" previous-text="上一页" next-text="下一页" max-size="4" items-per-page="criminals.pages.pageSize"></uib-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer></footer>
+</div>
+<!-- build:js scripts/vendor.js -->
+<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="/lib/echarts/3.6.1/echarts.min.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>-->
+<script type="text/javascript" src="/node_modules/underscore/underscore-min.js"></script>
+<!-- endbuild -->
+<!-- build:js scripts/main.js -->
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>

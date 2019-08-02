@@ -64,6 +64,19 @@ var furl = iAjax.formatURL(url);
 console.log(furl);  // /sys/test.do?action=userlist&token=token
 ```
 
+## 用户
+
+> 获取当前用户信息
+
+获取当前用户信息，已写到iiw.safe模块下app.js，并且将数据放到$rootScope.__USERINFO__暴露给其他模块使用。
+```js
+iAjax.post('/sys/web/syuser.do?action=getSyuser', {}).then(function (data) {
+	if(data.result.rows && data.result.rows.length) {
+		$rootScope.__USERINFO__ = data.result.rows[0];
+	}
+})
+```
+
 ## 单位
 
 > 获取当前所有单位

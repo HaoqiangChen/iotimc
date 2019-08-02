@@ -233,6 +233,29 @@ $scope.confirmClose = function(id) {
 };
 ```
 
+## iAjax
+```js
+// get
+iAjax.get('sys/test.do?action=userlist', {'username': 'admin'}).then(function(data) {
+alert(1); // TODO SUCCESS
+}, function(data) {
+// TODO ERROR
+});
+
+// post
+iAjax.post('sys/test.do?action=userlist', {
+	filter: {},
+	remoteip: '192.168.11.19' // 该字段可指向ip请求，比如常用的指向与后端Java工程师 李涛的ip 
+}).then(function(data) {
+alert(1); // TODO SUCCESS
+}, function(data) {
+// TODO ERROR
+});
+
+// iAjax.getTemplate
+var template = iAjax.getTemplate('iiw.safe', '/view/test.html');
+```
+
 ## 触摸滚动条 iScroll2
 
 1. 主框架已加载，无需再次引入。
