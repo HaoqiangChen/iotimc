@@ -13,6 +13,8 @@
 ## 下拉框
 
 ```html
+<select class="form-control" ng-model="assessrecord.syoufk" ng-change="getRecord()" ng-options="row.id as row.name for row in assessrecord.syouAll"></select>
+
 <select ng-change="changeType()" ng-model="types" class="form-control safe-backlog-filter-select">
 	<option value="">全部</option>
 	<option value="{{types.modouleName}}" ng-repeat="types in backlogRows">{{types.modouleName}}</option>

@@ -1,8 +1,22 @@
 # iiw数据主题
 
-登录`tb`账号 管理安防大数据
+登录`tb`账号 管理安防大数据  
+点击`新增图表`可以看到右上角有模块选择，一般选择两种，一种是``图标控件，一种是`自定义HTML`
 
 ## 图表常用代码
+
+### 图表加图片
+```js
+$scope.filePath = $.soa.getWebPath('iiw.safe.plugins.btaf');
+```
+```html
+<div class="pie" ng-style="{'background-image': outpeopleNum ? 'url(' + filePath + '/img/pie-bg.png)' : 'url(' + filePath + '/img/pie-bg1.png)'}">
+```
+```css
+{
+	height: calc(~"100% - 70px");
+}
+```
 
 ### 图表显示和隐藏
 ```js

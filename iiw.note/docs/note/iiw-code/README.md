@@ -27,6 +27,11 @@ _.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
 _.map([[1, 2], [3, 4]], _.first);
 => [1, 3]
 ```
+> pluck
+```
+var stooges = []
+=> 2
+```
 > find
 ```
 var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
@@ -204,6 +209,7 @@ iConfirm.show({
 	scope: $scope,
 	title: '确认删除？',
 	content: '删除信息后将无法还原，是否确认删除？',
+	templateUrl: '绝对地址',     // 引用的html模板地址，建议使用绝对地址，避免分布式后无法访问，此参数配置后，content无效；如：$.soa.getWebPath('iiw.safe.XXX') + '/view/test.html'
 	buttons: [{
 		text: '确认',
 		style: 'button-primary',
@@ -279,4 +285,12 @@ var template = iAjax.getTemplate('iiw.safe', '/view/test.html');
         <div class="item"></div>
     </div> 
 </div>
+```
+
+## 模块加载完成事件
+
+```javascript
+$scope.$on('workLogControllerOnEvent', function () {
+    // todo
+});
 ```

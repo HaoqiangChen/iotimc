@@ -1,160 +1,325 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function ($scope) {
   $scope.filePath = '/images';
-
-  $scope.cases = [
-    {value: 3836, name: '在监数'},
-    {value: 3, name: '在逃数'},
-    {value: 33, name: '禁闭数'},
-    {value: 23, name: '监外就医'},
-    {value: 135, name: '重点罪犯'},
-  ];
-function formatXData(arr, field) {
-  var xdata = [];
-  _.each(arr, function (item) {
-    xdata.push(item[field]);
-  })
-  return xdata;
-}
-
-var mobstersBar = echarts.init(document.getElementById("mobstersData"));
-var mobstersOption = {
-  grid: {
-    top: '30px',
-    left: '50px',
-    right: '0px',
-    bottom: '20px'
-  },
-  xAxis: {
-    type: 'category',
-    data: formatXData($scope.cases, 'name'),
-    axisLabel: { // 坐标轴刻度标签的相关设置
-      textStyle: { // 文字样式
-        color: '#fff'
+  $scope.device = {
+    unit: {
+      id: '',
+      name: '一师阿拉尔监狱',
+      value: 0,
+      tname: '监控类',
+      cname: '',
+      btScale: {}
+    },
+    scale: [{'id':'00000000000000000000000000000000','name':'新疆兵团监狱管理局','num':82205},{'id':'6A53E07DE9D84A9291B936809E029591','name':'一师南口监狱','num':7020},{'id':'40F34EC0F8614FD49AF2E91F7A35D412','name':'三师其盖麦旦监狱','num':6911},{'id':'E87CD350A0EE4E9B86E155DD4BD499ED','name':'三师图木舒克监狱','num':6763},{'id':'F013AE8AD6DB49BCB997F197CFD96BD6','name':'一师阿拉尔监狱','num':6686},{'id':'085C41DC7ADD48F5877863A3CB8E02FA','name':'二师且末监狱','num':6405},{'id':'4F09C4932187444180775A3086793894','name':'三师盖米里克监狱','num':5989},{'id':'79681BF41F2348598C7BCB1D4FA12971','name':'一师幸福城监狱','num':5958},{'id':'19079137FDD046B7832DBC17FD76B3A5','name':'一师花桥监狱','num':5928},{'id':'929BC48B0422448CA115EF6086A94D9E','name':'二师乌鲁克监狱','num':5796},{'id':'C0FC7C2620EA483BB747DA1F9984C117','name':'二师米兰监狱','num':5750},{'id':'643B17CFB01B4EE78C80B67944D7703D','name':'六师芳草湖监狱','num':4231},{'id':'AA9433862D5249F69AFE26DC0D591EC9','name':'二师库尔勒监狱','num':2886},{'id':'D609A85CBFF74DD3B9651CBDC7D031CA','name':'六师五家渠监狱','num':1477},{'id':'7C0E6F3B50734594B63D3CA74802CE80','name':'一师科克库勒监狱','num':1405},{'id':'5B2A5BAA17694F21A5C23F9576DB1E97','name':'八师石河子监狱','num':1355},{'id':'2095E8B5676C425E96728DF9C294C098','name':'兵团乌鲁木齐监狱','num':1252},{'id':'CC1D90CB89DE4725B1517E4D2B263B94','name':'八师北野监狱','num':1138},{'id':'63D5A287275840B6A635EC46CFCC9AF8','name':'八师新安监狱','num':1045},{'id':'BC07D06EA3854C90926F71E07207BF74','name':'一师沙河监狱','num':847},{'id':'47EC1984D5F449AF9D2B29B5CF3FBFB0','name':'一师塔门监狱','num':745},{'id':'8B0B69D9D67845F9A48965DA05DC9792','name':'三师金墩监狱','num':701},{'id':'1165539A895A4A5CA7CC30B37EBA6C68','name':'八师钟家庄监狱','num':547},{'id':'9FB1E974F23D41839BF69AD33AE76996','name':'七师高泉监狱','num':496},{'id':'3635E69C759B4233884072C42798EDF1','name':'六师新湖监狱','num':368},{'id':'A0804E9A7E3B4BC8B40A31397C58580A','name':'七师奎屯监狱','num':312},{'id':'2A98B2623B4241B29CECE1431CDF6C2E','name':'三师皮恰克松地监狱','num':133}],
+    types: [{'num':35,'type':'对讲类'},{'num':611,'type':'监控类'},{'num':76,'type':'门禁类'},{'num':820,'type':'报警类'},{'num':133,'type':'其他类'},{'num':17,'type':'广播类'},{'num':10,'type':'电网类'}],
+    brand: [{'name':'大华NVR通道','value':4059},{'name':'大华NVR','value':78},{'name':'海康解码器电视墙（DS-65XX-B20）','value':1}],
+    searchScale(e) {
+      if (e.keyCode == 13) {
+        $scope.deviceScale = _.filter($scope.device.scale, function(item) {return item.name.search($scope.device.searchText) != -1})
+        drawDeviceBar()
       }
     }
-  },
-  yAxis: {
-    type: 'value',
-    name: '单位: 人',
-    nameLocation: 'end',
-    nameTextStyle: {
-      color: '#fff'
-    },
-    axisLine: {
-      show: false
-    },
-    axisLabel: {
-      textStyle: {
-        color: '#fff'
-      }
-    },
-    splitLine: {
-      lineStyle: {
-        color: '#3F444A'
-      }
-    }
-  },
-  series: [{
-    data: formatXData($scope.cases, 'value'),
-    type: 'bar',
-    barWidth: 5,
-    itemStyle: {
-      normal: {
-        barBorderRadius: 5,
-        color: '#83F4F6',
-        label: {
-          show: true,
-          position: 'top',
-          textStyle: {
-            color: '#83F4F6'
-          }
-        }
-      }
-    },
-  }]
-};
-mobstersBar.setOption(mobstersOption);
+  };
+  $scope.deviceline = [{name: '在线', value: 20}, {name: '离线', value: 25}];
+  $scope.deviceBrand = [{'name':'大华NVR通道','value':2059},{'name':'大华NVR','value':78},{'name':'海康解码器电视墙（DS-65XX-B20）','value':1},{'name':'大华NV通道','value':2059},{'name':'大NVR','value':78},
+  {'name':'海康码器电视墙（DS-65XX-B20）','value':1},{'name':'华NVR通道','value':2059},{'name':'华NVR','value':78},{'name':'康解码器电视墙（DS-65XX-B20）','value':1},{'name':'大华VR通道','value':2059},
+  {'name':'大华VR','value':78},{'name':'海解码器电视墙（DS-65XX-B20）','value':1}];
+  $scope.deviceTypes = [{'num':39063,'tname':'监控类'},{'num':16569,'tname':'门禁类'},{'num':16277,'tname':'报警类'},{'num':8356,'tname':'对讲类'},{'num':906,'tname':'广播类'},{'num':840,'tname':'其他类'},{'num':133,'tname':'电网类'}];
+  $scope.deviceNumList = [{'id':'F013AE8AD6DB49BCB997F197CFD96BD6','num':1688,'syouname':'一师阿拉尔监狱'},{'id':'E87CD350A0EE4E9B86E155DD4BD499ED','num':1651,'syouname':'三师图木舒克监狱'},{'id':'79681BF41F2348598C7BCB1D4FA12971','num':1641,'syouname':'一师幸福城监狱'},{'id':'40F34EC0F8614FD49AF2E91F7A35D412','num':1633,'syouname':'三师其盖麦旦监狱'},{'id':'4F09C4932187444180775A3086793894','num':1504,'syouname':'三师盖米里克监狱'},{'id':'929BC48B0422448CA115EF6086A94D9E','num':1344,'syouname':'二师乌鲁克监狱'},{'id':'C0FC7C2620EA483BB747DA1F9984C117','num':1064,'syouname':'二师米兰监狱'},{'id':'6A53E07DE9D84A9291B936809E029591','num':1037,'syouname':'一师南口监狱'},{'id':'19079137FDD046B7832DBC17FD76B3A5','num':1010,'syouname':'一师花桥监狱'},{'id':'085C41DC7ADD48F5877863A3CB8E02FA','num':812,'syouname':'二师且末监狱'},{'id':'AA9433862D5249F69AFE26DC0D591EC9','num':689,'syouname':'二师库尔勒监狱'},{'id':'2095E8B5676C425E96728DF9C294C098','num':336,'syouname':'兵团乌鲁木齐监狱'},{'id':'5B2A5BAA17694F21A5C23F9576DB1E97','num':331,'syouname':'八师石河子监狱'},{'id':'BC07D06EA3854C90926F71E07207BF74','num':328,'syouname':'一师沙河监狱'},{'id':'7C0E6F3B50734594B63D3CA74802CE80','num':273,'syouname':'一师科克库勒监狱'},{'id':'D609A85CBFF74DD3B9651CBDC7D031CA','num':269,'syouname':'六师五家渠监狱'},{'id':'8B0B69D9D67845F9A48965DA05DC9792','num':254,'syouname':'三师金墩监狱'},{'id':'A0804E9A7E3B4BC8B40A31397C58580A','num':181,'syouname':'七师奎屯监狱'},{'id':'CC1D90CB89DE4725B1517E4D2B263B94','num':150,'syouname':'八师北野监狱'},{'id':'63D5A287275840B6A635EC46CFCC9AF8','num':132,'syouname':'八师新安监狱'},{'id':'643B17CFB01B4EE78C80B67944D7703D','num':115,'syouname':'六师芳草湖监狱'},{'id':'3635E69C759B4233884072C42798EDF1','num':99,'syouname':'六师新湖监狱'},{'id':'47EC1984D5F449AF9D2B29B5CF3FBFB0','num':28,'syouname':'一师塔门监狱'},{'id':'2A98B2623B4241B29CECE1431CDF6C2E','num':0,'syouname':'三师皮恰克松地监狱'},{'id':'1165539A895A4A5CA7CC30B37EBA6C68','num':0,'syouname':'八师钟家庄监狱'},{'id':'9FB1E974F23D41839BF69AD33AE76996','num':0,'syouname':'七师高泉监狱'},{'id':'BC27DEA906624D13A8A59EB91A61A474','num':0,'syouname':'兵团监狱局'}];
 
-$scope.outpeopleNum = 3500;
-$scope.outcarNum = 0;
+  $scope.doorYesterday = [{'name':'二师乌鲁克监狱','num':8728},{'name':'三师盖米里克监狱','num':7489},{'name':'三师其盖麦旦监狱','num':7134},{'name':'一师幸福城监狱','num':5281},{'name':'一师阿拉尔监狱','num':4677},{'name':'二师库尔勒监狱','num':3874},{'name':'六师芳草湖监狱','num':1915},{'name':'二师且末监狱','num':24}];
 
-if ($scope.outpeopleNum) {
-  animatePie($('#out-people-pie'), $scope.outpeopleNum);
-}
+  // console.log(_.sortBy($scope.device.types, 'num').reverse())
 
-function animatePie(el, num) {
-  var percent = 0;
-  if (num > 100) {
-    percent = Math.random() * (0.45 - 0.26) + 0.26
-  } else {
-    percent = num / 100
+  function drawDeviceBrandPie() {
+      var pieOption = {
+          tooltip: {
+              trigger: 'item',
+              // formatter: '{a} <br/>{b} : {c} ({d}%)'
+              formatter: function(params) {
+                return params.seriesName + '<br/>' + params.name + ': ' + params.data.value + '个' + ' ('+ params.percent +'%)';
+              }
+          },
+          color: ['#42d286', '#00c7ff', '#f59040', '#fa5858', '#fff', '#f7d358', '#fa58f4'],
+          series: [{
+              name: $scope.device.unit.tname,
+              type: 'pie',
+              minAngle: 10, // 设置最小扇区角度防止太小看不到
+              startAngle: 0,
+              radius: '80%', // 设置画面占比, grid属性对饼图无效
+              center: ['50%', '50%'],
+              data: $scope.deviceBrand,
+              roseType: 'radius', // 南丁格尔图
+              label: {
+                  normal: {
+                      // position: 'inner',
+                      formatter: function(params) { // 防止文字重叠换行
+                        var text = '';
+                        var num = 5;
+                        var rowNum = Math.ceil(params.name.length / num);
+                        if (rowNum > 1) {
+                          for(var i = 0; i < rowNum; i++) {
+                            if (i==rowNum-1) {
+                                text += params.name.substring(num*i, num*(i+1)) + ':\n';
+                            }else {
+                                text += params.name.substring(num*i, num*(i+1)) + '\n';
+                            }
+                          }
+                          console.log(text);
+                          return text + params.data.value + ' 个';
+                        } else {
+                          return params.name + ':\n' + params.data.value + ' 个';
+                        }
+                      }
+                  }
+              },
+
+              animationType: 'scale',
+              animationEasing: 'elasticOut',
+              animationDelay: function (idx) {
+                  return Math.random() * 200;
+              }
+          }]
+      };
+
+      // var pieOption = {
+      //     tooltip: {
+      //         trigger: 'item',
+      //     },
+      //     color: ['#02c6ff', '#ff3939'],
+      //     series: [{
+      //         name: $scope.device.unit.name + '设备数',
+      //         type: 'pie',
+      //         minAngle: 36, // 设置最小扇区角度防止太小看不到
+      //         startAngle: 0, // 改变起始生长角度
+      //         radius: '100%', // 设置画面占比, grid属性对饼图无效
+      //         center: ['50%', '50%'],
+      //         data: $scope.deviceline,
+      //         // roseType: 'area', // 南丁格尔图
+      //         label: {
+      //             normal: {
+      //                 // position: 'inner',
+      //                 formatter: '{b} : {c}',
+      //                 textStyle: {
+      //                   color: '#fff'
+      //                 }
+      //             }
+      //         },
+
+      //         animationType: 'scale',
+      //         animationEasing: 'elasticOut',
+      //         animationDelay: function (idx) {
+      //             return Math.random() * 200;
+      //         }
+      //     }]
+      // };
+
+      var pieChart = echarts.init(document.getElementById('chartDom'));
+      pieChart.on('click',function(params){
+          console.log(params.data)
+      });
+      pieChart.setOption(pieOption);
   }
-  // var bottom = document.getElementsByClassName('circle-bottom')[0]
-  var bottom = el.find('.circle-bottom')[0];
-  var top = el.find('.circle-top')[0];
-  if (percent <= 0.5) {  //红色区域不超过一半
-    bottom.style.transform = `rotate(${percent * 360}deg)`
-  } else {    //红色区域超过一半的情况，重点部分
-    bottom.style.transform = 'rotate(-180deg)'
-    bottom.style.transition = 'opacity 0s step-end 1s, transform 1s linear'
-    bottom.style.opacity = 0
+  drawDeviceBrandPie();
 
-    top.style.transition = `transform ${(percent - 0.5) / 0.5}s linear 1s`
-    top.style.transform = `rotate(${percent * 360 - 180}deg)`
-  }
-}
+  function drawDeviceBar() {
+    // var barOption = {
+    //     backgroundColor: ['#000'],
+    //     color: ['#02c6ff'],
+    //     tooltip: {
+    //         trigger: 'axis',
+    //     },
+    //     grid: {
+    //         top: '5%',
+    //         left: '5px',
+    //         right: '5%',
+    //         bottom: '13%',
+    //         containLabel: true
+    //     },
+    //     xAxis: {
+    //         type: 'category',
+    //         axisLabel: {
+    //           textStyle: {
+    //             color: '#fff'
+    //           },
+    //           interval: 0,
+    //           rotate: -20,
+    //           // formatter: function(value) {
+    //           //   console.log(value)
+    //           //   var text = '';
+    //           //   var rowNum = Math.ceil(value.length / 2);
+    //           //   if (rowNum > 1) {
+    //           //     for(var i = 0; i < rowNum; i++) {
+    //           //       text += value.substring(2*i, 2*(i+1)) + '\n';
+    //           //     }
+    //           //     return text;
+    //           //   } else {
+    //           //     return value;
+    //           //   }
+    //           // }
+    //         },
+    //         axisLine: {
+    //           lineStyle: {
+    //             color: '#4d6974'
+    //           }
+    //         },
+    //         splitLine: {
+    //           show: false
+    //         },
+    //         axisTick: {
+    //           show: false
+    //         },
+    //         data: _.pluck($scope.deviceNumList, 'syouname')
+    //     },
+    //     yAxis: {
+    //         type: 'value',
+    //         show: false
+    //     },
+    //     series: [{
+    //         name: $scope.deviceUnit.tname + '设备统计',
+    //         type: 'bar',
+    //         // barWidth: '60%',
+    //         label: {
+    //             normal: {
+    //                 show: true,
+    //                 position: 'top',
+    //                 textStyle: {
+    //                   color: '#fff'
+    //                 },
+    //             }
+    //         },
+    //         data: _.pluck($scope.deviceNumList, 'num')
+    //     }]
+    // };
+    $scope.device.btScale = $scope.device.scale[0];
+    $scope.device.scale.shift();
+    $scope.deviceScale = _.filter($scope.device.scale, function(item) {return item.name.search($scope.device.searchText) != -1})
 
-  $scope.criminals = {
-    list: [{"aflb":"一般刑事犯","age":"52","bedno":"07","bm":"360*****309","bqjn":"水电","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********二队","bqzzxzqh":"江西省 赣州市 大余县","csdssdq":"江西省 赣州市 大余县","csrq":"1968-07-06","dah":"28309","dbrq":"2016-08-17","dw":"七监区","fd":"203组","fgdj":"普管","fzsj":"2016-02-26","hjgajg":"镇派出所","hjzz":"江西省 赣州市 大余县池江镇杨村十二队","hjzzcs":"江西省 赣州市 大余县","hklx":"农村","hyzk":"未婚","id":"5D3D8B4D33C24820B6AFD8851825760C","jg":"江西省 赣州市 大余县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05202","jtzz":"江西省 赣州市 大余县池江镇杨村十二队","jtzzcs":"江西省 赣州市 大余县","jyrq":"2016-07-12","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602028309_11.jpg","pjxq":" ","rjrq":"2017-01-05","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2017-01-05","syxq":" ","syxqq":"0年0个月","tc":"水电","xb":"男性","xm":"王*江","xwhcd":"初中","zjdcsd":"江西省 赣州市 大余县","zjhm":"362124196807062016","zjzt":"在押","zm":"诈骗罪","zxxq":"4年 ","zxxqqr":"2016-07-12","zxxqzr":"2020-07-11"},{"aflb":"一般刑事犯","age":"55","bedno":"07","bm":"360*****708","bqmm":"群众","bqwh":"小学","bqzz":"广东省 梅**********第二村民小组","bqzzxzqh":"广东省 梅州市 五华县","csdssdq":"广东省 梅州市 五华县","csrq":"1965-10-12","dah":"28708","dbrq":"2016-07-01","dw":"七监区","fd":"103组","fgdj":"二级严管","fzsj":"2016-04-02","gj":"中国","hjgajg":"镇派出所","hjzz":"广东省 梅州市 五华县水寨镇坝美村第二村民小组","hjzzcs":"广东省 梅州市 五华县","hklx":"农村","hyzk":"已婚","id":"CE9D6BBB3D4440EAB96E2DA4C8C01AF2","jg":"广东省 梅州市 五华县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05107","jtzz":"广东省 梅州市 五华县水寨镇坝美村第二村民小组","jtzzcs":"广东省 梅州市 五华县","jyrq":"2016-05-25","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602028708_11.jpg","pjxq":" ","rjrq":"2017-03-24","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2017-03-24","syxq":" ","syxqq":"1年1个月","xb":"男性","xm":"周*云","xwhcd":"小学","zjdcsd":"广东省 梅州市 五华县","zjhm":"441424196510120110","zjzt":"在押","zm":"诈骗罪","zxxq":"5年4个月","zxxqqr":"2016-05-25","zxxqzr":"2021-09-24"},{"aflb":"一般刑事犯","age":"28","bedno":"12","bm":"360*****182","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********号6楼出租房","bqzzxzqh":"江西省 赣州市 章贡区","csdssdq":"山东省 聊城市 冠县","csrq":"1992-07-25","dah":"26182","dbrq":"2014-07-25","dw":"七监区","fd":"301组","fgdj":"普管","fzsj":"2014-03-01","hjgajg":"镇派出所","hjzz":"山东省 聊城市 冠县东古城镇张查后东村7号","hjzzcs":"山东省 聊城市 冠县","hklx":"农村","hyzk":"未婚","id":"C4094240C0104314844CBB1F5037A307","jg":"山东省 聊城市 冠县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05304","jtzz":"江西省 赣州市 章贡区塘窝里134号6楼出租房","jtzzcs":"江西省 赣州市 章贡区","jyrq":"2014-06-20","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602026182_11.jpg","pjxq":" ","rjrq":"2015-11-25","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2015-11-25","syxq":" ","syxqq":"2年1个月","xb":"男性","xm":"赵*磊","xwhcd":"初中","zjdcsd":"山东省 聊城市 冠县","zjhm":"371525199207251035","zjzt":"在押","zm":"非法拘禁罪","zxxq":"8年3个月","zxxqqr":"2014-06-20","zxxqzr":"2022-09-29"},{"aflb":"重大刑事犯","age":"39","bedno":"04","bm":"360*****494","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********象咀头179号","bqzzxzqh":"江西省 赣州市 安远县","csdssdq":"江西省 赣州市 安远县","csrq":"1981-02-04","dah":"20494","dbrq":"2011-04-25","dw":"七监区","fd":"101组","fgdj":"二级严管","fzsj":"2011-03-30","gj":"中国","hjgajg":"镇派出所","hjzz":"江西省 赣州市 安远县欣山镇大胜村象咀头179号","hjzzcs":"江西省 赣州市 安远县","hklx":"农村","id":"ABE03531B8EC4A98A8063A69B20E748D","jg":"江西省 赣州市 安远县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05110","jtzz":"江西省 赣州市 安远县欣山镇大胜村象咀头179号","jtzzcs":"江西省 赣州市 安远县","jyrq":"2011-04-13","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602020494_11.jpg","pjxq":" ","rjrq":"2012-09-26","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2012-09-26","syxq":" ","syxqq":"22年8个月","xb":"男性","xm":"欧*明堂","xwhcd":"初中","zjdcsd":"江西省 赣州市 安远县","zjhm":"362127198102042638","zjzt":"在押","zm":"故意伤害罪","zxxq":"25年 ","zxxqqr":"2018-05-09","zxxqzr":"2043-05-08"},{"aflb":"重大刑事犯","age":"46","bedno":"10","bm":"360*****823","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********头塘2栋","bqzzxzqh":"江西省 赣州市 章贡区","csdssdq":"江西省 赣州市 赣县区","csrq":"1974-12-07","dah":"29823","dbrq":"2014-06-26","dw":"七监区","fd":"302组","fgdj":"二级严管","fzsj":"2014-06-17","hjgajg":"镇派出所","hjzz":"江西省 赣州市 赣县区梅林镇城南大道白鹭湾2区15栋132室","hjzzcs":"江西省 赣州市 赣县区","hklx":"城镇","hyzk":"未婚","id":"65D306D047554B8FA978A26DDC84A0A1","jg":"江西省 赣州市 赣县区","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05310","jtzz":"江西省 赣州市 章贡区水东镇七里胡头塘2栋","jtzzcs":"江西省 赣州市 章贡区","jyrq":"2014-06-17","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602029823_11.jpg","pjxq":" ","rjrq":"2017-10-16","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2017-10-16","syxq":" ","syxqq":"死刑缓期二年执行","xb":"男性","xm":"廖*镇","xwhcd":"初中","zjdcsd":"江西省 赣州市 赣县区","zjhm":"362121197412070033","zjzt":"在押","zm":"故意杀人罪","zxxq":"死刑缓期二年执行","zxxqqr":"2017-09-27"},{"aflb":"一般刑事犯","age":"31","bedno":"05","bm":"360*****990","bqjn":"电脑","bqmm":"群众","bqwh":"中专","bqzz":"河北省 邯**********组187号","bqzzxzqh":"河北省 邯郸市","csdssdq":"河北省 邯郸市 涉县","csrq":"1989-05-20","dah":"29990","dbrq":"2016-09-30","dw":"七监区","fd":"303组","fgdj":"二级严管","fzsj":"2016-08-11","hjgajg":"镇派出所","hjzz":"河北省 邯郸市涉县涉城镇上清凉村1组187号","hjzzcs":"河北省 邯郸市","hklx":"农村","hyzk":"离婚","id":"2D9BFEA00628415FA42DCA2ADFDD8DF5","jg":"河北省 邯郸市 涉县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05311","jtzz":"河北省 邯郸市涉县涉城镇上清凉村1组187号","jtzzcs":"河北省 邯郸市","jyrq":"2016-08-23","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602029990_11.jpg","pjxq":" ","rjrq":"2017-11-03","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2017-11-03","syxq":" ","syxqq":"8年6个月","tc":"电脑","xb":"男性","xm":"张*瑞","xwhcd":"中专","zjdcsd":"河北省 邯郸市","zjhm":"130426198905200017","zjzt":"在押","zm":"盗窃罪","zxxq":"12年6个月","zxxqqr":"2016-08-23","zxxqzr":"2029-02-22"},{"aflb":"一般刑事犯","age":"30","bedno":"01","bm":"360*****762","bqjn":"摄影","bqmm":"群众","bqwh":"大专","bqzz":"江西省 赣**********0号4栋232房","bqzzxzqh":"江西省 赣州市 兴国县","csdssdq":"江西省 赣州市 兴国县","csrq":"1990-10-15","dah":"29762","dbrq":"2016-12-13","dw":"七监区","fd":"102组","fgdj":"二级严管","fzsj":"2016-11-03","gj":"中国","hjgajg":"镇派出所","hjzz":"江西省 赣州市 兴国县潋江镇西街50号4栋232房","hjzzcs":"江西省 赣州市 兴国县","hklx":"城镇","hyzk":"已婚","id":"9C5EFC19D3C74323AA3956EBC85BE271","jg":"江西省 赣州市 兴国县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05103","jtzz":"江西省 赣州市 兴国县潋江镇西街50号4栋232房","jtzzcs":"江西省 赣州市 兴国县","jyrq":"2016-11-05","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602029762_11.jpg","pjxq":" ","rjrq":"2017-09-27","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2017-09-27","syxq":" ","syxqq":"6年2个月","tc":"摄影","xb":"男性","xm":"李*","xwhcd":"大专","zjdcsd":"江西省 赣州市 兴国县","zjhm":"360732199010150056","zjzt":"在押","zm":"盗窃罪","zxxq":"10年 ","zxxqqr":"2016-11-04","zxxqzr":"2026-11-03"},{"aflb":"一般刑事犯","age":"43","bedno":"01","bm":"360*****592","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********48号","bqzzxzqh":"江西省 赣州市 宁都县","csdssdq":"江西省 赣州市 宁都县","csrq":"1977-04-23","dah":"20592","dbrq":"2011-09-02","dw":"七监区","fd":"302组","fgdj":"普管","fzsj":"2011-03-01","hjgajg":"镇派出所","hjzz":"江西省 赣州市 宁都县梅江镇复兴路48号","hjzzcs":"江西省 赣州市 宁都县","hklx":"城镇","hyzk":"离婚","id":"8929D8E8C65B4AA08A5F2C8ED27F4DCC","jg":"江西省 赣州市 宁都县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05310","jtzz":"江西省 赣州市 宁都县梅江镇复兴路48号","jtzzcs":"江西省 赣州市 宁都县","jyrq":"2011-07-27","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602020592_11.jpg","pjxq":" ","rjrq":"2012-10-25","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2012-10-25","syxq":" ","syxqq":"15年10个月","xb":"男性","xm":"刘*强","xwhcd":"初中","zjdcsd":"江西省 赣州市 宁都县","zjhm":"362131197704230011","zjzt":"在押","zm":"运输毒品罪","zxxq":"20年9个月","zxxqqr":"2015-08-25","zxxqzr":"2036-06-24"},{"aflb":"一般刑事犯","age":"30","bedno":"11","bm":"360*****448","bqmm":"群众","bqwh":"初中","bqzz":"江西省 赣**********含水岗172号","bqzzxzqh":"江西省 赣州市 安远县","csdssdq":"江西省 赣州市 安远县","csrq":"1990-02-17","dah":"20448","dbrq":"2012-04-01","dw":"七监区","fd":"101组","fgdj":"普管","fzsj":"2011-06-15","gj":"中国","hjgajg":"镇派出所","hjzz":"江西省 赣州市 安远县孔田镇太平村含水岗172号","hjzzcs":"江西省 赣州市 安远县","hklx":"农村","hyzk":"未婚","id":"71C276D3198E471CBE8E61244A8CDEA3","jg":"江西省 赣州市 安远县","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05109","jtzz":"江西省 赣州市 安远县孔田镇太平村含水岗172号","jtzzcs":"江西省 赣州市 安远县","jyrq":"2012-02-25","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602020448_11.jpg","pjxq":" ","rjrq":"2012-09-14","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2012-09-14","syxq":" ","syxqq":"0年2个月","xb":"男性","xm":"胡*涛","xwhcd":"初中","zjdcsd":"江西省 赣州市 安远县","zjhm":"360726199002170914","zjzt":"在押","zm":"盗窃罪","zxxq":"8年7个月","zxxqqr":"2012-02-25","zxxqzr":"2020-10-14"},{"aflb":"一般刑事犯","age":"43","bedno":"05","bm":"360*****664","bqmm":"群众","bqwh":"初中","bqzz":"江西省 南**********号","bqzzxzqh":"江西省 南康市","csdssdq":"江西省 南康市","csrq":"1977-12-09","dah":"22664","dbrq":"2012-09-27","dw":"七监区","fd":"302组","fgdj":"普管","fzsj":"2010-02-01","hjgajg":"镇派出所","hjzz":"江西省 南康市唐江镇上坑村石及31号","hjzzcs":"江西省 南康市","hklx":"农村","hyzk":"已婚","id":"CCCB61CC8A5D4E119095E1181327FAB7","jg":"江西省 南康市","jgxt_jggj":"532FE42E63B64669A54154D9F5F78B5C","js":"05308","jtzz":"江西省 南康市唐江镇上坑村石及31号","jtzzcs":"江西省 南康市","jyrq":"2012-08-20","lts":0,"mz":"汉族","photo":"yuzheng/photoupload/import/3602022664_11.jpg","pjxq":" ","rjrq":"2013-12-09","sylb":"新犯收押","syouid":"04C2F6578B154A4BA9E77466879C35AB","syouname":"1#勤俭楼","syrq":"2013-12-09","syxq":" ","syxqq":"4年8个月","xb":"男性","xm":"朱*鑫","xwhcd":"初中","zjdcsd":"江西省 南康市","zjhm":"362122197712094113","zjzt":"在押","zm":"合同诈骗罪","zxxq":"12年7个月","zxxqqr":"2012-08-20","zxxqzr":"2025-04-19"}],
-    pages: {
-      pageNo: 1,
-      pageSize: 10
-    },
-    filterText: '',
-    isShowAvatar: false,
-    getDatas: function() {
-      iAjax.post('/security/information/information.do?action=getcriminalall', {
-        params: {
-          pageNo: $scope.criminals.pages.pageNo,
-          pageSize: $scope.criminals.pages.pageSize
+    var barOption = {
+        // color: ['#02c6ff'],
+        tooltip: {
+            trigger: 'axis'
         },
-        filter: $scope.criminals.filterText
-      }).then(function(data) {
-        console.log(data)
-        if(data.result && data.result.rows) {
-          /*if($scope.criminals.pages.pageNo > 1) {
-              $scope.criminals.list = _.union($scope.criminals.list, data.result.rows);
-          } else {
-              $scope.criminals.list = data.result.rows;
-          }*/
-          $scope.criminals.list = data.result.rows;
+        grid: {
+            top: '0',
+            left: '0',
+            right: '3%',
+            bottom: '1%',
+            containLabel: true,
+        },
+        xAxis: {
+            type: 'log',
+            axisLabel: {
+              textStyle: {
+                // color: '#fff',
+                fontSize: 16
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#fff'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+        },
+        yAxis: {
+            type: 'category',
+            inverse: true, //反向
+            axisLabel: {
+                textStyle: {
+                    color: function(name) {
+                      return name == $scope.device.unit.name ? '#42d286' : '#fff'
+                    },
+                    fontSize: 16
+                },
+            },
+            axisLine: {
+                show: false
+            },
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            data: _.pluck($scope.deviceScale, 'name')
+        },
+        series: [{
+            name: '设备基础建设规模',
+            // barMaxWidth: '60%',
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                color: function(params) {
+                  return params.name == $scope.device.unit.name ? '#42d286' : '#02c6ff'
+                }
+              }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    position: 'right'
+                }
+            },
+            data: _.pluck($scope.deviceScale, 'num')
+        }]
+    };
 
-          if(data.result.params) {
-            $scope.criminals.pages.totalPage = data.result.params.totalPage;
-            $scope.criminals.pages.totalSize = data.result.params.totalSize;
-          }
-        }
-      })
-    },
-    search: function() {
-      $scope.criminals.pages.pageNo = 1;
-      $scope.criminals.getDatas();
-    },
-    showNextPage: function() {
-      if(this.pages.pageNo + 1 <= this.pages.totalPage) {
-        this.pages.pageNo++;
-        this.getDatas();
+    var barChart = echarts.init(document.getElementById('chartDom'));
+    // barChart.getZr().off('click');
+    barChart.getZr().on('click',function(params){
+      var pointInPixel = [params.offsetX, params.offsetY];
+      if (barChart.containPixel('grid', pointInPixel)) {
+        var xIndex = barChart.convertFromPixel({seriesIndex: 0}, pointInPixel)[1];
+        var deviceScale = $scope.device.scale[xIndex];
+        if (deviceScale.id == $scope.device.unit.id) {return}
+        $scope.device.unit = _.extend($scope.device.unit, deviceScale);
+        barChart.setOption(barOption);  
       }
-    },
-    showYjt: function(data) {
-      yjtService.show('criminal', data.bm);
-    },
-    reset: function() {
-      $scope.criminals.list = [];
-      $scope.criminals.pages.pageNo = 1;
-      $scope.criminals.filterText = '';
+    });
+    // 阴影光标显示手掌
+    barChart.getZr().on('mousemove', function(params) {
+      var pointInPixel = [params.offsetX, params.offsetY];
+      if (barChart.containPixel('grid', pointInPixel)) {
+        barChart.getZr().setCursorStyle('pointer');
+      }
+    });
+    barChart.setOption(barOption);
+  }
+  // drawDeviceBar();
+
+  var lhc = [];
+  $scope.lhc = '';
+  function random(times) {
+    // lhc.push(Math.floor(Math.random() * (49 - 1)) + 1);
+    // lhc = Array.from(new Set(lhc));
+    // if (lhc.length !== times) {
+    //   random(times);
+    // } else {
+    //   return lhc;
+    // }
+    var win = Math.floor(Math.random() * (49 - 1)) + 1;
+    if (lhc.some(function(num) {return num == win})) {
+      random();
+    } else {
+      return win;
     }
+    // return Math.floor(Math.random() * (49 - 1)) + 1;
+  }
+  var times = 1;
+  $scope.yaojiang = function() {
+    if (times > 7) {return}
+    if (times == 1) {
+      lhc.push(random());
+      $scope.lhc = lhc[0];
+    } else {
+      lhc.push(random());
+      $scope.lhc = lhc.join(' + ');
+    }
+    times++;
   }
 
 });
+

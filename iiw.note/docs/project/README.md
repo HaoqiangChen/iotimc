@@ -407,6 +407,23 @@ imp imcwlmq/imcsoft.12345 file=E:/iotimc/backup/imcwlmq.dmp full=y ignore=Y
 </datasources>
 ```
 
+用记事本或者notepad++ 打开`D:\IOTIMCSoft\virgo\configuration\tomcat-server.xml`，修改网站端口
+
+将`8080`改为其他未使用端口，将两个`8443`改为其他未使用端口
+```xml
+<Service name="Catalina">
+    <!--可将8080改为其他未使用端口-->
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"
+               keystoreFile="configuration/keystore"
+               keystorePass="changeit"/>
+```
+
 4. 修改服务名
 
 用记事本或者notepad++ 打开`D:\IOTIMCSoft\virgo\wrapper\conf\virgo.conf`
@@ -440,15 +457,23 @@ wrapper.description=IOTIMC Service Application Description
 > 后端包更新
 
 1. 一般后端包名为`com.iotimc.security.device-1.0.0.jar`，一般存放在`virgo\release\security`，更新包时先将`原源码包`备份，然后再用`新更新包`替换。
+一般后端发包时都是按路径文件夹创建放文件，方便实施直接拖过去`release`覆盖更新。
 
 2. 接下来有两种方式，一种是直接重启服务进行更新，还有一种比较方便的刷包方式，就是直接打开`平台地址加 /admin`进入java包操作界面，账号一般为`admin`，密码为`springsource`
 
 3. 点击第二个选项`Artifacts`找到你要更新的更新包，然后先stop等待几秒，之后start几秒后refresh，然后就可以看接口效果，但是刷包并不是都能成功的，有时候会失败，那就只能选择重启服务吧。
+![后端包更新](/iotimc/javaUpdate.png)
 
+> 前端包更新
 
+1. 本来前端包更新很简单的，就直接把包拖到`virgo\release\iiw\com.iotimc.iiw-1.0.0.jar`压缩包里面覆盖更新就行，有时候有新模块才会附带个`iiw.json`，里面加多个语句而已。
+但是后面才了解到，就这个简单的操作，现场实施都能给你搞出花来，什么先解压包才放进去重新压缩之类的，有点无语，所以，为了防止实施瞎弄，
+直接将整个前端包`com.iotimc.iiw-1.0.0.jar`发给他们就行，让他们将原包备份，然后直接覆盖更新。
+![前端包更新](/iotimc/webUpdate.png)
 
+> 硬件包更新
 
-
+1. 硬件包比较麻烦，每个地方每家单位都可能不一样，所以，只需要严格按照 何航 发的更新步骤操作即可。
 
 
 

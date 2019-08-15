@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>开窗demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <link rel="stylesheet" href="./lib/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./lib/jquery/plugins/ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+  <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/tb-base.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="tb-body" ng-app="myApp" ng-controller="myCtrl">
+  <header></header>
+  <div class="chart-body">
+
+    <div class="tvwall">
+
+      <div class="layout-full box" ng-repeat="box in tvWindow.list track by $index" ng-click="tvWindow.setActive($event, $index)" style="position: absolute;" ng-style="{'top': box.top, 'left': box.left, 'width': box.width, 'height': box.height}" data-index="{{$index}}" ng-class="{'select': box.active}" ng-mousedown="openWindow.mouseDown($event)" ng-mouseup="openWindow.mouseUp($event)" ng-mousemove="openWindow.mouseMove($event)">
+        <div class="box-block" ng-if="!box.child.length">
+          <div class="title">
+            <div class="split" ng-click="tvWindow.setWindow(1)">1</div>
+            <div class="split">4</div>
+            <div class="split">9</div>
+          </div>
+          <div class="screen">屏{{$index + 1}}</div>
+        </div>
+        <div class="window" ng-repeat="win in box.child track by $index" style="position: absolute;" ng-style="{'top': win.top, 'left': win.left, 'width': win.width, 'height': win.height, 'z-index': win.zindex}" data-index="{{$index}}" ng-class="{'select': win.active}" ng-click="tvWindow.selectWindow($event, $index, win)">
+          <div class="title">
+            <div class="split" ng-click="tvWindow.setWindow(1)">1</div>
+            <div class="split">4</div>
+            <div class="split">9</div>
+          </div>
+          <div class="resizeL"></div>
+          <div class="resizeT"></div>
+          <div class="resizeR"></div>
+          <div class="resizeB"></div>
+          <div class="resizeLT"></div>
+          <div class="resizeTR"></div>
+          <div class="resizeBR"></div>
+          <div class="resizeLB"></div>
+          <div class="content">
+            <p>{{win.cameraname || '无信号'}}</p>
+            <p>窗口号：{{win.windowid + 1}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning" ng-show="tvWindow.warning.show" ng-style="{'top': tvWindow.warning.top, 'left': tvWindow.warning.left}">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right: 5px;"></i>窗口置顶失败
+      </div>
+
+    </div>
+
+  </div>
+  <footer></footer>
+</div>
+<!-- build:js scripts/vendor.js -->
+<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./lib/jquery/plugins/ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="./lib/echarts/3.6.1/echarts.min.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>-->
+<script type="text/javascript" src="/node_modules/underscore/underscore-min.js"></script>
+<!-- endbuild -->
+<!-- build:js scripts/main.js -->
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>

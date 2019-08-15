@@ -19,13 +19,33 @@
 </head>
 <body>
 <div class="tb-body" ng-app="myApp" ng-controller="myCtrl">
-  <header></header>
+  <!-- <header></header> -->
+  <div class="chart-body">
+    <div class="datax-chart" style="top: 25px; left: 25px; z-index: 2;">
+      <div class="ig-charts" style="width: 320px; height: 50px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-liuhecai-total">
+          <button class="btn btn-success btn-large" ng-click="yaojiang()" style="margin-right: 15px;">六合彩</button>{{lhc}}
+          <!-- <input ng-model="device.searchText" class="form-control" ng-keydown="device.searchScale($event)"> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="datax-chart" style="top: 110px; left: 200px; z-index: 1;">
+      <div class="ig-charts" style="width: 1170px; height: 700px; position: relative; overflow: hidden;">
+        <div class="chart-bg safe-charts-jxjyj-prison-map"></div>
+      </div>
+    </div> -->
+    <div class="datax-chart" style="top: 110px; left: 200px; z-index: 1;">
+      <div class="ig-charts" style="width: 1170px; height: 700px; position: relative; overflow: hidden;">
+        <div id="chartDom"></div>
+      </div>
+    </div>
+  </div>
   <footer></footer>
 </div>
 <!-- build:js scripts/vendor.js -->
 <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script src="/lib/angular/1.4.6/angular.min.js"></script>
 <script type="text/javascript" src="/lib/echarts/3.6.1/echarts.min.js"></script>
 <!--<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>-->
 <script type="text/javascript" src="/node_modules/underscore/underscore-min.js"></script>

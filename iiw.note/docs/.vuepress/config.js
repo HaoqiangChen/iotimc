@@ -89,8 +89,7 @@ function getNoteSidebar(noteA, noteB, noteC) {
       title: noteB,
       collapsable: false,
       children: [
-        '/note/iiw-config/frontend',
-        '/note/iiw-config/backend'
+        '/note/iiw-config/'
       ]
     },
     {
