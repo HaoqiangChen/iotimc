@@ -9,14 +9,14 @@
                     <div class="ui-layout-row system-scalecheck-page-content" ui-layout="{ flow: 'row'}"
                          options="{dividerSize:'0'}">
                         <div class="ui-layout-container" ui-layout-container>
-                            <div class="layout-full system-scalecheck-container">
+                            <div class="layout-full">
                                 <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                                     <div class="loading-toast">
                                         <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
                                         <p class="loading-content">{{loading.content}}...</p>
                                     </div>
                                 </div>
-                                <div class="layout-full i-scroll2">
+                                <div class="layout-full i-scroll2 system-scalecheck-container">
                                     <div class="scalecheck-container">
                                         <div class="scale-header">
                                             <div class="scale-name">{{wjData.name}}</div>
@@ -74,15 +74,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="scale-subtext" ng-if="score.weidu.length">一、测评结果及解释</div>
+                                        <div class="scale-subtext" ng-if="score.weidu">一、测评结果及解释</div>
                                         <div class="scale-score" ng-if="score.weidu.length" ng-repeat="group in score.weidu">
-                                            <table class="alone-table table table-hover" ng-if="group.alone.length">
+                                            <table class="alone-table table table-hover iiw-system-table-container" ng-if="group.alone.length">
                                                 <caption ng-if="group.name">{{group.name}}</caption>
                                                 <colgroup>
-                                                    <col width="1%">
-                                                    <col width="24%">
+                                                    <col width="10%">
+                                                    <col width="20%">
                                                     <col width="15%">
-                                                    <col width="60%">
+                                                    <col width="55%">
                                                 </colgroup>
                                                 <thead>
                                                 <th>序号</th>
@@ -91,11 +91,48 @@
                                                 <th>解释</th>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="(item, index) in group.alone">
+                                                <tr ng-repeat="(index, item) in group.alone track by index">
                                                     <td>{{index + 1}}</td>
                                                     <td>{{item.name}}</td>
                                                     <td>{{item.value}}</td>
                                                     <td>{{item.describes}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="weidu-table table table-hover iiw-system-table-container" ng-if="group.rows.length">
+                                                <caption v-if="group.name">{{group.name}}</caption>
+                                                <colgroup>
+                                                    <col width="10%">
+                                                    <col width="20%">
+                                                    <col width="15%">
+                                                    <col width="55%">
+                                                </colgroup>
+                                                <thead>
+                                                <th>序号</th>
+                                                <th>维度</th>
+                                                <th>得分</th>
+                                                <th>解释</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="(index, item) in group.rows track by index">
+                                                    <td>{{index + 1}}</td>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.value}}</td>
+                                                    <td>{{item.describes}}</td>
+                                                </tr>
+                                                <tr ng-if="group.total">
+                                                    <td colspan="3">平均分</td>
+                                                    <td>{{group.total}}</td>
+                                                </tr>
+                                                <tr ng-if="score.total && index === 0">
+                                                    <td ng-if="score.describes" colspan="2">总分</td>
+                                                    <td ng-if="!score.describes" colspan="3">总分</td>
+                                                    <td>{{score.total}}</td>
+                                                    <td ng-if="score.describes">{{score.describes}}</td>
+                                                </tr>
+                                                <tr ng-if="score.minutes && index === 0">
+                                                    <td colspan="3">答题时长</td>
+                                                    <td>{{score.minutes}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>

@@ -19,3 +19,23 @@
 .scalecheck-container {
     padding: 10px 3% 30px;
 }
+
+.scale-subtext {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.iiw-system-table-container > thead > tr > th, .iiw-system-table-container.table > thead > tr > th {
+    padding: 0;
+    vertical-align: middle;
+}
+
+.iiw-system-table-container tr {
+    height: 50px;
+    line-height: 50px;
+}
+
+.iiw-system-table-container tr th,
+.iiw-system-table-container tr td {
+    text-align: center;
+}

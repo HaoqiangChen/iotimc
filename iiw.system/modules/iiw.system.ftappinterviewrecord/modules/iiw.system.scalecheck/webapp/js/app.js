@@ -33,8 +33,10 @@ define([
                 url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getQuestionNaireDetail';
                 data = {
                     filter: {
-                        id: $scope.record.questionnairefk,
-                        recordfk: $scope.record.id
+                        // id: $scope.record.questionnairefk,
+                        // recordfk: $scope.record.id
+                        id: '4CA22125D5934C928A14052FA9F66D54',
+                        recordfk: '7dfec47dbe4348088ef3fde0c3b231e9'
                     }
                 };
 
@@ -80,7 +82,8 @@ define([
                 url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getQuestionNaireScore';
                 data = {
                     filter: {
-                        id: $scope.record.id
+                        // id: $scope.record.id
+                        id: '7dfec47dbe4348088ef3fde0c3b231e9'
                     }
                 };
 
