@@ -1,0 +1,17 @@
+.system-scalecheck-page-content {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+    padding-bottom: 20px;
+}
+
+.system-scalecheck-container {
+    overflow: hidden;
+}
+
+.scale-name {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}

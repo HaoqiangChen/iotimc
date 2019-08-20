@@ -1,0 +1,57 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="55px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-scalecheck-page-content" ui-layout="{ flow: 'row'}"
+                         options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-scalecheck-container">
+                                <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+                                    <div class="loading-toast">
+                                        <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                        <p class="loading-content">{{loading.content}}...</p>
+                                    </div>
+                                </div>
+                                <div class="layout-full scalecheck-container i-scroll2">
+                                    <div class="scale-header">
+                                        <div class="scale-name">{{wjData.name}}</div>
+                                        <div class="ftapp-userinfo">
+                                            <div class="row">
+                                                <div class="col-md-4 item">
+                                                    <label>访谈员编号：</label>
+                                                    <span><i ng-repeat="num in userDetails.interviewercode">{{num}}</i></span>
+                                                </div>
+                                                <div class="col-md-4 item">
+                                                    <label>访谈员姓名：</label>
+                                                    <span class="underline">{{userDetails.interviewername}}</span>
+                                                </div>
+                                                <div class="col-md-4 item">
+                                                    <label>联系方式：</label>
+                                                    <span class="underline">{{userDetails.phone}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="scale-answerlist"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="60px">
+                            <div class="layout-full" style="background-color: rgba(0, 0, 0, 0.25); padding: 10px;">
+                                <button ng-if="wjData.status === 'O'" class="btn btn-warning col-md-4" type="button"ng-click="scalecheck.reinvestigation()">重新调查</button>
+                                <button ng-if="wjData.status === 'O'" class="btn btn-success col-md-4" type="button"ng-click="scalecheck.audit()">审核通过</button>
+                                <button ng-if="wjData.status === 'O'" class="btn btn-danger col-md-4" type="button" ng-click="scalecheck.back()">返回</button>
+                                <button ng-if="wjData.status !== 'O'" class="btn btn-danger col-md-6" type="button" ng-click="scalecheck.back()" style="position: absolute;left: 25%;">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

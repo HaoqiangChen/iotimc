@@ -1,0 +1,35 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="55px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: hidden;">
+                    <div class="ui-layout-row system-questionnairecheck-page-content" ui-layout="{ flow: 'row'}"
+                         options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-questionnairecheck-container" style="position: relative; display:inline-block;">
+                                <div class="system-loading-toast" ng-class="loading.className">
+                                    <div class="loading-toast">
+                                        <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                        <p class="loading-content">{{loading.content}}...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="60px">
+                            <div class="layout-full" style="background-color: rgba(0, 0, 0, 0.25); padding: 10px;">
+                                <button ng-if="wjData.status === 'O'" class="btn btn-warning col-md-4" type="button"ng-click="questionnairecheck.reinvestigation()">重新调查</button>
+                                <button ng-if="wjData.status === 'O'" class="btn btn-success col-md-4" type="button"ng-click="questionnairecheck.audit()">审核通过</button>
+                                <button ng-if="wjData.status === 'O'" class="btn btn-danger col-md-4" type="button" ng-click="questionnairecheck.back()">返回</button>
+                                <button ng-if="wjData.status !== 'O'" class="btn btn-danger col-md-6" type="button" ng-click="questionnairecheck.back()" style="position: absolute;left: 25%;">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

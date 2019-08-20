@@ -1,0 +1,88 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-interviewrecord-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" size="47px" ui-layout-container>
+                            <div class="system-interviewrecord-bar layout-full">
+                                <div class="col-md-2 pull-left select-group">
+                                    <label>问卷状态: </label>
+                                    <select class="form-control" ng-change="record.getRecordList()" ng-model="record.filter.status">
+                                        <option ng-repeat="(key, type) in record.types track by key" value="{{type.status}}">{{type.statusname}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group pull-right" style="width:247px;">
+                                    <input type="text" class="system-interviewrecord-search" placeholder="{{keyword}}" ng-keypress="record.keypress($event)" ng-model="record.filter.searchText"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="record.getRecordList()"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-interviewrecord-container" style="position: relative; display:inline-block;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+                                        <div class="loading-toast">
+                                            <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                            <p class="loading-content">{{loading.content}}...</p>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover iiw-system-table-container">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>访谈员</th>
+                                            <th>省份</th>
+                                            <th>访谈开始时间</th>
+                                            <th>访谈结束时间</th>
+                                            <th>被访谈员</th>
+                                            <th>身份证号</th>
+                                            <th>被访谈员所属</th>
+                                            <th>问卷类型</th>
+                                            <th>问卷名称</th>
+                                            <th>问卷状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="item in record.list">
+                                            <td>{{$index+1}}</td>
+                                            <td>{{item.interviewer}}</td>
+                                            <td>{{item.sf}}</td>
+                                            <td>{{item.starttime}}</td>
+                                            <td>{{item.endtime}}</td>
+                                            <td>{{item.xm}}</td>
+                                            <td>{{item.zjhm}}</td>
+                                            <td>{{item.typename}}</td>
+                                            <td>{{ ({wjlx_ftwj:'问卷',wjlx_lb:'量表'}[item.nairetype]) }}</td>
+                                            <td>{{item.nairename}}</td>
+                                            <td style="font-size: 18px;" ng-style="{color: item.statusname === '待调查' ? '#f04124' : item.statusname === '待审核' ? '#f0ad4e' : item.statusname === '已审核' ? '#5cb85c' : '#a5a5a5'}">{{item.statusname}}</td>
+                                            <td ng-if="item.statusname === '待调查'">请在APP上做访谈调查</td>
+                                            <td ng-if="item.statusname === '待审核'">
+                                                <a class="btn btn-info" ng-click="record.check(item)" style="padding: 8px 16px;"><i class="fa fa-gavel fa-fw"></i>审核</a>
+                                            </td>
+                                            <td ng-if="item.statusname === '已审核' || item.statusname === '审核不通过'">
+                                                <a class="btn btn-success" ng-click="record.check(item)" style="padding: 8px 16px;"><i class="fa fa-eye fa-fw"></i>查看</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination ui-layout-container pagination-layout-container" size="49px" ui-layout-container>
+                            <label class="col-lg-3 pull-right" style="height:50px; line-height: 50px;text-align: right;">统计信息：每页{{record.params.pageSize}}行， 共{{record.params.totalSize||0}}行， 共{{record.params.totalPage||0}}页</label>
+                            <uib-pagination style="padding: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-left" total-items="record.params.totalSize" ng-model="record.params.pageNo" ng-change="record.getRecordList()" items-per-page="record.params.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
