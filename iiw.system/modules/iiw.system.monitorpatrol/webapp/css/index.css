@@ -1,0 +1,37 @@
+
+.system-monitorpatrol {
+    position: relative;
+}
+
+.system-monitorpatrol .stretch {
+    overflow: hidden;
+}
+
+.system-monitorpatrol-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.system-monitorpatrol-bar {
+    background-color: rgba(0,0,0,0.3);
+}
+
+a.safe-monitorpatrol-linka:hover {
+    text-decoration: underline;
+}
+
+.system-monitorpatrol-container .monitorpatrol-container-body {
+    padding: 15px;
+}
+
+.system-monitorpatrol-container .monitorpatrol-container-body .table tr:hover {
+    cursor: default;
+}
+
+.system-monitorpatrol-container .monitorpatrol-container-body .table td,
+.system-monitorpatrol-container .monitorpatrol-container-body .table th {
+    vertical-align: middle;
+}
+
+.system-monitorpatrol-container .monitorpatrol-container-foot {
+    background-color: rgba(0,0,0,0.3);
+}

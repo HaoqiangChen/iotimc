@@ -1,0 +1,59 @@
+.ztree li span.button.ouIcon_ico_open,
+.ztree li span.button.ouIcon_ico_close,
+.ztree li span.button.ouIcon_ico_docu {
+    background:url('../img/star.png');
+    background-size: cover;
+}
+.informationappear-config-header{
+    overflow: hidden;
+}
+.informationappear-config-ouTree{
+    border: 1px solid rgba(0,0,0,0.3);
+    float: left;
+    width: 19%;
+}
+.informationappear-config-content{
+    background-color: rgba(0,0,0,0.3);
+    padding: 0;
+    float: left;
+    width: 81%;
+}
+.informationappear-config-content-header{
+    padding: 2px;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.3);
+    overflow:hidden;
+}
+.informationappear-config-main{
+    padding: 15px;
+    overflow:hidden;
+}
+.informationappear-config-informationConfirm {
+    height: 550px;
+    overflow:auto;
+}
+.informationappear-config-informationConfirm::-webkit-scrollbar{
+    width: 6px;
+}
+
+.informationappear-config-informationConfirm::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+
+
+.informationappear-config-main::-webkit-scrollbar{
+    width: 6px;
+}
+
+.informationappear-config-main::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+.informationappear-config-content-select{
+    height: 39px;
+    width: 100px;
+    background-color: rgba(0,0,0,0.3);
+    color:#fff;
+    border: 1px solid #666;
+}

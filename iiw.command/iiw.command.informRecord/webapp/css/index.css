@@ -1,0 +1,131 @@
+.command-rollcall-list{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.command-rollcall-list button{
+    text-shadow: -1px 1px 5px rgba(0,0,0,.5);
+}
+
+.command-rollcall-list-list{
+    margin: 20px 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 40px);
+    padding: 50px;
+    overflow: hidden;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+/*头部过滤*/
+.command-rollcall-list-list-header{
+    width: 100%;
+    height: 80px;
+    padding: 5px 15px;
+}
+
+.command-rollcall-list-list-header-filter{
+    width: 25%;
+    height: 100%;
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    color: #0477df;
+}
+
+.command-rollcall-list-list-header-filter input{
+    border: 5px solid transparent;
+}
+
+.command-rollcall-list-list-header-filter-name{
+    width: 30%;
+    height: auto;
+    float: left;
+    text-align: right;
+}
+
+.command-rollcall-list-list-header-filter-content{
+    width: 70%;
+    height: auto;
+    float: left;
+}
+
+.command-rollcall-list-list-header-filter-content .corner{
+    width: 10%;
+    height: auto;
+    float: left;
+}
+
+/*日志列表*/
+.command-rollcall-list-list-body{
+    width: 100%;
+    height: calc(100% - 80px);
+}
+
+.command-rollcall-list-list-body table{
+    width: 100%;
+    border-left: 2px solid rgba(100,100,100, .2);
+    border-right: 2px solid rgba(100,100,100, .2);
+}
+
+.command-rollcall-list-list-body th,
+.command-rollcall-list-list-body td{
+    text-align: center;
+    word-break: keep-all;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.command-rollcall-list-list-body thead tr{
+    background-color: #0477df;
+    color: #fff;
+}
+
+.command-rollcall-list-list-body tr{
+    height: 50px;
+    color: #ddd;
+    border-bottom: 1px solid rgba(150,150,150,.2);
+}
+
+.command-rollcall-list-list-body table tbody tr:hover{
+    background-color: rgba(150,150,150,.2);
+}
+
+
+.command-rollcall-list-list-body tbody tr:nth-child(even){
+    background-color: rgba(150,150,150,.1);
+}
+
+.command-rollcall-list-list-body tbody tr{
+    color: #000;
+}
+
+/*分页*/
+.command-rollcall-list-body-params{
+    position: absolute;
+    left: calc(50% - 300px);
+    bottom: 0;
+    width: 600px;
+    height: auto;
+    padding: 15px 0;
+}
+
+.command-rollcall-list .command-rollcall-list-body-params .pagination>li>a,
+.command-rollcall-list .command-rollcall-list-body-params .pagination > .disabled > a{
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0,.1);
+    color: #000;
+}
+
+.command-rollcall-list .command-rollcall-list-body-params .pagination>li>a:hover{
+    background-color: #aaa;
+}
+
+.command-rollcall-list .command-rollcall-list-body-params .pagination > .active > a{
+    background-color: rgba(200,200,200,1);
+}
+

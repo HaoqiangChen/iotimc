@@ -1,0 +1,88 @@
+<div class="layout-full" system-page-click>
+    <div class="stretch ui-layout-column iiw-system-container" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row iiw-system-container-body" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <!-- top -->
+            <div class="ui-layout-container" size="80px" ui-layout-container>
+                <div class="iiw-system-header-container">
+                    <div class="top-navbar header b-b">
+                        <div class="pull-left iiw-system-header-container-left">
+                            <i-logo></i-logo>
+                        </div>
+                        <div class="pull-left iiw-system-header-container-center">
+                            <div class="iiw-system-header-main">
+                                <ul>
+                                    <li><i class="fa fa-desktop"></i></li>
+                                    <li><b class="ng-binding">当前模块：{{systemMain.moduleName}}</b></li>
+                                    <li class="iiw-system-header-step"></li>
+                                    <li><i class="fa fa-calendar"></i></li>
+                                    <li class="ng-binding">{{time.now | date: 'EEEE'}}，{{time.now | date: 'yyyy年MM月dd日'}}</li>
+                                    <li class="iiw-system-header-step"></li>
+                                    <li><i class="fa fa-clock-o"></i></li>
+                                    <li class="ng-binding"> {{time.now | date: 'HH:mm:ss'}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pull-left iiw-system-header-container-right">
+                            <ul class="iiw-system-top-navbar nav navbar-nav navbar-right hidden-xs">
+                                <li class="dropdown user hidden-xs">
+                                    <a class="dropdown-toggle iiw-system-header-dropdown-toggle" ng-model="showDropdownMenu">
+                                        <i class="fa fa-male"></i> <span class="username">系统管理员</span> <i class="fa fa-caret-down small"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="dropdown-menu iiw-system-header-dropdown-menu">
+                    <li><a ng-click="goFrontModule()"><i class="fa fa-laptop"></i> 前往默认首页</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="gotoSetting()"><i class="fa fa-cog"></i> 设置</a></li>
+                    <li class="divider"></li>
+                    <li><a i-exit><i class="fa fa-key"></i> 退出</a></li>
+                </ul>
+            </div>
+            <!-- center -->
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="iiw-system-wrapper-container">
+                    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                        <div ui-layout-container size="250px" class="stretch ui-layout-container iiw-system-module-menu-bar">
+                            <div class="left-nav" i-scroll2>
+                                <div id="side-nav">
+                                    <ul id="nav">
+                                        <li ng-repeat="menu in menus" system-left-menu-click>
+                                            <a ng-if="menu.hasChild == 'false'" ui-sref="{{menu.url}}"> <i class="fa {{menu.icon}}"></i> {{menu.name}} </a>
+                                            <a ng-if="menu.hasChild == 'true'"> <i class="fa {{menu.icon}}"></i> {{menu.name}} <span class="label label-info pull-right">{{menu.child.length}}</span> <i class="arrow fa fa-angle-left"></i></a>
+                                            <ul class="sub-menu" ng-if="menu.hasChild == 'true'">
+                                                <li ng-repeat="childMenu in menu.child"> <a class="iiw-system-second-level-menu" ui-sref="{{childMenu.url}}"> <i class="fa {{childMenu.icon}}"></i> {{childMenu.name}} </a> </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container class="stretch ui-layout-container">
+                            <div class="page-content" ui-view></div>
+                            <div class="iiw-system-switcher-changer">
+                                <div class="iiw-system-background-changer-icon fa fa-gears" system-switcher-dialog></div>
+                                <div class="form_holder">
+                                    <div class="predefined_styles">
+                                        <a class="styleswitch" system-switcher-choose rel="a" href=""><img alt="" src="{{filePath}}/img/a.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="b" href=""><img alt="" src="{{filePath}}/img/b.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="c" href=""><img alt="" src="{{filePath}}/img/c.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="d" href=""><img alt="" src="{{filePath}}/img/d.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="e" href=""><img alt="" src="{{filePath}}/img/e.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="f" href=""><img alt="" src="{{filePath}}/img/f.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="g" href=""><img alt="" src="{{filePath}}/img/g.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="h" href=""><img alt="" src="{{filePath}}/img/h.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="i" href=""><img alt="" src="{{filePath}}/img/i.jpg" /></a>
+                                        <a class="styleswitch" system-switcher-choose rel="j" href=""><img alt="" src="{{filePath}}/img/j.jpg" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-syuser-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" size="47px" ui-layout-container>
+                            <div class="system-syuser-bar layout-full">
+                                <a class="btn btn-primary" ng-click="add()" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>添加</a>
+                                <a class="btn btn-success" ng-click="mod()" style="padding: 8px 16px;"><i class="fa fa-edit fa-fw"></i>修改</a>
+                                <a class="btn btn-danger" ng-click="del()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>删除</a>
+                                <a class="btn btn-info" ng-click="import()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>导入</a>
+                                <input type="file" accept=".xls" id="uploadFileExcle" name="uploadFileExcle" onchange="angular.element(this).scope().uploadExcleFile()" style="display: none"/>
+                                <a class="btn btn-warning" ng-click="export()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>导出模板</a>
+
+                                <!--<label class="pull-right">-->
+                                    <!--<input type="text" id="syuser_search" ng-model="searchTitle" placeholder="{{keyword}}" class="system-syuser-search"/>-->
+                                <!--</label>-->
+                                <div class="input-group pull-right" style="width:247px;">
+                                    <input type="text" class="system-syuser-search" placeholder="{{keyword}}" ng-keypress="keypresslist($event, searchTitle)" ng-model="searchTitle"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="getList()"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-syuser-container" style="position: relative; display:inline-block;">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <table class="table table-hover iiw-system-table-container">
+                                        <thead>
+                                            <tr>
+                                                <th class="iiw-system-table-header-container">
+                                                    <input id="checkAll" type="checkbox" ng-model="selectAll" ng-change="selAll()">
+                                                </th>
+                                                <th>序号</th>
+                                                <th class="hidden-xs">用户名</th>
+                                                <th class="hidden-xs">真实名称</th>
+                                                <th>所属单位</th>
+                                                <th>用户权限</th>
+                                                <th>职位</th>
+                                                <th>状态</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="zrow in entityItem" ng-class="{'select': zrow.checked}">
+                                                <td class="iiw-system-table-header-container">
+                                                    <system-row-check ng-model="zrow.checked" class="rowCheck"></system-row-check>
+                                                </td>
+                                                <td>{{$index+1}}</td>
+                                                <td class="hidden-xs">{{zrow.code}}</td>
+                                                <td class="hidden-xs">{{zrow.realname}}</td>
+                                                <td class="hidden-xs">{{zrow.syouname}}</td>
+                                                <td class="hidden-xs">{{zrow.rolename}}</td>
+                                                <td class="hidden-xs">{{zrow.duty}}</td>
+                                                <td ng-if="zrow.status == 'P' && zrow.issys == 'N'" >启用</td>
+                                                <td ng-if="zrow.status == 'C' && zrow.issys == 'N'" >禁用</td>
+                                                <td ng-if="zrow.issys == 'Y'" ng-style="{color: '#f0ad4e'}">系统预设</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination ui-layout-container pagination-layout-container" size="49px" ui-layout-container>
+                            <label class="col-lg-3" style="height:50px; line-height: 50px;">统计信息：每页{{pageSize}}行， 共{{totalSize||0}}行， 共{{totalPage||0}}页</label>
+                            <uib-pagination style="padding: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-right" total-items="totalSize" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="syouTreeModel">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 560px; ">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel('tree')"><i class="fa fa-remove"></i></button>
+                                <h4 class="modal-title">选择单位</h4>
+                            </div>
+                            <div class="modal-body" style="height: 510px;">
+                                <div class="col-lg-12 iiw-system-treeview-container" style="overflow:auto;">
+                                    <div style="position: absolute;">
+                                        <ul system-tree-view ng-model="selectNode" id="sycodeTreeview" class="ztree"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="cancel()">取消</button>
+                            <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="selectOu()">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <export-excel></export-excel>
+</div>

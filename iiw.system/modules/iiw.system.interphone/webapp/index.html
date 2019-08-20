@@ -1,0 +1,66 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="60px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container ui-view>
+                <div class="layout-full">
+                    <div class="ui-layout-row system-interphone-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="ui-layout-container system-interphone-header" size="47px" ui-layout-container style="overflow:hidden;">
+                            <div class="form-group pull-left">
+                                <button class="btn btn-primary" style="margin: 4px; width:83px;" ng-click="add()"><i class="fa fa-plus"></i>添加</button>
+                                <button class="btn btn-success" style="margin-left: -4px; width:83px;" ng-click="mod()" ng-disabled="modBtnFlag"><i class="fa fa-edit"></i>修改</button>
+                                <button class="btn btn-danger" style="width:83px;" ng-click="delete()" ng-disabled="delBtnFlag"><i class="fa fa-minus"></i>删除</button>
+                                <button class="btn btn-warning" style="width:83px;" ng-click="export()"><i class="fa fa-minus"></i>导出</button>
+                                <button class="btn btn-default" style="width:83px;" ng-click="import()"><i class="fa fa-minus"></i>导入</button>
+                                <input type="file" accept=".xls" id="uploadFileExcle" name="uploadFileExcle" onchange="angular.element(this).scope().uploadExcleFile(this)" style="display: none"/>
+                            </div>
+                            <div class="form-group pull-right" style="padding: 4px;">
+                                <div class="input-group" style="width:250px;">
+                                    <input type="text" class="form-control" placeholder="{{keyword}}" ng-keypress="keyPressGetLIst($event)" ng-model="interphoneObj.filterValue"/>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" ng-click="getList()"><i class="fa fa-search"></i></button>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" i-scroll ui-layout-container>
+                            <div class="layout-full system-interphone-container">
+                                <div class="layout-full" style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <table class="table table-hover iiw-system-table-container">
+                                        <thead>
+                                            <tr>
+                                                <th class="iiw-system-table-header-container">
+                                                    <input id="checkAll" type="checkbox" ng-model="selectAll" ng-change="selAll()">
+                                                </th>
+                                                <th>名称</th>
+                                                <th>号码</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="row in interphone | filter: {name: searchTitle}"ng-class="{'select': row.checked}"  ng-click="checkBtnFlag()">
+                                                <td class="iiw-system-table-header-container">
+                                                    <system-row-check ng-model="row.checked" class="rowCheck"></system-row-check>
+                                                </td>
+                                                <td>{{row.name}}</td>
+                                                <td>{{row.phone}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination ui-layout-container pagination-layout-container" size="49px" ui-layout-container>
+                            <label class="col-lg-3" style="height:50px; line-height: 50px;">统计信息：每页{{pageSize}}行， 共{{totalSize||0}}行， 共{{totalPage||0}}页</label>
+                            <uib-pagination style="padding: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-right" total-items="totalSize" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <export-excel></export-excel>
+    </div>
+</div>

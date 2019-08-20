@@ -1,0 +1,121 @@
+.iiw-system-repairFlow{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.iiw-system-repairFlow-container{
+    background-color: rgba(0,0,0,.3);
+    position: relative;
+}
+
+.iiw-system-repairFlow-container-body{
+
+}
+
+.iiw-system-repairFlow-container-body-menu{
+    width: 15%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    border-right: 1px solid rgba(200,200,200,.1);
+    border-left: 1px solid rgba(200,200,200,.1);
+    float: left;
+}
+
+.iiw-system-repairFlow-container-body-menu-item{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(200,200,200,.1);
+    cursor: pointer;
+}
+
+.iiw-system-repairFlow .iiw-system-repairFlow-container-body-menu-item:hover{
+    background-color: rgba(0,0,0,.2);
+}
+
+.iiw-system-repairFlow-container-body-content{
+    width: 85%;
+    height: 100%;
+    float: left;
+}
+
+.iiw-system-repairFlow .select{
+    background-color: rgba(0,0,0,.15);
+}
+
+.iiw-system-repairFlow .select:nth-child(1){
+    color: #4a4;
+}
+
+.iiw-system-repairFlow .select:nth-child(2){
+    color: #49d;
+}
+
+.iiw-system-repairFlow .select:nth-child(3){
+    color: #d94;
+}
+
+.iiw-system-repairFlow .select:nth-child(4){
+    color: #d49;
+}
+
+.iiw-system-repairFlow .select:nth-child(5){
+    color: #9d4;
+}
+
+.iiw-system-repairFlow-container-body-content-manage{
+    padding: 20px 30% 20px 10%;
+    height: 100%;
+    width: 100%;
+    line-height: 25px;
+}
+
+.iiw-system-repairFlow-container-body-content-manage-rows{
+    margin-top: 40px;
+}
+
+.iiw-system-repairFlow-container-body-content-manage-rows-title,
+.iiw-system-repairFlow-container-body-content-manage-rows-write{
+    border: 1px solid rgba(0,0,0,.3);
+    height: 46px;
+}
+
+
+.iiw-system-repairFlow-container-body-content-manage-rows-title{
+    text-align: center;
+    background-color: #333;
+    padding: 0;
+    border-radius: 10px 0 0 10px;
+    line-height: 44px;
+}
+
+.iiw-system-repairFlow-container-body-content-manage-rows-write{
+    background-color: #ddd;
+    border-radius: 0 10px 10px 0;
+    padding: 8px 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.iiw-system-repairFlow-container-body-content-manage .inputCheckBox > *{
+    float: left;
+}
+
+.iiw-system-repairFlow-container-body-content-manage .inputCheckBox input{
+    margin: 3px 10px;
+}
+
+.iiw-system-repairFlow-input-check{
+    position: absolute;
+    top: 0;
+    left: 23px;
+    width: 24px;
+    height: 24px;
+    font-size: 26px;
+    line-height: 0;
+    cursor: pointer;
+    color: #44aa44;
+}

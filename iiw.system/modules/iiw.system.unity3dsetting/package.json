@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.unity3dsetting",
+"version": "0.0.1",
+"description": "三维模型配置",
+"author": "zjq",
+"date": "2016-03-23",
+"main": "unity3dsettingController",
+"host": "192.168.0.251",
+"client": "192.168.0.27"
+}

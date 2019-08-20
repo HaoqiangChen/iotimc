@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.diagnosisplan",
+"version": "0.0.1",
+"description": "诊断计划管理",
+"author": "llx",
+"date": "2016-07-06",
+"main": "diagnosisplanController",
+"host": "192.168.0.251",
+"client": "192.168.0.27"
+}

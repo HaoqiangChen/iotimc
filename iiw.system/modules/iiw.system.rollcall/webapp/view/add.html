@@ -1,0 +1,160 @@
+<div class="layout-full">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md pull-left" ng-disabled="showOneStep" ng-click="prevStep()">上一步</button>
+            <button class="btn btn-danger btn-s-md pull-right" ng-disabled="!showOneStep" ng-click="nextStep()">下一步</button>
+        </div>
+        <div class="ui-layout-container iiw-system-form-container" ng-style="{'overflow': 'hidden'}" ui-layout-container>
+            <form class="form-horizontal label-left layout-full" id="entityItemForm" name="entityItemForm" novalidate ng-show="showOneStep">
+                <fieldset>
+                            <legend class="section">在线点名计划信息</legend>
+                            <div class="control-group row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">计划名称</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" ng-model="entityItem.name" placeholder="请输入计划名称" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <lable ng-show="entityItem.name == null" style="color:red;">*计划名称不能为空</lable>
+                                    </div>
+                                </div>
+                            <div class="control-group row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">作用单位</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <select ng-model="entityItem.syoufk" class="col-md-5 syou-select-option" ng-change="reloadDevice()" required>
+                                                <option value="" selected>请选择作用单位</option>
+                                                <option value="{{syou.id}}" ng-repeat="syou in syouList">{{syou.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <lable ng-show="entityItem.syoufk == null" style="color:red;">*作用单位不能为空</lable>
+                                    </div>
+                                </div>
+                            <div class="control-group row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">开始时间</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" ng-model="entityItem.starttime" placeholder="请输入开始时间" class="form-control" safe-picker p!format="H:i" p!datepicker="false" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <lable ng-show="entityItem.starttime == null" style="color:red;">*开始时间不能为空</lable>
+                                    </div>
+                                </div>
+                            <div class="control-group row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">结束时间</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" ng-model="entityItem.endtime" placeholder="请输入结束时间" class="form-control" safe-picker p!format="H:i" p!datepicker="false" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <lable ng-show="entityItem.endtime == null" style="color:red;">*结束时间不能为空</lable>
+                                    </div>
+                                </div>
+                            <div class="control-group row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">提醒时间</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="number" ng-model="entityItem.remindtime" placeholder="请输入提醒时间" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <lable ng-show="entityItem.name == null" style="color:red;">*提醒时间不能为空</lable>
+                                    </div>
+                                </div>
+                        </fieldset>
+            </form>
+            <div class="layout-full iiw-system-rollcall-device-choose-container" ng-show="!showOneStep">
+                <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                    <div class="ui-layout-container" size="60px" ui-layout-container>
+                        <fieldset>
+                            <legend class="section">在线点名设备信息</legend>
+                        </fieldset>
+                    </div>
+                    <div class="ui-layout-container" ui-layout-container>
+                        <div class="iiw-system-rollcall-syou-device-list-container">
+                            <div class="layout-full iiw-system-rollcall-syou-device-list-body">
+                                <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                                    <div class="ui-layout-container text-center iiw-system-rollcall-syou-device-list-header" size="40px" ui-layout-container>
+                                        <span>可选设备({{deviceList.length}})</span>
+                                    </div>
+                                    <div class="ui-layout-container" ui-layout-container i-scroll>
+                                        <div>
+                                            <table class="table table-hover iiw-system-table-container">
+                                                <thead>
+                                                <tr>
+                                                    <th class="iiw-system-table-header-container">
+                                                        <input type="checkbox" id="checkAllDevice" ng-model="selectAllDevice" ng-change="selAllDevice()">
+                                                    </th>
+                                                    <th>名称</th>
+                                                    <th>所属单位</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="row in deviceList" ng-click="chooseDevice(row)">
+                                                    <td class="iiw-system-table-header-container">
+                                                        <system-row-check ng-model="row.checked" class="rowCheck"></system-row-check>
+                                                    </td>
+                                                    <td>{{row.name}}</td>
+                                                    <td>{{row.syouname}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iiw-system-rollcall-choose-device-list-container">
+                            <div class="layout-full iiw-system-rollcall-choose-device-list-body">
+                                <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                                    <div class="ui-layout-container text-center iiw-system-rollcall-syou-device-list-header" size="40px" ui-layout-container>
+                                        <span>已选设备({{entityItem.device.length}})</span><a class="pull-right" ng-click="removeAllSelect()"><i class="fa fa-trash-o"></i> 清除</a>
+                                    </div>
+                                    <div class="ui-layout-container" ui-layout-container i-scroll>
+                                        <div>
+                                            <table class="table table-hover iiw-system-table-container">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>所属单位</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="row in entityItem.device" ng-click="chooseDevice()">
+                                                        <td>{{row.name}}</td>
+                                                        <td>{{row.syouname}}</td>
+                                                        <td><a class="iiw-system-rollcall-delete-title" ng-click="removeSelect(row)">删除</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

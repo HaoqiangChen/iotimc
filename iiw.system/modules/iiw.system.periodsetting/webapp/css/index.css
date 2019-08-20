@@ -1,0 +1,281 @@
+.system-periodsetting {
+    padding: 10px;
+    position: relative;
+    height: 100%;
+}
+
+.system-periodsetting .view-wrap {
+    width: 100%;
+    padding-right: 20px;
+    position: absolute;
+    bottom: 0px;
+    top: 60px;
+}
+
+.system-periodsetting .view-wrap .view-content {
+    height: 100%;
+}
+
+.system-periodsetting .widget {
+    height: 100%;
+}
+
+.system-periodsetting .menu-button {
+    float: left;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.system-periodsetting .menu-button.right {
+    float: right;
+}
+
+.system-periodsetting .widget-content {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    padding: 0px;
+}
+
+.system-periodsetting .widget-content .wrap {
+    height: 100%;
+}
+
+.system-periodsetting .widget-content .left-tree {
+    height: 100%;
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.system-periodsetting .widget-content .right-content {
+    height: 100%;
+    padding: 0px;
+    position: relative;
+}
+
+.ztree .button {
+    transition-property: none;
+}
+
+.system-periodsetting .widget-content {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    padding: 0px;
+}
+
+.system-periodsetting .widget-btns {
+    float: right;
+    padding: 10px 10px 0 0;
+}
+
+.system-periodsetting .wrap {
+    padding: 0;
+    margin: 0;
+}
+
+.system-periodsetting .wrap .period-container {
+
+}
+
+.system-periodsetting .wrap .ou-container {
+    position: relative;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    overflow: hidden;
+}
+
+.system-periodsetting .wrap .ou-container.fill {
+    padding: 20px;
+}
+
+.system-periodsetting .wrap .ou-container .title {
+    height: 40px;
+    width: 100%;
+}
+
+.system-periodsetting .wrap .ou-container .content {
+
+}
+
+.system-periodsetting .wrap .ou-container .door-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+}
+
+.system-periodsetting .wrap .ou-container .door-container > .door-content {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    height: 80px;
+}
+
+.system-periodsetting .wrap .ou-container .door-container > .door-name {
+    height: 20px;
+}
+
+.system-periodsetting .wrap .ou-container .door-container > .door-content > .door-btn {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+    transition: all .3s ease;
+    text-shadow: none;
+    font-size: 40pt;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.system-periodsetting .wrap .ou-container .door-container > .door-btn:hover {
+    text-shadow: 0px 0px 5px #FFFFFF;
+}
+
+.system-periodsetting .widget-period {
+    display: flex;
+}
+
+.system-periodsetting .widget-period .week-container {
+    flex: 1;
+
+}
+
+.system-periodsetting .widget-period .week-container .week {
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.system-periodsetting .widget-period .week-container .times {
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.system-periodsetting .widget-period .week-container:nth-child(1) .times {
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.system-periodsetting .widget-period .week-container .times .time {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    height: 32px;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .start-time, .system-periodsetting .widget-period .week-container .times .time .end-time{
+    flex: 4;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .dot {
+    flex: 1;
+    line-height: 32px;
+    text-align: center;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .select {
+    flex: 2;
+    text-align: center;
+    position: relative;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .select .select-time {
+    border: 2px solid #FFFFFF;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    padding-right: 3px;
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 11pt;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .select .select-time:hover {
+    text-shadow: 0px 0px 3px #FFFFFF;
+    box-shadow: 0px 0px 3px 0px #FFFFFF;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .delete {
+    text-align: center;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: -2px;
+    top: -10px;
+    opacity: 0;
+    transition: .3s all ease;
+}
+
+.system-periodsetting .widget-period .week-container .times .time:hover .delete {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .delete .delete-time {
+    font-size: 16pt;
+}
+
+.system-periodsetting .widget-period .week-container .times .time .delete .delete-time:hover {
+    text-shadow: 0px 0px 3px #FFFFFF;
+}
+
+.system-periodsetting .widget-period .week-container .add {
+    position: relative;
+    height: 31px;
+    cursor: pointer;
+    transition: .3s all ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.system-periodsetting .widget-period .week-container .add:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.system-periodsetting .widget-period .week-container .add .add-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+}
+
+.modal-header {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+}
+
+.modal-footer {
+    background-color: transparent;
+}
+
+.modal-footer .btn-success {
+    width: 120px;
+    height: 40px;
+}
+
+.modal-footer .btn-warning {
+    width: 120px;
+    height: 40px;
+}
+
+.modal-backdrop {
+    background-color: #FFF;
+}

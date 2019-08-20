@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.honor",
+  "version": "0.0.1",
+  "description": "办税厅-党章荣誉",
+  "author": "llx",
+  "date": "2017-12-19",
+  "main": "taxHonorController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 192.168.0.251:7001/files/temp_iiw.master_webapp_js_services_masterLoadCharts.js.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>temp\iiw.master\webapp\js\services\masterLoadCharts.js - iiw.api</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="../index.html">
+             
+            <img alt="iiw.api" src="../assets/css/logo.png" title="iiw.api">
+            
+                iiw.api
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="http://192.168.0.251/">Home</a>
+                    </li>
+                    
+                    <li><a href="../index.html">API</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.c.directives.html">iiw.c.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/cPicker.html">cPicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.directives.html">iiw.core.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/iCopyText.html">iCopyText</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iExit.html">iExit</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLogout.html">iLogout</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLang.html">iLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iDomSelect.html">iDomSelect</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iDrag.html">iDrag</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLogo.html">iLogo</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iResize.html">iResize</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iScroll.html">iScroll</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iScroll2.html">iScroll2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.services.html">iiw.core.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/iAjax.html">iAjax</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iSocket.html">iSocket</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iConfig.html">iConfig</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iConfirm.html">iConfirm</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iGetLang.html">iGetLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iMessage.html">iMessage</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iTimeNow.html">iTimeNow</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iToken.html">iToken</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.directives.html">iiw.safe.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/safePicker.html">safePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/safeTree.html">safeTree</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.services.html">iiw.safe.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/safeCamera.create.html">safeCamera.create</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>temp\iiw.master\webapp\js\services\masterLoadCharts.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+/**
+ * 加载图表
+ * @author : zhs
+ * @version : 1.0
+ * @date : 2018-11-26
+*/
+define([
+    &#x27;app&#x27;
+], function(app) {
+    app.factory(&#x27;masterLoadCharts&#x27;, [&#x27;$rootScope&#x27;, &#x27;$compile&#x27;, &#x27;$timeout&#x27;, function($rootScope, $compile, $timeout) {
+        function _init(config) {
+            var setting = {
+                timeout: 500,       // 延迟加载时间
+                el: null,           // 注入的element
+                datas: [],          // 图表数据
+                padding: [90, 0, 0, 0],
+                layout: [14, 9]     // 栅格化
+            };
+
+            var $scope;// 当前作用域
+
+            $.extend(setting, config);
+
+            if(!setting.el) {
+                throw &#x27;缺少el参数，无法初始化图表&#x27;;
+            } else {
+                setting.el = angular.element(setting.el);
+            }
+
+            if(setting.scope) {
+                $scope = setting.scope.$new();
+            } else {
+                $scope = $rootScope.$new();
+            }
+
+            var width = setting.el.width();
+            var height = setting.el.height();
+
+            var chartJS = [], chartHtml = [];
+            _.each(setting.datas, function(row) {
+                chartJS.push(&#x27;plugins/igreport/downfile.do?code=&#x27; + row.tag + &#x27;&amp;action=main.js&#x27;);
+
+                var _width = width  - setting.padding[1] - setting.padding[3];
+                var _height = height - setting.padding[0] - setting.padding[2];
+                var _padding = setting.padding;
+
+                if(row.padding &amp;&amp; row.padding == &#x27;false&#x27;) {
+                    _width = width;
+                    _height = height;
+                    _padding = [0,0,0,0];
+                }
+
+                var _left = Math.ceil(_width / setting.layout[0]) * row.offsetx + _padding[3];
+                var _top = Math.ceil(_height / setting.layout[1]) * row.offsety + _padding[0];
+
+                var _width = Math.ceil(_width / setting.layout[0]) * row.width;
+                var _height = Math.ceil(_height / setting.layout[1]) * row.height;
+
+                chartHtml.push(&#x27;&lt;div class=&quot;chart-box&quot; style=&quot;top: &#x27; + _top  + &#x27;px; left: &#x27; + _left + &#x27;px; width: &#x27; + _width + &#x27;px; height: &#x27; + _height + &#x27;px;&quot;&gt;&lt;safe-datacenter-chart.&#x27; + row.tag + &#x27; /&gt;&lt;/div&gt;&#x27;);
+            });
+
+            require(chartJS, function() {
+                $timeout(function() {
+                    setting.el.html(chartHtml.join(&#x27;&#x27;));
+                    $compile(setting.el.contents())($scope);
+                }, setting.timeout);
+            });
+        }
+
+        return {
+            /**
+             * 加载图表。
+             *
+             * @method init
+             *
+             * @param json {JSON Object}
+             *      json: {
+             *          scope: null,                // 控件依赖的作用域，建议传递本模块作用域，不传递则使用全局的作用域
+             *          el: null,                   // 展示图表的容器
+             *          datas: [{                   // 将要加载的图表列表，数组类型
+             *              name: &#x27;&#x27;,               // 图表名称，可省略，但为了区分不同图表，建议保留
+             *              tag: &#x27;&#x27;,                // 图表
+             *              offsetx: 0              // 距离容器左边的偏移值，定位 position 中的 left 值, left = el.width / layout[column] * offsetx
+             *              offsety: 0,             // 距离容器顶部的偏移值，定位 position 中的 top 值， top = el.width / layout[row] * offsety
+             *              width: 0,               // 图表所占宽度，比较于 layout 中 row 的进行划分大小， width = el.width / layout[column] * width
+             *              height: 0               // 图表所占高度，比较于 layout 中 row 的进行划分大小， height = el.height / layout[row] * height
+             *          }],
+             *          layout: [column, row]       // 对容器进行栅格化，把整块 el 区域划分成 column列、row行，默认[14, 9]
+             *          timeout: 500,               // 延迟加载的时间，为了防止在容器渲染之前进行价值，默认500毫秒秒（int类型）
+             *      }
+             *
+             * @example
+             *      // 注入masterLoadChart服务。
+             *      app.controller(&#x27;***Controller&#x27;, [&#x27;masterLoadChart&#x27;, function(masterLoadChart) {
+             *          // 加载图表
+             *          masterLoadChart.init({
+             *              scope: $scope,
+             *              el: $(&#x27;.master-charts-content&#x27;),
+             *              datas: []
+             *          });
+             *      }]);
+             *
+             * @author : zhs
+             * @version : 1.0
+             * @Date : 2018-11-26
+             */
+            init: _init
+        }
+    }]);
+});
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+
+<!-- Mirrored from 192.168.0.251:7001/files/temp_iiw.master_webapp_js_services_masterLoadCharts.js.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:09 GMT -->
+</html>

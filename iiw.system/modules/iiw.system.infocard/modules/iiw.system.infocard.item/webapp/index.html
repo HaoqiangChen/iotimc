@@ -1,0 +1,162 @@
+<div class="layout-full system-infocard system-infocard-item">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full bcb-opacity3">
+                <!--信息牌-->
+                <div ui-layout options="{dividerSize:'0'}" class="system-infocard-item-main">
+                    <div ui-layout-container style="padding:5px;">
+                        <div class="layout-full" style="position:relative;">
+                            <div ui-layout="{flow:'column'}" options="{dividerSize:'0'}">
+                                <!--infocard form-->
+                                <div ui-layout-container size="600px">
+                                    <div ui-layout options="{dividerSize:'0'}">
+                                        <div ui-layout-container size="50px" class="bcb-opacity3" style="overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.3);">
+                                            <form class="form-inline system-infocard-item-form" name="infocardForm" style="margin-top:5px;">
+                                                <div class="form-group" ng-class="{'has-error':!object.idx}" style="margin-left: 10px;">
+                                                    <label class="control-label">序号：</label>
+                                                    <input name="idx" type="text" ng-model="object.idx" class="form-control" placeholder="请输入序号" style="width:100px;" required/>
+                                                </div>
+                                                <div class="form-group" ng-class="{'has-error':!object.name}">
+                                                    <label class="control-label">模板名称：</label>
+                                                    <input name="title" type="text" ng-model="object.name" class="form-control" placeholder="请输入模板名称" required/>
+                                                </div>
+                                                <div class="form-group" style="margin-left: 10px;">
+                                                    <label class="control-label">信息牌类型：</label>
+                                                    <select ng-model="object.type">
+                                                        <option value="criminal">罪犯</option>
+                                                        <option value="police">警察</option>
+                                                        <option value="led">LED</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div ui-layout-container>
+                                            <div class="infocard-list-item-body safe-infocard-panel" infocard-template edittype="edit" template-url="object.content" template-html="templateHtml" loadds ds-click="dsClick" style="height:100%;width:100%;"></div>
+                                        </div>
+                                        <div ui-layout-container size="50px" class="bcb-opacity3" style="border-top:1px solid rgba(255,255,255,0.3);">
+                                            <div class="system-infocard-change-editBtns" style="margin-top:5px;margin-left:5px;">
+                                                <button class="btn btn-primary" ng-click="showUploadDialogEvent()">{{object.content ? '更换模板' : '上传模板'}}</button>
+                                                <button class="btn btn-info" ng-click="editTemplate()" ng-if="object.content || templateHtml">编辑源码</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ui-layout-container size="5px" style="border-right:1px solid rgba(255,255,255,0.3);"></div>
+                                <div ui-layout-container class="bcb-opacity3">
+                                    <!--datasource items-->
+                                    <div ui-layout options="{dividerSize:'0'}">
+                                        <div ui-layout-container size="44px" style="padding:5px;overflow:hidden;">
+                                            <form class="infocard-datasource-list-form form-inline" name="infocardDsForm" method="post">
+                                                <div class="form-group" style="margin-left:10px;">
+                                                    <label>单位：</label>
+                                                    <select class="form-control" ng-model="ouData.syoufk" ng-change="dataSource.getList()" ng-options="row.id as row.name for row in ouData.list | orderBy:'lvlcode'"></select>
+                                                </div>
+                                                <div class="form-group" style="margin-left:20px;">
+                                                    <label>数据类型：</label>
+                                                    <select class="form-control" ng-model="dataInterface.id" ng-change="dataSource.getList()" ng-options="row.id as row.name for row in dataInterface.list"></select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div ui-layout-container size="40px" style="padding:5px;overflow:hidden;">
+                                            <table class="table table-hover iiw-system-table-container">
+                                                <col width="60px"><col width="200px"><col>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">序号</th>
+                                                        <th>信息项名称</th>
+                                                        <th>信息项数据</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div ui-layout-container style="padding:5px;overflow:hidden;">
+                                            <div class="layout-full" i-scroll>
+                                                <table class="table table-hover iiw-system-table-container">
+                                                    <col width="60px"><col width="200px"><col>
+                                                    <tr ng-repeat="item in dataSource.list" ng-class="{'iiw-system-table-container-row-selected':item.sid == dsId}" ng-click="dataSource.select(item)">
+                                                        <td class="text-center">{{$index+1}}</td>
+                                                        <td>{{item.name}}</td>
+                                                        <td>{{item.value | infocardFilterItem}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div ui-layout-container size="50px" style="border-top: 1px solid rgba(255,255,255,0.3);">
+                                            <div class="layout-full system-infocard-bar">
+                                                <a class="btn btn-danger data-item-bind-btn" ng-click="dataSource.cancel()" style="margin:0;"><i class="fa fa-times fa-fw"></i>取消绑定</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="system-infocard-item-mask" ng-if="!dsItem">
+                                        <div>请先在左侧信息牌选择数据项（红色框）</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="47px">
+                        <div class="layout-full bcb-opacity3 system-infocard-bar text-center">
+                            <a class="btn btn-success" ng-click="saveData(infocardForm.$invalid)" style="margin:0;" ng-disabled="infocardForm.$invalid"><i class="fa fa-floppy-o fa-fw"></i>保存</a>
+                            <a class="btn btn-danger" ng-click="back()"><i class="fa fa-sign-out fa-flip-horizontal fa-fw"></i>返回</a>
+                        </div>
+                    </div>
+                </div>
+                <!--信息牌上传/默认模板选择-->
+                <div class="system-infocard-item-dialog">
+                    <div ui-layout options="{dividerSize:'0'}">
+                        <div ui-layout-container>
+                            <div ui-layout="{flow:'column'}" options="{dividerSize:'0'}">
+                                <div ui-layout-container size="500px">
+                                    <div class="local-file-choose-box">
+                                        <label>从本地选择文件</label>
+                                        <button class="btn btn-primary" ng-click="showUploadFileEvent()">选择文件</button>
+                                    </div>
+                                    <input style="display:none;" name="infocard" ng-model="object.content" type="text" required>
+                                    <input style="display:none;" id="upInfocard" name="upInfocard" accept=".html" type="file" onchange="angular.element(this).scope().uploadInfocard(this)"/>
+                                </div>
+                                <div ui-layout-container style="border-left:1px solid rgba(255,255,255,0.3);">
+                                    <div ui-layout options="{dividerSize:'0'}">
+                                        <div ui-layout-container size="50px" style="overflow:hidden;height:50px;line-height:50px;text-align:center;font-size:20px;border-bottom:1px solid rgba(255,255,255,0.3);">选择默认模板</div>
+                                        <div ui-layout-container>
+                                            <div class="layout-full system-infocard-content">
+                                                <div class="system-infocard-list-item" ng-repeat="item in defaultTemplates" style="height:440px;background-color:rgba(255,255,255,0.2);font-size: 10px;">
+                                                    <div class="infocard-list-item-title bcb-opacity1">
+                                                        {{item.name}}
+                                                    </div>
+                                                    <div style="overflow: hidden" class="infocard-list-item-body safe-infocard-panel" id="{{item.id}}" infocard-template template-url="item.content"></div>
+                                                    <button class="btn btn-primary btn-block" ng-click="selectDefaultTemplate(item)">选择</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="47px" style="border-top:1px solid rgba(255,255,255,0.3);">
+                            <div class="layout-full bcb-opacity3 system-infocard-bar text-center">
+                                <a class="btn btn-danger" ng-click="hideUploadDialogEvent()"><i class="fa fa-times fa-flip-horizontal fa-fw"></i>取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--信息牌文本编辑-->
+                <div class="system-infocard-item-edit-template">
+                    <div ui-layout options="{dividerSize:'0'}">
+                        <div ui-layout-container style="overflow:hidden;">
+                            <textarea class="layout-full" style="white-space:nowrap;overflow:auto;color:black;background-color:white;" ng-keydown="textareaKeydownEvent($event)"></textarea>
+                        </div>
+                        <div ui-layout-container size="47px">
+                            <div class="layout-full bcb-opacity3 system-infocard-bar text-center">
+                                <a class="btn btn-success" ng-click="saveEditTemplate()" style="margin:0;"><i class="fa fa-floppy-o fa-fw"></i>保存</a>
+                                <a class="btn btn-danger" ng-click="hideEditTemplateDialog()"><i class="fa fa-times fa-flip-horizontal fa-fw"></i>取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

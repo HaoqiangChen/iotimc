@@ -1,0 +1,511 @@
+﻿<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="60px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div id="menuModel" class="ui-layout-container" ui-layout-container>
+                <div class="layout-full system-unity3dsetting-map">
+                    <div class="layout-full" id="cameraTreeModelCover"></div>
+                    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+                        <!--图层区域-->
+                        <div class="unity3dsetting-mapbar" ui-layout-container size="50px">
+                            <div class="pull-left unity3dsetting-menu">
+                                <div class="btn-group btn-group-justified">
+                                    <a class="btn btn-default" ng-click="cameraManger()"><i class="fa fa-video-camera"></i>监控管理</a>
+                                    <a class="btn btn-default" ng-click="areaManger()"><i class="fa fa-cube"></i>区域管理</a>
+                                    <a class="btn btn-default" ng-click="bedCardManger()"><i class="fa fa-bed"></i>床头牌管理</a>
+                                    <a class="btn btn-default" ng-click="uploadModel()"><i class="fa fa-bed"></i>模型上传<div  ng-if="loadFileStatus == true"><i class="fa fa-spinner fa-spin"></i>上传中</div></a>
+                                    <input type="file" name="export3DModel" id="export3DModel" accept=".unity3d" onchange="angular.element(this).scope().unity3dsetting.export3DModel(this)" style="display:none;"/>
+                                </div>
+                            </div>
+                            <div class="iiw-system-search-bar-container pull-left" style="width:20%">
+                                <label class="pull-right" style="margin-top: -5px;">
+                                    <input type="text" id="syuser_search" ng-model="searchTitle" ng-change="searchInfo()" placeholder="{{keyword}}"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="unity3dsetting-mapbox" ui-layout-container>
+                            <div class="layout-full" ui-layout="{ flow:'column'}" options="{dividerSize:'0'}">
+                                <!--地图区域-->
+                                <div class="layout-full cameraTable" ui-layout-container>
+                                    <div class="layout-full" ng-if="fileload == false">
+                                        <div class="layout-full" unity unity-model="unityModel" ng-show="unity.unity.show"></div>
+                                        <div ui-layout style="display: none;" options="{dividerSize:'0'}" id="cameraTreeModel">
+                                            <div class="layout-full unity3dsetting-camera">
+                                                <div ui-layout-container size="50px" class="selectCamera">
+                                                    <div class="input-group pull-left" style="width:250px; padding: 5px;">
+                                                        <input type="text" class="form-control" ng-model="unity3dsetting.searchText" placeholder="输入过滤信息">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button" ng-click="getDeviceMonitorList()">查询</button>
+                                                        </span>
+                                                    </div>
+                                                    <button class="btn btn-primary pull-right" style="margin: 5px" ng-click="cancle()">返回</button>
+                                                </div>
+                                                <div ui-layout-container class="layout-full">
+                                                    <div class="selectCamera layout-full">
+                                                        <div class="layout-full">
+                                                            <table class="table table-hover iiw-system-table-container">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>序号</th>
+                                                                        <th>编号</th>
+                                                                        <th>名称</th>
+                                                                        <th>单位</th>
+                                                                        <th>类型</th>
+                                                                        <th>厂商</th>
+                                                                        <th>ip地址</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="item in deviceMonitorList" ng-click="selectMonitor(item)">
+                                                                        <td>{{$index + 1}}</td>
+                                                                        <td>{{item.code}}</td>
+                                                                        <td>{{item.name}}</td>
+                                                                        <td>{{item.syouname}}</td>
+                                                                        <td>{{item.typename}}</td>
+                                                                        <td>{{item.company}}</td>
+                                                                        <td>{{item.ip}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div ui-layout-container size="49px" class="selectCamera">
+                                                    <label class="col-lg-3" style="height:40px;line-height:40px;padding-top:4px;">统计信息： 每页{{unity3dsetting.pageSize}}行， 共{{unity3dsetting.totalSize||0}}行， 共{{unity3dsetting.totalPage||0}}页</label>
+                                                    <uib-pagination style="margin: 5px;" class="pagination pull-right" direction-links="false" boundary-link-numbers="true" rotate="false" total-items="unity3dsetting.totalSize" ng-model="unity3dsetting.currentPage" ng-change="unity3dsetting.change()" items-per-page="unity3dsetting.pageSize" max-size="10"></uib-pagination>
+                                                    <!--<uib-pagination style="margin: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-right" total-items="map.resources.pageDevice.totalSize" ng-model="map.resources.pageDevice.currentPage" ng-change="map.resources.pageDevice.change()" items-per-page="map.resources.pageDevice.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-if="fileload == true">
+                                        <div ng-repeat="item in mapList" class="col-lg-4" style="height: 280px; padding: 10px;cursor: pointer;" ng-click="unity3dsetting.exportModel(item.id)">
+                                            <div style="background-color: rgba(0,0,0,0.3); height: 100%; position: relative;" ng-if="item.existModel == '0'">
+                                                <div style="height: 10%;padding: 4px;">{{item.alias}}</div>
+                                                <div style="height: 90%;padding: 5px;">
+                                                    <div class="layout-full text-center" style="background-color: rgba(0,0,0,0.3); position: absolute;width:97.8%;height:86.7%;line-height: 180px;">
+                                                        <p style="font-size: 48px;height: 20%;"><i class="fa fa-file-o"></i></p>
+                                                        <p style="height:50%;font-size: 24px;">已有模型</p>
+                                                    </div>
+                                                    <div class="layout-full" ng-style="item.style"></div>
+                                                </div>
+                                            </div>
+                                            <div style="background-color: rgba(0,0,0,0.3); height: 100%;position: relative;" ng-if="item.existModel == '1'">
+                                                <div style="height: 10%;padding: 4px;">{{item.alias}}</div>
+                                                <div style="height: 90%;padding: 5px;">
+                                                    <div class="layout-full" ng-style="item.style"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日常管控区域 -->
+                                <div ng-if="unity.rightAare.normalContainer == true" class="unity3dsetting-mapbox-info-container" ui-layout-container size="350px">
+                                    <div class="layout-full">
+                                        <div class="layout-full unity3dsetting-mapbox-btn">
+                                            <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                <div>
+                                                    <label>已配置监控点：</label>
+                                                    <label>100路</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 区域管理区域 -->
+                                <div ng-if="unity.rightAare.areaContainer == true" class="unity3dsetting-mapbox-info-container" ui-layout-container size="350px">
+                                    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+                                        <div ui-layout-container size="50px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                        <div>
+                                                            <label>{{unity.rightTopTitle}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--总区域管理-->
+                                        <div ng-if="unity.rightAreaArea.manager == true || unity.rightAreaArea.add == true" ui-layout-container size="80px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-multiple" mapsetting-linkscroll>
+                                                        <div style="position: absolute;">
+                                                            <div ng-click="addArea()" ><i class="fa fa-square fa-fw"></i>新增区域</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="unity.rightAreaArea.add == true" ui-layout-container size="180px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-first-submit">
+                                                        <div>
+                                                            <a class="btn btn-success" ng-click="saveArea()" ng-disabled="unityAreaForm.$invalid"><i class="fa fa-floppy-o"></i>保存</a>
+                                                            <a class="btn btn-danger" ng-click="deleteArea()"><i class="fa fa-minus"></i>删除</a>
+                                                            <a class="btn btn-danger" ng-click="canelArea()"><i class="fa fa-minus"></i>取消</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="unity.rightAreaArea.add == true" ui-layout-container>
+                                            <div class="layout-full">
+                                                <div class="">
+                                                    <div class="layout-full unity3dsetting-mapbox-info">
+                                                        <div class="layout-full" mapsetting-linkscroll>
+                                                            <div style="position:absolute;">
+                                                                <form name="unityAreaForm" novalidate>
+                                                                    <fieldset>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>区域名称：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="title" type="text" class="form-control" ng-model="area.areatitle" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <lable ng-show="area.areatitle == null" style="color:red;">*区域名称不能为空</lable>
+                                                                                <label ng-model="areaid" class="hidden"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>长：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areadepth" type="text" class="form-control" ng-model="area.areadepth" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div  class="col-md-3">
+                                                                                <lable ng-show="area.areadepth == null" style="color:red;">*长度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>高：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areawidth" type="text" class="form-control" ng-model="area.areawidth" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <lable ng-show="area.areadepth == null" style="color:red;">*高度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areaheight.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>宽：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areaheight" type="text" class="form-control" ng-model="area.areaheight" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3" >
+                                                                                <lable ng-show="area.areaheight == null" style="color:red;">*宽度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.syouname.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>所属单位：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="syouname" type="text" class="form-control" ng-model="area.syouname" ng-click="showOu()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3" >
+                                                                                <lable ng-show="area.syouname == null" style="color:red;">*单位名称不能为空</lable>
+                                                                                <label ng-model="area.syouid" class="hidden"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 模型上传管理区域 -->
+                                <div ng-if="unity.rightAare.exportContainer == true" class="unity3dsetting-mapbox-info-container" ui-layout-container size="350px">
+                                    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+                                        <div ui-layout-container size="50px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                        <div>
+                                                            <label>{{unity.rightTopTitle}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--总区域管理-->
+                                        <div ng-if="unity.rightAreaArea.manager == true || unity.rightAreaArea.add == true" ui-layout-container size="80px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-multiple" mapsetting-linkscroll>
+                                                        <div style="position: absolute;">
+                                                            <div ng-click="addArea()" ><i class="fa fa-square fa-fw"></i>新增区域</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="unity.rightAreaArea.add == true" ui-layout-container size="180px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-first-submit">
+                                                        <div>
+                                                            <a class="btn btn-success" ng-click="saveArea()" ng-disabled="unityAreaForm.$invalid"><i class="fa fa-floppy-o"></i>保存</a>
+                                                            <a class="btn btn-danger" ng-click="deleteArea()"><i class="fa fa-minus"></i>删除</a>
+                                                            <a class="btn btn-danger" ng-click="canelArea()"><i class="fa fa-minus"></i>取消</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="unity.rightAreaArea.add == true" ui-layout-container>
+                                            <div class="layout-full">
+                                                <div class="">
+                                                    <div class="layout-full unity3dsetting-mapbox-info">
+                                                        <div class="layout-full" mapsetting-linkscroll>
+                                                            <div style="position:absolute;">
+                                                                <form name="unityAreaForm" novalidate>
+                                                                    <fieldset>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>区域名称：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="title" type="text" class="form-control" ng-model="area.areatitle" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <lable ng-show="area.areatitle == null" style="color:red;">*区域名称不能为空</lable>
+                                                                                <label ng-model="areaid" class="hidden"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>长：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areadepth" type="text" class="form-control" ng-model="area.areadepth" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div  class="col-md-3">
+                                                                                <lable ng-show="area.areadepth == null" style="color:red;">*长度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areatitle.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>高：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areawidth" type="text" class="form-control" ng-model="area.areawidth" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <lable ng-show="area.areadepth == null" style="color:red;">*高度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.areaheight.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>宽：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="areaheight" type="text" class="form-control" ng-model="area.areaheight" ng-change="setAreaScale()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3" >
+                                                                                <lable ng-show="area.areaheight == null" style="color:red;">*宽度不能为空</lable>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="control-group col-lg-12 unity3dsetting-from-div" ng-class="{'has-error' : (unityAreaForm.area.syouname.$invalid)}">
+                                                                            <div class="col-md-4">
+                                                                                <label>所属单位：</label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input name="syouname" type="text" class="form-control" ng-model="area.syouname" ng-click="showOu()" required/>
+                                                                            </div>
+                                                                            <div class="col-md-3" >
+                                                                                <lable ng-show="area.syouname == null" style="color:red;">*单位名称不能为空</lable>
+                                                                                <label ng-model="area.syouid" class="hidden"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--监控管理区域-->
+                                <div ng-if="unity.rightAare.cameraContainer == true" class="unity3dsetting-mapbox-info-container" ui-layout-container size="350px">
+                                    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+                                        <!--标题区域-->
+                                        <div ui-layout-container size="50px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                        <div>
+                                                            <label>{{unity.rightTopTitle}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--总监控管理-->
+                                        <div ng-if="unity.rightAreaCamera.manager == true || unity.rightAreaCamera.add == true" ui-layout-container size="120px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-multiple" mapsetting-linkscroll>
+                                                        <div style="position: absolute;">
+                                                            <div ng-click="addCamera()" ><i class="fa fa-square fa-fw"></i>新增监控</div>
+                                                            <div ng-click="testPosition()" ><i class="fa fa-square fa-fw"></i>定位测试</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--按钮区域-->
+                                        <div ng-if="unity.rightAreaCamera.add == true" ui-layout-container size="180px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-first-submit">
+                                                        <div>
+                                                            <a class="btn btn-success" ng-click="saveCamera()" ng-disabled="unityInfoForm.title.$invalid"><i class="fa fa-floppy-o"></i>保存</a>
+                                                            <a class="btn btn-danger" ng-click="deleteCamera()"><i class="fa fa-minus"></i>删除</a>
+                                                            <a class="btn btn-info" ng-click="canelCamera()"><i class="fa fa-minus"></i>取消</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="unity.rightAreaCamera.add == true" ui-layout-container size="120px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                        <div>
+                                                            <a class="btn btn-success" ng-click="updatePosition()" ng-disabled="unityInfoForm.title.$invalid"><i class="fa fa-floppy-o"></i>定位更新</a>
+                                                            <a class="btn btn-default" ng-click="focusPosition()" ng-disabled="unityInfoForm.title.$invalid"><i class="fa fa-floppy-o"></i>聚焦</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--表单区域-->
+                                        <div ng-if="unity.rightAreaCamera.add == true" ui-layout-container>
+                                            <div class="layout-full" >
+                                                <div class="">
+                                                    <div class="layout-full unity3dsetting-mapbox-info">
+                                                        <div class="layout-full" mapsetting-linkscroll>
+                                                            <div style="position:absolute;">
+                                                                <form name="unityInfoForm">
+                                                                    <fieldset>
+                                                                        <div class="form-group">
+                                                                            <label>监控点：</label>
+                                                                            <input name="title" type="text" class="form-control" ng-model="cameratitle" ng-click="showCamera()" required/>
+                                                                            <div ng-messages="unityInfoForm.title.$error">
+                                                                                <label ng-message="required" class="control-label animated tada text-danger">监控点不能为空</label>
+                                                                                <label ng-model="cameraid" class="hidden"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--监控测试管理区域-->
+                                <div ng-if="unity.rightAare.positionContainer == true" class="unity3dsetting-mapbox-info-container" ui-layout-container size="350px">
+                                    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+                                        <!--标题区域-->
+                                        <div ui-layout-container size="50px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-two-position">
+                                                        <div>
+                                                            <label>{{unity.rightTopTitle}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--管理按钮-->
+                                        <div ng-if="unity.rightAreaPosition.position == true" ui-layout-container size="120px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-multiple" mapsetting-linkscroll>
+                                                        <div style="position: absolute;">
+                                                            <div ng-click="addCamera()" ><i class="fa fa-square fa-fw"></i>新增监控</div>
+                                                            <div ng-click="testPosition()" ><i class="fa fa-square fa-fw"></i>定位测试</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--按钮区域-->
+                                        <div ng-if="unity.rightAreaPosition.position == true" ui-layout-container size="120px">
+                                            <div class="layout-full">
+                                                <div class="layout-full unity3dsetting-mapbox-btn">
+                                                    <div class="layout-full mapbox-btn-single unity3dsetting-first-submit">
+                                                        <div>
+                                                            <a class="btn btn-success" ng-click="gotoCameraPosition()"><i class="fa fa-floppy-o"></i>定位</a>
+                                                            <a class="btn btn-success" ng-click="canelPosition()" ><i class="fa fa-floppy-o"></i>取消</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 定位测试管理 -->
+                                        <div ng-if="unity.rightAreaPosition.position == true" ui-layout-container>
+                                            <div class="layout-full">
+                                                <div class="col-lg-12 widget-content iiw-system-treeview-container" style="overflow-y: auto;">
+                                                    <div>
+                                                        <ul system-tree-view ng-model="selectNode" id="cameraTreeViews" class="ztree"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="ouTreeModel">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 560px; ">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel('ou')"><i class="fa fa-remove"></i></button>
+                                <h4 class="modal-title">选择单位</h4>
+                            </div>
+                            <div class="modal-body" style="height: 510px;">
+                                <div class="col-lg-12 widget-content iiw-system-treeview-container" style="overflow-y: auto;">
+                                    <div>
+                                        <ul system-tree-view ng-model="selectNode" id="ouTreeview" class="ztree"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="cancel('ou')">取消</button>
+                            <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="selectOu()">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

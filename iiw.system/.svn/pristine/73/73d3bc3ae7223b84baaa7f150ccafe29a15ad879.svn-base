@@ -1,0 +1,3 @@
+<div>
+    <input type="text" autofocus ng-model="template.list.copyName" style="height:40px;line-height:40px;width:100%;">
+</div>

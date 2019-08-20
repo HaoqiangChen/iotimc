@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.interphone",
+  "version": "0.0.1",
+  "description": "对讲资源管理",
+  "author": "ybw",
+  "date": "2016-06-12",
+  "main": "interphoneController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

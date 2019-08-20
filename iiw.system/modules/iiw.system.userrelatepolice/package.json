@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.userrelatepolice",
+  "version": "0.0.1",
+  "description": "用户与干警关联",
+  "author": "ybw",
+  "date": "2016-08-2",
+  "main": "userrelatepoliceController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.35"
+}

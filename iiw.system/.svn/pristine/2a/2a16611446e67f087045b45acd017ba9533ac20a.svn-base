@@ -1,0 +1,171 @@
+<div class="layout-full system-insidemapsetting-list">
+    <div class="layout-full" ui-layout options="{dividerSize:'0'}">
+        <!--工具栏区域-->
+        <div class="insidemapsetting-listbar" ui-layout-container size="50px">
+            <div class="layout-full" ui-layout="{ flow:'column'}" options="{dividerSize:'0'}">
+                <!--导航栏-->
+                <div class="insidemapsetting-listbar-navigate" ui-layout-container>
+                    <ol class="listbar-navigate-breadcrumb">
+                        <li ng-repeat="item in maps.navigate.list" ng-class="{'active':$last}">
+                            <a ng-click="maps.navigate.selectItem(item)">{{item.name}}</a>
+                        </li>
+                    </ol>
+                </div>
+                <!--添加按钮-->
+                <div class="insidemapsetting-listbar-btn" ui-layout-container size="400px">
+                    <div class="btn-group btn-group-justified">
+                        <a class="btn btn-default" ng-click="maps.addDirectory()"><i class="fa fa-plus"></i> 目录</a>
+                        <a class="btn btn-default" ng-click="maps.addMap()"><i class="fa fa-plus"></i> 地图</a>
+                        <a class="btn btn-default" ng-click="maps.setting()"><i class="fa fa-cog"></i> 全局配置</a>
+                    </div>
+                </div>
+                <!--搜索-->
+                <div class="insidemapsetting-listbar-search" ui-layout-container size="250px">
+                    <div class="input-group col-lg-12">
+                        <input type="text" class="form-control" ng-model="maps.filterValue" placeholder="请输入过滤条件"/>
+                    </div>
+                </div>
+            </div>
+            <div class="layout-full insidemapsetting-list-mask" ng-if="maps.control.object && maps.status"></div>
+        </div>
+        <!--列表区域-->
+        <div class="insidemapsetting-list-box" ui-layout-container>
+            <!--列表-->
+            <div class="layout-full">
+                <div class="layout-full" i-scroll>
+                    <div style="width:100%; position:absolute;">
+                        <div class="list-box-item col-lg-3" ng-repeat="item in maps.filterList | filter:maps.filterValue">
+                            <div class="layout-full" id="{{item.id}}" ng-class="{'selected':maps.select == item}">
+                                <div class="list-box-item-title">
+                                    <i class="fa fa-fw" ng-class="{'fa-bank':item.type=='ou','fa-folder':item.type=='dir','fa-map-o':item.type=='map'}"></i>
+                                    {{item.name}}
+                                </div>
+                                <div class="list-box-item-body" ng-click="maps.chooseItem(item)" ng-dblclick="maps.selectItem(item)">
+                                    <div class="layout-full" ng-if="item.type == 'map'" ng-style="item.style">
+
+                                    </div>
+                                    <div class="layout-full" ng-if="item.type != 'map'">
+                                        <div class="layout-full">
+                                            <div class="col-lg-4 list-box-item-item" ng-repeat="child in item.children | limitTo:6">
+                                                <i class="fa" ng-class="{'fa-bank':child.type=='ou','fa-folder':child.type=='dir','fa-map-o':child.type=='map'}"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-box-item-btn" ng-if="maps.select == item">
+                                    <div class="layout-full animated fadeIn" ng-if="maps.control.status == 'select' && maps.select.type == 'ou'" style="background-color: rgba(0,0,0,0.3);">
+
+                                    </div>
+                                    <div class="btn-group btn-group-justified" ng-if="maps.control.status == 'select' && maps.select.type != 'ou'">
+                                        <a class="btn btn-success animated fadeIn" ng-click="maps.control.edit(item)"><i class="fa fa-edit"></i> 修改</a>
+                                        <a class="btn btn-info animated fadeIn" ng-click="maps.control.copy(item)"><i class="fa fa-copy"></i> 复制</a>
+                                        <a class="btn btn-danger animated fadeIn" ng-click="maps.control.del(item)"><i class="fa fa-remove"></i> 删除</a>
+                                    </div>
+                                    <div class="btn-group btn-group-justified animated fadeIn" ng-if="maps.control.status == 'del'">
+                                        <a class="btn btn-danger animated shake" ng-click="maps.control.delData()"><i class="fa fa-check"></i> 确认删除</a>
+                                        <a class="btn btn-success" ng-click="maps.control.cancel(item)"><i class="fa fa-remove"></i> 取消</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--表单区域-->
+            <div class="layout-full insidemapsetting-list-info" ng-if="maps.control.object && (maps.status == 'add' || maps.status == 'edit' || maps.status == 'copy')">
+                <div class="layout-full col-lg-6 col-lg-offset-3">
+                    <div class="layout-full" style="overflow-y:auto;">
+                        <form name="mapForm" method="post">
+                            <fieldset>
+                                <legend class="section">{{maps.select.name}}</legend>
+                                <div class="form-group">
+                                    <label>名称</label>
+                                    <input id="mapFormTitle" name="title" type="text" class="form-control" ng-model="maps.control.object.name" required/>
+                                    <div ng-messages="mapForm.title.$error">
+                                        <label ng-message="required" class="control-label animated tada text-danger">名称不能为空</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>编号</label>
+                                    <input name="code" type="text" class="form-control" ng-model="maps.control.object.code" required/>
+                                    <div ng-messages="mapForm.code.$error">
+                                        <label ng-message="required" class="control-label animated tada text-danger">编号不能为空</label>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="maps.status == 'copy'">
+                                    <label>复制到</label>
+                                    <!--<select class="form-control" ng-model="maps.control.object.target" ng-options="option.id as option.name for option in maps.ouList"></select>-->
+                                    <input name="target" type="text" class="form-control" ng-model="maps.control.object.targetname" required ng-click="maps.ouTree.toggle()" />
+                                    <div class="iiw-system-map-ou-treeview-container" i-scroll ng-if="maps.ouTree.show">
+                                        <ul mapsetting-tree data="maps.ouTree" id="test" class="ztree"></ul>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="maps.control.object.type == 'map' && maps.status != 'copy'">
+                                    <label>图片</label>
+                                    <input style="display:none;" name="image" ng-model="maps.control.object.savepath" type="text" required>
+                                    <input style="display: none;" id="upImage" name="upImage" accept=".jpg,.png,.jpeg" type="file" onchange="angular.element(this).scope().maps.control.uploadImage(this)"/>
+                                    <div class="insidemapsetting-list-info-image" ng-style="maps.control.object.style">
+                                        <button class="btn btn-primary" ng-click="maps.control.showUploadDialogEvent()">{{maps.control.object.savepath ? '更换图片' : '上传图片'}}</button>
+                                    </div>
+                                    <div ng-messages="mapForm.image.$error">
+                                        <label ng-message="required" class="control-label animated tada text-danger">图片不能为空</label>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="maps.control.object.type == 'map' && maps.status != 'copy'">
+                                    <label>图层</label>
+                                    <div class="insidemapsetting-list-info-layer">
+                                        <div class="list-info-layer-item" ng-click="maps.control.layer.select(item)" ng-repeat="item in maps.control.layer.list">
+                                            <div><i class="fa fa-check-o" ng-class="{'fa-check-square-o':item.select,'fa-square-o':!item.select}"></i></div>
+                                            <div ng-class="{'selected':item.select}">{{item.name}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-actions">
+                                <div>
+                                    <button class="btn btn-success" type="button" ng-disabled="mapForm.$invalid" ng-click="maps.control.saveData()">保存</button>
+                                    <button class="btn btn-danger" type="button" ng-click="maps.control.cancel();">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--表单区域-->
+            <div class="layout-full insidemapsetting-list-info" ng-if="maps.status == 'setting'">
+                <div class="layout-full col-lg-6 col-lg-offset-3">
+                    <div class="layout-full" style="overflow-y:auto;">
+                        <form name="mapSettingForm" method="post">
+                            <fieldset>
+                                <legend class="section">全局配置</legend>
+                                <div class="form-group">
+                                    <label>所有区域安全颜色</label>
+                                    <div class="colorSelector" color-picker opacity="0.7" o-color-picker="maps.oSetting.safeColorFn" color="rgba(17,120,27,0.7)" style="height:36px;display:inline;margin-left:20px;">
+                                        <div style="background-color:{{maps.oSetting.safeColor||'rgba(17,120,27,0.7)'}};top:-3px;"></div>
+                                    </div>
+                                    <a class="btn btn-default pull-right" ng-click="maps.oSetting.safeColorFn.setColor()">取消设置</a>
+                                    <label class="text-info" style="width:100%;">安全颜色的生效顺序：单个区域颜色，所有重点区域颜色，所有区域安全颜色，默认颜色</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>所有重点区域颜色</label>
+                                    <div class="colorSelector" color-picker opacity="0.7" o-color-picker="maps.oSetting.impColorFn" color="rgba(17,120,27,0.7)" style="height:36px;display:inline;margin-left:20px;">
+                                        <div style="background-color:{{maps.oSetting.impColor||'rgba(17,120,27,0.7)'}};top:-3px;"></div>
+                                    </div>
+                                    <a class="btn btn-default pull-right" ng-click="maps.oSetting.impColorFn.setColor()">取消设置</a>
+                                    <label class="text-info" style="width:100%;">安全颜色的生效顺序：单个区域颜色，所有重点区域颜色，所有区域安全颜色，默认颜色</label>
+                                </div>
+                            </fieldset>
+                            <div class="form-actions">
+                                <div>
+                                    <button class="btn btn-success" type="button" ng-disabled="mapSettingForm.$invalid" ng-click="maps.oSetting.saveData()">保存</button>
+                                    <button class="btn btn-danger" type="button" ng-click="maps.oSetting.cancel();">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

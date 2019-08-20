@@ -1,0 +1,43 @@
+
+.system-role {
+    position: relative;
+}
+
+.system-role .stretch {
+    overflow: hidden;
+}
+
+.system-role-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.system-role-bar {
+    background-color: rgba(0,0,0,0.3);
+    padding: 4px;
+}
+
+.system-role-bar a {
+    margin-right: 4px;
+}
+
+a.safe-role-linka:hover {
+    text-decoration: underline;
+}
+
+.system-role-container .role-container-body {
+    padding: 15px;
+}
+
+.system-role-container .role-container-body .table tr:hover {
+    cursor: default;
+}
+
+.system-role-container .role-container-body .table td,
+.system-role-container .role-container-body .table th {
+    vertical-align: middle;
+}
+
+.system-role-container .role-container-foot {
+    background-color: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(0,0,0,0.15);
+}

@@ -1,0 +1,16 @@
+.system-syuser-bar{
+    padding: 4px;
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.system-syuser-page-content{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-syuser-search{
+    width: 200px;
+    height: 39px;
+}
+
+.system-syuser-container{
+    padding: 15px;
+}

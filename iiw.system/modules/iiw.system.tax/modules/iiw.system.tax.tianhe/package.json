@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.tianhe",
+  "version": "0.0.1",
+  "description": "办税厅-天河区局概况",
+  "author": "zhs",
+  "date": "2018-01-22",
+  "main": "taxTianheController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.29"
+}

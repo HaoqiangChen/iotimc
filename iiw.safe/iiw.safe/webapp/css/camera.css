@@ -1,0 +1,745 @@
+/* safe-video-max-panel */
+.safe-video-max-panel {
+    position: absolute;
+    z-index: 48;
+    left: 0px;
+    top: 0px;
+    display: none;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.safe-video-max-panel .safe-video-max-box {
+    box-shadow: 0 0 50px 15px #000;
+    position: relative;
+}
+
+.safe-video-max-panel .safe-video-max-tools {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: calc(100% - 100px);
+    height: 53px;
+    background-color: rgba(10,26,52,1);
+    border: 1px solid rgba(255,255,255,.4);
+    border-bottom: 0;
+    overflow: hidden;
+    z-index: 9;
+    display: none;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 250px 0 0;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li {
+    float: left;
+    height: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li .tool-name {
+    width: 80px;
+    text-align: center;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li .tool-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li .tool-btn {
+    position: relative;
+    text-align: center;
+    border-radius: 8px;
+    background: rgb(25, 65, 126);
+    color: rgb(110, 178, 269);
+    padding: 5px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li .tool-btn:hover,
+.safe-video-max-panel .safe-video-max-tools ul li .tool-btn.active {
+    background: rgb(22, 190, 105);
+    color: #fff;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li .tool-btn[disabled="disabled"] {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.safe-video-max-panel .safe-video-max-tools ul li:not(:last-child) {
+    margin-right: 15px;
+}
+
+/* safe-video-full-panel */
+.safe-video-full-panel {
+    position: absolute;
+    z-index: 46;
+    left: 0px;
+    top: 0px;
+    display: none;
+    background-color: #000;
+}
+
+.safe-video-box {
+    position: relative;
+}
+
+.safe-video-panel {
+    position: absolute;
+}
+
+.video-panel-toolbox {
+    position: absolute;
+    z-index: 3;
+    border-radius: 3px;
+    display: none;
+    box-shadow: inset 0 0 5px rgba(49, 176, 213, 0.5), inset 0 0 5px rgba(49, 176, 213, 0.5);
+    animation: video-panel-toolbox-border linear infinite 2s;
+    -webkit-animation: video-panel-toolbox-border linear infinite 2s;
+}
+
+.video-panel-toolbox.border-solid {
+    border: 2px solid #5aff05;
+    box-shadow: none;
+    animation: none;
+    -webkit-animation: none;
+}
+
+@keyframes video-panel-toolbox-border {
+    0% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 0.5), inset 0 0 5px rgba(49, 176, 213, 0.5);
+    }
+    50% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 1), inset 0 0 30px rgba(49, 176, 213, 0.75);
+    }
+    100% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 0.5), inset 0 0 5px rgba(49, 176, 213, 0.5);
+    }
+}
+
+@-webkit-keyframes video-panel-toolbox-border {
+    0% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 0.5), inset 0 0 5px rgba(49, 176, 213, 0.5);
+    }
+    50% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 1), inset 0 0 30px rgba(49, 176, 213, 0.75);
+    }
+    100% {
+        box-shadow: inset 0 0 5px rgba(49, 176, 213, 0.5), inset 0 0 5px rgba(49, 176, 213, 0.5);
+    }
+}
+
+.video-panel-toolbox .toolbar {
+    /*position: absolute;*/
+    z-index: 4;
+    width: 100%;
+    /*left: 0px;*/
+    display: none;
+}
+
+.video-panel-toolbox .toolbar.top {
+    top: 0px;
+}
+
+.video-panel-toolbox .toolbar.bottom {
+    bottom: 0px;
+}
+
+.video-panel-toolbox .toolbar .toolbutton {
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #000;
+    font-size: 20px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.video-panel-toolbox .toolbar .toolbutton:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #fff;
+}
+
+.video-panel-toolbox .toolbar .toolbutton.left {
+    margin-left: 10px;
+    float: left;
+}
+
+.video-panel-toolbox .toolbar .toolbutton.right {
+    margin-right: 10px;
+    float: right;
+}
+
+.video-panel-toolbox .mytable {
+    display: table;
+}
+
+.video-panel-toolbox .mytable-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.video-panel-toolbox .control-panel {
+    margin: 0 auto;
+    width: auto;
+    height: 250px;
+    padding: 5px 30px 5px 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 0 25px #000;
+    display: none;
+}
+
+.video-panel-toolbox .control-panel h4 {
+    height: 50px;
+    line-height: 50px;
+}
+
+.video-panel-toolbox .control-panel h4 i {
+    padding-right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    vertical-align: -4px;
+
+}
+
+.video-panel-toolbox .control-panel h4 i:hover {
+    text-shadow: 0 0 15px #fff;
+}
+
+.video-panel-toolbox .control-panel h4 i:active {
+    color: #000;
+}
+
+.video-panel-toolbox .control-panel h4 status {
+    margin-left: 5px;
+    font-weight: bolder;
+}
+
+.video-panel-toolbox .control-box {
+    position: relative;
+}
+
+.video-panel-toolbox .control-toolbar .action.actionbutton {
+    width: 170px;
+    height: 140px;
+    line-height: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    float: left;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+    display: table;
+    border: 0px;
+}
+
+.video-panel-toolbox .control-toolbar .action.actionbutton div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.video-panel-toolbox .control-toolbar .action:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 2px #fff;
+}
+
+.video-panel-toolbox .control-toolbar .action:active,
+.video-panel-toolbox .control-toolbar .action:focus {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: #000;
+    text-shadow: 0 0 2px #000;
+    font-weight: bold;
+    border: 0px;
+    outline: none;
+}
+
+safe-video {
+    float: left;
+    display: none;
+    box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+safe-video video {
+    display: none;
+    position: absolute;
+}
+
+safe-video canvas {
+    display: none;
+}
+
+safe-video .video-loading {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    display: none;
+}
+
+safe-video .video-loading-table {
+    display: table;
+}
+
+safe-video .video-loading-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+safe-video .video-loading-parent {
+    position: relative;
+}
+
+safe-video .video-loading-child {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+safe-video .video-tips {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background: rgba(140, 140, 140, 0.3);
+    line-height: 2;
+    z-index: 3;
+}
+
+safe-video .video-tips.error {
+    color: #E85757;
+}
+
+.video-object-videotape {
+    position: absolute;
+    z-index: 2;
+    padding:0 15px;
+    width:140px;
+    height: 50px;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 20px;
+    cursor: default;
+    display: none;
+}
+
+.video-object-videotape > i {
+    font-size:10px;
+    color:red;
+    float:left;
+    line-height:50px;
+}
+
+.video-object-videotape > div {
+    font-family: '微软雅黑';
+    float:right
+}
+
+.video-object-reply {
+    position: absolute;
+    z-index: 4;
+    display: none;
+    width: 100%;
+    height: 15%;
+    left: 0;
+    bottom: 0;
+    max-height: 45px;
+    min-height: 32px;
+    overflow: hidden;
+}
+
+.video-object-reply .video-object-reply-timeline {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.video-object-reply .video-object-reply-timeline-mouseline {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    border-left: 2px dashed rgba(255, 255, 255, 0.75);
+    display: none;
+}
+
+.video-object-reply .video-object-reply-timeline-mouseline b {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    margin: auto 0;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    z-index: 0;
+}
+
+.video-object-reply .video-object-reply-timeline-step {
+    width: 2px;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.video-object-reply .video-object-reply-timeline-step b {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    margin: auto 0;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    z-index: 0;
+}
+
+.video-object-reply .video-object-reply-timeline-step-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.video-object-reply .video-object-reply-timeline-graduate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.2;
+    transition: 0.5s opacity;
+}
+
+.video-object-reply .video-object-reply-timeline.focus .video-object-reply-timeline-graduate {
+    opacity: 0.9;
+}
+
+.video-object-reply .video-object-reply-timeline-graduate > div {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.video-object-reply .video-object-reply-timeline-graduate .safe-reply-time-file {
+    position: absolute;
+    height: 100%;
+    background-color: rgba(120, 255, 0, 1);
+}
+
+.safe-videos {
+    display: none;
+}
+
+.video-panel-toolbox .move-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.video-panel-toolbox .move-panel .move-panel-bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url('../img/videoMove.png') no-repeat center center;
+    background-size:contain;
+    opacity: 0.5;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons {
+    /*margin: 10px 0 0 10px;*/
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 11;
+    /*padding: 10px 0 10px 20px;*/
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons.right {
+    right: 10px;
+    left: auto;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons button:nth-child(1) {
+    margin: 0 0 0 5px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons.right button {
+    margin: 0 5px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons.right > .tool-name {
+    margin-bottom: 0;
+    margin-left: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons .move-panel-buttons-group {
+    float: left;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons .move-panel-buttons-zoom-group-button:nth-child(2n+2) {
+    margin: 0 15px 0 5px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons .move-panel-buttons-zoom-group-button:nth-child(2n+1) {
+    margin: 0 5px 0 15px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons .move-panel-buttons-group > label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20px;
+    text-align: center;
+    width: 20px;
+    top: 7px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons .move-panel-buttons-group.move-panel-buttons-no-group {
+    background-color: transparent;
+    margin: 0;
+    padding: 5px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-buttons select {
+    width: 135px;
+    height: 30px;
+    color: #666;
+    border-radius: 10px;
+    outline: none;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x {
+    position: absolute;
+    height: 100%;
+    font-size: 5%;
+    display: table;
+    cursor: pointer;
+    opacity: 0.5;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x.left {
+    left: 25px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x.right {
+    right: 25px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-y {
+    position: absolute;
+    width: 100%;
+    font-size: 5%;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-y.top {
+    top: 0px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-y.bottom {
+    bottom: 0px;
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x:focus,
+.video-panel-toolbox .move-panel .move-panel-arrow-x:hover,
+.video-panel-toolbox .move-panel .move-panel-arrow-y:focus,
+.video-panel-toolbox .move-panel .move-panel-arrow-y:hover {
+    opacity: 0.75;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.75);
+}
+
+.video-panel-toolbox .move-panel .move-panel-arrow-x:active,
+.video-panel-toolbox .move-panel .move-panel-arrow-y:active {
+    color: #000;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.75);
+}
+
+.video-panel-toolbox .cruise-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.video-panel-toolbox .cruise-panel .cruise-panel-buttons {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 11;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    font-size: 11px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.video-panel-toolbox .cruise-panel .cruise-panel-buttons button {
+    border-radius: 10px;
+}
+
+.video-panel-toolbox .cruise-panel .cruise-panel-buttons button:not(:last-child) {
+    margin-right: 15px;
+}
+
+.video-panel-toolbox .cruise-panel select {
+    width: 110px;
+    height: 40px;
+    color: #666;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin-right: 15px;
+    text-indent: 5px;
+}
+
+.video-panel-toolbox .speed-panel {
+    position: absolute;
+    z-index: 3;
+    width: 100px;
+    height: 50px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    cursor: default;
+    display: none;
+}
+
+.video-panel-toolbox .reply-panel {
+    /*position: absolute;*/
+    /*top: 70px;*/
+    /*right: 10px;*/
+    z-index: 4;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 0 30px black;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.video-panel-toolbox .reply-panel > div {
+    position: relative;
+    padding: 5px 0 5px 10px;
+}
+
+.video-panel-toolbox .reply-panel > div > button {
+    margin-right: 10px;
+}
+
+.video-panel-toolbox .reply-date-panel  {
+    margin: 0 auto;
+    width: 300px;
+    height: 230px;
+    padding: 20px 20px 5px 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 0 25px #000;
+    text-align: center;
+    display: none;
+}
+
+.video-panel-toolbox .reply-date-panel > div {
+    text-align: left;
+}
+
+.video-panel-toolbox .reply-date-panel > button {
+    font-family: '微软雅黑';
+    font-weight: bold;
+}
+
+.fastdownload-date-panel{
+    margin: 0 auto;
+    width: 300px;
+    height: 230px;
+    padding: 20px 20px 5px 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 0 25px #000;
+    text-align: center;
+    display: none;
+}
+
+.fastdownload-date-panel > div {
+    text-align: left;
+}
+
+.fastdownload-date-panel > button {
+    font-family: '微软雅黑';
+    font-weight: bold;
+}

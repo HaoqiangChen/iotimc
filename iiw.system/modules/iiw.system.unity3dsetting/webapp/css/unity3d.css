@@ -1,0 +1,214 @@
+
+.system-unity3dsetting-map {
+    position: relative;
+}
+
+.unity3dsetting-mapbar {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.unity3dsetting-mapbar > .unity3dsetting-menu > .btn-group-justified {
+    height: 100%;
+    width: 70%;
+    margin: auto;
+}
+
+.unity3dsetting-menu {
+    width:79%;
+    height: 100%;
+}
+
+.unity3dsetting-mapbar > .unity3dsetting-menu > .btn-group-justified > a {
+    background-color: rgba(0,0,0,0);
+    padding: 3px;
+}
+
+.unity3dsetting-mapbar > .unity3dsetting-menu > .btn-group-justified > a:hover {
+    background-color: rgba(0,0,0,0.15);
+}
+
+.unity3dsetting-mapbar > .unity3dsetting-menu > .btn-group-justified > a.select {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.unity3dsetting-mapbox {
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.unity3dsetting-mapbox-map {
+    position: relative;
+    overflow: hidden;
+}
+
+.selectCamera{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.unity3dsetting-camera{
+    background-color: #000;
+}
+
+.cameraCover{
+    background-color: rgba(0,0,0,0.8);
+    z-index: 3;
+    position: absolute;
+}
+.cameraTable{
+    z-index: 4;
+}
+
+.iiw-system-table-container>thead>tr>th{
+    height: 50px;
+}
+.iiw-system-table-container>tbody>tr>td{
+    height: 50px;
+}
+.unity3dsetting-first-submit{
+    background-color: rgba(0,0,0,0.20);
+}
+
+.unity3dsetting-two-position{
+    background-color: rgba(0,0,0,0.35);
+}
+
+.unity3dsetting-mapbox-info-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.unity3dsetting-mapbox-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 2;
+}
+
+.unity3dsetting-mapbox-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.unity3dsetting-mapbox-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 2;
+    border-bottom: 3px solid rgba(255,255,255,0.6);
+
+}
+
+.unity3dsetting-mapbox-info label{
+    padding: 10px;
+}
+
+.unity3dsetting-mapbox-Input{
+    border-bottom: 3px solid rgba(255,255,255,0.6);
+}
+
+.unity3dsetting-mapbox-info > div {
+    position: relative;
+}
+
+.unity3dsetting-mapbox-info > div > div {
+    width: 100%;
+}
+
+.unity3dsetting-mapbox-info-coordinate {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: table;
+}
+
+.unity3dsetting-mapbox-info-coordinate .mapbox-info-coordinate {
+    width: 103px;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 5px 0 5px;
+    background-color: rgba(0,0,0,0.5);
+    cursor: default;
+    float: left;
+    text-align: center;
+}
+
+.unity3dsetting-mapbox-info-coordinate .mapbox-info-coordinate:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.unity3dsetting-mapbox-info-coordinate .mapbox-info-coordinate.selected {
+    background-color: rgba(137,205,252,0.5);
+}
+
+.unity3dsetting-mapbox-info-coordinate .mapbox-info-coordinate.selected:hover {
+    background-color: rgba(137,205,252,0.3);
+}
+
+.unity3dsetting-mapbox-info-select.form-control {
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+    border-radius: 0;
+    height: 39px;
+}
+
+.unity3dsetting-mapbox-tips {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    color: #aaa;
+    overflow: hidden;
+}
+
+.unity3dsetting-mapbox-btn {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid rgba(255,255,255,0.6);
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-multiple {
+    position: relative;
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-multiple > div > div {
+    margin: 5px 0 5px 10px;
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    width: 160px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-multiple > div > div:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-single {
+    display: table;
+    padding: 0 50px;
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-single > div {
+    width: 200px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.unity3dsetting-mapbox-btn .mapbox-btn-single > div > a {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 0;
+    padding: 0;
+    letter-spacing: 2px;
+}
+
+.unity3dsetting-from-div div{
+    padding: 10px 0px;
+}

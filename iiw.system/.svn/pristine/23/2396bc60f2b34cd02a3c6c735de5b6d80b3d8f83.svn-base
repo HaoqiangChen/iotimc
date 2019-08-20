@@ -1,0 +1,72 @@
+.system-expert-page-content{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.system-expert-container{
+    padding: 15px;
+}
+.system-expert-header{
+    background-color: rgba(0,0,0,0.3);
+}
+.expertSelect{
+    background-color: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+    height: 32px;
+}
+
+.system-monitorpatrol-item {
+    position: relative;
+}
+
+.system-monitorpatrol-item-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+
+/*.ztree li span.button.ouIcon_ico_open,*/
+/*.ztree li span.button.ouIcon_ico_close,*/
+/*.ztree li span.button.ouIcon_ico_docu {*/
+/*background:url('../img/star.png');*/
+/*background-size: cover;*/
+/*}*/
+/*.ztree li span.button.mapIcon_ico_open,*/
+/*.ztree li span.button.mapIcon_ico_close,*/
+/*.ztree li span.button.mapIcon_ico_docu {*/
+/*background:url('../img/area.png');*/
+/*background-size: cover;*/
+/*}*/
+/*.ztree li span.button.cameraIcon_ico_docu {*/
+/*background:url('../img/camera.png');*/
+/*background-size: cover;*/
+/*}*/
+/*.ztree li span.button.userIcon_ico_docu {*/
+/*background:url('../img/user.png');*/
+/*background-size: cover;*/
+/*}*/
+.btnempty{
+    width: 60px;
+    height: 32px;
+    position: absolute;
+    left: 940px;
+    top: 70px;
+    background-color: #485563;
+    border:0px;
+    margin-top: 9px;
+}
+.btntyemp{
+    width: 60px;
+    height: 32px;
+    position: absolute;
+    left: 950px;
+    top: 120px;
+    background-color: #485563;
+    border:0px;
+    margin-top: 9px;
+}
+.spanone{
+    width: 1060px;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    position: absolute;
+}

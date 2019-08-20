@@ -1,0 +1,91 @@
+<div class="layout-full">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full" i-scroll data-config="{&quot;scrollY&quot;: true, &quot;mouseWheel&quot;: true, &quot;scrollbars&quot;: true, &quot;fadeScrollbars&quot;: true, &quot;preventDefault&quot;: false}">
+                <div>
+                    <form class="form-horizontal label-left" id="entityItemForm" name="entityItemForm" novalidate>
+                        <fieldset>
+                            <legend class="section">视频权限配置信息</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">用户名</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <select ng-model="entityItem.syuserfk" class="col-md-5" required>
+                                            <option value="" selected>请选择用户名</option>
+                                            <option value="{{ times.id }}" ng-repeat="times in expertget">{{ times.code }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="!entityItem.syuserfk" style="color:red;">*用户名不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">启用状态</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <select ng-model="entityItem.content" class="col-md-5" required>
+                                            <option value="" selected>请选择启用状态</option>
+                                            <option value="1">启用</option>
+                                            <option value="0">禁用</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.content == null" style="color:red;">*启用状态不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label" ng-model="companyID">监控设备：</label>
+                                </div>
+                                <div class="col-md-8" style="overflow: hidden;">
+                                    <div class="form-group">
+                                        <div class="form-control" style="overflow: hidden; height: 35px;" ng-model = 'kkk' title="请从下方添加监控设备">
+                                            <span class="spanone">{{ entityItem.name }}</span>
+                                        </div>
+                                    </div>
+                                    <div  class="form-group">
+                                        <div  class="form-control" style="height: 150px;" >
+                                            <ul style="padding:  0; width: 800px;height: 300px; list-style: none;"  ng-click="chooseRow()">
+                                                <li style="width: 200px; height: 30px; line-height: 30px; float: left; list-style: none;" ng-repeat="company in devicetype.companies" ng-click="devicetype.selectCompany(company)">
+                                                    <div><system-row-check ng-model="company.checked" class="rowChecks"></system-row-check>{{ company.name }}</div>
+                                                </li>
+                                            </ul>
+                                            <button class="btnempty" ng-click="emptyclk()">选择</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="!entityItem.name" style="color:red;">*厂家信息不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">IP地址</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.address" onselectstart="return true " placeholder="请输入IP地址" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="!entityItem.address" style="color:red;">*IP地址不能为空</lable>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

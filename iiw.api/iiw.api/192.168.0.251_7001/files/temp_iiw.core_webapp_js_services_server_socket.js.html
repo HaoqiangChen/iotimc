@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 192.168.0.251:7001/files/temp_iiw.core_webapp_js_services_server_socket.js.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>temp\iiw.core\webapp\js\services\server\socket.js - iiw.api</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="../index.html">
+             
+            <img alt="iiw.api" src="../assets/css/logo.png" title="iiw.api">
+            
+                iiw.api
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="http://192.168.0.251/">Home</a>
+                    </li>
+                    
+                    <li><a href="../index.html">API</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.c.directives.html">iiw.c.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/cPicker.html">cPicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.directives.html">iiw.core.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/iCopyText.html">iCopyText</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iExit.html">iExit</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLogout.html">iLogout</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLang.html">iLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iDomSelect.html">iDomSelect</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iDrag.html">iDrag</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iLogo.html">iLogo</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iResize.html">iResize</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iScroll.html">iScroll</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iScroll2.html">iScroll2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.services.html">iiw.core.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/iAjax.html">iAjax</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iSocket.html">iSocket</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iConfig.html">iConfig</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iConfirm.html">iConfirm</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iGetLang.html">iGetLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iMessage.html">iMessage</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iTimeNow.html">iTimeNow</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/iToken.html">iToken</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.directives.html">iiw.safe.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/safePicker.html">safePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/safeTree.html">safeTree</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.services.html">iiw.safe.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/safeCamera.create.html">safeCamera.create</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>temp\iiw.core\webapp\js\services\server\socket.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+/**
+ * @module iiw.core.services
+ */
+define([
+    &#x27;angular&#x27;,
+    &#x27;services/server/ajax&#x27;,
+    &#x27;services/util/token&#x27;
+], function(app) {
+    /**
+     * 提供与应用服务器、第三方服务器等远端进行WebSocket交互的服务类。
+     * 1. 主框架已加载，无需再次引入。
+     * 2. 此类为服务，需要依赖注入才能使用。
+     * ***
+     *      JS:
+     *      app.controller(&#x27;***Controller&#x27;, [&#x27;iSocket&#x27;, function(iSocket) {
+     *          // TODO
+     *      }]);
+     *
+     * @class iSocket
+     *
+     *
+     * @author yjj
+     * @version 1.0
+     * @Date 2015-11-02
+     */
+    app.factory(&#x27;iSocket&#x27;, [&#x27;$rootScope&#x27;, &#x27;$location&#x27;, &#x27;$timeout&#x27;, &#x27;iAjax&#x27;, &#x27;iToken&#x27;, function($rootScope, $location, $timeout, iAjax, iToken) {
+        var socket, _port;
+
+        function iiwSocket(url) {
+            var socket = new WebSocket(url),
+                events = initEvents(),
+                connect = false,
+                reconnid;
+
+            event();
+
+            function initEvents() {
+                return {
+                    &#x27;validation&#x27;: [function(data) {
+                        if(data.status == &#x27;0&#x27;) {
+                            socket.send(JSON.stringify({
+                                &#x27;authorization&#x27;: iToken.get()
+                            }));
+                        }
+                    }],
+                    &#x27;request&#x27;: [function(data) {
+                        if(data.status == &#x27;authentication&#x27;) {
+                            socket.send(JSON.stringify({
+                                &#x27;authorization&#x27;: iToken.get()
+                            }));
+                        }
+                    }]
+                }
+            }
+
+            function event() {
+                socket.onopen = function() {
+                    connect = true;
+                    call(&#x27;connect&#x27;);
+                    clean();
+                };
+
+                socket.onclose = function() {
+                    connect = false;
+                    call(&#x27;disconnect&#x27;);
+                    clean();
+                    reconnect();
+                };
+
+                socket.onerror = function(e) {
+                    connect = false;
+                    call(&#x27;error&#x27;, e.data);
+                    clean();
+                    reconnect();
+                };
+
+                socket.onmessage = function(e) {
+                    var json = JSON.parse(e.data),
+                        event = json.event,
+                        data = json.data;
+
+                    if(window.__IIWDEBUGGER) {
+                        var message = &#x27;iiw.core: 收到服务端的ws消息，内容如下\n&#x27; + JSON.stringify(json);
+                        if(window.__IIWDEBUGGER == 1) {
+                            alert(message); // eslint-disable-line
+                        } else {
+                            console.log(message);
+                        }
+                    }
+
+                    call(event, data);
+                    
+                    call(&#x27;__ALL.WS.EVENT&#x27;, {
+                        event: event,
+                        data: data
+                    });
+                };
+            }
+
+            function reconnect() {
+                if(!reconnid &amp;&amp; socket) {
+                    reconnid = $timeout(function() {
+                        socket = new WebSocket(url);
+                        event();
+                    }, 1000);
+                }
+            }
+
+            function clean() {
+                if(reconnid) {
+                    $timeout.cancel(reconnid);
+                    reconnid = null;
+                }
+            }
+
+            function call(event, data) {
+                if(events[event]) {
+                    $.each(events[event], function(i, callback) {
+                        callback(data);
+                    });
+                }
+            }
+
+            return {
+                on: function(eventName, callback) {
+                    if(!events[eventName]) {
+                        events[eventName] = [];
+                    }
+                    events[eventName].push(callback);
+                },
+                emit: function(eventName, data) {
+                    if(connect) {
+                        socket.send(JSON.stringify({
+                            &#x27;event&#x27;: eventName,
+                            &#x27;data&#x27;: data
+                        }));
+                    } else {
+                        //ERROR TODO
+                    }
+
+                },
+                close: function() {
+                    if(socket) {
+                        socket.close();
+                        socket = null;
+                    }
+                }
+            };
+        }
+
+        function getPort(fn) {
+            if(_port) {
+                callback(_port);
+            } else {
+                iAjax.postSync(&#x27;sys/web/config.do?action=getWebSocketPort&#x27;).then(function(data) {
+                    if(data &amp;&amp; data.result) {
+                        callback(data.result.port);
+                    } else {
+                        callback(2048);
+                    }
+                });
+            }
+
+            function callback(port) {
+                if(fn) fn(port);
+            }
+        }
+
+        return {
+            /**
+             * 与服务器建立WebSocket的连接，仅支持与应用服务器连接，不支持与第三方地址的WebSocket连接。
+             * * WebSocket的建立时机由模块开发者把握，原则上建议在登陆后自动建立连接。
+             * * 在调用本方法后，无论时候连接上，或连接上后断链，都会自动尝试重连。
+             *
+             * @method connect
+             *
+             * @example
+             *      // 注入iSocket服务。
+             *      app.controller(&#x27;***Controller&#x27;, [&#x27;iSocket&#x27;, function(iSocket) {
+             *          // 连接应用服务器WebSocket。
+             *          iSocket.connect();
+             *      }]);
+             */
+            connect: function() {
+                if(socket) {
+                    socket.close();
+                }
+                getPort(function(port) {
+                    if($.soa.defaultHost == &#x27;/&#x27;) {
+                        socket = new iiwSocket(&#x27;ws://&#x27; + $location.$$host + &#x27;:&#x27; + port + &#x27;/ws&#x27;);
+                    } else {
+                        var url = document.createElement(&#x27;a&#x27;);
+                        url.href = $.soa.defaultHost;
+                        socket = new iiwSocket(&#x27;ws://&#x27; + url.hostname + &#x27;:&#x27; + port + &#x27;/ws&#x27;);
+                    }
+                });
+            },
+
+
+            /**
+             * 主动关闭与应用服务器的WebSocket连接。
+             *
+             * @method close
+             *
+             * @example
+             *      // 注入iSocket服务。
+             *      app.controller(&#x27;***Controller&#x27;, [&#x27;iSocket&#x27;, function(iSocket) {
+             *          // 关闭WebSocket。
+             *          iSocket.close();
+             *      }]);
+             */
+            close: function() {
+                if(socket) {
+                    socket.close();
+                }
+            },
+
+
+            /**
+             * 监听应用服务器主动发布的WebSocket消息。
+             * * **注意，多次调用该方法监听同一个事件会多次触发，并且由于闭包的原因，无法从内存中删除，建议开发者在模块框架下使用服务方式进行监听，只监听一次，避免资源的浪费**。
+             *
+             * @event on
+             *
+             * @param eventName {String} 监听的消息名称
+             * @param callback {Function} 回调函数，监听后，服务器发送对应的消息时，调用回调函数方法。
+             *
+             * @example
+             *      // 注入iSocket服务。
+             *      app.controller(&#x27;***Controller&#x27;, [&#x27;iSocket&#x27;, function(iSocket) {
+             *          // 监听testEvent消息。
+             *          iSocket.on(&#x27;testEvent&#x27;, function(data) {
+             *              // TODO
+             *              console.log(data); // 应用服务器基于WebSocket向客户端发送了一个testEvent消息，消息内容为data。
+             *          });
+             *      }]);
+             */
+            on: function(eventName, callback) {
+                if(socket) {
+                    socket.on(eventName, function() {
+                        var args = arguments;
+                        $rootScope.$apply(function() {
+                            callback.apply(socket, args);
+                        });
+                    });
+                }
+            },
+
+
+            /**
+             * 基于WebSocket，向应用服务器发送消息。
+             *
+             * @method emit
+             *
+             * @param eventName {String} 发送的消息名称
+             * @param data {JSON Object} 发送的数据内容，具体看模块数据接口文档。
+             *
+             * @example
+             *      // 注入iSocket服务。
+             *      app.controller(&#x27;***Controller&#x27;, [&#x27;iSocket&#x27;, function(iSocket) {
+             *          // 向应用服务器发送testEvent消息，消息内容为{data: &#x27;test&#x27;}。
+             *          iSocket.emit(&#x27;testEvent&#x27;, {data: &#x27;test&#x27;});
+             *      }]);
+             */
+            emit: function(eventName, data) {
+                if(socket) {
+                    socket.emit(eventName, data);
+                }
+            }
+        }
+    }]);
+});
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+
+<!-- Mirrored from 192.168.0.251:7001/files/temp_iiw.core_webapp_js_services_server_socket.js.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:09 GMT -->
+</html>

@@ -1,0 +1,8 @@
+<div style="width:600px;height: 300px;margin-top:20px;overflow:auto;" class="iiw-system-device-deviceConfirm">
+    <div ng-repeat="item in detailList" class="iiw-system-device-deviceDetailList">
+        <div class="iiw-system-device-deviceDetail" ng-click="selectDevice(item)" ng-class="{'select': item.checked}">
+            <input type="checkbox" style="width:20px;height: 20px;" ng-model="item.checked"/>
+            <span>{{item.name}}</span>
+        </div>
+    </div>
+</div>

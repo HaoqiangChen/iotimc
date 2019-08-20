@@ -1,0 +1,253 @@
+.safe-datacenter-view > div {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.safe-rollcall {
+    width: 100%;
+    height: 100%;
+}
+
+.safe-rollcall .transparent-table {
+    table-layout: fixed;
+    background-color: inherit;
+    font-size: 16px;
+}
+
+.safe-rollcall .text-over-hide {
+    word-break: keep-all;
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.safe-rollcall-list {
+    margin: 0px 30px 20px;
+    width: calc(100% - 60px);
+    height: calc(100% - 20px);
+    overflow: hidden;
+    position: relative;
+}
+
+.safe-rollcall-list-top {
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 20px 35px;
+}
+
+.safe-rollcall-list-top .list-header {
+    position: relative;
+    font-size: 18px;
+    margin-bottom: 17px;
+}
+
+.safe-rollcall-list-top .list-header .btn-wrapper {
+    position: absolute;
+    z-index: 9;
+}
+
+.safe-rollcall-list-top .list-header h3.title {
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+    position: relative;
+}
+
+.safe-rollcall-list-top .list-header h3.title::after {
+    display: block;
+    content: '';
+    width: 15%;
+    height: 3px;
+    background: url('../img/titleline.png') no-repeat center/100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    margin-left: -7.5%;
+}
+
+.safe-rollcall-list-top .list-header .subtext label {
+    font-size: 20px;
+    color: #00A8FF;
+    font-weight: bold;
+}
+
+.safe-rollcall-list-top .list-header .subtext input {
+    display: inline-block;
+    width: 65%;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #00A8FF;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.safe-rollcall-list-top .list-header .subtext .date {
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    color: #00A8FF;
+    display: flex;
+}
+
+.safe-rollcall-list-top .list-header .subtext .date input {
+    border-bottom: none;
+    color: #00A8FF;
+    width: 50%;
+    padding: 0;
+    z-index: 1;
+}
+
+.safe-rollcall-list-top .list-header .subtext .date i {
+    font-size: 30px;
+    vertical-align: middle;
+    position: absolute;
+    left: 50%;
+    z-index: 0;
+}
+
+.safe-rollcall-list-top .list-body {
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow: hidden;
+}
+
+.safe-rollcall-list-top .list-body .table-responsive {
+    width: 100%;
+    height: 100%;
+}
+
+.safe-rollcall-list-top .list-body table {
+    width: 100%;
+    text-align: center;
+}
+
+.safe-rollcall-list-top .list-body table thead tr {
+    background-color: rgba(255, 255, 255, .3);
+    color: #fff;
+}
+
+.safe-rollcall-list-top .list-body table thead tr th {
+    font-weight: bolder;
+    font-size: 18px;
+    text-align: center;
+}
+
+.safe-rollcall-list-top .list-body table thead tr th span {
+    color: #00A8FF;
+}
+
+.safe-rollcall-list-top .list-body table tr {
+    height: 50px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+
+.safe-rollcall-list-top .list-body table table tbody tr:hover {
+    background-color: rgba(8, 128, 251, .15);
+}
+
+
+.safe-rollcall-list-top .list-body table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, .15);
+}
+
+.safe-rollcall-list-top .list-body table tbody tr {
+    color: #fff;
+}
+
+.safe-rollcall-list-top .list-body table tbody tr td .bg-td {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.safe-rollcall-list-top .list-body table.newcon tbody tr {
+    height: 50px;
+}
+
+.safe-rollcall-list-bottom {
+    width: calc(100% - 70px);
+    height: 25%;
+    box-sizing: content-box;
+    overflow: hidden;
+    position: relative;
+    margin: 0 35px;
+    background-color: rgba(0, 168, 255, .3);
+    border-radius: 12px;
+    display: flex;
+}
+
+.safe-rollcall-list-bottom {
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-left {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, .5);
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-left .title {
+    font-size: 28px;
+    padding-left: 8px;
+    border-left: 6px solid #00A8FF;
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right {
+    width: 90%;
+    height: 100%;
+    padding: 10px 38px 10px 16px;
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right ul {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right li {
+    position: relative;
+    width: 17%;
+    height: 46%;
+    background-color: rgba(0, 168, 255, 0.5);
+    border-radius: 8px;
+    padding-left: 18px;
+    font-size: 28px;
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+    background: linear-gradient(0deg, rgba(0, 157, 252, 1), rgba(0, 241, 239, 1));
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right li:nth-child(n+6)::before {
+    background: linear-gradient(0deg, rgba(255, 131, 89, 1), rgba(255, 223, 64, 1));
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right li .value {
+    font-size: 48px;
+}
+
+.safe-rollcall-list-bottom .rollcall-bottom-right li .value span {
+    font-size: 28px;
+}

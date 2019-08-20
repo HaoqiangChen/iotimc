@@ -1,0 +1,136 @@
+.iiw-system-devicewarrant-container{
+    position: relative;
+    height: 100%;
+}
+.iiw-system-devicewarrant-container .layout-full{
+    width: 100%;
+    height: 100%;
+}
+.iiw-system-devicewarrant-container  .system-devicewarrant-bar{
+    background-color: rgba(0,0,0,0.3);
+}
+.iiw-system-devicewarrant-container  .stretch{
+    overflow: hidden;
+}
+.iiw-system-devicewarrant-container  .devicewarrant-container-foot{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.iiw-system-devicewarrant-container .devicewarrant-container-body{
+    padding: 5px;
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-body .table th{
+    vertical-align: middle;
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-body-left select{
+    padding: 8px 10px;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.devicewarrant-container-body-left-header{
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 56px;
+    padding: 7px;
+}
+.devicewarrant-container-body-left-header>input{
+    width: 200px;
+    height: 41px;
+    float: right;
+}
+.devicewarrant-container-body-right-header{
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 56px;
+}
+.devicewarrant-container-body-right-header>select{
+    float: left;
+    margin-right: 20px;
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-body-right select{
+    padding: 8px 10px;
+    /*width: 144px;*/
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-body-left{
+    width: 22%;
+    float: left;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-right: 10px;
+    overflow: auto;
+}
+.devicewarrant-container-body-left table tr th{
+    height: 47px;
+}
+.devicewarrant-container-body-left table tbody tr td{
+    height: 50px;
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-body-right{
+    width: 77.2%;
+    float: left;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.devicewarrant-container-body-right .devicewarrant-container-body-table{
+    height: 93.7%;
+}
+.iiw-system-devicewarrant-container .devicewarrant-container-foot{
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 49px;
+}
+
+.iiw-system-devicewarrant-container  .addScroll{
+    overflow: auto;
+}
+
+.iiw-system-devicewarrant-container  .addScroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.iiw-system-devicewarrant-container  .addScroll::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+.iiw-system-devicewarrant-container .device-box{
+    padding: 20px;
+    margin: 10px;
+    width: 180px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.298039);
+}
+.iiw-system-devicewarrant-container .device-box:hover{
+    cursor: pointer;
+    background-color: rgba(223, 105, 26,0.6);
+}
+.iiw-system-devicewarrant-container .reply{
+    border: 1px solid #fff;
+    padding: 8px 11px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.iiw-system-devicewarrant-container .reply:hover{
+    background-color: rgba(223, 105, 26,0.6);
+    cursor: pointer;
+}
+
+
+
+.ztree li span.button.ouIcon_ico_open,
+.ztree li span.button.ouIcon_ico_close,
+.ztree li span.button.ouIcon_ico_docu {
+    background:url('../img/star.png');
+    background-size: cover;
+}
+.ztree li span.button.mapIcon_ico_open,
+.ztree li span.button.mapIcon_ico_close,
+.ztree li span.button.mapIcon_ico_docu {
+    background:url('../img/area.png');
+    background-size: cover;
+}
+.ztree li span.button.cameraIcon_ico_docu {
+    background:url('../img/camera.png');
+    background-size: cover;
+}
+.ztree li span.button.userIcon_ico_docu {
+    background:url('../img/user.png');
+    background-size: cover;
+}

@@ -1,0 +1,42 @@
+<div class="scrawl-edit-widget">
+    <canvas class="canvas" id="canvas"></canvas>
+    <canvas class="canvas2" id="canvas2"></canvas>
+    <span class="btn-act pencil" ng-click="change_attr(0,-1,-1)">铅笔</span>
+    <span class="btn-act straight" ng-click="change_attr(1,-1,-1)">直线</span>
+    <span class="btn-act circle" ng-click="change_attr(3,-1,-1)">圆形</span>
+    <span class="btn-act rect" ng-click="change_attr(4,-1,-1)">矩形</span>
+    <!--<span class="btn-act blur" ng-click="gaussian()">模糊化</span>-->
+    <span class="btn-act eraser" ng-click="change_attr(0,-1,-1,1)">橡皮擦</span>
+    <span class="btn-act clear" ng-click="restore_canvas()">还原</span>
+    <span class="size_span" id="size_span">1</span>
+    <div class="size_bar" id="size_bar">
+        <span class="btn-act size_thumb" id="size_thumb"></span>
+    </div>
+    <span class="color_span" id="color_span"></span>
+    <canvas class="canvas_color" id="canvas_color" width="198" height="15"></canvas>
+
+    <div class="btn btn-success btn-submit" ng-click="snapSubmit()">
+        提交
+    </div>
+    <div class="btn btn-info btn-back" ng-click="snapHide()">
+        返回
+    </div>
+
+    <div class="channel_wrapper hide">
+        <span class="r_channel_span" id="r_channel_span">r</span>
+        <div class="r_channel_bar" id="r_channel_bar">
+            <span class="btn-act r_channel_thumb" id="r_channel_thumb"></span>
+        </div>
+        <div class="clear-both"></div>
+        <span class="g_channel_span" id="g_channel_span">g</span>
+        <div class="g_channel_bar" id="g_channel_bar">
+            <span class="btn-act g_channel_thumb" id="g_channel_thumb"></span>
+        </div>
+        <div class="clear-both"></div>
+        <span class="b_channel_span" id="b_channel_span">b</span>
+        <div class="b_channel_bar" id="b_channel_bar">
+            <span class="btn-act b_channel_thumb" id="b_channel_thumb"></span>
+        </div>
+    </div>
+</div>
+

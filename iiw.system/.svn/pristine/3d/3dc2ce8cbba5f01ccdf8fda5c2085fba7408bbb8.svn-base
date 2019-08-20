@@ -1,0 +1,41 @@
+<div class="iiw-system-diagnosisplan-container-deviceTable addScroll">
+    <div class="form-group col-md-12">
+        <select class="form-control" ng-model="deviceType" ng-change="changeType(deviceType)" style="border:1px solid rgba(255, 255, 255, 0.25);width:150px;height: 39px;float:left;margin-right:20px; margin-left: 20px;">
+            <option value="">设备类型</option>
+            <option value="{{item.content}}" ng-repeat="item in typeList">{{item.name}}</option>
+        </select>
+        <div class="input-group pull-left" style="width:300px;margin-right:20px;">
+            <input type="text" class="form-control" ng-model="diagnosisplan.searchValue" placeholder="输入设备名称!">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" ng-click="getLinkDevice()"><i class="fa fa-search"></i>查询</button>
+            </span>
+        </div>
+    </div>
+    <div class="form-group" style="height:95%;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>设备名称</th>
+                <th>设备类型</th>
+                <th>ip</th>
+                <th>端口</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in linkDeviceList.child">
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.typename}}</td>
+                <td>{{item.ip}}</td>
+                <td>{{item.port}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <div class="pagination-layout-container">
+            <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-right" total-items="totalSize" ng-model="currentPage" ng-change="diagnosisplan.pageChanged(currentPage)" items-per-page="pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+        </div>
+    </div>
+</div>

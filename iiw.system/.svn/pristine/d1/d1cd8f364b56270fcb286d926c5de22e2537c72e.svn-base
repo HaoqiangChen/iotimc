@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.sycode",
+  "version": "0.0.1",
+  "description": "系统字典",
+  "author": "zcl",
+  "date": "2016-03-26",
+  "main": "sycodeController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.29"
+}

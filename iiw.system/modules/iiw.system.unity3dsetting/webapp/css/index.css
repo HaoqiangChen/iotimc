@@ -1,0 +1,54 @@
+
+.position-r {
+    position: relative;
+}
+.overflow-h {
+    overflow: hidden;
+}
+.overflow-a {
+    overflow: auto;
+}
+
+/**
+ * 透明panel，默认透明度为0.3
+ */
+.panel.panel-transparent {
+    background-color: rgba(0,0,0,.3);
+}
+.panel.panel-transparent > .panel-heading {
+    background-color: rgba(0,0,0,.3);
+}
+.panel.panel-transparent > .panel-body {
+    background-color: transparent;
+}
+
+/**
+ * 调整panel，增加下外边距
+ */
+.panel.adjust-panel {
+    margin-bottom: 10px;
+}
+
+/**
+ * 透明列表，默认透明度为0
+ */
+.list-group.transparent > .list-group-item,
+.list-group.transparent > .list-group-item > .badge{
+    background-color: transparent;
+}
+
+/**
+ * 地图容器
+ */
+.unity-container {
+    position: relative;
+    padding: 0 0 0 0;
+}
+
+.nav-fixed {
+    position: fixed;
+    top: -1920px;
+    left: 0;
+    width: 0px;
+    z-index: 99;
+}

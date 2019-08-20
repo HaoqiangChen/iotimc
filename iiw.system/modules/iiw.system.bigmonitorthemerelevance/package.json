@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.bigmonitorthemerelevance",
+"version": "0.0.1",
+"description": "电视墙模式关联",
+"author": "llx",
+"date": "2017-06-23",
+"main": "bigmonitorthemerelevanceController",
+"host": "192.168.0.251",
+"client": "192.168.0.27"
+}

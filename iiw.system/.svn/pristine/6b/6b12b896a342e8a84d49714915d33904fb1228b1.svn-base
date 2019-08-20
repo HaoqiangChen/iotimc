@@ -1,0 +1,68 @@
+<div class="iiw-system-page-container iiw-system-tax-info">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">税局概况</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="row layout-full">
+                    <div class="col-lg-2 widget-content iiw-system-treeview-container" i-scroll>
+                        <div>
+                            <ul system-tree-view ng-model="selectNode" id="taxInfoTreeview" class="ztree"></ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 iiw-system-form-container">
+                        <div class="widget-header">
+                            <span>编辑单位概况信息</span>
+                        </div>
+                        <div class="widget-content">
+                            <form method="post" class="form-horizontal" id="infoform" name="infoform" novalidate>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">电话</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" ng-model="taxinfo.phone">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">地址</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" ng-model="taxinfo.address">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">实拍图</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="photo" style="height: 300px;cursor: pointer;" ng-click="taxinfo.uploadClick()">
+                                                            <img ng-src="{{taxinfo.image}}" class="layout-full" ng-if="taxinfo.image != ''" />
+                                                            <img src=""class="layout-full" ng-if="taxinfo.image == ''" />
+                                                        </div>
+                                                        <div style="width:150px; margin: 0 auto;">
+                                                            <input id="upTaxInfoPhoto" onchange="angular.element(this).scope().taxinfo.changeImg()" accept="image/jpg,image/jpeg,image/png" type="file" style="display:none;"/>
+                                                            <button class="btn btn-info" style="margin: 15px auto;" ng-click="taxinfo.uploadClick()" type="button">选择外观实拍图</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div system-tax-tianhe-umeditor i-dom-select style="height: 480px;width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="form-actions">
+                                    <div>
+                                        <button class="btn btn-s-md btn-primary" type="button" ng-click="taxinfo.save()">保     存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

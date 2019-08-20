@@ -1,0 +1,16 @@
+.iiw-system-dispatcher{
+    position: relative;
+    height: 100%;
+}
+.system-dispatcher-header{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-dispatcher-container{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-dispatcher-body{
+    padding: 15px;
+}
+.system-dispatcher-foot{
+    background-color: rgba(0,0,0,0.3);
+}

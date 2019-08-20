@@ -1,0 +1,71 @@
+<div class="safe-rollcall-add-search-dialog">
+    <div class="safe-rollcall-add-search-main">
+        <div class="form-group pull-left" style="margin-right: 8px; line-height: 40px;">
+            <label>姓名:</label>
+        </div>
+        <div class="form-group pull-left" style="width:250px;margin-right: 15px;">
+            <div class="input-group">
+                <input type="text" class="form-control" style="height: 37px;" ng-model="criminalFieldSearchingXm" placeholder="请输入查询条件" autofocus/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit" ng-click="searchFilterList('criminal',criminalFieldSearchingXm)"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group pull-left" style="margin-right: 8px; line-height: 40px;">
+            <label>编号:</label>
+        </div>
+        <div class="form-group pull-left" style="width:250px;">
+            <div class="input-group">
+                <input type="text" class="form-control" style="height: 37px;" ng-model="criminalFieldSearchingBm" placeholder="请输入查询条件" autofocus/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit" ng-click="searchFilterList('criminal',criminalFieldSearchingBm)"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="safe-rollcall-add-search-main">
+        <table class="table safe-rollcall-add-search-detail-table" style="margin-bottom: 0;">
+            <col width="9%"/><col width="9%"/><col width="9%"/><col width="9%"/><col width="14%"/><col width="14%"/><col/><col width="13%"/>
+            <thead>
+                <tr>
+                    <th class="text-center" style="border-top: 1px solid #666;">序号</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">编号</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">姓名</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">单位</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">民族</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">籍贯</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">罪名</th>
+                    <th class="text-center" style="border-top: 1px solid #666;">刑期</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="safe-shiftclasses-submit-dialog-content safe-rollcall-add-search-main">
+        <table class="table safe-rollcall-add-search-detail-table">
+            <col width="9%"/><col width="9%"/><col width="9%"/><col width="9%"/><col width="14%"/><col width="14%"/><col/><col width="13%"/>
+            <tbody>
+                <tr ng-repeat="item in searchCiminalList" ng-click="selectSearchItem(item,'criminal')" ng-class="{'action': item.action}">
+                    <td class="text-center">{{$index + 1}}</td>
+                    <td class="text-center">{{item.bm}}</td>
+                    <td class="text-center">{{item.xm}}</td>
+                    <td class="text-center">{{item.dw}}</td>
+                    <td class="text-center">{{item.mz}}</td>
+                    <td class="text-center">{{item.jg}}</td>
+                    <td class="text-center">{{item.zm}}</td>
+                    <td class="text-center">{{item.pjxq}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="iiw-safe-alarm-gxexecute-select-police-params text-center">
+        <uib-pagination boundary-links="true"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                        total-items="criminalParams.totalSize"
+                        ng-model="criminalParams.pageNo"
+                        ng-change="searchFilterList('criminal')"
+                        items-per-page="criminalParams.pageSize"
+                        previous-text="上一页" next-text="下一页"
+                        max-size="5"></uib-pagination>
+    </div>
+</div>

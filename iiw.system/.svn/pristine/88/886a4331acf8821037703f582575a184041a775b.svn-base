@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.ebook.item",
+  "version": "0.0.1",
+  "description": "办税厅-时间轴",
+  "author": "llx",
+  "date": "2017-12-19",
+  "main": "taxEbookItemController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

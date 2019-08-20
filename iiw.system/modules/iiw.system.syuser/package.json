@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.syuser",
+"version": "0.0.1",
+"description": "用户管理",
+"author": "zjq",
+"date": "2016-02-26",
+"main": "syuserController",
+"host": "192.168.0.251",
+"client": "192.168.0.36"
+}

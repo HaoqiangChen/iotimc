@@ -1,0 +1,99 @@
+<div class="iiw-system-devicewarrant-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="60px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full system-devicewarrant-bar">
+                    <div ui-layout options="{dividerSize:'0'}">
+                        <div ui-layout-container class="devicewarrant-container-body">
+                            <div class="layout-full">
+                                <div class="devicewarrant-container-body-left layout-full addScroll">
+                                    <div class="devicewarrant-container-body-left-header">
+                                        <select ng-model="indexDevicewarrant" ng-change="changeList(indexDevicewarrant)">
+                                            <option value="{{item.value}}" ng-repeat="item in devicewarrantList.list">{{item.name}}</option>
+                                        </select>
+                                        <input type="text" ng-model="indexUserName" class="form-control" placeholder="请输入查找的名称"/>
+                                    </div>
+                                    <div class="layout-full">
+                                        <table class="table table-hover iiw-system-table-container">
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th ng-if="getListStatus == 'syuser'">用户名</th>
+                                                    <th ng-if="getListStatus == 'syuser'">单位名</th>
+                                                    <th ng-if="getListStatus == 'syrole'">权限名称</th>
+                                                    <th ng-if="getListStatus == 'syou'">单位名称</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-if="getListStatus == 'syuser'" ng-class="{'select': userItem.item}" ng-repeat="userItem in userList | filter: {code: indexUserName}" ng-click="selectItem(userItem)">
+                                                    <td style="width:60px;">{{$index + 1}}</td>
+                                                    <td>{{userItem.code}}</td>
+                                                    <td>{{userItem.syouname}}</td>
+                                                </tr>
+                                                <tr ng-if="getListStatus == 'syou'" ng-class="{'select': unitItem.item}" ng-repeat="unitItem in unitList | filter: {name:indexUserName}" ng-click="selectItem(unitItem)">
+                                                    <td>{{$index + 1}}</td>
+                                                    <td>{{unitItem.name}}</td>
+                                                </tr>
+                                                <tr ng-if="getListStatus == 'syrole'" ng-class="{'select': roleItem.item}" ng-repeat="roleItem in roleList | filter: {name:indexUserName}" ng-click="selectItem(roleItem)">
+                                                    <td>{{$index + 1}}</td>
+                                                    <td>{{roleItem.name}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="devicewarrant-container-body-right layout-full">
+                                    <div class="devicewarrant-container-body-table">
+                                        <div class="devicewarrant-container-body-right-header">
+                                            <button ng-show="changeListStatus == true" class="btn btn-success pull-right" style="padding: 8px 25px;margin-bottom: 3px;" ng-click="save()">保存</button>
+                                            <div ng-show="changeListStatus == true" class="pull-left reply" ng-click="devicewarrantList.back()">
+                                                <i class="fa fa-mail-reply"></i>
+                                            </div>
+                                            <div ng-show="changeListStatus == true" class="pull-left" style="margin-right: 20px;">
+                                                <label>设备类型:</label>
+                                                <select ng-model="indexDeviceID" ng-change="selectdevice(indexDeviceID)">
+                                                    <option value="{{item.devicetype}}" ng-repeat="item in deviceTypeList">{{item.devicename}}</option>
+                                                </select>
+                                            </div>
+                                            <div ng-show="changeListStatus == false && getListStatus == 'syuser'" class="pull-left" style="margin-right: 20px;">
+                                                <select style="float:left;" ng-model="sign" ng-change="selectSign(sign)" ng-options="item.value as item.name for item in devicewarrantList.sign">
+                                                </select>
+                                            </div>
+                                            <div ng-show="changeListStatus == false" class="input-group pull-left" style="width:250px;">
+                                                <input type="text" ng-model="searchText" ng-keyup="keyupgetDeviceList($event)" class="form-control" placeholder="输入查找设备类型!">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" ng-click="getDeviceList()">查询</button>
+                                                </span>
+                                            </div>
+                                            <div ng-show="changeListStatus == true" class="input-group pull-left" style="width:250px;">
+                                                <input type="text" ng-model="searchTreeText" ng-keyup="keyupgetDeviceList($event)" class="form-control" placeholder="输入查找设备名称!">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" ng-click="getDeviceTreeList()">查询</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="layout-full">
+                                            <div class="layout-full addScroll" style="padding-left: 10px;padding-top: 8px;">
+                                                <div ng-show="changeListStatus == false" class="device-box pull-left" ng-repeat="item in deviceTypeList" ng-click="devicewarrantList.click(item)">
+                                                    <label style="width: 100%;">设备类型：{{item.devicename}}</label>
+                                                    <label>已关联：{{item.devicenumber}}</label>
+                                                </div>
+                                                <div ng-show="changeListStatus == true">
+                                                    <ul system-monitorpatrol-tree data="monitorTree" id="monitorTree" class="ztree"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

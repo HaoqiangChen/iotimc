@@ -1,0 +1,89 @@
+<div class="system-rolesetting content container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-title">{{title}}</h2>
+    </div>
+    </div>
+    <div class="row view-wrap">
+        <div class="col-lg-12 view-content">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="menu-button">
+                        <search-input placeholder="请输入干警姓名/编号" id="user"></search-input>
+                        <!--<a class="btn btn-s-md btn-primary" ng-click="sync()">同步</a>-->
+                    </div>
+                    <div class="menu-button right">
+                        <search-input placeholder="请出入门禁名称/IP" id="door"></search-input>
+                    </div>
+                </div>
+
+                <div class="widget-content">
+                    <div class="wrap">
+                        <div class="col-md-3 left-tree" i-scroll>
+                            <ou-tree id="userTree"></ou-tree>
+                        </div>
+                        <div class="col-md-9 right-content">
+                            <div class="widget-btns">
+                                <div class="button btn-warning" ng-click="clearDoorRole()">清除</div>
+                                <div class="button btn-success" ng-click="saveDoorRole()">保存</div>
+                            </div>
+                            <div class="widget-content">
+                                <div class="wrap" i-scroll>
+                                    <div>
+                                        <div class="ou-container" ng-repeat="row in doorList" ng-class="{'fill':row.type == '1' || row.devices.length > 0}">
+                                            <div ng-if="row.type == '1'">
+                                                <div class="title">
+                                                    <div>{{row.name}}</div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="door-container" ng-repeat="item in row.devices" ng-click="modDoor($event)">
+                                                        <div class="door-content">
+                                                            <div class="door-btn select fa" ng-class="{'fa-check':item.select}" ng-click="setDoorRoleSelect($event, item.id)"></div>
+                                                        </div>
+                                                        <div class="door-name">{{item.name}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="ou-btn-group">
+                                                </div>
+                                            </div>
+                                            <div ng-if="row.type == '0'">
+                                                <div class="content">
+                                                    <div class="door-container" ng-repeat="item in row.devices" ng-click="modDoor($event)">
+                                                        <div class="door-content">
+                                                            <div class="door-btn select fa" ng-class="{'fa-check':item.select}" ng-click="setDoorRoleSelect($event, item.id)"></div>
+                                                        </div>
+                                                        <div class="door-name">{{item.name}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="roleModalContent">
+        <form class="form-horizontal">
+            <div class="modal-header">
+                保存
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <div class="col-lg-12" style="text-align:center; float: none;">
+                        {{names}}
+                    </div>
+                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="button btn-warning" type="button" ng-click="roleCancel()">取消</button>
+                <button class="button btn-success" type="button" ng-click="roleSave()">保存</button>
+            </div>
+        </form>
+    </script>
+</div>
+
+

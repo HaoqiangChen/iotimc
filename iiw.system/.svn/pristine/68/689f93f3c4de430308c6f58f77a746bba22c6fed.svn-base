@@ -1,0 +1,60 @@
+<div class="iiw-system-homepage-container">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-homepage-chart-container"  ui-layout-container>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info"></div>
+                    <div class="iiw-system-homepage-chart-content layout-full" system-server-cpu-chart></div>
+                </div>
+            </div>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info">
+                        总内存：{{momory.memoryAll}}　　使用中：{{momory.memoryUsed}}　　可用：{{momory.memoryFree}}
+                    </div>
+                    <div class="iiw-system-homepage-chart-content layout-full" system-server-memory-chart></div>
+                </div>
+            </div>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info">
+                        总容量：{{diskInfo.diskTotal}}　　可用空间：{{diskInfo.diskFree}}　　已使用：{{diskInfo.diskUsed}}
+                    </div>
+                    <!--<div class="iiw-system-homepage-chart-content layout-full" system-jvm-permgen-chart></div>-->
+                    <div class="iiw-system-homepage-chart-content layout-full" system-diskformation-Chart></div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-homepage-chart-container"  ui-layout-container>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info">
+                        JvmCpu使用情况：{{jvmInfo.processCpuLoad}}%
+                    </div>
+                    <div class="iiw-system-homepage-chart-content layout-full" system-jvm-cpu-chart></div>
+                </div>
+            </div>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info">
+                        初始化大小：{{jvmInfo.heapMemoryUsage.init}}　　已使用：{{jvmInfo.heapMemoryUsage.used}}　　最大：{{jvmInfo.heapMemoryUsage.max}}
+                    </div>
+                    <div class="iiw-system-homepage-chart-content layout-full" system-jvm-memory-chart></div>
+                </div>
+            </div>
+            <div class="iiw-system-homepage-chart-panel layout-full">
+                <div class="layout-full">
+                    <div class="iiw-system-homepage-message-info">
+                        活动线程：{{jvmInfo.threadCount}}　　守护线程：{{jvmInfo.daemonThreadCount}}　　实时峰值：{{jvmInfo.peakThreadCount}}　　已启动的总数：{{jvmInfo.totalStartedThreadCount}}
+                    </div>
+                    <div class="iiw-system-homepage-chart-content layout-full" system-jvm-thread-chart></div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="ui-layout-container iiw-system-homepage-device-chart-container" ui-layout-container>-->
+            <!--<div class="layout-full">-->
+                <!--<div class="iiw-system-homepage-chart-content layout-full" system-device-chart></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>

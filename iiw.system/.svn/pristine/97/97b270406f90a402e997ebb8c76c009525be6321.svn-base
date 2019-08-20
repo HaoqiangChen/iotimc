@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.insidemapsetting",
+  "version": "0.0.1",
+  "description": "电子地图管理",
+  "author": "dwt",
+  "date": "2016-01-26",
+  "main": "insidemapSettingController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

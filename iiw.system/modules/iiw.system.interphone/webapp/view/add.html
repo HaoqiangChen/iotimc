@@ -1,0 +1,45 @@
+<div class="layout-full">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full" i-scroll>
+                <div>
+                    <form class="form-horizontal label-left" id="entityItemForm" name="entityItemForm" novalidate>
+                        <fieldset>
+                            <legend class="section">对讲号码信息</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">名称</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.name" placeholder="请输入名称" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-if="entityItem.name == null" style="color:red;">*名称不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">号码</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.phone" placeholder="请输入号码" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.phone == null" style="color:red;">*号码不能为空</lable>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

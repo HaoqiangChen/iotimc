@@ -1,0 +1,77 @@
+<div class="iiw-system-page-container iiw-system-reaction">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">{{deviceEvent.title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container ui-view>
+                <div class="widget layout-full">
+                    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div ui-layout-container size="47px">
+                            <div class="layout-full system-role-bar">
+                                <div class="layout-full">
+                                    <button ng-disabled="deviceEvent.addDis" class="btn btn-success pull-left" ng-click="deviceEvent.addBtn()"><i class="fa fa-plus fa-fw"></i>增加</button>
+                                    <button ng-disabled="deviceEvent.modDis" class="btn btn-warning pull-left" ng-click="deviceEvent.modBtn()"><i class="fa fa-edit fa-fw"></i>修改</button>
+                                    <button ng-disabled="deviceEvent.delDis" class="btn btn-danger pull-left" ng-click="deviceEvent.delBtn()"><i class="fa fa-minus fa-fw"></i>删除</button>
+                                    <div class="input-group pull-right" ng-style="{width:250 + 'px'}">
+                                        <input type="text" class="form-control" ng-model="filterValue" placeholder="请输入关键字筛选"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content ui-layout-container" ui-layout-container>
+                            <div class="layout-full" i-scroll>
+                                <table class="table table-hover iiw-system-table-container">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <input type="checkbox" ng-style="{width:20 + 'px', height:20 + 'px'}" ng-model="deviceEvent.checked" ng-click="deviceEvent.chooce()">
+                                            </th>
+                                            <th>序号</th>
+                                            <th>设备类型</th>
+                                            <th>设备名称</th>
+                                            <th>触发事件</th>
+                                            <th>执行事件</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="rows in deviceEvent.list | filter: filterValue" ng-click="deviceEvent.chooce(rows)">
+                                            <th class="text-center">
+                                                <input type="checkbox" ng-style="{width:20 + 'px', height:20 + 'px'}" ng-model="rows.checked" ng-click="deviceEvent.chooce(rows)">
+                                            </th>
+                                            <th>{{$index + 1}}</th>
+                                            <th>{{rows.devicetypename}}</th>
+                                            <th>{{rows.devicename}}</th>
+                                            <th>{{rows.actionname}}</th>
+                                            <th><span ng-repeat="row in rows.devicerelateddtlData">&nbsp&nbsp&nbsp<span ng-if="$index">—>&nbsp&nbsp&nbsp</span>{{row.step}}、{{row.devicename}}({{row.name}})</span></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-remove"></i></button>
+                    <h4 class="modal-title">消息提醒</h4>
+                </div>
+                <div class="modal-body">
+                    <p>是否删除选中设备联动？</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="deviceEvent.delete()">确定</button>
+                    <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.iiw-system-bigmonitorthemerelevanceitem {
+    position: relative;
+    height: 100%;
+}
+
+.iiw-system-bigmonitorthemerelevanceitem-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.iiw-system-bigmonitorthemerelevanceitem-container-header {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 7%;
+    padding: 6px;
+}
+
+.iiw-system-bigmonitorthemerelevanceitem-container-main {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 93%;
+    overflow: auto;
+}
+.select {
+    background-color: rgba(223, 105, 26,0.6);
+}

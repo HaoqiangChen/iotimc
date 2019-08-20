@@ -1,0 +1,13 @@
+<p>
+    <span style="margin-left: 13px;">添加数量:</span>
+    <input  id="addQuantity"  maxlength="3" ng-keydown="isNumber($event)" class="iiw-confirm-box-prefix" type="text" style="background-color: rgba(255,255,255,0.1); width:292px; padding: 0"/>
+</p>
+<p>
+    <span style="margin-left: 13px;">序号前缀:</span>
+    <input id="perFix" class="iiw-confirm-box-prefix" type="text" style="background-color: rgba(255,255,255,0.1); width:292px;"/>
+</p>
+<p>
+    <span>选择解码器:</span>
+    <select ng-options="devicefk.id as devicefk.name for devicefk in devicefkList" ng-change="selectDevice(indexDevicefkType)" ng-model="indexDevicefkType" class="iiw-confirm-box-select" style="width:292px; height:30px; border: 1px solid rgba(255, 255, 255, 0.25); background-color: rgba(53,53,53,0.9)">
+    </select>
+</p>

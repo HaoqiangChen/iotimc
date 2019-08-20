@@ -1,0 +1,217 @@
+
+
+.system-insidemapsetting-list {
+    position: relative;
+}
+
+.system-insidemapsetting-list .insidemapsetting-listbar {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.insidemapsetting-listbar-navigate,
+.insidemapsetting-listbar-search {
+    padding: 5px;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb {
+    background: none;
+    margin: 0;
+    padding: 8px 15px;
+    list-style: none;
+    border-radius: 0;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #cccccc;
+    content: "/\00a0";
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li {
+    display: inline-block;
+    color: #cccccc;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li a {
+    color: inherit;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li.active a {
+    color: #999;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.insidemapsetting-listbar-navigate > .listbar-navigate-breadcrumb > li.active a:hover {
+    cursor: default;
+    text-decoration: none;
+}
+
+.insidemapsetting-listbar-btn > div {
+    height: 100%;
+}
+
+.insidemapsetting-listbar-btn > div > a{
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.insidemapsetting-list-box {
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.insidemapsetting-list-box > div {
+    position: relative;
+    overflow: hidden;
+}
+
+.insidemapsetting-list-box .list-box-item {
+    height: 300px;
+    position: relative;
+}
+
+.insidemapsetting-list-box .list-box-item > div {
+    overflow: hidden;
+}
+
+.insidemapsetting-list-box .list-box-item > div.selected {
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.insidemapsetting-list-box .list-box-item .list-box-item-title {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.insidemapsetting-list-box .list-box-item > div.selected .list-box-item-title {
+    -webkit-animation:turncolor .5s forwards alternate linear;
+}
+
+@-webkit-keyframes turncolor {
+    from {background-color: rgba(0,0,0,0);}
+    to {background-color: rgba(0,0,0,0.3);}
+}
+
+.insidemapsetting-list-box .list-box-item .list-box-item-body {
+    overflow: hidden;
+    height: 231px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.insidemapsetting-list-box .list-box-item .list-box-item-body .list-box-item-item {
+    height: 100px;
+    margin-top: 10px;
+    font-size: 50px;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+}
+
+.insidemapsetting-list-box .list-box-item .list-box-item-body .list-box-item-item > i {
+    display: table-cell;
+    padding: 20px;
+}
+
+.insidemapsetting-list-box .list-box-item .list-box-item-btn {
+    height: 39px;
+    line-height: 39px;
+    overflow: hidden;
+}
+
+.insidemapsetting-list-box > div.insidemapsetting-list-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #000;
+}
+
+.insidemapsetting-list-box > div.insidemapsetting-list-info > div {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.insidemapsetting-list-info-image {
+    position: relative;
+    height: 150px;
+    width: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.insidemapsetting-list-info-image button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 40px;
+    width: 100px;
+    opacity: 0.9;
+}
+
+.insidemapsetting-list-info-layer {
+    width: 100%;
+}
+
+.insidemapsetting-list-box > div.insidemapsetting-list-info .iiw-system-map-ou-treeview-container {
+    position: absolute;
+    width: calc(100% - 30px);
+    height: 45%;
+    overflow: hidden;
+    margin-top: 4px;
+    z-index: 3;
+    background-color: rgb(36, 36, 36);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.list-info-layer-item {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.2);
+    width: 150px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    float: left;
+    text-align: center;
+}
+
+.list-info-layer-item:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.list-info-layer-item > div {
+    float: left;
+}
+
+.list-info-layer-item > div:nth-child(1) {
+    width: 30%;
+    font-size: 18px;
+}
+
+.list-info-layer-item > div:nth-child(2) {
+    width: 70%;
+}
+
+.insidemapsetting-list-info-layer > div.selected {
+    display: block;
+}
+
+.insidemapsetting-list-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.3);
+}

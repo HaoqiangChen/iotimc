@@ -1,0 +1,377 @@
+<div class="command-rollcall-add command-show-element-hidden">
+    <div class="command-rollcall-add-container command-show-element" ng-style="{'animation-delay': '.3s'}"
+         ng-form="list">
+
+        <div ng-if="$parent.rollcall.syouname === '新康监狱'">
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    报告人姓名
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.reportername">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    报告人职务
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.reporterduty">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    日期
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.dutytime" disabled>
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <hr class="command-rollcall-add-container-form-hr"/>
+
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押陪护犯 (男)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newescortmale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押陪护犯 (女)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newescortfemale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押病犯 (男)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newsickmale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押病犯 (女)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newsickfemale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押嫌疑人 (男)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newsuspectmale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    新收押嫌疑人 (女)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newsuspectfemale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    释放 (男)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.releasemale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    释放 (女)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.releasefemale">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <hr class="command-rollcall-add-container-form-hr"/>
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    本监罪犯
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.prisoncriminal">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    住院罪犯
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.hospitalcriminal">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    在押嫌疑人
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.suspect">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    狱内执勤警力
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.police">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    监管秩序 是否正常
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <select ng-model="rollcallAdd.save.isorder" class="form-control">
+                        <option value="正常">正常</option>
+                        <option value="异常">异常</option>
+                    </select>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form command-rollcall-add-notes command-rollcall-add-notes-link">
+                <div class="command-rollcall-add-container-form-name command-rollcall-add-notes-name">
+                    备注
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3 command-rollcall-add-notes-content">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.note" placeholder="请输入备注信息">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="$parent.rollcall.syouname !== '新康监狱'">
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    报告人姓名
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.reportername">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    报告人职务
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.reporterduty">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    日期
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.dutytime" disabled>
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <hr class="command-rollcall-add-container-form-hr"/>
+
+<!--            <div class="command-rollcall-add-container-form half">-->
+<!--                <div class="command-rollcall-add-container-form-name">-->
+<!--                    新收押犯 11时-->
+<!--                </div>-->
+<!--                <div class="command-rollcall-add-container-form-content col-3">-->
+<!--                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newin11">-->
+<!--                    <span class="focus-border"><i></i></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="command-rollcall-add-container-form half">-->
+<!--                <div class="command-rollcall-add-container-form-name">-->
+<!--                    释放人数 11时-->
+<!--                </div>-->
+<!--                <div class="command-rollcall-add-container-form-content col-3">-->
+<!--                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.release11">-->
+<!--                    <span class="focus-border"><i></i></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="command-rollcall-add-container-form half">-->
+<!--                <div class="command-rollcall-add-container-form-name">-->
+<!--                    新收押犯 16时-->
+<!--                </div>-->
+<!--                <div class="command-rollcall-add-container-form-content col-3">-->
+<!--                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newin16">-->
+<!--                    <span class="focus-border"><i></i></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="command-rollcall-add-container-form half">-->
+<!--                <div class="command-rollcall-add-container-form-name">-->
+<!--                    释放人数 16时-->
+<!--                </div>-->
+<!--                <div class="command-rollcall-add-container-form-content col-3">-->
+<!--                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.release16">-->
+<!--                    <span class="focus-border"><i></i></span>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    监外住院 (新康住院)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.newcon">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    监外住院 (社会医院)
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.social">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    总新收押犯
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.allnewin">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form half">
+                <div class="command-rollcall-add-container-form-name">
+                    总释放人数
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.allrelease">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+<!--            <hr class="command-rollcall-add-container-form-hr"/>-->
+
+            <div ng-if="$parent.rollcall.syouname === '未管所'" class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    女犯
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.femalecriminal">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div ng-if="$parent.rollcall.syouname === '未管所'" class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    未成年
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.underage">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div ng-if="$parent.rollcall.syouname === '未管所'" class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    收容
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.accept">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    押犯总数
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.total">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    在押人数
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.inmates">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    暂予监外 执行人数
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.outcriminal">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    狱内执勤警力
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <input class="effect-8" type="number" ng-model="rollcallAdd.save.police">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form">
+                <div class="command-rollcall-add-container-form-name">
+                    监管秩序 是否正常
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3">
+                    <select ng-model="rollcallAdd.save.isorder" class="form-control">
+                        <option value="正常">正常</option>
+                        <option value="异常">异常</option>
+                    </select>
+                </div>
+            </div>
+            <div class="command-rollcall-add-container-form command-rollcall-add-notes command-rollcall-add-notes-link">
+                <div class="command-rollcall-add-container-form-name command-rollcall-add-notes-name">
+                    备注
+                </div>
+                <div class="command-rollcall-add-container-form-content col-3 command-rollcall-add-notes-content">
+                    <input class="effect-8" type="text" ng-model="rollcallAdd.save.note" placeholder="请输入备注信息">
+                    <span class="focus-border"><i></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="command-rollcall-add-submits command-show-element-hidden">
+            <div class="command-rollcall-add-submits-submit command-show-element" ng-style="{'animation-delay': '.6s'}">
+                <button class="btn btn-success" ng-click="rollcallAdd.submit(rollcallAdd.save)">
+                    <i class="fa fa-refresh fa-spin"></i>
+                    <span>提交</span>
+                </button>
+            </div>
+            <div class="command-rollcall-add-submits-reset command-show-element" ng-style="{'animation-delay': '.9s'}">
+                <button class="btn btn-danger" ng-click="rollcallAdd.cancel()">取消</button>
+            </div>
+        </div>
+
+    </div>

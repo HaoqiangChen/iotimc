@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.mapping",
+"version": "0.0.1",
+"description": "地址映射",
+"author": "zhs",
+"date": "2017-04-01",
+"main": "mappingController",
+"host": "192.168.0.251",
+"client": "192.168.0.29"
+}

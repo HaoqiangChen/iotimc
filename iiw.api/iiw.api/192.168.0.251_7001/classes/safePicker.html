@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 192.168.0.251:7001/classes/safePicker.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>safePicker - iiw.api</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="../index.html">
+             
+            <img alt="iiw.api" src="../assets/css/logo.png" title="iiw.api">
+            
+                iiw.api
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="http://192.168.0.251/">Home</a>
+                    </li>
+                    
+                    <li><a href="../index.html">API</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.c.directives.html">iiw.c.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="cPicker.html">cPicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.directives.html">iiw.core.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="iCopyText.html">iCopyText</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iExit.html">iExit</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLogout.html">iLogout</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLang.html">iLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iDomSelect.html">iDomSelect</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iDrag.html">iDrag</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iLogo.html">iLogo</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iResize.html">iResize</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iScroll.html">iScroll</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iScroll2.html">iScroll2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.core.services.html">iiw.core.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="iAjax.html">iAjax</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iSocket.html">iSocket</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iConfig.html">iConfig</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iConfirm.html">iConfirm</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iGetLang.html">iGetLang</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iMessage.html">iMessage</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iTimeNow.html">iTimeNow</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="iToken.html">iToken</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.directives.html">iiw.safe.directives</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="safePicker.html">safePicker</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="safeTree.html">safeTree</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/iiw.safe.services.html">iiw.safe.services</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="safeCamera.create.html">safeCamera.create</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>safePicker <small>Class</small></h1>
+</div>
+ <div class="well well-small sign-left3">
+      <div class="stdoc-code"><p>日期选择控件。</p>
+<ol>
+<li>安防平台框架已载入，无法重复加载。</li>
+<li>其它框架框架需加载，请加载&#39;safe/js/directives/safePicker&#39;。</li>
+<li>此类为指令，直接在html中使用，restrict: &#39;A&#39;。</li>
+<li>该控件引入了DateTimePicker，具体api请参考 <a href="http://xdsoft.net/jqplugins/datetimepicker/">http://xdsoft.net/jqplugins/datetimepicker/</a></li>
+<li>参数引用可直接在html上配置，参数前需带“p!”，具体可参考demo。</li>
+</ol>
+<hr>
+<pre class="code prettyprint"><code>HTML:
+&lt;!-- 聚焦到input框后，弹出时间选择控件，包括年月日 时分 --&gt;
+&lt;input type="text" ng-model="starttime" safe-picker p!format="Y-m-d H:i" /&gt;
+
+&lt;!-- 聚焦到input框后，弹出时间选择控件，包括年月日 --&gt;
+&lt;input type="text" ng-model="endtime" safe-picker p!format="Y-m-d" /&gt;</code></pre>
+</div>
+ </div>
+
+<div class="well well-small sign-left2 container-fluid" id="classesItems">
+    <div class="row">
+    
+        <div class="index-section methods col-sm-4">
+            <h3>Methods</h3>
+            
+            <ul class="index-list methods">
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_hide" data-tablink="hide">hide</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_hide" data-tablink="hide">hide</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_hide" data-tablink="hide">hide</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_hide" data-tablink="hide">hide</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_init" data-tablink="init">init</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_init" data-tablink="init">init</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_loadNavMenu" data-tablink="loadNavMenu">loadNavMenu</a>
+
+                        
+                        
+                    </li>
+                
+                    <li class="index-item method">
+                        <a href="#" data-tabid="#method" data-anchor="#method_setContent" data-tablink="setContent">setContent</a>
+
+                        
+                        
+                    </li>
+                
+            </ul>
+            
+        </div>
+    
+        <div class="index-section properties col-sm-4">
+            <h3>Properties</h3>
+            
+        </div>
+    
+        <div class="index-section events col-sm-4">
+            <h3>Events</h3>
+            
+        </div>
+    </div>
+</div>
+
+<div>
+    <ul id="itemTab" class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#class">Detail</a></li>
+        
+            <li><a data-toggle="tab" href="#method">Methods</a></li>
+        
+        
+        
+    </ul>
+
+    <div class="tab-content">
+        <div id="class" class="tab-pane active">
+            <div class="well well-small classDetail sign-left1">
+            
+
+            
+
+            
+                <div class="foundat">
+                    Defined in: <a href="../files/temp_iiw.safe_webapp_js_directives_safePicker.js.html#l5"><code>temp\iiw.safe\webapp\js\directives\safePicker.js:5</code></a>
+                </div>
+            
+
+            
+                
+                    Module: <a href="../modules/iiw.safe.directives.html">iiw.safe.directives</a>
+                
+            
+
+            
+        </div>
+
+        
+            
+        </div>
+
+        
+            <div id="method" class="tab-pane">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_hide" class="method item">
+    <h3 class="name">hide</h3>
+    <code>
+    hide
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l340"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:340</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>控制导航 Logo 的显示、隐藏</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_hide" class="method item">
+    <h3 class="name">hide</h3>
+    <code>
+    hide
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l352"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:352</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>控制导航 时间 的显示、隐藏</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_hide" class="method item">
+    <h3 class="name">hide</h3>
+    <code>
+    hide
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l364"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:364</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>控制 快捷按钮（搜索、刷新、跳到主页） 的显示、隐藏</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_hide" class="method item">
+    <h3 class="name">hide</h3>
+    <code>
+    hide
+    
+        <span class="paren">()</span>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l376"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:376</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>控制导航 天气 的显示、隐藏</p>
+</div>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_init" class="method item">
+    <h3 class="name">init</h3>
+    <code>
+    init
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        json
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterLoadCharts.js.html#l71"><code>temp\iiw.master\webapp\js\services\masterLoadCharts.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>加载图表。</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">json</code>
+                       <td> <span class="type">JSON Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <pre><code> json: {
+     scope: null,                // 控件依赖的作用域，建议传递本模块作用域，不传递则使用全局的作用域
+     el: null,                   // 展示图表的容器
+     datas: [{                   // 将要加载的图表列表，数组类型
+         name: &#39;&#39;,               // 图表名称，可省略，但为了区分不同图表，建议保留
+         tag: &#39;&#39;,                // 图表
+         offsetx: 0              // 距离容器左边的偏移值，定位 position 中的 left 值, left = el.width / layout[column] * offsetx
+         offsety: 0,             // 距离容器顶部的偏移值，定位 position 中的 top 值， top = el.width / layout[row] * offsety
+         width: 0,               // 图表所占宽度，比较于 layout 中 row 的进行划分大小， width = el.width / layout[column] * width
+         height: 0               // 图表所占高度，比较于 layout 中 row 的进行划分大小， height = el.height / layout[row] * height
+     }],
+     layout: [column, row]       // 对容器进行栅格化，把整块 el 区域划分成 column列、row行，默认[14, 9]
+     timeout: 500,               // 延迟加载的时间，为了防止在容器渲染之前进行价值，默认500毫秒秒（int类型）
+ }</code></pre>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> // 注入masterLoadChart服务。
+ app.controller(&#39;***Controller&#39;, [&#39;masterLoadChart&#39;, function(masterLoadChart) {
+     // 加载图表
+     masterLoadChart.init({
+         scope: $scope,
+         el: $(&#39;.master-charts-content&#39;),
+         datas: []
+     });
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_init" class="method item">
+    <h3 class="name">init</h3>
+    <code>
+    init
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        json
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l295"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:295</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>初始化顶部导航</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">json</code>
+                       <td> <span class="type">JSON Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <pre><code> json: {
+     scope: null,                // 控件依赖的作用域，建议传递本模块作用域，不能为空
+     logo: true,                 // 控制 Logo 是否显示，true-显示，false-不显示，默认为true
+     fast: true,                 // 控制 快捷按钮（搜索、刷新、跳到主页） 是否显示，true-显示，false-不显示，默认为true
+     time: true,                 // 控制 时间 是否显示，true-显示，false-不显示，默认为true
+     weather: true,              // 控制 天气 是否显示，true-显示，false-不显示，默认为true
+     logout: true                // 控制 退出按钮 是否显示，true-显示，false-不显示，默认为true
+     navigation: [{              // 将要显示的导航内容，可以显示多个（传递数组类型），也可以显示文字（传递json 对象）
+         name: &#39;&#39;,               // 导航名称
+         active: false,          // 显示当前的导航内容
+         style: {},              // 自定义的样式内容，json 格式，如：{ &#39;font-size&#39;: &#39;15px&#39; }
+         fn: &#39;&#39;,                 // 点击导航执行时要调用的方法，需额外定义
+         params: {},             // 执行 fn 中定义的方法时所传递的内容，json 格式
+     }],
+ }</code></pre>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>navigation                  // 会为传入的 scope 添加一个 navigation 对象用于记录数据</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> // 注入masterNavbar服务。
+ app.controller(&#39;***Controller&#39;, [&#39;masterNavbar&#39;, function(masterNavbar) {
+     $scope.call = function() {
+         alert(&#39;click&#39;);
+     }
+
+     masterNavbar.init({
+         scope: $scope,
+         navigation: [{
+             name: &#39;导航一&#39;, active: true, fn: &#39;call&#39;
+         }]
+     });
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+                    <div id="method_loadNavMenu" class="method item">
+    <h3 class="name">loadNavMenu</h3>
+    <code>
+    loadNavMenu
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        code
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        scope
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        ishome
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        chartarea
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        fn
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l425"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:425</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>获取某个菜单的主菜单及明细菜单</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">code</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 菜单编号</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">scope</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 作用域</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">ishome</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 是否显示主页</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">chartarea</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 图表绘制区域</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">fn</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 菜案点击事件</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setContent" class="method item">
+    <h3 class="name">setContent</h3>
+    <code>
+    setContent
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        navigation
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        scope
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+    </code>
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iiw.core.services.html">iiw.core.services</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/temp_iiw.master_webapp_js_services_masterNavbar.js.html#l388"><code>temp\iiw.master\webapp\js\services\masterNavbar.js:388</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description well well-small sign-left3">
+        <div class="stdoc-code"><p>设置顶部导航的内容</p>
+</div>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <table class="table table-bordered">
+            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">navigation</code>
+                       <td> <span class="type">!~YUIDOC_LINE~!             name: '',               // 导航名称!~YUIDOC_LINE~!             active: false,          // 显示当前的导航内容!~YUIDOC_LINE~!             style:</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 将要显示的导航内容，可以显示多个（传递数组类型），也可以显示文字（传递json 对象）
+     [,              // 自定义的样式内容，json 格式，如：{ &#39;font-size&#39;: &#39;15px&#39; }
+             fn: &#39;&#39;,                 // 点击导航执行时要调用的方法，需额外定义
+             params: {},             // 执行 fn 中定义的方法时所传递的内容，json 格式
+      }]</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+                <tr class="param">
+                    
+                       <td> <code class="param-name">scope</code>
+                       <td> <span class="type">Object</span>
+                       <td>
+                    
+
+                    
+                    </td>
+                    <td><div class="param-description">
+                        <p>// 控件依赖的作用域，建议传递本模块作用域，不能为空</p>
+
+                    </div>
+
+                    
+                </tr>
+            
+            </table>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>navigation                  // 会为传入的 scope 添加一个 navigation 对象用于记录数据</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+            <ul class="nav nav-tabs example-list">
+                
+            </ul>
+
+            <div class="example-content ">
+                <div class="stdoc-code"><pre class="code prettyprint"><code> // 注入masterNavbar服务。
+ app.controller(&#39;***Controller&#39;, [&#39;masterNavbar&#39;, function(masterNavbar) {
+     $scope.call = function() {
+         alert(&#39;click&#39;);
+     }
+
+     var datas = [{
+         name: &#39;导航一&#39;, active: true, fn: &#39;call&#39;
+     }];
+
+     masterNavbar.setContent(datas, $scope);
+ }]);</code></pre>
+</div>
+            </div>
+
+             <!-- <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button> -->
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+
+<!-- Mirrored from 192.168.0.251:7001/classes/safePicker.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 10:15:06 GMT -->
+</html>

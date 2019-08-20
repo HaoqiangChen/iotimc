@@ -1,0 +1,107 @@
+<div class="layout-full iiw-system-tax-photo-add">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full">
+                <div class="col-lg-12">
+                    <legend class="section">上传图片</legend>
+                </div>
+                <div class="col-lg-3 list">
+                    <div class="iiw-system-tax-photo-add-list" i-scroll2>
+                        <div class="iiw-system-tax-photo-add-list-rows text-center" ng-click="selectFile($index)" ng-class="{'select': $index == data.select}" ng-repeat="rows in data.list">
+                            {{rows.name}}
+                            <div class="close"><i ng-click="deleteFile($index)" class="fa fa-close"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 base" ng-form="list">
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">名称</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" ng-disabled="!data.list.length || data.list[data.select].type == 'add'" ng-model="data.list[data.select].name" placeholder="请输入名称" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="data.list[data.select].name == null && data.list.length" style="color: red;">*名称不能为空</lable>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">类型</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select ng-disabled="!data.list.length" ng-model="data.list[data.select].type" ng-options="rows.id as rows.name for rows in data.type" style="width: 100%" class="form-control" required>
+                                    <option value="" selected>请选择类型</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!--<button class="btn btn-success" ng-hide="data.list[data.select].type == null || data.list[data.select].type == 'add'" ng-click="delType(data.list[data.select].type)">删除类型</button>-->
+                            <lable ng-show="data.list[data.select].type == null && data.list.length" style="color:red;">*类型不能为空</lable>
+                        </div>
+                    </div>
+
+                    <!--<div class="control-group row" ng-if="data.list[data.select].type == 'add'">-->
+                        <!--<div class="col-md-2">-->
+                            <!--<label class="control-label">新类型名称</label>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-8">-->
+                            <!--<div class="form-group">-->
+                                <!--<input type="text" class="form-control" ng-model="data.newTypeName" required/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-2">-->
+                            <!--<button class="btn btn-success" ng-if="data.newTypeName" ng-click="addType()">确定</button>-->
+                            <!--<lable ng-show="!data.newTypeName" style="color:red;">*类型名称不能为空</lable>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">大小</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" ng-disabled="true" ng-model="data.list[data.select].size" placeholder="请输入大小" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">上传日期</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" ng-disabled="true" ng-model="data.list[data.select].date" placeholder="请输上传日期不能为空" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">预览</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group" style="height: 450px;">
+                                <img ng-src="{{data.list[data.select].photo}}" ng-if="data.list[data.select].photo" alt=""/>
+                                <i class="fa fa-image" ng-if="!data.list[data.select].photo"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="list.$invalid || data.list[data.select].type == 'add'" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+            <button class="btn btn-primary btn-s-md" ng-click="upload()">上传新图片</button>
+            <input type="file" accept="image/*" style="display: none;" onchange="angular.element(this).scope().uploading(this)" multiple="multiple" id="taxPhoto"/>
+        </div>
+    </div>
+</div>

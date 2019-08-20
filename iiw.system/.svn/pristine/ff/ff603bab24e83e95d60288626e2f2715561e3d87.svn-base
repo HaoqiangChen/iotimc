@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.stoppagelevel.history",
+  "version": "0.0.1",
+  "description": "运维故障登记管理",
+  "author": "llx",
+  "date": "2016-03-19",
+  "main": "stoppagelevelHistoryController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

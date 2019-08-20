@@ -1,0 +1,87 @@
+<div class="system-periodsetting content container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+    </div>
+    <div class="row view-wrap">
+        <div class="col-lg-12 view-content">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="menu-button">
+                        <search-input placeholder="请输入门禁名称/IP" id="device"></search-input>
+                        <!--<a class="btn btn-s-md btn-primary" ng-click="sync()">同步</a>-->
+                    </div>
+                </div>
+
+                <div class="widget-content">
+                    <div class="wrap">
+                        <div class="col-md-3 left-tree" i-scroll>
+                            <user-tree id="doorTree"></user-tree>
+                        </div>
+                        <div class="col-md-9 right-content">
+                            <div class="widget-btns">
+                                <div class="button btn-warning" ng-click="clearTimeSelect()">清除</div>
+                                <div class="button btn-success" ng-click="saveTimeSelect()">保存</div>
+                            </div>
+                            <div class="widget-content" i-scroll>
+                                <div class="widget-period">
+                                    <div class="week-container" ng-repeat="row in weekList">
+                                        <div class="week">{{row.week | weekFilter}}</div>
+                                        <div class="times">
+                                            <div class="time" ng-repeat="item in row.times">
+                                                <div class="start-time" i-time-picker p-time="item.starttime"></div>
+                                                <div class="dot">~</div>
+                                                <div class="end-time" i-time-picker p-time="item.endtime"></div>
+                                                <div class="select">
+                                                    <div class="fa select-time" ng-class="{'fa-check':item.select}" ng-click="selectTime($event, item.id)"></div>
+                                                </div>
+                                                <div class="delete">
+                                                    <div class="fa delete-time fa-times-circle" ng-click="delTimes($event, row.id, item.id)"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add" ng-click="addTimes($event, row.id)">
+                                            <div class="fa fa-plus add-content"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<div class="wrap">
+                                    <div class="period-container">
+                                        <div class="week-content" ng-repeat="row in weekList">
+                                            <div class="week">{{row.week | weekFilter}}</div>
+                                            <div class="time" ng-repeat="item in row.times">
+                                                <i-time-picker p-time="item.starttime"></i-time-picker>-<i-time-picker p-time="item.endtime"></i-time-picker>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="timeModalContent">
+        <form class="form-horizontal">
+            <div class="modal-header">
+                保存
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <div class="col-lg-12" style="text-align:center; float: none;">
+                        {{names}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="button btn-warning" type="button" ng-click="timeCancel()">取消</button>
+                <button class="button btn-success" type="button" ng-click="timeSave()">保存</button>
+            </div>
+        </form>
+    </script>
+</div>
+
+

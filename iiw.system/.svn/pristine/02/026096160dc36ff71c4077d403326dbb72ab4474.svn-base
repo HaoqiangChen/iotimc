@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.expert",
+  "version": "0.0.1",
+  "description": "专家资源管理",
+  "author": "zcl",
+  "date": "2016-03-26",
+  "main": "expertController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

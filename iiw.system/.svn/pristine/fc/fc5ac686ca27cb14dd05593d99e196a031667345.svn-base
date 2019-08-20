@@ -1,0 +1,75 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="60px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="widget layout-full" ui-view>
+                    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div class="widget-header ui-layout-container" size="60px" ui-layout-container>
+                            <div class="iiw-system-menu-bar-container" ng-style="{'width': '25%'}">
+                                <a class="btn btn-s-md btn-primary" ng-click="config()"><i class="fa fa-cog"></i>配置关联</a>
+                            </div>
+                            <div class="iiw-system-search-bar-container" ng-style="{'width': '75%'}">
+                                <label>状态：</label>
+                                <select ng-model="listFilter.related" ng-change="filterDevice()" class="iiw-system-hardwarerelate-device-type-select-container">
+                                    <option value="" selected>所有状态</option>
+                                    <option value="0">未关联</option>
+                                    <option value="1">已关联</option>
+                                </select>
+                                <label>设备类型：</label>
+                                <select ng-model="listFilter.type" ng-change="filterDevice(listFilter.type)" class="iiw-system-hardwarerelate-device-type-select-container">
+                                    <option value="" selected>所有设备类型</option>
+                                    <option value="{{row.content}}" ng-repeat="row in deviceTypeList">{{row.name}}</option>
+                                </select>
+                                <label>设备厂商：</label>
+                                <select ng-model="listFilter.company" ng-change="filterDevice()" class="iiw-system-hardwarerelate-device-type-select-container">
+                                    <option value="" selected>所有设备厂商</option>
+                                    <option value="{{row.id}}" ng-repeat="row in companyList">{{row.name}}</option>
+                                </select>
+                                <label class="pull-right">
+                                    <input type="text" ng-model="listFilter.searchText" placeholder="{{keyword}}" ng-change="search()"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="widget-content ui-layout-container" i-scroll ui-layout-container>
+                            <div class="layout-full" style="position:relative;">
+                                <table class="table iiw-system-table-container">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>设备名称</th>
+                                        <th>设备类型</th>
+                                        <th>关联设备</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="row in list" ng-class="{true:'iiw-system-table-container-row-selected',false:''}[row.checked]" ng-click="chooseRow(row)">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{row.name}}</td>
+                                        <td>{{row.typename}}</td>
+                                        <td>
+                                            <!--<ul class="iiw-system-hardwarerelate-related-device">
+                                                <li ng-repeat="device in row.minordevice">{{device.name}}</li>
+                                            </ul>-->
+											<span>{{row.minordevice && row.minordevice.length > 0?'已关联':'未关联'}}</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+								<div class="iiw-system-table-row-select" style="display:none;background:rgba(255,255,255,0.5);width:100%;height:40px;position:absolute;"></div>
+                            </div>
+                        </div>
+                        <div class="pagination ui-layout-container pagination-layout-container" size="60px" ui-layout-container>
+                            <div class="iiw-system-hardwarerelate-device-count-message">
+                                <div>共<span>{{countInfo.totalSize}}</span>条记录，已关联<span>{{countInfo.yes}}</span>条，未关联<span>{{countInfo.no}}</span>条</div>
+                            </div>
+                            <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="pagination pull-right" total-items="totalSize" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

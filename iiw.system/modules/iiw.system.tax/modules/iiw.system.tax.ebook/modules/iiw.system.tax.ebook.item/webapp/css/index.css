@@ -1,0 +1,45 @@
+.system-tax-ebookItem-header {
+    padding: 13px;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    overflow:hidden;
+}
+.system-tax-ebookItem-main {
+    overflow:hidden;
+    padding: 10px;
+}
+.system-tax-ebookItem-box {
+    padding: 13px;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    overflow:hidden;
+}
+.system-tax-ebookItem-addNumBtn {
+    width:75px;
+    height: 75px;
+    border-radius: 5px;
+    line-height: 75px;
+    font-size: 24px;
+    background-color: rgba(0,0,0,0.2);
+    margin: auto;
+    cursor: pointer;
+}
+.system-tax-ebookItem-cover {
+    padding: 10px;
+    cursor: pointer;
+    height: 260px;
+}
+.system-tax-ebookItem-cover > img {
+    width: 226px;
+    height: 200px;
+    box-shadow: 0 0 1px 2px rgba(0,0,0,0.2);
+    margin-left: 2px;
+}
+.system-tax-ebookItem-cover > div{
+    width:230px;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    line-height: 40px;
+    background-color: rgba(0,0,0,0.2);
+}

@@ -1,0 +1,82 @@
+<div class="iiw-system-stoppageType">
+    <div ui-layout="{ flow: 'row'}" options="{dividerSize: '0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{stoppageType.title}}</h2>
+        </div>
+        <div class="iiw-system-stoppageType-container" ui-layout-container>
+            <div ui-layout="{ flow: 'row'}" options="{dividerSize: '0'}">
+                <div class="iiw-system-title" style="padding-left: 22%;" ui-layout-container size="47px">
+                    <button ng-click="stoppageType.add()" class="btn btn-success"><i class="fa fa-plus" style="margin-right:5px;"></i>添加</button>
+                    <button ng-click="stoppageType.mod()" class="btn btn-warning"><i class="fa fa-edit" style="margin-right:5px;"></i>修改</button>
+                    <button ng-click="stoppageType.del()" class="btn btn-danger"><i class="fa fa-minus" style="margin-right:5px;"></i>删除</button>
+                </div>
+                <div class="iiw-system-stoppageType-container-body" ui-layout-container>
+                    <div class="iiw-system-stoppageType-container-body-menu" ng-style="{'position': 'replace'}">
+
+                        <div class="iiw-system-stoppageType-container-body-menu-filter">
+                            <div>
+                                <input type="text" ng-model="stoppageType.filterValue"/>
+                            </div>
+                        </div>
+
+                        <div class="iiw-system-stoppageType-container-body-menu-device" i-scroll2>
+                            <div class="iiw-system-stoppageType-container-body-menu-device-type">
+                                <div ng-class="{'selectDevice': stoppageType.deviceType == row.content}" ng-repeat="row in stoppageType.deviceList | filter: {name: stoppageType.filterValue}" ng-click="stoppageType.showDetail(row)">{{row.name}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="iiw-system-stoppageType-container-body-content" style="padding: 15px;overflow:auto;">
+                        <div class="panel" style="background-color: rgba(0,0,0,0.3);border: 1px solid rgba(200,200,200,.1);">
+                            <div class="panel-heading" style="border: 1px solid rgba(200,200,200,.1);">
+                                <img class="pull-left" ng-click="stoppageType.upLoadDevice()" src="{{stoppageType.devicePhoto}}" style="width:60px;height: 60px;cursor: pointer;margin-right:10px;"/>
+                                <input type="file" id="upLoadDevicePhoto" accept="image/*" onchange="angular.element(this).scope().stoppageType.changeDevicePhoto()" style="display: none;"/>
+                                <h3>{{stoppageType.deviceName}}</h3>
+                            </div>
+                            <div class="panel-body iiw-system-stoppageType-container-box" ng-class="{'select': item.checked}" ng-click="stoppageType.click($event, item)" style="border: 1px solid rgba(200,200,200,.1); cursor: pointer;" ng-repeat="item in stoppageType.list">
+                                <div ng-if="item.status == '' || !item.status">
+                                    <div>
+                                        <span class="col-md-1 text-center">名称：</span>
+                                        <div class="col-md-11 form-group" style="width:91%;" ng-model="item.name">{{item.name}}</div>
+                                    </div>
+                                    <div>
+                                        <span class="col-md-1 text-center">描述：</span>
+                                        <div class="col-md-11 form-group" style="width:91%;" ng-model="item.name">{{item.notes}}</div>
+                                    </div>
+                                </div>
+                                <div ng-if="item.status == 'add'">
+                                    <div>
+                                        <span class="col-md-1 text-center">名称：</span>
+                                        <input type="text" class="form-control col-md-11" style="width:91%;" ng-model="item.name"/>
+                                    </div>
+                                    <div>
+                                        <span class="col-md-1 text-center">描述：</span>
+                                        <textarea rows="6" class="col-md-11" style="resize: none;width:91%;color:#fff;" ng-model="item.notes"></textarea>
+                                    </div>
+                                </div>
+                                <div ng-if="item.status == 'mod'">
+                                    <div>
+                                        <span class="col-md-1 text-center">名称：</span>
+                                        <input type="text" class="form-control col-md-11" style="width:91%;" ng-model="item._name"/>
+                                    </div>
+                                    <div>
+                                        <span class="col-md-1 text-center">描述：</span>
+                                        <textarea rows="6" class="col-md-11" style="resize: none;width:91%;color:#fff;" ng-model="item._notes"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iiw-system-title text-right" ui-layout-container size="47px">
+                    <button class="btn btn-success" ng-click="stoppageType.save()">提交</button>
+                    <button class="btn btn-danger" ng-click="stoppageType.cancle()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

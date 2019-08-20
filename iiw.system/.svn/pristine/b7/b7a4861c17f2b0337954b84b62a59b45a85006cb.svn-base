@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.infocard.relation",
+  "version": "0.0.1",
+  "description": "信息牌关联管理",
+  "author": "dwt",
+  "date": "2016-12-09",
+  "main": "infocardRelationController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

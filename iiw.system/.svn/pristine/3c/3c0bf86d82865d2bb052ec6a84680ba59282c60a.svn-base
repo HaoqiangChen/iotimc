@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.file",
+  "version": "0.0.1",
+  "description": "办税厅-文件管理",
+  "author": "ybw",
+  "date": "2017-13-13",
+  "main": "taxFileController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.26"
+}

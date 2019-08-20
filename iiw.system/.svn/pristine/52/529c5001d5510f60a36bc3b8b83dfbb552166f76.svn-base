@@ -1,0 +1,176 @@
+<div class="layout-full system-role-item">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div ui-layout options="{dividerSize:'0'}">
+                <div ui-layout-container size="100px" style="background-color: rgba(0,0,0,0.3)">
+                    <div class="system-role-item-block" ng-form="roleForm">
+                        <div class="title">基础信息</div>
+                        <div class="content">
+                            <form class="form-inline">
+                                <div class="form-group" ng-class="{'has-error':!role.object.code}">
+                                    <label class="control-label">编号：</label>
+                                    <input type="text" maxlength="50" class="form-control" name="code" ng-model="role.object.code" placeholder="请输入编号" required>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':!role.object.name}" style="margin-left: 50px;">
+                                    <label class="control-label">名称：</label>
+                                    <input type="text" maxlength="50" class="form-control" name="name" ng-model="role.object.name" placeholder="请输入权限名称" required>
+                                </div>
+                                <div class="form-group" ng-if="(role.form.funList | filter:{select:true}).length > 0" style="margin-left: 50px;">
+                                    <label>默认首页：</label>
+                                    <select class="form-control" ng-model="role.object.homepage" ng-options="item.id as item.name for item in (role.form.funList | filter:{select:true})"></select>
+                                </div>
+                                <div class="form-group" ng-if="role.object.status && role.object.status != 'L'" style="margin-left: 50px;">
+                                    <label>状态：</label>
+                                    <select class="form-control" ng-model="role.object.status" ng-options="item.value as item.name for item in role.form.statusList"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div ui-layout-container style="background-color: rgba(0,0,0,0.3)">
+                    <div class="layout-full" i-scroll>
+                        <div style="position:absolute;width:100%;">
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.fun}" ng-click="role.form.toggle(role.form.togglePanel, 'fun', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.fun,'fa-angle-down':role.form.togglePanel.fun}"></i>功能模块
+                                    <a class="pull-right" ng-show="role.form.togglePanel.fun" ng-click="role.form.unSelectAll(role.form.funList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.fun" ng-click="role.form.selectAll(role.form.funList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.fun">
+                                    <div class="item col-lg-8" ng-repeat="item in role.form.funList">
+                                        <div hm-tap="role.form.select(item)">
+                                            <title>{{item.name}}</title>
+                                            <pic style="background-image: {{item.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.sys}" ng-click="role.form.toggle(role.form.togglePanel, 'sys', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.sys,'fa-angle-down':role.form.togglePanel.sys}"></i>系统管理模块
+                                    <a class="pull-right" ng-show="role.form.togglePanel.sys" ng-click="role.form.unSelectAll(role.form.sysList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.sys" ng-click="role.form.selectAll(role.form.sysList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.sys">
+                                    <div class="item col-lg-8" ng-repeat="item in role.form.sysList">
+                                        <div hm-tap="role.form.select(item)">
+                                            <title>{{item.name}}</title>
+                                            <pic style="background-image: {{item.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.datax}" ng-click="role.form.toggle(role.form.togglePanel, 'datax', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.datax,'fa-angle-down':role.form.togglePanel.datax}"></i>商业智能模块
+                                    <a class="pull-right" ng-show="role.form.togglePanel.datax" ng-click="role.form.unSelectAll(role.form.dataxList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.datax" ng-click="role.form.selectAll(role.form.dataxList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.datax">
+                                    <div class="item col-lg-8" ng-repeat="item in role.form.dataxList">
+                                        <div hm-tap="role.form.select(item)">
+                                            <title>{{item.name}}</title>
+                                            <pic style="background-image: {{item.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.information}" ng-click="role.form.toggle(role.form.togglePanel, 'information', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.information,'fa-angle-down':role.form.togglePanel.information}"></i>信息交互与武警值班
+                                    <a class="pull-right" ng-show="role.form.togglePanel.information" ng-click="role.form.unSelectAll(role.form.informationList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.information" ng-click="role.form.selectAll(role.form.informationList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.information">
+                                    <div class="item col-lg-8" ng-repeat="item in role.form.informationList">
+                                        <div hm-tap="role.form.select(item)">
+                                            <title>{{item.name}}</title>
+                                            <pic style="background-image: {{item.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.external}" ng-click="role.form.toggle(role.form.togglePanel, 'external', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.external,'fa-angle-down':role.form.togglePanel.external}"></i>外部系统模块
+                                    <a class="pull-right" ng-show="role.form.togglePanel.external" ng-click="role.form.unSelectAll(role.form.externalList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.external" ng-click="role.form.selectAll(role.form.externalList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.external">
+                                    <div class="item col-lg-8" ng-repeat="item in role.form.externalList">
+                                        <div hm-tap="role.form.select(item)">
+                                            <title>{{item.name}}</title>
+                                            <pic style="background-image: {{item.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block" ng-repeat="item in role.form.childList">
+                                <div class="title clickable" ng-class="{'hidecontent':!item.togglePanel}" ng-click="role.form.toggle(item, 'togglePanel', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!item.togglePanel,'fa-angle-down':item.togglePanel}"></i>{{item.name}}
+                                    <a class="pull-right" ng-show="item.togglePanel" ng-click="role.form.unSelectAll(item.list)">全不选</a>
+                                    <a class="pull-right" ng-show="item.togglePanel" ng-click="role.form.selectAll(item.list)">全选</a>
+                                </div>
+                                <div class="content" ng-show="item.togglePanel">
+                                    <div class="item col-lg-8" ng-repeat="item2 in item.list">
+                                        <div hm-tap="role.form.select(item2)">
+                                            <title>{{item2.name}}</title>
+                                            <pic style="background-image: {{item2.imageUrl}}"></pic>
+                                            <mask><i class="fa fa-check text-success" ng-if="item2.select"></i></mask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="system-role-item-block">
+                                <div class="title clickable" ng-class="{'hidecontent':!role.form.togglePanel.role}" ng-click="role.form.toggle(role.form.togglePanel, 'role', $event)">
+                                    <i class="fa fa-fw" ng-class="{'fa-angle-right':!role.form.togglePanel.role,'fa-angle-down':role.form.togglePanel.role}"></i>业务权限
+                                    <a class="pull-right" ng-show="role.form.togglePanel.role" ng-click="role.form.unSelectAll(role.form.roleList)">全不选</a>
+                                    <a class="pull-right" ng-show="role.form.togglePanel.role" ng-click="role.form.selectAll(role.form.roleList)">全选</a>
+                                </div>
+                                <div class="content" ng-show="role.form.togglePanel.role">
+                                    <table class="table table-hover iiw-system-table-container">
+                                        <col width="80px"><col width="200px"><col>
+                                        <tbody>
+                                            <tr ng-repeat="item in role.form.roleList" ng-class="{'select':item.select}" hm-tap="role.form.select(item, $event)">
+                                                <td class="text-center">
+                                                    <input type="checkbox" ng-model="item.select" style="width:20px;height:20px;">
+                                                </td>
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.notes}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ui-layout-container size="50px" style="background-color: rgba(0,0,0,0.3)">
+                    <div ui-layout="{ flow:'column'}" options="{dividerSize:'0'}">
+                        <div ui-layout-container></div>
+                        <div ui-layout-container size="100px" style="padding-top:5px;">
+                            <div class="btn-group btn-group-justified">
+                                <a class="btn btn-success" ng-click="role.save(roleForm.$invalid)" ng-disabled="roleForm.$invalid">保存</a>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="5px"></div>
+                        <div ui-layout-container size="100px" style="padding-top:5px;">
+                            <div class="btn-group btn-group-justified">
+                                <a class="btn btn-danger" ng-click="back()">取消</a>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="5px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="layout-full system-monitorpatrol-item">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">
+                <b>{{title}}</b>
+                <!--<a class="btn btn-primary pull-right" ng-click="back()"><i class="fa fa-arrow-circle-left fa-fw"></i>返回视频巡更计划管理</a>-->
+            </h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-monitorpatrol-container">
+                <div ui-layout options="{dividerSize:'0'}">
+                    <div ui-layout-container size="47px">
+                        <div class="layout-full system-monitorpatrol-bar" ui-layout="{ flow:'column'}" options="{ dividerSize:'0' }">
+                        </div>
+                    </div>
+                    <div ui-layout-container class="monitorpatrol-container-body">
+                        <div class="layout-full" style="overflow-y:auto;">
+                            <form name="planForm">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <fieldset>
+                                        <!--<legend class="section" ng-if="item.name">{{item.name}}</legend>-->
+                                        <div class="form-group" style="margin-top:15px;">
+                                            <label>*名称</label>
+                                            <input id="planFormTitle" name="title" type="text" class="form-control" ng-model="plan.object.name" required/>
+                                            <div ng-messages="planForm.title.$error">
+                                                <label ng-message="required" class="control-label animated tada text-danger">名称不能为空</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="width:100%;">生效日期</label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.sunday">星期日
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.monday">星期一
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.tuesday">星期二
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.wednesday">星期三
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.thursday">星期四
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.friday">星期五
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="plan.form.saturday">星期六
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>开始时间</label>
+                                            <input class="form-control" type="text" ng-model="plan.object.starttime" safe-picker p!format="H:i:s" p!datepicker="false" placeholder="开始时间">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>结束时间</label>
+                                            <input class="form-control" type="text" ng-model="plan.object.endtime" safe-picker p!format="H:i:s" p!datepicker="false" placeholder="结束时间">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>计划监控</label>
+                                            <input ng-click="plan.form.monitorTree.show()" type="text" class="form-control" ng-model="plan.object.monitors.length" required/>
+                                            <div ng-show="plan.object.monitors.length == '0'">
+                                                <label class="control-label animated tada text-danger">计划监控不能为空</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>*执行用户</label>
+                                            <input name="syusername" ng-click="plan.form.userTree.show()" type="text" class="form-control" ng-model="plan.object.syusers.length" placeholder="点击选择" required/>
+                                            <!--<input name="syusername" ng-click="plan.form.userTree.show()" type="text" class="form-control" ng-model="plan.object.syusername" placeholder="点击选择" required/>-->
+                                            <div ng-messages="planForm.syusername.$error">
+                                                <label ng-message="required" class="control-label animated tada text-danger">执行用户不能为空</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>状态</label>
+                                            <select class="form-control" style="height:39px;" ng-model="plan.object.status" ng-options="item.value as item.name for item in plan.form.statusList"></select>
+                                        </div>
+                                        <div class="form-group text-info" ng-if="plan.object.endtime <= plan.object.starttime">
+                                            <label>*【注意】 开始时间 >= 结束时间，该计划的时间段为跨天时间段，即今日{{plan.object.starttime}}至次日{{plan.object.endtime}}。</label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="60px">
+                        <div class="layout-full" style="background-color: rgba(0, 0, 0, 0.25); padding: 10px;">
+                            <button class="btn btn-success btn-s-md" type="button" ng-disabled="planForm.$invalid || plan.object.monitors.length == 0" ng-click="plan.save()">保存</button>
+                            <button class="btn btn-danger btn-s-md" type="button" ng-click="back()">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="userTreeDialog.html">
+    <div class="modal-header">
+        <h3 class="modal-title">用户树</h3>
+    </div>
+    <div class="modal-body system-monitorpatrol-usertree-body">
+        <div class="layout-full" i-scroll>
+            <ul monitorpatrol-tree data="userTree" class="ztree"></ul>
+            <!--<div class="list-group">-->
+                <!--<a class="list-group-item"><i class="fa fa-plus" style="margin-right: 10px;"></i>-->
+                    <!--Cras justo odio-->
+                    <!--<input type="checkbox" style="width:20px;height:20px;" class="pull-right" ng-model="yyy"/>-->
+                <!--</a>-->
+                <!--<a class="list-group-item">Dapibus ac facilisis in</a>-->
+                <!--<a class="list-group-item">Morbi leo risus</a>-->
+                <!--<a class="list-group-item">Porta ac consectetur ac</a>-->
+                <!--<a class="list-group-item">Vestibulum at eros</a>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="clickUser()">确认选择</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="monitorTreeDialog.html">
+    <div class="modal-header">
+        <h3 class="modal-title">监控树</h3>
+    </div>
+    <div class="modal-body system-monitorpatrol-monitortree-body">
+        <div class="layout-full" i-scroll>
+            <ul monitorpatrol-tree data="monitorTree" id="monitorTree" class="ztree"></ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok()">确认选择</button>
+        <button class="btn btn-default" ng-click="cancel()">取消</button>
+    </div>
+</script>

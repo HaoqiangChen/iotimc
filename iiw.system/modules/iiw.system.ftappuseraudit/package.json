@@ -1,0 +1,10 @@
+﻿{
+  "name": "iiw.system.ftappuseraudit",
+  "version": "0.0.1",
+  "description": "访谈APP用户审核",
+  "author": "chq",
+  "date": "2019-07-10",
+  "main": "ftappUserAuditController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

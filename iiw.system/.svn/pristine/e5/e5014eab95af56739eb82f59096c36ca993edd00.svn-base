@@ -1,0 +1,362 @@
+<div class="iiw-system-dispatcher-item layout-full">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-dispatcher-item-container">
+                <div class="layout-full col-lg-6 col-lg-offset-3">
+                    <div class="layout-full addScroll" style="overflow: auto">
+                        <form name="dispatcherForm">
+                            <fieldset>
+                                <legend class="section">{{item.name}}</legend>
+                                <div class="form-group">
+                                    <label>*标题</label>
+                                    <input id="dispatcherItemName" name="title" type="text" class="form-control" ng-model="dispatcherItemName" required/>
+                                    <label class="control-label text-danger" ng-show="dispatcherForm.title.$error.required">标题不能为空</label>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 20px;">
+                                    <label>*开始年份</label>
+                                    <input id="dispatcherFormStartYear" type="number" max="3000" min="2016" class="form-control" ng-model="dispatcherStartYear"/>
+                                </div>
+                                <div class="form-group row form-group-action" style="overflow: hidden;">
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*月份</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.january"> 一月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.february"> 二月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.march"> 三月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.april"> 四月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.may"> 五月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.june"> 六月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.july"> 七月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.august"> 八月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.september"> 九月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.october"> 十月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.november"> 十一月
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.monthList.december"> 十二月
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*日期</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.one"> 01
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.tow"> 02
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.three"> 03
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.four"> 04
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.five"> 05
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.six"> 06
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.seven"> 07
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.eight"> 08
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.nine"> 09
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.ten"> 10
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.eleven"> 11
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twelve"> 12
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.thirteen"> 13
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.fourteen"> 14
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.fifteen"> 15
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.sixteen"> 16
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.seventeen"> 17
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.eighteen"> 18
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.nineteen"> 19
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twenty"> 20
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyOne"> 21
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyTwo"> 22
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyThree"> 23
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyFour"> 24
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyFive"> 25
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentySix"> 26
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentySeven"> 27
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyEight"> 28
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.twentyNine"> 29
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.thirty"> 30
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.dayList.thirtyOne"> 31
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*一周</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;">
+                                            <input type="checkbox" ng-model="dispatcherItem.monday"> 星期一
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.tuesday"> 星期二
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.wednesday"> 星期三
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.thursday"> 星期四
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.friday"> 星期五
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.saturday"> 星期六
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" ng-model="dispatcherItem.sunday"> 星期日
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group row form-group-action" style="overflow: hidden;">
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*时</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;"><input type="checkbox" ng-model="dispatcherItem.hourList.time24"/>00</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time1"/>01</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time2"/>02</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time3"/>03</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time4"/>04</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time5"/>05</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time6"/>06</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time7"/>07</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time8"/>08</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time9"/>09</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time10"/>10</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time11"/>11</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time12"/>12</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time13"/>13</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time14"/>14</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time15"/>15</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time16"/>16</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time17"/>17</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time18"/>18</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time19"/>19</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time20"/>20</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time21"/>21</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time22"/>22</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.hourList.time23"/>23</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*分</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;"><input type="checkbox" ng-model="dispatcherItem.minList.min60"/>00</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min1"/>01</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min2"/>02</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min3"/>03</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min4"/>04</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min5"/>05</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min6"/>06</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min7"/>07</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min8"/>08</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min9"/>09</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min10"/>10</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min11"/>11</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min12"/>12</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min13"/>13</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min14"/>14</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min15"/>15</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min16"/>16</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min17"/>17</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min18"/>18</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min19"/>19</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min20"/>20</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min21"/>21</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min22"/>22</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min23"/>23</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min24"/>24</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min25"/>25</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min26"/>26</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min27"/>27</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min28"/>28</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min29"/>29</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min30"/>30</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min31"/>31</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min32"/>32</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min33"/>33</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min34"/>34</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min35"/>35</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min36"/>36</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min37"/>37</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min38"/>38</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min39"/>39</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min40"/>40</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min41"/>41</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min42"/>42</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min43"/>43</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min44"/>44</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min45"/>45</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min46"/>46</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min47"/>47</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min48"/>48</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min49"/>49</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min50"/>50</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min51"/>51</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min52"/>52</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min53"/>53</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min54"/>54</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min55"/>55</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min56"/>56</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min57"/>57</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min58"/>58</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.minList.min59"/>59</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="width:100%;">*秒</label>
+                                        <label class="checkbox-inline" style="margin-left: 10px;"><input type="checkbox" ng-model="dispatcherItem.secondList.second60"/>00</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second1"/>01</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second2"/>02</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second3"/>03</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second4"/>04</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second5"/>05</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second6"/>06</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second7"/>07</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second8"/>08</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second9"/>09</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second10"/>10</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second11"/>11</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second12"/>12</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second13"/>13</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second14"/>14</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second15"/>15</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second16"/>16</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second17"/>17</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second18"/>18</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second19"/>19</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second20"/>20</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second21"/>21</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second22"/>22</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second23"/>23</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second24"/>24</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second25"/>25</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second26"/>26</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second27"/>27</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second28"/>28</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second29"/>29</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second30"/>30</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second31"/>31</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second32"/>32</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second33"/>33</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second34"/>34</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second35"/>35</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second36"/>36</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second37"/>37</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second38"/>38</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second39"/>39</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second40"/>40</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second41"/>41</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second42"/>42</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second43"/>43</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second44"/>44</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second45"/>45</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second46"/>46</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second47"/>47</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second48"/>48</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second49"/>49</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second50"/>50</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second51"/>51</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second52"/>52</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second53"/>53</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second54"/>54</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second55"/>55</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second56"/>56</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second57"/>57</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second58"/>58</label>
+                                        <label class="checkbox-inline"><input type="checkbox" ng-model="dispatcherItem.secondList.second59"/>59</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="addServerInput" class="pull-left addServerInput" style="width:90%;">
+                                        <label>*服务名称</label>
+                                        <input id="dispatcherFormEventName0" type="text" ng-model="dispatcherFormEventName"/>
+                                        <label>*执行的服务名</label>
+                                        <input id="dispatcherFormEvent0" type="text" ng-model="dispatcherFormEvent"/>
+                                    </div>
+                                    <div class="pull-right" style="width:8%;">
+                                        <button class="btn btn-primary" ng-click="addServer()"><i class="fa fa-plus fa-fw"></i></button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-actions">
+                                <div>
+                                    <button ng-disabled="dispatcherForm.dispatcherItemName.$invalid" class="btn btn-success" type="button" ng-click="save()">保存</button>
+                                    <button class="btn btn-danger" type="button" ng-click="back()">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

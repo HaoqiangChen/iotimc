@@ -1,0 +1,88 @@
+<div class="iiw-system-sydialect layout-full" ui-view>
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="iiw-system-sydialect-container layout-full">
+                <div ui-layout options="{dividerSize:'0'}">
+                    <div ui-layout-container size="47px" class="iiw-system-sydialect-container-header layout-full">
+                        <div class="pull-left">
+                            <button ng-click="dialect.addBusiness()" type="button" class="btn btn-primary"><i class="fa fa-plus fa-fw"></i>行业操作</button>
+                            <button ng-click="dialect.add()" ng-disabled="showAddBtn" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>添加数据</button>
+                            <button ng-click="dialect.mod()" ng-disabled="showModBtn" type="button" class="btn btn-warning"><i class="fa fa-edit fa-fw"></i>修改</button>
+                            <button ng-click="dialect.del()" ng-disabled="showDelBtn" type="button" class="btn btn-danger"><i class="fa fa-minus fa-fw"></i>删除</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-inline">
+                                <label style="margin-left: 20px;">查看行业：</label>
+                                <select class="form-control" ng-options="item.content as item.name for item in businessList" ng-model="indexBusiness" ng-change="selectBusinessList(indexBusiness)" style="background-color: rgba(0,0,0,0.3); color:#fff; border: 1px solid #666;">
+                                </select>
+                                <input type="text" class="form-control pull-right" ng-model="searchText" placeholder="请输入关键字进行查找！"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="56px" style="overflow: hidden;">
+                        <div class="layout-full" style="padding: 10px 10px 0px 10px">
+                            <table class="table table-hover iiw-system-table-container">
+                                <colgroup><col width="50px"><col width="150px"><col width="500px"><col width="500px"><col width="500px"><col></colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <input type="checkbox" ng-model="dialect.selectAll" ng-click="dialect.selAll()" style="width:20px;height:20px;"/>
+                                        </th>
+                                        <th>序号</th>
+                                        <th>行业</th>
+                                        <th>方言关键字</th>
+                                        <th>方言内容</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div ui-layout-container class="iiw-system-sydialect-container-body">
+                        <div class="layout-full addScroll" id="myformtable" style="border:1px solid rgba(0,0,0,0.2);" ng-form="mytable">
+                            <table class="table table-hover iiw-system-table-container">
+                                <colgroup><col width="50px"><col width="150px"><col width="500px"><col width="500px"><col width="500px"><col></colgroup>
+                                <tbody>
+                                    <tr ng-repeat="item in dialectList | filter:{ key: searchText }" ng-class="{'select':item.checked}" ng-click="dialect.select(item, $event)">
+                                        <td class="text-center">
+                                            <input class="text-center" type="checkbox" ng-model="item.checked" style="width:20px;height:20px;"/>
+                                        </td>
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{item.business}}</td>
+                                        <td>
+                                            <div ng-if="item.status != 'mod' && item.status != 'add'">{{item.key}}</div>
+                                            <div ng-if="item.status == 'mod'">
+                                                <input type="text"  ng-class="{'has-error': !item._key}" ng-model="item._key" required/>
+                                            </div>
+                                            <div ng-if="item.status == 'add'"><input type="text" ng-class="{'has-error': !item.key}" ng-model="item.key" required/></div>
+                                        </td>
+                                        <td>
+                                            <div ng-if="item.status != 'mod' && item.status != 'add'">{{item.content}}</div>
+                                            <div ng-if="item.status == 'mod'"><input type="text" ng-model="item._content"/></div>
+                                            <div ng-if="item.status == 'add'"><input type="text" ng-model="item.content"/></div>
+                                        </td>
+                                        <td>
+                                            <button ng-if="item.status == 'mod'" type="button" class="btn btn-danger" ng-click="cancleMod(item)">取消修改</button>
+                                            <button ng-if="item.status == 'add'" type="button" class="btn btn-danger" ng-click="cancleAdd(item)">取消新增</button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div ui-layout-container size="47px" class="iiw-system-sydialect-container-footer"  ng-if="modBtn">
+                        <div class="layout-full">
+                            <button type="button" class="btn btn-danger pull-right" ng-click="cancle()">取消</button>
+                            <button type="button" ng-disabled="mytable.$invalid"  class="btn btn-success pull-right" ng-click="save()">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

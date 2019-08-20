@@ -1,0 +1,5 @@
+目前最新的Chrome Android版本已经是62.X。而Chrome Android等一些浏览器默认限制了自动播放音频视频等，需要用户有点击的动作后才可以播放。这样的原因在于很多用户流量需要付费，而限制了自动播放可以避免用户在不知情的情况下产生高额的流量费用。
+
+在60.X版本之前，chrome://flags中有一个disable-gesture-requirement-for-media-playback的选项，让用户在浏览器中输入chrome://flags/#disable-gesture-requirement-for-media-playback将该选项应用后即可。
+
+而从60.X版本开始，这个选项被移除了，取而代之的是一个名为Autoplay policy的选项。我们在浏览器中输入chrome://flags/#autoplay-policy，然后在高亮的选项中，将Default换成No user gesture is required：

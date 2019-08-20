@@ -1,0 +1,125 @@
+.system-expert-page-content{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.system-expert-container{
+    padding: 15px;
+}
+.system-expert-header{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-expert-header input{
+    width: 200px;
+    height: 39px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+.expertSelect{
+    background-color: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+    height: 32px;
+}
+
+.system-monitorpatrol-item {
+    position: relative;
+}
+
+.system-monitorpatrol-item-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.iiw-system-tax-photo select{
+    background-color: rgba(0,0,0,.3);
+    color: #fff;
+    margin: 3px 25px 0 0;
+    width: 186px;
+    border: 1px solid rgba(255,255,255,.3);
+}
+
+
+/*新列表*/
+.iiw-system-tax-photo-list{
+    width: calc(20% - 20px);
+    height: calc(50% - 40px);
+    margin: 20px 10px;
+    background-color: #eee;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.6);
+    border: 1px solid rgba(0,0,0,.1);
+    float: left;
+    cursor: pointer;
+}
+
+.iiw-system-tax-photo-list-img{
+    width: 100%;
+    height: calc(100% - 60px);
+    position: relative;
+    background-color: #ddd;
+}
+
+.iiw-system-tax-photo-list-img img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.iiw-system-tax-photo-list-img .checked{
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.iiw-system-tax-photo-list-img .checked .fa{
+    color: #6d6;
+    text-shadow: -1px 1px 3px rgba(0,0,0,.7);
+}
+
+.iiw-system-tax-photo-list-img .name{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    float: left;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgba(0,0,0,.7);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.iiw-system-tax-photo-list-message{
+    width: 100%;
+    height: 60px;
+    line-height: 30px;
+    color: #333;
+}
+
+.iiw-system-tax-photo-list-message .type,
+.iiw-system-tax-photo-list-message .time,
+.iiw-system-tax-photo-list-message .form,
+.iiw-system-tax-photo-list-message .size{
+    height: 30px;
+    float: left;
+    font-size: 16px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.iiw-system-tax-photo-list-message .type,
+.iiw-system-tax-photo-list-message .time{
+    width: 70%;
+}
+
+.iiw-system-tax-photo-list-message .size,
+.iiw-system-tax-photo-list-message .form{
+    width: 30%;
+}
+
+.iiw-system-tax-photo-list-message .fa{
+    margin: 0 5px;
+}

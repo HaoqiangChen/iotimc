@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.ycpreplan",
+  "version": "0.0.1",
+  "description": "YC监狱预案管理",
+  "author": "zcl",
+  "date": "2017-12-01",
+  "main": "ycpreplanController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.18"
+}

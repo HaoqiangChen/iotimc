@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.sylogin",
+"version": "0.0.1",
+"description": "登陆背景设置",
+"author": "zhs",
+"date": "2017-06-22",
+"main": "syloginController",
+"host": "192.168.0.251",
+"client": "192.168.1.29"
+}

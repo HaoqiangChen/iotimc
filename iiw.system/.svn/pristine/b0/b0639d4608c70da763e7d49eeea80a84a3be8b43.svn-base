@@ -1,0 +1,198 @@
+<div class="layout-full" style="background: rgba(0,0,0,0.3);">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full" i-scroll>
+                <div>
+                    <form class="form-horizontal label-left" id="entityItemForm" name="entityItemForm" novalidate>
+                        <fieldset>
+                            <legend class="section">基础信息配置</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">所属单位：</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.syouname"
+                                               placeholder="选择单位名称"
+                                               class="form-control" id="dataimport.entityItem.syoufk"
+                                               ng-click="showOuTree()"
+                                               required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="!dataimport.entityItem.syoufk"
+                                           style="color:red;">*请选择单位名称
+                                    </lable>
+                                    <label ng-model="dataimport.entityItem.syoufk" class="hidden"></label>
+                                </div>
+                            </div>
+                            <legend class="section">罪犯人数信息</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">当日释放</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.drsf" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">当日收监</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.drsj" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">提回</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.th" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">暂予监外执行</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.zyjwzx" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">重点罪犯人数</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.zdzfrs" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <legend class="section">罪犯刑期结构</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">3年以下</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.snyx" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">3-10年</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.sdsn" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">10年以上</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.snys" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">无期徒刑</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.wqtx" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">死刑</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.xs" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <legend class="section">罪犯年龄结构</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">当日释放</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.drsf" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">当日收监</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.drsj" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">提回</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.th" placeholder=""
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">暂予监外执行</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.zyjwzx" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">重点罪犯人数</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="dataimport.entityItem.zdzfrs" placeholder=""
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container
+             style="background: none;">
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid"
+                    ng-click="dataimport.save()">提交
+            </button>
+            <button class="btn btn-danger btn-s-md" ng-click="dataimport.cancel()">取消</button>
+        </div>
+    </div>
+</div>

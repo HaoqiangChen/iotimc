@@ -1,0 +1,50 @@
+<div class="layout-full system-infocard-relation">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">信息牌关联</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full bcb-opacity3">
+                <div ui-layout options="{dividerSize:'0'}">
+                    <div ui-layout-container size="47px">
+                        <div class="layout-full bcb-opacity3 system-infocard-bar">
+                            <div>
+                                <a class="btn btn-warning pull-left" ng-click="back()"><i class="fa fa-sign-out fa-flip-horizontal fa-fw"></i>返回</a>
+                            </div>
+                            <div class="form-group pull-right" style="width:250px;margin:0;">
+                                <input type="text" class="form-control" ng-model="template.list.filterValue" placeholder="输入信息牌标题过滤"/>
+                            </div>
+                            <div class="form-group pull-right" style="width:100px;margin:2px 20px 0 0;">
+                                <select class="form-control format-select" ng-model="template.typeItem" ng-change="template.list.getList()" ng-options="item.name for item in template.typeList"></select>
+                            </div>
+                            <div class="pull-right" style="width:100px;height:40px;line-height:40px;">信息牌类型：</div>
+                        </div>
+                    </div>
+                    <div ui-layout-container>
+                        <div class="system-infocard-tree bcb-opacity1">
+                            <div class="layout-full">
+                                <div ui-layout options="{dividerSize:'0'}">
+                                    <div ui-layout-container size="30px" class="text-center bcb-opacity1" style="line-height:30px;">单位&地图</div>
+                                    <div ui-layout-container style="overflow:hidden;">
+                                        <div class="layout-full" i-scroll2>
+                                            <ul infocard-tree data="template.relation.data" class="ztree"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout-full system-infocard-content" style="padding-left:410px;">
+                            <div class="system-infocard-list-item" id="template{{item.id}}" ng-repeat="item in template.list.items" ng-hide="template.list.filterValue && item.name.indexOf(template.list.filterValue) == -1">
+                                <div class="infocard-list-item-title bcb-opacity4">
+                                    {{item.name}}
+                                    <input type="checkbox" ng-click="template.relation.select(item)" ng-model="item.related">
+                                </div>
+                                <div class="infocard-list-item-body safe-infocard-panel" infocard-template template-url="item.content" loadds></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

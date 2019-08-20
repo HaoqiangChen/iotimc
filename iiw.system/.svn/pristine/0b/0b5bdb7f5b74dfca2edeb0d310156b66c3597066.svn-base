@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.devicewarrant",
+"version": "0.0.1",
+"description": "设备授权管理",
+"author": "llx",
+"date": "2016-09-21",
+"main": "devicewarrantController",
+"host": "192.168.0.251",
+"client": "192.168.0.27"
+}

@@ -1,0 +1,38 @@
+<div class="iiw-system-page-container iiw-system-tax-bsd">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">办税厅概况</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="widget-header">
+                    <span>编辑办税厅概况信息</span>
+                </div>
+                <div class="widget-content">
+                    <form method="post" class="form-horizontal" id="bsdform" name="bsdform" novalidate>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 style="margin-top: 0px;">窗口设备</h4>
+                                    <div id="bsd-device" system-tax-tianhe-umeditor i-dom-select style="height: 150px;width: 100%;"></div>
+
+                                    <h4 style="margin-top: 30px;">组织架构</h4>
+                                    <div id="bsd-org" system-tax-tianhe-umeditor i-dom-select style="height: 150px;width: 100%;"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 style="margin-top: 0px;">业务数据</h4>
+                                    <div id="bsd-business" system-tax-tianhe-umeditor i-dom-select style="height: 420px;width: 100%;"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div>
+                                <button class="btn btn-s-md btn-primary" type="button" ng-click="bsd.save()">保     存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

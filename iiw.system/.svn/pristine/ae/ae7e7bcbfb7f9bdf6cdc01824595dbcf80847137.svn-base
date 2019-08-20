@@ -1,0 +1,61 @@
+.iiw-system-homepage-container {
+    height:100%;
+    width:100%;
+    position: relative;
+}
+
+.iiw-system-homepage-chart-container {
+    padding:0 0 10px 0;
+}
+
+.iiw-system-homepage-chart-panel {
+    width:33.333333%;
+    height:100%;
+    padding-right:10px;
+    float:left;
+    position: relative;
+}
+
+.iiw-system-homepage-chart-panel > div {
+    position: relative;
+    overflow: hidden;
+}
+
+.iiw-system-homepage-chart-content {
+    background:rgba(0,0,0,0.3)!important;
+    overflow: hidden;
+}
+
+.iiw-system-homepage-message-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 12px;
+    /*text-shadow: 0 0 10px black;*/
+    font-family: '微软雅黑';
+    background-color: rgba(0,0,0,0.2);
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px 0 5px;
+}
+
+.iiw-system-homepage-disk-chart-container {
+    width:50%;
+    height:100%;
+    padding-right:10px;
+    float:left;
+    position: relative;
+}
+
+.iiw-system-homepage-device-chart-container {
+    padding:0 10px 10px 0;
+}
+
+.iiw-system-homepage-free-message {
+    color:#5cb85c;
+}
+
+.iiw-system-homepage-used-message {
+    color:#f0ad4e;
+}

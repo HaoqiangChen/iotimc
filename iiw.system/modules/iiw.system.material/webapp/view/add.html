@@ -1,0 +1,115 @@
+<div class="layout-full">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full" i-scroll>
+                <div>
+                    <form class="form-horizontal label-left" id="entityItemForm" name="entityItemForm" novalidate>
+                        <fieldset>
+                            <legend class="section">物资信息</legend>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">物资名称</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.name" placeholder="请输入物资名称"
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.name == null" style="color:red;">*物资名称不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">负责人</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.syuserfk" placeholder="请输入负责人"
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.syuserfk == null" style="color:red;">*物资负责人不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">数量</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="number" ng-model="entityItem.numbers" placeholder="请输入物资数量"
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.numbers == null" style="color:red;">*物资数量不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">单位</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <select ng-model="entityItem.unit" class="col-md-5" required>
+                                            <option value="" selected>请选择物资单位</option>
+                                            <option value="只">只</option>
+                                            <option value="个">个</option>
+                                            <option value="床">床</option>
+                                            <option value="套">套</option>
+                                            <option value="条">条</option>
+                                            <option value="根">根</option>
+                                            <option value="米">米</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.unit == null" style="color:red;">*物资单位不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">所属单位</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <select ng-model="entityItem.syoufk" class="col-md-5 syou-select-option"
+                                                required>
+                                            <option value="" selected>请选择物资所属单位</option>
+                                            <option value="{{syou.name}}" ng-repeat="syou in syouList">{{syou.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="entityItem.syoufk == null" style="color:red;">*物资所属单位不能为空</lable>
+                                </div>
+                            </div>
+                            <div class="control-group row">
+                                <div class="col-md-2">
+                                    <label class="control-label">存放位置</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="text" ng-model="entityItem.notes" placeholder="请输入物资存放位置"
+                                               class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <lable ng-show="!entityItem.notes" style="color:red;">*物资存放位置不能为空</lable>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

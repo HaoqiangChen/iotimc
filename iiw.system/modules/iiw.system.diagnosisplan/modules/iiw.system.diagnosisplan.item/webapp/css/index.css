@@ -1,0 +1,100 @@
+.iiw-system-diagnosisplan-item{
+    position: relative;
+    height: 100%;
+}
+.system-diagnosisplan-item-container{
+    background-color: rgba(0,0,0,0.3);
+}
+.iiw-system-diagnosisplan-item-content{
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.iiw-system-diagnosisplan-item-content label{
+    font-size: 14px;
+    line-height: 27px;
+    padding: 10px;
+}
+.system-diagnosisplan-item-container-right-select{
+    padding: 7px;
+}
+.system-diagnosisplan-item-container-right-select select{
+    background-color: rgba(0,0,0,0.3);
+    width: 100px;
+    height: 35px;
+}
+.system-diagnosisplan-item-container-left{
+    width:59%;
+    float: left;
+}
+.system-diagnosisplan-item-container-left .left-box-1{
+    background-color: rgba(0,0,0,0.3);
+    height: 510px;
+    padding: 0px;
+    margin-left: 13px;
+}
+.system-diagnosisplan-item-container-left .left-box-1 .cronscroll{
+    height:440px;
+    padding: 0px 10px 10px;
+    overflow:hidden;
+    position: relative;
+}
+
+.system-diagnosisplan-item-container-left .left-box-2{
+    background-color: rgba(0,0,0,0.3);
+    height: 395px;
+    padding: 0px;
+    margin-left: 13px;
+}
+.system-diagnosisplan-item-container-left .left-box-2 .simplescroll{
+    height: 320px;
+    padding: 0px 10px 10px;
+    overflow:hidden;
+    position: relative;
+}
+.system-diagnosisplan-item-container-left .left-box-header{
+    padding: 10px 10px 0;
+    margin: 0;
+}
+.system-diagnosisplan-item-container-left .row{
+    margin-top: 20px;
+}
+.system-diagnosisplan-item-container-left select{
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;
+}
+.system-diagnosisplan-item-container-right{
+    width:40%;
+    height: 100%;
+    float: left;
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.system-diagnosisplan-item-container-right-content{
+    background-color: rgba(0,0,0,0.3);
+    height:50px;
+    overflow: hidden;
+}
+.system-diagnosisplan-item-container-right .right-box-header{
+    padding: 10px 14px 0 10px;
+    margin: 0;
+}
+.system-diagnosisplan-item-container-right .right-box-content{
+    padding: 0px 14px 10px 10px;
+    height: 600px;
+}
+.system-diagnosisplan-item-container-right-select select{
+    width:150px;
+    margin-left: 10px;
+}
+.system-diagnosisplan-item-container  .addScroll{
+    overflow: auto;
+}
+
+.system-diagnosisplan-item-container  .addScroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.system-diagnosisplan-item-container  .addScroll::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}

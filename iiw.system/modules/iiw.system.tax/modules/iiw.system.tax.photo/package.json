@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.photo",
+  "version": "0.0.1",
+  "description": "办税厅-图片管理",
+  "author": "ybw",
+  "date": "2017-13-13",
+  "main": "taxPhotoController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.26"
+}

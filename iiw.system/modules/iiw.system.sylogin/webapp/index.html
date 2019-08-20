@@ -1,0 +1,40 @@
+<div class="layout-full system-login">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">
+                {{title}}
+            </h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-login-container">
+                <div ui-layout options="{dividerSize:'0'}">
+                    <div ui-layout-container style="padding: 20px;">
+                        <div class="layout-full system-login-img-list" i-scroll>
+                            <div style="position: absolute;">
+                                <ul class="clearfix" >
+                                    <li>
+                                        <button class="btn btn-add" ng-click="datas.image.select()">+</button>
+                                        <input id="uploadImg" onchange="angular.element(this).scope().datas.image.upload()" accept="image/jpg,image/jpeg,image/png" type="file" style="display:none;">
+                                    </li>
+                                    <li ng-repeat="item in datas.list track by $index" ng-click="datas.image.edit(item)">
+                                        <img ng-src="{{imgPath + item.path}}">
+                                        <div class="desc" ng-if="!item.mode || item.mode == ''">{{item.name}}</div>
+                                        <div class="tools" ng-if="item.mode == 'edit'">
+                                            <div class="btn-group btn-group-justified">
+                                                <a class="btn btn-success animated fadeIn" ng-click="datas.image.select($event)"><i class="fa fa-edit"></i> 修改</a>
+                                                <a class="btn btn-danger animated fadeIn" ng-click="datas.image.del(item)"><i class="fa fa-remove"></i> 删除</a>
+                                            </div>
+                                        </div>
+                                        <div class="mask" ng-if="item.loading">
+                                            <i class="fa fa-spinner fa-spin"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

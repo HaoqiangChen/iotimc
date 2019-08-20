@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.bigmonitorchannel",
+"version": "0.0.1",
+"description": "电视墙与解码器关联",
+"author": "llx",
+"date": "2016-07-06",
+"main": "bigmonitorchannelController",
+"host": "192.168.0.251",
+"client": "192.168.0.36"
+}

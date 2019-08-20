@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.3dphoto",
+  "version": "0.0.1",
+  "description": "办税厅-3d图片",
+  "author": "ybw",
+  "date": "2017-13-13",
+  "main": "tax3dphotoController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.26"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.video.type",
+  "version": "0.0.1",
+  "description": "办税厅-视频管理-类型",
+  "author": "ybw",
+  "date": "2018-02-02",
+  "main": "taxVideoTypeController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.26"
+}

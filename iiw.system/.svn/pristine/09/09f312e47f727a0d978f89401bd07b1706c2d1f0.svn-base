@@ -1,0 +1,59 @@
+.iiw-system-sydialect{
+    position: relative;
+}
+.iiw-system-sydialect-container{
+    background-color: rgba(0,0,0,0.3);
+}
+.iiw-system-sydialect-container-header{
+    padding: 4px;
+    background-color: rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.iiw-system-sydialect-container-body{
+    padding: 0 10px 10px 10px;
+}
+.iiw-system-sydialect-container .addScroll{
+    overflow: auto;
+}
+
+.iiw-system-sydialect-container .addScroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.iiw-system-sydialect-container .addScroll::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+.iiw-system-sydialect-container-footer {
+    background-color: rgba(0,0,0,0.2);
+}
+.iiw-system-sydialect-container-footer button{
+    margin-top: 4px;
+    margin-right: 4px;
+    width:100px;
+}
+.describe{
+    margin-top: 15px;
+    color:orange;
+}
+.relevanceContent{
+    height:280px;
+    overflow: auto;
+}
+.relevanceContent::-webkit-scrollbar{
+    width: 6px;
+}
+.relevanceContent::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+.relevanceDialect{
+    margin-bottom: 5px;
+}
+.relevanceDialect .span{
+    width:130px;
+    text-align: right;
+}
+.has-error{
+    border: 1px solid #ff4444 !important;
+}

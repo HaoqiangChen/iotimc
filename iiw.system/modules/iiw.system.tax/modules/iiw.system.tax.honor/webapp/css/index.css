@@ -1,0 +1,23 @@
+.system-tax-honor {
+    position: relative;
+}
+.system-tax-honor-header {
+    background-color: rgba(0,0,0,0.2);
+    padding: 7px;
+    overflow: hidden;
+}
+.system-tax-honor-footer {
+    background-color: rgba(0,0,0,0.2);
+    padding: 11px;
+    overflow: hidden;
+}
+.system-tax-honor-main {
+    padding: 10px;
+    overflow-x: hidden;
+}
+.system-tax-honor .inputBorderInvalid{
+    border: 1px solid #d45959;
+}
+.system-tax-honor .select{
+    background-color: rgba(223, 105, 26,0.8);
+}

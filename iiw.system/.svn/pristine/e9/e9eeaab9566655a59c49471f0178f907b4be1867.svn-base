@@ -1,0 +1,55 @@
+
+.bigmonitortheme-alarmrelation {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.bigmonitortheme-alarmrelation-head,
+.bigmonitortheme-alarmrelation-foot {
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.bigmonitortheme-alarmrelation-head {
+    font-size: 30px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.bigmonitortheme-alarmrelation-body {
+    overflow: hidden;
+    padding: 2px;
+}
+
+.bigmonitortheme-alarmrelation-body > div {
+    position:relative;
+}
+
+.bigmonitortheme-alarmrelation-body .modelFruit:hover {
+    box-shadow: 0 0 20px white inset;
+    text-shadow: 0 0 20px white;
+}
+
+.bigmonitortheme-alarmrelation-body .modelFruit > div {
+    cursor: default;
+}
+
+.bigmonitortheme-alarmrelation-body .modelFruit > i {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.bigmonitortheme-alarmrelation-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: table;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.bigmonitortheme-alarmrelation-loading > i {
+    font-size: 50px;
+    display: table-cell;
+    vertical-align: middle;
+}

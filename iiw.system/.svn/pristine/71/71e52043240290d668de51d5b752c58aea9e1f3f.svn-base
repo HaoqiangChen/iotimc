@@ -1,0 +1,63 @@
+<div class="layout-full system-role" ui-view>
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-role-container">
+            <div ui-layout options="{dividerSize:'0'}">
+                <div ui-layout-container size="47px">
+                    <div class="layout-full system-role-bar">
+                        <div class="layout-full">
+                            <a class="btn btn-success pull-left" ng-click="role.addRole()"><i class="fa fa-plus fa-fw"></i>添加</a>
+                            <a class="btn btn-warning pull-left" ng-click="role.modRole()"><i class="fa fa-edit fa-fw"></i>修改</a>
+                            <a class="btn btn-danger pull-left" ng-click="role.delRole()"><i class="fa fa-minus fa-fw"></i>删除</a>
+                            <div class="input-group pull-right" style="width:250px;">
+                                <input type="text" class="form-control" ng-model="role.filterValue" ng-keyup="role.getListByKeybroad($event)" placeholder="输入编号过滤"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="role.getList()">查询</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ui-layout-container class="role-container-body">
+                    <div class="layout-full" i-scroll style="border:1px solid rgba(0,0,0,0.2);">
+                        <table class="table table-hover iiw-system-table-container">
+                            <col width="50px"><col width="80px"><col width="20%"><col><col width="30%"><col width="80px">
+                            <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <input type="checkbox" ng-model="role.bSelectAll" style="width:20px;height:20px;" ng-click="role.selectAll()">
+                                </th>
+                                <th class="text-center">序号</th>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <th>默认主页</th>
+                                <th class="text-center">状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in role.list" ng-class="{'select':item.checked}" ng-click="role.select(item, $event)">
+                                <td class="text-center">
+                                    <input type="checkbox" ng-model="item.checked" style="width:20px;height:20px;">
+                                </td>
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{item.code}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.homepage}}</td>
+                                <td class="text-center" ng-class="{'text-warning':item.status=='L', 'text-danger':item.status=='C'}">{{role.statusList[item.status]}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ui-layout-container class="role-container-foot" size="49px">
+                    <label class="col-lg-3" style="height:40px;line-height:40px;padding-top:4px;">统计信息： 每页{{role.pageSize}}行， 共{{role.totalSize||0}}行， 共{{role.totalPage||0}}页</label>
+                    <uib-pagination style="margin: 5px;" class="pagination pull-right" direction-links="true" boundary-links="true" boundary-link-numbers="true" rotate="false" total-items="role.totalSize" ng-model="role.currentPage" ng-change="role.change()" items-per-page="role.pageSize" max-size="10" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

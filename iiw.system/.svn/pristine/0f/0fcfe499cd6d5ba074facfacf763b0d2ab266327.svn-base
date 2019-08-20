@@ -1,0 +1,83 @@
+<div class="system-severe content container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+    </div>
+
+    <div class="row view-wrap">
+        <div class="col-lg-12 view-content">
+            <div class="widget">
+                <div class="widget-header">
+                </div>
+
+                <div class="widget-content">
+                    <div class="wrap">
+                        <div ng-style="{'padding-top': '60px', 'border': 'none'}" class="col-md-3 left-tree"
+                             ui-layout="{ flow: 'row'}" ng-style="{}" options="{dividerSize:'0'}">
+                            <div ng-style="{'position': 'absolute', 'top': '5px', 'left': '25px', 'height': '40px'}"
+                                 class="menu-button ui-layout-container"
+                                 size="55px" ui-layout-container>
+                                <search-input placeholder="搜索门禁设备" id="door"></search-input>
+                            </div>
+
+                            <div class="ui-layout-container" ui-layout-container>
+                                <div class="col-lg-12" ng-style="{'height': '100%'}" i-scroll2>
+                                    <severe-ou-tree id="tree"></severe-ou-tree>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'background-color': 'rgba(0,0,0,.2)'}"
+                             class="col-md-9 right-content ui-layout-row" ui-layout="{ flow: 'row'}"
+                             options="{dividerSize:'0'}">
+                            <div ng-style="{'line-height': '45px', 'background-color': 'rgba(0,0,0,.4)', 'font-size': '16px', 'border-bottom': '1px solid #111'}"
+                                 class="ui-layout-container system-severe-device"
+                                 size="55px" ui-layout-container>
+                                <div>序号</div>
+                                <div>门禁设备名称</div>
+                                <div>所在单位</div>
+                                <div>状态</div>
+                                <div>操作</div>
+                            </div>
+                            <div class="ui-layout-container" ui-layout-container>
+
+                                <div class="system-severe-device" ng-style="{'line-height': '45px'}"
+                                     ng-repeat="value in severe.list">
+                                    <div>{{$index + 1}}</div>
+                                    <div>{{value.devicename}}</div>
+                                    <div>{{value.syouname}}</div>
+                                    <div>{{((value.status == 'Y' && '已保存') || (value.status == 'N' && '未保存'))}}</div>
+                                    <div ng-style="{'line-height': 0}">
+                                        <button ng-click="severe.delete(value.deviceid, $index)" class="btn btn-danger">
+                                            删除
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="ui-layout-container text-right"
+                                 ng-style="{'background-color': 'rgba(0,0,0,.4)', 'border-top': '1px solid #111', 'padding': '5px'}"
+                                 size="55px" ui-layout-container>
+
+                                <button class="btn btn-success" ng-disabled="severe.operation" ng-click="severe.save()">
+                                    保存
+                                </button>
+                                <button class="btn btn-warning" ng-disabled="!severe.list.length"
+                                        ng-click="severe.empty()">清空
+                                </button>
+                                <button class="btn btn-danger" ng-disabled="severe.operation"
+                                        ng-click="severe.cancel()">取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

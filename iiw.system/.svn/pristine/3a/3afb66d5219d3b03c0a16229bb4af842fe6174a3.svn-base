@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.plugins.add",
+  "version": "0.0.1",
+  "description": "插件管理-添加",
+  "author": "ybw",
+  "date": "2017-13-13",
+  "main": "pluginsAddController",
+  "host": "192.168.0.251",
+  "client": "192.168.1.16"
+}

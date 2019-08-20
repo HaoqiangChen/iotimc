@@ -1,0 +1,116 @@
+
+<div class="infoCard-title">
+    <div class="infoCard-title-main infoCard-weight" editable>
+        今日要情信息
+    </div>
+    <div class="infoCard-title-minor">
+        <b editable>****年**月**</b>
+    </div>
+</div>
+
+<div class="infoCard-container">
+
+    <div class="infoCard-container-row">
+        <div class="infoCard-container-content" style="width: 45%">
+            <div class="infoCard-container-content-name" editable>指挥长：</div>
+            <div class="infoCard-container-content-value" datasource phoneID="infoCardImportantPhone">XXX</div>
+        </div>
+
+        <div class="infoCard-container-content" style="width: 45%">
+            <div class="infoCard-container-content-name">联系电话：</div>
+            <div class="infoCard-container-content-value" id="infoCardImportantPhone">***********</div>
+        </div>
+
+    <div class="infoCard-container-row">
+    </div>
+
+        <div class="infoCard-container-content" style="width: 45%">
+            <div class="infoCard-container-content-name" editable>副指挥长：</div>
+            <div class="infoCard-container-content-value" datasource phoneID="infoCardMinorPhone">XXX</div>
+        </div>
+
+        <div class="infoCard-container-content" style="width: 45%">
+            <div class="infoCard-container-content-name">联系电话：</div>
+            <div class="infoCard-container-content-value" id="infoCardMinorPhone">***********</div>
+        </div>
+    </div>
+
+    <div class="infoCard-container-row">
+
+        <div class="infoCard-container-row-title" editable>
+            在岗警力数
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>机关警力：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>监区警力：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>备勤人数：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+    </div>
+
+    <div class="infoCard-container-row">
+        <div class="infoCard-container-row-title" editable>
+            重点罪犯
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>A类：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>B类：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>C类：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+    </div>
+
+
+    <div class="infoCard-container-row">
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>现押犯人：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>实押犯人：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+    </div>
+
+    <div class="infoCard-container-row">
+        <div class="infoCard-container-row-title" editable>
+            病犯人数
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>外诊：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>一级：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+
+        <div class="infoCard-container-content">
+            <div class="infoCard-container-content-name" editable>二级：</div>
+            <div class="infoCard-container-content-value" datasource>0</div>
+        </div>
+    </div>
+
+</div>

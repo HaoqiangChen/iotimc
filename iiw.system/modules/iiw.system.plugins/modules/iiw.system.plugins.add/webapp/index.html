@@ -1,0 +1,87 @@
+<div class="layout-full iiw-system-plugins-add">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-container iiw-system-form-container" ui-layout-container>
+            <div class="layout-full">
+                <div class="col-lg-12">
+                    <legend class="section">上传插件</legend>
+                </div>
+                <div class="col-lg-3 list">
+                    <div class="iiw-system-plugins-add-list" i-scroll2>
+                        <div class="iiw-system-plugins-add-list-rows text-center" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;padding: 0 20px" ng-click="selectFile($index)" ng-class="{'select': $index == data.select}" ng-repeat="rows in data.list">
+                            {{rows.JSON.mc}}
+                            <div class="close-video">
+                                <i ng-click="deleteFile($index)" ng-hide="rows.font" class="fa fa-close"></i>
+                                <i ng-show="rows.font" class="fa {{rows.font}}"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 base" ng-form="list">
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">名称</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" ng-disabled="!data.list.length" ng-model="data.list[data.select].JSON.mc" placeholder="请输入名称" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="!data.list[data.select].JSON.mc && data.list.length" style="color: red;">*名称不能为空</lable>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">编号</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <input type="text" ng-disabled="!data.list.length" ng-model="data.list[data.select].JSON.bh" placeholder="请输入编号" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="!data.list[data.select].JSON.bh && data.list.length" style="color:red;">*编号不能为空</lable>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">版本号</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <input type="text" ng-disabled="!data.list.length" ng-model="data.list[data.select].JSON.bbh" placeholder="请输入版本号" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="!data.list[data.select].JSON.bbh && data.list.length" style="color:red;">*版本号不能为空</lable>
+                        </div>
+                    </div>
+
+                    <div class="control-group row">
+                        <div class="col-md-2">
+                            <label class="control-label">插件说明</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group" style="height: 450px;position: relative;z-index: 1;overflow: hidden;">
+                                <textarea class="form-control" cols="30" rows="10" style="resize: none;" placeholder="请输入插件说明！" ng-disabled="!data.list.length" ng-model="data.list[data.select].JSON.sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layout-container iiw-system-form-button-layout-container" size="60px" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="list.$invalid || data.list[data.select].type == 'add'" ng-click="save()">提交</button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">取消</button>
+            <button class="btn btn-primary btn-s-md" ng-click="upload()">上传新插件</button>
+            <input type="file" accept=".exe" style="display: none;" onchange="angular.element(this).scope().uploading(this)" multiple="multiple" id="systemPlugins"/>
+        </div>
+    </div>
+</div>

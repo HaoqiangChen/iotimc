@@ -1,0 +1,119 @@
+<div class="info-title">
+    <h3>
+        <i class="safe-icon safe-icon-criminal"></i>
+        <b editable>信息牌标题</b>
+    </h3>
+</div>
+<div class="info-content safe-infocard-content" i-scroll>
+    <div class="container-fluid" datasourcetype="datasourcetype">
+        <div class="safe-infocard-line-title"><label editable><小标题></label></div>
+        <div class="info-row">
+            <div class="info-left"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+            <div class="info-right" datasource></div>
+        </div>
+        <div class="safe-infocard-line-title"><label editable><小标题></label></div>
+        <div class="row">
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+        </div>
+        <div class="safe-infocard-line-title"><label editable><小标题></label></div>
+        <div class="safe-infocard-table">
+            <table>
+                <col width="15%">
+                <col width="17%">
+                <col width="17%">
+                <col width="17%">
+                <col width="17%">
+                <col width="17%">
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td editable>表头</td>
+                    <td editable>表头</td>
+                    <td editable>表头</td>
+                    <td editable>表头</td>
+                    <td editable>表头</td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                <tr>
+                    <td editable>行头</td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                    <td datasource></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

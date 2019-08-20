@@ -1,0 +1,48 @@
+<div class="info-title">
+    <h3>
+        <i class="safe-icon safe-icon-police"></i>
+        <b editable>警察信息牌</b>
+    </h3>
+</div>
+<div class="info-content safe-infocard-content" i-scroll>
+    <div class="container-fluid">
+        <div class="info-row">
+            <div class="info-left"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+            <div class="info-right" datasource></div>
+        </div>
+        <div class="row">
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+            <data>
+                <div class="col-xs-3 info-label"><i class="fa fa-angle-right"></i><b editable>名称项</b></div>
+                <div class="col-xs-3 info-label info-value" datasource></div>
+            </data>
+        </div>
+    </div>
+</div>

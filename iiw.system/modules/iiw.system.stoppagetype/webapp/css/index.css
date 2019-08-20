@@ -1,0 +1,107 @@
+.iiw-system-stoppageType{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.iiw-system-stoppageType-container{
+    background-color: rgba(0,0,0,.3);
+    position: relative;
+}
+
+.iiw-system-stoppageType-container-body{
+
+}
+
+.iiw-system-stoppageType-container-body-menu{
+    width: 20%;
+    height: 100%;
+    border: 1px solid rgba(200,200,200,.1);
+    float: left;
+    padding: 20px 20px 0 20px;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,.3) inset;
+}
+
+.iiw-system-stoppageType-container-body-menu-filter{
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50px;
+    box-shadow: -3px 3px 10px 1px rgba(0,0,0,.3);
+}
+
+.iiw-system-stoppageType-container-body-menu-filter input{
+    border-radius: 50px;
+    width: 100%;
+    height: 40px;
+    float: left;
+}
+
+.iiw-system-stoppageType-container-body-menu-filter input:focus{
+    border: 1px solid #4499dd;
+}
+
+
+.iiw-system-stoppageType-container-body-menu-device{
+    width: 100%;
+    height: 90%;
+    position: relative;
+}
+
+
+.iiw-system-stoppageType-container-body-menu-device > div{
+    width: 100%;
+}
+
+.iiw-system-stoppageType-container-body-menu-device-type{
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: 20px;
+}
+
+.iiw-system-stoppageType-container-body-menu-device-type div{
+    width: 100%;
+    background-color: rgba(0,0,0,.3);
+    border: 1px solid rgba(0,0,0,.1);
+    height: 50px;
+    position: relative;
+    left: 0;
+    transition: .2s;
+    box-shadow: -3px 3px 5px 1px rgba(0,0,0,.3);
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.iiw-system-stoppageType-container-body-menu-device-type div:hover{
+    cursor: pointer;
+    position: relative;
+    left: 10px;
+    box-shadow: -10px 3px 10px 2px rgba(0,0,0,.5);
+}
+
+.iiw-system-stoppageType-container-body-menu-device-type .selectDevice {
+    cursor: pointer;
+    position: relative;
+    left: 10px;
+    box-shadow: -10px 3px 10px 2px rgba(0,0,0,.5);
+}
+
+.iiw-system-stoppageType-container-body-content{
+    width: 80%;
+    height: 100%;
+    float: left;
+    background-color: rgba(0,0,0,.1);
+}
+
+
+.iiw-system-stoppageType-container-body-content .panel:nth-child(n) .panel-heading {
+    border-left:none;
+}
+.iiw-system-stoppageType-container-body-content .iiw-system-stoppageType-container-box:hover {
+    background-color: rgba(223, 105, 26,0.8)
+}
+.iiw-system-stoppageType-container-body-content .select {
+    background-color: rgba(223, 105, 26,0.8)
+}

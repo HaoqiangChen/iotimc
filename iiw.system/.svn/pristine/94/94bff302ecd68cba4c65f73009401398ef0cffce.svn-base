@@ -1,0 +1,289 @@
+<div class="iiw-system-repairFlow">
+    <div ui-layout="{ flow: 'row'}" options="{dividerSize: '0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{repair.title}}</h2>
+        </div>
+        <div class="iiw-system-repairFlow-container" ui-layout-container>
+            <div ui-layout="{ flow: 'row'}" options="{dividerSize: '0'}">
+                <div class="iiw-system-title" ui-layout-container size="47px">
+                </div>
+                <div class="iiw-system-repairFlow-container-body" ui-layout-container>
+                    <div class="iiw-system-repairFlow-container-body-menu">
+                        <div class="iiw-system-repairFlow-container-body-menu-item" ng-class="{'select': repair.select == rows.id}" ng-click="repair.select = rows.id" ng-repeat="rows in repair.menu">
+                            {{rows.name}}
+                        </div>
+                    </div>
+
+                    <div class="iiw-system-repairFlow-container-body-content">
+
+                        <!--登记管理-->
+                        <div class="iiw-system-repairFlow-container-body-content-manage" ng-if="repair.select == '1'">
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">多个登记</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value1', true)"><i ng-if="repair.data.value1" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value1', false)"><i ng-if="!repair.data.value1" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">设备截图</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value2', true)"><i ng-if="repair.data.value2" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value2', false)"><i ng-if="!repair.data.value2" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">故障详情</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value3', true)"><i ng-if="repair.data.value3" class="fa fa-check"></i></div>
+                                        <div>必填</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value3', false)"><i ng-if="!repair.data.value3" class="fa fa-check"></i></div>
+                                        <div>非必填</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--派遣管理-->
+                        <div class="iiw-system-repairFlow-container-body-content-manage" ng-if="repair.select == '2'">
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">任务描述</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value4', true)"><i ng-if="repair.data.value4" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value4', false)"><i ng-if="!repair.data.value4" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">指派管理</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value5', true)"><i ng-if="repair.data.value5" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value5', false)"><i ng-if="!repair.data.value5" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!--审核管理-->
+                        <div class="iiw-system-repairFlow-container-body-content-manage" ng-if="repair.select == '3'">
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">开启审核</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value6', true)"><i ng-if="repair.data.value6" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value6', false)"><i ng-if="!repair.data.value6" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">审核意见</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value7', true)"><i ng-if="repair.data.value7" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value7', false)"><i ng-if="!repair.data.value7" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">审核结果</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-4 inputCheckBox" ng-style="{'padding': '0'}">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div ng-style="{'left': '8px'}" class="iiw-system-repairFlow-input-check"><i ng-if="repair.data.value8" class="fa fa-check"></i></div>
+                                        <div>审核通过</div>
+                                    </div>
+                                    <div class="col-lg-4 inputCheckBox" ng-style="{'padding': '0'}">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div ng-style="{'left': '8px'}" class="iiw-system-repairFlow-input-check" ng-click="repair.changeValueOdd('value9')"><i ng-if="repair.data.value9" class="fa fa-check"></i></div>
+                                        <div>登记不通过</div>
+                                    </div>
+                                    <div class="col-lg-4 inputCheckBox" ng-style="{'padding': '0'}">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div ng-style="{'left': '8px'}" class="iiw-system-repairFlow-input-check" ng-click="repair.changeValueOdd('value10')"><i ng-if="repair.data.value10" class="fa fa-check"></i></div>
+                                        <div>派遣不通过</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!--处理管理-->
+                        <div class="iiw-system-repairFlow-container-body-content-manage" ng-if="repair.select == '4'">
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">设备截图</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value11', true)"><i ng-if="repair.data.value11" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value11', false)"><i ng-if="!repair.data.value11" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">申请延时处理</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value12', true)"><i ng-if="repair.data.value12" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value12', false)"><i ng-if="!repair.data.value12" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">处理过程</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value13', true)"><i ng-if="repair.data.value13" class="fa fa-check"></i></div>
+                                        <div>必填</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value13', false)"><i ng-if="!repair.data.value13" class="fa fa-check"></i></div>
+                                        <div>非必填</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--结办管理-->
+                        <div class="iiw-system-repairFlow-container-body-content-manage" ng-if="repair.select == '5'">
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">结办权限</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value14', true)"><i ng-if="repair.data.value14" class="fa fa-check"></i></div>
+                                        <div>登记人</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value14', false)"><i ng-if="!repair.data.value14" class="fa fa-check"></i></div>
+                                        <div>派遣人</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">设备截图</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value15', true)"><i ng-if="repair.data.value15" class="fa fa-check"></i></div>
+                                        <div>开启</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value15', false)"><i ng-if="!repair.data.value15" class="fa fa-check"></i></div>
+                                        <div>关闭</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 iiw-system-repairFlow-container-body-content-manage-rows">
+                                <div class="col-lg-2 iiw-system-repairFlow-container-body-content-manage-rows-title">完成情况</div>
+                                <div class="col-lg-7 iiw-system-repairFlow-container-body-content-manage-rows-write">
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value16', true)"><i ng-if="repair.data.value16" class="fa fa-check"></i></div>
+                                        <div>必填</div>
+                                    </div>
+                                    <div class="col-lg-6 inputCheckBox">
+                                        <input ng-style="{'width': '20px', 'height': '20px'}" type="checkbox">
+                                        <div class="iiw-system-repairFlow-input-check" ng-click="repair.changeValue('value16', false)"><i ng-if="!repair.data.value16" class="fa fa-check"></i></div>
+                                        <div>非必填</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="iiw-system-title text-right" ui-layout-container size="47px">
+                    <button class="btn btn-success" ng-click="repair.submit()">提交</button>
+                    <button class="btn btn-danger" ng-click="repair.getList()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

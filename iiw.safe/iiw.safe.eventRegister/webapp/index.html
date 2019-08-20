@@ -1,0 +1,149 @@
+<div class="safe-eventRegister">
+
+    <div class="safe-eventRegister-list" ng-if="!event.show" ng-style="{'background-image': 'url('+ event.path +'/img/listImg_01.png)'}">
+        <div class="safe-eventRegister-list-header">
+
+            <div class="safe-eventRegister-list-header-filter">
+                <div class="safe-eventRegister-list-header-filter-name">模糊过滤 ：</div>
+                <div class="safe-eventRegister-list-header-filter-content">
+                    <input class="form-control"
+                           ng-model="event.filter.searchText"
+                            ng-keyup="event.keyup($event)"
+                            ng-blur="event.getList()"
+                            ng-style="{'border-image': 'url('+ event.path +'/img/input.png) 5 5 round'}"
+                           placeholder="请输入登記人筛选！（按回车键搜索）" />
+                </div>
+            </div>
+
+            <div class="safe-eventRegister-list-header-filter">
+                <div class="safe-eventRegister-list-header-filter-name">事件类型 ：</div>
+                <div class="safe-eventRegister-list-header-filter-content">
+                    <select class="form-control" ng-change="event.getList()" ng-model="event.filter.eventtype">
+                        <option value="%">全部</option>
+                        <option ng-repeat="(key, type) in event.types track by key" value="{{type.id}}">{{type.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="safe-eventRegister-list-header-filter">
+                <div class="safe-eventRegister-list-header-filter-name">时间过滤 ：</div>
+                <div class="safe-eventRegister-list-header-filter-content">
+                    <input class="form-control"
+                           ng-model="event.filter.starttime"
+                           ng-change="event.getList()"
+                           p!timepicker="false"
+                           safe-picker p!format="Y-m-d"
+                           ng-style="{'width': '45%', 'border-image': 'url('+ event.path +'/img/input.png) 5 5 round'}"
+                           placeholder="请输入开始时间"/>
+                    <div style="width: 10%;float: left;text-align: center">~</div>
+                    <input class="form-control"
+                           ng-model="event.filter.endtime"
+                           ng-change="event.getList()"
+                           p!timepicker="false"
+                           safe-picker p!format="Y-m-d"
+                           ng-style="{'width': '45%', 'border-image': 'url('+ event.path +'/img/input.png) 5 5 round'}"
+                           placeholder="请输入结束时间" />
+                </div>
+            </div>
+
+            <div class="safe-eventRegister-list-header-filter text-right" ng-style="{'padding-right': '20px'}">
+                <button class="btn btn-success" ng-click="event.changeShow()">登记</button>
+				<button class="btn btn-primary" ui-sref="safe.shift">返回</button>
+            </div>
+        </div>
+        <div class="safe-eventRegister-list-body">
+            <table class="transparent-table">
+                <col width="5%"/>
+                <col width="15%"/>
+                <col width="15%"/>
+                <col width="15%"/>
+                <col width="25%"/>
+                <col width="15%"/>
+                <col width="10%"/>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>登记人</th>
+                    <th>事件名称</th>
+                    <th>事件类型</th>
+                    <th>事件内容</th>
+                    <th>事件时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="rows in event.list">
+                    <td class="text-over-hide">{{$index + 1}}</td>
+                    <td class="text-over-hide" title="{{rows.registrar}}">{{rows.registrar}}</td>
+                    <td class="text-over-hide" title="{{rows.eventname}}">{{rows.eventname}}</td>
+                    <td class="text-over-hide" title="{{rows.eventtype}}">{{rows.eventtype}}</td>
+                    <td class="text-over-hide" title="{{rows.eventcontent}}">{{rows.eventcontent}}</td>
+                    <td class="text-over-hide" title="{{rows.eventtime}}">{{rows.eventtime}}</td>
+                    <td class="text-over-hide">
+                        <button class="btn btn-warning" ng-click="event.mod(rows)">修改</button>
+                        <button class="btn btn-danger" ng-click="event.del(rows)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="safe-eventRegister-list-body-params text-center">
+                <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" total-items="event.params.totalSize" ng-model="event.params.pageNo" ng-change="event.getList()" items-per-page="event.params.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+            </div>
+        </div>
+    </div>
+
+    <div class="safe-eventRegister-add" ng-if="event.show" ng-form="list" ng-style="{'background-image': 'url('+ event.path +'/img/listImg_02.png)'}">
+        <div class="safe-eventRegister-add-form">
+            <div class="col-lg-4 safe-eventRegister-add-form-name">登记人</div>
+            <div class="col-lg-8">
+                <input type="text"
+                       class="form-control"
+                       ng-click="event.chooseUser()"
+                       onfocus="this.blur()"
+                       title="{{event.save.registrar}}"
+                       ng-model="event.save.registrar"
+                       required/>
+                <div class="safe-eventRegister-add-form-span" ng-if="!event.save.registrar">*</div>
+            </div>
+        </div>
+        <div class="safe-eventRegister-add-form">
+            <div class="col-lg-4 safe-eventRegister-add-form-name">事件名称</div>
+            <div class="col-lg-8">
+                <input type="text" class="form-control"
+                       ng-model="event.save.eventname"  required/>
+                <div class="safe-eventRegister-add-form-span" ng-if="!event.save.eventname">*</div>
+            </div>
+        </div>
+        <div class="safe-eventRegister-add-form">
+            <div class="col-lg-4 safe-eventRegister-add-form-name">事件类型</div>
+            <div class="col-lg-8">
+                <select class="form-control" ng-model="event.save.eventtype" ng-options="rows.id as rows.name for rows in event.types" required></select>
+                <div class="safe-eventRegister-add-form-span" ng-if="!event.save.eventtype">*</div>
+            </div>
+        </div>
+        <div class="safe-eventRegister-add-form">
+            <div class="col-lg-4 safe-eventRegister-add-form-name">事件内容</div>
+            <div class="col-lg-8">
+                <textarea cols="30" rows="5" class="form-control" ng-model="event.save.eventcontent" required></textarea>
+                <div class="safe-eventRegister-add-form-span" ng-if="!event.save.eventcontent">*</div>
+            </div>
+        </div>
+        <div class="safe-eventRegister-add-form">
+            <div class="col-lg-4 safe-eventRegister-add-form-name">事件时间</div>
+            <div class="col-lg-8">
+                <input type="text" class="form-control" ng-model="event.save.eventtime" safe-picker  p!format="Y-m-d H:i" required/>
+                <div class="safe-eventRegister-add-form-span" ng-if="!event.save.eventtime">*</div>
+            </div>
+        </div>
+
+        <div class="safe-eventRegister-add-submits">
+            <div class="safe-eventRegister-add-submits-submit">
+                <button class="btn btn-success" ng-click="event.submit()" ng-disabled="list.$invalid">提交</button>
+            </div>
+            <div class="safe-eventRegister-add-submits-submit">
+                <button class="btn btn-danger" ng-click="event.changeShow()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

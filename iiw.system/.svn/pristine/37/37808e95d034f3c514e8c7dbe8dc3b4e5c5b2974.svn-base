@@ -1,0 +1,227 @@
+.system-doorsetting {
+    padding: 10px;
+    position: relative;
+    height: 100%;
+}
+
+.system-doorsetting .view-wrap {
+    /*height: 100%; */
+    width: 100%;
+    padding-right: 20px;
+    position: absolute;
+    bottom: 0px;
+    top: 60px;
+    /* padding-top: 60px; */
+}
+
+.system-doorsetting .view-wrap .view-content {
+   height: 100%;
+}
+
+.system-doorsetting .widget {
+    height:100%;
+}
+
+.system-doorsetting .menu-button {
+    float: left;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.system-doorsetting .menu-button.right {
+    float: right;
+}
+
+.system-doorsetting .widget-content {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    padding: 0px;
+}
+
+.system-doorsetting .wrap {
+    padding: 0;
+    margin: 0;
+}
+
+.system-doorsetting .wrap .ou-container {
+    position: relative;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    overflow: hidden;
+}
+
+.system-doorsetting .wrap .ou-container.fill {
+    padding: 20px;
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all .3s ease;
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group > .ou-btn {
+    width: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 35pt;
+    cursor: pointer;
+    float: left;
+    margin-left: 5px;
+    transition: all .3s ease;
+    transform: translateX(-30px);
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group > .ou-btn:hover {
+    text-shadow: 0px 0px 5px #FFFFFF;
+}
+
+.system-doorsetting .wrap .ou-container:hover .ou-btn-group > .ou-btn {
+    transform: translateX(0px);
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group > .ou-btn.remove {
+
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group > .ou-btn.mod {
+
+}
+
+.system-doorsetting .wrap .ou-container .ou-btn-group > .ou-btn.add {
+
+}
+
+.system-doorsetting .wrap .ou-container .title {
+    height: 40px;
+    width: 100%;
+}
+
+.system-doorsetting .wrap .ou-container .content {
+
+}
+
+.system-doorsetting .wrap .ou-container .door-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20pt;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .3s ease;
+    text-shadow: none;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn:hover {
+    text-shadow: 0px 0px 5px #FFFFFF;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn.remove {
+    top: -10px;
+    right: -10px;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn.select {
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn.loading{
+    width: 50px;
+    height: 50px;
+    font-size: 40pt;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .door-btn.loading.show {
+    opacity: 1;
+}
+
+.system-doorsetting .wrap .ou-container .door-container.add-door {
+    text-align: center;
+    font-size: 40pt;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 100px;
+    padding-top: 0px;
+}
+
+.system-doorsetting .wrap .ou-container .door-container:hover {
+    text-shadow: 0px 0px 5px #FFFFFF;
+}
+
+.system-doorsetting .wrap .ou-container .door-container:hover > .remove{
+    opacity: 1;
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .remove:hover {
+
+}
+
+.system-doorsetting .wrap .ou-container .door-container > .remove:active {
+
+}
+
+.system-doorsetting .wrap .ou-container{
+
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-footer {
+    background-color: transparent;
+}
+
+.modal-footer .btn-success{
+    width: 120px;
+    height: 40px;
+}
+
+.modal-footer .btn-warning{
+    width: 80px;
+    height: 40px;
+}
+
+
+.modal-backdrop {
+    background-color: #FFF;
+}
+
+.todo-check input[type="checkbox"] {
+    visibility: hidden;
+}
+
+.input-group-addon {
+    background: rgba(0,0,0,0.25);
+}
+
+button[disabled], html input[disabled] {
+    cursor: not-allowed;
+}

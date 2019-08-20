@@ -1,0 +1,100 @@
+.system-login {
+    position: relative;
+}
+
+.system-login-container {
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* 图片列表 */
+.system-login-container .system-login-img-list {
+    position: relative;
+}
+
+.system-login-img-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.system-login-img-list ul li {
+    float: left;
+    position: relative;
+    width: 370px;
+    height: 240px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.system-login-img-list ul li:hover {
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+}
+
+.system-login-img-list ul li .btn-add {
+    background: transparent;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 170px;
+    font-size: 100px;
+    color: #ccc;
+    outline: none;
+}
+
+.system-login-img-list ul li .btn-add:hover {
+    color: #fff;
+}
+
+.system-login-img-list ul li img {
+    width: 100%;
+    height: 100%;
+}
+
+.system-login-img-list ul li .desc {
+    position: absolute;
+    height: 39px;
+    width: 100%;
+    line-height: 39px;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.system-login-img-list ul li .tools {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.system-login-img-list ul li .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5;
+    font-size: 20px;
+    text-align: center;
+    line-height: 200px;
+}
+
+/* 图片放大区域 */
+.system-login-container .system-login-img-zoom {
+    position: relative;
+    padding: 0 20px;
+}
+
+.system-login-img-zoom img {
+    width: 100%;
+    height: 100%;
+}
+

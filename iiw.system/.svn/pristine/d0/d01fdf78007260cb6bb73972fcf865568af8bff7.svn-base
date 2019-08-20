@@ -1,0 +1,77 @@
+.iiw-system-expert-layout-container {
+    border-top:1px solid rgba(255,255,255,0.3);
+}
+
+.iiw-system-form-container {
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+.iiw-system-page-container.ystyle .ui-layout-row{
+    border: none;
+}
+
+.iiw-system-page-container.ystyle .ui-layout-row > .widget-content{
+    border: none;
+}
+
+
+.iiw-system-page-container.ystyle .table td,
+.iiw-system-page-container.ystyle .table th {
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(1){
+    width: 20px;
+    position: relative;
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(2){
+    width: 80px;
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(3){
+    width: 200px;
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(4){
+    width: 280px;
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(5){
+    width: 260px;
+}
+
+.iiw-system-page-container.ystyle .table > thead > tr > th:nth-child(6){
+    width: 260px;
+}
+
+.iiw-system-page-container.ystyle .widget-content.ui-layout-container{
+    overflow-y: scroll;
+ }
+
+.iiw-system-page-container.ystyle .widget-content.ui-layout-container::-webkit-scrollbar{
+    width: 6px;
+}
+
+.iiw-system-page-container.ystyle .widget-content.ui-layout-container::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+
+.iiw-system-page-container.ystyle .ui-layout-row .layout-full.system-role-bar {
+    background-color: rgba(0,0,0,.5);
+    padding: 4px;
+}
+
+ .iiw-system-page-container.ystyle .ui-layout-row .layout-full.system-role-bar .layout-full button{
+    margin-right: 4px;
+}
+
+.iiw-system-page-container.ystyle p{
+    margin: 0;
+}
+
+.iiw-system-page-container.ystyle .red input{
+    border: 1px solid #d9534f;
+}

@@ -1,0 +1,293 @@
+<div class="system-doorsetting content container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+    </div>
+    <div class="row view-wrap">
+        <div class="col-lg-12 view-content">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="menu-button">
+                        <a class="btn btn-s-md btn-success" ng-click="addOu($event)">添加区域</a>
+                        <!--<a class="btn btn-s-md btn-primary" ng-click="syncDoor()">同步</a>-->
+                        <a class="btn btn-s-md btn-warning" ng-disabled="!hasCheckDoor" ng-click="">删除门禁</a>
+                    </div>
+                    <div class="menu-button right">
+                        <door-setting-search></door-setting-search>
+                    </div>
+                </div>
+
+                <div class="widget-content" i-scroll>
+                    <div class="wrap">
+                        <div class="ou-container" ng-repeat="row in resultList" ng-class="{'fill':(row.type == '1' || row.devices.length > 0)}">
+                            <div ng-if="row.type == '1'">
+                                <div class="title">
+                                    <div door-setting-input-click="row.name">{{row.name}}</div>
+                                </div>
+                                <div class="content">
+                                    <div class="door-container" ng-repeat="item in row.devices" ng-click="modDoor($event)">
+                                        {{item.name}}
+                                        <div class="door-btn remove fa fa-times-circle" ng-click="removeDoor($event)"></div>
+                                        <div class="door-btn select fa" ng-class="{'fa-check-circle-o':item.select, 'fa-circle-thin':!item.select}" ng-click="selectDoor($event)"></div>
+                                        <div class="door-btn loading fa" ng-class="{'fa-refresh fa-spin show':item.syncLoading}"></div>
+                                    </div>
+                                    <!--<div class="door-container add-door fa fa-plus" ng-click="addDoor($event)"></div>-->
+                                </div>
+                                <div class="ou-btn-group">
+                                    <div class="ou-btn add fa fa-plus-circle" ng-click="addOu($event)"></div>
+                                    <div class="ou-btn remove fa fa-times-circle" ng-click="removeOu($event)"></div>
+                                </div>
+                            </div>
+                            <div ng-if="row.type == '0'">
+                                <div class="content">
+                                    <div class="door-container" ng-repeat="item in row.devices" ng-click="modDoor($event)">
+                                        {{item.name}}
+                                        <div class="door-btn remove fa fa-times-circle" ng-click="removeDoor($event)"></div>
+                                        <div class="door-btn select fa" ng-class="{'fa-check-circle-o':item.select, 'fa-circle-thin':!item.select}" ng-click="selectDoor($event)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="doorModalContent">
+        <form id="subForm" name="subForm" class="form-horizontal" novalidate="novalidate">
+            <div class="modal-header">
+                {{dialogType == "add" ? "添加" : "修改"}}门禁
+            </div>
+            <div class="modal-body">
+                <div class="control-group" ng-class="{'has-error' : (deviceform.hardwaretype.$invalid || deviceform.companyID.$invalid)}">
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_areafk" class="control-label">门禁区域：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.areafk" placeholder="请选所属区域" ng-disabled="dialogType == 'add'" class="col-md-12" id="door_areafk" required>
+                                    <option ng-repeat="row in resultList" value="{{row.id}}" ng-if="row.type == '1'">{{row.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_name" class="control-label">门禁名称：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_name" class="form-control" type="text" ng-model="door.name" required placeholder="门禁名称" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="door.name == ''">*请输入门禁名称</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_syouname" class="control-label">所属部门：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_syouname" class="form-control" type="text" ng-model="door.syouname" ng-click="showOu($event)" required placeholder="所属部门" >
+                                <!--<input id="door_syoufk" class="form-control" type="text" ng-model="door.syoufk" ng-click="showOu($event)" style="display:none;">-->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="door.syouname == ''">*请输入所属部门</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_ip" class="control-label">ip地址：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_ip" name="door_ip" class="form-control" type="text" ng-model="door.ip" ng-pattern="/^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$/" required placeholder="ip地址" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_ip.$invalid">*请输入ip地址</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_verifytype" class="control-label">验证方式：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.vtype" placeholder="请选择验证类型" class="col-md-12" id="door_verifytype" required>
+                                    <option value="0">刷卡</option>
+                                    <option value="1">刷卡+人脸</option>
+                                    <option value="2">刷卡+密码</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="door.vtype == ''">*请选择验证类型</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_cardtype" class="control-label">刷卡类型：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.cardtype" placeholder="请选择可刷卡类型" class="col-md-12" id="door_cardtype" required>
+                                    <option value="0">外卡</option>
+                                    <option value="1">内卡</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="door.cardtype == ''">*请选择可刷卡类型</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'imcontroldoor'">
+                        <div class="col-md-3">
+                            <label for="door_outtime" class="control-label">超时时间：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="door_outtime" class="form-control" ng-model="door.outtime" required placeholder="超时时间" >
+                                    <span class="input-group-addon">秒</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-hide="door.outtime >= 0">*超时时间</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'imcontroldoor'">
+                        <div class="col-md-3">
+                            <label for="door_ip" class="control-label">主机ip：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_hostip" name="door_hostip" class="form-control" type="text" ng-model="door.hostip" ng-pattern="/^((\d{1,2}|1\d\d|2\d[0-4]\d|2[0-5][0-5])\.){3}(\d{1,2}|1\d\d|2\d[0-4]\d|2[0-5][0-5])$/" required placeholder="主机ip" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_hostip.$invalid">*请输入主机ip地址</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'imcontroldoor'">
+                        <div class="col-md-3">
+                            <label for="door_roomnum" class="control-label">房间机号：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_roomnum" name="door_roomnum" class="form-control" ng-model="door.roomnum" required placeholder="房间机号" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_roomnum.$invalid">*请输入房间机号</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="display:none;">
+                        <div class="col-md-3">
+                            <label for="door_channeltype" class="control-label">通道类型：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.channeltype" placeholder="请选择通道类型" class="col-md-12" id="door_channeltype">
+                                    <option value="io" selected="selected">io</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="door.channeltype == ''">*通道类型</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'ytdoor'">
+                        <div class="col-md-3">
+                            <label for="door_roomnum" class="control-label">序列号：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_sn" name="door_sn" class="form-control" ng-model="door.doorsn" required placeholder="序列号" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_sn.$invalid">*请输入门禁序列号</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'ytdoor'">
+                        <div class="col-md-3">
+                            <label for="door_no" class="control-label">门号：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="door_no" name="door_no" class="form-control" ng-model="door.doorno" required placeholder="门号" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_no.$invalid">*请输入门号</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" ng-if="door.companycontent == 'ytdoor'">
+                        <div class="col-md-3">
+                            <label for="door_isalarm" class="control-label">是否报警：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.isalarm" placeholder="请选择是否报警" class="col-md-12" id="door_isalarm" required>
+                                    <option value="0">不报警</option>
+                                    <option value="1">报警</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_isalarm.$invalid">*请选择是否报警</lable>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">
+                            <label for="door_doortype" class="control-label">控制类型：</label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select ng-model="door.doortype" placeholder="请选择门禁控制类型" class="col-md-12" id="door_doortype" required>
+                                    <option value="d">1秒自动关</option>
+                                    <option value="a">3秒自动关</option>
+                                    <option value="b">5秒自动关</option>
+                                    <option value="c">手动关</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <lable style="color:red;" ng-show="subForm.door_doortype == ''">*请选择门禁控制类型</lable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-success" type="button" ng-click="doorSave()" ng-disabled="subForm.$invalid">保存</button>
+                <button class="btn-warning" type="button" ng-click="doorCancel()">取消</button>
+            </div>
+        </form>
+        <div style="display: none;" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="syouTreeModel">
+            <div class="modal-dialog" style="background:rgba(0, 0, 0, 0.9);">
+                <div class="modal-content" style="height: 500px; ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="ouCancel()"><i class="fa fa-remove"></i></button>
+                        <h4 class="modal-title">选择单位</h4>
+                    </div>
+                    <div class="modal-body" style="height: 480px;">
+                        <div class="col-lg-12 iiw-system-treeview-container">
+                            <user-tree id="ouTree"></user-tree>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-lg btn-larger" data-dismiss="modal" ng-click="ouCancel()">取消</button>
+                    <button class="btn btn-default btn-lg btn-larger" data-dismiss="modal" ng-click="ouSave()">确定</button>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

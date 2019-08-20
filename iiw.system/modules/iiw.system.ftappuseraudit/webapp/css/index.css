@@ -1,0 +1,16 @@
+.system-useraudit-bar{
+    padding: 4px;
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.system-useraudit-page-content{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-useraudit-search{
+    width: 200px;
+    height: 39px;
+}
+
+.system-useraudit-container{
+    padding: 15px;
+}

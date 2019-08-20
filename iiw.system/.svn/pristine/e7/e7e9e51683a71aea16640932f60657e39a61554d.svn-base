@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.syou",
+"version": "0.0.1",
+"description": "单位管理",
+"author": "zjq",
+"date": "2016-03-07",
+"main": "syouController",
+"host": "192.168.0.251",
+"client": "192.168.0.36"
+}

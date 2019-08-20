@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.infocard.item",
+  "version": "0.0.1",
+  "description": "信息牌添加或修改管理",
+  "author": "dwt",
+  "date": "2016-09-13",
+  "main": "infocardItemController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

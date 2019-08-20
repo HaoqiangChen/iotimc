@@ -1,0 +1,82 @@
+<div class="safe-decision" ui-view>
+
+    <div class="safe-decision-list" ng-style="{'background-image': 'url('+ decision.path +'/img/listImg_01.png)'}">
+        <div class="safe-decision-list-header">
+
+            <div class="safe-decision-list-header-filter">
+                <div class="safe-decision-list-header-filter-name">
+                    模糊过滤
+                </div>
+                <div class="safe-decision-list-header-filter-content">
+                    <input type="text"
+                           ng-style="{'border-image': 'url('+ decision.path +'/img/input.png) 5 5 round'}"
+                           ng-model="decision.filter.searchText"
+                           ng-keyup="decision.keyup($event)"
+                           ng-blur="decision.getList()"
+                           placeholder="输入关键字筛选！（按回车键搜索）"
+                           class="form-control"/>
+                </div>
+            </div>
+
+            <div class="safe-decision-list-header-filter">
+            </div>
+
+            <div class="safe-decision-list-header-filter">
+                <div class="safe-decision-list-header-filter-name">
+                    创建时间
+                </div>
+                <div class="safe-decision-list-header-filter-content">
+                    <input type="text"
+                           safe-picker p!format="Y-m-d"
+                           p!timepicker="false"
+                           ng-style="{'border-image': 'url('+ decision.path +'/img/input.png) 5 5 round', 'width': '45%', 'float': 'left'}"
+                           ng-model="decision.filter.starttime"
+                           ng-change="decision.getList()"
+                           class="form-control"/>
+                    <div style="line-height: 40px;text-align: center;float: left">~</div>
+                    <input type="text"
+                           safe-picker p!format="Y-m-d"
+                           p!timepicker="false"
+                           ng-style="{'border-image': 'url('+ decision.path +'/img/input.png) 5 5 round', 'width': '45%', 'float': 'left'}"
+                           ng-model="decision.filter.endtime"
+                           ng-change="decision.getList()"
+                           class="form-control"/>
+                </div>
+            </div>
+
+            <div class="safe-decision-list-header-filter">
+            </div>
+        </div>
+        <div class="safe-decision-list-body">
+            <table class="transparent-table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>事件名称</th>
+                    <th>事件级别</th>
+                    <th>所属单位</th>
+                    <th>事件时间</th>
+                    <th>事件状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="rows in decision.list">
+                    <td class="text-center">{{$index + 1}}</td>
+                    <td class="text-center">{{rows.content}}</td>
+                    <td class="text-center">{{rows.lvlname}}</td>
+                    <td class="text-center">{{rows.syouname}}</td>
+                    <td class="text-center">{{rows.datetime}}</td>
+                    <td class="text-center">{{rows.typename}}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="decision.state('safe.aidDecision.add', rows)">决策处置</button>
+                    </td>
+                </tbody>
+            </table>
+
+            <div class="safe-decision-list-body-params text-center">
+                <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" total-items="decision.params.totalSize" ng-model="decision.params.pageNo" ng-change="decision.getList()" items-per-page="decision.params.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+/*模板关联*/
+.system-infocard-relation {
+    position: relative;
+}
+
+.system-infocard-tree {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 330px;
+    height: 100%;
+}
+
+.system-infocard-tree > div {
+    position: relative;
+}
+
+/*ztree树样式*/
+.ztree li span.button.ouIcon_ico_open,
+.ztree li span.button.ouIcon_ico_close,
+.ztree li span.button.ouIcon_ico_docu {
+    background:url('../img/star.png');
+    background-size: cover;
+}
+.ztree li span.button.mapIcon_ico_open,
+.ztree li span.button.mapIcon_ico_close,
+.ztree li span.button.mapIcon_ico_docu {
+    background:url('../img/area.png');
+    background-size: cover;
+}

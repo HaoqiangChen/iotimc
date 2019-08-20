@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.homepage",
+  "version": "0.0.1",
+  "description": "系统管理主页",
+  "author": "zcl",
+  "date": "2016-03-19",
+  "main": "homePageController",
+  "host": "192.168.8.16:8180",
+  "client": "192.168.1.112"
+}

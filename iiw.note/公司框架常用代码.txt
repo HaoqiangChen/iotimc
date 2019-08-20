@@ -1,0 +1,47 @@
+HTML
+
+下拉框
+<select ng-change="changeType()" ng-model="types" class="form-control safe-backlog-filter-select">
+	<option value="">全部</option>
+	<option value="{{types.modouleName}}" ng-repeat="types in backlogRows">{{types.modouleName}}</option>
+</select>
+
+对ng-repeat的表格内容添加不同样式，html代码：
+<tr ng-repeat="x in tableData">
+    <td>{{x.networkName}}</td>
+    <td>{{x.network}}</td>
+    <td ng-style="{background: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}">{{x.status | status }}</td>
+</tr>
+
+JavaScript
+// 显示一个确认删除的弹出确认框。
+iConfirm.show({
+	scope: $scope,
+	title: '确认删除？',
+	content: '删除信息后将无法还原，是否确认删除？',
+	buttons: [{
+		text: '确认',
+		style: 'button-primary',
+		action: 'confirmSuccess'
+	}, {
+		text: '取消',
+		style: 'button-caution',
+		action: 'confirmCancel'
+	}],
+	close: 'confirmClose'
+});
+
+$scope.confirmSuccess = function(id) {
+	console.log('点击确认');
+	iConfirm.close(id);
+};
+
+$scope.confirmCancel = function(id) {
+	console.log('点击取消');
+	iConfirm.close(id);
+};
+
+$scope.confirmClose = function(id) {
+	console.log('弹出窗口将被关闭，如返回true，则关闭，如返回false，则无法关闭');
+	return true;
+};

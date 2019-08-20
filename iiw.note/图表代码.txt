@@ -1,0 +1,9 @@
+
+plugins/igreport/downfile.do?code=tjga.judged.repeatedly.pie&action=main.js
+<safe-datacenter-chart.tjga.judged.repeatedly.pie></safe-datacenter-chart.tjga.judged.repeatedly.pie>
+
+$scope.sendMessage('safe.xxyp.nav', code);
+
+$scope.$on('safe.xxyp.nav', function(e, code) {
+    console.log(code);
+});

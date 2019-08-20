@@ -1,0 +1,284 @@
+<div class="layout-full iiw-safe-comments" ng-style="{'background-color': 'rgba(0,0,0,.3)'}">
+    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div ng-style="{ 'padding': '0'}" class="ui-layout-container" size="47px"
+             ui-layout-container>
+            <div class="system-commenting-bar layout-full">
+                <button class="btn btn-success btn-md" ng-click="positiveeval('C')">添加罪犯正面评价</button>
+                <button class="btn btn-danger btn-md" ng-click="negativeeval('C')">添加罪犯负面评价</button>
+                <button class="btn btn-info btn-md" ng-click="positiveeval('P')">添加警员正面评价</button>
+                <button class="btn btn-primary btn-md" ng-click="negativeeval('P')">添加警员负面评价</button>
+
+            </div>
+        </div>
+        <div ng-style="{ 'padding': '0'}" class="ui-layout-container" ui-layout-container>
+
+            <div class="layout-full" style="overflow: hidden;">
+                <form class="form-horizontal label-left"  name="entityItemForm" style="padding: 20px;height: 100%" novalidate="false">
+                    <div class="ui-layout-row" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+                        <div ng-style="{ 'padding': '0'}" class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full" style="overflow: hidden;padding: 15px 7.5px 15px 15px;">
+
+                                <div style="background: rgba(0,0,0,.3); border-bottom: 1px solid rgba(0, 0, 0, 0.5);font-size: 20px;padding: 10px 15px; cursor: pointer" data-toggle="collapse" ng-click="check($event)"
+                                     data-target="#demo">
+                                    罪犯正面评价 &nbsp;&nbsp;<i class="fa fa-caret-up"></i>
+                                    <div class="pull-right"><input type="text" ng-model="searchText.cp" placeholder="请输入关键字搜索"/></div>
+                                </div>
+
+
+                                <div class="wrap-content collapse in" style="border: 1px solid rgba(0, 0, 0, 0.5);padding: 15px 0;border-top: 0;overflow-y:scroll; overflow-x:hidden " id="demo">
+
+                                    <div style="margin: 0 15px;">
+
+                                        <div ng-repeat="row in cpevalList|filter:searchText.cp" ng-init="outerIndex = $index" style="position: relative">
+
+                                            <div style="background: rgba(0,0,0,.3);padding-top: 15px;">
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"  >评价内容</label>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" ng-model="row.content" required/>
+                                                    </div>
+
+                                                    <div class="col-lg-2">
+                                                        <button class="btn btn-success btn-s-md" ng-click="adddtl(outerIndex,'cpevalList')"><i class="fa fa-edit"></i> 细化评分
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <button title="删除本条评价" class="btn btn-danger btn-s-md" ng-click="removeOu(row.id||null,outerIndex,'CP')"><i class="fa fa-remove"></i> 删除
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="margin-left:0;margin-right:0;">
+
+                                                    <div ng-if="row.details.length>0">
+                                                        <table class="table table-hover iiw-system-table-container">
+                                                            <col width="8%"/>
+                                                            <col/>
+                                                            <col width="8%"/>
+                                                            <col width="8%"/>
+                                                            <thead><tr><th>序号</th><th>评分细则</th><th>分值</th><th>操作</th></tr></thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in row.details">
+                                                                <td>{{$index+1}}</td><td><input type="text" ng-model="item.content" required/></td>
+                                                                <td><input type="text" ng-model="item.score" required/></td>
+                                                                <td style="padding: 0">
+                                                                    <div class="ou-btn-group" title="删除本条细则">
+                                                                    <div class="ou-btn remove fa fa-times-circle" ng-click="removedtl(row,$index)"></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div style="background: rgba(0,0,0,.3);  border-bottom: 1px solid rgba(0, 0, 0, 0.5);font-size: 20px;padding: 10px 15px;cursor: pointer" data-toggle="collapse" ng-click="check($event)"
+                                     data-target="#demo">
+                                    罪犯负面评价 &nbsp;&nbsp;<i class="fa fa-caret-up"></i>
+                                    <div class="pull-right"><input type="text" ng-model="searchText.cn" placeholder="请输入关键字搜索"/>
+                                    </div>
+                                </div>
+                                <div class="wrap-content"  style="border: 1px solid rgba(0, 0, 0, 0.5);padding: 15px 0;border-top: 0;" >
+
+                                    <div style="margin: 0 15px;">
+
+                                        <div ng-repeat="row in cnevalList|filter:searchText.cn" ng-init="outerIndex = $index" style="position: relative">
+                                            <!--<div style="margin: 0 auto">-->
+
+                                            <div style="background: rgba(0,0,0,.3);padding-top: 15px;">
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"  >评价内容</label>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" ng-model="row.content" required/>
+                                                    </div>
+
+                                                    <div class="col-lg-2">
+                                                        <button class="btn btn-success btn-s-md" ng-click="adddtl(outerIndex,'cnevalList')"><i class="fa fa-edit"></i> 细化评分
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <button title="删除本条评价" class="btn btn-danger btn-s-md" ng-click="removeOu(row.id||null,outerIndex,'CN')"><i class="fa fa-remove"></i> 删除
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="margin-left:0;margin-right:0;">
+
+                                                    <div ng-if="row.details.length>0">
+                                                        <table class="table table-hover iiw-system-table-container">
+                                                            <col width="8%"/>
+                                                            <col/>
+                                                            <col width="8%"/>
+                                                            <col width="8%"/>
+                                                            <thead><tr><th>序号</th><th>评分细则</th><th>分值</th><th>操作</th></tr></thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in row.details">
+                                                                <td>{{$index+1}}</td><td><input type="text" ng-model="item.content" required/></td>
+                                                                <td><input type="text" ng-model="item.score" required/></td>
+                                                                <td style="padding: 0">
+                                                                    <div class="ou-btn-group" title="删除本条细则">
+                                                                        <div class="ou-btn remove fa fa-times-circle" ng-click="removedtl(row,$index)"></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div ng-style="{ 'padding': '0'}" class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full" style="overflow: hidden;padding: 15px 15px 15px 7.5px">
+
+                                <div style="background: rgba(0,0,0,.3); border-bottom: 1px solid rgba(0, 0, 0, 0.5);font-size: 20px;padding: 10px 15px; cursor: pointer" data-toggle="collapse" ng-click="check($event)"
+                                     data-target="#demo1">
+                                    警员正面评价  &nbsp;&nbsp;<i class="fa fa-caret-up"></i>
+                                    <div class="pull-right"><input type="text" ng-model="searchText.pp" placeholder="请输入关键字搜索"/></div>
+                                </div>
+
+
+                                <div class="wrap-content collapse in"  style="border: 1px solid rgba(0, 0, 0, 0.5);padding: 15px 0;border-top: 0;" id="demo1">
+
+                                    <div style="margin: 0 15px;">
+
+                                        <div ng-repeat="row in ppevalList|filter:searchText.pp" ng-init="outerIndex = $index" style="position: relative">
+                                            <!--<div style="margin: 0 auto">-->
+
+                                            <div style="background: rgba(0,0,0,.3);padding-top: 15px;">
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"  >评价内容</label>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" ng-model="row.content" required/>
+                                                    </div>
+
+                                                    <div class="col-lg-2">
+                                                        <button class="btn btn-success btn-s-md" ng-click="adddtl(outerIndex,'ppevalList')"><i class="fa fa-edit"></i> 细化评分
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <button title="删除本条评价" class="btn btn-danger btn-s-md" ng-click="removeOu(row.id||null,outerIndex,'PP')"><i class="fa fa-remove"></i> 删除
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="margin-left:0;margin-right:0;">
+
+                                                    <div ng-if="row.details.length>0">
+                                                        <table class="table table-hover iiw-system-table-container">
+                                                            <col width="8%"/>
+                                                            <col/>
+                                                            <col width="8%"/>
+                                                            <thead><tr><th>序号</th><th>评分细则</th><th>分值</th><th>操作</th></tr></thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in row.details">
+                                                                <td>{{$index+1}}</td><td><input type="text" ng-model="item.content" required/></td>
+                                                                <td><input type="text" ng-model="item.score" required/></td>
+                                                                <td style="padding: 0">
+                                                                    <div class="ou-btn-group" title="删除本条细则">
+                                                                        <div class="ou-btn remove fa fa-times-circle" ng-click="removedtl(row,$index)"></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div style="background: rgba(0,0,0,.3);  border-bottom: 1px solid rgba(0, 0, 0, 0.5);font-size: 20px;padding: 10px 15px;cursor: pointer" data-toggle="collapse" ng-click="check($event)"
+                                     data-target="#demo1">
+                                    警员负面评价  &nbsp;&nbsp;<i class="fa fa-caret-up"></i>
+                                    <div class="pull-right"><input type="text" ng-model="searchText.pn" placeholder="请输入关键字搜索"/></div>
+                                </div>
+                                <div class="wrap-content"  style="border: 1px solid rgba(0, 0, 0, 0.5);padding: 15px 0;border-top: 0;" >
+
+                                    <div style="margin: 0 15px;">
+
+                                        <div ng-repeat="row in pnevalList|filter:searchText.pn" ng-init="outerIndex = $index" style="position: relative">
+                                            <!--<div style="margin: 0 auto">-->
+
+                                            <div style="background: rgba(0,0,0,.3);padding-top: 15px;">
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label"  >评价内容</label>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" ng-model="row.content" required/>
+                                                    </div>
+
+                                                    <div class="col-lg-2">
+                                                        <button class="btn btn-success btn-s-md" ng-click="adddtl(outerIndex,'pnevalList')"><i class="fa fa-edit"></i> 细化评分
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <button title="删除本条评价" class="btn btn-danger btn-s-md" ng-click="removeOu(row.id||null,outerIndex,'PN')"><i class="fa fa-remove"></i> 删除
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" style="margin-left:0;margin-right:0;">
+
+                                                    <div ng-if="row.details.length>0">
+                                                        <table class="table table-hover iiw-system-table-container">
+                                                            <col width="8%"/>
+                                                            <col/>
+                                                            <col width="8%"/>
+                                                            <thead><tr><th>序号</th><th>评分细则</th><th>分值</th><th>操作</th></tr></thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in row.details">
+                                                                <td>{{$index+1}}</td><td><input type="text" ng-model="item.content" required/></td>
+                                                                <td><input type="text" ng-model="item.score" required/></td>
+                                                                <td style="padding: 0">
+                                                                    <div class="ou-btn-group" title="删除本条细则">
+                                                                        <div class="ou-btn remove fa fa-times-circle" ng-click="removedtl(row,$index)"></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="ui-layout-container" size="60px" style=" padding: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    height: 100%;" ui-layout-container>
+            <button class="btn btn-success btn-s-md" ng-disabled="entityItemForm.$invalid" ng-click="submit()">保存
+            </button>
+            <button class="btn btn-danger btn-s-md" ng-click="cancel()">返回</button>
+        </div>
+    </div>
+
+</div>

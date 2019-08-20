@@ -1,0 +1,146 @@
+.system-role-item {
+    position: relative;
+}
+
+.system-role-item-container {
+    padding: 10px 10px;
+}
+
+.system-role-item-container > div {
+    position: relative;
+}
+
+.system-role-item-block {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.system-role-item-block .form-inline .form-control {
+    margin-right: 15px;
+}
+
+.system-role-item-block .title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.1);
+}
+
+.system-role-item-block .title.clickable.hidecontent {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.system-role-item-block .title.clickable:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.system-role-item-block .title > a {
+    margin-right: 30px;
+    cursor: pointer;
+    color: #ddd;
+    text-decoration: underline;
+}
+
+.system-role-item-block .title > a:hover {
+    color: orange;
+}
+
+.system-role-item-block .content {
+    padding: 10px;
+    display: table;
+    width: 100%;
+}
+
+.system-role-item-block .form-group.has-error .form-control {
+    border: 1px solid #d9534f;
+}
+
+.system-role-item-block .content .item {
+    height: 100px;
+    margin: 10px 0;
+}
+
+.system-role-item-block .content .item > div {
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+    height: 100%;
+    width: 100%;
+}
+
+.system-role-item-block .content .item > div > title {
+    position: absolute;
+    z-index: 3;
+    top: 5px;
+    left: 5px;
+    display: table-cell;
+}
+
+.system-role-item-block .content .item > div > pic {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+.system-role-item-block .content .item > div > mask {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: table;
+    text-align: center;
+}
+
+.system-role-item-block .content .item > div > mask > i {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 50px;
+}
+
+.system-role-item-block .content .item > div:hover {
+    cursor: pointer;
+}
+
+.system-role-item-block .content .item > div:hover > mask {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.system-role-item-block .col-xs-8,
+.system-role-item-block .col-sm-8,
+.system-role-item-block .col-md-8,
+.system-role-item-block .col-lg-8  {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .system-role-item-block .col-sm-8 {
+        width: 12.5%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .system-role-item-block .col-md-8 {
+        width: 12.5%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .system-role-item-block .col-lg-8 {
+        width: 12.5%;
+        float: left;
+    }
+}

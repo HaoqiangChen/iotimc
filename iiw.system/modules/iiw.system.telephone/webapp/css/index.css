@@ -1,0 +1,35 @@
+.iiw-system-form-container {
+    border:1px solid rgba(255,255,255,0.3);
+    padding:10px;
+}
+.system-teltphone-page-content{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-telephone-container{
+    padding: 15px;
+}
+.system-telephone-header{
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.ztree li span.button.ouIcon_ico_open,
+.ztree li span.button.ouIcon_ico_close,
+.ztree li span.button.ouIcon_ico_docu {
+    background:url('../img/star.png');
+    background-size: cover;
+}
+.ztree li span.button.mapIcon_ico_open,
+.ztree li span.button.mapIcon_ico_close,
+.ztree li span.button.mapIcon_ico_docu {
+    background:url('../img/area.png');
+    background-size: cover;
+}
+.ztree li span.button.cameraIcon_ico_docu {
+    background:url('../img/camera.png');
+    background-size: cover;
+}
+.ztree li span.button.userIcon_ico_docu {
+    background:url('../img/user.png');
+    background-size: cover;
+}

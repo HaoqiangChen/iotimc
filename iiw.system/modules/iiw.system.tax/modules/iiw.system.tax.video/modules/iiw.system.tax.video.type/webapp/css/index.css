@@ -1,0 +1,29 @@
+.iiw-system-tax-video-type{
+    background-color: rgba(0,0,0,.3);
+}
+
+.iiw-system-tax-video-type table{
+    width: 100%;
+}
+
+.iiw-system-tax-video-type table thead tr {
+    background-color: rgba(0,0,0,.4);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+.iiw-system-tax-video-type table tbody tr {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.iiw-system-tax-video-type table tbody tr:nth-child(odd) {
+    background-color: rgba(0,0,0,.1);
+}
+
+.iiw-system-tax-video-type table tbody tr:nth-child(even) {
+    background-color: rgba(0,0,0,.2);
+}

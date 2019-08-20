@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.tax.3dphoto.add",
+  "version": "0.0.1",
+  "description": "办税厅-3D图片管理-添加",
+  "author": "ybw",
+  "date": "2017-13-13",
+  "main": "tax3dphotoAddController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.26"
+}

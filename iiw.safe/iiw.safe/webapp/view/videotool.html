@@ -1,0 +1,192 @@
+<div class="toolbar top">
+    <div title="关闭" class="toolbutton right close" ng-show="!ismax" ng-click="toolbar.close($event)"><i
+            class="fa fa-times"></i></div>
+    <div title="最大化" class="toolbutton right max" ng-show="!ismax" ng-click="toolbar.max($event)"><i
+            class="fa fa-square-o"></i></div>
+    <div title="恢复" class="toolbutton right max" ng-show="ismax" ng-click="toolbar.min($event)"><i
+            class="fa fa-clone"></i></div>
+
+    <div title="取消静音" class="toolbutton right video" ng-if="isCs" ng-show="!isSound"
+         ng-click="toolbar.openSound($event)"><i class="fa fa-volume-off"></i></div>
+    <div title="静音" class="toolbutton right video" ng-if="isCs" ng-show="isSound" ng-click="toolbar.closeSound($event)">
+        <i class="fa fa-volume-up"></i></div>
+
+    <div title="{{dialect.OUN_MC || '记录异常'}}" class="toolbutton right record" safe-video-record-unusual get-snap-data="toolbar.videoRecord.getSnapData"
+         get-cameraid="toolbar.videoRecord.getCameraId"><i class="fa fa-edit"></i></div>
+
+    <div title="连拍" class="toolbutton right" ng-click="toolbar.continuationPhotograph($event)"><i
+            class="fa fa-camera"></i></div>
+
+    <div title="本地截图" class="toolbutton right snap" ng-click="toolbar.snap($event)"><i class="fa fa-picture-o"></i>
+    </div>
+
+    <div title="快速上墙" class="toolbutton right bigmonitor" safe-bigmonitor-dialog ng-show="hashBigmonitor"
+         bg-el="toolbar.bigmonitor.el" bg-play="toolbar.bigmonitor.play" bg-click="toolbar.bigmonitor.clickMonitor"
+         ng-click="toolbar.bigmonitor.show($event)"><i class="fa fa-upload"></i></div>
+    <div title="快速回放（默认回放两分钟前的录像）" class="toolbutton right reply" ng-if="!isVideotaped && !isVideoreplyed"
+         ng-click="toolbar.fastReply.on(2 * 60, $event)" style="padding-top:2px;"><i
+            class="safe-icon safe-icon-film"></i></div>
+
+    <div title="{{isVideotaped ? '停止本地录像' : '开始本地录像'}}" ng-if="isCs && !isVideoreplyed"
+         class="toolbutton right videotape" ng-click="toolbar.videotape($event)" style="padding-top:2px;"
+         ng-class="{'text-danger':isVideotaped}"><i class="safe-icon safe-icon-video-camera"></i></div>
+
+    <div title="录像下载" ng-if="isCs" class="toolbutton right videodownload"
+         ng-click="toolbar.fastDownload.showDowntime($event)" style="padding-top:2px;"><i class="fa fa-download"></i>
+    </div>
+
+    <div title="巡航路径" class="toolbutton right cruise" ng-if="hascruise" ng-click="toolbar.cruise.showCruise($event)"><i
+            class="fa fa-paper-plane"></i></div>
+
+    <div title="云台控制" class="toolbutton right move" ng-if="hasmove" ng-click="toolbar.move($event)"><i
+            class="fa fa-arrows"></i></div>
+
+    <div title="图像联动" ng-if="isCameraLinkage" class="toolbutton right linkage" ng-click="toolbar.cameraLinkage($event)"
+         style="padding-top:2px;"><i class="fa fa-object-ungroup"></i></div>
+</div>
+
+<div class="move-panel">
+    <div class="move-panel-buttons">
+        <div class="move-panel-buttons-group move-panel-buttons-no-group">
+            <button class="button button-glow button-circle" ng-click="toolbar.hideMove($event)" title="退出云台控制"><i
+                    class="fa fa-arrow-left"></i></button>
+        </div>
+        <div class="move-panel-buttons-group move-panel-buttons-zoom-group">
+            <label>缩放</label>
+            <button class="button button-small button-circle zoomin move-panel-buttons-zoom-group-button" title="放大"><i
+                    class="fa fa-plus"></i></button>
+            <button class="button button-small button-circle zoomout move-panel-buttons-zoom-group-button" title="缩小"><i
+                    class="fa fa-minus"></i></button>
+        </div>
+        <div class="move-panel-buttons-group move-panel-buttons-aperture-group">
+            <label>光圈</label>
+            <button class="button button-small button-circle irisopen move-panel-buttons-zoom-group-button" title="放大">
+                <i class="fa fa-plus"></i></button>
+            <button class="button button-small button-circle irisclose move-panel-buttons-zoom-group-button" title="缩小">
+                <i class="fa fa-minus"></i></button>
+        </div>
+        <div class="move-panel-buttons-group move-panel-buttons-focus-group">
+            <label>速度</label>
+            <button class="button button-small button-circle speedup move-panel-buttons-zoom-group-button" title="加快"><i
+                    class="fa fa-plus"></i></button>
+            <button class="button button-small button-circle speeddown move-panel-buttons-zoom-group-button" title="减慢">
+                <i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="move-panel-buttons right" ng-if="haspreset">
+        <div class="move-panel-buttons-group" style="padding: 10px;">
+            <select ng-model="toolbar.preset.current" ng-change="toolbar.preset.set()">
+                <option value="">选择预置点</option>
+                <option value="{{row.index}}" ng-repeat="row in toolbar.preset.list track by $index">{{row.name}}
+                </option>
+            </select>
+        </div>
+        <label class="tool-name pull-left">预置点</label>
+        <div class="move-panel-buttons-group">
+            <button class="button button-small button-circle" title="复位" hm-tap="toolbar.preset.reset()"><i
+                    class="fa fa-crosshairs"></i></button>
+        </div>
+    </div>
+    <div class="move-panel-arrow-x left">
+        <div><i class="fa fa-chevron-left"></i></div>
+    </div>
+    <div class="move-panel-arrow-x right">
+        <div><i class="fa fa-chevron-right"></i></div>
+    </div>
+    <div class="move-panel-arrow-y top">
+        <div><i class="fa fa-chevron-up"></i></div>
+    </div>
+    <div class="move-panel-arrow-y bottom">
+        <div><i class="fa fa-chevron-down"></i></div>
+    </div>
+</div>
+
+<div class="cruise-panel">
+    <div class="cruise-panel-buttons">
+        <button class="button button-glow button-square" title="退出巡航控制" ng-click="toolbar.cruise.hideCruise($event)"><i
+                class="fa fa-arrow-left"></i></button>
+        <select ng-model="toolbar.cruise.currentIndex" ng-change="toolbar.cruise.getRoute()"
+                ng-options="index.value as index.name for index in toolbar.cruise.list">
+        </select>
+        <button class="button button-glow button-square" title="开始巡航" ng-click="toolbar.cruise.start()"><i
+                class="fa fa-play"></i></button>
+        <button class="button button-glow button-square" title="停止巡航" ng-click="toolbar.cruise.stop()"><i
+                class="fa fa-stop"></i></button>
+    </div>
+</div>
+
+<div class="speed-panel"></div>
+
+<div class="reply-panel" ng-show="isVideoreplyed">
+    <div>
+        <button class="button button-glow button-circle" ng-click="toolbar.fastReply.off($event)" title="关闭快速回放"><i
+                class="fa fa-arrow-left"></i></button>
+        <button class="button button-glow button-circle" ng-click="toolbar.fastReply.showDateRange($event)"
+                title="自定义回放时间"><i class="fa fa-calendar"></i></button>
+        <button class="button button-glow button-circle" ng-click="toolbar.fastReply.time(60 * 60, $event)"
+                title="回放一小时前的录像">1h
+        </button>
+        <button class="button button-glow button-circle" ng-click="toolbar.fastReply.time(2 * 60, $event)"
+                title="回放两分钟前的录像">2m
+        </button>
+        <button class="button button-glow button-circle" ng-click="toolbar.fastReply.time(30, $event)"
+                title="回放三十秒前的录像">30s
+        </button>
+    </div>
+</div>
+
+<div class="layout-full mytable">
+    <div class="mytable-cell">
+        <div class="control-panel">
+            <table class="layout-full" cellpadding="0" cellspacing="0">
+                <tr height="50px">
+                    <td>
+                        <h4><b></b>
+                            <status></status>
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="layout-full control-box" i-scroll2
+                             data-config="{&quot;scrollX&quot;: true, &quot;scrollY&quot;: false, &quot;mouseWheel&quot;: true, &quot;scrollbars&quot;: true, &quot;fadeScrollbars&quot;: true}">
+                            <div class="control-toolbar fz-5"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="reply-date-panel" ng-click="toolbar.fastReply.preventClick($event)">
+            <div class="form-group" style="padding-left:20px;">
+                <label>开始时间：</label>
+                <input class="form-control" type="text" ng-model="toolbar.fastReply.startDate" safe-picker
+                       p!format="Y-m-d  H:i" placeholder="开始时间">
+            </div>
+            <div class="form-group" style="padding-left:20px;">
+                <label>结束时间：</label>
+                <input class="form-control" type="text" ng-model="toolbar.fastReply.endDate" safe-picker
+                       p!format="Y-m-d  H:i" placeholder="结束时间">
+            </div>
+            <button class="button button-glow button-rounded" ng-click="toolbar.fastReply.goDateTime()">确认</button>
+        </div>
+
+        <div class="fastdownload-date-panel" ng-click="toolbar.fastDownload.preventClick($event)">
+            <div class="form-group" style="padding-left:20px;">
+                <label>开始时间：</label>
+                <input class="form-control" type="text" ng-model="toolbar.fastDownload.startDate" safe-picker
+                       p!format="Y-m-d  H:i" placeholder="开始时间">
+            </div>
+            <div class="form-group" style="padding-left:20px;">
+                <label>结束时间：</label>
+                <input class="form-control" type="text" ng-model="toolbar.fastDownload.endDate" safe-picker
+                       p!format="Y-m-d  H:i" placeholder="结束时间">
+            </div>
+            <button class="button button-glow button-rounded" ng-click="toolbar.fastDownload.startDownload()">下载
+            </button>
+        </div>
+
+        <!--兼容chrome65版本后，浏览器自动聚焦，safe-picker弹窗自动弹出问题-->
+        <input class="hide" autofocus>
+
+    </div>
+</div>

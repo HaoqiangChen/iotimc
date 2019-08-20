@@ -1,0 +1,168 @@
+<div ng-if="type == 'user'">
+    <div class="modal-header">
+
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+        </div>
+
+        <div class="col-lg-4">
+            <div class="col-lg-4">模糊过滤：</div>
+            <div class="col-lg-8">
+                <input type="text"
+                       class="form-control"
+                       ng-keyup="user.keyup($event)"
+                       ng-blur="user.getList()"
+                       ng-model="user.filter.searchText"
+                       placeholder="请输入关键字筛选！"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-body">
+        <table>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col width="150px"/>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th ng-repeat="item in user.itemName">{{item}}</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="rows in user.list">
+                <td>{{$index + 1}}</td>
+                <th ng-repeat="item in user.itemValue">{{rows[item]}}</th>
+                <td>
+                    <button class="btn btn-success" ng-if="!user.tempList[rows.id]" ng-click="user[way](rows)">选择</button>
+                    <button class="btn btn-danger" ng-if="user.tempList[rows.id]" ng-click="user[way](rows)">取消</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="modal-footer">
+
+        <div class="iiw-safe-modal-get-data-page text-center">
+            <div class="message">统计信息： 每页{{user.params.pageSize || 0}}行， 共{{user.params.totalSize||0}}行， 共{{user.params.totalPage||0}}页</div>
+            <uib-pagination style="margin: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;"
+                            class="pagination"
+                            total-items="user.params.totalSize"
+                            ng-model="user.params.pageNo"
+                            ng-change="user.getList()"
+                            items-per-page="user.params.pageSize"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            max-size="5">
+
+            </uib-pagination>
+        </div>
+
+        <button class="btn btn-danger" ng-click="user.close()">关闭</button>
+    </div>
+</div>
+
+
+<div ng-if="type == 'device'">
+    <div class="modal-header">
+        <div class="col-lg-4">
+            <div class="col-lg-4">设备类型：</div>
+            <div class="col-lg-8">
+                <select class="form-control" ng-change="device.typeChange(device.filter.type)" ng-model="device.filter.type" ng-options="rows.content as rows.name for rows in device.type">
+                    <option value="">全部类型</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="col-lg-4">设备厂商：</div>
+            <div class="col-lg-8">
+                <select class="form-control" ng-change="device.companyChange(device.filter.company)" ng-model="device.filter.company" ng-options="rows.id as rows.name for rows in device.company">
+                    <option value="">全部厂商</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="col-lg-4">模糊过滤：</div>
+            <div class="col-lg-8">
+                <input type="text" class="form-control"
+                       ng-keyup="device.keyup($event)"
+                       ng-blur="device.getList()"
+                       placeholder="请输入关键字筛选"
+                       ng-model="device.filter.searchText"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-body">
+        <table>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col width="150px"/>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th ng-repeat="item in device.itemName">{{item}}</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="rows in device.list">
+                <td>{{$index + 1}}</td>
+                <th ng-repeat="item in device.itemValue">{{rows[item]}}</th>
+                <td>
+                    <button class="btn btn-success" ng-if="!device.tempList[rows.id]" ng-click="device[way](rows)">选择</button>
+                    <button class="btn btn-danger" ng-if="device.tempList[rows.id]" ng-click="device[way](rows)">取消</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="modal-footer">
+
+        <div class="iiw-safe-modal-get-data-page text-center">
+            <div class="message">统计信息： 每页{{device.params.pageSize || 0}}行， 共{{device.params.totalSize||0}}行， 共{{device.params.totalPage||0}}页</div>
+            <uib-pagination style="margin: 5px;" boundary-links="true" first-text="&laquo;" last-text="&raquo;"
+                            class="pagination"
+                            total-items="device.params.totalSize"
+                            ng-model="device.params.pageNo"
+                            ng-change="device.getList()"
+                            items-per-page="device.params.pageSize"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            max-size="5">
+            </uib-pagination>
+        </div>
+
+        <button class="btn btn-danger" ng-click="device.close()">关闭</button>
+    </div>
+</div>
+
+<div ng-if="type == 'syou'" class="iiw-safe-modal-get-data-syou">
+    <div class="modal-header">
+        <h3>选择单位</h3>
+    </div>
+    <div class="modal-body">
+        <safe-tree tv-data="syou.data" tv-click="syou[way]" tv-checkbox="true" tv-load="syou.load"></safe-tree>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="syou.close()">关闭</button>
+    </div>
+</div>

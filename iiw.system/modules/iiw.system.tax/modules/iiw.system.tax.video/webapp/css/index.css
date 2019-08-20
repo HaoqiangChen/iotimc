@@ -1,0 +1,36 @@
+.system-expert-page-content{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.system-expert-container{
+    padding: 15px;
+}
+.system-expert-header{
+    background-color: rgba(0,0,0,0.3);
+}
+.system-expert-header input{
+    width: 200px;
+    height: 39px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+.expertSelect{
+    background-color: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+    height: 32px;
+}
+
+.system-monitorpatrol-item {
+    position: relative;
+}
+
+.system-monitorpatrol-item-container {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.iiw-system-tax-video select{
+    background-color: rgba(0,0,0,.3);
+    color: #ccc;
+    margin: 3px 25px 0 0;
+    width: 186px;
+    border: 1px solid rgba(255,255,255,.3);
+}

@@ -1,0 +1,104 @@
+<div class="iiw-system-page-container iiw-system-dataimport">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="60px" ui-layout-container>
+                <h2 class="page-title">{{dataimport.title}}</h2>
+            </div>
+            <div class="ui-layout-container over-h" ui-layout-container ui-view>
+                <div class="layout-full">
+                    <div class="ui-layout-row system-dataimport-page-content" ui-layout="{ flow: 'row'}"
+                         options="{dividerSize:'0'}">
+                        <div class="ui-layout-container system-dataimport-header over-h" size="47px"
+                             ui-layout-container>
+                            <div class="form-group pull-left">
+                                <!--                                <button class="btn btn-primary" style="margin: 4px; width:122px;"-->
+                                <!--                                        ng-click="dataimport.add()"><i-->
+                                <!--                                        class="fa fa-plus"></i>添加-->
+                                <!--                                </button>-->
+                                <!--                                <button class="btn btn-success" style="margin-left: -4px; width:122px;"-->
+                                <!--                                        ng-click="dataimport.mod()"-->
+                                <!--                                        ng-disabled="dataimport.modBtnFlag"><i class="fa fa-edit"></i>修改-->
+                                <!--                                </button>-->
+                                <button class="btn btn-warning" ng-click="dataimport.import()">
+                                    <i class="fa fa-plus"></i>导入EXCEL
+                                </button>
+                                <button class="btn btn-info" ng-click="dataimport.export()">
+                                    <i class="fa fa-minus"></i>导出模板
+                                </button>
+                                <button class="btn btn-danger" ng-click="dataimport.delete()"
+                                        ng-disabled="dataimport.delBtnFlag">
+                                    <i class="fa fa-minus"></i>删除
+                                </button>
+                            </div>
+                            <div class="form-group pull-right hide" style="padding: 4px;">
+                                <div class="input-group" style="width:250px;">
+                                    <input type="text" class="form-control" placeholder="{{keyword}}"
+                                           ng-keypress="dataimport.keyPressGetLIst($event)"
+                                           ng-model="dataimport.filterValue"/>
+                                    <span class="input-group-btn">
+                                            <button class="btn btn-default" ng-click="dataimport.getList()"><i
+                                                    class="fa fa-search"></i></button>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout-container" i-scroll ui-layout-container>
+                            <div class="layout-full system-dataimport-container">
+                                <div class="layout-full"
+                                     style="border: 1px solid rgba(0, 0, 0, 0.2); overflow: hidden;">
+                                    <table class="table table-hover iiw-system-table-container">
+                                        <thead>
+                                        <tr>
+                                            <th class="iiw-system-table-header-container">
+                                                <input id="checkAll" type="checkbox" ng-model="dataimport.selectAll"
+                                                       ng-change="dataimport.selAll()">
+                                            </th>
+                                            <th>所在单位</th>
+                                            <th>导入时间</th>
+                                            <th>明细</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="row in dataimport.list | filter: {name: searchKeyword}"
+                                            ng-class="{'select': row.checked}" ng-click="dataimport.chooseRow()">
+                                            <td class="iiw-system-table-header-container">
+                                                <system-row-check ng-model="row.checked"
+                                                                  class="rowCheck"></system-row-check>
+                                            </td>
+                                            <td>{{row.syouname}}</td>
+                                            <td>{{row.cretime}}</td>
+                                            <td>
+                                                <button class="btn btn-success radius-3" title="查看明细"
+                                                        ng-click="dataimport.dtl(row)">
+                                                    <i class="fa fa-bars"></i>
+                                                    查看明细
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container class="" size="49px">
+                            <label class="col-lg-3" style="height:40px;line-height:40px;padding-top:4px;">统计信息：
+                                每页{{dataimport.pagination.pageSize}}行， 共{{dataimport.pagination.totalSize||0}}行，
+                                共{{dataimport.pagination.totalPage||0}}页</label>
+                            <uib-pagination style="margin: 5px;" class="pagination pull-right" direction-links="true"
+                                            boundary-links="true" boundary-link-numbers="true" rotate="false"
+                                            total-items="dataimport.pagination.totalSize"
+                                            ng-model="dataimport.pagination.currentPage"
+                                            ng-change="dataimport.pageChange()"
+                                            items-per-page="dataimport.pagination.pageSize" max-size="10"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                            last-text="&raquo;"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <export-excel></export-excel>
+    </div>
+</div>

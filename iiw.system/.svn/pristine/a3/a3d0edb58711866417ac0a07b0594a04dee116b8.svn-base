@@ -1,0 +1,84 @@
+<div class="layout-full">
+	<table style="width:100%;text-align:center;border:1px solid rgba(255,255,255,0.3);">
+	    <col width="15%">
+	    <col width="17%">
+	    <col width="17%">
+	    <col width="17%">
+	    <col width="17%">
+	    <col width="17%">
+	    <tbody>
+	    <tr style="height:30px;">
+	        <td editable></td>
+	        <td editable>表头</td>
+	        <td editable>表头</td>
+	        <td editable>表头</td>
+	        <td editable>表头</td>
+	        <td editable>表头</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    <tr>
+	        <td>行头</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	        <td datasource>数据项</td>
+	    </tr>
+	    </tbody>
+	</table>
+</div>

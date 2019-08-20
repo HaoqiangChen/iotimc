@@ -1,0 +1,10 @@
+{
+"name": "iiw.system.periodsetting",
+"version": "0.0.1",
+"description": "管控时间设置",
+"author": "gdj",
+"date": "2016-04-20",
+"main": "periodSettingController",
+"host": "192.168.0.251",
+"client": "192.168.0.18"
+}

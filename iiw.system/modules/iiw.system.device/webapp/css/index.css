@@ -1,0 +1,212 @@
+
+.iiw-demo-box {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.iiw-demo-box div {
+    background-image: url('../img/logo.png');
+    background-size: cover;
+    width: 256px;
+    height: 256px;
+}
+
+.device-paginate{
+    height: 22px;
+    line-height: 22px;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.device-table-hover > tbody > tr:hover > td, .device-table-hover > tbody > tr:hover > th{
+    background-color: rgba(0,0,0,0.30);
+}
+
+.device-table-hover > tbody > tr{
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.device-select-option{
+    background-color: rgba(0,0,0,0.25);
+}
+
+.device-controller-button{
+    float:left;
+    width:40%;
+}
+
+.device-controller-search{
+    float:right;
+    width: 50%;
+    text-align: right;
+}
+
+.devicer-controller-search input{
+    line-height: 30px;
+    margin-right: 20px;
+    background-color: rgba(255,255,255,0.25);
+}
+
+.device-properties-haader{
+    height:40px;
+    background-color:rgba(0,0,0,0.40);
+    border-bottom: 0px;
+}
+
+.device-properties-haader h5{
+    padding-top:10px;
+}
+
+.device-system-select{
+    width: 30%;
+    height: 100%;
+    float: left;
+    padding: 7px 0;
+}
+
+.device-system-select div{
+    padding-left:0px;
+}
+
+.device-index-system-select{
+    padding-top:4px;
+}
+
+.device-index-system-select select{
+    height:32px;
+}
+
+.device-sync-system-button{
+    text-align:right;
+    padding:10px;
+}
+
+.iiw-system-table-container>tbody>tr>td{
+    cursor: hand;
+}
+
+.device-syou-tree-content{
+    height:600px;
+}
+
+.device-related-check{
+    padding-top: 5px;
+}
+.device-related-check input{
+    width: 20px;
+    height: 20px;
+}
+
+.iiw-system-device-container  .addScroll{
+    overflow-y: auto;
+}
+
+.iiw-system-device-container  .addScroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.iiw-system-device-container  .addScroll::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+
+.ztree li span.button.userIcon_ico_docu {
+    background:url('../img/user.png');
+    background-size: cover;
+}
+
+.iiw-system-scroll{
+    overflow-y: scroll;
+}
+.iiw-system-device-deviceDetail:hover {
+    background-color: rgba(223, 105, 26,0.8);
+}
+.iiw-system-device-deviceDetail {
+    height: 40px;
+    padding: 5px;
+}
+.select {
+    background-color: rgba(223, 105, 26,0.8);
+}
+.iiw-system-device-deviceDetailList:nth-child(odd) {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.widget-content-panel {
+    width: 30%;
+    height: 473px;
+    float: left;
+}
+
+.widget-content-panel:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.widget-content-panel .content-panel-title {
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+    font-weight: bold;
+}
+
+.widget-content-panel .content-panel-body {
+    height: calc(100% - 46px - 35px);
+}
+
+.widget-content-panel .content-panel-footer {
+    height: 30px;
+    font-size: 12px;
+    padding-right: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 5px;
+}
+
+.widget-content-panel .content-panel-footer .pull-right {
+    line-height: 30px;
+}
+
+.widget-content-panel .table-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.widget-content-panel .table-panel .table-header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 47px;
+    z-index: 2;
+}
+
+.widget-content-panel .table-panel .table-content {
+    width: 100%;
+    height: 100%;
+    padding-top: 47px;
+    position: relative;
+    overflow: hidden;
+}
+
+.widget-content-panel .table-panel .table-content .layout-full {
+    position: relative;
+}
+
+.widget-content-panel .table-panel .table-content .layout-full > div {
+    width: 100%;
+}
+
+.widget-content-panel table {
+    width: 100%;
+}
+
+.widget-content-panel .iiw-system-table-container.table tbody > tr > td {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    font-size: 14px;
+    padding:10px;
+    vertical-align: middle;
+    cursor: pointer;
+}

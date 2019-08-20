@@ -1,0 +1,84 @@
+<div class="iiw-system-dispatcher layout-full" ui-view>
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-dispatcher-container">
+                <div ui-layout options="{dividerSize:'0'}">
+                    <div ui-layout-container class="system-dispatcher-header" size="47px">
+                        <div class="layout-full">
+                            <button class="btn btn-success pull-left" ng-click="dispatcher.addRole()" style="margin: 4px;"><i class="fa fa-plus fa-fw"></i>添加</button>
+                            <button class="btn btn-warning pull-left" ng-disabled="selectLength" ng-click="dispatcher.modRole()" style="margin-top: 4px;"><i class="fa fa-edit fa-fw"></i>修改</button>
+                            <button class="btn btn-danger pull-left" ng-click="dispatcher.delRole()" style="margin: 4px;"><i class="fa fa-minus fa-fw"></i>删除</button>
+                            <div class="input-group pull-right" style="width:250px;margin: 4px;">
+                                <input type="text" class="form-control" ng-model="dispatcher.searchText" placeholder="输入编号过滤"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="dispatcher.getList()">查询</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ui-layout-container>
+                        <div class="layout-full system-dispatcher-body">
+                            <div class="layout-full" i-scroll style="border:1px solid rgba(0,0,0,0.2);">
+                                <table class="table table-hover iiw-system-table-container">
+                                    <colgroup><col width="3%"><col><col><col><col><col><col><col><col><col></colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <input type="checkbox" ng-model="dispatcher.aSelectAll" style="width:20px;height:20px;" ng-click="dispatcher.selectAll()">
+                                            </th>
+                                            <th>标题</th>
+                                            <th>年</th>
+                                            <th>月</th>
+                                            <th>日</th>
+                                            <th>周末</th>
+                                            <th>时</th>
+                                            <th>分</th>
+                                            <th>秒</th>
+                                            <!--<th>开始时间</th>-->
+                                            <!--<th>结束时间</th>-->
+                                            <!--<th>间隔时间(分)</th>-->
+                                            <!--<th>执行次数</th>-->
+                                            <!--<th>服务</th>-->
+                                            <!--<th>服务名</th>-->
+                                            <th>状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in dispatcherList" ng-class="{'select':item.checked}" ng-click="dispatcher.select(item, $event)">
+                                            <td class="text-center">
+                                                <input type="checkbox" ng-model="item.checked" style="width:20px;height:20px;">
+                                            </td>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.year | filterYear}}</td>
+                                            <td>{{item.month | filterTime}}</td>
+                                            <td>{{item.day | filterTime}}</td>
+                                            <td>{{item.week | filterTime}}</td>
+                                            <td>{{item.hour | filterTime}}</td>
+                                            <td>{{item.minute | filterTime}}</td>
+                                            <td>{{item.second | filterTime}}</td>
+                                            <!--<td>{{item.starttime}}</td>-->
+                                            <!--<td>{{item.endtime}}</td>-->
+                                            <!--<td>{{item.minute | filterTime}}</td>-->
+                                            <!--<td>{{item.repeattime}}</td>-->
+                                            <!--<td>{{item.dtl | filterService}}</td>-->
+                                            <!--<td>{{item.dtl | filterServiceName}}</td>-->
+                                            <td ng-if="item.status == 'P'">有效</td>
+                                            <td ng-if="item.status == 'O'">无效</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div ui-layout-container class="system-dispatcher-foot" size="49px">
+                        <label class="col-lg-3" style="height:40px;line-height:40px;padding-top:4px;">统计信息： 每页{{dispatcher.pageSize}}行， 共{{dispatcher.totalSize||0}}行， 共{{dispatcher.totalPage||0}}页</label>
+                        <uib-pagination style="margin: 5px;" class="pagination pull-right" direction-links="true" boundary-links="true" boundary-link-numbers="true" rotate="false" total-items="dispatcher.totalSize" ng-model="dispatcher.currentPage" ng-change="dispatcher.change()" items-per-page="dispatcher.pageSize" max-size="10" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

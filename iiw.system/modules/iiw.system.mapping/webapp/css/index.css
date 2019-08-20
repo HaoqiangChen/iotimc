@@ -1,0 +1,47 @@
+.iiw-system-symapping {
+    position: relative;
+}
+.iiw-system-mapping-container{
+    background-color: rgba(0,0,0,0.3);
+}
+.iiw-system-mapping-container-header{
+    padding: 4px;
+    background-color: rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.iiw-system-mapping-container-body{
+    padding: 0 10px 10px 10px;
+}
+.iiw-system-mapping-container .addScroll{
+    overflow: auto;
+}
+
+.iiw-system-mapping-container .addScroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.iiw-system-mapping-container .addScroll::-webkit-scrollbar-thumb{
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+.iiw-system-mapping-container-footer {
+    background-color: rgba(0,0,0,0.2);
+}
+.iiw-system-mapping-container-footer button{
+    margin-top: 4px;
+    margin-right: 4px;
+    width:100px;
+}
+.has-error{
+    border: 1px solid #ff4444 !important;
+}
+
+.input-transparent {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    min-height: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "iiw.system.device",
+  "version": "0.0.1",
+  "description": "设备管理",
+  "author": "zcl",
+  "date": "2016-02-22",
+  "main": "deviceController",
+  "host": "192.168.0.251",
+  "client": "192.168.0.27"
+}

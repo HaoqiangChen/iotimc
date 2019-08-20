@@ -1,0 +1,82 @@
+<div class="iiw-system-page-container ystyle">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="65px" ui-layout-container>
+                <h2 class="page-title">用户与<i-lang>PTN_P</i-lang>{{user.title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container ui-view>
+                <div class="widget layout-full">
+                    <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                        <div ui-layout-container size="47px">
+                            <div class="layout-full system-role-bar">
+                                <div class="layout-full">
+                                    <div class="input-group pull-right" ng-style="{width:250 + 'px'}">
+                                        <input type="text" class="form-control" ng-model="filterValue" placeholder="请输入关键字筛选"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content ui-layout-container" ui-layout-container>
+                            <div class="layout-full" i-scroll2 data-load-event="user.showNextPage()">
+                                <table class="table table-hover iiw-system-table-container">
+                                    <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>用户名</th>
+                                            <th>关联<i-lang>PTN_P</i-lang></th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="rows in user.list | filter: filterValue" ng-click="user.chooce(this)">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{rows.name}}</td>
+                                            <td><span ng-repeat="police in rows.police">{{police.name}}</span></td>
+                                            <td class="text-center">
+                                                <button ng-click="user.stClWindow($index)" ng-if="rows.police.length == 0" class="btn btn-success">添加关联</button>
+                                                <button ng-click="user.stClWindow($index)" ng-if="rows.police.length > 0" class="btn btn-warning">更改</button>
+                                                <button ng-click="user.cancelRelate(rows.id)" ng-if="rows.police.length > 0" class="btn btn-danger">取消</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="relateWindow" ng-if="user.relateWindow">
+        <div>
+            <h3 class="col-lg-12">
+                关联<i-lang>PTN_P</i-lang>
+                <div class="input-group pull-right" ng-style="{width:200 + 'px'}">
+                    <input type="text" class="form-control" ng-model="filter" placeholder="请输入关键字筛选"/>
+                </div>
+            </h3>
+            <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <div class="col-lg-2">序号</div>
+                    <div class="col-lg-3">名字</div>
+                    <div class="col-lg-3">职位</div>
+                    <div class="col-lg-4">单位</div>
+                </div>
+                <div class="col-lg-12" i-scroll2>
+                    <div ng-class="{'select': user.relatePolice == $index}" ng-dblclick="user.submit()" class="col-lg-12" ng-repeat="rows in user.policeList | filter : filter" ng-click="user.selectPolice($index)">
+                        <div class="col-lg-2">{{$index + 1}}</div>
+                        <div class="col-lg-3">{{rows.name}}</div>
+                        <div class="col-lg-3">{{rows.position}}</div>
+                        <div class="col-lg-4">{{rows.syouname}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-success" ng-click="user.submit()" ng-disabled="user.relatePolice == null"><i class="fa fa-edit fa-fw"></i>确定</button>
+                <button class="btn btn-danger" ng-click="user.stClWindow()"><i class="fa fa-minus fa-fw"></i>取消</button>
+            </div>
+        </div>
+    </div>
+</div>

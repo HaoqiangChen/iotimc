@@ -1,0 +1,53 @@
+
+/*地图标签*/
+.safe-map-tag {
+    position: absolute;
+    z-index: 1;
+}
+.safe-map-tag:hover {
+    transition: text-shadow linear .1s;
+    text-shadow: 0 0 10px;
+    z-index: 2;
+}
+
+/*标签面板*/
+.safe-map-tag-panel {
+    position: relative;
+    overflow: visible;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(255,255,255,0.7) inset;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
+/*监控标签*/
+/*设备标签*/
+.safe-map-tag-panel.device-tag,
+.safe-map-tag-panel.monitor-tag {
+    border: none;
+    box-shadow: none;
+    opacity: 0.8;
+}
+.safe-map-tag-panel.device-tag .safe-map-tag-content > div,
+.safe-map-tag-panel.monitor-tag .safe-map-tag-content > div {
+    background: no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: table;
+}
+.safe-map-tag-panel.device-tag .safe-map-tag-content > div > i,
+.safe-map-tag-panel.monitor-tag .safe-map-tag-content > div > i {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.safe-map-tag-panel.device-tag .safe-map-tag-content > div > label {
+    display: inline-table;
+    position: absolute;
+    top: 25px;
+    white-space: nowrap;
+    text-align: center;
+    padding: 2px 5px;
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 0 3px rgba(0,0,0,1);
+}

@@ -1,0 +1,47 @@
+<div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}" style="background-color: rgba(0,0,0,0.3);">
+    <div ui-layout-container size="45px" class="system-tax-ebookItem-header">
+        基础信息:
+    </div>
+    <div ui-layout-container size="60px" class="system-tax-ebookItem-main">
+        <div class="layout-full">
+            <div class="form-group pull-left" style="margin-right: 30px;">
+                <span class="pull-left" style="line-height: 39px;margin-right:10px;">标题:</span>
+                <input type="text" class="form-control pull-left" ng-model="taxEbookItem.title" placeholder="请输入电子书标题!" style="width:250px;"/>
+            </div>
+        </div>
+    </div>
+    <div ui-layout-container size="45px" class="system-tax-ebookItem-box">
+        电子书内容:
+    </div>
+    <div ui-layout-container class="system-tax-ebookItem-content">
+        <div class="layout-full">
+            <div class="col-md-2 system-tax-ebookItem-cover" ng-click="taxEbookItem.selectPhoto('first', $event)">
+                <img ng-src="{{taxEbookItem.firstPhoto.photoPath}}"/>
+                <div class="text-center">封面</div>
+            </div>
+
+            <div class="col-md-2 system-tax-ebookItem-cover" ng-repeat="item in taxEbookItem.list track by $index" ng-click="taxEbookItem.selectPhoto($index, $event)">
+                <img ng-src="{{item.photoPath}}"/>
+                <div class="text-center">第{{$index + 1}}页</div>
+                <span style="position: absolute;right: 39px;top: 8px;font-size: 24px;" ng-click="taxEbookItem.deletePhoto($index)"><i class="fa fa-close"></i></span>
+            </div>
+
+            <div class="col-md-2 system-tax-ebookItem-cover" ng-click="taxEbookItem.selectPhoto('last', $event)">
+                <img ng-src="{{taxEbookItem.lastPhoto.photoPath}}"/>
+                <div class="text-center">页末</div>
+            </div>
+
+        </div>
+        <input type="file" id="uploadPhoto" accept="image/*" onchange="angular.element(this).scope().taxEbookItem.uploadFile()" style="display: none;" multiple="multiple"/>
+    </div>
+
+    <div ui-layout-container size="80px">
+        <div class="layout-full">
+            <div class="text-center system-tax-ebookItem-addNumBtn" ng-click="taxEbookItem.addBookContent()"><i class="fa fa-plus"></i></div>
+        </div>
+    </div>
+    <div ui-layout-container size="60px" style="background-color: rgba(0,0,0,0.2);padding: 10px;">
+        <button class="btn btn-danger pull-right" ng-click="taxEbookItem.cancle()">取消</button>
+        <button class="btn btn-success pull-right" ng-click="taxEbookItem.save()" style="margin-right: 10px;">保存</button>
+    </div>
+</div>

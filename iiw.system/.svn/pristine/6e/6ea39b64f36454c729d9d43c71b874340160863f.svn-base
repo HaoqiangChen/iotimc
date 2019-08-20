@@ -1,0 +1,49 @@
+.iiw-system-oumapping-container {
+    background-color: rgba(0,0,0,0.3);
+}
+.iiw-system-oumapping-container-header {
+    padding: 4px;
+    background-color: rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.iiw-system-oumapping-container-header .mapping-filter {
+    width: 30%;
+    height: 100%;
+    padding: 3px 0;
+}
+
+.iiw-system-oumapping-container-header .mapping-filter select,
+.iiw-system-oumapping-container-header .mapping-filter input {
+    width: 100%;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.iiw-system-oumapping-container-body {
+    padding: 0 10px 10px 10px;
+}
+
+.iiw-system-oumapping-container .addScroll {
+    overflow: auto;
+}
+
+.iiw-system-oumapping-container .addScroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.iiw-system-oumapping-container .addScroll::-webkit-scrollbar-thumb {
+    background-color: rgba(200,200,200,.7);
+    border-radius: 50px;
+}
+
+.iiw-system-oumapping-container-footer {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.iiw-system-oumapping-container-footer button {
+    margin-top: 4px;
+    margin-right: 4px;
+    width:100px;
+}

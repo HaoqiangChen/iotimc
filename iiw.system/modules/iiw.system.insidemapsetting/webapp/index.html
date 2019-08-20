@@ -1,0 +1,12 @@
+<div class="layout-full system-insidemapsetting">
+    <div ui-layout options="{dividerSize:'0'}">
+        <div ui-layout-container size="65px">
+            <h2 class="page-title">
+                <b ng-click="goto()" ng-class="{'clickable':titleState}">{{title}}</b>
+                <small>{{subTitle}}</small></h2>
+        </div>
+        <div ui-layout-container>
+            <div class="layout-full system-insidemapsetting-view" ui-view></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="iiw-system-bigmonitorthemerelevance" ui-view>
+    <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+        <div size="60px" ui-layout-container style="overflow:hidden;">
+            <h2 class="page-title">{{title}}</h2>
+        </div>
+        <div ui-layout-container class="iiw-system-bigmonitorthemerelevance-container layout-full">
+            <div ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+                <div ui-layout-container size="50px" class="iiw-system-bigmonitorthemerelevance-container-header">
+                    <a class="btn btn-success" ng-click="bigMonitorThemeRelevance.add()"><i class="fa fa-plus fa-fw"></i>添加</a>
+                    <a class="btn btn-warning" ng-click="bigMonitorThemeRelevance.mod()"><i class="fa fa-edit fa-fw"></i>修改</a>
+                    <a class="btn btn-danger" ng-click="bigMonitorThemeRelevance.del()"><i class="fa fa-minus fa-fw"></i>删除</a>
+                    <div class="input-group pull-right" style="width:250px;">
+                        <input type="text" class="form-control" ng-model="bigMonitorThemeRelevance.filterValue" placeholder="输入关键字查找！"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="bigMonitorThemeRelevance.getList()"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div ui-layout-container class="iiw-system-bigmonitorthemerelevance-container-content">
+                    <div class="layout-full" style="border: 1px solid rgba(0,0,0,0.3)">
+                        <table class="table table-hover iiw-system-table-container">
+                            <colgroup><col width="2%"/><col width="8%"/><col width="40%"/><col width="40%"/><col width="10%"/></colgroup>
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" style="width:20px;height: 20px;" ng-model="bigMonitorThemeRelevance.selAll" ng-click="bigMonitorThemeRelevance.selectAll()"/></th>
+                                    <th>序号</th>
+                                    <th>模式名称</th>
+                                    <th>电视墙</th>
+                                    <th>关联模式</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in bigMonitorThemeRelevance.list" ng-click="bigMonitorThemeRelevance.select($event, item)" ng-class="{'select': item.checked}">
+                                    <td><input type="checkbox" style="width:20px;height: 20px;" ng-model="item.checked"/></td>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{item.mainthemename}}</td>
+                                    <td>{{item.maindevicename}}</td>
+                                    <td><a style="padding: 10px 15px;" class="btn-success" ng-click="bigMonitorThemeRelevance.showConfirm(item)">查看</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ui-layout-container class="iiw-system-bigmonitorthemerelevance-container-footer" size="60px">
+                    <label class="col-lg-3" style="height:40px;line-height:40px;padding-top:4px;">统计信息： 每页{{bigMonitorThemeRelevance.pageSize}}行， 共{{bigMonitorThemeRelevance.totalSize||0}}行， 共{{bigMonitorThemeRelevance.totalPage||0}}页</label>
+                    <uib-pagination style="margin: 5px;" class="pull-right" direction-links="true" boundary-links="true" boundary-link-numbers="true" rotate="false" total-items="bigMonitorThemeRelevance.totalSize" ng-model="bigMonitorThemeRelevance.currentPage" ng-change="bigMonitorThemeRelevance.getList()" items-per-page="bigMonitorThemeRelevance.pageSize" max-size="10" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

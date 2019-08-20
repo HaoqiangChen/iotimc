@@ -1,0 +1,52 @@
+<div class="iiw-system-stoppageLevelHistory">
+    <div ui-layout="{flow: 'row'}" options="{dividerSize: '0'}">
+        <div ui-layout-container size="50px" style="overflow: hidden;">
+            <h3 class="page-title">
+                {{title}}
+            </h3>
+        </div>
+        <div class="iiw-system-stoppageLevelHistory-container" ui-layout-container>
+            <div ui-layout="{flow: 'row'}" options="{dividerSize: '0'}">
+                <div ui-layout-container size="50px" style="background-color: rgba(0,0,0,0.1); padding: 5px;overflow:hidden;">
+                    <button type="button" class="btn btn-danger pull-left" ng-click="history.back()"><i class="fa fa-mail-reply-all" style="margin-right: 5px;"></i>返回</button>
+                    <div class="input-group pull-right" style="width:260px;">
+                        <input type="text" class="form-control" placeholder="请输入关键字进行搜索!" ng-model="history.filterValue"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="history.getHistoryList()"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div ui-layout-container class="layout-full" style="overflow: hidden">
+                    <div class="layout-full" style="padding: 15px;">
+                        <div style="height: 7%;">
+                            <table class="table iiw-system-table-container" style="margin-bottom: 0;">
+                                <colgroup><col width="25%"/><col width="25%"/><col width="35%"/><col width="15%"/></colgroup>
+                                <thead>
+                                    <tr style="height: 50px;">
+                                        <th>等级名称</th>
+                                        <th>操作时间</th>
+                                        <th>操作人</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div style="height: 93%;border: 1px solid rgba(0,0,0,0.3);overflow:auto;">
+                            <table class="table iiw-system-table-container">
+                                <colgroup><col width="25%"/><col width="25%"/><col width="35%"/><col width="15%"/></colgroup>
+                                <tbody>
+                                    <tr ng-repeat="item in history.list">
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td>{{item.syusername}}</td>
+                                        <td><a style="cursor: pointer;" class="btn btn-success" ng-click="history.resetHistory(item)">还原</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
