@@ -1,0 +1,10 @@
+{
+  "name": "iiw.command.informRecord",
+  "version": "0.0.1",
+  "description": "视频点名登记",
+  "author": "chq",
+  "date": "2019-07-28",
+  "main": "informRecordController",
+  "host": "127.0.0.1:8070",
+  "client": "127.0.0.1"
+}
