@@ -62,6 +62,10 @@ define([
                                 }
 
                                 $scope.userDetails = $scope.wjData.userdetail;
+                                if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
+                                if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
+                                if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
+                                $scope.userDetails.interviewercode = '';
 
                                 $scope.scalecheck.getScore();
                                 $scope.loading.isLoading = false;
@@ -89,14 +93,16 @@ define([
                                 $scope.score = data.result.rows[0];
 
                                 $scope.score.weidu.map(_a => {
-                                    _a.alone = []
+                                    _a.alone = [];
                                     _a.rows.map(_b => {
                                         if (_b.alone === 'Y') {
                                             _a.alone.push(_b)
                                         }
-                                    })
+                                    });
                                     _a.rows = _a.rows.filter(v => v.alone !== 'Y')
-                                })
+                                });
+
+                                console.log($scope.score);
                             }
                         })
                 })

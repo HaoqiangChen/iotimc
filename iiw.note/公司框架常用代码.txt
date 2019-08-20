@@ -4,6 +4,7 @@ HTML
 <select ng-change="changeType()" ng-model="types" class="form-control safe-backlog-filter-select">
 	<option value="">全部</option>
 	<option value="{{types.modouleName}}" ng-repeat="types in backlogRows">{{types.modouleName}}</option>
+	<option ng-repeat="(key, type) in record.types track by key" value="{{type.status}}">{{type.statusname}}</option>
 </select>
 
 对ng-repeat的表格内容添加不同样式，html代码：

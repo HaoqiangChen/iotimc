@@ -16,27 +16,92 @@
                                         <p class="loading-content">{{loading.content}}...</p>
                                     </div>
                                 </div>
-                                <div class="layout-full scalecheck-container i-scroll2">
-                                    <div class="scale-header">
-                                        <div class="scale-name">{{wjData.name}}</div>
-                                        <div class="ftapp-userinfo">
-                                            <div class="row">
-                                                <div class="col-md-4 item">
-                                                    <label>访谈员编号：</label>
-                                                    <span><i ng-repeat="num in userDetails.interviewercode">{{num}}</i></span>
+                                <div class="layout-full i-scroll2">
+                                    <div class="scalecheck-container">
+                                        <div class="scale-header">
+                                            <div class="scale-name">{{wjData.name}}</div>
+                                            <div class="ftapp-userinfo">
+                                                <div class="row">
+                                                    <div class="col-md-5 item">
+                                                        <label>访谈员编号：</label>
+                                                        <span ng-if="userDetails.interviewercode.length"><i ng-repeat="(i, num) in userDetails.interviewercode track by i">{{num}}</i></span>
+                                                        <span ng-if="!userDetails.interviewercode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                    </div>
+                                                    <div class="col-md-3 item">
+                                                        <label>访谈员姓名：</label>
+                                                        <span class="underline">{{userDetails.interviewername}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 item">
+                                                        <label>联系方式：</label>
+                                                        <span class="underline">{{userDetails.phone}}</span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4 item">
-                                                    <label>访谈员姓名：</label>
-                                                    <span class="underline">{{userDetails.interviewername}}</span>
+                                                <div class="row">
+                                                    <div class="col-md-5 item">
+                                                        <label>督导员编号：</label>
+                                                        <span ng-if="userDetails.supervisorcode.length"><i ng-repeat="(i, num) in userDetails.supervisorcode track by i">{{num}}</i></span>
+                                                        <span ng-if="!userDetails.supervisorcode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                    </div>
+                                                    <div class="col-md-3 item">
+                                                        <label>督导员姓名：</label>
+                                                        <span class="underline">{{userDetails.supervisor}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 item">
+                                                        <label>联系方式：</label>
+                                                        <span class="underline">{{userDetails.supervisorphone}}</span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4 item">
-                                                    <label>联系方式：</label>
-                                                    <span class="underline">{{userDetails.phone}}</span>
+                                                <div class="row">
+                                                    <div class="col-md-5 item">
+                                                        <label>被访谈人员编号：</label>
+                                                        <span ng-if="userDetails.bm.length"><i ng-repeat="(i, num) in userDetails.bm track by i">{{num}}</i></span>
+                                                        <span ng-if="!userDetails.bm.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                    </div>
+                                                    <div class="col-md-3 item">
+                                                        <label>被访谈人员姓名：</label>
+                                                        <span class="underline">{{userDetails.criminalname}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 item">
+                                                        <label>被访谈人员身份证：</label>
+                                                        <span class="underline">{{userDetails.zjhm}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5 item">
+                                                        <label>访谈日期：</label>
+                                                        <span class="underline">{{userDetails.starttime | date: 'yyyy年MM月dd日'}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="scale-subtext" ng-if="score.weidu.length">一、测评结果及解释</div>
+                                        <div class="scale-score" ng-if="score.weidu.length" ng-repeat="group in score.weidu">
+                                            <table class="alone-table table table-hover" ng-if="group.alone.length">
+                                                <caption ng-if="group.name">{{group.name}}</caption>
+                                                <colgroup>
+                                                    <col width="1%">
+                                                    <col width="24%">
+                                                    <col width="15%">
+                                                    <col width="60%">
+                                                </colgroup>
+                                                <thead>
+                                                <th>序号</th>
+                                                <th>维度</th>
+                                                <th>得分</th>
+                                                <th>解释</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="(item, index) in group.alone">
+                                                    <td>{{index + 1}}</td>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.value}}</td>
+                                                    <td>{{item.describes}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="scale-answerlist"></div>
                                     </div>
-                                    <div class="scale-answerlist"></div>
                                 </div>
                             </div>
                         </div>

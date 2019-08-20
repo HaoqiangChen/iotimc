@@ -1,4 +1,21 @@
 .ftapp-userinfo {
-    padding: 0 5%;
-    text-align: center;
+    padding: 0 10% 15px;
+}
+
+.ftapp-userinfo .item {
+}
+
+.ftapp-userinfo .item span {
+    display: inline-block;
+}
+
+.ftapp-userinfo .item span.underline {
+    min-width: 50%;
+    border-bottom: 1px solid #000;
+}
+
+.ftapp-userinfo .item span i {
+    padding: 0 4px 0 2px;
+    margin-right: 2px;
+    border: 1px solid #000;
 }
