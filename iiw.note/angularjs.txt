@@ -4,13 +4,14 @@ angular.js笔记
 
 内置指令
 ng-show和ng-hide用来显隐元素的
-ng-class 动态为元素绑定类，三种绑定方式
-  对象，属性名为类名，属性值为布尔值，也可以用表达式的结果true或false
-{red: x>3, green: x<=3}
-变量，变量可以插入多个类，通过空格隔开
-举例：$scope.activeClass = 'red green yellow'，
-渲染后：class="red green yellow"
-数组，数组的每个成员表示一个类
+ng-class 动态为元素绑定类，以下 4 种绑定方式
+（1）变量，变量可以插入多个类，通过空格隔开
+ng-class="变量1 变量2 变量3"
+（2）用{{}} 包住的变量表达式
+（3）对象，属性名为类名，属性值为布尔值，也可以用表达式的结果true或false
+{'red': x>3, 'fa-circle': x<=3}
+（4）数组，数组的每个成员表示一个类
+ng-class="{true:'green',false:'red'}[num]"
 ng-style 动态为元素添加样式
 对象：{color: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}
 变量：变量就是一个对象，就是把上面第一种方式拿到js中

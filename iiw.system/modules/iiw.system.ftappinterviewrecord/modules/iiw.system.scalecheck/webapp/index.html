@@ -9,145 +9,169 @@
                     <div class="ui-layout-row system-scalecheck-page-content" ui-layout="{ flow: 'row'}"
                          options="{dividerSize:'0'}">
                         <div class="ui-layout-container" ui-layout-container>
-                            <div class="layout-full">
+                            <div class="layout-full system-scalecheck-container">
                                 <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                                     <div class="loading-toast">
                                         <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
                                         <p class="loading-content">{{loading.content}}...</p>
                                     </div>
                                 </div>
-                                <div class="layout-full i-scroll2 system-scalecheck-container">
-                                    <div class="scalecheck-container">
-                                        <div class="scale-header">
-                                            <div class="scale-name">{{wjData.name}}</div>
-                                            <div class="ftapp-userinfo">
-                                                <div class="row">
-                                                    <div class="col-md-5 item">
-                                                        <label>访谈员编号：</label>
-                                                        <span ng-if="userDetails.interviewercode.length"><i ng-repeat="(i, num) in userDetails.interviewercode track by i">{{num}}</i></span>
-                                                        <span ng-if="!userDetails.interviewercode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                                                    </div>
-                                                    <div class="col-md-3 item">
-                                                        <label>访谈员姓名：</label>
-                                                        <span class="underline">{{userDetails.interviewername}}</span>
-                                                    </div>
-                                                    <div class="col-md-4 item">
-                                                        <label>联系方式：</label>
-                                                        <span class="underline">{{userDetails.phone}}</span>
-                                                    </div>
+                                <div class="scalecheck-container">
+                                    <div class="scale-header">
+                                        <div class="scale-name">{{wjData.name}}</div>
+                                        <div class="ftapp-userinfo">
+                                            <div class="row">
+                                                <div class="col-md-5 item">
+                                                    <label>访谈员编号：</label>
+                                                    <span ng-if="userDetails.interviewercode.length"><i ng-repeat="(i, num) in userDetails.interviewercode track by i">{{num}}</i></span>
+                                                    <span ng-if="!userDetails.interviewercode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-5 item">
-                                                        <label>督导员编号：</label>
-                                                        <span ng-if="userDetails.supervisorcode.length"><i ng-repeat="(i, num) in userDetails.supervisorcode track by i">{{num}}</i></span>
-                                                        <span ng-if="!userDetails.supervisorcode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                                                    </div>
-                                                    <div class="col-md-3 item">
-                                                        <label>督导员姓名：</label>
-                                                        <span class="underline">{{userDetails.supervisor}}</span>
-                                                    </div>
-                                                    <div class="col-md-4 item">
-                                                        <label>联系方式：</label>
-                                                        <span class="underline">{{userDetails.supervisorphone}}</span>
-                                                    </div>
+                                                <div class="col-md-3 item">
+                                                    <label>访谈员姓名：</label>
+                                                    <span class="underline">{{userDetails.interviewername}}</span>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-5 item">
-                                                        <label>被访谈人员编号：</label>
-                                                        <span ng-if="userDetails.bm.length"><i ng-repeat="(i, num) in userDetails.bm track by i">{{num}}</i></span>
-                                                        <span ng-if="!userDetails.bm.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                                                    </div>
-                                                    <div class="col-md-3 item">
-                                                        <label>被访谈人员姓名：</label>
-                                                        <span class="underline">{{userDetails.criminalname}}</span>
-                                                    </div>
-                                                    <div class="col-md-4 item">
-                                                        <label>被访谈人员身份证：</label>
-                                                        <span class="underline">{{userDetails.zjhm}}</span>
-                                                    </div>
+                                                <div class="col-md-4 item">
+                                                    <label>联系方式：</label>
+                                                    <span class="underline">{{userDetails.phone}}</span>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-5 item">
-                                                        <label>访谈日期：</label>
-                                                        <span class="underline">{{userDetails.starttime | date: 'yyyy年MM月dd日'}}</span>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5 item">
+                                                    <label>督导员编号：</label>
+                                                    <span ng-if="userDetails.supervisorcode.length"><i ng-repeat="(i, num) in userDetails.supervisorcode track by i">{{num}}</i></span>
+                                                    <span ng-if="!userDetails.supervisorcode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                </div>
+                                                <div class="col-md-3 item">
+                                                    <label>督导员姓名：</label>
+                                                    <span class="underline">{{userDetails.supervisor}}</span>
+                                                </div>
+                                                <div class="col-md-4 item">
+                                                    <label>联系方式：</label>
+                                                    <span class="underline">{{userDetails.supervisorphone}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5 item">
+                                                    <label>被访谈人员编号：</label>
+                                                    <span ng-if="userDetails.bm.length"><i ng-repeat="(i, num) in userDetails.bm track by i">{{num}}</i></span>
+                                                    <span ng-if="!userDetails.bm.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                </div>
+                                                <div class="col-md-3 item">
+                                                    <label>被访谈人员姓名：</label>
+                                                    <span class="underline">{{userDetails.criminalname}}</span>
+                                                </div>
+                                                <div class="col-md-4 item">
+                                                    <label>被访谈人员身份证：</label>
+                                                    <span class="underline">{{userDetails.zjhm}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5 item">
+                                                    <label>访谈日期：</label>
+                                                    <span class="underline">{{userDetails.starttime | date: 'yyyy年MM月dd日'}}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="scale-subtext" ng-if="score.weidu">一、测评结果及解释</div>
-                                        <div class="scale-score" ng-if="score.weidu.length" ng-repeat="group in score.weidu">
-                                            <table class="alone-table table table-hover iiw-system-table-container" ng-if="group.alone.length">
-                                                <caption ng-if="group.name">{{group.name}}</caption>
-                                                <colgroup>
-                                                    <col width="10%">
-                                                    <col width="20%">
-                                                    <col width="15%">
-                                                    <col width="55%">
-                                                </colgroup>
-                                                <thead>
-                                                <th>序号</th>
-                                                <th>维度</th>
-                                                <th>得分</th>
-                                                <th>解释</th>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="(index, item) in group.alone track by index">
-                                                    <td>{{index + 1}}</td>
-                                                    <td>{{item.name}}</td>
-                                                    <td>{{item.value}}</td>
-                                                    <td>{{item.describes}}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <table class="weidu-table table table-hover iiw-system-table-container" ng-if="group.rows.length">
-                                                <caption v-if="group.name">{{group.name}}</caption>
-                                                <colgroup>
-                                                    <col width="10%">
-                                                    <col width="20%">
-                                                    <col width="15%">
-                                                    <col width="55%">
-                                                </colgroup>
-                                                <thead>
-                                                <th>序号</th>
-                                                <th>维度</th>
-                                                <th>得分</th>
-                                                <th>解释</th>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="(index, item) in group.rows track by index">
-                                                    <td>{{index + 1}}</td>
-                                                    <td>{{item.name}}</td>
-                                                    <td>{{item.value}}</td>
-                                                    <td>{{item.describes}}</td>
-                                                </tr>
-                                                <tr ng-if="group.total">
-                                                    <td colspan="3">平均分</td>
-                                                    <td>{{group.total}}</td>
-                                                </tr>
-                                                <tr ng-if="score.total && index === 0">
-                                                    <td ng-if="score.describes" colspan="2">总分</td>
-                                                    <td ng-if="!score.describes" colspan="3">总分</td>
-                                                    <td>{{score.total}}</td>
-                                                    <td ng-if="score.describes">{{score.describes}}</td>
-                                                </tr>
-                                                <tr ng-if="score.minutes && index === 0">
-                                                    <td colspan="3">答题时长</td>
-                                                    <td>{{score.minutes}}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="scale-answerlist"></div>
+                                    </div>
+                                    <div class="scale-subtext" ng-if="score.weidu">一、测评结果及解释</div>
+                                    <div class="scale-score" ng-if="score.weidu.length" ng-repeat="group in score.weidu">
+                                        <table class="table table-bordered score-table" ng-if="group.alone.length">
+                                            <caption ng-if="group.name">{{group.name}}</caption>
+                                            <colgroup>
+                                                <col width="10%">
+                                                <col width="20%">
+                                                <col width="15%">
+                                                <col width="55%">
+                                            </colgroup>
+                                            <thead>
+                                            <th>序号</th>
+                                            <th>维度</th>
+                                            <th>得分</th>
+                                            <th>解释</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="(index, item) in group.alone track by index">
+                                                <td>{{index + 1}}</td>
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.value}}</td>
+                                                <td>{{item.describes}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-bordered score-table" ng-if="group.rows.length">
+                                            <caption v-if="group.name">{{group.name}}</caption>
+                                            <colgroup>
+                                                <col width="10%">
+                                                <col width="20%">
+                                                <col width="15%">
+                                                <col width="55%">
+                                            </colgroup>
+                                            <thead>
+                                            <th>序号</th>
+                                            <th>维度</th>
+                                            <th>得分</th>
+                                            <th>解释</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="(index, item) in group.rows track by index">
+                                                <td>{{index + 1}}</td>
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.value}}</td>
+                                                <td>{{item.describes}}</td>
+                                            </tr>
+                                            <tr ng-if="group.total">
+                                                <td colspan="3">平均分</td>
+                                                <td>{{group.total}}</td>
+                                            </tr>
+                                            <tr ng-if="score.total && $first">
+                                                <td ng-if="score.describes" colspan="2">总分</td>
+                                                <td ng-if="!score.describes" colspan="3">总分</td>
+                                                <td>{{score.total}}</td>
+                                                <td ng-if="score.describes">{{score.describes}}</td>
+                                            </tr>
+                                            <tr ng-if="score.minutes && $first">
+                                                <td colspan="3">答题时长</td>
+                                                <td>{{score.minutes}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="scale-subtext" ng-if="answerList.length">二、作答明细</div>
+                                    <div class="scale-answerlist" ng-if="answerList.length">
+                                        <fieldset class='fieldset' ng-repeat="(qnumber, answer) in answerList track by qnumber">
+                                            <div class='field' topic='answer.idx' type='answer.type'>
+                                                <div ng-if="answer.qclassify" class='field-classify'>【{{answer.qclassify}}】</div>
+                                                <div ng-if="answer.qpremise" class='field-premise'>{{answer.qpremise}}</div>
+
+                                                <div class='field-label' ng-if="answer.type === '1'"> (单选) {{answer.name}}</div>
+                                                <div class='field-label' ng-if="answer.type !== '1'">{{answer.name}}</div>
+
+                                                <div ng-if="answer.qtip" class='field-tip'>{{answer.qtip}}</div>
+
+                                                <div class="field-controlgroup" ng-if="answer.type === '1'">
+                                                    <div class="field-radio" ng-repeat="(id, radio) in answer.option track by id">
+                                                        <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
+                                                        <label>{{radio.label}}</label>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="answer.type !== '1'" class="field-input">
+                                                    <span ng-repeat="(id, input) in answer.option track by id">
+                                                        {{input.prefix}}<b class="input-text">{{input.value}}</b>{{input.suffix}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div ui-layout-container size="60px">
                             <div class="layout-full" style="background-color: rgba(0, 0, 0, 0.25); padding: 10px;">
-                                <button ng-if="wjData.status === 'O'" class="btn btn-warning col-md-4" type="button"ng-click="scalecheck.reinvestigation()">重新调查</button>
-                                <button ng-if="wjData.status === 'O'" class="btn btn-success col-md-4" type="button"ng-click="scalecheck.audit()">审核通过</button>
-                                <button ng-if="wjData.status === 'O'" class="btn btn-danger col-md-4" type="button" ng-click="scalecheck.back()">返回</button>
-                                <button ng-if="wjData.status !== 'O'" class="btn btn-danger col-md-6" type="button" ng-click="scalecheck.back()" style="position: absolute;left: 25%;">返回</button>
+                                <button ng-if="record.status === 'O'" class="btn btn-warning col-md-4" type="button"ng-click="scalecheck.reinvestigation()">重新调查</button>
+                                <button ng-if="record.status === 'O'" class="btn btn-success col-md-4" type="button"ng-click="scalecheck.audit()">审核通过</button>
+                                <button ng-if="record.status === 'O'" class="btn btn-danger col-md-4" type="button" ng-click="scalecheck.back()">返回</button>
+                                <button ng-if="record.status !== 'O'" class="btn btn-danger col-md-6" type="button" ng-click="scalecheck.back()" style="position: absolute;left: 25%;">返回</button>
                             </div>
                         </div>
                     </div>

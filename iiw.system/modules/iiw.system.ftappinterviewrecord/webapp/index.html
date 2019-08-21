@@ -9,7 +9,18 @@
                     <div class="ui-layout-row system-interviewrecord-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-interviewrecord-bar layout-full">
-                                <div class="col-md-2 pull-left select-group">
+                                <div class="col-md-1">
+                                    <a class="btn btn-success" ng-click="record.export()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>导出记录</a>
+                                </div>
+                                <div class="col-md-2 select-group">
+                                    <label>问卷类型: </label>
+                                    <select class="form-control" ng-change="record.getRecordList()" ng-model="record.filter.searchText">
+                                        <option value="">全部</option>
+                                        <option value="问卷">问卷</option>
+                                        <option value="量表">量表</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 select-group">
                                     <label>问卷状态: </label>
                                     <select class="form-control" ng-change="record.getRecordList()" ng-model="record.filter.status">
                                         <option ng-repeat="(key, type) in record.types track by key" value="{{type.status}}">{{type.statusname}}</option>
@@ -35,6 +46,9 @@
                                     <table class="table table-hover iiw-system-table-container">
                                         <thead>
                                         <tr>
+                                            <th class="iiw-system-table-header-container">
+                                                <input id="checkAll" type="checkbox" ng-model="record.selectAll" ng-change="record.selAll()">
+                                            </th>
                                             <th>序号</th>
                                             <th>访谈员</th>
                                             <th>省份</th>
@@ -50,7 +64,10 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="item in record.list">
+                                        <tr ng-repeat="item in record.list" ng-class="{'select': item.checked}">
+                                            <td class="iiw-system-table-header-container">
+                                                <system-row-check ng-model="item.checked" class="rowCheck"></system-row-check>
+                                            </td>
                                             <td>{{$index+1}}</td>
                                             <td>{{item.interviewer}}</td>
                                             <td>{{item.sf}}</td>
@@ -62,7 +79,7 @@
                                             <td>{{ ({wjlx_ftwj:'问卷',wjlx_lb:'量表'}[item.nairetype]) }}</td>
                                             <td>{{item.nairename}}</td>
                                             <td style="font-size: 18px;" ng-style="{color: item.statusname === '待调查' ? '#f04124' : item.statusname === '待审核' ? '#f0ad4e' : item.statusname === '已审核' ? '#5cb85c' : '#a5a5a5'}">{{item.statusname}}</td>
-                                            <td ng-if="item.statusname === '待调查'">请在APP上做访谈调查</td>
+                                            <td ng-if="item.statusname === '待调查'">请在APP上完成访谈调查</td>
                                             <td ng-if="item.statusname === '待审核'">
                                                 <a class="btn btn-info" ng-click="record.check(item)" style="padding: 8px 16px;"><i class="fa fa-gavel fa-fw"></i>审核</a>
                                             </td>

@@ -12,10 +12,11 @@ define([
         mainService.moduleName = '访谈APP管理';
         $scope.title = '访谈记录';
         $scope.keyword = '';
+        $scope.selectAll = false;
 
         $scope.record = {
             filter: {
-                status: 'P',
+                status: 'O',
                 searchText: ''
             },
             params: {
@@ -46,7 +47,7 @@ define([
                     iAjax
                         .post(`${url}&authorization=${token}`, data)
                         .then(function (data) {
-                            // console.log(data);
+                            console.log(data);
                             if (data.result && data.result.rows) {
                                 $scope.record.list = data.result.rows;
                                 $scope.loading.isLoading = false;
@@ -76,11 +77,23 @@ define([
                 }
             },
 
+            selAll: function () {
+                $scope.selectAll = !$scope.selectAll;
+                $.each($scope.record.list, function (i, o) {
+                    o.checked = $scope.selectAll;
+                });
+            },
+
             keypress: function (e) {
                 if (e.keyCode == 13) {
                     this.getRecordList();
                 }
             },
+
+            export: function () {
+                var url = iAjax.formatURL('security/information/information.do?action=writeSyuserMould&ptype=true');
+                $scope.$broadcast('downExcel', url);
+            }
         };
 
         // 模块加载完成后初始化事件

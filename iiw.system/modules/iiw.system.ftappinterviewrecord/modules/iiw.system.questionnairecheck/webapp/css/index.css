@@ -5,3 +5,27 @@
 .page-title {
     padding-bottom: 20px;
 }
+
+.system-questionnairecheck-container {
+    overflow: auto;
+}
+
+.questionnaire-name {
+    text-align: center;
+    font-size: 24px;
+}
+
+.questionnaire-time {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.questionnairecheck-container {
+    padding: 10px 15% 30px;
+}
+
+.questionnaire-subtext {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
