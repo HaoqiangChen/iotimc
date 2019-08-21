@@ -149,14 +149,14 @@
                                                 <div ng-if="answer.qtip" class='field-tip'>{{answer.qtip}}</div>
 
                                                 <div class="field-controlgroup" ng-if="answer.type === '1'">
-                                                    <div class="field-radio" ng-repeat="(id, radio) in answer.option track by id">
+                                                    <div class="field-radio" ng-repeat="(idx, radio) in answer.option track by idx">
                                                         <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
                                                         <label>{{radio.label}}</label>
                                                     </div>
                                                 </div>
 
                                                 <div ng-if="answer.type !== '1'" class="field-input">
-                                                    <span ng-repeat="(id, input) in answer.option track by id">
+                                                    <span ng-repeat="(idx, input) in answer.option track by idx">
                                                         {{input.prefix}}<b class="input-text">{{input.value}}</b>{{input.suffix}}
                                                     </span>
                                                 </div>

@@ -1,3 +1,40 @@
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ftapp-userinfo {
+    padding: 0 0 15px;
+}
+
+.ftapp-userinfo .item {
+}
+
+.ftapp-userinfo .item span {
+    display: inline-block;
+}
+
+.ftapp-userinfo .item span.underline {
+    min-width: 50%;
+    border-bottom: 1px solid #000;
+}
+
+.ftapp-userinfo .item span i {
+    padding: 0 4px 0 2px;
+    margin-right: 2px;
+    border: 1px solid #000;
+}
+
+.usertype {
+    margin-left: 20px;
+}
+
+.usertype i {
+    margin-right: 5px;
+}
+
+
 .system-questionnairecheck-page-content {
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -28,4 +65,13 @@
 .questionnaire-subtext {
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+.answer-list {
+    margin-bottom: 20px;
+}
+
+.answer-list .title {
+    font-size: 18px;
+    font-weight: bold;
 }

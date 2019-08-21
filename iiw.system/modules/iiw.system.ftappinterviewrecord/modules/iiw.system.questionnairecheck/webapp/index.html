@@ -89,6 +89,48 @@
                                         <ul>
                                             <li class="answer-list" ng-repeat="(type, group) in answerList track by type">
                                                 <div class="title">{{group.type}}、{{group.name}}</div>
+                                                <fieldset class='fieldset' ng-repeat="(qnumber, answer) in group.question track by qnumber">
+                                                    <div class='field' topic='answer.idx' type='answer.type'>
+                                                        <div ng-if="answer.qclassify" class='field-classify'>【{{answer.qclassify}}】</div>
+                                                        <div ng-if="answer.qpremise" class='field-premise'>{{answer.qpremise}}</div>
+
+                                                        <div class='field-label' ng-if="answer.type === '1'">{{answer.code}}、 (单选) {{answer.name}}</div>
+                                                        <div class='field-label' ng-if="answer.type === '2'">{{answer.code}}、 (多选) {{answer.name}}</div>
+                                                        <div class='field-label' ng-if="answer.type !== '1' && answer.type !== '2'">{{answer.code}}、{{answer.name}}</div>
+
+                                                        <div ng-if="answer.qtip" class='field-tip'>{{answer.qtip}}</div>
+
+                                                        <div class="field-controlgroup" ng-if="answer.type === '1'">
+                                                            <div class="field-radio" ng-repeat="(idx, radio) in answer.option track by idx">
+                                                                <div class="radio-container">
+                                                                    <i class="fa" ng-class="{'fa-circle': !radio.isChecked, 'fa-check-circle': radio.isChecked}"></i>
+                                                                    <label>{{radio.label}}</label>
+                                                                </div>
+                                                                <div class="field-child" ng-if="radio.isChecked && radio.child">单选子问题嵌套</div>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="field-controlgroup" ng-if="answer.type === '2'">
+                                                            <div class="field-checkbox" ng-repeat="(idx, checkbox) in answer.option track by idx">
+                                                                <div class="checkbox-container">
+                                                                    <i class="fa" ng-class="{'fa-square': !checkbox.isChecked, 'fa-check-square': checkbox.isChecked}"></i>
+                                                                    <label>{{checkbox.label}}</label>
+                                                                </div>
+                                                                <div class="field-child" ng-if="checkbox.isChecked && checkbox.child">多选子问题嵌套</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="field-input" ng-if="answer.type === '3'">
+                                                        </div>
+
+                                                        <div class="field-select" ng-if="answer.type === '4'">
+                                                            <div class="text" ng-repeat="option in answer.option" ng-if="option.isChecked">{{option.label}}</div>
+                                                        </div>
+
+                                                    </div>
+                                                </fieldset>
                                             </li>
                                         </ul>
                                     </div>
