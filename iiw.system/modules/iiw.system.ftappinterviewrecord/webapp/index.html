@@ -10,8 +10,8 @@
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-interviewrecord-bar layout-full">
                                 <div class="col-md-2">
-                                    <a class="btn btn-danger" ng-click="record.del()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>删除</a>
-                                    <a class="btn btn-success" ng-click="record.export()" style="padding: 8px 16px;"><i class="fa fa-file-excel-o fa-fw"></i>导出记录</a>
+                                    <a class="btn btn-danger" ng-click="record.del()" style="padding: 8px 16px;" ng-disabled="canDel"><i class="fa fa-minus fa-fw"></i>删除</a>
+                                    <a class="btn btn-success" ng-click="record.export()" style="padding: 8px 16px;" ng-disabled="canExport"><i class="fa fa-file-excel-o fa-fw"></i>导出记录</a>
                                 </div>
                                 <div class="col-md-2 select-group">
                                     <label>问卷类型: </label>

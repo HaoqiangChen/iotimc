@@ -1,7 +1,23 @@
-.system-useraudit-bar{
+.system-useraudit-bar {
     padding: 4px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     overflow: hidden;
+}
+
+.system-useraudit-bar .select-group {
+    text-align: center;
+}
+
+.system-useraudit-bar .select-group label {
+    margin-right: 10px;
+}
+
+.system-useraudit-bar .select-group select {
+    display: inline-block;
+    width: 50%;
+    /*background-color: rgba(0, 0, 0, .3);*/
+    /*color: #fff;*/
+    /*border: 1px solid #fff;*/
 }
 .system-useraudit-page-content{
     background-color: rgba(0,0,0,0.3);

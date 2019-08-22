@@ -1,83 +1,74 @@
 /**
  * 访谈APP用户审核
- * Created by chq on 2019-07-10.
+ * Created by chq on 2019-08-10.
  */
 define([
     'app',
-    'cssloader!system/ftappuseraudit/css/index.css'
-], function (app) {
+    'cssloader!system/ftappuseraudit/css/loading',
+    'cssloader!system/ftappuseraudit/css/index.css',
+    'system/js/directives/systemTreeViewDirective'
+], function (app, angularAMD) {
+    var packageName = 'iiw.system.syuser';
+
     app.controller('ftappUserAuditController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '用户审核';
-        $scope.currentPage = 1;
-        $scope.totalPage = 1;
-        $scope.pageSize = 10;
-        $scope.searchTitle = '';
+        $scope.keyword = '';
         $scope.selectAll = false;
+        $scope.canMod = true;
+        $scope.canAudit = true;
+        $scope.canDel = true;
 
-        // 模块加载完成后初始化事件
-        $scope.$on('ftappUserAuditControllerOnEvent', function () {
-            init();
-        });
+        $scope.audit = {
+            filter: {
+                name: ''
+            },
+            params: {
+                pageNo: 0,
+                pageSize: 10
+            },
+            userList: [],
+            chooseList: [],
 
-        function init() {
-            getUserList();
-        }
+            getUserList: function () {
+                $scope.loading = {
+                    isLoading: true,
+                    content: '访谈APP用户列表加载中'
+                };
 
-        // 查询所有用户
-        function getUserList(filterValue) {
-            var url, data;
-            url = '/terminal/interview/user.do?action=getAllSyuser';
-            data = {
-                filter: {
-                    name: filterValue
-                },
-                params: {
-                    pageNo: $scope.currentPage,
-                    pageSize: $scope.pageSize
-                }
-            };
+                var url, data;
+                url = 'http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=getAllSyuser';
+                data = {
+                    filter: this.filter,
+                    params: this.params
+                };
 
-            iAjax
-                .post(url, data)
-                .then(function (data) {
-                        // console.log(data);
-                        if (data.result && data.result.rows) {
-                            $scope.userList = data.result.rows;
-                        } else {
-                            $scope.userList = [];
-                        }
-                        if (data.result.params) {
-                            var params = data.result.params;
-                            $scope.totalSize = params.totalSize;
-                            $scope.pageSize = params.pageSize;
-                            $scope.totalPage = params.totalPage;
-                            $scope.currentPage = params.pageNo;
-                        }
-                    },
-                    function (data) {
-                    })
-        }
+                getToken(function (token) {
+                    iAjax
+                        .post(`${url}&authorization=${token}`, data)
+                        .then(function (data) {
+                            console.log(data);
+                            if (data.result && data.result.rows) {
+                                $scope.audit.userList = data.result.rows;
+                                $scope.loading.isLoading = false;
+                                $scope.selectAll = false;
+                            } else {
+                                $scope.audit.userList = [];
+                            }
+                            if (data.result.params) {
+                                $scope.audit.params = data.result.params;
+                            }
+                        })
+                })
+            },
 
-        $scope.getList = function () {
-            $scope.searchText = this.searchTitle;
-            getUserList($scope.searchText);
-        };
-
-        $scope.pageChanged = function () {
-            $scope.currentPage = this.currentPage;
-            getUserList();
-        };
-
-        $scope.audit = function () {
-            var aSelect = _getAvailableSelect(),
-                aName = [];
-
-            if (aSelect.length > 0) {
-
-                aName = aSelect.map(function (select, i) {
-                    return (i + 1 + '、' + select.name);
-                });
+            audit: function () {
+                var aSelect = _.filter($scope.audit.chooseList, function (item) {
+                        return item.isagree !== '通过';
+                    }),
+                    aName = aSelect.map(function (select, i) {
+                        return (i + 1 + '、' + select.name);
+                    });
 
                 iConfirm.show({
                     scope: $scope,
@@ -86,122 +77,108 @@ define([
                     buttons: [{
                         text: '确认',
                         style: 'button-primary',
-                        action: 'confirmAuditUser'
+                        action: 'audit.confirmAuditUser'
                     }, {
                         text: '取消',
                         style: 'button-caution',
-                        action: 'confirmClose'
+                        action: 'audit.confirmClose'
                     }]
                 });
+            },
+            confirmAuditUser: function (id) {
+                iConfirm.close(id);
 
-            } else {
-                var message = {};
-                message.level = 3;
-                message.title = $scope.title;
-                message.content = "请选择一条或以上审核状态不为【通过】的数据进行审核！";
-                iMessage.show(message, false);
-            }
-        };
-
-        $scope.mod = function () {
-            var rows = _.where($scope.userList, {checked: true});
-            if (rows.length > 0) {
-                if (rows.length == 1) {
-                    m_scode = rows[0].id;
-
-                    $state.go('system.ftappuseraudit.mod');
-                } else {
-                    var message = {};
-                    message.id = new Date();
-                    message.level = 3;
-                    message.title = "用户修改";
-                    message.content = "用户修改不能同时修改多条信息，请重新选择!";
-                    iMessage.show(message, false, $scope);
-                }
-
-            } else {
-                var message = {};
-                message.id = new Date();
-                message.level = 3;
-                message.title = "用户修改";
-                message.content = "请选择需要修改的一条用户信息!";
-                iMessage.show(message, false, $scope);
-            }
-
-        };
-
-        $scope.del = function () {
-            var aSelect = _getAvailableSelect(),
-                aName = [];
-
-            if (aSelect.length > 0) {
-
-                aName = aSelect.map(function (select, i) {
-                    return (i + 1 + '、' + select.name);
+                var aSelect = _.filter($scope.audit.chooseList, function (item) {
+                    return item.isagree !== '通过';
                 });
 
+                var data = {filter: {id: []}};
+                $.each(aSelect, function (i, o) {
+                    data.filter.id.push(o.id);
+                });
+                iAjax.post('/terminal/interview/user.do?action=approvedLogin', data).then(function () {
+                    _remind(1, '用户审核成功');
+                    $scope.audit.getUserList();
+                }, function () {
+                    _remind(4, '网路连接失败');
+                })
+            },
+            confirmClose: function (id) {
+                iConfirm.close(id);
+            },
+
+            mod: function () {
+                var userInfo = _.where($scope.audit.userList, {checked: true})[0];
+                console.log(userInfo);
+                $state.go('system.ftappuseraudit.add');
+            },
+            del: function () {
+                var arrName = $scope.audit.chooseList.map(function (select, i) {
+                    return (i + 1 + '、' + select.name);
+                });
                 iConfirm.show({
                     scope: $scope,
                     title: '确认删除？',
-                    content: '共选择' + aSelect.length + '条数据，分别为：<br>' + aName.join('<br>'),
+                    content: '共选择【未审核】用户' + $scope.audit.chooseList.length + '条数据，分别为：<br>' + arrName.join('<br>'),
                     buttons: [{
                         text: '确认',
                         style: 'button-primary',
-                        action: 'confirmDelUser'
+                        action: 'audit.confirmDelUser'
                     }, {
                         text: '取消',
                         style: 'button-caution',
-                        action: 'confirmClose'
+                        action: 'audit.confirmClose'
                     }]
                 });
+            },
+            confirmDelUser: function (id) {
+                iConfirm.close(id);
 
+                var data = {filter: {id: []}};
+                $.each($scope.audit.chooseList, function (i, o) {
+                    data.filter.id.push(o.id);
+                });
+                iAjax.post('/terminal/interview/user.do?action=xxx', data).then(function () {
+                    _remind(1, '用户审核成功');
+                    $scope.audit.getUserList();
+                }, function () {
+                    _remind(4, '网路连接失败');
+                })
+            },
+
+            selAll: function () {
+                $scope.selectAll = !$scope.selectAll;
+                $.each($scope.audit.userList, function (i, o) {
+                    o.checked = $scope.selectAll;
+                });
+            },
+        };
+        $scope.$watch('audit.userList', function (newValue, oldValue) {
+            $scope.audit.chooseList = newValue.filter(_ => _.checked);
+            if ($scope.audit.chooseList.length) {
+                $scope.canDel = false;
+                if ($scope.audit.chooseList.length === 1) $scope.canMod = false;
+                else $scope.canMod = true;
+                if ($scope.audit.chooseList.filter(_ => _.isagree !== '通过').length) $scope.canAudit = false;
+                else $scope.canAudit = true;
             } else {
-                var message = {};
-                message.level = 3;
-                message.title = $scope.title;
-                message.content = "请选择一条或以上状态不为【系统预设】的数据进行删除！";
-                iMessage.show(message, false);
+                $scope.canMod = true;
+                $scope.canAudit = true;
+                $scope.canDel = true;
             }
-        };
+        }, true);
 
-        $scope.confirmAuditUser = function (id) {
-            iConfirm.close(id);
+        // 模块加载完成后初始化事件
+        $scope.$on('ftappUserAuditControllerOnEvent', function () {
+            $scope.audit.getUserList();
+        });
 
-            var aSelect = _getAvailableSelect();
-
-            var data = {filter: {id: []}};
-            $.each(aSelect, function (i, o) {
-                data.filter.id.push(o.id);
-            });
-            iAjax.post('/terminal/interview/user.do?action=approvedLogin', data).then(function () {
-                _remind(1, '用户审核成功');
-                getUserList();
-            }, function () {
-                _remind(4, '网路连接失败');
-            })
-        };
-
-        $scope.confirmClose = function (id) {
-            iConfirm.close(id);
-        };
-
-        $scope.keypresslist = function (event, searchTitle) {
-            if (event.keyCode == 13) {
-                $scope.searchTitle = searchTitle;
-                $scope.getList();
-            }
-        };
-
-        $scope.selAll = function () {
-            $scope.selectAll = !$scope.selectAll;
-            $.each($scope.userList, function (i, o) {
-                o.checked = $scope.selectAll;
-            });
-        };
-
-        function _getAvailableSelect() {
-            return _.filter($scope.userList, function (item) {
-                return item.checked && item.isagree != '通过';
+        function getToken(callback) {
+            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+                callback(data.token);
+            }, function (err) {
+                _remind(4, '请求失败，请查看网络状态!');
+                $scope.loading.content = '请求失败，请查看网络状态';
             });
         }
 
@@ -215,5 +192,26 @@ define([
 
             iMessage.show(message, false);
         }
-    }]);
+    }])
+        .controller('ftappUserItemController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
+
+            $scope.$on('ftappUserItemControllerOnEvent', function () {
+                console.log('访谈APP用户修改页面');
+            });
+        }]);
+
+    // 模块内部路由
+    angularAMD.config(function ($stateProvider) {
+        $stateProvider
+        // .state('system.ftappuseraudit.add', {
+        //     url: '/add',
+        //     controller: 'ftappUserItemController',
+        //     templateUrl: $.soa.getWebPath(packageName) + '/view/add.html'
+        // })
+            .state('system.ftappuseraudit.mod', {
+                url: '/mod',
+                controller: 'ftappUserItemController',
+                templateUrl: $.soa.getWebPath(packageName) + '/view/mod.html'
+            });
+    });
 });

@@ -13,6 +13,8 @@ define([
         $scope.title = '访谈记录';
         $scope.keyword = '';
         $scope.selectAll = false;
+        $scope.canDel = true;
+        $scope.canExport = true;
 
         $scope.record = {
             filter: {
@@ -25,6 +27,7 @@ define([
                 pageSize: 10
             },
             list: [],
+            chooseList: [],
             types: [
                 {status: '', statusname: '全部'},
                 {status: 'W', statusname: '待调查'},
@@ -52,6 +55,7 @@ define([
                             if (data.result && data.result.rows) {
                                 $scope.record.list = data.result.rows;
                                 $scope.loading.isLoading = false;
+                                $scope.selectAll = false;
                             } else {
                                 $scope.record.list = [];
                             }
@@ -79,49 +83,30 @@ define([
             },
 
             del: function () {
-                var aSelect = _.filter($scope.record.list, function (item) {
-                        return item.checked && item.status === 'W';
-                    }),
-                    aName = [];
+                var arrName = $scope.record.chooseList.map(function (select, i) {
+                    return (i + 1 + '、' + select.name);
+                });
 
-                if (aSelect.length > 0) {
-
-                    aName = aSelect.map(function (select, i) {
-                        return (i + 1 + '、' + select.xm);
-                    });
-
-                    iConfirm.show({
-                        scope: $scope,
-                        title: '确认删除？',
-                        content: '共选择' + aSelect.length + '条数据，分别为：<br>' + aName.join('<br>'),
-                        buttons: [{
-                            text: '确认',
-                            style: 'button-primary',
-                            action: 'record.confirmDelRecord'
-                        }, {
-                            text: '取消',
-                            style: 'button-caution',
-                            action: 'record.confirmClose'
-                        }]
-                    });
-
-                } else {
-                    var message = {};
-                    message.level = 3;
-                    message.title = $scope.title;
-                    message.content = "请选择一条或以上问卷状态仅为【待调查】的数据进行删除！";
-                    iMessage.show(message, false);
-                }
+                iConfirm.show({
+                    scope: $scope,
+                    title: '确认删除？',
+                    content: '共选择' + $scope.record.chooseList.length + '条数据，分别为：<br>' + arrName.join('<br>'),
+                    buttons: [{
+                        text: '确认',
+                        style: 'button-primary',
+                        action: 'record.confirmDelRecord'
+                    }, {
+                        text: '取消',
+                        style: 'button-caution',
+                        action: 'record.confirmClose'
+                    }]
+                });
             },
             confirmDelRecord: function (id) {
                 iConfirm.close(id);
 
-                var aSelect = _.filter($scope.record.list, function (item) {
-                    return item.checked && item.status === 'W';
-                });
-
                 var data = {filter: {id: []}};
-                $.each(aSelect, function (i, o) {
+                $.each($scope.record.chooseList, function (i, o) {
                     data.filter.id.push(o.id);
                 });
                 iAjax.post('/terminal/interview/record.do?action=approvedLogin', data).then(function () {
@@ -149,8 +134,8 @@ define([
             },
 
             export: function () {
-                var aSelect = _.filter($scope.record.list, function (item) {
-                        return item.checked && item.status === 'P';
+                var aSelect = _.filter($scope.record.chooseList, function (item) {
+                        return item.status === 'P';
                     }),
                     aName = [];
 
@@ -163,7 +148,7 @@ define([
                     iConfirm.show({
                         scope: $scope,
                         title: '确认导出？',
-                        content: '共选择' + aSelect.length + '条数据，分别为：<br>' + aName.join('<br>'),
+                        content: '共选择【已审核】问卷' + aSelect.length + '条数据，分别为：<br>' + aName.join('<br>'),
                         buttons: [{
                             text: '确认',
                             style: 'button-primary',
@@ -188,8 +173,8 @@ define([
             confirmExportRecord: function (id) {
                 iConfirm.close(id);
 
-                var aSelect = _.filter($scope.record.list, function (item) {
-                    return item.checked && item.status === 'P';
+                var aSelect = _.filter($scope.record.chooseList, function (item) {
+                    return item.status === 'P';
                 });
 
                 var data = {filter: {id: []}};
@@ -204,6 +189,17 @@ define([
                 })
             }
         };
+        $scope.$watch('record.list', function (newValue, oldValue) {
+            $scope.record.chooseList = newValue.filter(_ => _.checked);
+            if ($scope.record.chooseList.length) {
+                $scope.canDel = false;
+                if ($scope.record.chooseList.filter(_ => _.status === 'P').length) $scope.canExport = false;
+                else $scope.canExport = true;
+            } else {
+                $scope.canDel = true;
+                $scope.canExport = true;
+            }
+        }, true);
 
         // 模块加载完成后初始化事件
         $scope.$on('ftappInterviewRecordControllerOnEvent', function () {
