@@ -1,0 +1,209 @@
+<div class="widget-header">
+    <span>添加用户</span>
+</div>
+<div class="widget-content">
+    <div class="layout-full">
+        <div style="width:70%;" class="pull-left">
+            <form method="post" class="form-horizontal" id="syuserform" name="syuserform" novalidate>
+                <fieldset>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.code.$invalid || isexist == 1)}">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">用户名</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text" ng-model="entityUserItem.code" placeholder="输入用户名" class="form-control" id="syuser_code" name="syuser_code" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.code == null" style="color:red;">*请输入用户名</lable>
+                            <label ng-show="isexist == 1" style="color:red" >*用户名已存在，请重输！</label>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.name.$invalid)}">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">姓   名</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text" ng-model="entityUserItem.name" placeholder="输入姓名" class="form-control input-transparent" required id="syuser_name" name="syuser_name" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.name == null" style="color:red;">*请输入姓名</lable>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">真实名称</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text" ng-model="entityUserItem.realname" placeholder="输入真实名称" class="form-control input-transparent" id="syuser_realname" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.pwd.$invalid)}">
+                        <div class="col-md-3">
+                            <label for="password-field" class="control-label">密码</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password" ng-model="entityUserItem.pwd" placeholder="输入密码" class="form-control" id="syuser_password" ng-change="checkpwd()" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.pwd == null" style="color:red;">*请输入密码</lable>
+                            <lable ng-show="entityUserItem.pwd != null && !regPwd" style="color:red;">*密码不能包含特殊字符!</lable>
+                            <lable ng-show="entityUserItem.pwd.length != null && entityUserItem.pwd.length < 8" style="color:red;">*密码长度不能少于8位!</lable>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.password3.$invalid || pwdcheckfalg == 1)}">
+                        <div class="col-md-3">
+                            <label for="password-field" class="control-label">确认密码</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password"  ng-model="entityUserItem.password3" placeholder="再次输入密码"  class="form-control" ng-change="checkpwd()" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.password3 == null" style="color:red;">*请输入确认密码</lable>
+                            <lable ng-show="pwdcheckfalg == 1" style="color:red;">*两次密码不正确，请重输入！</lable>
+                            <lable ng-show="entityUserItem.password3 != null && !regPwd" style="color:red;">*密码不能包含特殊字符!</lable>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.syoufk.$invalid)}">
+                        <div class="col-md-3">
+                            <label for="hint-field" class="control-label">所属单位</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="entityUserItem.syouname" placeholder="选择单位" id="syuser_syoufk" ng-click="showOuTree()" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.syoufk == null" style="color:red;">*请选择单位</lable>
+                            <label ng-model="entityUserItem.syoufk" class="hidden"></label>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.syrole.$invalid)}">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">用户权限</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <select id="syuser_syrole" ng-model="entityUserItem.syrole" placeholder="请选择用户权限" class="col-md-6 syuser-select-option" required>
+                                    <option value="">--选择用户权限--</option>
+                                    <option value="{{row.id}}" ng-repeat="row in userRoleList" >{{row.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.syrole == null" style="color:red;">*请选择用户权限</lable>
+                        </div>
+                    </div>
+                    <div class="control-group" >
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">职   位</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="text"  ng-model="entityUserItem.duty" placeholder="输入职位" class="form-control input-transparent" id="syuser_duty" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'has-error' : (syuserform.entityUserItem.status.$invalid)}">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">状   态</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <select  ng-model="entityUserItem.status" placeholder="请选择状态" class="col-md-6 syuser-select-option" id="syuser_status" required>
+                                    <option value="">请选择状态</option>
+                                    <option value="P">启用</option>
+                                    <option value="C">禁用</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable ng-show="entityUserItem.status == null" style="color:red;">*请选择状态</lable>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">锁   定</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <select ng-model="entityUserItem.islock" class="col-md-6 syuser-select-option"  id="syuser_islock" required>
+                                    <option value="">请选择锁定状态</option>
+                                    <option value="N">解锁</option>
+                                    <option value="Y">锁定</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable  ng-show="entityUserItem.islock == null" style="color:red;">*请选择锁定状态</lable>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label">IP地址绑定</label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <select ng-model="entityUserItem.isaddress" class="col-md-6 syuser-select-option" id="syuser_isaddress" required>
+                                    <option value="N">不绑定</option>
+                                    <option value="Y">绑定</option>
+                                </select>
+                                <label>IP地址绑定是设置是否需要限制IP地址访问该用户，不绑定则默认所有IP都可访问此用户，绑定则需配置相应IP地址</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <lable  ng-show="entityUserItem.isaddress == null" style="color:red;">*请选择锁定状态</lable>
+                            <label></label>
+                        </div>
+                    </div>
+                    <div ng-if="entityUserItem.isaddress == 'Y'" class="control-group">
+                        <div class="col-md-3">
+                            <label for="normal-field" class="control-label"></label>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group" id="addressInput">
+                                <input type="text" ng-model="entityUserItem.isaddress1" placeholder="输入绑定IP" class="form-control input-transparent" id="syuser_address1"/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-s-md btn-primary" type="button" ng-click="addDress()">添  加</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div style="width:28%;" class="pull-left">
+            <div class="layout-full">
+                <div class="photo" style="height: 480px;cursor: pointer;" ng-click="showUpUserPhoto()">
+                    <img src="{{entityUserItem.photo}}" class="layout-full"/>
+                </div>
+                <div style="width:150px;margin: 0 auto;">
+                    <input id="upUserPhoto" onchange="angular.element(this).scope().changeUserPhoto()" accept="image/*" type="file" style="display:none;"/>
+                    <button class="btn btn-info" style="margin: 15px auto;" ng-click="showUpUserPhoto()" type="button">选择用户图片</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div>
+            <button class="btn btn-s-md btn-primary" type="button" ng-click="save()" ng-disabled="syuserform.$invalid || regPwd == '' || entityUserItem.pwd.length < 8 || pwdcheckfalg == 1">保     存</button>
+            <button class="btn btn-s-md btn-default" type="button" ng-click="back()">返     回</button>
+        </div>
+    </div>
+</div>
