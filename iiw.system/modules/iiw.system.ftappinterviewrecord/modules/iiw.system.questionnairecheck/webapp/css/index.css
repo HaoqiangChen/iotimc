@@ -1,40 +1,3 @@
-ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.ftapp-userinfo {
-    padding: 0 0 15px;
-}
-
-.ftapp-userinfo .item {
-}
-
-.ftapp-userinfo .item span {
-    display: inline-block;
-}
-
-.ftapp-userinfo .item span.underline {
-    min-width: 50%;
-    border-bottom: 1px solid #000;
-}
-
-.ftapp-userinfo .item span i {
-    padding: 0 4px 0 2px;
-    margin-right: 2px;
-    border: 1px solid #000;
-}
-
-.usertype {
-    margin-left: 20px;
-}
-
-.usertype i {
-    margin-right: 5px;
-}
-
-
 .system-questionnairecheck-page-content {
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -44,7 +7,7 @@ ul, li {
 }
 
 .system-questionnairecheck-container {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .questionnaire-name {
@@ -59,19 +22,22 @@ ul, li {
 }
 
 .questionnairecheck-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    overflow: auto;
+}
+.questionnairecheck-container::-webkit-scrollbar-thumb{min-height: 50px;background-color: #00A8FF;}
+.questionnairecheck-container .questionnaire{
+    position: relative;
     padding: 10px 15% 30px;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .questionnaire-subtext {
     font-size: 20px;
     margin-bottom: 10px;
 }
-
-.answer-list {
-    margin-bottom: 20px;
-}
-
-.answer-list .title {
-    font-size: 18px;
-    font-weight: bold;
-}
+.questionnairecheck-container .iScrollVerticalScrollbar{opacity: 1 !important;}
+.questionnairecheck-container .iScrollVerticalScrollbar .iScrollIndicator{min-height: 50px;background-color: #00A8FF !important;}

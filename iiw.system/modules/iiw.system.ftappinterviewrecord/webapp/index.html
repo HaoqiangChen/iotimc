@@ -9,15 +9,16 @@
                     <div class="ui-layout-row system-interviewrecord-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-interviewrecord-bar layout-full">
-                                <div class="col-md-1">
-                                    <a class="btn btn-success" ng-click="record.export()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>导出记录</a>
+                                <div class="col-md-2">
+                                    <a class="btn btn-danger" ng-click="record.del()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>删除</a>
+                                    <a class="btn btn-success" ng-click="record.export()" style="padding: 8px 16px;"><i class="fa fa-file-excel-o fa-fw"></i>导出记录</a>
                                 </div>
                                 <div class="col-md-2 select-group">
                                     <label>问卷类型: </label>
-                                    <select class="form-control" ng-change="record.getRecordList()" ng-model="record.filter.searchText">
+                                    <select class="form-control" ng-change="record.getRecordList()" ng-model="record.filter.content">
                                         <option value="">全部</option>
-                                        <option value="问卷">问卷</option>
-                                        <option value="量表">量表</option>
+                                        <option value="wjlx_ftwj">问卷</option>
+                                        <option value="wjlx_lb">量表</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2 select-group">
@@ -80,10 +81,10 @@
                                             <td>{{item.nairename}}</td>
                                             <td style="font-size: 18px;" ng-style="{color: item.statusname === '待调查' ? '#f04124' : item.statusname === '待审核' ? '#f0ad4e' : item.statusname === '已审核' ? '#5cb85c' : '#a5a5a5'}">{{item.statusname}}</td>
                                             <td ng-if="item.statusname === '待调查'">请在APP上完成访谈调查</td>
-                                            <td ng-if="item.statusname === '待审核'">
+                                            <td ng-if="item.statusname === '待审核' && item.sign === '1'">
                                                 <a class="btn btn-info" ng-click="record.check(item)" style="padding: 8px 16px;"><i class="fa fa-gavel fa-fw"></i>审核</a>
                                             </td>
-                                            <td ng-if="item.statusname === '已审核' || item.statusname === '审核不通过'">
+                                            <td ng-if="item.statusname !== '待调查'">
                                                 <a class="btn btn-success" ng-click="record.check(item)" style="padding: 8px 16px;"><i class="fa fa-eye fa-fw"></i>查看</a>
                                             </td>
                                         </tr>

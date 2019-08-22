@@ -9,7 +9,10 @@
                     <div class="ui-layout-row system-useraudit-page-content" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
                         <div class="ui-layout-container" size="47px" ui-layout-container>
                             <div class="system-useraudit-bar layout-full">
+<!--                                <a class="btn btn-primary" ng-click="add()" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>添加</a>-->
+                                <a class="btn btn-success" ng-click="mod()" style="padding: 8px 16px;"><i class="fa fa-edit fa-fw"></i>修改</a>
                                 <a class="btn btn-info" ng-click="audit()" style="padding: 8px 16px;"><i class="fa fa-gavel fa-fw"></i>审核</a>
+                                <a class="btn btn-danger" ng-click="del()" style="padding: 8px 16px;"><i class="fa fa-minus fa-fw"></i>删除</a>
                                 <div class="input-group pull-right" style="width:247px;">
                                     <input type="text" class="system-useraudit-search" placeholder="{{keyword}}" ng-keypress="keypresslist($event, searchTitle)" ng-model="searchTitle"/>
                                     <span class="input-group-btn">
@@ -28,10 +31,10 @@
                                                 <input id="checkAll" type="checkbox" ng-model="selectAll" ng-change="selAll()">
                                             </th>
                                             <th>序号</th>
-                                            <th class="hidden-xs">手机号</th>
-                                            <th class="hidden-xs">真实名称</th>
-                                            <th class="hidden-xs">用户角色</th>
-                                            <th class="hidden-xs">邮箱</th>
+                                            <th>手机号</th>
+                                            <th>真实名称</th>
+                                            <th>用户角色</th>
+                                            <th>邮箱</th>
                                             <th>所属单位</th>
                                             <th>管理类型</th>
                                             <th>审核状态</th>

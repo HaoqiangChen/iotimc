@@ -6,9 +6,10 @@ define([
     'app',
     'cssloader!system/ftappinterviewrecord/css/loading',
     'cssloader!system/questionnairecheck/css/index.css',
-    'cssloader!system/scalecheck/css/userinfo.css'
+    'cssloader!system/scalecheck/css/userinfo.css',
+    'cssloader!system/questionnairecheck/css/answerlist.css'
 ], function (app) {
-    app.controller('questionnaireCheckController', ['$scope', '$state', '$stateParams', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', '$timeout', function ($scope, $state, $stateParams, iAjax, iMessage, iConfirm, mainService, $filter, $timeout) {
+    app.controller('questionnaireCheckController', ['$scope', '$element', '$state', '$stateParams', '$location', '$anchorScroll', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', '$timeout', function ($scope, $element, $state, $stateParams, $location, $anchorScroll, iAjax, iMessage, iConfirm, mainService, $filter, $timeout) {
         mainService.moduleName = '访谈APP管理';
         $scope.title = '问卷查看';
         $scope.record = {};
@@ -32,10 +33,10 @@ define([
                 url = 'http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=getQuestionsResult';
                 data = {
                     filter: {
-                        // id: $scope.record.questionnairefk,
-                        // recordfk: $scope.record.id
-                        id: 'B701AB0474BE475B8CF22E6152B9FC01',
-                        recordfk: '96bed42c135d4a8385b80a63f0b69e9f'
+                        id: $scope.record.questionnairefk,
+                        recordfk: $scope.record.id
+                        // id: 'B701AB0474BE475B8CF22E6152B9FC01',
+                        // recordfk: 'C779A8BE8A3C4EF69C160337BFB233B1'
                     }
                 };
 
@@ -83,6 +84,7 @@ define([
                                     action: 'questionnairecheck.confirmSuccess'
                                 }]
                             });
+                            $scope.loading.isLoading = false;
                         })
                 })
             },
@@ -201,6 +203,37 @@ define([
                             });
                         })
                 })
+            },
+
+            scrollTo: function (el) {
+                // var iscroll = $element.find('.questionnairecheck-container').data('i-scroll');
+                // iscroll.scrollToElement('#F', 1000);
+                $location.hash(el);
+                $anchorScroll();
+            },
+
+            tempS: '',
+            mouseOver: function () {
+                this.tempS = $timeout(function () {
+                    $('.answer-shortcut').find('li.link').each(function (i) {
+                        var tA = $(this);
+                        $timeout(function () {
+                            tA.animate({right: '0'}, 300);
+                        }, 50 * i);
+                    });
+                }, 200);
+            },
+            mouseLeave: function () {
+                if (this.tempS) {
+                    $timeout.cancel(this.tempS);
+                }
+                $('.answer-shortcut').find('li.link').each(function (i) {
+                    var tA = $(this);
+                    $timeout(function () {
+                        tA.animate({right: '-230'}, 300, function () {
+                        });
+                    }, 50 * i);
+                });
             },
 
             back: function () {
