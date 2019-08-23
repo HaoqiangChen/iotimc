@@ -41,33 +41,34 @@ define([
                     content: '访谈记录列表加载中'
                 };
                 var url, data;
-                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getTalkRecord';
+                url = '/security/wjdc/scale.do?action=getTalkRecord';
                 data = {
                     filter: this.filter,
                     params: this.params
                 };
 
-                getToken(function (token) {
-                    iAjax
-                        .post(`${url}&authorization=${token}`, data)
-                        .then(function (data) {
-                            console.log(data);
-                            if (data.result && data.result.rows) {
-                                $scope.record.list = data.result.rows;
-                                $scope.loading.isLoading = false;
-                                $scope.selectAll = false;
-                            } else {
-                                $scope.record.list = [];
-                            }
-                            if (data.result.params) {
-                                $scope.record.params = data.result.params;
-                            }
-                        })
-                })
+                // getToken(function (token) {
+                iAjax
+                // .post(`${url}&authorization=${token}`, data)
+                    .post(url, data)
+                    .then(function (data) {
+                        // console.log(data);
+                        if (data.result && data.result.rows) {
+                            $scope.record.list = data.result.rows;
+                            $scope.loading.isLoading = false;
+                            $scope.selectAll = false;
+                        } else {
+                            $scope.record.list = [];
+                        }
+                        if (data.result.params) {
+                            $scope.record.params = data.result.params;
+                        }
+                    })
+                // })
             },
 
             check: function (item) {
-                console.log(item);
+                // console.log(item);
                 if (item) {
                     $state.params = {
                         data: item

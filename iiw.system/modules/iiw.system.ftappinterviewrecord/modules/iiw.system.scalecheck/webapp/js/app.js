@@ -30,7 +30,7 @@ define([
                 };
 
                 var url, data;
-                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getQuestionNaireDetail';
+                url = '/security/wjdc/scale.do?action=getQuestionNaireDetail';
                 data = {
                     filter: {
                         id: $scope.record.questionnairefk,
@@ -40,57 +40,55 @@ define([
                     }
                 };
 
-                getToken(function (token) {
-                    iAjax
-                        .post(`${url}&authorization=${token}`, data)
-                        .then(function (data) {
-                            // console.log(data);
-                            if (data.result && data.result.rows) {
-                                $scope.wjData = data.result.rows[0];
-                                console.log($scope.wjData);
-                                $scope.answerList = $scope.wjData.question;
-                                // console.log($scope.answerList);
+                iAjax
+                    .post(url, data)
+                    .then(function (data) {
+                        // console.log(data);
+                        if (data.result && data.result.rows) {
+                            $scope.wjData = data.result.rows[0];
+                            console.log($scope.wjData);
+                            $scope.answerList = $scope.wjData.question;
+                            // console.log($scope.answerList);
 
-                                if (!$scope.answerList.length) {
-                                    iConfirm.show({
-                                        scope: $scope,
-                                        title: '',
-                                        content: '抱歉，该量表无数据! 点击确认返回。',
-                                        buttons: [{
-                                            text: '确认',
-                                            style: 'button-primary',
-                                            action: 'scalecheck.confirmSuccess'
-                                        }]
-                                    });
-                                }
-
-                                $scope.userDetails = $scope.wjData.userdetail;
-                                if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
-                                if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
-                                if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
-
-                                $scope.scalecheck.getScore();
-                                $scope.loading.isLoading = false;
-
+                            if (!$scope.answerList.length) {
+                                iConfirm.show({
+                                    scope: $scope,
+                                    title: '',
+                                    content: '抱歉，该量表无数据! 点击确认返回。',
+                                    buttons: [{
+                                        text: '确认',
+                                        style: 'button-primary',
+                                        action: 'scalecheck.confirmSuccess'
+                                    }]
+                                });
                             }
-                        }, function (err) {
-                            iConfirm.show({
-                                scope: $scope,
-                                title: '请求失败',
-                                content: '请求失败! 点击确认返回。',
-                                buttons: [{
-                                    text: '确认',
-                                    style: 'button-primary',
-                                    action: 'scalecheck.confirmSuccess'
-                                }]
-                            });
-                        })
-                })
+
+                            $scope.userDetails = $scope.wjData.userdetail;
+                            if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
+                            if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
+                            if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
+
+                            $scope.scalecheck.getScore();
+                            $scope.loading.isLoading = false;
+
+                        }
+                    }, function (err) {
+                        iConfirm.show({
+                            scope: $scope,
+                            title: '请求失败',
+                            content: '请求失败! 点击确认返回。',
+                            buttons: [{
+                                text: '确认',
+                                style: 'button-primary',
+                                action: 'scalecheck.confirmSuccess'
+                            }]
+                        });
+                    })
             },
 
             getScore: function () {
                 var url, data;
-                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getQuestionNaireScore';
+                url = '/security/wjdc/scale.do?action=getQuestionNaireScore';
                 data = {
                     filter: {
                         id: $scope.record.id
@@ -98,28 +96,26 @@ define([
                     }
                 };
 
-                getToken(function (token) {
-                    iAjax
-                        .post(`${url}&authorization=${token}`, data)
-                        .then(function (data) {
-                            // console.log(data);
-                            if (data.result && data.result.rows) {
-                                $scope.score = data.result.rows[0];
+                iAjax
+                    .post(url, data)
+                    .then(function (data) {
+                        // console.log(data);
+                        if (data.result && data.result.rows) {
+                            $scope.score = data.result.rows[0];
 
-                                $scope.score.weidu.map(_a => {
-                                    _a.alone = [];
-                                    _a.rows.map(_b => {
-                                        if (_b.alone === 'Y') {
-                                            _a.alone.push(_b)
-                                        }
-                                    });
-                                    _a.rows = _a.rows.filter(v => v.alone !== 'Y')
+                            $scope.score.weidu.map(_a => {
+                                _a.alone = [];
+                                _a.rows.map(_b => {
+                                    if (_b.alone === 'Y') {
+                                        _a.alone.push(_b)
+                                    }
                                 });
+                                _a.rows = _a.rows.filter(v => v.alone !== 'Y')
+                            });
 
-                                // console.log($scope.score);
-                            }
-                        })
-                })
+                            // console.log($scope.score);
+                        }
+                    })
             },
 
             confirmSuccess: function (id) {
@@ -138,7 +134,7 @@ define([
                 };
 
                 var url, data;
-                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=modTalkRecord';
+                url = '/security/wjdc/scale.do?action=modTalkRecord';
                 data = {
                     filter: {
                         id: $scope.record.id,
@@ -146,36 +142,33 @@ define([
                     }
                 };
 
-                getToken(function (token) {
-                    iAjax
-                        .post(`${url}&authorization=${token}`, data)
-                        .then(function (data) {
-                            console.log(data);
-                            if (data.status === 1) {
-                                $scope.loading.isLoading = false;
-                                _remind(1, '审核提交成功');
-                                $timeout(function () {
-                                    $scope.scalecheck.back();
-                                }, 300)
-                            } else {
-                                _remind(4, '审核失败，请重新提交');
-                            }
-                        }, function (err) {
-                            iConfirm.show({
-                                scope: $scope,
-                                title: '请求失败',
-                                content: '请求失败! 点击确认返回。',
-                                buttons: [{
-                                    text: '确认',
-                                    style: 'button-primary',
-                                    action: 'scalecheck.confirmSuccess'
-                                }]
-                            });
-                        })
-                })
+                iAjax
+                    .post(url, data)
+                    .then(function (data) {
+                        console.log(data);
+                        if (data.status === 1) {
+                            $scope.loading.isLoading = false;
+                            _remind(1, '审核提交成功');
+                            $timeout(function () {
+                                $scope.scalecheck.back();
+                            }, 300)
+                        } else {
+                            _remind(4, '审核失败，请重新提交');
+                        }
+                    }, function (err) {
+                        iConfirm.show({
+                            scope: $scope,
+                            title: '请求失败',
+                            content: '请求失败! 点击确认返回。',
+                            buttons: [{
+                                text: '确认',
+                                style: 'button-primary',
+                                action: 'scalecheck.confirmSuccess'
+                            }]
+                        });
+                    })
             },
             reinvestigation: function () {
-                console.log('重新调查');
                 iConfirm.show({
                     scope: $scope,
                     title: '是否确定重新调查？',
@@ -200,7 +193,7 @@ define([
                 };
 
                 var url, data;
-                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=modTalkRecord';
+                url = '/security/wjdc/scale.do?action=modTalkRecord';
                 data = {
                     filter: {
                         id: $scope.record.id,
@@ -209,33 +202,31 @@ define([
                     }
                 };
 
-                getToken(function (token) {
-                    iAjax
-                        .post(`${url}&authorization=${token}`, data)
-                        .then(function (data) {
-                            console.log(data);
-                            if (data.status === 1) {
-                                $scope.loading.isLoading = false;
-                                _remind(1, '问卷返回重新调查成功');
-                                $timeout(function () {
-                                    $scope.scalecheck.back();
-                                }, 300)
-                            } else {
-                                _remind(4, '提交失败，请重新提交');
-                            }
-                        }, function (err) {
-                            iConfirm.show({
-                                scope: $scope,
-                                title: '请求失败',
-                                content: '请求失败! 点击确认返回。',
-                                buttons: [{
-                                    text: '确认',
-                                    style: 'button-primary',
-                                    action: 'scalecheck.confirmSuccess'
-                                }]
-                            });
-                        })
-                })
+                iAjax
+                    .post(url, data)
+                    .then(function (data) {
+                        // console.log(data);
+                        if (data.status === 1) {
+                            $scope.loading.isLoading = false;
+                            _remind(1, '问卷返回重新调查成功');
+                            $timeout(function () {
+                                $scope.scalecheck.back();
+                            }, 300)
+                        } else {
+                            _remind(4, '提交失败，请重新提交');
+                        }
+                    }, function (err) {
+                        iConfirm.show({
+                            scope: $scope,
+                            title: '请求失败',
+                            content: '请求失败! 点击确认返回。',
+                            buttons: [{
+                                text: '确认',
+                                style: 'button-primary',
+                                action: 'scalecheck.confirmSuccess'
+                            }]
+                        });
+                    })
             },
 
             back: function () {
@@ -248,7 +239,7 @@ define([
         });
 
         function getToken(callback) {
-            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+            iAjax.post('/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                 callback(data.token);
             })
         }

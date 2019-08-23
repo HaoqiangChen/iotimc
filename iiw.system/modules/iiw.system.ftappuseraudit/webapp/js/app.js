@@ -4,11 +4,12 @@
  */
 define([
     'app',
+    'angularAMD',
     'cssloader!system/ftappuseraudit/css/loading',
     'cssloader!system/ftappuseraudit/css/index.css',
     'system/js/directives/systemTreeViewDirective'
 ], function (app, angularAMD) {
-    var packageName = 'iiw.system.syuser';
+    var packageName = 'iiw.system.ftappuseraudit';
 
     app.controller('ftappUserAuditController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
@@ -107,6 +108,9 @@ define([
                 iConfirm.close(id);
             },
 
+            add: function () {
+                $state.go('system.ftappuseraudit.add');
+            },
             mod: function () {
                 var userInfo = _.where($scope.audit.userList, {checked: true})[0];
                 console.log(userInfo);
@@ -203,11 +207,11 @@ define([
     // 模块内部路由
     angularAMD.config(function ($stateProvider) {
         $stateProvider
-        // .state('system.ftappuseraudit.add', {
-        //     url: '/add',
-        //     controller: 'ftappUserItemController',
-        //     templateUrl: $.soa.getWebPath(packageName) + '/view/add.html'
-        // })
+            .state('system.ftappuseraudit.add', {
+                url: '/add',
+                controller: 'ftappUserItemController',
+                templateUrl: $.soa.getWebPath(packageName) + '/view/add.html'
+            })
             .state('system.ftappuseraudit.mod', {
                 url: '/mod',
                 controller: 'ftappUserItemController',
