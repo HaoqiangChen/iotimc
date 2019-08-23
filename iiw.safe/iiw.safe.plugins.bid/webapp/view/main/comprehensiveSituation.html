@@ -1,0 +1,109 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container" i-scroll2>
+                <h4>目前数据总量为<span class="database-data-number"></span><span>条</span></h4>
+                <h4>罪犯总人数<span class="database-history-prison-number"></span>人<span></span>，其中在押犯<span class="database-custory-prison-number"></span><span>人</span></h4>
+                <div style="width: 100%; height: 360px;background:  rgba(6, 33, 53, 0.6);margin-bottom: 10px;" class="safe-bid-data-count-info">
+                    <h3 style="text-shadow: 0 0 5px;text-align:left;padding: 0 0 0 20px;margin: 0;line-height: 60px;width: 100%;height: 60px;">各系统数据汇聚概况</h3>
+                    <div style="height: 300px;width: 50%;float: left;">
+                        <div safe-bid-data-total-chart class="layout-full">
+                            <div class="safe-bid-data-total-chart-panel"></div>
+                        </div>
+                    </div>
+                    <div style="height: 300px;width: 50%;float: left;padding: 10px 10px 0 0;">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>序号</td>
+                                <td>系统名称</td>
+                                <td>数据总量</td>
+                                <td>数据起始年度</td>
+                                <td>更新时间</td>
+                                <td>汇聚方式</td>
+                            </tr>
+                            <tr style="background: #0e67b9;">
+                                <td>1</td>
+                                <td>监狱系统</td>
+                                <td>129235411</td>
+                                <td>2012</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>数据库对接</td>
+                            </tr>
+                            <tr style="background: #0e67b9;">
+                                <td>2</td>
+                                <td>社矫系统</td>
+                                <td>9235411</td>
+                                <td>2015</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>数据库对接</td>
+                            </tr>
+                            <tr style="background: #0e67b9;">
+                                <td>3</td>
+                                <td>安置帮教系统</td>
+                                <td>1235411</td>
+                                <td>2014</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>数据库对接</td>
+                            </tr>
+                            <tr style="background: #13bfbf;">
+                                <td>4</td>
+                                <td>公安系统</td>
+                                <td>19235411</td>
+                                <td>2012</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>数据库对接</td>
+                            </tr>
+                            <tr style="background: #13bfbf;">
+                                <td>5</td>
+                                <td>检察院系统</td>
+                                <td>5235411</td>
+                                <td>2013</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>数据库对接</td>
+                            </tr>
+                            <tr style="background: #13bfbf;">
+                                <td>6</td>
+                                <td>法院系统</td>
+                                <td>6341414</td>
+                                <td>2013</td>
+                                <td>2018-12-05 10:20</td>
+                                <td>XML文件导入</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 460px;background: rgba(6, 33, 53, 0.6);margin-bottom: 10px;" class="safe-bid-data-count-info">
+                    <h3 style="text-shadow: 0 0 5px;text-align:left;padding: 0 0 0 20px;margin: 0;line-height: 60px;width: 100%;height: 60px;">监狱系统数据项汇聚情况</h3>
+                    <div style="height: 400px;width: 50%;float: left;">
+                        <div safe-bid-data-prison-gauge-chart class="layout-full">
+                            <div class="safe-bid-data-prison-gauge-chart-panel"></div>
+                        </div>
+                    </div>
+                    <div style="height: 400px;width: 50%;float: left;padding: 0;margin-top: -60px;">
+                        <div safe-bid-data-prison-pie-chart class="layout-full">
+                            <div class="safe-bid-data-prison-pie-chart-panel"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 460px;background: rgba(6, 33, 53, 0.6);margin-bottom: 10px;" class="safe-bid-data-count-info">
+                    <h3 style="text-shadow: 0 0 5px;text-align:left;padding: 0 0 0 20px;margin: 0;line-height: 60px;width: 100%;height: 60px;">社矫系统数据项汇聚情况</h3>
+                    <div style="height: 400px;width: 50%;float: left;">
+                        <div safe-bid-data-she-jiao-gauge-chart class="layout-full">
+                            <div class="safe-bid-data-she-jiao-gauge-chart-panel"></div>
+                        </div>
+                    </div>
+                    <div style="height: 400px;width: 50%;float: left;padding: 0;margin-top: -60px;">
+                        <div safe-bid-data-she-jiao-pie-chart class="layout-full">
+                            <div class="safe-bid-data-she-jiao-pie-chart-panel"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div style="width: 50%; height: 400px;float: left;">各系统数据汇聚情况</div>
+                <div style="width: 100%; height: 400px;float: left;">数据采集明细表</div>-->
+            </div>
+        </div>
+    </div>
+</div>

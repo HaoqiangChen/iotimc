@@ -1,0 +1,257 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper" ng-click="pageClick($event)">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container">
+                <div class="safe-bid-table-header">
+                    <div class="row safe-bid-table-header-row">
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-lg-12">
+                                <div class="widget-content">
+                                    <div class="control-group">
+                                        <div class="col-lg-3 full-left no-margin">
+                                            <div class="col-md-3 safe-bid-search-filter-label">姓名</div>
+                                            <div class="col-md-9 no-margin">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="text" ng-model="searchFilter.xm"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 full-left no-margin">
+                                            <div class="col-md-3 safe-bid-search-filter-label">在押状态</div>
+                                            <div class="col-md-9 no-margin">
+                                                <div class="form-group">
+                                                    <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'zyzt')">{{searchFilter.zyzt_name}}<i class="fa fa-caret-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 full-left no-margin">
+                                            <div class="col-md-3 safe-bid-search-filter-label">籍贯</div>
+                                            <div class="col-md-9 no-margin">
+                                                <div class="form-group">
+                                                    <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'belongou')">{{searchFilter.belongou_name}}<i class="fa fa-caret-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 full-left text-right no-margin">
+                                            <button class="btn btn-info" ng-click="showMoreSearchPanel()"><i ng-class="{'fa fa-angle-down': !showMoreSearchFlag, 'fa fa-angle-up': showMoreSearchFlag}"></i>高级</button>
+                                            <button class="btn btn-warning" ng-click="resetFilter()"><i class="fa fa-undo"></i>重置</button>
+                                            <button class="btn btn-success" ng-click="searchCriminal()"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout-full safe-bid-more-search-panel" ng-show="showMoreSearchFlag">
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-lg-12">
+                            <div class="widget-content">
+                                <div class="safe-bid-page-hr-line-dashed"></div>
+                                <div class="control-group">
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">所在监狱</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'gydw')">{{searchFilter.gydw_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">性别</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'xb')">{{searchFilter.xb_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">国籍</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'worldcountry')">{{searchFilter.country_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">民族</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'mz')">{{searchFilter.mz_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="safe-bid-page-hr-line-dashed"></div>
+                                <div class="control-group">
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">罪名</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'charge')">{{searchFilter.charge_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">文化程度</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'bqwhcd')">{{searchFilter.bqwhcd_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">职业</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'bqzy')">{{searchFilter.bqzy_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">婚姻状况</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'hyzk')">{{searchFilter.hyzk_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="safe-bid-page-hr-line-dashed"></div>
+                                <div class="control-group">
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">政治面貌</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group">
+                                                <span class="safe-bid-select-panel" ng-click="showSelectPanel($event, 'bqmmbqmm')">{{searchFilter.bqmmbqmm_name}}<i class="fa fa-caret-down"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">入监时间</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group safe-bid-search-filter-group">
+                                                <input class="form-control" type="text" ng-model="searchFilter.rjsj1" safe-picker p!format="Y-m-d" p!timepicker="false" p!inline="false">
+                                                <span>至</span>
+                                                <input class="form-control" type="text" ng-model="searchFilter.rjsj2" safe-picker p!format="Y-m-d" p!timepicker="false" p!inline="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 full-left no-margin">
+                                        <div class="col-md-3 safe-bid-search-filter-label">出监时间</div>
+                                        <div class="col-md-9 no-margin">
+                                            <div class="form-group safe-bid-search-filter-group">
+                                                <input class="form-control" type="text" ng-model="searchFilter.cjsj1" safe-picker p!format="Y-m-d" p!timepicker="false" p!inline="false">
+                                                <span>至</span>
+                                                <input class="form-control" type="text" ng-model="searchFilter.cjsj2" safe-picker p!format="Y-m-d" p!timepicker="false" p!inline="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-table-container" i-scroll data-config="{&quot;scrollX&quot;: true, &quot;scrollY&quot;: false, &quot;mouseWheel&quot;: true, &quot;scrollbars&quot;: true, &quot;fadeScrollbars&quot;: true}">
+                    <div style="position: relative; height: 100%;" ng-style="tableWidth">
+                        <div class="safe-bid-table-thead">
+                            <table class="table">
+                                <col width="50px">
+                                <col width="200px">
+                                <col width="100px">
+                                <col width="100px">
+                                <col width="150px">
+                                <col width="150px">
+                                <col width="200px">
+                                <col width="300px">
+                                <col width="200px">
+                                <col width="200px">
+                                <col width="100px">
+                                <col width="100px">
+                                <col width="100px">
+                                <col width="100px">
+                                <!--<col width="100px">-->
+                                <col width="100px">
+                                <col width="200px">
+                                <tr>
+                                    <td>序号</td>
+                                    <td>姓名</td>
+                                    <td>性别</td>
+                                    <td>出生年月</td>
+                                    <td>国籍</td>
+                                    <td>籍贯</td>
+                                    <td>所在监狱</td>
+                                    <td>罪名</td>
+                                    <td>家庭住址</td>
+                                    <td>文化程度</td>
+                                    <td>职业</td>
+                                    <td>刑期</td>
+                                    <td>刑期起日</td>
+                                    <td>刑期止日</td>
+                                    <!--<td>是否累犯</td>-->
+                                    <td>政治面貌</td>
+                                    <td>婚姻状况</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="safe-bid-table-body">
+                            <div>
+                                <div class="safe-bid-table-lading" ng-show="searchData">
+                                    <i class="fa fa-spinner faa-spin animated"></i>
+                                </div>
+                                <table class="table table-hover table-bordered">
+                                    <col width="50px">
+                                    <col width="200px">
+                                    <col width="100px">
+                                    <col width="100px">
+                                    <col width="150px">
+                                    <col width="150px">
+                                    <col width="200px">
+                                    <col width="300px">
+                                    <col width="200px">
+                                    <col width="200px">
+                                    <col width="100px">
+                                    <col width="100px">
+                                    <col width="100px">
+                                    <col width="100px">
+                                    <!--<col width="100px">-->
+                                    <col width="100px">
+                                    <col width="200px">
+                                    <tr ng-repeat="row in prisonList">
+                                        <td class="text-center">{{$index + 1}}</td>
+                                        <td class="text-left"><a ng-click="showCriminalFile(row)">{{row.xm}}</a></td>
+                                        <td class="text-left">{{row.sexname}}</td>
+                                        <td class="text-left">{{row.csrq}}</td>
+                                        <td class="text-left">{{row.gjdq}}</td>
+                                        <td class="text-left">{{row.jg}}</td>
+                                        <td class="text-left">{{row.gydw}}</td>
+                                        <td class="text-left">{{row.zm}}</td>
+                                        <td class="text-left">{{row.jtmx}}</td>
+                                        <td class="text-left">{{row.bqwhcdname}}</td>
+                                        <td class="text-left">{{row.bqzyname}}</td>
+                                        <td class="text-left">{{row.xq}}</td>
+                                        <td class="text-left">{{row.qr}}</td>
+                                        <td class="text-left">{{row.zr}}</td>
+                                        <!--<td class="text-left">{{row.sflf}}</td>-->
+                                        <td class="text-left">{{row.bqmmname}}</td>
+                                        <td class="text-left">{{row.hyzkname}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-table-footer pull-right">
+                    <div class="safe-bid-table-footer-record-info pull-left">
+                        共 <span class="text-warning">{{prisonPageInfo.totalSize}}</span> 条记录，
+                        共 <span class="text-warning">{{prisonPageInfo.totalPage}}</span> 页
+                    </div>
+                    <uib-pagination boundary-links="true" first-text="&laquo;" ng-model="prisonPageInfo.currentPage" last-text="&raquo;" class="alarm-no-margin" total-items="prisonPageInfo.totalSize" ng-change="goPgaeNo()" previous-text="上一页" next-text="下一页" max-size="5" items-per-page="prisonPageInfo.pageSize"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

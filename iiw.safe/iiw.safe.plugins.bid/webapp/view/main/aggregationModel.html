@@ -1,0 +1,57 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container">
+                <div class="safe-bid-table-header">
+                    <div class="row safe-bid-table-header-row">
+                        <div class="col-md-4 safe-bid-table-header-row"></div>
+                        <div class="col-md-8 safe-bid-table-header-search-group safe-bid-table-header-row">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入关键字进行查询">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">查询</button>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-table-container">
+                    <div class="safe-bid-table-thead">
+                        <table class="table table-bordered">
+                            <col width="5%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="15%">
+                            <tr>
+                                <td class="text-center">序号</td>
+                                <td>表名称</td>
+                                <td>表描述</td>
+                                <td>所属数据库</td>
+                                <td>表记录总数</td>
+                                <td>操作</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="safe-bid-table-body" i-scroll>
+                        <div>
+                            <table class="table table-hover table-bordered">
+                                <col width="5%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="15%">
+                                <tr ng-repeat="row in aggregationList">
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td>{{row.tbname}}</td>
+                                    <td>{{row.description}}</td>
+                                    <td>{{row.dbname}}</td>
+                                    <td>{{row.recordNum}}</td>
+                                    <td class="text-center"><a ng-click="showAggregationDetail(row)"><i class="fa fa-hand-o-right faa-passing animated"></i> 查看明细</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-table-footer pull-right">
+                    <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="alarm-no-margin" total-items="totalSize" ng-model="currentPage" ng-change="goPgaeNo()" previous-text="上一页" next-text="下一页" max-size="5" items-per-page="historyPageSize"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

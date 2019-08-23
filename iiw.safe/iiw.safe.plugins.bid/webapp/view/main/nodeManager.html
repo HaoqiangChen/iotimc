@@ -1,0 +1,78 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container">
+                <div class="safe-bid-table-header">
+                    <div class="row safe-bid-table-header-row">
+                        <div class="col-md-4 safe-bid-table-header-row">
+                            <div title="添加" class="btn btn-success" ng-click="add()"><i class="fa fa-plus-circle"></i> 添加</div>
+                            <div title="修改" class="btn btn-info" ng-click="modNode()"><i class="fa fa-edit"></i> 修改</div>
+                            <div title="删除" class="btn btn-danger" ng-click="delNode()"><i class="fa fa-trash"></i> 删除</div>
+                        </div>
+                        <div class="col-md-8 safe-bid-table-header-search-group safe-bid-table-header-row">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入关键字进行查询">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">查询</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-data-dynasis-analysis-container">
+                    <div class="safe-bid-table-thead">
+                        <table class="table table-bordered">
+                            <col width="5%"><col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                            <tr>
+                                <td class="text-center">
+                                    <div ng-click="selectAllRow()" class="safe-bid-checkbox-square-green" ng-class="{'checked':selectAllList}" style="position: relative;">
+                                        <input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                                        <ins class="safe-bid-checkbox-helper"></ins>
+                                    </div>
+                                </td>
+                                <td class="text-center">序号</td>
+                                <td>服务器名称</td>
+                                <td>服务器IP</td>
+                                <td>端口</td>
+                                <td>关联部门</td>
+                                <td>运行状态</td>
+                                <td>备注信息</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="safe-bid-table-body" i-scroll>
+                        <div>
+                            <table class="table table-hover table-bordered">
+                                <col width="5%"><col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                                <tr ng-repeat="row in serverList">
+                                    <td class="text-center">
+                                        <div ng-click="checkRow(row)" class="safe-bid-checkbox-square-green" ng-class="{'checked':row.checked}" style="position: relative;">
+                                            <input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                                            <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-left">{{row.name}}</td>
+                                    <td class="text-left">{{row.ip}}</td>
+                                    <td class="text-left">{{row.port}}</td>
+                                    <td class="text-left">{{row.unit}}</td>
+                                    <td class="text-left">{{row.status}}</td>
+                                    <td class="text-left">{{row.notes}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div safe-bid-server-cpu-status-chart class="safe-bid-server-cpu-status-chart-container pull-left">
+                    <div class="safe-bid-server-cpu-status-chart-panel"></div>
+                </div>
+                <div safe-bid-server-memory-status-chart class="safe-bid-server-memory-status-chart-container pull-left">
+                    <div class="safe-bid-server-memory-status-chart-panel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

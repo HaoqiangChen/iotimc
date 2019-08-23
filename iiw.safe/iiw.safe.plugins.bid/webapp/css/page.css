@@ -1,0 +1,816 @@
+.safe-bid-page-wrapper {
+    padding: 10px 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-inner {
+    padding: 0 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-head-container {
+    height: 86px;
+    float: left;
+    width: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-head-line {
+    border-bottom: 2px solid #00CA79;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #eeeeee;
+    font-weight: 800;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-body-container {
+    width: 100%;
+    height: calc(100% - 86px);
+    float: left;
+    position: relative;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-header {
+    height: 50px;
+    width: 100%;
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-header-row {
+    margin: 0;
+    padding: 0;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-header .btn {
+    height: 40px;
+    width: 25%;
+    line-height: 40px;
+    text-align: center;
+    margin-right: 10px;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-header {
+    height: 50px;
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-header .btn i {
+    padding-right: 10px;
+    line-height: 40px;
+}
+
+.safe-bid-page-wrapper .input-group {
+    float: right;
+    width: 300px;
+    display: inline-flex;
+}
+
+.safe-bid-page-wrapper .input-group {
+    float: right;
+    width: 300px;
+    display: inline-flex;
+}
+
+.safe-bid-page-wrapper .input-group .form-control {
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.safe-bid-page-wrapper .input-group .input-group-btn {
+    display: contents;
+    height: 40px;
+}
+
+.safe-bid-page-wrapper .input-group .btn {
+    margin: 0;
+    border-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #1ab394;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-container {
+    margin: 0;
+    width: 100%;
+    height: calc(100% - 110px);
+    float: left;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.safe-bid-page-wrapper .table-bordered {
+    margin: 0;
+}
+
+.safe-bid-page-wrapper .table-bordered tr {
+    color: #333;
+    border-color: #ddd;
+}
+
+.safe-bid-table-body .table-bordered tr:hover td {
+    /*text-shadow: 0 0 5px #ffffff;*/
+    background: #1c84c6;
+}
+
+.safe-bid-page-wrapper table td {
+    font-size: 16px;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-footer {
+    padding: 10px 0 0 0;
+    margin: 0;
+    height: 60px;
+    width: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-row-checked {
+    color:#5cb85c;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-footer .pagination {
+    margin: 0;
+    float: right;
+}
+
+.safe-bid-table-footer .safe-bid-table-footer-record-info {
+    width: 500px;
+    float: left;
+    line-height: 40px;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-thead {
+    height: 40px;
+    width: 100%;
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-thead table {
+    height: 100%;
+    line-height: 40px;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-body {
+    height: calc(100% - 36px);
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.safe-bid-page-wrapper form input {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #000;
+}
+
+.safe-bid-page-wrapper form select {
+    height: 39px;
+    color: #000;
+}
+
+.safe-bid-page-wrapper form label {
+    color: #eeeeee;
+    font-size: 14px;
+}
+
+.safe-bid-page-wrapper .form-actions button {
+    width: 200px;
+}
+
+.safe-bid-page-wrapper .form-actions button i {
+    padding-right: 10px;
+}
+
+.safe-bid-page-wrapper .safe-bid-widget-user {
+    border: none;
+    position: relative;
+    width: 450px;
+    height: 50%;
+    float: left;
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+.safe-bid-page-wrapper .safe-bid-widget-user:first-child {
+    margin-bottom: 10px;
+}
+
+.safe-bid-widget-user .safe-bid-widget-user-header {
+    padding: 1rem;
+    height: 120px;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem
+}
+
+.safe-bid-widget-user .safe-bid-widget-user-username {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: 300;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-align: center;
+}
+
+.safe-bid-widget-user .safe-bid-widget-user-desc {
+    margin-top: 0;
+    text-align: center;
+}
+
+.safe-bid-widget-user .safe-bid-widget-user-image {
+    position: absolute;
+}
+
+.safe-bid-widget-user .safe-bid-widget-user-image>img {
+    width: 90px;
+    height: auto;
+    border: 3px solid #fff
+}
+
+.safe-bid-widget-user .safe-bid-card-footer {
+    padding-top: 40px
+}
+
+.safe-bid-page-wrapper .safe-bid-page-details-container {
+    margin: 10px 0px 0px 0px;
+    width: 100%;
+    height: calc(100% - 60px);
+    float: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.safe-bid-page-wrapper .safe-bid-text-muted {
+    color: #6c757d!important;
+}
+
+.safe-bid-page-wrapper .safe-bid-widget-user-card-body strong {
+    color: black;
+}
+
+.safe-bid-page-wrapper .safe-bid-widget-user-card-body hr {
+    margin: 0 10px;
+}
+
+.safe-bid-widget-user-card-body {
+    padding: 10px;
+}
+
+.safe-bid-widget-question-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 450px);
+    height: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-nav-tabs {
+    margin-bottom: 20px;
+}
+
+.safe-bid-page-wrapper input:focus {
+    border: 1px solid royalblue;
+}
+
+.safe-bid-page-nav-tabs li {
+    width: 25%;
+    text-align: center;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-nav-tabs li.active>a {
+    background: transparent;
+    color: #337ab7;
+    border: 1px solid #337ab7;
+    border-bottom: transparent;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-nav-tabs li>a {
+    background: transparent;
+    color: #337ab7;
+    border: 1px solid #337ab7;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    border-radius: .25rem;
+    padding: .5rem;
+    min-height: 80px;
+    background: #fff;
+    display: flex!important;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box-content {
+    padding: 5px 10px;
+    flex: 1;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box-text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #212529;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box-number {
+    display: block;
+    color: #212529;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.alert-info, .alert-info a, .bg-info, .bg-info a, .label-info, .label-info a {
+    color: #fff!important;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box-icon {
+    border-radius: .25rem;
+    display: block;
+    width: 70px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.safe-bid-page-wrapper .safe-bid-info-box-icon {
+    align-items: center!important;
+    justify-content: center!important;
+    display: flex!important;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-hr-line-dashed {
+    border-top: 1px dashed #e7eaec;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+    float: left;
+    width: 100%;
+}
+
+.safe-bid-page-wrapper .pagination>.active>a {
+    color: #ffffff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.safe-bid-page-wrapper .pagination li:first-child>a {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.safe-bid-page-wrapper .pagination li:last-child>a {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+.safe-bid-page-wrapper .pagination>li>a {
+    background: white;
+    border-color: #dee2e6;
+}
+
+.safe-bid-page-wrapper .pagination>li>a:hover {
+    background: white;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.safe-bid-page-wrapper .pagination>li>a:active, .safe-bid-page-wrapper .pagination>li>a:link {
+    background: white;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.safe-bid-page-wrapper .safe-bid-box {
+    clear: both;
+    margin-top: 0;
+    padding: 0;
+    border: 1px solid #1c84c6;
+    width: 100%;
+    height: 50%;
+    border-radius: .25rem;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #1c84c6;
+    border-color: rgba(28, 132, 230, 1);
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: white;
+    margin-bottom: 0;
+    padding: 15px 90px 8px 15px;
+    min-height: 48px;
+    position: relative;
+    clear: both;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-title h5 {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+    float: none;
+    color: white;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-content {
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+    clear: both;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-title .float-right {
+    margin-right: -75px;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-title .safe-bid-box-label {
+    margin-left: 4px;
+    margin-right: -75px;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-title .safe-bid-box-label:hover {
+    cursor: pointer;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-label {
+    color: white;
+    padding: 3px 8px;
+    text-shadow: none;
+    border-radius: 0.25em;
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.safe-bid-page-body-container .safe-bid-box-container {
+    margin: 0 0 10px 0;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-content h1 {
+    margin: 0;
+    color: #eeeeee;
+    text-shadow: 0 0 5px;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-stat-percent {
+    float: right;
+}
+
+.safe-bid-page-wrapper .safe-bid-box-content small {
+    font-size: 15px;
+    color: #00aced;
+}
+
+.safe-bid-table-container .safe-bid-table-thead table, .safe-bid-table-container .safe-bid-table-body table {
+    table-layout: fixed;
+}
+
+.safe-bid-table-container .safe-bid-table-thead table tr td {
+    border: 1px solid rgba(231, 231, 231,0.6);
+    text-align: center;
+    padding: 0;
+    line-height: 38px;
+    background: #001C69;
+    color: #eeeeee;
+}
+
+.safe-bid-data-dynasis-analysis-container .safe-bid-table-thead table tr td, .safe-bid-data-dynasis-analysis-container .safe-bid-table-body table tr td {
+    border: 1px solid rgba(231, 231, 231,0.6);
+    text-align: center;
+    padding: 0;
+    line-height: 38px;
+    background: #001C69;
+    color: #eeeeee;
+}
+
+.safe-bid-table-thead .table-bordered tr:hover td, .safe-bid-table-body .table-bordered tr:hover td {
+    background: #1c84c6;
+}
+
+.safe-bid-table-container .safe-bid-table-body table tr td {
+    border: 1px solid rgba(231, 231, 231,0.6);
+    line-height: 38px;
+    padding: 0 0 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #001C69;
+    color: #eeeeee;
+}
+
+.safe-bid-table-container .safe-bid-table-body table tr td:first-child {
+    padding: 0;
+}
+
+.safe-bid-table-container .safe-bid-table-body table tr td a {
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+.safe-bid-table-container .safe-bid-table-body table tr td a:hover {
+    cursor: pointer;
+    color: #fb953b;
+    text-decoration: underline;
+    text-shadow: 0 0 5px #fb953b;
+}
+
+.safe-bid-page-wrapper .breadcrumb {
+    background: transparent;
+}
+
+.safe-bid-page-wrapper .breadcrumb-item span {
+    color: #f3d749;
+}
+
+.safe-bid-page-wrapper .breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+.safe-bid-page-wrapper .safe-bid-data-dynasis-analysis-container {
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-data-dynamic-analysis-chart-container {
+    margin-top: 10px;
+    padding: 0;
+    height: calc(100% - 310px);
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-chart-body {
+    margin: 0;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-left-container {
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-right-container {
+    float: left;
+    width: calc(80% - 10px);
+    height: 100%;
+    margin: 0 0 0 10px;
+    border: 1px solid #1c84c6;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-left-body-container {
+    width: 100%;
+    height: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-left-tree-box {
+    clear: both;
+    margin-top: 0;
+    padding: 0;
+    border: 1px solid #1c84c6;
+    width: 100%;
+    height: 100%;
+    border-radius: .25rem;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-left-tree-box .jstree-anchor {
+    color: #eeeeee;
+}
+
+.safe-bid-page-wrapper .safe-bid-btn {
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin: 10px 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+}
+
+.safe-bid-page-wrapper .safe-bid-btn:hover {
+    background: #1c84c6;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-body span {
+    padding-right: 10px;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-body span:hover {
+    cursor: pointer;
+}
+
+.safe-bid-page-wrapper .no-margin {
+    margin: 0;
+    padding: 0;
+}
+
+.safe-bid-page-wrapper .safe-bid-log-filter-nav-bar {
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+
+.chart-container .safe-bid-main-menu a:hover {
+    text-shadow: 0 0 5px #ffffff;
+    cursor: pointer;
+    background: rgba(34, 59, 128, 1);
+}
+
+.safe-bid-page-wrapper .safe-bid-checkbox-square-green {
+    background-position: 0 0;
+}
+
+.safe-bid-page-wrapper .safe-bid-checkbox-square-green {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(../img/checkbox_background.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.safe-bid-checkbox-square-green.checked {
+    background-position: -48px 0;
+}
+
+.safe-bid-checkbox-square-green .safe-bid-checkbox-helper {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: rgb(255, 255, 255);
+    border: 0px;
+    opacity: 0;
+}
+
+.safe-bid-table-footer .pagination>.disabled>span,
+.safe-bid-table-footer .pagination>.disabled>span:hover,
+.safe-bid-table-footer .pagination>.disabled>span:focus,
+.safe-bid-table-footer .pagination>.disabled>a,
+.safe-bid-table-footer .pagination>.disabled>a:hover,
+.safe-bid-table-footer .pagination>.disabled>a:focus{
+    background-color: white;
+}
+
+.safe-bid-page-wrapper .safe-bid-page-left-tree-box .jstree-anchor:hover {
+    background: #2aa1f7;
+}
+
+.safe-bid-page-wrapper .form-group .safe-bid-select-panel {
+    width: 100%;
+    height: 39px;
+    background: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+    color: black;
+    line-height: 39px;
+    padding: 0 6px;
+}
+
+.safe-bid-page-wrapper .form-group .safe-bid-select-panel i {
+    float: right;
+    line-height: 39px;
+    font-size: 14px;
+}
+
+.safe-bid-page-wrapper .safe-bid-more-search-panel {
+    width: 100%;
+    height: 100%;
+    float: left;
+    z-index: 10;
+    position: absolute;
+    top: 140px;
+    left: 0;
+    background: #001C69;
+    padding: 10px 40px;
+}
+
+/*.safe-bid-more-search-panel.ng-hide-add {
+    -webkit-animation: solidOutDown 0.5s;
+    animation: solidOutDown 0.5s;
+}*/
+
+.safe-bid-more-search-panel.ng-hide-remove {
+    -webkit-animation: solidInDown 0.5s;
+    animation: solidInDown 0.5s;
+}
+
+.safe-bid-page-wrapper .form-group .safe-bid-select-panel:focus {
+    border: 1px solid #4099ff;
+}
+
+.safe-bid-page-wrapper .safe-bid-search-filter-label {
+    text-align: justify;
+    height: 39px;
+    line-height: 39px;
+}
+
+.safe-bid-search-filter-label:after {
+    content: " ";
+    display: inline-block;
+    width: 100%;
+}
+
+.safe-bid-page-wrapper .safe-bid-search-filter-group input {
+    width: calc((100% - 20px)/ 2);
+    float: left;
+}
+
+.safe-bid-page-wrapper .safe-bid-search-filter-group span {
+    width: 20px;
+    float: left;
+    text-align: center;
+    line-height: 39px;
+}
+
+.safe-bid-page-wrapper .pagination>li>a, .safe-bid-page-wrapper .pagination>li>span {
+    color: #007bff;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-lading {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 2;
+}
+
+.safe-bid-page-wrapper .safe-bid-table-lading i {
+    position: absolute;
+    font-size: 80px;
+    margin: auto;
+    left: -50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    color: #0e9ff7;
+}
+
+.safe-bid-data-count-info .table-striped>tbody>tr:first-child td {
+    border-bottom: 1px solid #79f7a0;
+}
+
+.safe-bid-data-count-info .table-striped>tbody>tr:first-child {
+    background: transparent;
+}
+
+.safe-bid-page-body-container h4 {
+    border-left: 4px solid rgb(99, 163, 230);
+    padding-left: 15px;
+    height: 30px;
+    line-height: 30px;
+}
+
+/***********************************************/
+.safe-bid-page-wrapper .database-data-number, .safe-bid-page-wrapper .database-history-prison-number, .safe-bid-page-wrapper .database-custory-prison-number {
+    font-size: 30px;
+    color: #ffd600;
+    letter-spacing: 1px;
+    padding: 0 8px;
+}

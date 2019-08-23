@@ -1,0 +1,10 @@
+{
+  "name": "iiw.safe.questionnaire",
+  "version": "0.0.1",
+  "description": "问卷调查",
+  "author": "chq",
+  "date": "2019-08-23",
+  "main": "questionnaireController",
+  "host": "192.168.0.251",
+  "client": "192.168.11.27"
+}

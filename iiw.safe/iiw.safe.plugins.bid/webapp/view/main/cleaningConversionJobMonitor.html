@@ -1,0 +1,109 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container">
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="safe-bid-info-box">
+                            <span class="safe-bid-info-box-icon bg-info elevation-1"><i class="fa fa-exchange"></i></span>
+                            <div class="safe-bid-info-box-content">
+                                <span class="safe-bid-info-box-number">3</span>
+                                <span class="safe-bid-info-box-text">当天转换作业总数</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="safe-bid-info-box mb-3">
+                            <span class="safe-bid-info-box-icon bg-success elevation-1"><i class="fa fa-check-square"></i></span>
+                            <div class="safe-bid-info-box-content">
+                                <span class="safe-bid-info-box-number">1</span>
+                                <span class="safe-bid-info-box-text">已执行</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="safe-bid-info-box mb-3">
+                            <span class="safe-bid-info-box-icon bg-warning elevation-1"><i class="fa fa-undo"></i></span>
+                            <div class="safe-bid-info-box-content">
+                                <span class="safe-bid-info-box-number">1</span>
+                                <span class="safe-bid-info-box-text">未完成</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="safe-bid-info-box mb-3">
+                            <span class="safe-bid-info-box-icon bg-danger elevation-1"><i class="fa fa-exclamation-triangle"></i></span>
+                            <div class="safe-bid-info-box-content">
+                                <span class="safe-bid-info-box-number">1</span>
+                                <span class="safe-bid-info-box-text">异常作业</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-table-container">
+                    <div class="safe-bid-box ">
+                        <div class="safe-bid-box-title">
+                            <h5>转换作业</h5>
+                            <div class="float-right">
+                            </div>
+                        </div>
+                        <div class="safe-bid-box-content">
+                            <div class="safe-bid-table-thead">
+                                <table class="table table-bordered">
+                                    <col width="5%">
+                                    <col width="15%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>作业名称</td>
+                                        <td>作业类型</td>
+                                        <td>删除</td>
+                                        <td>插入</td>
+                                        <td>开始时间</td>
+                                        <td>结束时间</td>
+                                        <td>执行状态</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="safe-bid-table-body" i-scroll>
+                                <div>
+                                    <table class="table table-hover table-bordered">
+                                        <col width="5%">
+                                        <col width="15%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <col width="15%">
+                                        <tr ng-repeat="row in jobExecuteList">
+                                            <td class="text-center">{{$index + 1}}</td>
+                                            <td>{{row.name}}</td>
+                                            <td>{{row.type}}</td>
+                                            <td>{{row.delnum}}</td>
+                                            <td>{{row.insertnum}}</td>
+                                            <td>{{row.starttime}}</td>
+                                            <td>{{row.endtime}}</td>
+                                            <td>{{row.execute}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="safe-bid-table-footer pull-right">
+                                <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="alarm-no-margin" total-items="totalSize" ng-model="currentPage" ng-change="goPgaeNo()" previous-text="上一页" next-text="下一页" max-size="5" items-per-page="historyPageSize"></uib-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

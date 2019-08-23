@@ -1,0 +1,210 @@
+<div class="layout-full">
+    <div class="safe-bid-page-wrapper">
+        <div class="safe-bid-page-inner">
+            <div class="safe-bid-page-head-container">
+                <h1 class="safe-bid-page-head-line">{{moudleTitle}}</h1>
+            </div>
+            <div class="safe-bid-page-body-container">
+                <div class="safe-bid-page-left-container">
+                    <div class="safe-bid-page-left-body-container">
+                        <div class="safe-bid-box-container layout-full">
+                            <div class="safe-bid-page-left-tree-box">
+                                <div class="safe-bid-box-title">
+                                    <h5><i class="fa fa-folder"></i> 元数据目录管理</h5>
+                                </div>
+                                <div class="safe-bid-box-content">
+                                    <div id="safe-bid-metadata-tree-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safe-bid-page-right-container">
+                    <div ng-if="showBusinessPage" class="layout-full">
+                        <div ng-if="pageMode == 'list'">
+                            <div class="safe-bid-table-header">
+                                <div class="row safe-bid-table-header-row">
+                                    <div class="col-md-12 safe-bid-table-header-row text-right">
+                                        <div title="添加" ng-if="!showModBtn" class="safe-bid-btn btn-info" ng-click="addBusinessData()"><i class="fa fa-plus-circle"></i> 添加</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="safe-bid-table-container" style="padding: 0 10px;border: 0;">
+                                <div class="safe-bid-table-thead">
+                                    <table class="table table-bordered">
+                                        <col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                                        <tr>
+                                            <td>序号</td>
+                                            <td>名称</td>
+                                            <td>数据提供部门</td>
+                                            <td>数据连接方式</td>
+                                            <td>联系人</td>
+                                            <td>联系方式</td>
+                                            <td>操作</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="safe-bid-table-body" i-scroll>
+                                    <div>
+                                        <table class="table table-hover table-bordered">
+                                            <col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                                            <tr ng-repeat="row in catalogList">
+                                                <td class="text-center">{{$index + 1}}</td>
+                                                <td>{{row.name}}</td>
+                                                <td>{{row.ouname}}</td>
+                                                <td>{{row.type}}</td>
+                                                <td>{{row.username}}</td>
+                                                <td>{{row.contact}}</td>
+                                                <td class="text-center">
+                                                    <span ng-click="modBusinessData(row)" class="text-success"><i class="fa fa-edit"></i></span>
+                                                    <span ng-click="delBusinessData(row)" class="text-danger"><i class="fa fa-trash"></i></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="pageMode == 'mod'" style="padding: 20px 10px;">
+                            <form method="post" ng-style="{'padding-bottom': '50px'}" class="form-horizontal" id="pageForm" name="pageForm" novalidate>
+                                <fieldset>
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-lg-12">
+                                            <div class="widget-content">
+                                                <div class="control-group" ng-class="{'has-error' : (deviceform.entityItem.name.$invalid)}">
+                                                    <div class="col-lg-6 full-left">
+                                                        <div class="col-md-2 no-margin">
+                                                            <label class="control-label">名   称：</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="entityItem.name" placeholder="请输入业务元数据名称" class="form-control" id="entityItem_name" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 no-margin">
+                                                            <lable ng-show="entityItem.name == null" style="color:red;">*请输入业务元数据名称</lable>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 full-left">
+                                                        <div class="col-md-2 no-margin">
+                                                            <label class="control-label">提供部门：</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="entityItem.ouname" placeholder="请输入数据提供部门" class="form-control" id="entityItem_ouname" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 no-margin">
+                                                            <lable ng-show="entityItem.ouname == null" style="color:red;">*请输入数据提供部门</lable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="safe-bid-page-hr-line-dashed"></div>
+                                                <div class="control-group" ng-class="{'has-error' : (deviceform.entityItem.status.$invalid)}">
+                                                    <div class="col-lg-6 full-left">
+                                                        <div class="col-md-2 no-margin">
+                                                            <label class="control-label">连接方式：</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="entityItem.type" placeholder="请输入数据连接方式" class="form-control" id="entityItem_type" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 no-margin">
+                                                            <lable ng-show="entityItem.type == null" style="color:red;">*请输入数据连接方式</lable>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 full-left">
+                                                        <div class="col-md-2 no-margin">
+                                                            <label class="control-label">联系人：</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="entityItem.username" placeholder="请输入联系人" class="form-control" id="entityItem_username" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 no-margin">
+                                                            <lable ng-show="entityItem.username == null" style="color:red;">*请输入联系人</lable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="safe-bid-page-hr-line-dashed"></div>
+                                                <div class="control-group" ng-class="{'has-error' : (deviceform.entityItem.status.$invalid)}">
+                                                    <div class="col-lg-6 full-left">
+                                                        <div class="col-md-2 no-margin">
+                                                            <label class="control-label">联系方式：</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" ng-model="entityItem.contact" placeholder="请输入联系方式" class="form-control" id="entityItem_contact" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 no-margin">
+                                                            <lable ng-show="entityItem.contact == null" style="color:red;">*请输入联系方式</lable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="form-actions">
+                                    <div class="text-right">
+                                        <button class="btn btn-s-md btn-success" type="button" ng-click="saveCatalog()" ng-disabled="pageForm.$invalid"><i class="fa fa-save"></i>保     存</button>
+                                        <button class="btn btn-s-md btn-danger" type="button" ng-click="backCatalogList()"><i class="fa fa-reply"></i>返     回</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div ng-if="!showBusinessPage" class="layout-full">
+                        <div class="col-md-12 safe-bid-table-header-search-group safe-bid-table-header-row" style="padding: 10px 10px 0 10px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入关键字进行查询">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">查询</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="safe-bid-table-container" style="padding: 10px 10px 0 10px;border: 0;">
+                            <div class="safe-bid-table-thead">
+                                <table class="table table-bordered">
+                                    <col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>表名</td>
+                                        <td>表含义</td>
+                                        <td>字段名称</td>
+                                        <td>字段含义</td>
+                                        <td>字段类型</td>
+                                        <td>字段长度</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="safe-bid-table-body" i-scroll>
+                                <div>
+                                    <table class="table table-hover table-bordered">
+                                        <col width="5%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col width="15%"><col />
+                                        <tr ng-repeat="row in tableInfoList">
+                                            <td class="text-center">{{$index + 1}}</td>
+                                            <td>{{row.tbname}}</td>
+                                            <td>{{row.tbnotes}}</td>
+                                            <td>{{row.columnname}}</td>
+                                            <td>{{row.columnnotes}}</td>
+                                            <td>{{row.coltype}}</td>
+                                            <td>{{row.columnlength}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safe-bid-table-footer pull-right">
+                            <uib-pagination boundary-links="true" first-text="&laquo;" last-text="&raquo;" class="alarm-no-margin" total-items="totalSize" ng-model="currentPage" ng-change="goPgaeNo()" previous-text="上一页" next-text="下一页" max-size="5" items-per-page="historyPageSize"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
