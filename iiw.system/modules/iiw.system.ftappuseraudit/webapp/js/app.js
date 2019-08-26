@@ -6,14 +6,15 @@ define([
     'app',
     'angularAMD',
     'cssloader!system/ftappuseraudit/css/loading',
-    'cssloader!system/ftappuseraudit/css/index.css',
+    'cssloader!system/ftappuseraudit/css/index',
+    // 'system/ftappuseraudit/js/directives/inputLimit',
     'system/js/directives/systemTreeViewDirective'
 ], function (app, angularAMD) {
     var packageName = 'iiw.system.ftappuseraudit';
 
     app.controller('ftappUserAuditController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
         mainService.moduleName = '访谈APP管理';
-        $scope.title = '用户审核';
+        $scope.title = '访谈APP用户管理';
         $scope.keyword = '';
         $scope.selectAll = false;
         $scope.canMod = true;
@@ -112,8 +113,7 @@ define([
                 $state.go('system.ftappuseraudit.add');
             },
             mod: function () {
-                var userInfo = _.where($scope.audit.userList, {checked: true})[0];
-                console.log(userInfo);
+                $scope.userInfo = _.where($scope.audit.userList, {checked: true})[0];
                 $state.go('system.ftappuseraudit.add');
             },
             del: function () {
@@ -174,7 +174,7 @@ define([
 
         // 模块加载完成后初始化事件
         $scope.$on('ftappUserAuditControllerOnEvent', function () {
-            $scope.audit.getUserList();
+            // $scope.audit.getUserList();
         });
 
         function getToken(callback) {
@@ -197,11 +197,157 @@ define([
             iMessage.show(message, false);
         }
     }])
-        .controller('ftappUserItemController', ['$scope', '$state', 'iAjax', 'iMessage', 'iConfirm', 'mainService', '$filter', function ($scope, $state, iAjax, iMessage, iConfirm, mainService, $filter) {
+        .controller('ftappUserInfoController', ['$rootScope', '$scope', '$state', '$location', 'iAjax', 'iMessage', 'iConfirm', '$filter', '$timeout', function ($rootScope, $scope, $state, $location, iAjax, iMessage, iConfirm, $filter, $timeout) {
+            $scope.provinces = [
+                {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {name: '山西省', code: 14}, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
+                {name: '吉林省', code: 22}, {name: '黑龙江省', code: 23}, {name: '上海市', code: 31}, {name: '江苏省', code: 32}, {name: '浙江省', code: 33}, {name: '安徽省', code: 34},
+                {name: '福建省', code: 35}, {name: '江西省', code: 36}, {name: '山东省', code: 37}, {name: '河南省', code: 41}, {name: '湖北省', code: 42}, {name: '湖南省', code: 43},
+                {name: '广东省', code: 44}, {name: '广西壮族自治区', code: 45}, {name: '海南省', code: 46}, {name: '重庆市', code: 50}, {name: '四川省', code: 51}, {name: '贵州省', code: 52},
+                {name: '云南省', code: 53}, {name: '西藏自治区', code: 54}, {name: '陕西省', code: 61}, {name: '甘肃省', code: 62}, {name: '青海省', code: 63}, {name: '宁夏回族自治区', code: 64},
+                {name: '新疆维吾尔自治区', code: 65}
+            ];
+            $scope.userRole = [
+                {name: '访谈员', value: 1},
+                {name: '督导员', value: 2}
+            ];
+            $scope.typeList = [
+                {type: 1, typename: '监狱'},
+                {type: 2, typename: '社矫'},
+                {type: 3, typename: '看守所'}
+            ];
+            if ($scope.$parent.userInfo) {
+                $scope.subTitle = '用户修改';
+                $scope.saveBtn = '修改';
+                $scope.userInfo = $scope.$parent.userInfo;
+            } else {
+                $scope.subTitle = '用户注册';
+                $scope.saveBtn = '注册';
+                $scope.userInfo = {};
+            }
 
-            $scope.$on('ftappUserItemControllerOnEvent', function () {
-                console.log('访谈APP用户修改页面');
-            });
+            // $scope.userInfo = {};
+
+            $scope.save = function () {
+                $scope.loading = {
+                    isLoading: true,
+                    content: `访谈APP用户${$scope.saveBtn}信息提交中`
+                };
+
+                var url, data;
+                url = 'http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=addSyuser';
+
+                $scope.userInfo.code = $scope.userInfo.role + $scope.userInfo.type + $scope.userInfo.provincecode + $scope.userInfo.phone;
+                $scope.userInfo.province = $scope.provinces.filter(_ => _.code === parseInt($scope.userInfo.provincecode))[0].name;
+                data = $scope.userInfo;
+
+                getToken(function (token) {
+                    iAjax
+                        .post(`${url}&authorization=${token}`, data)
+                        .then(function (data) {
+                            console.log(data);
+                            if (data.status === 1) {
+                                $scope.loading.isLoading = false;
+                                _remind(1, `用户${$scope.saveBtn}成功`);
+                                $timeout(function () {
+                                    $scope.back();
+                                }, 300)
+                            } else {
+                                _remind(4, `${$scope.saveBtn}失败，请重新提交`);
+                            }
+                        })
+                })
+            };
+
+            $scope.showOuTree = function () {
+                $('#syouTreeModel').show();
+                $('#syouTreeModel').addClass('in');
+
+                var url, data;
+                url = '/sys/web/syou.do?action=getSyouAll';
+                data = {};
+                iAjax
+                    .post(url, data)
+                    .then(function (data) {
+                            if (data.result.rows && data.result.rows.length > 0) {
+                                $scope.treeNodes = {
+                                    zNodes: data.result.rows
+                                };
+                            } else {
+                                $scope.treeNodes = {
+                                    zNodes: []
+                                };
+                            }
+
+                            $rootScope.$broadcast('initTree', $scope.treeNodes);
+                        },
+                        function (data) {
+                        })
+
+            };
+            $scope.selectOu = function () {
+                if (syoufk == '') {
+                    _remind(3, '单位选择', '请选择一个单位信息!');
+                } else {
+                    $scope.userInfo.syouname = syouname;
+                    $scope.userInfo.syoufk = syoufk;
+
+                    $('#syouTreeModel').removeClass('in');
+                    $timeout(function () {
+                        $('#syouTreeModel').hide()
+                    }, 1000);
+                }
+            };
+            $scope.cancelOu = function () {
+                $('#syouTreeModel').removeClass('in');
+                $timeout(function () {
+                    $('#syouTreeModel').hide()
+                }, 1000);
+            };
+            $scope.selectEvent = function (treeNode) {
+                syouname = treeNode.name;
+                syoufk = treeNode.id;
+            };
+
+            $scope.checkpwd = function () {
+                var reg = /[^\w+\d+]/;
+                if ($scope.userInfo.password) {
+                    $scope.regPwd = reg.test($scope.userInfo.password);
+                    if ($scope.userInfo.password2 != null) {
+                        if ($scope.userInfo.password == $scope.userInfo.password2) {
+                            $scope.pwdcheckfalg = 0;
+                        } else {
+                            $scope.pwdcheckfalg = 1;
+                        }
+                    }
+                } else {
+                    $scope.regPwd = '';
+                    return;
+                }
+
+            }
+            $scope.back = function () {
+                $location.path('/system/ftappuseraudit');
+            };
+
+            function getToken(callback) {
+                iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+                    callback(data.token);
+                }, function (err) {
+                    _remind(4, '请求失败，请查看网络状态!');
+                    $scope.loading.content = '请求失败，请查看网络状态';
+                });
+            }
+
+            function _remind(level, content, title) {
+                var message = {
+                    id: new Date(),
+                    level: level,
+                    title: (title || '消息提醒'),
+                    content: content
+                };
+
+                iMessage.show(message, false);
+            }
         }]);
 
     // 模块内部路由
@@ -209,13 +355,8 @@ define([
         $stateProvider
             .state('system.ftappuseraudit.add', {
                 url: '/add',
-                controller: 'ftappUserItemController',
+                controller: 'ftappUserInfoController',
                 templateUrl: $.soa.getWebPath(packageName) + '/view/add.html'
             })
-            .state('system.ftappuseraudit.mod', {
-                url: '/mod',
-                controller: 'ftappUserItemController',
-                templateUrl: $.soa.getWebPath(packageName) + '/view/mod.html'
-            });
     });
 });

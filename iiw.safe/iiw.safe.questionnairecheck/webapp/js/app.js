@@ -28,7 +28,7 @@ define([
                 };
 
                 var url, data;
-                url = '/terminal/interview/system.do?action=getQuestionsResult';
+                url = 'http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=getQuestionsResult';
                 data = {
                     filter: {
                         id: $scope.record.questionnairefk,
@@ -36,49 +36,52 @@ define([
                     }
                 };
 
-                iAjax
-                    .post(url, data)
-                    .then(function (data) {
-                        if (data.result && data.result.rows) {
+                getToken(function (token) {
+                    iAjax
+                        .post(`${url}&authorization=${token}`, data)
+                        .then(function (data) {
+                            if (data.result && data.result.rows) {
 
-                            $scope.answerList = data.result.rows;
+                                $scope.answerList = data.result.rows;
 
-                            if (!$scope.answerList.length) {
-                                iConfirm.show({
-                                    scope: $scope,
-                                    title: '',
-                                    content: '抱歉，该问卷无数据! 点击确认返回。',
-                                    buttons: [{
-                                        text: '确认',
-                                        style: 'button-primary',
-                                        action: 'questionnairecheck.confirmSuccess'
-                                    }]
-                                });
+                                if (!$scope.answerList.length) {
+                                    iConfirm.show({
+                                        scope: $scope,
+                                        title: '',
+                                        content: '抱歉，该问卷无数据! 点击确认返回。',
+                                        buttons: [{
+                                            text: '确认',
+                                            style: 'button-primary',
+                                            action: 'questionnairecheck.confirmSuccess'
+                                        }]
+                                    });
+                                }
+
+                                $scope.wjData = data.result.detail;
+
+                                $scope.userDetails = data.result.userdetail;
+                                if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
+                                if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
+                                if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
+
+                                $scope.loading.isLoading = false;
+
                             }
-
-                            $scope.wjData = data.result.detail;
-
-                            $scope.userDetails = data.result.userdetail;
-                            if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
-                            if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
-                            if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
-
+                        }, function (err) {
+                            iConfirm.show({
+                                scope: $scope,
+                                title: '请求失败',
+                                content: '请求失败! 点击确认返回。',
+                                buttons: [{
+                                    text: '确认',
+                                    style: 'button-primary',
+                                    action: 'questionnairecheck.confirmSuccess'
+                                }]
+                            });
                             $scope.loading.isLoading = false;
+                        })
+                });
 
-                        }
-                    }, function (err) {
-                        iConfirm.show({
-                            scope: $scope,
-                            title: '请求失败',
-                            content: '请求失败! 点击确认返回。',
-                            buttons: [{
-                                text: '确认',
-                                style: 'button-primary',
-                                action: 'questionnairecheck.confirmSuccess'
-                            }]
-                        });
-                        $scope.loading.isLoading = false;
-                    })
             },
 
             confirmSuccess: function (id) {
@@ -97,7 +100,7 @@ define([
                 };
 
                 var url, data;
-                url = '/security/wjdc/scale.do?action=modTalkRecord';
+                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=modTalkRecord';
                 data = {
                     filter: {
                         id: $scope.record.id,
@@ -105,30 +108,33 @@ define([
                     }
                 };
 
-                iAjax
-                    .post(url, data)
-                    .then(function (data) {
-                        if (data.status === 1) {
-                            $scope.loading.isLoading = false;
-                            _remind(1, '审核提交成功');
-                            $timeout(function () {
-                                $scope.questionnairecheck.back();
-                            }, 300)
-                        } else {
-                            _remind(4, '审核失败，请重新提交');
-                        }
-                    }, function (err) {
-                        iConfirm.show({
-                            scope: $scope,
-                            title: '请求失败',
-                            content: '请求失败! 点击确认返回。',
-                            buttons: [{
-                                text: '确认',
-                                style: 'button-primary',
-                                action: 'questionnairecheck.confirmSuccess'
-                            }]
-                        });
-                    })
+                getToken(function (token) {
+                    iAjax
+                        .post(`${url}&authorization=${token}`, data)
+                        .then(function (data) {
+                            if (data.status === 1) {
+                                $scope.loading.isLoading = false;
+                                _remind(1, '审核提交成功');
+                                $timeout(function () {
+                                    $scope.questionnairecheck.back();
+                                }, 300)
+                            } else {
+                                _remind(4, '审核失败，请重新提交');
+                            }
+                        }, function (err) {
+                            iConfirm.show({
+                                scope: $scope,
+                                title: '请求失败',
+                                content: '请求失败! 点击确认返回。',
+                                buttons: [{
+                                    text: '确认',
+                                    style: 'button-primary',
+                                    action: 'questionnairecheck.confirmSuccess'
+                                }]
+                            });
+                        })
+                });
+
             },
             reinvestigation: function () {
                 iConfirm.show({
@@ -155,7 +161,7 @@ define([
                 };
 
                 var url, data;
-                url = '/security/wjdc/scale.do?action=modTalkRecord';
+                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=modTalkRecord';
                 data = {
                     filter: {
                         id: $scope.record.id,
@@ -164,30 +170,33 @@ define([
                     }
                 };
 
-                iAjax
-                    .post(url, data)
-                    .then(function (data) {
-                        if (data.status === 1) {
-                            $scope.loading.isLoading = false;
-                            _remind(1, '问卷返回重新调查成功');
-                            $timeout(function () {
-                                $scope.questionnairecheck.back();
-                            }, 300)
-                        } else {
-                            _remind(4, '提交失败，请重新提交');
-                        }
-                    }, function (err) {
-                        iConfirm.show({
-                            scope: $scope,
-                            title: '请求失败',
-                            content: '请求失败! 点击确认返回。',
-                            buttons: [{
-                                text: '确认',
-                                style: 'button-primary',
-                                action: 'questionnairecheck.confirmSuccess'
-                            }]
-                        });
-                    })
+                getToken(function (token) {
+                    iAjax
+                        .post(`${url}&authorization=${token}`, data)
+                        .then(function (data) {
+                            if (data.status === 1) {
+                                $scope.loading.isLoading = false;
+                                _remind(1, '问卷返回重新调查成功');
+                                $timeout(function () {
+                                    $scope.questionnairecheck.back();
+                                }, 300)
+                            } else {
+                                _remind(4, '提交失败，请重新提交');
+                            }
+                        }, function (err) {
+                            iConfirm.show({
+                                scope: $scope,
+                                title: '请求失败',
+                                content: '请求失败! 点击确认返回。',
+                                buttons: [{
+                                    text: '确认',
+                                    style: 'button-primary',
+                                    action: 'questionnairecheck.confirmSuccess'
+                                }]
+                            });
+                        })
+                });
+
             },
 
             scrollTo: function (el) {
@@ -231,7 +240,7 @@ define([
         });
 
         function getToken(callback) {
-            iAjax.post('/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                 callback(data.token);
             }, function (err) {
                 _remind(4, '请求失败，请查看网络状态!');

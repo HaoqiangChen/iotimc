@@ -1,4 +1,4 @@
-.safe-questionnairecheck-page-wrapper {
+.safe-scalecheck-page-wrapper {
     width: 100%;
     height: 100%;
     float: left;
@@ -10,14 +10,14 @@
     padding: 20px 10px;
 }
 
-.safe-questionnairecheck-page-wrapper .safe-questionnairecheck-page-inner {
+.safe-scalecheck-page-wrapper .safe-scalecheck-page-inner {
     padding: 0;
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.safe-questionnairecheck-page-wrapper .safe-questionnairecheck-page-body-container {
+.safe-scalecheck-page-wrapper .safe-scalecheck-page-body-container {
     height: calc(100% - 60px);
     width: 100%;
     position: relative;
@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-.safe-questionnairecheck-page-wrapper .safe-questionnairecheck-page-footer-container {
+.safe-scalecheck-page-wrapper .safe-scalecheck-page-footer-container {
     width: 100%;
     height: 60px;
     position: relative;
@@ -35,7 +35,7 @@
     align-content: center;
 }
 
-.questionnairecheck-container {
+.scalecheck-container {
     position: relative;
     width: 100%;
     height: 100%;

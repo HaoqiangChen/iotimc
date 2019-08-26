@@ -41,18 +41,18 @@ define([
                     content: '访谈记录列表加载中'
                 };
                 var url, data;
-                url = '/security/wjdc/scale.do?action=getTalkRecord';
+                url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getTalkRecord';
                 data = {
                     filter: this.filter,
                     params: this.params
                 };
 
-                // getToken(function (token) {
+                getToken(function (token) {
                 iAjax
-                // .post(`${url}&authorization=${token}`, data)
-                    .post(url, data)
+                .post(`${url}&authorization=${token}`, data)
+                    // .post(url, data)
                     .then(function (data) {
-                        // console.log(data);
+                        console.log(data);
                         if (data.result && data.result.rows) {
                             $scope.record.list = data.result.rows;
                             $scope.loading.isLoading = false;
@@ -64,7 +64,7 @@ define([
                             $scope.record.params = data.result.params;
                         }
                     })
-                // })
+                })
             },
 
             check: function (item) {

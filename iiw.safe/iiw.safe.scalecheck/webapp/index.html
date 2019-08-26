@@ -1,13 +1,13 @@
 <div class="layout-full">
-    <div class="safe-questionnairecheck-page-wrapper">
-        <div class="safe-questionnairecheck-page-inner">
+    <div class="safe-scalecheck-page-wrapper">
+        <div class="safe-scalecheck-page-inner">
             <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
                 <div class="loading-toast">
                     <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
                     <p class="loading-content">{{loading.content}}...</p>
                 </div>
             </div>
-            <div class="safe-questionnairecheck-page-body-container">
+            <div class="safe-scalecheck-page-body-container">
                 <div class="container scale-container">
                     <div class="scale-header" ng-if="answerList.length">
                         <div class="scale-name">{{wjData.name}}</div>
@@ -157,11 +157,11 @@
                     </div>
                 </div>
             </div>
-            <div class="safe-questionnairecheck-page-footer-container">
-                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-warning col-md-3" type="button"ng-click="questionnairecheck.reinvestigation()">重新调查</button>
-                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-success col-md-3" type="button"ng-click="questionnairecheck.audit()">审核通过</button>
-                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-danger col-md-3" type="button" ng-click="questionnairecheck.back()">返回</button>
-                <button ng-if="record.sign === '0'" class="btn btn-danger col-md-4" type="button" ng-click="questionnairecheck.back()">返回</button>
+            <div class="safe-scalecheck-page-footer-container">
+                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-warning col-md-3" type="button"ng-click="scalecheck.reinvestigation()">重新调查</button>
+                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-success col-md-3" type="button"ng-click="scalecheck.audit()">审核通过</button>
+                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-danger col-md-3" type="button" ng-click="scalecheck.back()">返回</button>
+                <button ng-if="record.sign === '0'" class="btn btn-danger col-md-4" type="button" ng-click="scalecheck.back()">返回</button>
             </div>
         </div>
     </div>
