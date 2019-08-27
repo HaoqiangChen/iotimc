@@ -97,11 +97,11 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-minlength="15" ng-maxlength="18" placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard" />
+                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-pattern="/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/" placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard" required/>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="error-text">{{userInfo.idcard.length || 0}}/18 <span ng-show="ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid">请输入15位或18位正确的身份证号</span></div>
+                        <div class="error-text">{{userInfo.idcard.length || 0}}/18 <span ng-show="ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid">请输入18位正确的身份证号</span></div>
                     </div>
                 </div>
 
@@ -125,14 +125,11 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <select ng-model="userInfo.provincecode" class="form-control" required>
+                            <select ng-model="userInfo.provincecode" name="provincecode" class="form-control" required>
                                 <option value="" disabled>请选择所在省份</option>
                                 <option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <lable ng-show="userInfo.role == null" style="color:red;">*必填</lable>
                     </div>
                 </div>
 
@@ -142,7 +139,8 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input class="form-control input-transparent ng-valid ng-dirty ng-valid-parse ng-touched" type="text" ng-model="userInfo.birthday" safe-picker="" p!format="Y-m-d" style="" placeholder="请选择时间" id="ftuser_birthday">
+<!--                            <input class="form-control input-transparent ng-valid ng-dirty ng-valid-parse ng-touched" type="text" ng-model="userInfo.birthday" safe-picker="" p!format="Y-m-d" style="" placeholder="请选择时间" id="ftuser_birthday">-->
+                            <div class="user-code">{{userInfo.role + userInfo.type + userInfo.provincecode + userInfo.phone}}</div>
                         </div>
                     </div>
                 </div>
@@ -175,9 +173,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <lable ng-show="userInfo.role == null" style="color:red;">*必填</lable>
-                    </div>
                 </div>
 
                 <div class="control-group col-md-6">
@@ -192,9 +187,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <lable ng-show="userInfo.role == null" style="color:red;">*必填</lable>
-                    </div>
                 </div>
 
                 <div class="control-group col-md-12">
@@ -203,7 +195,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="userInfo.syouname" placeholder="选择单位" id="ftuser_syoufk" ng-click="showOuTree()" required/>
+                            <input type="text" class="form-control" ng-model="userInfo.syouname" placeholder="选择单位" id="ftuser_syoufk" ng-click="showOuTree()" required ng-disabled="!userInfo.provincecode"/>
                         </div>
                     </div>
                     <div class="col-md-3">

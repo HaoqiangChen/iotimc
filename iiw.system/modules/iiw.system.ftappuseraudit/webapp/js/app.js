@@ -199,11 +199,26 @@ define([
     }])
         .controller('ftappUserInfoController', ['$rootScope', '$scope', '$state', '$location', 'iAjax', 'iMessage', 'iConfirm', '$filter', '$timeout', function ($rootScope, $scope, $state, $location, iAjax, iMessage, iConfirm, $filter, $timeout) {
             $scope.provinces = [
-                {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {name: '山西省', code: 14}, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
-                {name: '吉林省', code: 22}, {name: '黑龙江省', code: 23}, {name: '上海市', code: 31}, {name: '江苏省', code: 32}, {name: '浙江省', code: 33}, {name: '安徽省', code: 34},
-                {name: '福建省', code: 35}, {name: '江西省', code: 36}, {name: '山东省', code: 37}, {name: '河南省', code: 41}, {name: '湖北省', code: 42}, {name: '湖南省', code: 43},
-                {name: '广东省', code: 44}, {name: '广西壮族自治区', code: 45}, {name: '海南省', code: 46}, {name: '重庆市', code: 50}, {name: '四川省', code: 51}, {name: '贵州省', code: 52},
-                {name: '云南省', code: 53}, {name: '西藏自治区', code: 54}, {name: '陕西省', code: 61}, {name: '甘肃省', code: 62}, {name: '青海省', code: 63}, {name: '宁夏回族自治区', code: 64},
+                {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
+                    name: '山西省',
+                    code: 14
+                }, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
+                {name: '吉林省', code: 22}, {name: '黑龙江省', code: 23}, {name: '上海市', code: 31}, {
+                    name: '江苏省',
+                    code: 32
+                }, {name: '浙江省', code: 33}, {name: '安徽省', code: 34},
+                {name: '福建省', code: 35}, {name: '江西省', code: 36}, {name: '山东省', code: 37}, {
+                    name: '河南省',
+                    code: 41
+                }, {name: '湖北省', code: 42}, {name: '湖南省', code: 43},
+                {name: '广东省', code: 44}, {name: '广西壮族自治区', code: 45}, {name: '海南省', code: 46}, {
+                    name: '重庆市',
+                    code: 50
+                }, {name: '四川省', code: 51}, {name: '贵州省', code: 52},
+                {name: '云南省', code: 53}, {name: '西藏自治区', code: 54}, {name: '陕西省', code: 61}, {
+                    name: '甘肃省',
+                    code: 62
+                }, {name: '青海省', code: 63}, {name: '宁夏回族自治区', code: 64},
                 {name: '新疆维吾尔自治区', code: 65}
             ];
             $scope.userRole = [
@@ -263,25 +278,32 @@ define([
                 $('#syouTreeModel').addClass('in');
 
                 var url, data;
-                url = '/sys/web/syou.do?action=getSyouAll';
-                data = {};
-                iAjax
-                    .post(url, data)
-                    .then(function (data) {
-                            if (data.result.rows && data.result.rows.length > 0) {
-                                $scope.treeNodes = {
-                                    zNodes: data.result.rows
-                                };
-                            } else {
-                                $scope.treeNodes = {
-                                    zNodes: []
-                                };
-                            }
+                url = 'http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=getSyouAll';
+                data = {
+                    filter: {
+                        name: '',
+                        provinceCode: $scope.userInfo.provincecode
+                    }
+                };
+                getToken(function (token) {
+                    iAjax
+                        .post(url, data)
+                        .then(function (data) {
+                                if (data.result.rows && data.result.rows.length > 0) {
+                                    $scope.treeNodes = {
+                                        zNodes: data.result.rows
+                                    };
+                                } else {
+                                    $scope.treeNodes = {
+                                        zNodes: []
+                                    };
+                                }
 
-                            $rootScope.$broadcast('initTree', $scope.treeNodes);
-                        },
-                        function (data) {
-                        })
+                                $rootScope.$broadcast('initTree', $scope.treeNodes);
+                            },
+                            function (data) {
+                            })
+                })
 
             };
             $scope.selectOu = function () {

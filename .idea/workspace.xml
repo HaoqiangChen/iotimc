@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnaire/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.scalecheck/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" afterDir="false" />
     </list>
@@ -19,6 +12,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,9 +27,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="1378" />
+    <option name="height" value="1048" />
+  </component>
   <component name="ProjectId" id="1PgYN5Tgnmw7VRL9V2KCwNgSYAy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -67,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.record">
+  <component name="RunManager" selected="Node.js.audit">
     <configuration name="audit" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/iiwlib/server.js" working-dir="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit">
       <method v="2" />
     </configuration>
@@ -126,8 +155,36 @@
       <workItem from="1566524638444" duration="1282000" />
       <workItem from="1566527898100" duration="32685000" />
       <workItem from="1566702760492" duration="37390000" />
+      <workItem from="1566889547168" duration="596000" />
+      <workItem from="1566893658142" duration="6855000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7451000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1453" height="783" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964131" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3290735" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Key Promoter X" order="3" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -138,6 +195,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -158,5 +221,43 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappinterviewrecord/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.command/iiw.command.informRecord/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1391">
+          <caret line="99" column="228" selection-start-line="99" selection-start-column="228" selection-end-line="99" selection-end-column="228" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1408">
+          <caret line="233" column="41" lean-forward="true" selection-start-line="233" selection-start-column="41" selection-end-line="251" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
