@@ -140,15 +140,17 @@ define([
             confirmDelUser: function (id) {
                 iConfirm.close(id);
 
-                var data = {filter: {id: []}};
+                var data = {ids: []};
                 $.each($scope.audit.chooseList, function (i, o) {
-                    data.filter.id.push(o.id);
+                    data.ids.push(o.id);
                 });
-                iAjax.post('/terminal/interview/user.do?action=xxx', data).then(function () {
-                    _remind(1, '用户审核成功');
-                    $scope.audit.getUserList();
-                }, function () {
-                    _remind(4, '网路连接失败');
+                getToken(function (token) {
+                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=deleteUsers&authorization='+token, data).then(function () {
+                        _remind(1, '用户审核成功');
+                        $scope.audit.getUserList();
+                    }, function () {
+                        _remind(4, '网络连接失败');
+                    })
                 })
             },
 
@@ -180,7 +182,7 @@ define([
         });
 
         function getToken(callback) {
-            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=9999&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                 callback(data.token);
             }, function (err) {
                 _remind(4, '请求失败，请查看网络状态!');
@@ -236,9 +238,8 @@ define([
                 $scope.subTitle = '用户修改';
                 $scope.saveBtn = '修改';
                 $scope.userInfo = $scope.$parent.userInfo;
-                console.log($scope.userInfo);
                 $scope.userInfo.type = $scope.typeList.filter(_ => _.typename === $scope.userInfo.type)[0].type.toString();
-                $scope.userInfo.provincecode = $scope.provinces.filter(_ => _.name === $scope.userInfo.province)[0].code.toString();
+                $scope.userInfo.provincecode = $scope.provinces.filter(_ => _.name.substring(0, 2) === $scope.userInfo.province.substring(0, 2))[0].code.toString();
                 $scope.userInfo.role = $scope.userRole.filter(_ => _.name === $scope.userInfo.rolename)[0].value.toString();
             } else {
                 $scope.subTitle = '用户注册';
@@ -259,7 +260,19 @@ define([
 
                 $scope.userInfo.code = $scope.userInfo.role + $scope.userInfo.type + $scope.userInfo.provincecode + $scope.userInfo.phone;
                 $scope.userInfo.province = $scope.provinces.filter(_ => _.code === parseInt($scope.userInfo.provincecode))[0].name;
-                data = $scope.userInfo;
+                data = {
+                    code: $scope.userInfo.code,
+                    name: $scope.userInfo.name,
+                    idcard: $scope.userInfo.idcard,
+                    phone: $scope.userInfo.phone,
+                    origin: $scope.userInfo.origin,
+                    email: $scope.userInfo.email,
+                    sex: $scope.userInfo.sex,
+                    password: $scope.userInfo.password,
+                    birthday: $scope.userInfo.birthday,
+                    province: $scope.userInfo.province,
+                    syoufk: $scope.userInfo.syoufk
+                };
 
                 getToken(function (token) {
                     iAjax
@@ -275,6 +288,10 @@ define([
                             } else {
                                 _remind(4, `${$scope.saveBtn}失败，请重新提交`);
                             }
+                        }, function (err) {
+                            console.log(err);
+                            $scope.loading.isLoading = false;
+                            _remind(3, err.message);
                         })
                 })
             };
@@ -341,12 +358,12 @@ define([
                 if ($scope.userInfo.idcard) {
                     $scope.regIdcard = reg.test($scope.userInfo.idcard);
                     if ($scope.userInfo.idcard.length < 16) {
-                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 8)+'-'+ $scope.userInfo.idcard.substring(8, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12);
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 8) + '-' + $scope.userInfo.idcard.substring(8, 10) + '-' + $scope.userInfo.idcard.substring(10, 12);
                         $scope.sexcode = $scope.userInfo.idcard.substring(13, 14);
                         if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
                         else $scope.userInfo.sex = '男';
                     } else {
-                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12)+'-'+ $scope.userInfo.idcard.substring(12, 14);
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 10) + '-' + $scope.userInfo.idcard.substring(10, 12) + '-' + $scope.userInfo.idcard.substring(12, 14);
                         $scope.sexcode = $scope.userInfo.idcard.substring(16, 17);
                         if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
                         else $scope.userInfo.sex = '男';
@@ -371,11 +388,12 @@ define([
 
             };
             $scope.back = function () {
+                $scope.userInfo.type = $scope.typeList.filter(_ => _.type.toString() === $scope.userInfo.type)[0].typename;
                 $location.path('/system/ftappuseraudit');
             };
 
             function getToken(callback) {
-                iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+                iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=9999&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                     callback(data.token);
                 }, function (err) {
                     _remind(4, '请求失败，请查看网络状态!');
