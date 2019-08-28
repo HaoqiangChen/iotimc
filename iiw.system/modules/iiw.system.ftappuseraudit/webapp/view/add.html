@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.origin" placeholder="输入籍贯" class="form-control input-transparent" id="ftuser_origin" />
+                            <input type="text" ng-model="userInfo.origin" placeholder="输入籍贯" class="form-control input-transparent" id="ftuser_origin" required/>
                         </div>
                     </div>
                 </div>
@@ -97,11 +97,13 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-pattern="/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/" placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard" required/>
+                            <input type="text" ng-model="userInfo.idcard" name="idcard" ng-change="checkidcard()" placeholder="输入身份证号" class="form-control input-transparent" id="ftuser_idcard" required/>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="error-text">{{userInfo.idcard.length || 0}}/18 <span ng-show="ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid">请输入18位正确的身份证号</span></div>
+                        <div class="error-text">{{userInfo.idcard.length || 0}}/18
+                        <span ng-show="(ftappuserfrom.idcard.$dirty && ftappuserfrom.idcard.$invalid) || !regIdcard">请输入18位正确身份证号</span>
+                        </div>
                     </div>
                 </div>
 
@@ -111,7 +113,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
-                            <input type="text" ng-model="userInfo.email" name="email" ng-pattern="/^\w+@[\w\.]+/" placeholder="输入邮箱地址" class="form-control input-transparent" id="ftuser_email" />
+                            <input type="text" ng-model="userInfo.email" name="email" ng-pattern="/^\w+@[\w\.]+/" placeholder="输入邮箱地址" class="form-control input-transparent" id="ftuser_email" required/>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -129,34 +131,6 @@
                                 <option value="" disabled>请选择所在省份</option>
                                 <option ng-repeat="province in provinces" value="{{province.code}}">{{province.name}}</option>
                             </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="control-group col-md-6">
-                    <div class="col-md-2">
-                        <label class="control-label">出生日期</label>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="form-group">
-<!--                            <input class="form-control input-transparent ng-valid ng-dirty ng-valid-parse ng-touched" type="text" ng-model="userInfo.birthday" safe-picker="" p!format="Y-m-d" style="" placeholder="请选择时间" id="ftuser_birthday">-->
-                            <div class="user-code">{{userInfo.role + userInfo.type + userInfo.provincecode + userInfo.phone}}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="control-group col-md-6" style="margin-bottom: 15px;">
-                    <div class="col-md-2">
-                        <label class="control-label">性别</label>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="form-group">
-                            <label class="radio-inline">
-                                <input type="radio" ng-model="userInfo.sex" value="男" ng-checked="true"> 男
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" ng-model="userInfo.sex" value="女"> 女
-                            </label>
                         </div>
                     </div>
                 </div>
@@ -209,7 +183,7 @@
     <div class="form-actions">
         <div>
             <button class="btn btn-s-md btn-primary" type="button" ng-click="save()"
-            ng-disabled="ftappuserfrom.$invalid || pwdcheckfalg === 1">{{saveBtn}}</button>
+            ng-disabled="ftappuserfrom.$invalid || pwdcheckfalg === 1 || !regIdcard">{{saveBtn}}</button>
             <button class="btn btn-s-md btn-default" type="button" ng-click="back()">返     回</button>
         </div>
     </div>

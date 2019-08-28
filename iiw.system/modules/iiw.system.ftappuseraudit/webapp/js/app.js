@@ -174,7 +174,7 @@ define([
 
         // 模块加载完成后初始化事件
         $scope.$on('ftappUserAuditControllerOnEvent', function () {
-            // $scope.audit.getUserList();
+            $scope.audit.getUserList();
         });
 
         function getToken(callback) {
@@ -330,6 +330,23 @@ define([
                 syoufk = treeNode.id;
             };
 
+            $scope.checkidcard = function () {
+                var reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+                if ($scope.userInfo.idcard) {
+                    $scope.regIdcard = reg.test($scope.userInfo.idcard);
+                    if ($scope.userInfo.idcard.length < 16) {
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 8)+'-'+ $scope.userInfo.idcard.substring(8, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12);
+                        $scope.sexcode = $scope.userInfo.idcard.substring(13, 14);
+                        if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
+                        else $scope.userInfo.sex = '男';
+                    } else {
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12)+'-'+ $scope.userInfo.idcard.substring(12, 14);
+                        $scope.sexcode = $scope.userInfo.idcard.substring(16, 17);
+                        if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
+                        else $scope.userInfo.sex = '男';
+                    }
+                }
+            };
             $scope.checkpwd = function () {
                 var reg = /[^\w+\d+]/;
                 if ($scope.userInfo.password) {
@@ -346,7 +363,7 @@ define([
                     return;
                 }
 
-            }
+            };
             $scope.back = function () {
                 $location.path('/system/ftappuseraudit');
             };

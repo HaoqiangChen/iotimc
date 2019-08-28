@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" afterDir="false" />
     </list>
@@ -14,7 +13,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="88" column="159" selection-start-line="88" selection-start-column="159" selection-end-line="88" selection-end-column="159" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+              <folding>
+                <element signature="e#11122#12407#0" />
+                <element signature="e#12451#12893#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,12 +58,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" />
-        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" />
         <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" />
+        <option value="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="1378" />
     <option name="height" value="1048" />
@@ -57,6 +84,50 @@
             <path>
               <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
               <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="iiw.system.ftappuseraudit" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -157,16 +228,20 @@
       <workItem from="1566702760492" duration="37390000" />
       <workItem from="1566889547168" duration="596000" />
       <workItem from="1566893658142" duration="6855000" />
+      <workItem from="1566919276892" duration="947000" />
+      <workItem from="1566920829108" duration="6550000" />
+      <workItem from="1566959349190" duration="2686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7451000" />
+    <option name="totallyTimeSpent" value="17634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1453" height="783" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964131" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16642755" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -242,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1391">
-          <caret line="99" column="228" selection-start-line="99" selection-start-column="228" selection-end-line="99" selection-end-column="228" />
+        <state relative-caret-position="137">
+          <caret line="88" column="159" selection-start-line="88" selection-start-column="159" selection-end-line="88" selection-end-column="159" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
@@ -254,8 +329,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1408">
-          <caret line="233" column="41" lean-forward="true" selection-start-line="233" selection-start-column="41" selection-end-line="251" selection-end-column="89" />
+        <state relative-caret-position="246">
+          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+          <folding>
+            <element signature="e#11122#12407#0" />
+            <element signature="e#12451#12893#0" />
+          </folding>
         </state>
       </provider>
     </entry>
