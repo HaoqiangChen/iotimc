@@ -179,16 +179,16 @@ define([
             confirmDelUser: function (id) {
                 iConfirm.close(id);
 
-                var data = {ids:[]};
+                var data = {ids: []};
                 $.each($scope.audit.chooseList, function (i, o) {
                     data.ids.push(o.id);
                 });
                 getToken(function (token) {
-                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=deleteUsers&authorization='+token, data).then(function () {
+                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=deleteUsers&authorization='+token, data).then(function () {
                         _remind(1, '用户审核成功');
                         $scope.audit.getUserList();
                     }, function () {
-                        _remind(4, '网路连接失败');
+                        _remind(4, '网络连接失败');
                     })
                 })
             },
@@ -424,6 +424,7 @@ define([
 
             };
             $scope.back = function () {
+                $scope.userInfo.type = $scope.typeList.filter(_ => _.type.toString() === $scope.userInfo.type)[0].typename;
                 $location.path('/system/ftappuseraudit');
             };
 
