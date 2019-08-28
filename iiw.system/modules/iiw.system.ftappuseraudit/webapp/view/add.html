@@ -2,6 +2,12 @@
     <span>{{subTitle}}</span>
 </div>
 <div class="widget-content">
+    <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+        <div class="loading-toast">
+            <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            <p class="loading-content">{{loading.content}}...</p>
+        </div>
+    </div>
     <div class="layout-full">
         <form method="post" class="form-horizontal" id="ftappuserfrom" name="ftappuserfrom">
             <fieldset>

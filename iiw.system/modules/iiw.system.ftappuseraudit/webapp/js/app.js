@@ -20,6 +20,38 @@ define([
         $scope.canMod = true;
         $scope.canAudit = true;
         $scope.canDel = true;
+        $scope.typeList = [
+            {type: 1, typename: '监狱'},
+            {type: 2, typename: '社矫'},
+            {type: 3, typename: '看守所'}
+        ];
+        $scope.provinces = [
+            {name: '北京市', code: 11}, {name: '天津市', code: 12}, {name: '河北省', code: 13}, {
+                name: '山西省',
+                code: 14
+            }, {name: '内蒙古自治区', code: 15}, {name: '辽宁省', code: 21},
+            {name: '吉林省', code: 22}, {name: '黑龙江省', code: 23}, {name: '上海市', code: 31}, {
+                name: '江苏省',
+                code: 32
+            }, {name: '浙江省', code: 33}, {name: '安徽省', code: 34},
+            {name: '福建省', code: 35}, {name: '江西省', code: 36}, {name: '山东省', code: 37}, {
+                name: '河南省',
+                code: 41
+            }, {name: '湖北省', code: 42}, {name: '湖南省', code: 43},
+            {name: '广东省', code: 44}, {name: '广西壮族自治区', code: 45}, {name: '海南省', code: 46}, {
+                name: '重庆市',
+                code: 50
+            }, {name: '四川省', code: 51}, {name: '贵州省', code: 52},
+            {name: '云南省', code: 53}, {name: '西藏自治区', code: 54}, {name: '陕西省', code: 61}, {
+                name: '甘肃省',
+                code: 62
+            }, {name: '青海省', code: 63}, {name: '宁夏回族自治区', code: 64},
+            {name: '新疆维吾尔自治区', code: 65}
+        ];
+        $scope.userRole = [
+            {name: '访谈员', value: 1},
+            {name: '督导员', value: 2}
+        ];
 
         $scope.audit = {
             filter: {
@@ -54,6 +86,12 @@ define([
                             console.log(data);
                             if (data.result && data.result.rows) {
                                 $scope.audit.userList = data.result.rows;
+                                $scope.audit.userList.map(_a => {
+                                    _a.typename = _a.type;
+                                    _a.type = _.filter($scope.typeList, _b => _b.typename === _a.type)[0].type.toString();
+                                    _a.role = _.filter($scope.userRole, _b => _b.name === _a.rolename)[0].value.toString();
+                                    if (_a.province) _a.provincecode = _.filter($scope.provinces, _b => _b.name.substring(0, 2) === _a.province.substring(0, 2))[0].code.toString();
+                                });
                                 $scope.loading.isLoading = false;
                                 $scope.selectAll = false;
                             } else {
@@ -112,6 +150,7 @@ define([
             },
 
             add: function () {
+                $scope.userInfo = '';
                 $state.go('system.ftappuseraudit.add');
             },
             mod: function () {
@@ -140,15 +179,17 @@ define([
             confirmDelUser: function (id) {
                 iConfirm.close(id);
 
-                var data = {filter: {id: []}};
+                var data = {ids:[]};
                 $.each($scope.audit.chooseList, function (i, o) {
-                    data.filter.id.push(o.id);
+                    data.ids.push(o.id);
                 });
-                iAjax.post('/terminal/interview/user.do?action=xxx', data).then(function () {
-                    _remind(1, '用户审核成功');
-                    $scope.audit.getUserList();
-                }, function () {
-                    _remind(4, '网路连接失败');
+                getToken(function (token) {
+                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=deleteUsers&authorization='+token, data).then(function () {
+                        _remind(1, '用户审核成功');
+                        $scope.audit.getUserList();
+                    }, function () {
+                        _remind(4, '网路连接失败');
+                    })
                 })
             },
 
@@ -180,7 +221,7 @@ define([
         });
 
         function getToken(callback) {
-            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+            iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=9999&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                 callback(data.token);
             }, function (err) {
                 _remind(4, '请求失败，请查看网络状态!');
@@ -236,10 +277,7 @@ define([
                 $scope.subTitle = '用户修改';
                 $scope.saveBtn = '修改';
                 $scope.userInfo = $scope.$parent.userInfo;
-                console.log($scope.userInfo);
-                $scope.userInfo.type = $scope.typeList.filter(_ => _.typename === $scope.userInfo.type)[0].type.toString();
-                $scope.userInfo.provincecode = $scope.provinces.filter(_ => _.name === $scope.userInfo.province)[0].code.toString();
-                $scope.userInfo.role = $scope.userRole.filter(_ => _.name === $scope.userInfo.rolename)[0].value.toString();
+                $scope.regIdcard = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/.test($scope.userInfo.idcard);
             } else {
                 $scope.subTitle = '用户注册';
                 $scope.saveBtn = '注册';
@@ -258,8 +296,19 @@ define([
                 url = 'http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=addSyuser';
 
                 $scope.userInfo.code = $scope.userInfo.role + $scope.userInfo.type + $scope.userInfo.provincecode + $scope.userInfo.phone;
-                $scope.userInfo.province = $scope.provinces.filter(_ => _.code === parseInt($scope.userInfo.provincecode))[0].name;
-                data = $scope.userInfo;
+                data = {
+                    code: $scope.userInfo.code,
+                    name: $scope.userInfo.name,
+                    idcard: $scope.userInfo.idcard,
+                    phone: $scope.userInfo.phone,
+                    origin: $scope.userInfo.origin,
+                    email: $scope.userInfo.email,
+                    sex: $scope.userInfo.sex,
+                    password: $scope.userInfo.password,
+                    birthday: $scope.userInfo.birthday,
+                    province: $scope.userInfo.province,
+                    syoufk: $scope.userInfo.syoufk
+                };
 
                 getToken(function (token) {
                     iAjax
@@ -275,6 +324,9 @@ define([
                             } else {
                                 _remind(4, `${$scope.saveBtn}失败，请重新提交`);
                             }
+                        }, function (err) {
+                            $scope.loading.isLoading = false;
+                            _remind(3, err.message);
                         })
                 })
             };
@@ -308,6 +360,7 @@ define([
                                 $rootScope.$broadcast('initTree', $scope.treeNodes);
                             },
                             function (data) {
+                                _remind(4, '请求单位失败，请重新点击获取')
                             })
                 })
 
@@ -341,12 +394,12 @@ define([
                 if ($scope.userInfo.idcard) {
                     $scope.regIdcard = reg.test($scope.userInfo.idcard);
                     if ($scope.userInfo.idcard.length < 16) {
-                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 8)+'-'+ $scope.userInfo.idcard.substring(8, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12);
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 8) + '-' + $scope.userInfo.idcard.substring(8, 10) + '-' + $scope.userInfo.idcard.substring(10, 12);
                         $scope.sexcode = $scope.userInfo.idcard.substring(13, 14);
                         if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
                         else $scope.userInfo.sex = '男';
                     } else {
-                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 10)+'-'+ $scope.userInfo.idcard.substring(10, 12)+'-'+ $scope.userInfo.idcard.substring(12, 14);
+                        $scope.userInfo.birthday = $scope.userInfo.idcard.substring(6, 10) + '-' + $scope.userInfo.idcard.substring(10, 12) + '-' + $scope.userInfo.idcard.substring(12, 14);
                         $scope.sexcode = $scope.userInfo.idcard.substring(16, 17);
                         if ($scope.sexcode % 2 === 0) $scope.userInfo.sex = '女';
                         else $scope.userInfo.sex = '男';
@@ -375,7 +428,7 @@ define([
             };
 
             function getToken(callback) {
-                iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
+                iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=9999&password=XASR5G2454CW343C705E7141C9F793E', {}).then(function (data) {
                     callback(data.token);
                 }, function (err) {
                     _remind(4, '请求失败，请查看网络状态!');
