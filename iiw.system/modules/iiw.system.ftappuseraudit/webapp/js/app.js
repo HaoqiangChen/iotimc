@@ -23,6 +23,8 @@ define([
 
         $scope.audit = {
             filter: {
+                role: '%',
+                isagree: '%',
                 name: ''
             },
             params: {
@@ -234,6 +236,9 @@ define([
                 $scope.subTitle = '用户修改';
                 $scope.saveBtn = '修改';
                 $scope.userInfo = $scope.$parent.userInfo;
+                $scope.userInfo.type = $scope.typeList.filter(_ => _.typename === $scope.userInfo.type)[0].type;
+                $scope.userInfo.provincecode = $scope.provinces.filter(_ => _.name === $scope.userInfo.province)[0].code;
+                $scope.userInfo.role = $scope.userRole.filter(_ => _.name === $scope.userInfo.rolename)[0].value;
             } else {
                 $scope.subTitle = '用户注册';
                 $scope.saveBtn = '注册';

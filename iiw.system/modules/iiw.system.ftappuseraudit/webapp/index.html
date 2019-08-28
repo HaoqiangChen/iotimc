@@ -17,19 +17,18 @@
                                 </div>
                                 <div class="col-md-2 select-group">
                                     <label>用户角色: </label>
-                                    <select class="form-control" ng-change="audit.getUserList()" ng-model="audit.filter.name">
-                                        <option value="">全部</option>
-                                        <option value="督导员">督导员</option>
-                                        <option value="访谈员">访谈员</option>
-                                        <option value="被访谈员">被访谈员</option>
+                                    <select class="form-control" ng-change="audit.getUserList()" ng-model="audit.filter.role">
+                                        <option value="%">全部</option>
+                                        <option value="1">访谈员</option>
+                                        <option value="2">督导员</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2 select-group">
                                     <label>审核状态: </label>
-                                    <select class="form-control" ng-change="audit.getUserList()" ng-model="audit.filter.name">
-                                        <option value="">全部</option>
-                                        <option value="通过">通过</option>
-                                        <option value="未通过">未通过</option>
+                                    <select class="form-control" ng-change="audit.getUserList()" ng-model="audit.filter.isagree">
+                                        <option value="%">全部</option>
+                                        <option value="Y">通过</option>
+                                        <option value="N">未通过</option>
                                     </select>
                                 </div>
                                 <div class="input-group pull-right" style="width:247px;">
