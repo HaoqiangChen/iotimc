@@ -184,7 +184,7 @@ define([
                     data.ids.push(o.id);
                 });
                 getToken(function (token) {
-                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/user.do?action=deleteUsers&authorization='+token, data).then(function () {
+                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=deleteUsers&authorization='+token, data).then(function () {
                         _remind(1, '用户审核成功');
                         $scope.audit.getUserList();
                     }, function () {

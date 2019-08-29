@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/mod.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/syoudialog.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,23 +12,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="362" column="60" selection-start-line="362" selection-start-column="60" selection-end-line="362" selection-end-column="60" />
-              <folding>
-                <element signature="e#1006#2200#0" />
-                <element signature="e#2429#3328#0" />
-                <element signature="e#3374#4031#0" />
-                <element signature="e#4446#5215#0" />
-                <element signature="e#7848#9042#0" />
-                <element signature="e#12933#13375#0" />
-                <element signature="e#13419#13601#0" />
-                <element signature="e#13656#13751#0" />
-                <element signature="e#15070#15689#0" />
-              </folding>
+            <state relative-caret-position="296">
+              <caret line="186" column="89" selection-start-line="186" selection-start-column="89" selection-end-line="186" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -41,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="572">
               <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="49" selection-end-column="42" />
             </state>
           </provider>
@@ -93,7 +77,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,21 +95,11 @@
               <item name="iiw.command" type="462c0819:PsiDirectoryNode" />
               <item name="iiw.command.informRecord" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iotimc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iotimc" type="462c0819:PsiDirectoryNode" />
-              <item name="iiw.system" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -190,14 +163,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Node.js.audit" />
       <item itemvalue="Node.js.iiwsafe" />
+      <item itemvalue="Node.js.lbck" />
+      <item itemvalue="Node.js.questionnairecheck" />
+      <item itemvalue="Node.js.record" />
+      <item itemvalue="Node.js.scalecheck" />
       <item itemvalue="Node.js.test" />
       <item itemvalue="Node.js.test.add" />
-      <item itemvalue="Node.js.scalecheck" />
-      <item itemvalue="Node.js.questionnairecheck" />
-      <item itemvalue="Node.js.audit" />
-      <item itemvalue="Node.js.record" />
-      <item itemvalue="Node.js.lbck" />
       <item itemvalue="Node.js.wjck" />
     </list>
   </component>
@@ -228,17 +201,18 @@
       <workItem from="1566963539379" duration="3405000" />
       <workItem from="1566968244871" duration="895000" />
       <workItem from="1567002983222" duration="11187000" />
+      <workItem from="1567045541769" duration="501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12082000" />
+    <option name="totallyTimeSpent" value="12588000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1453" height="783" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16642755" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16857962" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -267,6 +241,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -306,9 +286,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="186" column="89" selection-start-line="186" selection-start-column="89" selection-end-line="186" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="572">
           <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="49" selection-end-column="42" />
         </state>
       </provider>
@@ -317,24 +304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="362" column="60" selection-start-line="362" selection-start-column="60" selection-end-line="362" selection-end-column="60" />
-          <folding>
-            <element signature="e#1006#2200#0" />
-            <element signature="e#2429#3328#0" />
-            <element signature="e#3374#4031#0" />
-            <element signature="e#4446#5215#0" />
-            <element signature="e#7848#9042#0" />
-            <element signature="e#12933#13375#0" />
-            <element signature="e#13419#13601#0" />
-            <element signature="e#13656#13751#0" />
-            <element signature="e#15070#15689#0" />
-          </folding>
         </state>
       </provider>
     </entry>
