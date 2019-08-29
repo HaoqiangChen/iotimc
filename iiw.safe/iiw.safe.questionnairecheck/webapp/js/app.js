@@ -1,19 +1,23 @@
 /**
- * 量表查看
+ * 问卷查看
  * Created by chq on 2019-08-19.
  */
 define([
     'app',
+    'safe/questionnairecheck/lib/BenzAMRRecorder',
     'cssloader!safe/questionnairecheck/css/index',
     'cssloader!safe/questionnairecheck/css/loading',
     'cssloader!safe/questionnairecheck/css/userinfo',
-    'cssloader!safe/questionnairecheck/css/answerlist'
-], function (app) {
+    'cssloader!safe/questionnairecheck/css/answerlist',
+], function (app, BenzAMRRecorder) {
     app.controller('questionnairecheckController', ['$scope', '$state', '$element', '$stateParams', '$location', '$anchorScroll', 'iMessage', 'iConfirm', 'yjtService', 'iAjax', '$compile', '$filter', '$timeout', function ($scope, $state, $element, $stateParams, $location, $anchorScroll, iMessage, iConfirm, yjtService, iAjax, $compile, $filter, $timeout) {
         $scope.record = {};
         $scope.wjData = {};
         $scope.userDetails = {};
         $scope.answerList = [];
+        $scope.songReady = false;
+        $scope.hasAudio = false;
+        $scope.playText = '播放';
 
         if ($stateParams.data) {
             $scope.record = $stateParams.data;
@@ -40,6 +44,7 @@ define([
                     iAjax
                         .post(`${url}&authorization=${token}`, data)
                         .then(function (data) {
+                            console.log(data);
                             if (data.result && data.result.rows) {
 
                                 $scope.answerList = data.result.rows;
@@ -63,6 +68,10 @@ define([
                                 if ($scope.userDetails.interviewercode) $scope.userDetails.interviewercode = $scope.userDetails.interviewercode.split('');
                                 if ($scope.userDetails.supervisorcode) $scope.userDetails.supervisorcode = $scope.userDetails.supervisorcode.split('');
                                 if ($scope.userDetails.bm) $scope.userDetails.bm = $scope.userDetails.bm.split('');
+
+                                if ($scope.userDetails.fileurl) {
+                                    $scope.hasAudio = true;
+                                }
 
                                 $scope.loading.isLoading = false;
 
@@ -91,6 +100,27 @@ define([
 
             confirmCancel: function (id) {
                 iConfirm.close(id);
+            },
+
+            togglePlaying: function () {
+                let amr = new BenzAMRRecorder();
+                $scope.loading = {
+                    isLoading: true,
+                    content: 'amr录音文件加载转码中'
+                };
+                var fileUrl = `http://iotimc8888.goho.co:17783/security/deviceComm.do?action=getFileDetail&authorization=${token}&url=${$scope.userDetails.fileurl}`;
+                console.log(fileUrl);
+                amr.initWithUrl(fileUrl).then(function () {
+                    $scope.loading.isLoading = false;
+                    if (amr.isPlaying()) {
+                        amr.stop()
+                    } else {
+                        amr.play();
+                        $scope.playText = '停止';
+                    }
+                }).catch(function () {
+                    _remind(4, 'amr录音文件加载转码失败，请查看网络问题')
+                });
             },
 
             audit: function () {

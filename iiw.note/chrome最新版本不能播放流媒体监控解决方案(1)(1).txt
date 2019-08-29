@@ -3,3 +3,8 @@
 在60.X版本之前，chrome://flags中有一个disable-gesture-requirement-for-media-playback的选项，让用户在浏览器中输入chrome://flags/#disable-gesture-requirement-for-media-playback将该选项应用后即可。
 
 而从60.X版本开始，这个选项被移除了，取而代之的是一个名为Autoplay policy的选项。我们在浏览器中输入chrome://flags/#autoplay-policy，然后在高亮的选项中，将Default换成No user gesture is required：
+
+Touch Events API改成Automatic，就可以放了
+貌似是76版本改了，上个版本还有autoplay-policy
+
+https://ask.csdn.net/questions/772569

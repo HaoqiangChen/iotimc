@@ -9,7 +9,7 @@
             </div>
             <div class="safe-questionnairecheck-page-body-container">
                 <div class="questionnairecheck-container">
-                    <div class="container questionnaire-container" i-scroll2>
+                    <div ng-if="answerList.length" class="container questionnaire-container" i-scroll2>
                         <div class="questionnaire-header" ng-if="answerList.length">
                             <div class="questionnaire-name">{{wjData.name}}</div>
                             <div class="questionnaire-time">{{wjData.describe}}</div>
@@ -77,6 +77,18 @@
                                 <div class="questionnaire-subtext">【指导语】</div>
                                 <p style="padding: 0 3%;">{{wjData.introduce}}</p>
                             </div>
+                        </div>
+                        <div class="questionnaire-subtext" ng-if="answerList.length">访谈录音</div>
+                        <div class="questionnaire-audio">
+                            <a class="btn btn-primary" ng-click="questionnairecheck.togglePlaying()" style="padding: 8px 16px;" ng-disabled="!hasAudio">
+                                <i class="fa fa-plus fa-fw"></i>{{playText}}
+                            </a>
+                            <a class="btn btn-primary" ng-click="questionnairecheck.download()" style="padding: 8px 16px;" ng-disabled="!hasAudio">
+                                <i class="fa fa-plus fa-fw"></i>下载
+                            </a>
+                            <p>录音时长：{{userDetails.recordTime}}</p>
+                            <p>温馨提示：由于录音为微信amr文件格式，目前浏览器暂不支持暂停播放和播放进度控制功能，如有需要可下载录音文件下来到电脑音频播放器播放！！！</p>
+                            <audio id="portrait" src=""></audio>
                         </div>
                         <div class="questionnaire-subtext" ng-if="answerList.length">作答明细</div>
                         <div class="questionnaire-answerlist">

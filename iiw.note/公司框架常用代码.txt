@@ -1,5 +1,8 @@
 HTML
 
+时间选择控件
+<input class="form-control ng-valid ng-dirty ng-valid-parse ng-touched" type="text" ng-model="starttime" safe-picker="" ng-change="timeFilter()" p!format="Y-m-d H:i" placeholder="请选择开始时间" style="">
+
 下拉框
 <select ng-change="changeType()" ng-model="types" class="form-control safe-backlog-filter-select">
 	<option value="">全部</option>
