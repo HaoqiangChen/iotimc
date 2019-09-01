@@ -1,0 +1,44 @@
+.system-interviewrecord-bar {
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.system-interviewrecord-bar .select-group {
+    text-align: center;
+}
+
+.system-interviewrecord-bar .select-group label {
+    margin-right: 10px;
+}
+
+.system-interviewrecord-bar .select-group select {
+    display: inline-block;
+    width: 50%;
+    /*background-color: rgba(0, 0, 0, .3);*/
+    /*color: #fff;*/
+    /*border: 1px solid #fff;*/
+}
+
+.system-interviewrecord-page-content {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.system-interviewrecord-search {
+    width: 200px;
+    height: 39px;
+}
+
+.system-interviewrecord-container {
+    padding: 15px;
+}
+
+.iiw-system-table-container tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.iiw-system-table-container tr th,
+.iiw-system-table-container tr td {
+    text-align: center;
+}

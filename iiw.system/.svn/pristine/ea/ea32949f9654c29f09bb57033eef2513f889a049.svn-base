@@ -1,0 +1,315 @@
+<div class="iiw-system-page-container">
+    <div class="stretch ui-layout-column" ui-layout="{ flow: 'column'}" options="{dividerSize:'0'}">
+        <div class="ui-layout-row" ui-layout="{ flow: 'row'}" options="{dividerSize:'0'}">
+            <div class="ui-layout-container iiw-system-module-title-container" size="55px" ui-layout-container>
+                <h2 class="page-title">{{title}}</h2>
+            </div>
+            <div class="ui-layout-container" ui-layout-container>
+                <div class="layout-full" ui-view style="overflow: auto;">
+                    <div class="ui-layout-row system-questionnairecheck-page-content" ui-layout="{ flow: 'row'}"
+                         options="{dividerSize:'0'}">
+                        <div class="ui-layout-container" ui-layout-container>
+                            <div class="layout-full system-questionnairecheck-container">
+                                <div ng-if="loading.isLoading" class="system-loading-toast" ng-class="loading.className">
+                                    <div class="loading-toast">
+                                        <i class="loading-icon fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                        <p class="loading-content">{{loading.content}}...</p>
+                                    </div>
+                                </div>
+                                <div ng-if="answerList.length" class="layout-full" style="overflow: hidden;">
+                                    <div class="questionnairecheck-container">
+                                        <div class="questionnaire">
+                                            <div class="questionnaire-header">
+                                                <div class="questionnaire-name">{{wjData.name}}</div>
+                                                <div class="questionnaire-time">{{wjData.describe}}</div>
+                                                <div class="ftapp-userinfo">
+                                                    <div class="row">
+                                                        <div class="col-md-5 item">
+                                                            <label>访谈员编号：</label>
+                                                            <span ng-if="userDetails.interviewercode.length"><i ng-repeat="(i, num) in userDetails.interviewercode track by i">{{num}}</i></span>
+                                                            <span ng-if="!userDetails.interviewercode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                        </div>
+                                                        <div class="col-md-3 item">
+                                                            <label>访谈员姓名：</label>
+                                                            <span class="underline">{{userDetails.interviewername}}</span>
+                                                        </div>
+                                                        <div class="col-md-4 item">
+                                                            <label>联系方式：</label>
+                                                            <span class="underline">{{userDetails.phone}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5 item">
+                                                            <label>督导员编号：</label>
+                                                            <span ng-if="userDetails.supervisorcode.length"><i ng-repeat="(i, num) in userDetails.supervisorcode track by i">{{num}}</i></span>
+                                                            <span ng-if="!userDetails.supervisorcode.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                        </div>
+                                                        <div class="col-md-3 item">
+                                                            <label>督导员姓名：</label>
+                                                            <span class="underline">{{userDetails.supervisor}}</span>
+                                                        </div>
+                                                        <div class="col-md-4 item">
+                                                            <label>联系方式：</label>
+                                                            <span class="underline">{{userDetails.supervisorphone}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5 item">
+                                                            <label>被访谈人员编号：</label>
+                                                            <span ng-if="userDetails.bm.length"><i ng-repeat="(i, num) in userDetails.bm track by i">{{num}}</i></span>
+                                                            <span ng-if="!userDetails.bm.length"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                                                        </div>
+                                                        <div class="col-md-3 item">
+                                                            <label>被访谈人员姓名：</label>
+                                                            <span class="underline">{{userDetails.criminalname}}</span>
+                                                        </div>
+                                                        <div class="col-md-4 item">
+                                                            <label>被访谈人员身份证：</label>
+                                                            <span class="underline">{{userDetails.zjhm}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            被访谈人员类型：
+                                                            <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '0'}"></i>初犯</span>
+                                                            <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '1'}"></i>重犯</span>
+                                                            <span class="usertype"><i class="fa fa-square" ng-class="{'fa-check-square': wjData.usertype === '2'}"></i>刑罚执行完毕后未重新犯罪者</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5 item">
+                                                            <label>访谈日期：</label>
+                                                            <span class="underline">{{userDetails.starttime | date: 'yyyy年MM月dd日'}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="questionnaire-subtext">访谈员自我介绍</div>
+                                                    <div class="questionnaire-subtext">【指导语】</div>
+                                                    <p>{{wjData.introduce}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="answer-content">
+                                                <ul>
+                                                    <li class="answer-list" ng-repeat="(type, group) in answerList track by type">
+                                                        <div class="title" id="{{group.type}}">{{group.type}}、{{group.name}}</div>
+                                                        <fieldset class='fieldset' ng-repeat="(qnumber, answer) in group.question track by qnumber">
+                                                            <div class='field' topic='answer.idx' type='answer.type'>
+                                                                <div ng-if="answer.qclassify" class='field-classify'>【{{answer.qclassify}}】</div>
+                                                                <div ng-if="answer.qpremise" class='field-premise'>{{answer.qpremise}}</div>
+
+                                                                <div class='field-label' ng-if="answer.type === '1'">{{answer.code}}、 (单选) {{answer.name}}</div>
+                                                                <div class='field-label' ng-if="answer.type === '2'">{{answer.code}}、 (多选) {{answer.name}}</div>
+                                                                <div class='field-label' ng-if="answer.type !== '1' && answer.type !== '2'">{{answer.code}}、{{answer.name}}</div>
+
+                                                                <div ng-if="answer.qtip" class='field-tip'>{{answer.qtip}}</div>
+
+                                                                <!--    题目类型一：单选题-->
+                                                                <div class="field-controlgroup" ng-if="answer.type === '1'">
+                                                                    <div class="field-radio" ng-repeat="(idx, radio) in answer.option track by idx">
+                                                                        <div class="radio-container">
+                                                                            <i class="fa" ng-class="{'fa-circle-o': !radio.isChecked, 'fa-check-circle-o': radio.isChecked}"></i>
+                                                                            <label>{{radio.label}}<span class="label-desc" ng-if="radio.isdesc === 1">{{radio.descr}}</span></label>
+                                                                        </div>
+                                                                        <div class="field-child" ng-if="radio.isChecked && radio.child">
+                                                                            <div class="achild-list" ng-repeat="(cindex, child) in radio.qchild track by cindex">
+                                                                                <div class="field field-qchild">
+                                                                                    <div class='field-label'>{{child.name}}</div>
+                                                                                    <div ng-if="child.qtip" class='field-tip'>{{child.qtip}}</div>
+
+                                                                                    <!-- 单选子问题-->
+                                                                                    <div class="field-controlgroup" ng-if="child.type === '1'">
+                                                                                        <div class="field-radio" ng-repeat="(fk, radio) in child.option track by fk">
+                                                                                            <div class="radio-container">
+                                                                                                <i class="fa" ng-class="{'fa-circle-o': !radio.isChecked, 'fa-check-circle-o': radio.isChecked}"></i>
+                                                                                                <label>{{radio.label}}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- 多选子问题-->
+                                                                                    <div class="field-controlgroup" ng-if="child.type === '2'">
+                                                                                        <div class="field-checkbox" ng-repeat="(fk, checkbox) in child.option track by fk">
+                                                                                            <div class="checkbox-container">
+                                                                                                <i class="fa" ng-class="{'fa-square-o': !checkbox.isChecked, 'fa-check-square-o': checkbox.isChecked}"></i>
+                                                                                                <label>{{checkbox.label}}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- 填空子问题-->
+                                                                                    <div class="field-input" ng-if="child.type === '3'">
+                                                                                        <span ng-repeat="(index, input) in child.option track by index">
+                                                                                            {{input.prefix}}
+                                                                                            <!-- 多行文本框 -->
+                                                                                            <div class="field-textarea" ng-if="input.type === '0'">
+                                                                                                <span class="input-text">{{input.value}}</span>
+                                                                                            </div>
+                                                                                            <!-- 属性验证，单行文本框，6-时间选择控件 -->
+                                                                                            <div ng-if="input.type === '6'" class="special">
+                                                                                                <i class="fa fa-calendar fa-fw"></i>
+                                                                                                <input type="text" ng-model="input.value" disabled="disabled">
+                                                                                            </div>
+                                                                                            <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
+                                                                                            <span ng-if="input.type !== '0' && input.type !== '6'" class="input-text">{{input.value}}</span>
+                                                                                            {{input.suffix}}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--    题目类型二：多选题-->
+                                                                <div class="field-controlgroup" ng-if="answer.type === '2'">
+                                                                    <div class="field-checkbox" ng-repeat="(idx, checkbox) in answer.option track by idx">
+                                                                        <div class="checkbox-container">
+                                                                            <i class="fa" ng-class="{'fa-square-o': !checkbox.isChecked, 'fa-check-square-o': checkbox.isChecked}"></i>
+                                                                            <label>{{checkbox.label}}<span class="label-desc" ng-if="checkbox.isdesc === 1">{{checkbox.descr}}</span></label>
+                                                                        </div>
+                                                                        <div class="field-child" ng-if="checkbox.isChecked && checkbox.child">
+                                                                            <div class="achild-list" ng-repeat="(cindex, child) in checkbox.qchild track by cindex">
+                                                                                <div class="field field-qchild">
+                                                                                    <div class='field-label'>{{child.name}}</div>
+                                                                                    <div ng-if="child.qtip" class='field-tip'>{{child.qtip}}</div>
+
+                                                                                    <!-- 单选子问题-->
+                                                                                    <div class="field-controlgroup" ng-if="child.type === '1'">
+                                                                                        <div class="field-radio" ng-repeat="(fk, radio) in child.option track by fk">
+                                                                                            <div class="radio-container">
+                                                                                                <i class="fa" ng-class="{'fa-circle-o': !radio.isChecked, 'fa-check-circle-o': radio.isChecked}"></i>
+                                                                                                <label>{{radio.label}}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- 多选子问题-->
+                                                                                    <div class="field-controlgroup" ng-if="child.type === '2'">
+                                                                                        <div class="field-checkbox" ng-repeat="(fk, checkbox) in child.option track by fk">
+                                                                                            <div class="checkbox-container">
+                                                                                                <i class="fa" ng-class="{'fa-square-o': !checkbox.isChecked, 'fa-check-square-o': checkbox.isChecked}"></i>
+                                                                                                <label>{{checkbox.label}}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- 填空子问题-->
+                                                                                    <div class="field-input" ng-if="child.type === '3'">
+                                                                                        <span ng-repeat="(index, input) in child.option track by index">
+                                                                                            {{input.prefix}}
+                                                                                            <!-- 多行文本框 -->
+                                                                                            <div class="field-textarea" ng-if="input.type === '0'">
+                                                                                                <span class="input-text">{{input.value}}</span>
+                                                                                            </div>
+                                                                                            <!-- 属性验证，单行文本框，6-时间选择控件 -->
+                                                                                            <div ng-if="input.type === '6'" class="special">
+                                                                                                <i class="fa fa-calendar fa-fw"></i>
+                                                                                                <input type="text" ng-model="input.value" disabled="disabled">
+                                                                                            </div>
+                                                                                            <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
+                                                                                            <span ng-if="input.type !== '0' && input.type !== '6'" class="input-text">{{input.value}}</span>
+                                                                                            {{input.suffix}}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--    题目类型三：填空题-->
+                                                                <div class="field-input" ng-if="answer.type === '3'">
+                                                            <span ng-repeat="(index, input) in answer.option track by index">
+                                                                {{input.prefix}}
+                                                                <!-- 多行文本框 -->
+                                                                <div class="field-textarea" ng-if="input.type === '0'">
+                                                                    <span class="input-text">{{input.value}}</span>
+                                                                </div>
+                                                                <!-- 属性验证，单行文本框，6-时间选择控件 -->
+                                                                <div ng-if="input.type === '6'" class="special">
+                                                                    <i class="fa fa-calendar fa-fw"></i>
+                                                                    <input type="text" ng-model="input.value" disabled="disabled">
+                                                                </div>
+                                                                <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
+                                                                <span ng-if="input.type !== '0' && input.type !== '6'" class="input-text">{{input.value}}</span>
+                                                                {{input.suffix}}
+                                                                <div class="field-child" ng-if="input.child">
+                                                                    <div class="achild-list" ng-repeat="(cindex, child) in input.qchild track by cindex">
+                                                                        <div class="field field-qchild">
+                                                                            <div class='field-label'>{{child.name}}</div>
+                                                                            <div ng-if="child.qtip" class='field-tip'>{{child.qtip}}</div>
+
+                                                                            <!-- 单选子问题-->
+                                                                            <div class="field-controlgroup" ng-if="child.type === '1'">
+                                                                                <div class="field-radio" ng-repeat="(fk, radio) in child.option track by fk">
+                                                                                    <div class="radio-container">
+                                                                                        <i class="fa" ng-class="{'fa-circle-o': !radio.isChecked, 'fa-check-circle-o': radio.isChecked}"></i>
+                                                                                        <label>{{radio.label}}</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- 多选子问题-->
+                                                                            <div class="field-controlgroup" ng-if="child.type === '2'">
+                                                                                <div class="field-checkbox" ng-repeat="(fk, checkbox) in child.option track by fk">
+                                                                                    <div class="checkbox-container">
+                                                                                        <i class="fa" ng-class="{'fa-square-o': !checkbox.isChecked, 'fa-check-square-o': checkbox.isChecked}"></i>
+                                                                                        <label>{{checkbox.label}}</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- 填空子问题-->
+                                                                            <div class="field-input" ng-if="child.type === '3'">
+                                                                                <span ng-repeat="(index, input) in child.option track by index">
+                                                                                    {{input.prefix}}
+                                                                                    <!-- 多行文本框 -->
+                                                                                    <div class="field-textarea" ng-if="input.type === '0'">
+                                                                                        <span class="input-text">{{input.value}}</span>
+                                                                                    </div>
+                                                                                    <!-- 属性验证，单行文本框，6-时间选择控件 -->
+                                                                                    <div ng-if="input.type === '6'" class="special">
+                                                                                        <i class="fa fa-calendar fa-fw"></i>
+                                                                                        <input type="text" ng-model="input.value" disabled="disabled">
+                                                                                    </div>
+                                                                                    <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
+                                                                                    <span ng-if="input.type !== '0' && input.type !== '6'" class="input-text">{{input.value}}</span>
+                                                                                    {{input.suffix}}
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </span>
+                                                                </div>
+
+                                                                <!--    题目类型四：下拉题-->
+                                                                <div class="field-select" ng-if="answer.type === '4'">
+                                                                    <span class="text" ng-repeat="option in answer.option" ng-if="option.isChecked">{{option.label}}</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </fieldset>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="answer-shortcut" ng-mouseover="questionnairecheck.mouseOver()" ng-mouseleave="questionnairecheck.mouseLeave()">
+                                        <ul>
+                                            <li class="link" ng-repeat="(index, link) in answerList track by index" ng-click="questionnairecheck.scrollTo(link.type)">
+                                                <em>{{link.type}}</em>{{link.name}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ui-layout-container size="60px">
+                            <div class="layout-full" style="background-color: rgba(0, 0, 0, 0.25); padding: 10px;">
+                                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-warning col-md-4" type="button"ng-click="questionnairecheck.reinvestigation()">重新调查</button>
+                                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-success col-md-4" type="button"ng-click="questionnairecheck.audit()">审核通过</button>
+                                <button ng-if="record.status === 'O' && record.sign === '1'" class="btn btn-danger col-md-4" type="button" ng-click="questionnairecheck.back()">返回</button>
+                                <button ng-if="record.sign === '0'" class="btn btn-danger col-md-6" type="button" ng-click="questionnairecheck.back()" style="position: absolute;left: 25%;">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,43 @@
+.system-questionnairecheck-page-content {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+    padding-bottom: 20px;
+}
+
+.system-questionnairecheck-container {
+    overflow: hidden;
+}
+
+.questionnaire-name {
+    text-align: center;
+    font-size: 24px;
+}
+
+.questionnaire-time {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.questionnairecheck-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    overflow: auto;
+}
+.questionnairecheck-container::-webkit-scrollbar-thumb{min-height: 50px;background-color: #00A8FF;}
+.questionnairecheck-container .questionnaire{
+    position: relative;
+    padding: 10px 15% 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.questionnaire-subtext {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.questionnairecheck-container .iScrollVerticalScrollbar{opacity: 1 !important;}
+.questionnairecheck-container .iScrollVerticalScrollbar .iScrollIndicator{min-height: 50px;background-color: #00A8FF !important;}
