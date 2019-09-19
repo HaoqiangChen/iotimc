@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1e6b6561-6a38-4b5b-8d21-8384bb02f0af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.note/chrome最新版本不能播放流媒体监控解决方案(1)(1).txt" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.note/chrome最新版本不能播放流媒体监控解决方案(1)(1).txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.note/公司框架常用代码.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.safe/iiw.safe.questionnairecheck/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/iiw.system/modules/iiw.system.ftappuseraudit/webapp/view/add.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +129,8 @@
       <workItem from="1567002983222" duration="11187000" />
       <workItem from="1567045541769" duration="501000" />
       <workItem from="1567046144644" duration="19214000" />
+      <workItem from="1568630136689" duration="189000" />
+      <workItem from="1568863636273" duration="7179000" />
     </task>
     <servers />
   </component>

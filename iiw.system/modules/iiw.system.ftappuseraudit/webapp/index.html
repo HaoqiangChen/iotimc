@@ -11,9 +11,9 @@
                             <div class="system-useraudit-bar layout-full">
                                 <div class="col-md-3">
                                     <a class="btn btn-primary" ng-click="audit.add()" style="padding: 8px 16px;"><i class="fa fa-plus fa-fw"></i>注册</a>
-                                    <a class="btn btn-success" ng-click="audit.mod()" style="padding: 8px 16px;" ng-disabled="canMod"><i class="fa fa-edit fa-fw"></i>修改</a>
-                                    <a class="btn btn-info" ng-click="audit.audit()" style="padding: 8px 16px;" ng-disabled="canAudit"><i class="fa fa-gavel fa-fw"></i>审核</a>
-                                    <a class="btn btn-danger" ng-click="audit.del()" style="padding: 8px 16px;" ng-disabled="canDel"><i class="fa fa-minus fa-fw"></i>删除</a>
+                                    <a class="btn btn-success" ng-click="audit.mod()" style="padding: 8px 16px;" ng-disabled="canMod && canAuthority"><i class="fa fa-edit fa-fw"></i>修改</a>
+                                    <a class="btn btn-info" ng-click="audit.audit()" style="padding: 8px 16px;" ng-disabled="canAudit && canAuthority"><i class="fa fa-gavel fa-fw"></i>审核</a>
+                                    <a class="btn btn-danger" ng-click="audit.del()" style="padding: 8px 16px;" ng-disabled="canDel && canAuthority"><i class="fa fa-minus fa-fw"></i>删除</a>
                                 </div>
                                 <div class="col-md-2 select-group">
                                     <label>用户角色: </label>

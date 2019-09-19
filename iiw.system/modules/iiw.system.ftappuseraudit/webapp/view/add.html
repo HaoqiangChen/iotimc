@@ -169,6 +169,21 @@
                     </div>
                 </div>
 
+                <div class="control-group col-md-6">
+                    <div class="col-md-2">
+                        <label class="control-label">审批权限</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <select ng-model="userInfo.authority" class="form-control" required>
+                                <option value="" disabled>请选择用户是否具有审批权限</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="control-group col-md-12">
                     <div class="col-md-1">
                         <label class="control-label">所属单位</label>

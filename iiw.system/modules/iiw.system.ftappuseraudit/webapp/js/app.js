@@ -17,6 +17,7 @@ define([
         $scope.title = '访谈APP用户管理';
         $scope.keyword = '';
         $scope.selectAll = false;
+        $scope.canAuthority = false;
         $scope.canMod = true;
         $scope.canAudit = true;
         $scope.canDel = true;
@@ -83,7 +84,7 @@ define([
                     iAjax
                         .post(`${url}&authorization=${token}`, data)
                         .then(function (data) {
-                            console.log(data);
+                            // console.log(data);
                             if (data.result && data.result.rows) {
                                 $scope.audit.userList = data.result.rows;
                                 $scope.audit.userList.map(_a => {
@@ -184,7 +185,7 @@ define([
                     data.ids.push(o.id);
                 });
                 getToken(function (token) {
-                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=deleteUsers&authorization='+token, data).then(function () {
+                    iAjax.post('http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=deleteUsers&authorization=' + token, data).then(function () {
                         _remind(1, '用户审核成功');
                         $scope.audit.getUserList();
                     }, function () {
@@ -199,6 +200,30 @@ define([
                     o.checked = $scope.selectAll;
                 });
             },
+        };
+
+        $scope.getUserAuthority = function () {
+            var url = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getUserAuthority';
+
+            getToken(function (token) {
+                iAjax
+                    .post(`${url}&authorization=${token}`, {})
+                    .then(function (data) {
+                        if (data.status === 1 && data.result.rows) {
+                            if (parseInt(data.result.rows) === 1) {
+                                $scope.canAuthority = true;
+                            } else {
+                                $scope.loading = {
+                                    isLoading: true,
+                                    content: '抱歉，当前账号没有用户管理审批修改删除用户的相应权限'
+                                };
+                                setTimeout(function () {
+                                    $scope.loading.isLoading = false;
+                                }, 3000)
+                            }
+                        }
+                    })
+            })
         };
         $scope.$watch('audit.userList', function (newValue, oldValue) {
             $scope.audit.chooseList = newValue.filter(_ => _.checked);
@@ -217,6 +242,7 @@ define([
 
         // 模块加载完成后初始化事件
         $scope.$on('ftappUserAuditControllerOnEvent', function () {
+            $scope.getUserAuthority();
             $scope.audit.getUserList();
         });
 
