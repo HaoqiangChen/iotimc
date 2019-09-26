@@ -476,6 +476,112 @@ wrapper.description=IOTIMC Service Application Description
 1. 硬件包比较麻烦，每个地方每家单位都可能不一样，所以，只需要严格按照 何航 发的更新步骤操作即可。
 
 
+## 安防项目
+
+### 物联网安全管控指挥平台（iiw.safe）
+
+> 依托物联网技术实现所有安防设备的集中统一调度，支持多级联动指挥体系，实现日常事务规范自动化管理，实现与各业务系统无缝连接。具体内容包括监控中心、录像中心、电子地图、设备管理、报警联动、门禁管控、LED设置、统计分析、大数据中心、融合通讯、电子巡更、提审管理、智能押解、体温检测、一键通等
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
+
+### 物联网安全管控指挥平台（iiw.safe.meetwith）
+
+> 汇聚全国远程视频会见数据，建立全国各省各会见节点、会见类型的维度分析场景，将庞大的数据通过图形进行展示；实时分类统计各监狱的设备情况，可以穿透关联相应地区的监狱数据。具体内容包括智能报表、自助分析、智能搜索、罪犯画像、图谱分析、预警分析
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe/modules/iiw.safe.meetwith
+
+### 商业智能可视化平台（iiw.datax）
+
+> 自建的智能BI平台，适应各种数据库的对接，实现了数据的采集、转换、剪裁、预览等功能，并使用可视化应用的方式来分析并展示庞杂数据的产品。具体内容包括数据源管理、数据集管理、数据规则管理、数据作业管理、任务调度、数据图表
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.datax
+
+### 智慧安防管控平台（iiw.master）
+
+> 物联网安防管控平台的升级过度版，优化了界面风格，梳理业务逻辑，实现了更大数据量的集中展示和更广领域的业务功能。具体内容包括场所总控、数智警务、数智监管、数智安防、智能辅助决策
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.master
+
+### 商业智能可视化平台（iiw.safe）
+
+> 依托物联网技术实现所有安防设备的集中统一
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
+
+### 商业智能可视化平台（iiw.safe）
+
+> 依托物联网技术实现所有安防设备的集中统一
+
+项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
+
+
+## Vue项目
+
+### 点名系统V3.0业务管理-vue前端（calls-admin）
+
+![点名系统V3.0业务管理-vue前端](/iotimc/calls-admin.png)
+
+> 这是一个 vue 视频点名系统后台管理系统，基于 vuex & axios & element-ui & iconfont & tinymce & eslint
+> 视频点名系统的业务管理平台，实现对业务数据的管理和设备的控制。具体内容包括Apk管理、设备管理、通讯录管理
+
+* [vue文档: https://cn.vuejs.org/](https://cn.vuejs.org/)
+* [element-ui: https://element.eleme.cn/#/zh-CN/component/installation/](https://element.eleme.cn/#/zh-CN/component/installation/)
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/calls-admin.git](https://code.aliyun.com/iotimc-terminal/calls-admin.git) calls-admin
+
+### 产品体系系统管理-vue前端（system-admin）
+
+![产品体系系统管理-vue前端](/iotimc/system-admin.png)
+
+> 这是一个 vue 产品体系系统管理系统，基于 vuex & axios & element-ui & iconfont & tinymce & eslint
+> 划分系统和业务领域的数据，整合基础数据需求，进行统一的管理维护。具体内容包括单位管理、编码管理、菜单管理、用户管理、权限管理、日志管理
+
+* [vue文档: https://cn.vuejs.org/](https://cn.vuejs.org/)
+* [element-ui: https://element.eleme.cn/#/zh-CN/component/installation/](https://element.eleme.cn/#/zh-CN/component/installation/)
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/system-admin.git](https://code.aliyun.com/iotimc-terminal/system-admin.git) system-admin
+
+### 物联网监强锁-vue前端（door-admin）
+
+![物联网监强锁-vue前端](/iotimc/door-admin.png)
+
+> 这是一个 物联网监强锁-vue前端系统，基于 vuex & axios & element-ui & iconfont & tinymce & eslint
+
+* [vue文档: https://cn.vuejs.org/](https://cn.vuejs.org/)
+* [element-ui: https://element.eleme.cn/#/zh-CN/component/installation/](https://element.eleme.cn/#/zh-CN/component/installation/)
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/door-admin.git](https://code.aliyun.com/iotimc-terminal/door-admin.git) door-admin
+
+### 视频点名展现平台（calls-portal）
+
+> 视频点名系统的数据展现平台，实现了多维度业务数据的统计分析，对接实时设备数据，使用图形化方式进行直观展示，并可按单位进行数据穿透。具体内容包括设备巡检、视频点名、零报告、突发事件、信息速报、综合统计、值班报告、要情记录、通知公告、文件管理、录音录像
+
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/calls-portal.git](https://code.aliyun.com/iotimc-terminal/calls-portal.git) calls-portal
+
+### 消息服务管理系统（vue-imcmq）
+
+> 针对已部署的MQ服务，提供可视化的界面配置和数据管理功能。具体内容包括交换机管理、消息队列管理、绑定管理、客户端管理和日志管理
+
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/vue-imcmq.git](https://code.aliyun.com/iotimc-terminal/vue-imcmq.git) vue-imcmq
+
+### 移动端开发框架（iot-web）
+
+> 基于 uni-app 的搭建的一套多端构建架构
+
+### 物联网智能终端管理平台v3.0（iot-admin）
+
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/iot-web.git](https://code.aliyun.com/iotimc-terminal/iot-web.git) iot-web
+
+> 对终端管理平台进行升级，采用vue的技术体系进行开发，优化系统架构，实现对智能终端各类数据的管理维护。具体内容包括文件管理、多媒体管理、终端设备管理、信息查询、单位管理、人脸信息管理、人员信息管理、系统管理、系统维护
+
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/iot-admin.git](https://code.aliyun.com/iotimc-terminal/iot-admin.git) iot-admin
+
+
+
+
+
+
+
+
+
+
 
 
 

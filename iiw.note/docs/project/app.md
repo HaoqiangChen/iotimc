@@ -11,7 +11,12 @@ Vconsole，边开发边看Vconsole。
 但是有些功能不需要跟APP对接的，倒是可以直接浏览器开发，npm install 之后，运行 npm run dev跑项目，然后询问后端一些必要参数，之后直接在运行之后的地址后面加上`?paperfk=354DD9C8DD08460A83BDA9A06D874B86&token=&recordfk=1e304d458a6a4fdc9afe029f912308b9&type=wjdc&isonline=3#/wjdc`  
 其中`paperfk`为问卷ID，`recordfk`为记录ID，`type`为页面类型，`isonline`为在线问卷还是离线；  
 `token`为token验证，需要先请求登陆接口获取，这些参数全部由APP，也就是大伟那边提供的，所以就没将获取token写死，测试时可以手动直接打开
-`http://iotimc8888.goho.co:17783/sys/web/login.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E`获取
+`http://iotimc8888.goho.co:17783/sys/web/login.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E`获取，这个登录地址是用花生壳外映射的，如果连不上了，跟韦华龙后端同事要下问卷服务器地址，自己改下
+
+平时测试问卷ID  
+354DD9C8DD08460A83BDA9A06D874B86,刑罚执行完毕后未重新犯罪者  
+D64B236EA44046528699011C0258E9DE,初犯  
+B701AB0474BE475B8CF22E6152B9FC01,重犯
 
 里面有些页面，是为了方便开发调试而弄得，到时候打包的时候，不需要打包发出去。只需要在`router/index.js`里面注释掉`isonline=3`的页面
 
