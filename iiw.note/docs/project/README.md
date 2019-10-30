@@ -484,7 +484,7 @@ wrapper.description=IOTIMC Service Application Description
 
 项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
 
-### 物联网安全管控指挥平台（iiw.safe.meetwith）
+### 远程视频会见帮教系统（iiw.safe.meetwith）
 
 > 汇聚全国远程视频会见数据，建立全国各省各会见节点、会见类型的维度分析场景，将庞大的数据通过图形进行展示；实时分类统计各监狱的设备情况，可以穿透关联相应地区的监狱数据。具体内容包括智能报表、自助分析、智能搜索、罪犯画像、图谱分析、预警分析
 
@@ -502,18 +502,12 @@ wrapper.description=IOTIMC Service Application Description
 
 项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.master
 
-### 商业智能可视化平台（iiw.safe）
+### 物联网安全管控指挥平台CS版本（nw.exe）
 
-> 依托物联网技术实现所有安防设备的集中统一
+> 用nw.js将安防平台打包成一个桌面应用
 
-项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
-
-### 商业智能可视化平台（iiw.safe）
-
-> 依托物联网技术实现所有安防设备的集中统一
-
-项目地址SVN：http://192.168.0.250:2233/svn/iiw/trunk/iiw.safe
-
+* [nw.js文档: https://nwjs.org.cn/doc/index.html](https://nwjs.org.cn/doc/index.html)
+* [源码-git仓库: https://code.aliyun.com/iotimc-terminal/nw-safe.git](https://code.aliyun.com/iotimc-terminal/nw-safe.git) iicsafe
 
 ## Vue项目
 

@@ -294,3 +294,7 @@ $scope.$on('workLogControllerOnEvent', function () {
     // todo
 });
 ```
+
+## cmd创建目录`mkdir`
+
+单独打包前端修改的某个前端模块文件，可直接cmd输入命令：`mkdir iiw.safe\webapp\js\services`
