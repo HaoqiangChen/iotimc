@@ -16,3 +16,13 @@ iAjax.post('/security/device.do?action=getDeviceDetail', {row: {id: 'id'}}).then
 ```js
 iAjax.post('/sys/web/syou.do?action=getSyouAll', {"data": {filter: {cascade: 'Y'}}}).then(function (data) {})
 ```
+
+## 民警
+> 查询所有民警列表
+```js
+iAjax.post('/security/information/information.do?action=getpoliceall', {
+	params: {pageNo: 1, pageSize: 20},
+	filter: ""
+}).then(function (data) {})
+```
+

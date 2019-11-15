@@ -13,10 +13,10 @@
 
 > each
 ```
-_.each([1, 2, 3], alert);
-=> alerts each number in turn...
-_.each({one: 1, two: 2, three: 3}, alert);
-=> alerts each number value in turn...
+_.each([1, 2, 3], function (item, index) {});
+=> 1,0 => 2,1 => 3,2
+_.each({one: 1, two: 2, three: 3}, function (item, index) {});
+=> 1,'one' => 2,'two' => 3,'three'
 ```
 > map
 ```
@@ -29,8 +29,9 @@ _.map([[1, 2], [3, 4]], _.first);
 ```
 > pluck
 ```
-var stooges = []
-=> 2
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.pluck(stooges, 'name');
+=> ["moe", "larry", "curly"]
 ```
 > find
 ```
@@ -84,7 +85,9 @@ if (item) {
 ## 父子组件之间通信
 
 发送消息：$scope.sendMessage  
-广播：$rootScope.$broadcast('自命名一个通信字段', '参数');  
+广播：  
+* 同个js：$scope.$broadcast('自命名一个通信字段', '参数');  
+* 不同js：$rootScope.$broadcast('自命名一个通信字段', '参数');  
 接收消息：$scope.$on('刚命名的通信字段', function(){})
 
 
@@ -124,10 +127,10 @@ json: {
 
 ```js
 // 全局的消息提醒服务
-function _remind(level, title, content, timeout, id, data, fn, scope) {
+function _remind(level, content, timeout, title, id, data, fn, scope) {
 	var message = {
 		id: (id || iTimeNow.getTime()),
-		title: (title || '呼叫提醒！'),
+		title: (title || '消息提醒！'),
 		level: level,
 		content: (content || ''),
 		timeout: timeout || 5000,
@@ -139,6 +142,15 @@ function _remind(level, title, content, timeout, id, data, fn, scope) {
 		if (message[v] === 'v') delete message[v]
 	}
 	iMessage.show(message, false, scope);
+}
+
+function _remind(level, content, timeout, title) {
+	iMessage.show({
+		level: level,
+		content: content,
+		timeout: timeout || 2000,
+		title: title || '消息提醒'
+	})
 }
 ```
 
@@ -298,3 +310,7 @@ $scope.$on('workLogControllerOnEvent', function () {
 ## cmd创建目录`mkdir`
 
 单独打包前端修改的某个前端模块文件，可直接cmd输入命令：`mkdir iiw.safe\webapp\js\services`
+
+## 模态框列表选择
+
+

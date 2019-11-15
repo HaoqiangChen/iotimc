@@ -179,3 +179,13 @@ function _getRole () {
 // 调用
 _getRole.then(function(data){})
 ```
+
+## 民警或罪犯选择列表
+
+
+## $filter('date')
+
+```js
+$filter('date')(new Date().getTime(), 'yyyy-MM-dd HH:mm:ss')
+$filter('date')(iTimeNow.getTime(), 'yyyy-MM-dd HH:mm')
+```

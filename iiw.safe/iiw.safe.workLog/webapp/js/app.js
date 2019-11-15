@@ -83,7 +83,7 @@ define([
           });
 
         },
-        confirmDel: function (id) { 
+        confirmDel: function (id) {
           iConfirm.close(id);
           iAjax.post('information/rota/rota.do?action=deletedutylist', {filter: {ids: [$scope.worklog.delId]}}).then(function () {
             _remind(1, '删除日志记录成功')
