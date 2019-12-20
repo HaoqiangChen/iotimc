@@ -224,6 +224,13 @@ sqlplus "/ as sysdba"
 select name from v$database;
 ```
 
+> oracle修改口令
+
+执行完上面命令行之后，执行下面命令行
+```
+alter user sys identified by 123456;
+```
+
 ![SQLPlus验证](/iotimc/SQLPlus.png)
 如上图所示，没有错误信息，表示验证成功！
 

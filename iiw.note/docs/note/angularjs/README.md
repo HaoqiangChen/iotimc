@@ -42,7 +42,8 @@ AngularJS 表达式可以把数据绑定到 HTML，也可以写到属性上。
 ## ng-style 动态为元素添加样式
 
 对象：
-> {color: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}
+> {color: x.status === -1 ? '#f0ad4e' : x.status === 1?'#5cb85c':x.status === 2?'#f04124':'#a5a5a5'}  
+> {width:true?'50px':'100%'}
 
 变量：
 > 变量就是一个对象，就是把上面第一种方式拿到js中

@@ -49,6 +49,20 @@ _.where(listOfPlays, {author: "Shakespeare", year: 1611});
 => [{title: "Cymbeline", author: "Shakespeare", year: 1611},
     {title: "The Tempest", author: "Shakespeare", year: 1611}]
 ```
+> partition -- `将 list 拆分为两个数组：第一个数组其元素都满足predicate迭代函数， 而第二个的所有元素均不能满足predicate迭代函数`
+```
+_.partition([0, 1, 2, 3, 4, 5], (i)=>{
+	return _.contains(_.pluck([{id:1},{id:4}], 'id')), i);
+});
+=> [[1, 4], [0, 2, 3, 5]]
+```
+> groupBy -- 把一个集合分组为多个集合
+```
+_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+=> {1: [1.3], 2: [2.1, 2.4]}
+_.groupBy(['one', 'two', 'three'], 'length');
+=> {3: ["one", "two"], 5: ["three"]}
+```
 
 ## 表格列表
 
@@ -312,5 +326,39 @@ $scope.$on('workLogControllerOnEvent', function () {
 单独打包前端修改的某个前端模块文件，可直接cmd输入命令：`mkdir iiw.safe\webapp\js\services`
 
 ## 模态框列表选择
+
+## 获取地址参数`$location`
+
+```javascript
+$location.absUrl(); // 完整地址
+$location.host(); // 域名
+$location.path(); // '/safe/insidemap'
+```
+
+## $destroy销毁
+
+### 模块路由销毁
+
+```javascript
+$scope.$on('$destroy', function () {
+    // todo
+});
+```
+
+### directives指令销毁
+
+```javascript
+$element.$on('$destroy', function () {
+    // todo
+});
+```
+
+## 本地资源获取
+
+```javascript
+$.soa.getWebPath('iiw.safe') + '/img/logo.png'
+
+iAjax.formatURL('security/common/monitor.do?action=getFileDetail&url=' + item.photo)
+```
 
 

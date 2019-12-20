@@ -126,7 +126,7 @@ iAjax.post('security/common/monitor.do?action=getSycodeList', {filter: {type: 'i
 
 > 修改后台配置的某个系统字典详细信息
 ```js
-iAjax.post('sys/web/sycode.do?action=upSycode', {filter: {row: {id: id, content: $scope.content}}}).then(function (data) {
+iAjax.post('sys/web/sycode.do?action=upSycode', {row: {id: id, content: $scope.content}}).then(function (data) {
 	if(data.status === 1) {
 		iMessage.show({level: 1, title: '保存成功', content: '路径设置保存成功'});
 	}
@@ -136,8 +136,19 @@ iAjax.post('sys/web/sycode.do?action=upSycode', {filter: {row: {id: id, content:
 ## 权限
 
 > 获取是否具有某个权限
-之后请求接口：security/check/check.do?action=getSpecialrole
-传递的参数filter: {url: ['权限标识']}
+
+**接口1**：`security/common/monitor.do?action=getUserRole`  
+传递的参数`filter: {url: '权限标识'}`
+```js
+iAjax.post('security/common/monitor.do?action=getUserRole', {filter: {url: type}}).then(function(data) {
+	if(data.result.status && data.result.status == '1') {
+		// 1具备该权限，0则不具备
+	}
+})
+```
+
+**接口2**：`security/check/check.do?action=getSpecialrole`  
+传递的参数`filter: {url: ['权限标识']}`
 ```js
 function getRoleSetting(type, callback) {
     iAjax.post('security/check/check.do?action=getSpecialrole', {filter: {url: [type]}}).then(function(data) {

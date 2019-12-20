@@ -26,3 +26,12 @@ iAjax.post('/security/information/information.do?action=getpoliceall', {
 }).then(function (data) {})
 ```
 
+## 罪犯
+> 查询所有罪犯列表
+```js
+iAjax.post('/security/information/information.do?action=getcriminalall', {
+	params: {pageNo: 1, pageSize: 20},
+	filter: ""
+}).then(function (data) {})
+```
+
