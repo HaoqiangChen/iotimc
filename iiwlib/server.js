@@ -5,7 +5,7 @@
  *
  * V1.0
  */
-var _libpath = 'C:\\Users\\chq\\Desktop\\iotimc\\iiwlib\\node_modules\\';
+var _libpath = 'C:\\Users\\Administrator\\Desktop\\iotimc\\iiwlib\\node_modules\\';
 
 var _serverPort = parseInt(Math.random() * 9999) + 10000;
 var _defaultPath = '';

@@ -66,6 +66,122 @@ _.groupBy(['one', 'two', 'three'], 'length');
 
 ## 表格列表
 
+```html
+<div class="table-wrap safe-vitalsigns-setting-table">
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th width="5%" class="text-center">姓名</th>
+			<th width="10%" class="text-center">编号</th>
+			<th width="15%" class="text-center">腕带编号</th>
+			<th width="20%" class="text-center">心率阈值</th>
+			<th width="20%" class="text-center">血压阈值</th>
+			<th width="30%" class="text-center">操作</th>
+		</tr>
+		</thead>
+	</table>
+
+	<div class="safe-vitalsigns-setting-table-nodata" ng-if="!settings.list.length">
+		<div class="nodata-toast">
+			<i class="nodata-icon fa fa-exclamation-circle fa-5x fa-fw"></i>
+			<p class="nodata-content">暂无数据</p>
+		</div>
+	</div>
+	<div class="safe-vitalsigns-setting-table-iscroll" ng-if="settings.list.length" i-scroll2>
+		<table class="table table-striped">
+			<col width="5%" />
+			<col width="10%" />
+			<col width="15%" />
+			<col width="20%" />
+			<col width="20%" />
+			<col width="30%" />
+			<tbody>
+			<tr ng-repeat="row in settings.list">
+				<td class="text-center">{{row.name}}</td>
+				<td class="text-center">{{row.code}}</td>
+				<td class="text-center">{{row.syouname}}</td>
+				<td class="text-center">{{row.value}}</td>
+				<td class="text-center">{{row.cretime}}</td>
+				<td class="text-center">
+					<button class="btn btn-sm btn-success" ng-click="settings.edit(row)">
+						<i class="fa fa-edit"></i> 编辑
+					</button>
+				</td>
+			</tr>
+
+			</tbody>
+
+		</table>
+	</div>
+	
+	<div class="pagination-container">
+		<uib-pagination class="pagination pull-right" boundary-links="true" first-text="&laquo;" last-text="&raquo;" total-items="settings.pagination.totalSize" ng-model="settings.pagination.pageNo"
+						ng-change="settings.getList()" items-per-page="settings.pagination.pageSize" previous-text="上一页" next-text="下一页" max-size="5"></uib-pagination>
+	</div>
+
+</div>
+
+```
+
+### css
+```css
+.nodata-toast {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    margin-top: -150px;
+    margin-left: -150px;
+    /*background: rgba(17, 17, 17, 0.7);*/
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+}
+.nodata-toast .nodata-icon {
+    font-size: 8em;
+    margin: 50px 0 0;
+}
+.nodata-toast .nodata-content {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table{
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    clear: both;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table table {
+    width: 100%;
+    margin-bottom: 0;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table .safe-vitalsigns-setting-table-iscroll {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 80px);
+    overflow: hidden;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table table.table-iscroll tbody {
+    width: 100%;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table thead {
+    text-shadow: rgb(0 0 0 / 60%) 0 1px 1px;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table tr th {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table tr td {
+    font-size: 16px;
+}
+.safe-vitalsigns-setting-container .safe-vitalsigns-setting-table .pagination {
+    margin: 0;
+}
+```
+
 ## 页面跳转
 
 语法：$state.go('跳转模块', '参数')
@@ -158,12 +274,12 @@ function _remind(level, content, timeout, title, id, data, fn, scope) {
 	iMessage.show(message, false, scope);
 }
 
-function _remind(level, content, timeout, title) {
+function _remind(level, content, title, timeout) {
 	iMessage.show({
 		level: level,
 		content: content,
-		timeout: timeout || 2000,
-		title: title || '消息提醒'
+		title: title || '消息提醒',
+		timeout: timeout || 2000
 	})
 }
 ```

@@ -189,3 +189,19 @@ _getRole.then(function(data){})
 $filter('date')(new Date().getTime(), 'yyyy-MM-dd HH:mm:ss')
 $filter('date')(iTimeNow.getTime(), 'yyyy-MM-dd HH:mm')
 ```
+
+## 四个切角CSS3
+
+```css
+.box-wrapper::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background: linear-gradient(to left, #209FD3, #209FD3) left top no-repeat, linear-gradient(to bottom, #209FD3, #209FD3) left top no-repeat, linear-gradient(to left, #209FD3, #209FD3) right top no-repeat, linear-gradient(to bottom, #209FD3, #209FD3) right top no-repeat, linear-gradient(to left, #209FD3, #209FD3) left bottom no-repeat, linear-gradient(to bottom, #209FD3, #209FD3) left bottom no-repeat, linear-gradient(to left, #209FD3, #209FD3) right bottom no-repeat, linear-gradient(to left, #209FD3, #209FD3) right bottom no-repeat;
+    background-size: 2px 20px, 20px 2px, 2px 20px, 20px 2px;
+}
+```

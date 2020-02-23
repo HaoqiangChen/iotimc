@@ -54,6 +54,19 @@ sys/web/syuser.do?action=getLoginSyuser
 }
 ```
 
+## 查询`sysetting表`配置
+
+有时候像第三方等有些服务器地址或者其他啥的需要用到，但是不同单位不同配置，有些开发人员没有将信息放到后台可以查看修改的地方，而是直接就在  
+数据库`sysetting表`里面添加一条数据来用，然后请求以下接口获取配置信息。
+
+```js
+iAjax.post('/security/infomanager/information.do?action=getSysettingList', {filter: {
+        type: 'supergraph'
+    }}).then(function (data) {
+    if (data.result && data.result.rows) {}
+});
+```
+
 ## 查询终端V2.0配置信息
 
 ```js
